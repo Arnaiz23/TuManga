@@ -15,6 +15,8 @@ const btnFilter = document.querySelector(".btnFilter");
 const modalFilter = document.querySelector(".optionsFilterResponsive");
 const btnCloseFilter = document.getElementById("closeModalFilter");
 
+const card = document.querySelector(".card img");
+
 
 btnMenu.addEventListener("click", () => {
     nav.classList.toggle("navActive");
@@ -83,4 +85,9 @@ btnFilter.addEventListener("click", () => {
 
 btnCloseFilter.addEventListener("click", () => {
     modalFilter.classList.remove("modalFilterActive")
+});
+
+console.log(card);
+card.addEventListener("click", () => {
+    location.href = "product.html";
 });
