@@ -8,6 +8,13 @@ const containerProducts = document.querySelector(".containerProducts");
 
 const btnUp = document.querySelector("#btn-up");
 
+const btnSelect = document.querySelector(".selectOrderOptions");
+const optionsSelect = document.querySelector(".optionsSelectOrder");
+
+const btnFilter = document.querySelector(".btnFilter");
+const modalFilter = document.querySelector(".optionsFilterResponsive");
+const btnCloseFilter = document.getElementById("closeModalFilter");
+
 
 btnMenu.addEventListener("click", () => {
     nav.classList.toggle("navActive");
@@ -17,6 +24,9 @@ btnMenu.addEventListener("click", () => {
 window.addEventListener("click", (e) => {
     if(e.target != nav && e.target != btnMenu && nav.classList.contains("navActive")){
         nav.classList.toggle("navActive");
+    }
+    if(e.target != btnSelect && e.target != optionsSelect && optionsSelect.classList.contains("selectActive")){
+        optionsSelect.classList.remove("selectActive");
     }
 });
 
@@ -60,3 +70,17 @@ window.onscroll = () => {
     }
 
 }
+
+
+btnSelect.addEventListener("click", () => {
+    optionsSelect.classList.toggle("selectActive");
+});
+
+
+btnFilter.addEventListener("click", () => {
+    modalFilter.classList.add("modalFilterActive");
+});
+
+btnCloseFilter.addEventListener("click", () => {
+    modalFilter.classList.remove("modalFilterActive")
+});

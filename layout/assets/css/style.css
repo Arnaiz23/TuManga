@@ -29,12 +29,13 @@
     position: relative;
 }
 
-.brand{
+.brand a{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
     margin-left: 1rem;
+    color: #000;
 }
 
 .brand h1{
@@ -209,6 +210,14 @@
     background-color: rgb(206, 4, 4);
 }
 
+.btn-primary{
+    background-color: var(--dark-blue);
+}
+
+.btn-primary:hover{
+    background-color: #166799;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- SOCIAL ICONS ----------- ----------- */
@@ -316,6 +325,22 @@
     right: 1.5rem;
 }
 
+.sliderSmall{
+    width: 100%;
+    height: 150px;
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderTitle{
+    color: #fff;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- MAIN ----------- ----------- */
@@ -336,6 +361,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    width: 100%;
 }
 
 .card{
@@ -404,6 +430,233 @@
 
 .addCartChecked{
     background-color: var(--soft-green);
+}
+
+.containersFilters{
+    width: 16%;
+    min-width: 220px;
+}
+
+.containerFilter{
+    /* width: 15%; */
+    width: 100%;
+    padding: 20px;
+    margin: 30px 0;
+    background-color: var(--soft-blue);
+    position: relative;
+}
+
+.containerFilter header{
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.lineFilter{
+    width: 80%;
+    margin: 5px auto;
+    border-top: 1px solid #000;
+}
+
+.optionFilter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* margin: 10px 0; */
+    padding: 7px 0;
+    padding-left: 15px;
+    width: 100%;
+}
+
+.optionFilter p{
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.checkboxFilter{
+    transform: scale(1.3);
+    accent-color: var(--button-red);
+}
+
+.containerGlobalProducts{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 3%;
+}
+
+.selectOrder{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectOrderOptions{
+    width: 200px;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid #000;
+    background-color: transparent;
+    font-size: .9rem;
+    color: var(--footer-grey);
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.optionsSelectOrder{
+    list-style: none;
+    box-shadow: 3px 3px 5px #000;
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    background-color: #fff;
+}
+
+.optionsSelectOrder li{
+    /* margin: 10px; */
+    padding: 10px;
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+.optionsSelectOrder li:hover{
+    background-color: #46a7e4;
+}
+
+.selectActive{
+    display: block;
+}
+
+.filterResponsive{
+    width: 100px;
+    height: 30px;
+    visibility: hidden;
+}
+
+.btnFilter{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: var(--footer-grey);
+}
+
+.btnFilter i{
+    margin-right: 10px;
+}
+
+.optionsFilterResponsive{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgb(231, 231, 231);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    /* display: none; */
+    transform: translateX(100%);
+    transition: transform .5s;
+}
+
+.modalFilterActive{
+    /* display: block; */
+    transform: translateX(0);
+}
+
+.optionsFilterResponsive header{
+    width: 100%;
+    padding: 10px 30px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+.optionsFilterResponsive header button{
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin: 0;
+    background-color: transparent;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform .3s, background-color .3s;
+    border-radius: 10px;
+}
+
+.optionsFilterResponsive header button:active{
+    transform: scale(.9);
+    background-color: rgb(192, 190, 190);
+}
+
+.optionsFilterResponsive header button i{
+    margin-right: 10px;
+}
+
+.optionsFilterResponsive main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px 30px;
+}
+
+.containerFilterResponsive:last-child{
+    margin: 20px 0;
+}
+
+.containerFilterResponsive{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.containerFilterResponsive h3{
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+
+.containerFilterResponsive div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+}
+
+.containerFilterResponsive div input[type="checkbox"]{
+    transform: scale(1.2);
+    accent-color: var(--button-red);
+    cursor: pointer;
+}
+
+.containerFilterResponsive div p{
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.optionsFilterResponsive footer{
+    position: absolute;
+    bottom: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #000;
+    padding: 15px 0 10px;
+    width: 100%;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -524,6 +777,16 @@
 @media screen and (max-width: 882px) {
     .headerSearch{
         display: none;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .containersFilters{
+        display: none;
+    }
+
+    .filterResponsive{
+        visibility: visible;
     }
 }
 
