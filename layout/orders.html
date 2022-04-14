@@ -130,8 +130,65 @@
                     <li><a href="comments.html">Mis Comentarios</a></li>
                 </ul>
             </aside>
-            <section class="containerInformation">
 
+            <button class="btnSubmenu"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <nav class="submenuFloat">
+                <header>
+                    <button role="button" id="closeModalAccount">
+                        <i class="fa-solid fa-xmark"></i>
+                        Cerrar
+                    </button>
+                </header>
+                <main>
+                    <ul>
+                        <li><a href="account.html">Mi Información</a></li>
+                        <li><a href="orders.html" class="submenuOptionActive">Mis Pedidos</a></li>
+                        <li><a href="address.html">Mis Direcciones</a></li>
+                        <li><a href="targets.html">Mis Tarjetas</a></li>
+                        <li><a href="comments.html">Mis Comentarios</a></li>
+                    </ul>
+                </main>
+            </nav>
+            
+            <section class="containerInformation">
+                <h2 class="subtitle">Mis Pedidos</h2>
+                <div class="containerOrder">
+                    <header>
+                        <div class="containerOrderInformation">
+                            <div>
+                                <h4>Pedido realizado</h4>
+                                <p class="greySmall">6 de abril de 2022</p>
+                            </div>
+                            <div>
+                                <h4>Total</h4>
+                                <p class="greySmall">45 €</p>
+                            </div>
+                            <div id="orderClient">
+                                <h4>Enviar a</h4>
+                                <p class="greySmall" id="orderUserName">Adrián Arnaiz Fernández <i class="fa-solid fa-angle-down"></i></p>
+                                <div class="modalInformationOrder">
+                                    <h4>Adrián Arnaiz Fernández</h4>
+                                    <p class="greySmall">Calle Mi Casa</p>
+                                    <p class="greySmall">Teléfono: 123456789</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="orderDetails.html">Ver detalles del pedido</a>
+                        </div>
+                    </header>
+                    <main>
+                        <h4>Entregado el lunes</h4>
+                        <div class="row">
+                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada tokyo revengers 04">
+                            <h3>Tokyo Revengers 04</h3>
+                        </div>
+                        <div class="row">
+                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada tokyo revengers 04">
+                            <h3>Tokyo Revengers 04</h3>
+                        </div>
+                    </main>
+                </div>
             </section>
         </div>
     </main>

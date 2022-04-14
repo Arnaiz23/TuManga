@@ -8,3 +8,4 @@ Information of layout
     - Manga
     - Shopping Cart
     - One Product
+    - Account

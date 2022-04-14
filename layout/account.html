@@ -130,8 +130,76 @@
                     <li><a href="comments.html">Mis Comentarios</a></li>
                 </ul>
             </aside>
-            <section class="containerInformation">
 
+            <button class="btnSubmenu"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            <nav class="submenuFloat">
+                <header>
+                    <button role="button" id="closeModalAccount">
+                        <i class="fa-solid fa-xmark"></i>
+                        Cerrar
+                    </button>
+                </header>
+                <main>
+                    <ul>
+                        <li><a href="account.html" class="submenuOptionActive">Mi Información</a></li>
+                        <li><a href="orders.html">Mis Pedidos</a></li>
+                        <li><a href="address.html">Mis Direcciones</a></li>
+                        <li><a href="targets.html">Mis Tarjetas</a></li>
+                        <li><a href="comments.html">Mis Comentarios</a></li>
+                    </ul>
+                </main>
+            </nav>
+            
+            <section class="containerInformation">
+                <h2 class="subtitle">Mi información</h2>
+                <div class="rowAccount">
+                    <h3>Datos de mi cuenta</h3>
+                    <div class="row">
+                        <div class="col">
+                            <label for="userName">Nombre</label>
+                            <input type="text" id="userName">
+                        </div>
+                        <div class="col">
+                            <label for="userLastName">Apellidos</label>
+                            <input type="text" id="userLastName">
+                        </div>
+                    </div>
+                    <div class="rowEnd">
+                        <button class="btn btn-success" role="button">Guardar</button>
+                    </div>
+                </div>
+                <div class="lineAccount"></div>
+                <div class="rowAccount">
+                    <h3>Contraseña</h3>
+                    <div class="row">
+                        <div class="col">
+                            <label for="userName">Antigua</label>
+                            <input type="text" id="userName">
+                        </div>
+                        <div class="col">
+                            <label for="userLastName">Nueva</label>
+                            <input type="text" id="userLastName">
+                        </div>
+                        <div class="col">
+                            <label for="userLastName">Repetir</label>
+                            <input type="text" id="userLastName">
+                        </div>
+                    </div>
+                    <div class="rowBetween">
+                        <span class="spanSecurity">
+                            <h4>Seguridad:</h4>
+                            <ul>
+                                <li>Utiliza 6 caracteres o más</li>
+                            </ul>
+                        </span>
+                        <button class="btn btn-success" role="button">Guardar</button>
+                    </div>
+                </div>
+                <div class="lineAccount"></div>
+                <div class="colCenter">
+                    <h3>Eliminar Cuenta</h3>
+                    <button class="btn btn-danger" role="button">Eliminar</button>
+                </div>
             </section>
         </div>
     </main>
