@@ -125,7 +125,7 @@
                     <div class="lineAside"></div>
                     <li><a href="address.html">Mis Direcciones</a></li>
                     <div class="lineAside"></div>
-                    <li><a href="targets.html">Mis Tarjetas</a></li>
+                    <li><a href="cards.html">Mis Tarjetas</a></li>
                     <div class="lineAside"></div>
                     <li><a href="comments.html">Mis Comentarios</a></li>
                 </ul>
@@ -144,16 +144,35 @@
                         <li><a href="account.html">Mi Información</a></li>
                         <li><a href="orders.html" class="submenuOptionActive">Mis Pedidos</a></li>
                         <li><a href="address.html">Mis Direcciones</a></li>
-                        <li><a href="targets.html">Mis Tarjetas</a></li>
+                        <li><a href="cards.html">Mis Tarjetas</a></li>
                         <li><a href="comments.html">Mis Comentarios</a></li>
                     </ul>
                 </main>
             </nav>
-            
+
             <section class="containerInformation">
                 <h2 class="subtitle">Mis Pedidos</h2>
                 <div class="containerOrder">
                     <header>
+                        <button class="btnShowOrderInfo" role="button">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                        <div class="modalOrderInfo">
+                            <div>
+                                <h4>Pedido realizado</h4>
+                                <p>6 de abril de 2022</p>
+                            </div>
+                            <div>
+                                <h4>Total</h4>
+                                <p>45 €</p>
+                            </div>
+                            <div>
+                                <h4>Enviar a</h4>
+                                <p>Adrián Arnaiz Fernández</p>
+                                <p>Calle Mi Casa</p>
+                                <p>Teléfono: 123456789</p>
+                            </div>
+                        </div>
                         <div class="containerOrderInformation">
                             <div>
                                 <h4>Pedido realizado</h4>
@@ -165,7 +184,8 @@
                             </div>
                             <div id="orderClient">
                                 <h4>Enviar a</h4>
-                                <p class="greySmall" id="orderUserName">Adrián Arnaiz Fernández <i class="fa-solid fa-angle-down"></i></p>
+                                <p class="greySmall" id="orderUserName">Adrián Arnaiz Fernández <i
+                                        class="fa-solid fa-angle-down"></i></p>
                                 <div class="modalInformationOrder">
                                     <h4>Adrián Arnaiz Fernández</h4>
                                     <p class="greySmall">Calle Mi Casa</p>

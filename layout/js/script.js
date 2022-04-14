@@ -66,15 +66,13 @@ if (window.location.href.includes("mangas.html")) {
     });
 }
 
-let locations = ["account.html", "orders.html"];
+let locations = ["account.html", "orders.html", "address.html", "cards.html", "comments.html"];
 
 locations.map(location => {
     if (window.location.href.includes(location)) {
         const btnSubmenu = document.querySelector(".btnSubmenu");
         const btnCloseSubmenu = document.getElementById("closeModalAccount");
         const submenu = document.querySelector(".submenuFloat");
-    
-        console.table([btnSubmenu, btnCloseSubmenu, submenu]);
     
         btnSubmenu.addEventListener("click", () => {
             submenu.classList.add("submenuActive");
@@ -85,6 +83,32 @@ locations.map(location => {
         });
     }
 });
+
+if(location.href.includes("orders")){
+    const btnModal = document.querySelector(".btnShowOrderInfo");
+    const modal = document.querySelector(".modalOrderInfo");
+
+    btnModal.addEventListener("click", () => {
+        modal.classList.add("modalOrderActive");
+    })
+
+    window.addEventListener("click", (e) => {
+        if(e.target != btnModal && e.target != modal && modal.classList.contains("modalOrderActive")){
+            modal.classList.remove("modalOrderActive");
+        }
+    })
+}
+
+if(location.href.includes("cards")){
+    const template = document.getElementById("templateCard");
+    const containerProducts = document.querySelector(".containerGrid");
+
+    for (let index = 0; index < 4; index++) {
+        let clonado = template.cloneNode(true);
+        clonado.removeAttribute("id");
+        containerProducts.appendChild(clonado);
+    }
+}
 
 btnUp.addEventListener("click", () => {
     var currentScroll = document.documentElement.scrollTop;
@@ -110,10 +134,16 @@ window.onscroll = () => {
 
 }
 
-if (window.location.href === "account.html") {
+if (window.location.href.includes("mangas")) {
     const card = document.querySelector(".card img");
     card.addEventListener("click", () => {
         location.href = "product.html";
     });
 
+}
+
+if(location.href.includes("shopping")){
+    const btnFinish = document.querySelector(".btn.btn-success");
+
+    btnFinish.addEventListener("click", () => location.href = "payment.html")
 }

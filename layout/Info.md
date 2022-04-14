@@ -9,3 +9,17 @@ Information of layout
     - Shopping Cart
     - One Product
     - Account
+    - Orders
+    - Address
+    - Comments
+    - Search
+    - Order Details
+
+
+## In proccess
+
+    - Admin Panel
+    - LogIn
+    - LogOut
+    - Recover Password
+    - Payment

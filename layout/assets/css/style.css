@@ -1171,6 +1171,7 @@
   padding: 10px 20px;
   flex-wrap: wrap;
   gap: 10px;
+  position: relative;
 }
 
 .containerOrderInformation {
@@ -1216,6 +1217,7 @@
   justify-content: flex-start;
   gap: 30px;
   padding-left: 50px;
+  flex-wrap: wrap;
 }
 
 .containerOrder main .row:last-child {
@@ -1321,6 +1323,276 @@
   font-weight: 700;
 }
 
+.btnShowOrderInfo {
+  display: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: transparent;
+  padding: 10px;
+  z-index: 10;
+}
+
+.modalOrderInfo {
+  display: flex;
+  position: absolute;
+  background-color: #e7e7e7;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  top: calc(100% + 10px);
+  transition: transform 1s;
+  transform: scale(0);
+}
+
+.modalOrderActive {
+  transform: scale(1);
+}
+
+.cardNewAddress {
+  width: 300px;
+  border: 3px solid #000;
+  border-style: dashed;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 0;
+  cursor: pointer;
+}
+
+.cardNewAddress i {
+  font-size: 65px;
+}
+
+.cardMac {
+  width: 300px;
+  border: 2px solid #000;
+  /* height: 200px; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cardMac header {
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardMac header span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cardMac header span:first-child {
+  background-color: #ff605c;
+}
+
+.cardMac header span:nth-child(2) {
+  background-color: #ffbd44;
+}
+
+.cardMac header span:last-child {
+  background-color: #00ca4e;
+}
+
+.cardMac main{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 10px;
+  gap: 20px;
+}
+
+.cardMac main h4{
+  color: #777;
+  padding-left: 20px;
+}
+
+.containerAddressInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  color: #777;
+}
+
+.containerAddressActions{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  color: #3A95B1;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lineHorizontal{
+  height: 15px;
+  border-left: 1px solid #000;
+}
+
+.containerGrid{
+  padding-top: 40px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 40px 20px;
+}
+
+.cardTarget{
+  width: 300px;
+  border-radius: 10px;
+  background-color: var(--green);
+  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.cardTarget header{
+  display: flex;
+  gap: 10px;
+}
+
+.cardTarget header h3{
+  font-size: 25px;
+}
+
+.imgBrandCard{
+  width: 35px !important;
+  background-color: #fff;
+}
+
+.cardTarget main h4{
+  font-size: 20px;
+}
+
+.cardTarget main p{
+  opacity: .8;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.cardTarget footer{
+  font-size: 25px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.comment{
+  position: relative;
+  width: 100%;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  /* height: 100px; */
+  padding: 0 20px 40px;
+  margin-top: 30px;
+}
+
+.comment .row h3{
+  font-size: 20px;
+}
+
+.comment main.row{
+  gap: 15px;
+}
+
+.comment .row p:last-child{
+  color: #aaa;
+}
+
+.containerOrderDetails{
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.containerOrderDetails h2{
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.containerOrderDetails > p{
+  color: #777;
+  margin: 10px 0 20px;
+}
+
+.container{
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  padding-right: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.container .col{
+  width: auto;
+}
+
+.container .col h3{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.container .col .row{
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.container .col .row p{
+  color: #444;
+  font-size: 18px;
+}
+
+.container .col div:not(.row) p{
+  color: #777;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.containerColumn{
+  flex-direction: column;
+}
+
+.containerColumn h3{
+  font-size: 1.3rem;
+}
+
+.containerColumn .row{
+  justify-content: flex-start;
+  gap: 40px;
+  padding-left: 20px;
+  flex-wrap: wrap;
+}
+
+.containerColumn .row h3{
+  color: #1980c4;
+  font-size: 25px;
+}
+
+.lineCommentsSeparator{
+  display: none;
+  width: 100%;
+  border-top: 1px solid #000;
+}
 
 /* * ----------------------------------------------------------------------------- */
 
@@ -1506,6 +1778,10 @@
   .btnSubmenu {
     display: block;
   }
+
+  .containerInformation{
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 1026px) {
@@ -1533,7 +1809,7 @@
     min-width: initial;
   }
 
-  .containerOrder main .row h3{
+  .containerOrder main .row h3 {
     font-size: 20px;
   }
 }
@@ -1560,8 +1836,12 @@
     justify-content: flex-start;
   }
 
-  .modalInformationOrder{
+  .modalInformationOrder {
     display: none;
+  }
+
+  .comment main.row{
+    flex-direction: column;
   }
 }
 
@@ -1582,13 +1862,25 @@
     margin: auto;
   }
 
-  .containerInformation{
+  .containerInformation {
     width: 90%;
   }
 }
 
+@media screen and (max-width: 738px) {
+  .container{
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 2.5rem;
+  }
+
+  .lineCommentsSeparator{
+    display: block;
+  }
+}
+
 @media screen and (max-width: 726px) {
-  .containerInformation{
+  .containerInformation {
     width: 100%;
   }
 }
@@ -1607,7 +1899,13 @@
 }
 
 @media screen and (max-width: 652px) {
+  .containerOrderInformation {
+    display: none;
+  }
 
+  .btnShowOrderInfo {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -1618,9 +1916,14 @@
   .informationProduct header h3 {
     font-size: 25px;
   }
+}
 
-  .containerInformation {
-    width: 90%;
+@media screen and (max-width: 578px) {
+  .comment header.row{
+    /* flex-direction: column;
+    gap: 10px; */
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
 
@@ -1661,6 +1964,10 @@
     flex-direction: column;
     gap: 5px;
   }
+
+  .containerOrderDetails h2, .containerOrderDetails p{
+    padding-left: 10px;
+  }
 }
 
 @media screen and (max-width: 436px) {
@@ -1672,8 +1979,14 @@
     width: 100%;
   }
 
-  .containerOrderInformation{
+  .containerOrderInformation {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .containerInformation{
+    padding-left: 2rem;
   }
 }
 
