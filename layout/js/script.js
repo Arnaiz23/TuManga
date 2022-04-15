@@ -2,10 +2,13 @@ const btnMenu = document.getElementById("buttonMenu");
 const nav = document.getElementById("navHome");
 const iconCart = document.getElementById("iconCart");
 
+const btnLogout = document.getElementById("btnLogout");
+
 btnMenu.addEventListener("click", () => {
     nav.classList.toggle("navActive");
 });
 
+btnLogout.addEventListener("click", () => location.href = "login.html")
 
 window.addEventListener("click", (e) => {
     if (e.target != nav && e.target != btnMenu && nav.classList.contains("navActive")) {

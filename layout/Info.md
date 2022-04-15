@@ -14,6 +14,7 @@ Information of layout
     - Comments
     - Search
     - Order Details
+    - Payment
 
 
 ## In proccess
@@ -22,4 +23,3 @@ Information of layout
     - LogIn
     - LogOut
     - Recover Password
-    - Payment

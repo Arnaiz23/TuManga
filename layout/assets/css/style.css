@@ -1594,6 +1594,125 @@
   border-top: 1px solid #000;
 }
 
+.containerPayment{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 90%;
+  margin: 0 auto;
+  gap: 100px;
+}
+
+.paymentRight{
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* padding: 20px 40px; */
+  /* gap: 20px; */
+}
+
+.linePayment{
+  width: 100%;
+  border-top: 1px solid #000;
+}
+
+.paymentRight > *:not(.linePayment){
+  margin: 30px;
+}
+
+.paymentRightPrice{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paymentRightPrice h3{
+  font-size: 22px;
+}
+
+.paymentRightPrice p{
+  font-size: 18px;
+}
+
+.paymentLeft{
+  background-color: #F0F0F0;
+  width: 100%;
+}
+
+.paymentLeft > .row, .lastPayment{
+  padding: 0px 40px;
+}
+
+.paymentLeft > .row > .col{
+  width: auto;
+}
+
+.paymentLeft > .row > .row{
+  gap: 10px;
+  width: auto;
+}
+
+.paymentLeft > .row > p {
+  color: #3A95B1;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.lastPayment{
+  margin: 30px 0;
+}
+
+.rowStart{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 18%;
+  width: 100%;
+}
+
+.lastPayment > .row{
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+
+.lastPayment > .row > .col > .row{
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.lastPayment > .row > .col{
+  width: auto;
+}
+
+.lastPayment > .row > .col > h4{
+  font-size: 18px;
+}
+
+.lastPayment > .row > .col span{
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.rowInformation{
+  font-size: 18px;
+}
+
+.rowInformation p{
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: .9em;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- BTN-UP ----------- ----------- */
@@ -1741,9 +1860,27 @@
   }
 }
 
+@media screen and (max-width: 1415px) {
+  .containerPayment{
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 1338px) {
   .contentShopping div {
     width: 70%;
+  }
+}
+
+@media screen and (max-width: 1285px) {
+  .containerPayment{
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 1229px) {
+  .containerPayment{
+    gap: 30px;
   }
 }
 
@@ -1781,6 +1918,12 @@
 
   .containerInformation{
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .containerPayment{
+    flex-wrap: wrap;
   }
 }
 
@@ -1864,6 +2007,13 @@
 
   .containerInformation {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 807px) {
+  .paymentLeft > .row, .lastPayment > .row, .lastPayment > .row > .col > .row{
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
