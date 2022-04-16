@@ -293,6 +293,133 @@
   background-color: var(--medium-green);
 }
 
+.btn-info{
+  background-color: #81C9FA;
+  color: #000;
+}
+
+.btn-info:hover{
+  background-color: #56b9fc;
+}
+
+/* * ----------------------------------------------------------------------------- */
+
+/* * ----------- ----------- LOGIN LOGOUT ----------- ----------- */
+
+.centerLog{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F2F2F2;
+}
+
+.containerCenter{
+  background-color: #fff;
+  width: 50%;
+  min-width: 940px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  min-height: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.containerLogLeft{
+  background-color: var(--dark-blue);
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 600px;
+  gap: 40px;
+}
+
+.containerLogLeft h2{
+  color: #fff;
+}
+
+.containerLogLeft > button{
+  font-weight: bold;
+}
+
+.containerLogRight{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+.contentLog{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
+  width: 70%;
+}
+
+.inputsLog{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 20px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputsLog input{
+  width: 80%;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.inputsLog input:focus{
+  outline: none;
+  border: 2px solid #000;
+}
+
+.containerRemember{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.contentLog > button{
+  width: 90%;
+}
+
+.forgetPassword{
+  color: #000;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.containerLogRight.containerColumn{
+  gap: 40px;
+  background-color: #81C9FA;
+}
+
+.containerLogRight.containerColumn > button{
+  font-weight: bold;
+}
+
+.containerWhite{
+  background-color: transparent;
+}
+
+.containerWhite .contentLog h2{
+  color: #000;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- SOCIAL ICONS ----------- ----------- */
@@ -2075,6 +2202,16 @@
   }
 }
 
+@media screen and (max-width: 990px) {
+  .containerCenter{
+    min-width: 645px;
+  }
+
+  .inputsLog input{
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 970px) {
   .containersFilters {
     display: none;
@@ -2189,6 +2326,26 @@
 @media screen and (max-width: 700px) {
   .containerProduct {
     width: 100%;
+  }
+
+  .containerCenter{
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 80%;
+  }
+
+  .containerLogLeft, .containerLogRight{
+    width: 100%;
+  }
+
+  .containerLogLeft{
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .containerLogRight{
+    height: auto;
+    padding: 40px 0;
   }
 }
 

@@ -15,11 +15,11 @@ Information of layout
     - Search
     - Order Details
     - Payment
+    - LogIn
+    - LogOut
 
 
 ## In proccess
 
     - Admin Panel
-    - LogIn
-    - LogOut
     - Recover Password

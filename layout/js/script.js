@@ -1,20 +1,55 @@
-const btnMenu = document.getElementById("buttonMenu");
-const nav = document.getElementById("navHome");
-const iconCart = document.getElementById("iconCart");
+const views = ["account", "address", "cards", "comments", "index", "mangas", "orderDetails", "orders", "payment", "product", "shoppingCart"];
 
-const btnLogout = document.getElementById("btnLogout");
+views.map(view => {
+    if(location.href.includes(view)){
+        const btnMenu = document.getElementById("buttonMenu");
+        const nav = document.getElementById("navHome");
+        const iconCart = document.getElementById("iconCart");
 
-btnMenu.addEventListener("click", () => {
-    nav.classList.toggle("navActive");
-});
+        const btnUp = document.querySelector("#btn-up");
+        
+        const btnLogout = document.getElementById("btnLogout");
+        
+        btnMenu.addEventListener("click", () => {
+            nav.classList.toggle("navActive");
+        });
+        
+        btnLogout.addEventListener("click", () => location.href = "login.html")
+        
+        window.addEventListener("click", (e) => {
+            if (e.target != nav && e.target != btnMenu && nav.classList.contains("navActive")) {
+                nav.classList.toggle("navActive");
+            }
+        });
 
-btnLogout.addEventListener("click", () => location.href = "login.html")
 
-window.addEventListener("click", (e) => {
-    if (e.target != nav && e.target != btnMenu && nav.classList.contains("navActive")) {
-        nav.classList.toggle("navActive");
+        btnUp.addEventListener("click", () => {
+            var currentScroll = document.documentElement.scrollTop;
+        
+            if (currentScroll > 0) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        });
+        
+        window.onscroll = () => {
+        
+            // Barra de scroll donde esta
+            var scroll = document.documentElement.scrollTop;
+        
+            if (scroll > 100) {
+                btnUp.style.transform = "scale(1)";
+            } else if (scroll < 100) {
+                btnUp.style.transform = "scale(0)";
+            }
+        
+        }
     }
-});
+})
+
+
 
 if (window.location.href.includes("index.html") || window.location.href.includes("mangas.html")) {
     const btnAddCart = document.querySelector(".addCart");
@@ -38,8 +73,6 @@ if (window.location.href.includes("index.html") || window.location.href.includes
         }, 1000);
     });
 }
-
-const btnUp = document.querySelector("#btn-up");
 
 if (window.location.href.includes("mangas.html")) {
     const btnSelect = document.querySelector(".selectOrderOptions");
@@ -113,29 +146,7 @@ if(location.href.includes("cards")){
     }
 }
 
-btnUp.addEventListener("click", () => {
-    var currentScroll = document.documentElement.scrollTop;
 
-    if (currentScroll > 0) {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
-});
-
-window.onscroll = () => {
-
-    // Barra de scroll donde esta
-    var scroll = document.documentElement.scrollTop;
-
-    if (scroll > 100) {
-        btnUp.style.transform = "scale(1)";
-    } else if (scroll < 100) {
-        btnUp.style.transform = "scale(0)";
-    }
-
-}
 
 if (window.location.href.includes("mangas")) {
     const card = document.querySelector(".card img");
@@ -180,4 +191,24 @@ if(location.href.includes("payment.html")){
     btnCloseModal.addEventListener("click", () => {
         modal.classList.remove("modalBackgroundShow")
     })
+}
+
+const viewsLog = ["login", "logout"];
+
+if(location.href.includes(viewsLog[0])){
+    const btnLogin = document.querySelector(".btn-info")
+
+    const btnGoLogOut = document.querySelector(".btn-light")
+
+    btnLogin.addEventListener("click", () => location.href = "index.html")
+    btnGoLogOut.addEventListener("click", () => location.href = "logout.html")
+}
+
+if(location.href.includes(viewsLog[1])){
+    const btnLogOut = document.querySelector(".btn-primary")
+
+    const btnGoLogIn = document.querySelector(".btn-light")
+
+    btnGoLogIn.addEventListener("click", () => location.href = "login.html")
+    btnLogOut.addEventListener("click", () => location.href = "index.html")
 }
