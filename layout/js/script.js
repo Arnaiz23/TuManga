@@ -9,6 +9,12 @@ views.map(view => {
         const btnUp = document.querySelector("#btn-up");
         
         const btnLogout = document.getElementById("btnLogout");
+
+        const platform = document.getElementById("btnAccessPanel")
+
+        platform.addEventListener("click", () => {
+            location.href = "adminPanel.html"
+        })
         
         btnMenu.addEventListener("click", () => {
             nav.classList.toggle("navActive");
@@ -196,19 +202,40 @@ if(location.href.includes("payment.html")){
 const viewsLog = ["login", "logout"];
 
 if(location.href.includes(viewsLog[0])){
-    const btnLogin = document.querySelector(".btn-info")
+    const formLogin = document.querySelector(".contentLog form")
 
     const btnGoLogOut = document.querySelector(".btn-light")
 
-    btnLogin.addEventListener("click", () => location.href = "index.html")
+    formLogin.addEventListener("submit", (e) => {
+        e.preventDefault()
+        location.href = "index.html"
+    })
     btnGoLogOut.addEventListener("click", () => location.href = "logout.html")
 }
 
 if(location.href.includes(viewsLog[1])){
-    const btnLogOut = document.querySelector(".btn-primary")
+    const formLogOut = document.querySelector(".contentLog form")
 
     const btnGoLogIn = document.querySelector(".btn-light")
 
     btnGoLogIn.addEventListener("click", () => location.href = "login.html")
-    btnLogOut.addEventListener("click", () => location.href = "index.html")
+    formLogOut.addEventListener("submit", (e) => {
+        e.preventDefault()
+        location.href = "index.html"
+    })
+}
+
+if(location.href.includes("recoverPassword")){
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit", e => {
+        e.preventDefault()
+        location.href = "index.html"
+    })
+}
+
+if(location.href.includes("adminPanel")){
+    const goLogin = document.querySelector("#goBack")
+
+    goLogin.addEventListener("click", () => location.href = "index.html")
 }

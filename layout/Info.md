@@ -17,9 +17,10 @@ Information of layout
     - Payment
     - LogIn
     - LogOut
+    - Recover Password
 
 
 ## In proccess
 
     - Admin Panel
-    - Recover Password
+   

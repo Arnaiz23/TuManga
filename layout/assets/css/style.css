@@ -420,6 +420,94 @@
   color: #000;
 }
 
+.contentLog > form {
+  width: 100%;
+  flex: 2;
+  gap: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* * ----------------------------------------------------------------------------- */
+
+/* * ----------- ----------- RECOVER PASSWORD ----------- ----------- */
+
+.containerRecover{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 600px;
+}
+
+.containerRecover > header{
+  width: 100%;
+  padding: 15px !important;
+}
+
+.containerRecover > main{
+  background-color: #C4C4C4;
+  width: 100%;
+  height: calc(600px - 30px);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  /* gap: 40px; */
+}
+
+.containerRecover > main h2{
+  font-size: 28px;
+}
+
+.containerRecover > main button{
+  font-weight: bold;
+}
+
+.containerRecover main form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 300px;
+  width: 50%;
+  gap: 30px;
+}
+
+.containerRecover main form > button{
+  margin-top: 30px;
+}
+
+.inputRecover{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+  gap: 15px;
+}
+
+.inputRecover label{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.inputRecover input{
+  padding: 5px;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  outline: 1px solid #000;
+}
+
+.inputRecover input:focus{
+  outline: none;
+  border: 2px solid #000;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- SOCIAL ICONS ----------- ----------- */
@@ -1504,7 +1592,7 @@
   overflow: hidden;
 }
 
-.cardMac header {
+.cardMac header, .containerRecover > header {
   background-color: #000;
   padding: 10px;
   display: flex;
@@ -1513,21 +1601,21 @@
   gap: 8px;
 }
 
-.cardMac header span {
+.cardMac header span, .containerRecover > header span {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-.cardMac header span:first-child {
+.cardMac header span:first-child, .containerRecover > header span:first-child {
   background-color: #ff605c;
 }
 
-.cardMac header span:nth-child(2) {
+.cardMac header span:nth-child(2), .containerRecover > header span:nth-child(2) {
   background-color: #ffbd44;
 }
 
-.cardMac header span:last-child {
+.cardMac header span:last-child, .containerRecover > header span:last-child {
   background-color: #00ca4e;
 }
 
@@ -2091,6 +2179,177 @@
 
 /* * ----------------------------------------------------------------------------- */
 
+/* * ----------- ----------- ADMIN PANEL ----------- ----------- */
+
+.gridAdmin{
+  display: grid;
+  grid-template-rows: 10vh repeat(2, 1fr);
+  grid-template-columns: 10% repeat(2, 1fr);
+  grid-template-areas: 
+    "nav header header"
+    "nav main main"
+    "nav main main"
+  ;
+}
+
+.adminNav{
+  grid-area: nav;
+  height: 100vh;
+  width: 10%;
+  background-color: #03588C;
+  /* position: fixed; */
+  min-width: 190px;
+  transition: transform 1s;
+}
+
+.adminNav header{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  background-color: #2FC0B8;
+  cursor: pointer;
+}
+
+.adminNav header img{
+  width: 40px;
+}
+
+.adminNav ul, .smallNav ul{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  color: #fff;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.smallNav ul{
+  align-items: center;
+}
+
+.adminNav ul li, .smallNav ul li{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  font-size: 17px;
+}
+
+.smallNav{
+  grid-area: nav;
+  height: 100vh;
+  /* position: fixed; */
+  min-width: 50px;
+  background-color: #03588C;
+  display: none;
+}
+
+.smallNav header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2FC0B8;
+  width: 100%;
+  height: 10vh;
+  cursor: pointer;
+}
+
+.smallNav header img{
+  width: 50px;
+}
+
+.adminHeader{
+  grid-area: header;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+  background-color: #EFEFEF;
+  border-bottom: 2px solid #000;
+}
+
+.adminBrand{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminMain{
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.containerStatistics{
+  background-color: #ECECEC;
+  width: 95%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.containerStatistics h2{
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  padding: 10px;
+}
+
+.containerOptions{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.rowOptionAdmin{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px;
+  font-size: 18px;
+}
+
+.rowOptionAdmin span{
+  background-color: #0CC5DE;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+.spanGreen{
+  background-color: #13BD24 !important;
+}
+
+.earnings {
+  color: #26CD23;
+  font-weight: bold;
+}
+
+.rowOptionAdmin div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* * ----------------------------------------------------------------------------- */
+
 /* * ----------- ----------- RESPONSIVE ----------- ----------- */
 
 @media screen and (max-width: 1758px) {
@@ -2347,6 +2606,14 @@
     height: auto;
     padding: 40px 0;
   }
+
+  .adminNav{
+    display: none;
+  }
+
+  .smallNav{
+    display: block;
+  }
 }
 
 @media screen and (max-width: 652px) {
@@ -2356,6 +2623,10 @@
 
   .btnShowOrderInfo {
     display: block;
+  }
+
+  .containerRecover main form{
+    width: 70%;
   }
 }
 
@@ -2399,6 +2670,11 @@
 
   .rowAccount .row .col input[type="text"] {
     width: 80%;
+  }
+
+  .containerRecover > main h2{
+    text-align: center;
+    padding: 0 10px;
   }
 }
 
@@ -2445,6 +2721,10 @@
 @media screen and (max-width: 414px) {
   .containerInformation {
     padding-left: 2rem;
+  }
+
+  .containerRecover main form{
+    width: 90%;
   }
 }
 
