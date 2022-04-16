@@ -1404,7 +1404,7 @@
   background-color: #00ca4e;
 }
 
-.cardMac main{
+.cardMac main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1413,12 +1413,12 @@
   gap: 20px;
 }
 
-.cardMac main h4{
+.cardMac main h4 {
   color: #777;
   padding-left: 20px;
 }
 
-.containerAddressInfo{
+.containerAddressInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1427,22 +1427,22 @@
   color: #777;
 }
 
-.containerAddressActions{
+.containerAddressActions {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
-  color: #3A95B1;
+  color: #3a95b1;
   font-weight: bold;
   cursor: pointer;
 }
 
-.lineHorizontal{
+.lineHorizontal {
   height: 15px;
   border-left: 1px solid #000;
 }
 
-.containerGrid{
+.containerGrid {
   padding-top: 40px;
   display: grid;
   width: 100%;
@@ -1450,7 +1450,7 @@
   gap: 40px 20px;
 }
 
-.cardTarget{
+.cardTarget {
   width: 300px;
   border-radius: 10px;
   background-color: var(--green);
@@ -1463,37 +1463,37 @@
   gap: 20px;
 }
 
-.cardTarget header{
+.cardTarget header {
   display: flex;
   gap: 10px;
 }
 
-.cardTarget header h3{
+.cardTarget header h3 {
   font-size: 25px;
 }
 
-.imgBrandCard{
+.imgBrandCard {
   width: 35px !important;
   background-color: #fff;
 }
 
-.cardTarget main h4{
+.cardTarget main h4 {
   font-size: 20px;
 }
 
-.cardTarget main p{
-  opacity: .8;
+.cardTarget main p {
+  opacity: 0.8;
   font-size: 18px;
   padding-left: 10px;
 }
 
-.cardTarget footer{
+.cardTarget footer {
   font-size: 25px;
   width: 90%;
   margin: 0 auto;
 }
 
-.comment{
+.comment {
   position: relative;
   width: 100%;
   border-top: 1px solid #000;
@@ -1503,35 +1503,35 @@
   margin-top: 30px;
 }
 
-.comment .row h3{
+.comment .row h3 {
   font-size: 20px;
 }
 
-.comment main.row{
+.comment main.row {
   gap: 15px;
 }
 
-.comment .row p:last-child{
+.comment .row p:last-child {
   color: #aaa;
 }
 
-.containerOrderDetails{
+.containerOrderDetails {
   width: 90%;
   margin: 0 auto;
   padding: 20px 0;
 }
 
-.containerOrderDetails h2{
+.containerOrderDetails h2 {
   font-size: 28px;
   font-weight: 800;
 }
 
-.containerOrderDetails > p{
+.containerOrderDetails > p {
   color: #777;
   margin: 10px 0 20px;
 }
 
-.container{
+.container {
   width: 100%;
   border: 1px solid #000;
   border-radius: 10px;
@@ -1543,58 +1543,58 @@
   margin-bottom: 20px;
 }
 
-.container .col{
+.container .col {
   width: auto;
 }
 
-.container .col h3{
+.container .col h3 {
   font-size: 25px;
   font-weight: 700;
 }
 
-.container .col .row{
+.container .col .row {
   justify-content: flex-start;
   gap: 20px;
 }
 
-.container .col .row p{
+.container .col .row p {
   color: #444;
   font-size: 18px;
 }
 
-.container .col div:not(.row) p{
+.container .col div:not(.row) p {
   color: #777;
   font-size: 1rem;
   text-align: center;
 }
 
-.containerColumn{
+.containerColumn {
   flex-direction: column;
 }
 
-.containerColumn h3{
+.containerColumn h3 {
   font-size: 1.3rem;
 }
 
-.containerColumn .row{
+.containerColumn .row {
   justify-content: flex-start;
   gap: 40px;
   padding-left: 20px;
   flex-wrap: wrap;
 }
 
-.containerColumn .row h3{
+.containerColumn .row h3 {
   color: #1980c4;
   font-size: 25px;
 }
 
-.lineCommentsSeparator{
+.lineCommentsSeparator {
   display: none;
   width: 100%;
   border-top: 1px solid #000;
 }
 
-.containerPayment{
+.containerPayment {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -1603,7 +1603,7 @@
   gap: 100px;
 }
 
-.paymentRight{
+.paymentRight {
   border: 1px solid #000;
   display: flex;
   flex-direction: column;
@@ -1614,16 +1614,16 @@
   /* gap: 20px; */
 }
 
-.linePayment{
+.linePayment {
   width: 100%;
   border-top: 1px solid #000;
 }
 
-.paymentRight > *:not(.linePayment){
+.paymentRight > *:not(.linePayment) {
   margin: 30px;
 }
 
-.paymentRightPrice{
+.paymentRightPrice {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1631,43 +1631,44 @@
   gap: 10px;
 }
 
-.paymentRightPrice h3{
+.paymentRightPrice h3 {
   font-size: 22px;
 }
 
-.paymentRightPrice p{
+.paymentRightPrice p {
   font-size: 18px;
 }
 
-.paymentLeft{
-  background-color: #F0F0F0;
+.paymentLeft {
+  background-color: #f0f0f0;
   width: 100%;
 }
 
-.paymentLeft > .row, .lastPayment{
+.paymentLeft > .row,
+.lastPayment {
   padding: 0px 40px;
 }
 
-.paymentLeft > .row > .col{
+.paymentLeft > .row > .col {
   width: auto;
 }
 
-.paymentLeft > .row > .row{
+.paymentLeft > .row > .row {
   gap: 10px;
   width: auto;
 }
 
 .paymentLeft > .row > p {
-  color: #3A95B1;
+  color: #3a95b1;
   cursor: pointer;
   font-weight: bold;
 }
 
-.lastPayment{
+.lastPayment {
   margin: 30px 0;
 }
 
-.rowStart{
+.rowStart {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1675,26 +1676,26 @@
   width: 100%;
 }
 
-.lastPayment > .row{
+.lastPayment > .row {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px 40px;
 }
 
-.lastPayment > .row > .col > .row{
+.lastPayment > .row > .col > .row {
   align-items: flex-start;
   gap: 30px;
 }
 
-.lastPayment > .row > .col{
+.lastPayment > .row > .col {
   width: auto;
 }
 
-.lastPayment > .row > .col > h4{
+.lastPayment > .row > .col > h4 {
   font-size: 18px;
 }
 
-.lastPayment > .row > .col span{
+.lastPayment > .row > .col span {
   font-size: 16px;
   display: flex;
   gap: 10px;
@@ -1703,14 +1704,155 @@
   margin-left: 10px;
 }
 
-.rowInformation{
+.rowInformation {
   font-size: 18px;
 }
 
-.rowInformation p{
+.rowInformation p {
   margin-left: 10px;
   margin-top: 10px;
-  font-size: .9em;
+  font-size: 0.9em;
+}
+
+.dataDown {
+  background-color: #fff;
+  width: 99%;
+  margin: 10px auto;
+  /* transform: translateY(-100%); */
+  /* display: none; */
+  /* transition: transform .3s, display .5s; */
+
+  transition: transform 1s, height 1s;
+  transform-origin: left top;
+  /* transform: translateY(-100%); */
+  transform: scaleY(0);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.dataDown > .row,
+.dataDown > .rowEnd {
+  padding: 30px 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dataDownShow {
+  /* transform: translateY(0); */
+  /* display: block; */
+  /* display: block; */
+  transform: scaleY(1);
+  max-height: 800px;
+}
+
+.dataDownClose {
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.dataDown > .row:first-of-type {
+  padding: 5px 20px;
+}
+
+.editAddress {
+  font-size: 0.9rem;
+  color: #166799;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modalBackground {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBackgroundShow{
+  display: flex;
+}
+
+.modalCenter {
+  /* position: fixed; */
+  /* height: 300px; */
+  width: 50%;
+  /* margin: 0 auto; */
+  background-color: #fff;
+  /* top: 15vh; */
+  /* left: 25%; */
+  border-radius: 10px;
+  border: 1px solid #000;
+  overflow: hidden;
+  min-width: 393px;
+}
+
+.modalCenter header {
+  /* height: 50px; */
+  width: 100%;
+  background-color: var(--dark-blue);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.modalCenter header i {
+  cursor: pointer;
+}
+
+.modalCenter main {
+  padding: 30px;
+}
+
+.modalCenter main form {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.formField label {
+  font-size: 18px;
+}
+
+.formField input {
+  width: 300px;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.formField input:focus {
+  outline: none;
+  border: 2px solid #000;
+}
+
+.formField input[type="number"] {
+  -webkit-appearance: textfield !important;
+  margin: 0;
+  -moz-appearance: textfield !important;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -1861,7 +2003,7 @@
 }
 
 @media screen and (max-width: 1415px) {
-  .containerPayment{
+  .containerPayment {
     width: 100%;
   }
 }
@@ -1873,13 +2015,13 @@
 }
 
 @media screen and (max-width: 1285px) {
-  .containerPayment{
+  .containerPayment {
     gap: 50px;
   }
 }
 
 @media screen and (max-width: 1229px) {
-  .containerPayment{
+  .containerPayment {
     gap: 30px;
   }
 }
@@ -1916,13 +2058,13 @@
     display: block;
   }
 
-  .containerInformation{
+  .containerInformation {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 1199px) {
-  .containerPayment{
+  .containerPayment {
     flex-wrap: wrap;
   }
 }
@@ -1983,7 +2125,7 @@
     display: none;
   }
 
-  .comment main.row{
+  .comment main.row {
     flex-direction: column;
   }
 }
@@ -2011,20 +2153,22 @@
 }
 
 @media screen and (max-width: 807px) {
-  .paymentLeft > .row, .lastPayment > .row, .lastPayment > .row > .col > .row{
+  .paymentLeft > .row,
+  .lastPayment > .row,
+  .lastPayment > .row > .col > .row {
     flex-wrap: wrap;
     gap: 20px;
   }
 }
 
 @media screen and (max-width: 738px) {
-  .container{
+  .container {
     flex-direction: column;
     gap: 20px;
     padding-right: 2.5rem;
   }
 
-  .lineCommentsSeparator{
+  .lineCommentsSeparator {
     display: block;
   }
 }
@@ -2069,7 +2213,7 @@
 }
 
 @media screen and (max-width: 578px) {
-  .comment header.row{
+  .comment header.row {
     /* flex-direction: column;
     gap: 10px; */
     flex-wrap: wrap;
@@ -2115,7 +2259,8 @@
     gap: 5px;
   }
 
-  .containerOrderDetails h2, .containerOrderDetails p{
+  .containerOrderDetails h2,
+  .containerOrderDetails p {
     padding-left: 10px;
   }
 }
@@ -2134,8 +2279,14 @@
   }
 }
 
+@media screen and (max-width: 422px) {
+  .modalCenter main{
+    padding-left: 40px;
+  }
+}
+
 @media screen and (max-width: 414px) {
-  .containerInformation{
+  .containerInformation {
     padding-left: 2rem;
   }
 }

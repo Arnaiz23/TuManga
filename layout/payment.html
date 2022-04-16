@@ -125,7 +125,29 @@
                         <p>Calle Mi Casa</p>
                         <p>Teléfono: 123456789</p>
                     </div>
-                    <p>Cambiar</p>
+                    <p class="changeData">Cambiar</p>
+                </div>
+                <div class="dataDown">
+                    <div class="row">
+                        <h2>Usadas más recientes</h2>
+                        <button class="dataDownClose" role="button"><i class="fa-solid fa-xmark"></i> Cerrar</button>
+                    </div>
+                    <div class="row">
+                        <input type="radio" id="">
+                        <h4>Adrián Arnaiz Fernández</h4>
+                        <p>Calle Mi Casa, Numero, Piso, Móstoles, Teléfono: 123456789</p>
+                        <p class="editAddress">Editar dirección</p>
+                    </div>
+                    <div class="linePayment"></div>
+                    <div class="row">
+                        <input type="radio" id="">
+                        <h4>Adrián Arnaiz Fernández</h4>
+                        <p>Calle Mi Casa, Numero, Piso, Móstoles, Teléfono: 123456789</p>
+                        <p class="editAddress">Editar dirección</p>
+                    </div>
+                    <div class="rowEnd">
+                        <button role="button" class="btn btn-success">Añadir dirección</button>
+                    </div>
                 </div>
                 <div class="linePayment"></div>
                 <div class="row">
@@ -135,7 +157,31 @@
                         <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" class="imgBrandCard">
                         <p><b>MasterCard</b> que termina en <b>9554</b></p>
                     </div>
-                    <p>Cambiar</p>
+                    <p class="changeData">Cambiar</p>
+                </div>
+                <div class="dataDown">
+                    <div class="row">
+                        <h2>Mis tarjetas de credito</h2>
+                        <button class="dataDownClose" role="button"><i class="fa-solid fa-xmark"></i> Cerrar</button>
+                    </div>
+                    <div class="row">
+                        <input type="radio" id="">
+                        <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" class="imgBrandCard">
+                        <p>MasterCard que termina en 8303</p>
+                        <h4>Adrián Arnaiz Fernández</h4>
+                        <p>03/2025</p>
+                    </div>
+                    <div class="linePayment"></div>
+                    <div class="row">
+                        <input type="radio" id="">
+                        <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" class="imgBrandCard">
+                        <p>MasterCard que termina en 8303</p>
+                        <h4>Adrián Arnaiz Fernández</h4>
+                        <p>03/2025</p>
+                    </div>
+                    <div class="rowEnd">
+                        <button role="button" class="btn btn-success">Añadir tarjeta</button>
+                    </div>
                 </div>
                 <div class="linePayment"></div>
                 <div class="col lastPayment">
@@ -171,6 +217,42 @@
                     <h3>Resumen del pedido</h3>
                     <p>Precio: 45€</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="modalBackground">
+            <div class="modalCenter">
+                <header>
+                    <h2>Titulo</h2>
+                    <i class="fa-solid fa-xmark" id="btnCloseModal"></i>
+                </header>
+                <main>
+                    <form>
+                        <div class="formField">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="" />
+                        </div>
+                        <div class="formField">
+                            <label for="address">Dirección</label>
+                            <input type="text"id="address" />
+                        </div>
+                        <div class="formField">
+                            <label for="number">Numero</label>
+                            <input type="number" id="number" />
+                        </div>
+                        <div class="formField">
+                            <label for="floor">Piso</label>
+                            <input type="number" id="floor" />
+                        </div>
+                        <div class="formField">
+                            <label for="locality">Localidad</label>
+                            <input type="text" id="locality">
+                        </div>
+                        <div class="formButton">
+                            <button class="btn btn-success" role="button">Añadir dirección</button>
+                        </div>
+                    </form>
+                </main>
             </div>
         </div>
     </main>

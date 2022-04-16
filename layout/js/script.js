@@ -150,3 +150,34 @@ if(location.href.includes("shopping")){
 
     btnFinish.addEventListener("click", () => location.href = "payment.html")
 }
+
+if(location.href.includes("payment.html")){
+    const btnChange = document.querySelectorAll(".changeData");
+    const btnClose = document.querySelectorAll(".dataDownClose")
+
+    const modal = document.querySelector(".modalBackground")
+    const btnCloseModal = document.getElementById("btnCloseModal")
+    const btnModal = document.querySelectorAll(".dataDown .rowEnd .btn")
+
+    btnChange.forEach(e =>{
+        e.addEventListener("click", () => {
+            e.parentElement.nextElementSibling.classList.add("dataDownShow")
+        })
+    })
+
+    btnClose.forEach(e =>{
+        e.addEventListener("click", () => {
+            e.parentElement.parentElement.classList.remove("dataDownShow")
+        })
+    })
+
+    btnModal.forEach(e => {
+        e.addEventListener("click", () => {
+            modal.classList.add("modalBackgroundShow")
+        })
+    })
+
+    btnCloseModal.addEventListener("click", () => {
+        modal.classList.remove("modalBackgroundShow")
+    })
+}
