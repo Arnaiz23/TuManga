@@ -206,11 +206,27 @@ if(location.href.includes(viewsLog[0])){
 
     const btnGoLogOut = document.querySelector(".btn-light")
 
+    const btnShow = document.querySelector("#passwordShow")
+    const btnHide = document.querySelector("#passwordHide")
+    const password = document.querySelector("#inputPassword")
+
     formLogin.addEventListener("submit", (e) => {
         e.preventDefault()
         location.href = "index.html"
     })
     btnGoLogOut.addEventListener("click", () => location.href = "logout.html")
+
+    btnShow.addEventListener("click", () => {
+        password.type = "text"
+        btnShow.classList.remove("passwordShow")
+        btnHide.classList.add("passwordShow")
+    })
+
+    btnHide.addEventListener("click", () => {
+        password.type = "password"
+        btnShow.classList.add("passwordShow")
+        btnHide.classList.remove("passwordShow")
+    })
 }
 
 if(location.href.includes(viewsLog[1])){
@@ -218,10 +234,41 @@ if(location.href.includes(viewsLog[1])){
 
     const btnGoLogIn = document.querySelector(".btn-light")
 
+    const btnShow = document.querySelector("#passwordShow")
+    const btnHide = document.querySelector("#passwordHide")
+    const btnShow2 = document.querySelector("#passwordShow2")
+    const btnHide2 = document.querySelector("#passwordHide2")
+    const password = document.querySelector("#inputPassword")
+    const password2 = document.querySelector("#inputPassword2")
+
     btnGoLogIn.addEventListener("click", () => location.href = "login.html")
     formLogOut.addEventListener("submit", (e) => {
         e.preventDefault()
         location.href = "index.html"
+    })
+
+    btnShow.addEventListener("click", () => {
+        password.type = "text"
+        btnShow.classList.remove("passwordShow")
+        btnHide.classList.add("passwordShow")
+    })
+
+    btnHide.addEventListener("click", () => {
+        password.type = "password"
+        btnShow.classList.add("passwordShow")
+        btnHide.classList.remove("passwordShow")
+    })
+
+    btnShow2.addEventListener("click", () => {
+        password2.type = "text"
+        btnShow2.classList.remove("passwordShow")
+        btnHide2.classList.add("passwordShow")
+    })
+
+    btnHide2.addEventListener("click", () => {
+        password2.type = "password"
+        btnShow2.classList.add("passwordShow")
+        btnHide2.classList.remove("passwordShow")
     })
 }
 
@@ -285,5 +332,23 @@ if(location.href.includes("adminPanel3") || location.href.includes("adminPanel4"
 
     btnSave.addEventListener("click", () => {
         location.href = "adminPanel2.html"
+    })
+}
+
+if(location.href.includes("adminPanel4")){
+    const btnShow = document.querySelector("#passwordShow")
+    const btnHide = document.querySelector("#passwordHide")
+    const password = document.querySelector("#password")
+
+    btnShow.addEventListener("click", () => {
+        password.type = "text"
+        btnShow.classList.remove("passwordShow")
+        btnHide.classList.add("passwordShow")
+    })
+
+    btnHide.addEventListener("click", () => {
+        password.type = "password"
+        btnShow.classList.add("passwordShow")
+        btnHide.classList.remove("passwordShow")
     })
 }

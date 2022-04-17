@@ -7,6 +7,7 @@
     <title>TuManga</title>
     <link rel="shortcut icon" href="./assets/images/BrandICO.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/d0135093a4.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="centerLog">
@@ -17,8 +18,16 @@
                     <form>
                         <div class="inputsLog">
                             <input type="text" id="" placeholder="Email">
-                            <input type="password" id="" placeholder="Password">
-                            <input type="password" id="" placeholder="Confirmar Password">
+                            <div class="inputPassword">
+                                <input type="password" id="inputPassword" placeholder="Password">
+                                <i class="fa-solid fa-eye passwordShow" id="passwordShow"></i>
+                                <i class="fa-solid fa-eye-slash" id="passwordHide"></i>
+                            </div>
+                            <div class="inputPassword">
+                                <input type="password" id="inputPassword2" placeholder="Confirmar Password">
+                                <i class="fa-solid fa-eye passwordShow" id="passwordShow2"></i>
+                                <i class="fa-solid fa-eye-slash" id="passwordHide2"></i>
+                            </div>
                         </div>
                         <button class="btn btn-primary">Registrarse</button>
                     </form>

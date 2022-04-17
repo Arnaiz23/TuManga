@@ -429,6 +429,24 @@
   align-items: flex-start;
 }
 
+.inputPassword{
+  width: 100%;
+  position: relative;
+}
+
+.inputPassword i{
+  position: absolute;
+  z-index: 10;
+  right: calc(100% - 78%);
+  top: 10px;
+  display: none;
+  cursor: pointer;
+}
+
+.passwordShow{
+  display: block !important;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- RECOVER PASSWORD ----------- ----------- */
@@ -2563,6 +2581,10 @@
   border: 2px solid #000;
 }
 
+.inputAdmin .inputPassword i{
+  right: calc(100% - 240px);
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- RESPONSIVE ----------- ----------- */
@@ -2698,6 +2720,10 @@
 
   .inputsLog input{
     width: 100%;
+  }
+
+  .inputPassword i{
+    right: 5px;
   }
 }
 

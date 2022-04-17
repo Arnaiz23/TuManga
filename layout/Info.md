@@ -15,7 +15,7 @@ Information of layout
     - Search
     - Order Details
     - Payment
-    - LogIn (Create the sistem for show and hide the password)
+    - LogIn
     - LogOut
     - Recover Password
     - Admin Panel
