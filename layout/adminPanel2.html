@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuManga</title>
+    <link rel="shortcut icon" href="./assets/images/BrandICO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/d0135093a4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="gridAdmin">
+        <!-- * ----------- ----------- NAV ----------- ----------- -->
+        <nav class="adminNav">
+            <header>
+                <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                    alt="image icon user">
+                <h2>Admin</h2>
+            </header>
+            <ul>
+                <li id="btnUser">
+                    <i class="fa-solid fa-user"></i>
+                    <h3>Usuarios</h3>
+                </li>
+                <li>
+                    <i class="fa-solid fa-book"></i>
+                    <h3>Productos</h3>
+                </li>
+                <li>
+                    <i class="fa-solid fa-box-open"></i>
+                    <h3>Pedidos</h3>
+                </li>
+                <li>
+                    <i class="fa-solid fa-wrench"></i>
+                    <h3>Roles</h3>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <h3>Comentarios</h3>
+                </li>
+            </ul>
+        </nav>
+        <div class="smallNav">
+            <header>
+                <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                    alt="image icon user">
+            </header>
+            <ul>
+                <li id="btnUser2">
+                    <i class="fa-solid fa-user"></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-book"></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-box-open"></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-wrench"></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </li>
+            </ul>
+        </div>
+
+        <!-- * ----------------------------------------------------------------------------- -->
+
+        <!-- * ----------- ----------- HEADER ----------- ----------- -->
+
+        <header class="adminHeader">
+            <div class="adminBrand">
+                <img src="./assets/images/BrandTransparentMD.png" alt="">
+                <h1>TuManga</h1>
+            </div>
+            <button class="btn btn-danger" id="goBack">VOLVER</button>
+        </header>
+
+        <!-- * ----------------------------------------------------------------------------- -->
+
+        <main class="adminMain">
+            <div class="containerDataAdmin">
+                <div class="rowAdminTitle">
+                    <h2>Usuarios</h2>
+                    <button class="btn btn-success">Añadir usuario</button>
+                </div>
+                <div class="containerTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Fecha Registro</th>
+                                <th>Rol</th>
+                                <th>Nº Pedidos</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>admin@admin.com</td>
+                                <td>Activo</td>
+                                <td>11/04/2022</td>
+                                <td>Admin</td>
+                                <td>0</td>
+                                <td class="btnEditData"><i class="fa-solid fa-pen-to-square"></i></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>admin@admin.com</td>
+                                <td>Activo</td>
+                                <td>11/04/2022</td>
+                                <td>Admin</td>
+                                <td>0</td>
+                                <td class="btnEditData"><i class="fa-solid fa-pen-to-square"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="containerTableResponsive">
+                    <header>
+                        <b>ID</b>
+                        <b>EMAIL</b>
+                        <b>SHOW</b>
+                        <b>EDIT</b>
+                    </header>
+                    <main>
+                        <div class="rowTable">
+                            <p>1</p>
+                            <p>admin@admin.com</p>
+                            <p class="btnShowModal"><i class="fa-solid fa-eye"></i></p>
+                            <p class="btnEditData"><i class="fa-solid fa-pen-to-square"></i></p>
+                        </div>
+                        <div class="rowTable">
+                            <p>1</p>
+                            <p>admin@admin.com</p>
+                            <p class="btnShowModal"><i class="fa-solid fa-eye"></i></p>
+                            <p class="btnEditData"><i class="fa-solid fa-pen-to-square"></i></p>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="modalInformation">
+                    <div class="modalCenter">
+                        <header>
+                            <i class="fa-solid fa-xmark"></i>
+                        </header>
+                        <main>
+                            <div class="modalInfo">
+                                <label for="id">ID</label>
+                                <p>1</p>
+                            </div>
+                            <div class="modalInfo">
+                                <label for="email">EMAIL</label>
+                                <p>admin@admin.com</p>
+                            </div>
+                            <div class="modalInfo">
+                                <label for="state">ESTADO</label>
+                                <p>Activo</p>
+                            </div>
+                            <div class="modalInfo">
+                                <label for="id">FECHA REGISTRO</label>
+                                <p>11/04/2022</p>
+                            </div>
+                            <div class="modalInfo">
+                                <label for="role">ROL</label>
+                                <p>Admin</p>
+                            </div>
+                            <div class="modalInfo">
+                                <label for="orders">Nº PEDIDOS</label>
+                                <p>0</p>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

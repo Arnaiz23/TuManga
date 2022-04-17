@@ -2184,17 +2184,19 @@
 .gridAdmin{
   display: grid;
   grid-template-rows: 10vh repeat(2, 1fr);
-  grid-template-columns: 10% repeat(2, 1fr);
+  grid-template-columns: minmax(190px, 10%) repeat(2, 1fr);
   grid-template-areas: 
     "nav header header"
     "nav main main"
     "nav main main"
   ;
+  align-items: flex-start;
 }
 
 .adminNav{
   grid-area: nav;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   width: 10%;
   background-color: #03588C;
   /* position: fixed; */
@@ -2213,6 +2215,7 @@
 
 .adminNav header img{
   width: 40px;
+  border-radius: 50%;
 }
 
 .adminNav ul, .smallNav ul{
@@ -2241,11 +2244,12 @@
 
 .smallNav{
   grid-area: nav;
-  height: 100vh;
+  height: 100%;
   /* position: fixed; */
   min-width: 50px;
   background-color: #03588C;
   display: none;
+  min-height: 100vh;
 }
 
 .smallNav header{
@@ -2260,10 +2264,12 @@
 
 .smallNav header img{
   width: 50px;
+  border-radius: 50%;
 }
 
 .adminHeader{
   grid-area: header;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -2277,6 +2283,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
 }
 
 .adminMain{
@@ -2285,9 +2292,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  gap: 20px;
+  padding-top: 20px;
 }
 
-.containerStatistics{
+.containerStatistics, .containerStatisticsProducts{
   background-color: #ECECEC;
   width: 95%;
   display: flex;
@@ -2296,7 +2305,7 @@
   flex-direction: column;
 }
 
-.containerStatistics h2{
+.containerStatistics h2, .containerStatisticsProducts h2{
   font-weight: bold;
   border-bottom: 1px solid #000;
   width: 100%;
@@ -2348,6 +2357,212 @@
   gap: 5px;
 }
 
+.containerStatisticsProducts main{
+  height: 500px;
+}
+
+.containerDataAdmin{
+  width: 90%;
+  grid-area: main;
+  min-height: 80vh;
+  background-color: #EFEFEF;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center;
+}
+
+.rowAdminTitle{
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 20px 40px;
+}
+
+.rowAdminTitle h2{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.containerTable{
+  width: 95%;
+  margin-top: 40px 0;
+}
+
+.containerTable table{
+  width: 100%;
+  border: 2px solid #000;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.containerTable table thead{
+  border-bottom: 2px solid #000;
+  border-collapse: collapse;
+}
+
+.containerTable table thead th{
+  min-width: 140px;
+  text-transform: uppercase;
+}
+
+.containerTable td, .containerTable th{
+  padding: 5px 0;
+}
+
+.containerTable td > i{
+  cursor: pointer;
+}
+
+.containerTable tbody tr:nth-child(even){
+  background-color: #D4D4D4;
+}
+
+.containerTableResponsive{
+  display: none;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+.containerTableResponsive header{
+  border-bottom: 1px solid #000;
+}
+
+.containerTableResponsive header, .containerTableResponsive main{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.containerTableResponsive main{
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rowTable{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.rowTable p, .containerTableResponsive header b{
+  padding: 5px 0;
+  width: 100px;
+  text-align: center;
+}
+
+.rowTable:nth-child(even){
+  background-color: #D4D4D4;
+}
+
+.rowTable p i{
+  cursor: pointer;
+}
+
+.modalInformation{
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .7);
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.showModal{
+  display: flex;
+}
+
+.modalInformation .modalCenter{
+  min-height: 500px;
+  width: 80%;
+}
+
+.modalInformation .modalCenter main{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.modalInformation .modalCenter main .modalInfo label{
+  font-weight: bold;
+}
+
+.containerAdminCenter{
+  width: 90%;
+  background-color: #EFEFEF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-top: 40px;
+  gap: 50px;
+}
+
+.containerAdminCenter header{
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.containerAdminCenter header h2{
+  padding: 10px 40px;
+}
+
+.containerAdminCenter footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 40px;
+}
+
+.containerAdminCenter main{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px , 1fr));
+  gap: 30px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.inputAdmin{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.inputAdmin label{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inputAdmin input, .inputAdmin select{
+  width: 250px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  outline: 1px solid #000;
+  background-color: #E9E9E9;
+  font-size: 16px;
+  padding: 3px 5px;
+}
+
+.inputAdmin input:focus{
+  outline: none;
+  border: 2px solid #000;
+}
+
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- RESPONSIVE ----------- ----------- */
@@ -2394,6 +2609,13 @@
   }
 }
 
+@media screen and (max-width: 1352px){
+  .containerTable{
+    display: block;
+    overflow: scroll;
+  }
+}
+
 @media screen and (max-width: 1338px) {
   .contentShopping div {
     width: 70%;
@@ -2415,6 +2637,14 @@
 @media screen and (max-width: 1214px) {
   #navHome .btn-danger {
     bottom: 15vh;
+  }
+
+  .containerTable{
+    display: none;
+  }
+
+  .containerTableResponsive{
+    display: flex;
   }
 }
 
@@ -2548,12 +2778,23 @@
   }
 }
 
+@media screen and (max-width: 864px) {
+  .rowTable p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 @media screen and (max-width: 807px) {
   .paymentLeft > .row,
   .lastPayment > .row,
   .lastPayment > .row > .col > .row {
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .adminHeader{
+    padding: 5px;
   }
 }
 
@@ -2614,6 +2855,10 @@
   .smallNav{
     display: block;
   }
+
+  .gridAdmin{
+    grid-template-columns: minmax(50px, 10%) repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 652px) {
@@ -2627,6 +2872,13 @@
 
   .containerRecover main form{
     width: 70%;
+  }
+}
+
+@media screen and (max-width: 608px) {
+  .containerOptions{
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }
 
@@ -2646,6 +2898,14 @@
     gap: 10px; */
     flex-wrap: wrap;
     gap: 10px;
+  }
+
+  .adminBrand h1{
+    display: none;
+  }
+
+  .rowAdminTitle .btn-success{
+    width: 50%;
   }
 }
 
@@ -2675,6 +2935,16 @@
   .containerRecover > main h2{
     text-align: center;
     padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .rowAdminTitle .btn-success{
+    font-size: 16px;
+  }
+
+  .rowAdminTitle{
+    gap: 20px;
   }
 }
 
@@ -2709,6 +2979,10 @@
 
   .containerOrderInformation {
     justify-content: center;
+  }
+
+  .modalInformation .modalCenter{
+    min-width: auto;
   }
 }
 

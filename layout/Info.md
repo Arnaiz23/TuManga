@@ -15,12 +15,12 @@ Information of layout
     - Search
     - Order Details
     - Payment
-    - LogIn
+    - LogIn (Create the sistem for show and hide the password)
     - LogOut
     - Recover Password
-
-
-## In proccess
-
     - Admin Panel
    
+
+### Extra information
+
+    In the adminPanel index view, the graphic isn´t reponsive.

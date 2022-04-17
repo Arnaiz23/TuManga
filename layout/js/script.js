@@ -237,5 +237,53 @@ if(location.href.includes("recoverPassword")){
 if(location.href.includes("adminPanel")){
     const goLogin = document.querySelector("#goBack")
 
+    const users = document.querySelector("#btnUser")
+    const users2 = document.querySelector("#btnUser2")
+
+    const home = document.querySelector(".adminBrand")
+
+    home.addEventListener("click", () => location.href = "adminPanel.html")
+
     goLogin.addEventListener("click", () => location.href = "index.html")
+
+    users.addEventListener("click", () => {location.href = "adminPanel2.html"})
+    users2.addEventListener("click", () => {location.href = "adminPanel2.html"})
+
+}
+
+if(location.href.includes("adminPanel2")){
+    const closeModal = document.querySelector(".modalCenter header i")
+    const modal = document.querySelector(".modalInformation")
+    const showModal = document.querySelectorAll(".btnShowModal")
+
+    const btnEdit = document.querySelectorAll(".btnEditData")
+
+    const newUser = document.querySelector(".rowAdminTitle button")
+
+    showModal.forEach(btn => {
+        btn.addEventListener("click", () => {
+            modal.classList.add("showModal")
+        })
+    })
+    
+    closeModal.addEventListener("click", () => {
+        modal.classList.remove("showModal")
+    })
+
+
+    btnEdit.forEach(btn => {
+        btn.addEventListener("click", () => location.href = "adminPanel3.html")
+    })
+
+    newUser.addEventListener("click", () => {
+        location.href = "adminPanel4.html"
+    })
+}
+
+if(location.href.includes("adminPanel3") || location.href.includes("adminPanel4")){
+    const btnSave = document.querySelector(".containerAdminCenter footer button")
+
+    btnSave.addEventListener("click", () => {
+        location.href = "adminPanel2.html"
+    })
 }
