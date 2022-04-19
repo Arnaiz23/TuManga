@@ -24,3 +24,4 @@ Information of layout
 ### Extra information
 
     In the adminPanel index view, the graphic isn´t reponsive.
+    Create the delete option in the table of the adminPanel3.html
