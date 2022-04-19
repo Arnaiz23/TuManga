@@ -97,7 +97,30 @@
     * not exists -> no send email but pretend yes (for more security)
 
 
-### Missing
+### Admin Panel (Token admin or vendor)
 
-* adminPanel (1,2,3,4)
-* orderDetails
+* Get the total of the collection "Orders" (return only the number)
+* Get the total of the collection "Users" (return only the number)
+* Get the total_earnings of the collection "Orders" (return only the number)
+   * Go to all the orders and save in a variable the result of the price
+   * Create a new field in the Orders collection with the total price???
+* Get the 5 or 10 most best sellers products for the statistics
+   * Filter with the "nº sales"
+
+### Admin Panel 2 (Token admin or vendor)
+
+* Get all the "Users or option selected"
+
+### Admin Panel 3 (Token admin or vendor)
+
+* Edit the option selected
+* Get this user(id)
+* Delete this user(id)
+
+### Admin Panel 4 (Token admin or vendor)
+
+* Insert the option selected
+
+### Order details
+
+* Get the order that had the id who recive
