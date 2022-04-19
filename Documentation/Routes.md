@@ -4,6 +4,27 @@
 
 ### Index
 
+* [Index](#index)
+* [Search](#search)
+* [Mangas](#mangas)
+* [Merchandising](#merchandising)
+* [My account](#my-account)
+* [Shopping cart](#shopping-cart)
+* [Payment](#payment)
+* [Product](#product)
+* [Login](#login)
+* [Logout](#logout)
+* [Email](#email)
+* [Admin panel](#admin-panel)
+* [Admin panel 2](#admin-panel-2)
+* [Admin panel 3](#admin-panel-3)
+* [Admin panel 4](#admin-panel-4)
+* [Order details](#order-details)
+
+---
+
+### Index
+
 * Lastest 8 news products
     * products.State(new).limit(8)
 
@@ -97,8 +118,9 @@
     * not exists -> no send email but pretend yes (for more security)
 
 
-### Admin Panel (Token admin or vendor)
+### Admin Panel
 
+* **(Token admin or vendor)**
 * Get the total of the collection "Orders" (return only the number)
 * Get the total of the collection "Users" (return only the number)
 * Get the total_earnings of the collection "Orders" (return only the number)
@@ -107,18 +129,21 @@
 * Get the 5 or 10 most best sellers products for the statistics
    * Filter with the "nº sales"
 
-### Admin Panel 2 (Token admin or vendor)
+### Admin Panel 2
 
+* **(Token admin or vendor)**
 * Get all the "Users or option selected"
 
-### Admin Panel 3 (Token admin or vendor)
+### Admin Panel 3
 
+* **(Token admin or vendor)**
 * Edit the option selected
 * Get this user(id)
 * Delete this user(id)
 
-### Admin Panel 4 (Token admin or vendor)
+### Admin Panel 4
 
+* **(Token admin or vendor)**
 * Insert the option selected
 
 ### Order details
