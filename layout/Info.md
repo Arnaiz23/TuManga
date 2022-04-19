@@ -1,4 +1,4 @@
-# ![arnaizdev_brand](./assets/images/BrandTransparentMD.png) Layout  
+<h1 align="center"><img src="./assets/images/BrandTransparentMD.png" alt="arnaizDev brand" /> TuManga</h1>
 
 Information of layout 
 
@@ -23,5 +23,5 @@ Information of layout
 
 ### Extra information
 
-    In the adminPanel index view, the graphic isn´t reponsive.
-    Create the delete option in the table of the adminPanel3.html
+* In the adminPanel index view, the graphic isn´t reponsive.
+* Create the delete option in the table of the adminPanel3.html

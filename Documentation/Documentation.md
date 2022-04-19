@@ -18,10 +18,19 @@
 - Backend
 - Frontend
 
+---
+
+## Index
+
+* [BBDD](#bbdd)
+    * [Collections](#collections)
+* [Backend](#backend)
+    * [Dependencies](#dependencies)
+    * [Routes](./Routes.md)
 
 ---
 
-## **BBDD**
+## BBDD
 
 - Collections:
     - Products
@@ -115,7 +124,7 @@
 
     The total price in bbdd or backend??
 
-### Dependencias
+### Dependencies
 
 * Express
 * body-parser
@@ -128,10 +137,6 @@
 * CORS
 * Helmet
 
-## Rutas
+## Routes
 
 The principal route is "/api/v1"
-
-### **Productos**
-
-* .get /products/:last?

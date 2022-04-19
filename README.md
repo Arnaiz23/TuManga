@@ -15,5 +15,7 @@ This project build in these technologies:
 
 ## Repository content
 
-    - Layout
-        * Folder that contains the HTML, CSS and JS skeleton
+* Layout
+    * Folder that contains the HTML, CSS and JS skeleton
+* Documentation
+    * Folder that contains the documentations files of the project 
