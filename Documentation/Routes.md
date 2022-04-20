@@ -1,6 +1,6 @@
 <h1 align="center"><img src="../layout/assets/images/BrandTransparentMD.png" alt="arnaizDev brand" /> TuManga</h1>
 
-## **Routes**
+# **Routes**
 
 ### Index
 
@@ -20,6 +20,7 @@
 * [Admin panel 3](#admin-panel-3)
 * [Admin panel 4](#admin-panel-4)
 * [Order details](#order-details)
+* [Others](#others)
 
 ---
 
@@ -141,6 +142,7 @@
         * Recieve the idProduct, petition product and get the array of idComments and do a petition Comments with this ids. **Search examples**
 * Delete comment if the user is owner
     * .delete /comment/idComment {authorization: Bearer token} and middleweare is user or high
+    > if is admin or vendor, delete (Middleweare)
 * Insert a new comment (Token)
     * .post /comment/idProduct {authorization: Bearer token} and middleweare is user or high
 * Update or create a new order (Token{id} and Product.id)
@@ -222,3 +224,15 @@
 
 * Get the order that had the id who recive
     * .get /order/:id {authorization: Bearer token} and middleweare is user or high
+
+
+### Others
+
+* Get image
+    * .get /image/:id
+* Upload image
+    * .post /image/:id?
+    * id upload in a specific product
+* Search an user in admin ????
+* Change the state of the user (in adminPanel or account)
+    * .patch /user/:state
