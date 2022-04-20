@@ -1,0 +1,23 @@
+{
+  "name": "tumanga",
+  "version": "1.0.0",
+  "description": "tumanga backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Arnaiz Fernandez",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.0",
+    "nodemon": "^2.0.15",
+    "validator": "^13.7.0"
+  }
+}
