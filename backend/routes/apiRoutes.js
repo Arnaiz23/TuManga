@@ -23,6 +23,12 @@ router.get("/search/products/:search", controllers.searchProducts); // Search in
 
 // * ---------------------------------------------------------
 
+// * --------------------- FILTER ----------------------------
+
+router.get("/filter/product/merchandising/:option&:limit&:skip", controllers.filterMerchandising); // Filter merchandising
+
+// * ---------------------------------------------------------
+
 // * --------------------- SORT ----------------------------
 
 router.get("/sort/products/manga/:option&:limit&:skip", controllers.sortManga); // Sort mangas

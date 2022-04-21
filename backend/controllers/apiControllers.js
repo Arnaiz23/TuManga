@@ -43,7 +43,7 @@ var controller = {
 
         const state = ["new", "old"];
         const numberValid = /^[0-9]+$/;
-        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon"];
+        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
         const type = ["manga", "novela ligera", "merchandising"];
 
 
@@ -376,7 +376,7 @@ var controller = {
         const optionParts = option.split("=");
 
         if (optionParts[0] == "price") {
-            Product.find({ type: "merchandising"}, (err, products) => {
+            Product.find({ type: "merchandising" }, (err, products) => {
 
                 if (err) {
                     // ! ErrorHAndler
@@ -436,6 +436,40 @@ var controller = {
 
             }).limit(limit).skip(skip).sort({ number_sales: "desc" });
         }
+
+    },
+
+    // * -----------------------------------------------------------
+
+    // * ----------------------- FILTER ----------------------------
+
+    filterMerchandising: (req, res) => {
+
+        let { option, limit, skip } = req.params;
+
+        option = option.split(";")
+
+        Product.find({
+            type: "merchandising", categories: { "$in" : option }
+        }, (err, products) => {
+
+            if(err){
+                // ! ErrorHandle
+            }
+
+            if(!products || products.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message : "Merchandising not found"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                products
+            })
+            
+        })
 
     }
 
