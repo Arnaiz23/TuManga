@@ -1,11 +1,14 @@
 'use strict'
 
 var routes = require('./routes/apiRoutes');
+const initialConfig = require("./libs/initialSetup");
 
 const express = require('express');
 var bodyParser = require("body-parser");
 
 var app = express();
+
+initialConfig.createRoles();
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

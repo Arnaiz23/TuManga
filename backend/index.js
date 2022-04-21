@@ -8,14 +8,10 @@ mongoose.Promise = global.Promise;
 
 var {user_bbdd, password_bbdd} = require('./config/config');
 
-/* mongoose.connect(`mongodb+srv://${user_bbdd}:${password_bbdd}@tumanga.1l58o.mongodb.net/TuManga?retryWrites=true&w=majority` , {useNewUrlParser : true} , () => {
+mongoose.connect(`mongodb+srv://${user_bbdd}:${password_bbdd}@tumanga.1l58o.mongodb.net/TuManga?retryWrites=true&w=majority` , {useNewUrlParser : true} , () => {
     console.log("Connected to the database correctly");
 
     app.listen(port, () =>{
         console.log("Server running in http://localhost:"+port);
     })
-}) */
-
-app.listen(port, () =>{
-    console.log("Server running in http://localhost:"+port);
 })
