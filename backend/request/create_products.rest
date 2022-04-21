@@ -1,0 +1,19 @@
+POST http://localhost:3900/api/v1/product
+content-type: application/json
+
+{
+    "name" : "Prueba1",
+    "price" : 50,
+    "description" : "Descripcion larga",
+    "short_description" : "Descripcion corta",
+    "state" : "new",
+    "stock" : 5,
+    "categories" : ["isekai", "yuri"],
+    "type" : "manga",
+    "image" : null,
+    "number_sales" : 5,
+    "authors" : "Prueba",
+    "editorial" : "Prueba",
+    "series" : "Prueba",
+    "comments" : []
+}

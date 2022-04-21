@@ -23,7 +23,7 @@ var Product = new Schema({
         unique: false,
         required: true
     },
-    sort_description: {
+    short_description: {
         type: String,
         unique: false,
         required: true
@@ -42,11 +42,7 @@ var Product = new Schema({
         unique: false,
         required: true
     },
-    categories: {
-        type: Array,
-        unique: false,
-        required: true
-    },
+    categories: [String],
     type: {
         type: String,
         unique: false,
@@ -55,13 +51,13 @@ var Product = new Schema({
     image: {
         type: String,
         unique: false,
-        required: true
+        required: false,
+        default: null
     },
     number_sales: {
         type: Number,
         unique: false,
-        required: true,
-        default: 0
+        required: true
     },
     authors: {
         type: String,
@@ -76,13 +72,13 @@ var Product = new Schema({
     series: {
         type: String,
         unique: false,
-        required: true
+        required: false
     },
     comments: [{
         type: Schema.Types.ObjectId,
         ref: "Comment",
         unique: false,
-        required: true
+        required: false
     }]
 });
 
