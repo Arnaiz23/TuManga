@@ -3,13 +3,13 @@ content-type: application/json
 
 {
     "name" : "nuevo",
-    "price" : 50,
+    "price" : 100,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
     "state" : "new",
     "stock" : 5,
     "categories" : ["isekai", "yuri"],
-    "type" : "merchandising",
+    "type" : "manga",
     "number_sales" : 5,
     "authors" : "Prueba",
     "editorial" : "Prueba",

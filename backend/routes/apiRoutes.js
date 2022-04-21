@@ -25,7 +25,8 @@ router.get("/search/products/:search", controllers.searchProducts); // Search in
 
 // * --------------------- SORT ----------------------------
 
-router.get("/sort/products/manga/:price&:state&:sales&:limit&:skip", controllers.sortManga); // Sort mangas
+router.get("/sort/products/manga/:option&:limit&:skip", controllers.sortManga); // Sort mangas
+router.get("/sort/products/merchandising/:option&:limit&:skip", controllers.sortMerchandising); // Sort merchandising
 
 // * ---------------------------------------------------------
 

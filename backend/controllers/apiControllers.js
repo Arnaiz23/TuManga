@@ -168,7 +168,7 @@ var controller = {
 
         const { limit, skip } = req.params;
 
-        Product.find({type: "merchandising" }, (err, merchandising) => {
+        Product.find({ type: "merchandising" }, (err, merchandising) => {
 
             if (err) {
                 // ! Errorhandler
@@ -191,18 +191,18 @@ var controller = {
         }).limit(limit).skip(skip);
 
     },
-    getAllProducts : (req, res) => {
+    getAllProducts: (req, res) => {
 
         Product.find((err, products) => {
 
-            if(err){
+            if (err) {
                 // ! Errorhandler
             }
 
-            if(!products || products.length == 0){
+            if (!products || products.length == 0) {
                 return res.status(404).send({
                     status: "error",
-                    message : "No products"
+                    message: "No products"
                 })
             }
 
@@ -210,20 +210,20 @@ var controller = {
                 status: "success",
                 products
             })
-            
+
         });
-        
+
     },
     getProduct: (req, res) => {
         const { id } = req.params;
 
         Product.findById(id, (err, product) => {
-            
-            if(err){
+
+            if (err) {
                 // ! ErrorHandler
             }
 
-            if(!product){
+            if (!product) {
                 return res.status(404).send({
                     status: "error",
                     message: "This product not exists"
@@ -250,7 +250,7 @@ var controller = {
         // $regex -> string to search
         // $options $i -> insensitive upper and lower
         Product.find({
-            "$or" : [
+            "$or": [
                 { "name": { "$regex": search, "$options": "i" } },
                 { "description": { "$regex": search, "$options": "i" } },
                 { "short_description": { "$regex": search, "$options": "i" } },
@@ -260,11 +260,11 @@ var controller = {
             ]
         }, (err, searchProducts) => {
 
-            if(err){
+            if (err) {
                 // ! ErrorHandler
             }
 
-            if(!searchProducts || searchProducts.length == 0){
+            if (!searchProducts || searchProducts.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Doesn't exists products with this terms"
@@ -275,7 +275,7 @@ var controller = {
                 status: "success",
                 searchProducts
             })
-            
+
         })
 
     },
@@ -286,9 +286,156 @@ var controller = {
 
     sortManga: (req, res) => {
 
-        const { price, state, sales, limit, skip } = req.params;
+        const { option, limit, skip } = req.params;
 
-        res.send("Later")
+        const optionParts = option.split("=");
+
+        if (optionParts[0] == "price") {
+            Product.find({
+                "$or": [
+                    { "type": "manga" },
+                    { "type": "novela ligera" }
+                ]
+            }, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip).sort({ price: optionParts[1] });
+        } else if (optionParts[0] == "state") {
+            Product.find({
+                "$or": [
+                    { "type": "manga" },
+                    { "type": "novela ligera" }
+                ], state: "new"
+            }, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip);
+        } else if (optionParts[0] == "sales") {
+            Product.find({
+                "$or": [
+                    { "type": "manga" },
+                    { "type": "novela ligera" }
+                ]
+            }, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip).sort({ number_sales: "desc" });
+        }
+
+    },
+
+    sortMerchandising: (req, res) => {
+
+        const { option, limit, skip } = req.params;
+
+        const optionParts = option.split("=");
+
+        if (optionParts[0] == "price") {
+            Product.find({ type: "merchandising"}, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip).sort({ price: optionParts[1] });
+        } else if (optionParts[0] == "state") {
+            Product.find({ type: "merchandising", state: "new" }, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip);
+        } else if (optionParts[0] == "sales") {
+            Product.find({ type: "merchandising" }, (err, products) => {
+
+                if (err) {
+                    // ! ErrorHAndler
+                }
+
+                if (!products || products.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Mangas not found"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+
+            }).limit(limit).skip(skip).sort({ number_sales: "desc" });
+        }
 
     }
 

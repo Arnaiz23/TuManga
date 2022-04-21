@@ -47,10 +47,11 @@
         * /products/manga/8&8
         > OK
 * Sort (8 to 8)
+> OK
     * **/sort/products/manga/price=asc&state=&sales=limit=&skip=**
-    * products.price(high)
+    * products.price(high) desc
         * .get /sort/products/manga/:option
-    * products.price(down)
+    * products.price(down) asc
         * .get /sort/products/manga/:option
     * products.state(new)
         * .get /sort/products/manga/:option
@@ -71,6 +72,7 @@
         * /product/merchandising/8&8
         > OK
 * Sort (8 to 8)
+> OK
     * **/sort/products/merchandising/price=asc&state=&sales=limit=&skip=**
     * products.price(high)
         * .get /product/merchandising/:option

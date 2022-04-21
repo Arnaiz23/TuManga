@@ -1,1 +1,4 @@
-GET http://localhost:3900/api/v1/sort/products/manga/asc&null&null&8&1 HTTP/1.1
+# GET http://localhost:3900/api/v1/sort/products/manga/price=desc&8&1 HTTP/1.1
+# GET http://localhost:3900/api/v1/sort/products/manga/price=asc&8&1 HTTP/1.1
+# GET http://localhost:3900/api/v1/sort/products/manga/state&8&1 HTTP/1.1
+GET http://localhost:3900/api/v1/sort/products/manga/sales&8&0 HTTP/1.1

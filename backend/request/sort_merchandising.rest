@@ -1,0 +1,4 @@
+# GET http://localhost:3900/api/v1/sort/products/merchandising/price=desc&8&0 HTTP/1.1
+GET http://localhost:3900/api/v1/sort/products/merchandising/price=asc&8&0 HTTP/1.1
+# GET http://localhost:3900/api/v1/sort/products/merchandising/state&8&1 HTTP/1.1
+# GET http://localhost:3900/api/v1/sort/products/merchandising/sales&8&0 HTTP/1.1
