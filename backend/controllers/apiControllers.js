@@ -236,9 +236,67 @@ var controller = {
             })
 
         })
+    },
+
+    // * -----------------------------------------------------------
+
+    // * --------------------- SEARCH ----------------------------
+
+    searchProducts: (req, res) => {
+
+        const { search } = req.params;
+
+        // $or -> anyone option
+        // $regex -> string to search
+        // $options $i -> insensitive upper and lower
+        Product.find({
+            "$or" : [
+                { "name": { "$regex": search, "$options": "i" } },
+                { "description": { "$regex": search, "$options": "i" } },
+                { "short_description": { "$regex": search, "$options": "i" } },
+                { "authors": { "$regex": search, "$options": "i" } },
+                { "editorial": { "$regex": search, "$options": "i" } },
+                { "series": { "$regex": search, "$options": "i" } },
+            ]
+        }, (err, searchProducts) => {
+
+            if(err){
+                // ! ErrorHandler
+            }
+
+            if(!searchProducts || searchProducts.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Doesn't exists products with this terms"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                searchProducts
+            })
+            
+        })
+
+    },
+
+    // * -----------------------------------------------------------
+
+    // * --------------------- SORT ----------------------------
+
+    sortManga: (req, res) => {
+
+        const { price, state, sales, limit, skip } = req.params;
+
+        res.send("Later")
+
     }
 
     // * -----------------------------------------------------------
+
+    // * ----------------------- USER ------------------------------
+    // * -----------------------------------------------------------
+
 }
 
 module.exports = controller;

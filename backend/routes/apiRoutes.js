@@ -6,7 +6,7 @@ const controllers = require('../controllers/apiControllers');
 
 router.get("/", controllers.test);
 
-// --------------------- PRODUCTS ----------------------------
+// * --------------------- PRODUCTS ----------------------------
 
 router.get("/products/new", controllers.getNewProducts); // Get the 8 new products
 router.post("/product", controllers.newProduct); // Create a new product
@@ -15,6 +15,18 @@ router.get("/products/merchandising/:limit&:skip", controllers.getMerchandising)
 router.get("/products", controllers.getAllProducts); // Get all products
 router.get("/product/:id", controllers.getProduct); // Get one product
 
-// -----------------------------------------------------------
+// * -----------------------------------------------------------
+
+// * --------------------- SEARCH ----------------------------
+
+router.get("/search/products/:search", controllers.searchProducts); // Search in products
+
+// * ---------------------------------------------------------
+
+// * --------------------- SORT ----------------------------
+
+router.get("/sort/products/manga/:price&:state&:sales&:limit&:skip", controllers.sortManga); // Sort mangas
+
+// * ---------------------------------------------------------
 
 module.exports = router;

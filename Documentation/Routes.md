@@ -36,6 +36,7 @@
 
 * Products equal string search
     * .get /search/products/:search
+    > OK
 * Create and add a product in order
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
 
