@@ -15,7 +15,7 @@ var controller = {
         return res.send("Hello test");
     },
 
-    // --------------------- PRODUCTS ----------------------------
+    // * --------------------- PRODUCTS ----------------------------
 
     getNewProducts: (req, res) => {
         Product.find({ state: "new" }, (err, products) => {
@@ -55,17 +55,17 @@ var controller = {
             var validatePrice = numberValid.test(newProduct.price);
             var validateDescription = !validator.isEmpty(newProduct.description);
             var validateShortDescription = !validator.isEmpty(newProduct.short_description);
-            var validateState = (!validator.isEmpty(newProduct.state) && state.includes(newProduct.state) );
+            var validateState = (!validator.isEmpty(newProduct.state) && state.includes(newProduct.state));
             var validateStock = numberValid.test(newProduct.stock);
-            
+
         } catch (error) {
             return res.send("Data not found")
         }
-        
+
         var validateCategories = newProduct.categories.map(categorie => {
-            if(categories.includes(categorie)){
+            if (categories.includes(categorie)) {
                 return true
-            }else{
+            } else {
                 return false
             }
         });
@@ -98,44 +98,147 @@ var controller = {
             newProductScheme.series = newProduct.series;
             newProductScheme.comments = newProduct.comments;
 
-            if(newProduct.image){
+            if (newProduct.image) {
                 newProductScheme.image = newProduct.image;
             }/* else{
                 newProductScheme.image = null;
             } */
 
             console.log(newProductScheme);
-            
+
             newProductScheme.save((err, productStore) => {
 
-                if(err || !productStore){
+                if (err || !productStore) {
                     console.log(err);
                     //  ! ErrorHandler
                     return res.status(500).send({
-                        status : "error",
-                        message : "The product has not been saved"
+                        status: "error",
+                        message: "The product has not been saved"
                     });
                 }
 
                 return res.status(201).send({
                     status: "success",
-                    message : "The product has been save correctly"
+                    message: "The product has been save correctly"
                 })
 
             });
-            
-        }else{
+
+        } else {
 
             return res.status(404).send({
-                status : "Error",
-                message : "Data not valid"
+                status: "Error",
+                message: "Data not valid"
             });
 
         }
 
+    },
+    getMangas: (req, res) => {
+
+        const { limit, skip } = req.params;
+
+        Product.find({
+            "$or": [
+                { "type": "manga" },
+                { "type": "novela ligera" }
+            ]
+        }, (err, mangas) => {
+
+            if (err) {
+                // ! ErrorHandler
+            }
+
+            if (!mangas || mangas.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Mangas not found"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                mangas
+            });
+
+        }).limit(limit).skip(skip);
+
+    },
+    getMerchandising: (req, res) => {
+
+        const { limit, skip } = req.params;
+
+        Product.find({type: "merchandising" }, (err, merchandising) => {
+
+            if (err) {
+                // ! Errorhandler
+            }
+
+            if (!merchandising || merchandising.length == 0) {
+
+                return res.status(404).send({
+                    status: "error",
+                    message: "Products don't have merchandising"
+                });
+
+            }
+
+            return res.status(200).send({
+                status: "success",
+                merchandising
+            });
+
+        }).limit(limit).skip(skip);
+
+    },
+    getAllProducts : (req, res) => {
+
+        Product.find((err, products) => {
+
+            if(err){
+                // ! Errorhandler
+            }
+
+            if(!products || products.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message : "No products"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                products
+            })
+            
+        });
+        
+    },
+    getProduct: (req, res) => {
+        const { id } = req.params;
+
+        Product.findById(id, (err, product) => {
+            
+            if(err){
+                // ! ErrorHandler
+            }
+
+            if(!product){
+                return res.status(404).send({
+                    status: "error",
+                    message: "This product not exists"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                product
+            })
+
+        })
     }
 
-    // -----------------------------------------------------------
+    // * -----------------------------------------------------------
 }
 
 module.exports = controller;

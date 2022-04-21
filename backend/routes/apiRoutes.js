@@ -10,6 +10,10 @@ router.get("/", controllers.test);
 
 router.get("/products/new", controllers.getNewProducts); // Get the 8 new products
 router.post("/product", controllers.newProduct); // Create a new product
+router.get("/products/manga/:limit&:skip", controllers.getMangas); // Get mangas or light novel 8 to 8
+router.get("/products/merchandising/:limit&:skip", controllers.getMerchandising); // Get merchandising 8 to 8
+router.get("/products", controllers.getAllProducts); // Get all products
+router.get("/product/:id", controllers.getProduct); // Get one product
 
 // -----------------------------------------------------------
 
