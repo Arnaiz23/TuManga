@@ -42,6 +42,7 @@
 - Cart (Ref "Orders", !unique, required)
 - Address (Ref "Address", !unique, required)
 - Role (Ref "Roles", !unique, required, default=user)
+- Comments (Ref "Comments_id" , !unique, required)
 
 ## **Orders**
 
@@ -49,8 +50,8 @@
 - id_client (Ref "Users_id", required, !unique)
 - Name_client (String, required, !unique)
 - Order_date (Date, !unique, required, default now)
-- Send_date (Date, !unique, required)
-- Orders (Ref "Product_id", !unique, required)
+- Send_date (Date, !unique, required) {Server automatic 3 days}
+- Products (Ref "Product_id", !unique, required)
 - Delivery_address (Ref "Address", required, !unique)
 - Billing (ref "Billing_id", !unique, required)
 - State (String, !unique, required) 
@@ -64,7 +65,7 @@
 - Users_id (Ref "Users_id", required, !unique)
 - Card_name (String, required, !unique)
 - Expiration_date (Date, required, !unique)
-- Last_4_digits (String, required, !unique)
+- Last_4_digits (Number, required, !unique)
 - number_encrypt_card (String, required, !unique)
 
 ## **Address**
@@ -76,3 +77,12 @@
 - Floor (number, !required, !unique)
 - name_person (String, required, !unique)
 - Location (String, required, !unique)
+
+## **Comments**
+
+- _id (Default)
+- user_id (Ref "Users_id", required, !unique)
+- message (String, !unique, required)
+- product_id (Ref "Product_id", required, !unique)
+- score (number, !required, !unique)
+- date (Date,default now)

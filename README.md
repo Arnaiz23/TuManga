@@ -19,3 +19,5 @@ This project build in these technologies:
     * Folder that contains the HTML, CSS and JS skeleton
 * Documentation
     * Folder that contains the documentations files of the project 
+* Backend
+    * Folder that containes the files of the backend

@@ -29,6 +29,7 @@
 * Lastest 8 news products
     * products.State(new).limit(8)
         * .get /products/news .limit(8)
+        > OK
 
 
 ### Search
@@ -41,8 +42,9 @@
 ### Mangas
 
 * All the mangas with paginate. Limit and skip. 8 to 8 
-    * .get /products/manga/:options
-        * /products/limit=8&skip=8
+    * .get /products/manga/:limit&:skip
+        * /products/manga/8&8
+        > OK
 * Sort (8 to 8)
     * **/sort/products/manga/price=asc&state=&sales=limit=&skip=**
     * products.price(high)
@@ -64,8 +66,9 @@
 ### Merchandising
 
 * ALl the merchandising with paginate. Limit and skip. 8 to 8
-    * .get /product/merchandising/:options
-        * /product/merchandising/limit=8&skip=0
+    * .get /product/merchandising/:limit&:skip
+        * /product/merchandising/8&8
+        > OK
 * Sort (8 to 8)
     * **/sort/products/merchandising/price=asc&state=&sales=limit=&skip=**
     * products.price(high)
@@ -136,6 +139,7 @@
 
 * 1 product with its id
     * .get /product/:id
+    > OK
 * All the comments from this product (id) "Product.comments"
     * Send array comments data
     * .get /comments/:idProduct
@@ -192,6 +196,7 @@
 * Get all the "Users or option selected"
     * .get /users -> Middleweare {authorization: Bearer token}
     * .get /products -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /orders -> Middleweare {authorization: Bearer token}
     * .get /roles -> Middleweare {authorization: Bearer token}
     * .get /comments -> Middleweare {authorization: Bearer token}
@@ -216,6 +221,7 @@
 * Insert the option selected
     * .post /user -> Middleweare {authorization: Bearer token}
     * .post /product -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .post /order -> Middleweare {authorization: Bearer token}
     * .post /role -> Middleweare {authorization: Bearer token}
     * .post /comment -> Middleweare {authorization: Bearer token}
