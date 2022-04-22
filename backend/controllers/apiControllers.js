@@ -454,58 +454,58 @@ var controller = {
 
         let data;
 
-        if(type === "novela"){
+        if (type === "novela") {
             type = "novela ligera"
-        }else if(type != "novela" || type != "manga" || type != "merchandising"){
+        } else if (type != "novela" || type != "manga" || type != "merchandising") {
             return res.status(404).send({
                 status: "error",
-                message : "Route not found"
+                message: "Route not found"
             });
         }
 
-        if(option != "null"){
+        if (option != "null") {
             Product.find({
-                type : type , categories : { "$in" : option }
+                type: type, categories: { "$in": option }
             }, (err, products) => {
-    
-                if(err){
+
+                if (err) {
                     // ! ErrorHandle
                 }
-    
-                if(!products || products.length == 0){
+
+                if (!products || products.length == 0) {
                     return res.status(404).send({
                         status: "error",
-                        message : "Products not found"
+                        message: "Products not found"
                     })
                 }
-    
+
                 return res.status(200).send({
                     status: "success",
                     products
                 })
-                
+
             }).limit(limit).skip(skip);
-        }else{
+        } else {
             Product.find({
-                type : type
+                type: type
             }, (err, products) => {
-    
-                if(err){
+
+                if (err) {
                     // ! ErrorHandle
                 }
-    
-                if(!products || products.length == 0){
+
+                if (!products || products.length == 0) {
                     return res.status(404).send({
                         status: "error",
-                        message : "Products not found"
+                        message: "Products not found"
                     })
                 }
-    
+
                 return res.status(200).send({
                     status: "success",
                     products
                 })
-                
+
             }).limit(limit).skip(skip);
         }
 
@@ -516,7 +516,7 @@ var controller = {
     // * ----------------------- USER ------------------------------
 
     createUser: async (req, res) => {
-        
+
         let { email, password, confirm_password } = req.body;
 
         const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
@@ -526,7 +526,7 @@ var controller = {
             var validateEmail = (validator.isEmail(email) && !validator.isEmpty(email));
             var validatePassword = (!validator.isEmpty(password) && regexp.test(password));
             var validateConfirmPassword = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password));
-            
+
         } catch (error) {
             return res.status(400).send({
                 status: "error",
@@ -534,9 +534,9 @@ var controller = {
             });
         }
 
-        if(validateEmail && validatePassword && validateConfirmPassword){
+        if (validateEmail && validatePassword && validateConfirmPassword) {
 
-            if(password === confirm_password){
+            if (password === confirm_password) {
 
                 let user = new User();
 
@@ -556,9 +556,9 @@ var controller = {
 
                 // res.send(user)
 
-                user.save( async (err, newUser) => {
+                user.save(async (err, newUser) => {
 
-                    if(err || !newUser){
+                    if (err || !newUser) {
                         return res.status(500).send({
                             status: "error",
                             message: "The user has not been saved"
@@ -566,12 +566,12 @@ var controller = {
                     }
 
                     const payload = {
-                        id : newUser._id,
-                        email : newUser.email,
-                        register_date : newUser.register_date
+                        id: newUser._id,
+                        email: newUser.email,
+                        register_date: newUser.register_date
                     }
 
-                    const token = await jwt.sign(payload, config.JWT_key, {expiresIn: 60 * 60 * 24 });
+                    const token = await jwt.sign(payload, config.JWT_key, { expiresIn: 60 * 60 * 24 });
 
                     return res.status(201).send({
                         status: "success",
@@ -581,14 +581,14 @@ var controller = {
 
                 });
 
-            }else{
+            } else {
                 return res.status(400).send({
                     status: "error",
                     message: "The password don't match"
                 })
             }
 
-        }else{
+        } else {
             return res.status(400).send({
                 status: "error",
                 message: "Data invalid"
@@ -597,14 +597,14 @@ var controller = {
 
     },
 
-    getAllUsers : (req, res) => {
+    getAllUsers: (req, res) => {
         User.find((err, users) => {
 
-            if(err){
+            if (err) {
                 // ! ErrorHandler
             }
 
-            if(!users || users.length == 0){
+            if (!users || users.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Not found users"
@@ -615,7 +615,7 @@ var controller = {
                 status: "success",
                 users
             })
-            
+
         })
     },
 
@@ -635,7 +635,7 @@ var controller = {
 
         User.findById(user.id, (err, userFind) => {
 
-            if(err || !userFind){
+            if (err || !userFind) {
                 return res.status(404).send({
                     status: "error",
                     message: "User not found"
@@ -646,9 +646,158 @@ var controller = {
                 status: "success",
                 userFind
             })
-            
+
         });
 
+    },
+
+    changeUserState: async (req, res) => {
+
+        let token = req.get('authorization');
+        token = token.split(" ");
+
+        try {
+            var user = await jwt.decode(token[1]);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token error"
+            })
+        }
+
+        let userOld = await User.findById(user.id);
+
+        let newState = "";
+
+        if(userOld.state === "Active"){
+            newState = "Disable"
+        }else{
+            newState = "Active"
+        }
+
+        User.findByIdAndUpdate(userOld.id, {state: newState}, {new: true}, (err, userUpdate) => {
+            if (err || !userUpdate) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "User not found"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                userUpdate
+            })
+        })
+
+    },
+
+    // * -----------------------------------------------------------
+
+    // * ----------------------- ORDERS ----------------------------
+
+    createOrder : (req, res) => {
+
+        const order = req.body;
+
+        res.send(order)
+        
+    },
+
+    updateOrder: (req, res) => {
+
+    },
+
+    getOrder: async (req, res) => {
+
+        
+
+    },
+
+    getOrderProccess: async(req, res) => {
+
+        let token = req.get('Authorization');
+        token = token.split(" ");
+
+        try {
+            var user = await jwt.decode(token[1]);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(user.id);
+
+        if(userFind.cart.length != 0){
+
+        }else{
+            return res.status(404).send({
+                status: "error",
+                message: "this user has no orders"
+            })
+        }
+
+    },
+
+    getAllOrders: (req, res) => {
+        
+    },
+
+    // * -----------------------------------------------------------
+    // * ----------------------- CARD ----------------------------
+
+    createCard: async (req, res) => {
+
+        let data = req.body;
+
+        let token = req.get('Authorization');
+        token = token.split(" ");
+
+        try {
+            var user = jwt.decode(token[1]);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            });
+        }
+
+        let userFind = await User.findById(user.id);
+
+        const regexNumber = /^[0-9]{16}$/;
+
+        try {
+            var validateName = !validator.isEmpty(data.card_name);
+            var validateDate = !validator.isEmpty(data.expiration_date);
+            var validateNumber = (regexNumber.test(data.number_card) || !validator.isEmpty(data.number_card));
+        } catch (error) {
+            return res.status(400).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        if(validateName && validateDate && validateNumber){
+
+            let newCard = new Billing();
+
+            let card_hash = await User.encrypt(data.number_card);
+
+            newCard.user_id = userFind._id;
+            newCard.card_name = data.card_name;
+            newCard.last_4_digits = data.number_card.slice(12,16);
+            newCard.encrypt_card = card_hash;
+
+            res.send(newCard)
+
+        }else{
+            return res.status(404).send({
+                status: "Error",
+                message: "Data not valid"
+            });
+        }
+        
     }
     
     // * -----------------------------------------------------------

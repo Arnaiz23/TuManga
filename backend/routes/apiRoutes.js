@@ -22,7 +22,23 @@ router.get("/product/:id", controllers.getProduct); // Get one product
 router.post("/user", controllers.createUser); // Create a new user
 router.get("/users", controllers.getAllUsers); // Get all users
 router.get("/user", controllers.getUser); // Get one user with token
+router.patch("/user", controllers.changeUserState); // Change the state of user
 
+// * -----------------------------------------------------------
+
+// * ---------------------- ORDERS -----------------------------
+
+router.get("/order/process", controllers.getOrderProccess); // Get the user order with state === "P"
+router.post("/order", controllers.createOrder); // Create new order
+
+// * -----------------------------------------------------------
+
+// * --------------------- BILLING -----------------------------
+
+router.post("/card" , controllers.createCard); // Create new card
+
+// * -----------------------------------------------------------
+// * --------------------- ADDRESS -----------------------------
 // * -----------------------------------------------------------
 
 // * --------------------- SEARCH ----------------------------

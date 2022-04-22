@@ -94,6 +94,7 @@
 * My information
     * The user with the token
         * .get /user {authorization: Bearer token}
+    > OK
 * My orders
     * All the orders of a user with token. Only the orders that had the property state === "F"
         * .get /orders/:state {authorization: Bearer token}
@@ -129,6 +130,8 @@
 
 ### Payment
 
+* Create new card
+    * .post /card {authorization: Bearer token} and Middleweare is user or high
 * 2 last address of a user (Token)
     * .get /address/:limit {authorization: Bearer token} and Middleweare is user or high
 * 2 last cards of a user (Token)
@@ -171,6 +174,7 @@
 
 * Receive email and 2 password, all correct -> create new user and send Token
     * .post /user   -> Recieve token
+> OK
 
 
 ### Email
@@ -249,6 +253,7 @@
 * Search an user in admin ????
 * Change the state of the user (in adminPanel or account)
     * .patch /user/:state
+> OK
 
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -300,6 +305,8 @@
     * .get /users
 * Get user with token
     * .get /user {Authorization: Bearer token}
+* Change user state with token
+    * .patch /user {Authorization: Bearer token}
 
 
 ---
@@ -307,3 +314,4 @@
 ## Missing
 
 * \º All the middleweares
+* Reuse the trycatch jwt
