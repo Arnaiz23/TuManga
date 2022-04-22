@@ -23,6 +23,7 @@ router.post("/user", controllers.createUser); // Create a new user
 router.get("/users", controllers.getAllUsers); // Get all users
 router.get("/user", controllers.getUser); // Get one user with token
 router.patch("/user", controllers.changeUserState); // Change the state of user
+router.post("/login", controllers.login); // Login
 
 // * -----------------------------------------------------------
 
@@ -36,10 +37,13 @@ router.post("/order", controllers.createOrder); // Create new order
 // * --------------------- BILLING -----------------------------
 
 router.post("/card" , controllers.createCard); // Create new card
+router.get("/cards", controllers.getAllCards); // Get all cards
+router.get("/cards/last", controllers.getLastCards); // Get 2 last cards
 
 // * -----------------------------------------------------------
 // * --------------------- ADDRESS -----------------------------
 // * -----------------------------------------------------------
+
 
 // * --------------------- SEARCH ----------------------------
 

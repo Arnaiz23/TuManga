@@ -669,13 +669,13 @@ var controller = {
 
         let newState = "";
 
-        if(userOld.state === "Active"){
+        if (userOld.state === "Active") {
             newState = "Disable"
-        }else{
+        } else {
             newState = "Active"
         }
 
-        User.findByIdAndUpdate(userOld.id, {state: newState}, {new: true}, (err, userUpdate) => {
+        User.findByIdAndUpdate(userOld.id, { state: newState }, { new: true }, (err, userUpdate) => {
             if (err || !userUpdate) {
                 return res.status(404).send({
                     status: "error",
@@ -691,16 +691,51 @@ var controller = {
 
     },
 
+    login: async (req, res) => {
+
+        let { email, password, remember } = req.body;
+
+        const regexPassword = /^[a-zA-Z0-9\*\$\%\&\^\Ç]{6,16}$/;
+        let validatePassword, validateEmail;
+
+        try {
+            validatePassword = regexPassword.test(password);
+            validateEmail = (!validator.isEmpty(email) && validator.isEmail(email));
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        if(validateEmail && validatePassword){
+
+            let user = await User.findOne({email: email});
+
+            let passwordAccept = await User.comparePasswords(password,user.password_hash);
+
+            // ! If accepted, create token
+            
+
+        }else{
+            return res.status(404).send({
+                status: "error",
+                message: "Data invalid"
+            })
+        }
+        
+    },
+
     // * -----------------------------------------------------------
 
     // * ----------------------- ORDERS ----------------------------
 
-    createOrder : (req, res) => {
+    createOrder: (req, res) => {
 
         const order = req.body;
 
         res.send(order)
-        
+
     },
 
     updateOrder: (req, res) => {
@@ -709,11 +744,11 @@ var controller = {
 
     getOrder: async (req, res) => {
 
-        
+
 
     },
 
-    getOrderProccess: async(req, res) => {
+    getOrderProccess: async (req, res) => {
 
         let token = req.get('Authorization');
         token = token.split(" ");
@@ -729,19 +764,19 @@ var controller = {
 
         let userFind = await User.findById(user.id);
 
-        if(userFind.cart.length != 0){
+        if (userFind.cart.length != 0) {
 
-        }else{
+        } else {
             return res.status(404).send({
                 status: "error",
-                message: "this user has no orders"
+                message: "This user has no orders"
             })
         }
 
     },
 
     getAllOrders: (req, res) => {
-        
+
     },
 
     // * -----------------------------------------------------------
@@ -778,28 +813,111 @@ var controller = {
             })
         }
 
-        if(validateName && validateDate && validateNumber){
+        if (validateName && validateDate && validateNumber) {
 
             let newCard = new Billing();
 
             let card_hash = await User.encrypt(data.number_card);
 
+            let cardSplit = data.expiration_date.split("/");
+            let newDate = `20${cardSplit[1]}-${cardSplit[0]}-01`;
+            newDate = new Date(newDate);
+
+
             newCard.user_id = userFind._id;
             newCard.card_name = data.card_name;
-            newCard.last_4_digits = data.number_card.slice(12,16);
+            newCard.last_4_digits = data.number_card.slice(12, 16);
             newCard.encrypt_card = card_hash;
+            newCard.expiration_date = newDate;
 
-            res.send(newCard)
+            newCard.save((err, card) => {
 
-        }else{
+                if (err || !card) {
+                    res.status(500).send({
+                        status: "error",
+                        message: "The card has not been saved"
+                    })
+                }
+
+                let cards = userFind.billing;
+                cards.push(card._id);
+
+                User.findByIdAndUpdate(userFind._id, { billing: cards }, { new: true }, (err, user) => {
+
+                    if (err, !user) {
+                        return res.status(404).send({
+                            status: "error",
+                            message: "The card not add in the user data"
+                        })
+                    }
+
+                    return res.status(201).send({
+                        status: "success",
+                        message: "The card has been save correctly"
+                    });
+
+                });
+
+            });
+
+        } else {
             return res.status(404).send({
                 status: "Error",
                 message: "Data not valid"
             });
         }
+
+    },
+
+    getAllCards: (req, res) => {
+        Billing.find((err, cards) => {
+
+            if (err) {
+                // ! ErrorHandler
+            }
+
+            if (!cards || cards.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Cards not found"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                cards
+            })
+
+        })
+    },
+
+    getLastCards: async (req, res) => {
+
+        let token = req.get("Authorization");
+        token = token.split(" ");
+
+        try {
+            var user = await jwt.decode(token[1]);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token not valid"
+            })
+        }
+
+        let userFind = await User.findById(user.id);
+
+        Billing.find({user_id: userFind._id}, (err, cards) => {
+
+            return res.status(200).send({
+                status: "success",
+                cards
+            })
+            
+        }).limit(2);
         
     }
-    
+
     // * -----------------------------------------------------------
 
 }

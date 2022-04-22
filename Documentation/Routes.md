@@ -132,10 +132,12 @@
 
 * Create new card
     * .post /card {authorization: Bearer token} and Middleweare is user or high
+> OK without middleweares
 * 2 last address of a user (Token)
     * .get /address/:limit {authorization: Bearer token} and Middleweare is user or high
 * 2 last cards of a user (Token)
     * .get /cards/:limit {authorization: Bearer token} and Middleweare is user or high
+> OK without middleweares
 * Edit cart of a user with the State === P -> new data (address and card) (token)
     * put /order/:state {authorization: Bearer token}
 * Shopping cart of a user with the State === P (token)
@@ -309,9 +311,19 @@
     * .patch /user {Authorization: Bearer token}
 
 
+## Billing
+
+* Create card
+    * .post /card {Authorization: Bearer token}
+* Get all cards
+    * .get /cards
+* Get last 2 cards
+    * .get /cards/last {Authorization: Bearer token}
+
 ---
 
 ## Missing
 
 * \º All the middleweares
 * Reuse the trycatch jwt
+* Create the user admin automatically
