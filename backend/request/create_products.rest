@@ -2,14 +2,14 @@ POST http://localhost:3900/api/v1/product
 content-type: application/json
 
 {
-    "name" : "nuevo",
+    "name" : "otro",
     "price" : 100,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
-    "state" : "new",
+    "state" : "old",
     "stock" : 5,
-    "categories" : ["funko", "gore"],
-    "type" : "merchandising",
+    "categories" : ["realidad virtual"],
+    "type" : "novela ligera",
     "number_sales" : 5,
     "authors" : "Prueba",
     "editorial" : "Prueba",

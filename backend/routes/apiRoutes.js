@@ -17,6 +17,14 @@ router.get("/product/:id", controllers.getProduct); // Get one product
 
 // * -----------------------------------------------------------
 
+// * ----------------------- USER ------------------------------
+
+router.post("/user", controllers.createUser); // Create a new user
+router.get("/users", controllers.getAllUsers); // Get all users
+router.get("/user", controllers.getUser); // Get one user with token
+
+// * -----------------------------------------------------------
+
 // * --------------------- SEARCH ----------------------------
 
 router.get("/search/products/:search", controllers.searchProducts); // Search in products
@@ -25,7 +33,7 @@ router.get("/search/products/:search", controllers.searchProducts); // Search in
 
 // * --------------------- FILTER ----------------------------
 
-router.get("/filter/product/merchandising/:option&:limit&:skip", controllers.filterMerchandising); // Filter merchandising
+router.get("/filter/product/:type/:option&:limit&:skip", controllers.filterProduct); // Filter any product
 
 // * ---------------------------------------------------------
 

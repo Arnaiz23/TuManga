@@ -3,6 +3,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var bcrypt = require('bcryptjs');
+
 var User = new Schema({
     _id : {
         type: Schema.Types.ObjectId,
@@ -68,12 +70,23 @@ var User = new Schema({
         unique : false,
         required: true
     },
-    comments : {
-        type : Schema.Types.ObjectId,
-        ref : "Comment",
-        unique: false,
-        required : true
-    }
+    comments : [
+        {
+            type : Schema.Types.ObjectId,
+            ref : "Comment",
+            unique: false,
+            required : true
+        }
+    ]
 });
+
+User.statics.encrypt = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
+}
+
+User.statics.comparePasswords = async (password, receivedPassword) => {
+    return await bcrypt.compare(password, receivedPassword);
+}
 
 module.exports = mongoose.model("User", User);

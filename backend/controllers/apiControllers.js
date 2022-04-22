@@ -9,6 +9,8 @@ var Role = require('../models/Role');
 var User = require('../models/User');
 
 var validator = require('validator');
+var jwt = require('jsonwebtoken');
+var config = require('../config/config');
 
 var controller = {
     test: (req, res) => {
@@ -59,7 +61,10 @@ var controller = {
             var validateStock = numberValid.test(newProduct.stock);
 
         } catch (error) {
-            return res.send("Data not found")
+            return res.status(400).send({
+                status: "error",
+                message: "Data not found"
+            })
         }
 
         var validateCategories = newProduct.categories.map(categorie => {
@@ -443,39 +448,209 @@ var controller = {
 
     // * ----------------------- FILTER ----------------------------
 
-    filterMerchandising: (req, res) => {
+    filterProduct: (req, res) => {
 
-        let { option, limit, skip } = req.params;
+        let { type, option, limit, skip } = req.params;
 
-        option = option.split(";")
+        let data;
 
-        Product.find({
-            type: "merchandising", categories: { "$in" : option }
-        }, (err, products) => {
+        if(type === "novela"){
+            type = "novela ligera"
+        }else if(type != "novela" || type != "manga" || type != "merchandising"){
+            return res.status(404).send({
+                status: "error",
+                message : "Route not found"
+            });
+        }
 
-            if(err){
-                // ! ErrorHandle
+        if(option != "null"){
+            Product.find({
+                type : type , categories : { "$in" : option }
+            }, (err, products) => {
+    
+                if(err){
+                    // ! ErrorHandle
+                }
+    
+                if(!products || products.length == 0){
+                    return res.status(404).send({
+                        status: "error",
+                        message : "Products not found"
+                    })
+                }
+    
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+                
+            }).limit(limit).skip(skip);
+        }else{
+            Product.find({
+                type : type
+            }, (err, products) => {
+    
+                if(err){
+                    // ! ErrorHandle
+                }
+    
+                if(!products || products.length == 0){
+                    return res.status(404).send({
+                        status: "error",
+                        message : "Products not found"
+                    })
+                }
+    
+                return res.status(200).send({
+                    status: "success",
+                    products
+                })
+                
+            }).limit(limit).skip(skip);
+        }
+
+    },
+
+    // * -----------------------------------------------------------
+
+    // * ----------------------- USER ------------------------------
+
+    createUser: async (req, res) => {
+        
+        let { email, password, confirm_password } = req.body;
+
+        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+
+        try {
+
+            var validateEmail = (validator.isEmail(email) && !validator.isEmpty(email));
+            var validatePassword = (!validator.isEmpty(password) && regexp.test(password));
+            var validateConfirmPassword = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password));
+            
+        } catch (error) {
+            return res.status(400).send({
+                status: "error",
+                message: "Data empty"
+            });
+        }
+
+        if(validateEmail && validatePassword && validateConfirmPassword){
+
+            if(password === confirm_password){
+
+                let user = new User();
+
+                user.email = email;
+
+                const passwordHash = await User.encrypt(password);
+
+                user.password_hash = passwordHash;
+
+                if (req.body.roles) {
+                    const foundRoles = await Role.find({ name: { $in: roles } });
+                    user.role = foundRoles.map(role => role._id);
+                } else {
+                    const role = await Role.findOne({ name: "usuario" });
+                    user.role = role._id;
+                }
+
+                // res.send(user)
+
+                user.save( async (err, newUser) => {
+
+                    if(err || !newUser){
+                        return res.status(500).send({
+                            status: "error",
+                            message: "The user has not been saved"
+                        })
+                    }
+
+                    const payload = {
+                        id : newUser._id,
+                        email : newUser.email,
+                        register_date : newUser.register_date
+                    }
+
+                    const token = await jwt.sign(payload, config.JWT_key, {expiresIn: 60 * 60 * 24 });
+
+                    return res.status(201).send({
+                        status: "success",
+                        message: "The user has been save correctly",
+                        token
+                    });
+
+                });
+
+            }else{
+                return res.status(400).send({
+                    status: "error",
+                    message: "The password don't match"
+                })
             }
 
-            if(!products || products.length == 0){
+        }else{
+            return res.status(400).send({
+                status: "error",
+                message: "Data invalid"
+            });
+        }
+
+    },
+
+    getAllUsers : (req, res) => {
+        User.find((err, users) => {
+
+            if(err){
+                // ! ErrorHandler
+            }
+
+            if(!users || users.length == 0){
                 return res.status(404).send({
                     status: "error",
-                    message : "Merchandising not found"
+                    message: "Not found users"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                users
+            })
+            
+        })
+    },
+
+    getUser: async (req, res) => {
+
+        let token = req.get('authorization');
+        token = token.split(" ");
+
+        try {
+            var user = await jwt.decode(token[1]);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token error"
+            })
+        }
+
+        User.findById(user.id, (err, userFind) => {
+
+            if(err || !userFind){
+                return res.status(404).send({
+                    status: "error",
+                    message: "User not found"
                 })
             }
 
             return res.status(200).send({
                 status: "success",
-                products
+                userFind
             })
             
-        })
+        });
 
     }
-
-    // * -----------------------------------------------------------
-
-    // * ----------------------- USER ------------------------------
+    
     // * -----------------------------------------------------------
 
 }

@@ -24,7 +24,7 @@
 
 ---
 
-### Index
+### Index (OK)
 
 * Lastest 8 news products
     * products.State(new).limit(8)
@@ -40,7 +40,7 @@
 * Create and add a product in order
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
 
-### Mangas
+### Mangas (OK)
 
 * All the mangas with paginate. Limit and skip. 8 to 8 
     * .get /products/manga/:limit&:skip
@@ -58,6 +58,7 @@
     * products.Nº Sales(high)
         * .get /sort/products/manga/:option
 * Filter (8 to 8)
+> OK
     * products.type(type) {light novel or manga}
         * .get /filter/product/manga/:option
             * /filter/product/manga/type=manga&category=isekai
@@ -65,7 +66,7 @@
         * .get /filter/product/manga/:option
 
 
-### Merchandising
+### Merchandising (OK)
 
 * ALl the merchandising with paginate. Limit and skip. 8 to 8
     * .get /product/merchandising/:limit&:skip
@@ -83,6 +84,7 @@
     * products.Nº Sales(high)
         * .get /sort/product/merchandising/:option
 * Filter (8 to 8)
+> OK
     * products.category(category) {nendoroid or funko}
         * .get /filter/product/merchandising/:option
             * /filter/product/merchandising/category=nendoroid
@@ -198,6 +200,7 @@
 * **(Token admin or vendor)**
 * Get all the "Users or option selected"
     * .get /users -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /products -> Middleweare {authorization: Bearer token}
     > OK without middleweare
     * .get /orders -> Middleweare {authorization: Bearer token}
@@ -223,6 +226,7 @@
 * **(Token admin or vendor)**
 * Insert the option selected
     * .post /user -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .post /product -> Middleweare {authorization: Bearer token}
     > OK without middleweare
     * .post /order -> Middleweare {authorization: Bearer token}
@@ -245,3 +249,61 @@
 * Search an user in admin ????
 * Change the state of the user (in adminPanel or account)
     * .patch /user/:state
+
+
+<!-- ------------------------------------------------------------------------------ -->
+---
+
+## Products
+
+* Get the 8 new products
+    * .get /products/new
+* Create a new product º
+    * .post /product
+* Get mangas or ligth novels with paginate *
+    * .get /products/manga/:limit&:skip
+* Get merchandising with paginate *
+    * .get /products/merchandising/:limit&:skip
+> \* Could be reused
+* Get all products
+    * .get /products
+* Get one product
+    * .get /product/:id
+
+
+## Search
+
+* Search in products
+    * .get /search/products/:search
+
+
+## Filter
+
+* Filter any product
+    * .get /filter/product/:type/:option&:limit&:skip
+> If you dont need a concrete option(category), write null
+
+## Sort
+
+* Sort mangas or light novels *
+    * .get /sort/products/manga/:option&:limit&:skip
+* Sort merchandising *
+    * .get /sort/products/merchandising/:option&:limit&:skip
+> \* Could be reused
+
+
+## User
+
+* Create new user (Register) **(not admin)**
+    * .post /user
+* Get all users º
+    * .get /users
+* Get user with token
+    * .get /user {Authorization: Bearer token}
+
+
+---
+
+## Missing
+
+* \º All the middleweares
