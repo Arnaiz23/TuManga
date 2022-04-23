@@ -857,7 +857,7 @@ var controller = {
     addProductOrder: async (req, res) => {
 
         const { id_product } = req.body;
-        
+
         let token = req.get("Authorization");
         token = token.split(" ")[1];
 
@@ -874,31 +874,31 @@ var controller = {
 
         let userFind = await User.findById(userToken.id)
 
-        if(!userFind){
+        if (!userFind) {
             res.status(404).send({
                 status: "error",
                 message: "This user doesn't exists"
             })
         }
 
-        Order.findOne({id_client: userFind._id, state: "P"}, (err, order) => {
+        Order.findOne({ id_client: userFind._id, state: "P" }, (err, order) => {
 
-            if(err){
+            if (err) {
                 // ! Errorhandler
             }
 
-            if(!order || order.length == 0){
+            if (!order || order.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "This user doesn't have orders in proccess"
                 })
             }
-            
+
             let ordersNew = order.products;
             ordersNew.push(id_product)
 
-            Order.findByIdAndUpdate(order._id, {products: ordersNew}, {new:true}, (err, orderUpdate) => {
-                if(err || !orderUpdate){
+            Order.findByIdAndUpdate(order._id, { products: ordersNew }, { new: true }, (err, orderUpdate) => {
+                if (err || !orderUpdate) {
                     return res.status(500).send({
                         status: "error",
                         message: "The order has not been update"
@@ -910,7 +910,7 @@ var controller = {
                     orderUpdate
                 })
             })
-            
+
         });
     },
 
@@ -932,30 +932,30 @@ var controller = {
 
         let userFind = await User.findById(userToken.id);
 
-        if(!userFind){
+        if (!userFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't exists"
             })
         }
 
-        let orderProcess = await Order.findOne({id_client: userFind._id, state: "P"});
+        let orderProcess = await Order.findOne({ id_client: userFind._id, state: "P" });
 
-        if(!orderProcess || orderProcess.length == 0){
+        if (!orderProcess || orderProcess.length == 0) {
             return res.status(500).send({
                 status: "error",
                 message: "This user doesn't have orders in process"
             })
         }
 
-        if(!userFind.billing.includes(billing)){
+        if (!userFind.billing.includes(billing)) {
             return res.status(500).send({
                 status: "error",
                 message: "Billing not valid"
             })
         }
 
-        if(!userFind.address.includes(delivery_address)){
+        if (!userFind.address.includes(delivery_address)) {
             return res.status(500).send({
                 status: "error",
                 message: "Address not valid"
@@ -971,9 +971,9 @@ var controller = {
         orderProcess.state = "F"
         orderProcess.telephone = telephone
 
-        let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess);
+        let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess, { new: true });
 
-        if(!orderUpdate){
+        if (!orderUpdate) {
             return res.status(500).send({
                 status: "error",
                 message: "The order has not been updated"
@@ -1010,19 +1010,19 @@ var controller = {
         let userFind = await User.findById(user.id);
 
         if (userFind.cart.length != 0) {
-            Order.findOne({id_client: userFind._id, state: "P"}, (err, orders) => {
+            Order.findOne({ id_client: userFind._id, state: "P" }, (err, orders) => {
 
-                if(err){
+                if (err) {
                     // ! Errorhandler
                 }
 
-                if(!orders || orders.length == 0){
+                if (!orders || orders.length == 0) {
                     return res.status(404).send({
                         status: "error",
                         message: "This user doesn't have orders in proccess"
                     })
                 }
-                
+
                 return res.status(200).send({
                     status: "success",
                     orders
@@ -1038,6 +1038,45 @@ var controller = {
     },
 
     getAllOrders: (req, res) => {
+
+    },
+
+    getUserOrders: async (req, res) => {
+        let token = req.get("Authorization");
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            return res.status(500).send({
+                status: "error",
+                message: "User not found"
+            })
+        }
+
+        let orders = await Order.find({ id_client: userFind._id, state: "F" });
+
+        if (!orders || orders.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't have orders finished"
+            })
+        }
+
+        res.status(200).send({
+            status: "success",
+            orders
+        })
 
     },
 
@@ -1106,7 +1145,7 @@ var controller = {
 
                 User.findByIdAndUpdate(userFind._id, { billing: cards }, { new: true }, (err, user) => {
 
-                    if (err, !user) {
+                    if (err || !user) {
                         return res.status(404).send({
                             status: "error",
                             message: "The card not add in the user data"
@@ -1181,20 +1220,14 @@ var controller = {
 
     },
 
-    // * -----------------------------------------------------------
-    
-    // * ----------------------- ADDRESS ----------------------------
-
-    createAddress : async (req, res) => {
-
-        const { name, number, name_person, location, floor } = req.body;
+    getUserCards: async (req, res) => {
 
         let token = req.get('Authorization')
         token = token.split(" ")[1]
         let userToken;
 
         try {
-            userToken = jwt.decode(token)    
+            userToken = jwt.decode(token)
         } catch (error) {
             return res.status(404).send({
                 status: "error",
@@ -1204,7 +1237,105 @@ var controller = {
 
         let userFind = await User.findById(userToken.id);
 
-        if(!userFind){
+        if (!userFind) {
+            res.status(500).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let cards = await Billing.find({id_client: userFind._id});
+
+        if(!cards || cards.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't have cards"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            cards
+        })
+
+    },
+
+    deleteCard: async (req, res) => {
+
+        const id_card = req.params.id;
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            res.status(500).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let cardDelete = await Billing.findByIdAndDelete(id_card);
+
+        if(!cardDelete){
+            return res.status(404).send({
+                status: "error",
+                message: "This card has not been deleted"
+            })
+        }
+
+        let cards = await Billing.find({user_id: userFind._id});
+
+        let userUpdate = await User.findByIdAndUpdate(userFind.id, {billing: cards}, {new:true});
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userUpdate,
+            cards
+        })
+    },
+
+    // * -----------------------------------------------------------
+
+    // * ----------------------- ADDRESS ----------------------------
+
+    createAddress: async (req, res) => {
+
+        const { name, number, name_person, location, floor } = req.body;
+
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
             res.status(500).send({
                 status: "error",
                 message: "This user doesn't exists"
@@ -1216,16 +1347,16 @@ var controller = {
             number,
             name_person,
             location,
-            user_id : userFind._id
+            user_id: userFind._id
         })
 
-        if(floor){
+        if (floor) {
             newAddress.floor = floor
         }
 
         let addressSave = await newAddress.save();
 
-        if(!addressSave){
+        if (!addressSave) {
             return res.status(500).send({
                 status: "error",
                 message: "The address has not been saved"
@@ -1235,9 +1366,9 @@ var controller = {
         let address = userFind.address;
         address.push(addressSave._id);
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, {address: address});
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: address });
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(500).send({
                 status: "error",
                 message: "The user has not been updated "
@@ -1249,8 +1380,179 @@ var controller = {
             addressSave
         })
 
+    },
+
+    getUserAddress: async (req, res) => {
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            return res.status(404).send({
+                status: "error",
+                message: "User not found"
+            })
+        }
+
+        let address = await Address.find({ user_id: userFind._id });
+
+        if (!address || address.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't have address"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            address
+        })
+    },
+
+    deleteAddress: async (req, res) => {
+
+        let { id } = req.params
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            return res.status(404).send({
+                status: "error",
+                message: "User not found"
+            })
+        }
+
+        try {
+
+            let addressDelete = await Address.findByIdAndDelete(id);
+
+            if (!addressDelete) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "This address has not been delete"
+                })
+            }
+
+            let newAddress = await Address.find({ user_id: userFind._id });
+
+            let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: newAddress }, { new: true });
+
+            if (!userUpdate) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "This user has not been updated"
+                })
+            }
+
+            return res.status(200).send({
+                status: "error",
+                newAddress,
+                userUpdate
+            })
+
+        } catch (error) {
+            return res.status(500).send({
+                status: "error",
+                error
+            })
+        }
+
+    },
+
+    updateAddress: async (req, res) => {
+
+        const id_address = req.params.id;
+        let body = req.body;
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            return res.status(404).send({
+                status: "error",
+                message: "User not found"
+            })
+        }
+
+        let address = await Address.findById(id_address)
+
+        if(!address){
+            return res.status(404).send({
+                status: "error",
+                message: "This address doesn't exists"
+            })
+        }
+
+        if(body.name){
+            address.name = body.name
+        }
+
+        if(body.number){
+            address.number = body.number
+        }
+
+        if(body.floor){
+            address.floor = body.floor
+        }
+
+        if(body.name_person){
+            address.name_person = body.name_person
+        }
+
+        if(body.location){
+            address.location = body.location
+        }
+
+        let addressUpdate = await Address.findByIdAndUpdate(address._id, address, {new:true});
+
+        if(!addressUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This address has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            addressUpdate
+        })
+        
     }
-    
+
     // * -----------------------------------------------------------
 
 }

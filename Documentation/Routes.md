@@ -7,7 +7,7 @@
 - [**Routes**](#routes)
     - [Index](#index)
     - [Index (OK)](#index-ok)
-    - [Search](#search)
+    - [Search (OK)](#search-ok)
     - [Mangas (OK)](#mangas-ok)
     - [Merchandising (OK)](#merchandising-ok)
     - [My account](#my-account)
@@ -24,7 +24,7 @@
     - [Order details](#order-details)
     - [Others](#others)
   - [Products](#products)
-  - [Search](#search-1)
+  - [Search](#search)
   - [Filter](#filter)
   - [Sort](#sort)
   - [User](#user)
@@ -43,14 +43,14 @@
         > OK
 
 
-### Search
+### Search (OK)
 
 * Products equal string search
     * .get /search/products/:search
     > OK
 * Create and add a product in order
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
-> OK without middleweare
+    > OK without middleweare
 
 ### Mangas (OK)
 
@@ -111,20 +111,27 @@
     * All the orders of a user with token. Only the orders that had the property state === "F"
         * .get /orders/:state {authorization: Bearer token}
             * /orders/state=F
+    > OK
 * My address
     * All the address of a user with token
         * .get /address {authorization: Bearer token}
+    > OK
     * Create a new address (token)
         * .post /address/:id {authorization: Bearer token}
+    > OK
     * Delete address (1) (token)
         * .delete /address/:id {authorization: Bearer token}
+    > OK
     * Edit address (token)
         * .put /address/:id {authorization: Bearer token}
+    > OK
 * My cards
     * All the cards of a user with token
         * .get /cards {authorization: Bearer token}
+    > OK
     * Delete a card (1) (token)
         * .delete /card/:id {authorization: Bearer token}
+    > OK
 * My comments
     * All the comments of a user with token
         * .get /comments {authorization: Bearer token}
@@ -334,6 +341,10 @@
     * .get /cards
 * Get last 2 cards
     * .get /cards/last {Authorization: Bearer token}
+* Get the user cards
+  * .get /cards/user {Authorization: Bearer token}
+* Delete one card
+  * .delete /card/:id {Authorization: Bearer token}
 
 ## Orders
 
@@ -343,12 +354,20 @@
   * .patch /order {Authorization: Bearer token}
 * Finish the order
   * .put /order {Authorization: Bearer token}
+* User orders
+  * .get /orders/user {Authorization: Bearer token}
 
 
 ## Address
 
 * Create address
   * .post /address {Authorization: Bearer token}
+* Get the user address
+  * .get /address/user {Authorization: Bearer token}
+* Delete one address
+  * .delete /address/:id {Authorization: Bearer token}
+* Update one address
+  * .put /address/:id {Authorization: Bearer token}
 
 ---
 
@@ -357,3 +376,4 @@
 * \º All the middleweares
 * Reuse the trycatch jwt
 * Create the user admin automatically
+* No send the password_hash

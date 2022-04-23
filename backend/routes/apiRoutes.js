@@ -33,6 +33,7 @@ router.get("/order/process", controllers.getOrderProccess); // Get the user orde
 router.post("/order", controllers.createOrder); // Create new order
 router.patch("/order", controllers.addProductOrder); // Add product in the order that have state === "P"
 router.put("/order", controllers.updateOrder); // Finish the order
+router.get("/orders/user", controllers.getUserOrders); // Get all the orders of a user
 
 // * -----------------------------------------------------------
 
@@ -41,11 +42,16 @@ router.put("/order", controllers.updateOrder); // Finish the order
 router.post("/card" , controllers.createCard); // Create new card
 router.get("/cards", controllers.getAllCards); // Get all cards
 router.get("/cards/last", controllers.getLastCards); // Get 2 last cards
+router.get("/cards/user", controllers.getUserCards); // Get all the cards of a user
+router.delete("/card/:id", controllers.deleteCard); // Delete one card
 
 // * -----------------------------------------------------------
 // * --------------------- ADDRESS -----------------------------
 
 router.post("/address", controllers.createAddress); // Create address
+router.get("/address/user", controllers.getUserAddress); // Get user address
+router.delete("/address/:id", controllers.deleteAddress); // Delete address
+router.put("/address/:id", controllers.updateAddress); // Update address
 
 // * -----------------------------------------------------------
 
