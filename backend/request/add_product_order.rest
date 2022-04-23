@@ -1,9 +1,7 @@
-POST http://localhost:3900/api/v1/card HTTP/1.1
+PATCH http://localhost:3900/api/v1/order
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjNmNzIyNjdkNjA0MGNlMzYxNzQ3ZCIsImVtYWlsIjoicHJ1ZWJhT3JkZXJzQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTIzVDEyOjU0OjU4LjUyMVoiLCJpYXQiOjE2NTA3MTg0OTgsImV4cCI6MTY1MDgwNDg5OH0.Es8eg7OqXAYowMAwT2oayltOkNVtu2Ya9DZ7Nkke3GQ
 
 {
-    "card_name" : "Adrian Arnaiz",
-    "expiration_date" : "03/22",
-    "number_card" : "5218463545801562"
+    "id_product" : "6261776f025835dbd9eec5cc"
 }

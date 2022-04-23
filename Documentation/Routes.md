@@ -4,23 +4,34 @@
 
 ### Index
 
-* [Index](#index)
-* [Search](#search)
-* [Mangas](#mangas)
-* [Merchandising](#merchandising)
-* [My account](#my-account)
-* [Shopping cart](#shopping-cart)
-* [Payment](#payment)
-* [Product](#product)
-* [Login](#login)
-* [Logout](#logout)
-* [Email](#email)
-* [Admin panel](#admin-panel)
-* [Admin panel 2](#admin-panel-2)
-* [Admin panel 3](#admin-panel-3)
-* [Admin panel 4](#admin-panel-4)
-* [Order details](#order-details)
-* [Others](#others)
+- [**Routes**](#routes)
+    - [Index](#index)
+    - [Index (OK)](#index-ok)
+    - [Search](#search)
+    - [Mangas (OK)](#mangas-ok)
+    - [Merchandising (OK)](#merchandising-ok)
+    - [My account](#my-account)
+    - [Shopping Cart](#shopping-cart)
+    - [Payment](#payment)
+    - [Product](#product)
+    - [Login](#login)
+    - [Logout](#logout)
+    - [Email](#email)
+    - [Admin Panel](#admin-panel)
+    - [Admin Panel 2](#admin-panel-2)
+    - [Admin Panel 3](#admin-panel-3)
+    - [Admin Panel 4](#admin-panel-4)
+    - [Order details](#order-details)
+    - [Others](#others)
+  - [Products](#products)
+  - [Search](#search-1)
+  - [Filter](#filter)
+  - [Sort](#sort)
+  - [User](#user)
+  - [Billing](#billing)
+  - [Orders](#orders)
+  - [Address](#address)
+  - [Missing](#missing)
 
 ---
 
@@ -39,6 +50,7 @@
     > OK
 * Create and add a product in order
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
+> OK without middleweare
 
 ### Mangas (OK)
 
@@ -168,6 +180,7 @@
 
 * Check email and password -> Send Token (Option remember me)
     * .post /login   -> Recieve token
+> OK
 * Send a email for recover password
     * .post /recover
 
@@ -309,6 +322,8 @@
     * .get /user {Authorization: Bearer token}
 * Change user state with token
     * .patch /user {Authorization: Bearer token}
+* Login
+    * .post /login
 
 
 ## Billing
@@ -319,6 +334,21 @@
     * .get /cards
 * Get last 2 cards
     * .get /cards/last {Authorization: Bearer token}
+
+## Orders
+
+* Create order
+  * .post /order {Authorization: Bearer token}
+* Add a new product in the user order that have state === "P"
+  * .patch /order {Authorization: Bearer token}
+* Finish the order
+  * .put /order {Authorization: Bearer token}
+
+
+## Address
+
+* Create address
+  * .post /address {Authorization: Bearer token}
 
 ---
 

@@ -14,11 +14,6 @@ var Order = new Schema({
         required : true,
         unique : false
     },
-    name_client : {
-        type : String,
-        required : true,
-        unique : false
-    },
     order_date : {
         type : Date,
         default : Date.now
@@ -39,13 +34,13 @@ var Order = new Schema({
         type : Schema.Types.ObjectId,
         ref : "Address",
         unique : false,
-        required : true
+        required : false
     },
     billing : {
         type : Schema.Types.ObjectId,
         ref : "Billing",
         unique : false,
-        required : true
+        required : false
     },
     state : {
         type : String,
@@ -55,7 +50,7 @@ var Order = new Schema({
     telephone : {
         type : Number,
         unique : false,
-        required : true
+        required : false
     }
 });
 

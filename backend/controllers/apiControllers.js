@@ -8,9 +8,10 @@ var Order = require('../models/Order');
 var Role = require('../models/Role');
 var User = require('../models/User');
 
-var validator = require('validator');
+const validator = require('validator');
 var jwt = require('jsonwebtoken');
 var config = require('../config/config');
+const { default: mongoose } = require('mongoose');
 
 var controller = {
     test: (req, res) => {
@@ -708,37 +709,281 @@ var controller = {
             })
         }
 
-        if(validateEmail && validatePassword){
+        if (validateEmail && validatePassword) {
 
-            let user = await User.findOne({email: email});
+            let user = await User.findOne({ email: email });
 
-            let passwordAccept = await User.comparePasswords(password,user.password_hash);
+            let passwordAccept;
+
+            try {
+                passwordAccept = await User.comparePasswords(password, user.password_hash);
+            } catch (error) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "User data invalid"
+                })
+            }
 
             // ! If accepted, create token
-            
 
-        }else{
+            if (!passwordAccept) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "User data invalid"
+                })
+            }
+
+            const payload = {
+                id: user._id,
+                email: user.email,
+                register_date: user.register_date
+            }
+
+            let rememberTime;
+
+            if (remember) {
+                rememberTime = 60 * 60 * 24 * 1;
+            } else {
+                rememberTime = 60 * 60 * 2;
+            }
+
+            let token = jwt.sign(payload, config.JWT_key, { expiresIn: rememberTime });
+
+            res.status(200).send({
+                status: "success",
+                rememberTime,
+                token
+            })
+
+
+        } else {
             return res.status(404).send({
                 status: "error",
                 message: "Data invalid"
             })
         }
-        
+
     },
 
     // * -----------------------------------------------------------
 
     // * ----------------------- ORDERS ----------------------------
 
-    createOrder: (req, res) => {
+    createOrder: async (req, res) => {
 
-        const order = req.body;
+        const { id_product } = req.body;
 
-        res.send(order)
+        let token = req.get("Authorization");
+        token = token.split(" ")[1];
+
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let user = await User.findById(userToken.id);
+
+        if (!user) {
+            return res.status(404).send({
+                status: "error",
+                message: "User not found"
+            })
+        }
+
+        let newOrder = Order();
+
+        try {
+            var validateId = !validator.isEmpty(id_product);
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        const new_id_product = mongoose.Types.ObjectId(id_product);
+
+        let product = await Product.findById(new_id_product);
+
+        if (!validateId || !product) {
+            return res.status(404).send({
+                status: "error",
+                message: "Invalid ID"
+            })
+        }
+
+        newOrder.products.push(new_id_product);
+        newOrder.state = "P"
+        newOrder.send_date = null
+        newOrder.id_client = user.id
+
+        newOrder.save((err, saveOrder) => {
+            if (err || !saveOrder) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "The order has not been saved"
+                })
+            }
+
+            let userCart = user.cart;
+            userCart.push(saveOrder._id)
+
+            User.findByIdAndUpdate(user._id, { cart: userCart }, { new: true }, (err, userUpdate) => {
+                if (err || !userUpdate) {
+                    return res.status(500).send({
+                        status: "error",
+                        message: "The user has not been update"
+                    })
+                }
+
+                return res.status(201).send({
+                    status: "success",
+                    saveOrder
+                })
+
+            });
+
+
+        });
 
     },
 
-    updateOrder: (req, res) => {
+    addProductOrder: async (req, res) => {
+
+        const { id_product } = req.body;
+        
+        let token = req.get("Authorization");
+        token = token.split(" ")[1];
+
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token not valid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id)
+
+        if(!userFind){
+            res.status(404).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        Order.findOne({id_client: userFind._id, state: "P"}, (err, order) => {
+
+            if(err){
+                // ! Errorhandler
+            }
+
+            if(!order || order.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "This user doesn't have orders in proccess"
+                })
+            }
+            
+            let ordersNew = order.products;
+            ordersNew.push(id_product)
+
+            Order.findByIdAndUpdate(order._id, {products: ordersNew}, {new:true}, (err, orderUpdate) => {
+                if(err || !orderUpdate){
+                    return res.status(500).send({
+                        status: "error",
+                        message: "The order has not been update"
+                    })
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    orderUpdate
+                })
+            })
+            
+        });
+    },
+
+    updateOrder: async (req, res) => {
+        let { delivery_address, billing, telephone } = req.body;
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if(!userFind){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let orderProcess = await Order.findOne({id_client: userFind._id, state: "P"});
+
+        if(!orderProcess || orderProcess.length == 0){
+            return res.status(500).send({
+                status: "error",
+                message: "This user doesn't have orders in process"
+            })
+        }
+
+        if(!userFind.billing.includes(billing)){
+            return res.status(500).send({
+                status: "error",
+                message: "Billing not valid"
+            })
+        }
+
+        if(!userFind.address.includes(delivery_address)){
+            return res.status(500).send({
+                status: "error",
+                message: "Address not valid"
+            })
+        }
+
+        let sendDate = new Date();
+        sendDate.setDate(sendDate.getDate() + 3)
+
+        orderProcess.send_date = sendDate
+        orderProcess.delivery_address = mongoose.Types.ObjectId(delivery_address)
+        orderProcess.billing = mongoose.Types.ObjectId(billing)
+        orderProcess.state = "F"
+        orderProcess.telephone = telephone
+
+        let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess);
+
+        if(!orderUpdate){
+            return res.status(500).send({
+                status: "error",
+                message: "The order has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "Success",
+            orderUpdate
+        })
 
     },
 
@@ -765,7 +1010,24 @@ var controller = {
         let userFind = await User.findById(user.id);
 
         if (userFind.cart.length != 0) {
+            Order.findOne({id_client: userFind._id, state: "P"}, (err, orders) => {
 
+                if(err){
+                    // ! Errorhandler
+                }
+
+                if(!orders || orders.length == 0){
+                    return res.status(404).send({
+                        status: "error",
+                        message: "This user doesn't have orders in proccess"
+                    })
+                }
+                
+                return res.status(200).send({
+                    status: "success",
+                    orders
+                })
+            })
         } else {
             return res.status(404).send({
                 status: "error",
@@ -853,7 +1115,8 @@ var controller = {
 
                     return res.status(201).send({
                         status: "success",
-                        message: "The card has been save correctly"
+                        message: "The card has been save correctly",
+                        card
                     });
 
                 });
@@ -907,17 +1170,87 @@ var controller = {
 
         let userFind = await User.findById(user.id);
 
-        Billing.find({user_id: userFind._id}, (err, cards) => {
+        Billing.find({ user_id: userFind._id }, (err, cards) => {
 
             return res.status(200).send({
                 status: "success",
                 cards
             })
-            
-        }).limit(2);
-        
-    }
 
+        }).limit(2);
+
+    },
+
+    // * -----------------------------------------------------------
+    
+    // * ----------------------- ADDRESS ----------------------------
+
+    createAddress : async (req, res) => {
+
+        const { name, number, name_person, location, floor } = req.body;
+
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)    
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if(!userFind){
+            res.status(500).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let newAddress = Address({
+            name,
+            number,
+            name_person,
+            location,
+            user_id : userFind._id
+        })
+
+        if(floor){
+            newAddress.floor = floor
+        }
+
+        let addressSave = await newAddress.save();
+
+        if(!addressSave){
+            return res.status(500).send({
+                status: "error",
+                message: "The address has not been saved"
+            })
+        }
+
+        let address = userFind.address;
+        address.push(addressSave._id);
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, {address: address});
+
+        if(!userUpdate){
+            return res.status(500).send({
+                status: "error",
+                message: "The user has not been updated "
+            })
+        }
+
+        return res.status(201).send({
+            status: "success",
+            addressSave
+        })
+
+    }
+    
     // * -----------------------------------------------------------
 
 }

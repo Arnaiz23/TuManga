@@ -31,6 +31,8 @@ router.post("/login", controllers.login); // Login
 
 router.get("/order/process", controllers.getOrderProccess); // Get the user order with state === "P"
 router.post("/order", controllers.createOrder); // Create new order
+router.patch("/order", controllers.addProductOrder); // Add product in the order that have state === "P"
+router.put("/order", controllers.updateOrder); // Finish the order
 
 // * -----------------------------------------------------------
 
@@ -42,6 +44,9 @@ router.get("/cards/last", controllers.getLastCards); // Get 2 last cards
 
 // * -----------------------------------------------------------
 // * --------------------- ADDRESS -----------------------------
+
+router.post("/address", controllers.createAddress); // Create address
+
 // * -----------------------------------------------------------
 
 

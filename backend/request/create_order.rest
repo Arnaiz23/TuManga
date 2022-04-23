@@ -1,10 +1,7 @@
 POST http://localhost:3900/api/v1/order HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjJhMTYwZmUxNmNmZjYwMzVmZjJhOSIsImVtYWlsIjoiYWRyaWFuNUBnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yMlQxMjozNjo0OC4wNjRaIiwiaWF0IjoxNjUwNjMxMDA4LCJleHAiOjE2NTA3MTc0MDh9.CisnZG9PFIsyaaCgjl5LEoF6m2kPqafauJCU_lF224c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjNmNzIyNjdkNjA0MGNlMzYxNzQ3ZCIsImVtYWlsIjoicHJ1ZWJhT3JkZXJzQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTIzVDEyOjU0OjU4LjUyMVoiLCJpYXQiOjE2NTA3MTg0OTgsImV4cCI6MTY1MDgwNDg5OH0.Es8eg7OqXAYowMAwT2oayltOkNVtu2Ya9DZ7Nkke3GQ
 
 {
-    "name_client" : "",
-    "products" : [],
-    "delivery_address" : "",
-    "billing" : "",
-    "telephone" : 123456789
+    "id_product" : "6261390558cce88590889f8e"
 }
