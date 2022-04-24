@@ -4,6 +4,9 @@ const router = Router();
 
 const controllers = require('../controllers/apiControllers');
 
+var multipart = require('connect-multiparty');
+var md_upload = multipart({uploadDir: './upload/images'});
+
 router.get("/", controllers.test);
 
 // * --------------------- PRODUCTS ----------------------------
@@ -52,9 +55,18 @@ router.post("/address", controllers.createAddress); // Create address
 router.get("/address/user", controllers.getUserAddress); // Get user address
 router.delete("/address/:id", controllers.deleteAddress); // Delete address
 router.put("/address/:id", controllers.updateAddress); // Update address
+router.get("/address/last", controllers.getLastAddress); // Get last 2 address of an user
 
 // * -----------------------------------------------------------
 
+// * --------------------- COMMENTS ----------------------------
+
+router.get("/comments/product/:idProduct", controllers.getCommentsProduct); // Get all the comments of a one product
+router.post("/comment", controllers.createComment); // Create a comment
+router.get("/comments/user", controllers.getUserComments); // Get user comments
+router.delete("/comment/:idComment", controllers.deleteComment); // Delete a comment
+
+// * -----------------------------------------------------------
 
 // * --------------------- SEARCH ----------------------------
 

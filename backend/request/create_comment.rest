@@ -1,10 +1,9 @@
-POST http://localhost:3900/api/v1/address HTTP/1.1
+POST http://localhost:3900/api/v1/comment HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjJhMTYwZmUxNmNmZjYwMzVmZjJhOSIsImVtYWlsIjoiYWRyaWFuNUBnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yMlQxMjozNjo0OC4wNjRaIiwiaWF0IjoxNjUwNjMxMDA4LCJleHAiOjE2NTA3MTc0MDh9.CisnZG9PFIsyaaCgjl5LEoF6m2kPqafauJCU_lF224c
 
 {
-    "name" : "Calle Tu Casa4",
-    "number" : "60",
-    "name_person" : "Adrian Arnaiz Fernandez",
-    "location" : "Móstoles"
+    "message" : "This manga is wonderful",
+    "product_id" : "62625e9e2012dae38beaf8ab",
+    "score" : 5
 }

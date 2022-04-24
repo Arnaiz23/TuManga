@@ -1,8 +1,9 @@
+
 POST http://localhost:3900/api/v1/product
 content-type: application/json
 
 {
-    "name" : "otro",
+    "name" : "Prueba Imagen",
     "price" : 100,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",

@@ -10,12 +10,12 @@
     - [Search (OK)](#search-ok)
     - [Mangas (OK)](#mangas-ok)
     - [Merchandising (OK)](#merchandising-ok)
-    - [My account](#my-account)
+    - [My account (OK)](#my-account-ok)
     - [Shopping Cart](#shopping-cart)
-    - [Payment](#payment)
+    - [Payment (OK)](#payment-ok)
     - [Product](#product)
     - [Login](#login)
-    - [Logout](#logout)
+    - [Register (OK)](#register-ok)
     - [Email](#email)
     - [Admin Panel](#admin-panel)
     - [Admin Panel 2](#admin-panel-2)
@@ -31,6 +31,7 @@
   - [Billing](#billing)
   - [Orders](#orders)
   - [Address](#address)
+  - [Comments](#comments)
   - [Missing](#missing)
 
 ---
@@ -101,7 +102,7 @@
         * .get /filter/product/merchandising/:option
             * /filter/product/merchandising/category=nendoroid
 
-### My account
+### My account (OK)
 
 * My information
     * The user with the token
@@ -134,9 +135,11 @@
     > OK
 * My comments
     * All the comments of a user with token
-        * .get /comments {authorization: Bearer token}
+        * .get /comments/user {authorization: Bearer token}
+    > OK
     * Delete a comment (1) (token)
-        * .delete /comment/:id {authorization: Bearer token}
+        * .delete /comment/:idComment {authorization: Bearer token}
+    > OK
 
 
 ### Shopping Cart
@@ -147,22 +150,26 @@
     * .put /order/:state {authorization: Bearer token}  and Middleweare is user or high
     * .delete /order/:state {authorization: Bearer token} -> only if order is empty and Middleweare is user or high
 
-### Payment
+### Payment (OK)
 
 * Create new card
     * .post /card {authorization: Bearer token} and Middleweare is user or high
 > OK without middleweares
 * 2 last address of a user (Token)
     * .get /address/:limit {authorization: Bearer token} and Middleweare is user or high
+>OK without middleweare
 * 2 last cards of a user (Token)
     * .get /cards/:limit {authorization: Bearer token} and Middleweare is user or high
 > OK without middleweares
 * Edit cart of a user with the State === P -> new data (address and card) (token)
     * put /order/:state {authorization: Bearer token}
+> OK without middleweares
 * Shopping cart of a user with the State === P (token)
     * .get /order/:state {authorization: Bearer token}
+> OK without middleweares
 * Edit cart of a user with the State === P -> State = F (token) (Finalished the order)
     * .patch /order/:state {authorization: Bearer token}
+> OK without middleweares
 
 ### Product
 
@@ -173,11 +180,13 @@
     * Send array comments data
     * .get /comments/:idProduct
         * Recieve the idProduct, petition product and get the array of idComments and do a petition Comments with this ids. **Search examples**
+> OK
 * Delete comment if the user is owner
     * .delete /comment/idComment {authorization: Bearer token} and middleweare is user or high
     > if is admin or vendor, delete (Middleweare)
 * Insert a new comment (Token)
-    * .post /comment/idProduct {authorization: Bearer token} and middleweare is user or high
+    * .post /comment {authorization: Bearer token} and middleweare is user or high
+> OK
 * Update or create a new order (Token{id} and Product.id)
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
     * .put /order/:state {authorization: Bearer token} -> Middleweare is user or high
@@ -192,7 +201,7 @@
     * .post /recover
 
 
-### Logout
+### Register (OK)
 
 * Receive email and 2 password, all correct -> create new user and send Token
     * .post /user   -> Recieve token
@@ -368,6 +377,20 @@
   * .delete /address/:id {Authorization: Bearer token}
 * Update one address
   * .put /address/:id {Authorization: Bearer token}
+* Get last 2 address of an user
+  * .get /address/last {Authorization: Bearer token}
+
+
+## Comments
+
+* Get all the comments of a one product
+  * .get /comments/product/:idProduct
+* Create new comment
+  * .post /comment {authorization: Bearer token}
+* Get all comments of an user
+  * .get /comments/user {authorization: Bearer token}
+* Delete a comment
+  * .delete /comment/:idComment {authorization: Bearer token}
 
 ---
 

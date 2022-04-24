@@ -12,6 +12,9 @@ const validator = require('validator');
 var jwt = require('jsonwebtoken');
 var config = require('../config/config');
 const { default: mongoose } = require('mongoose');
+const fs = require('fs')
+
+let globalFunctions = require('../globalFunctions/globalFunctions');
 
 var controller = {
     test: (req, res) => {
@@ -41,7 +44,8 @@ var controller = {
 
         }).limit(8);
     },
-    newProduct: (req, res) => {
+    newProduct: async (req, res) => {
+
         const newProduct = req.body;
 
         const state = ["new", "old"];
@@ -103,14 +107,6 @@ var controller = {
             newProductScheme.editorial = newProduct.editorial;
             newProductScheme.series = newProduct.series;
             newProductScheme.comments = newProduct.comments;
-
-            if (newProduct.image) {
-                newProductScheme.image = newProduct.image;
-            }/* else{
-                newProductScheme.image = null;
-            } */
-
-            console.log(newProductScheme);
 
             newProductScheme.save((err, productStore) => {
 
@@ -1336,7 +1332,7 @@ var controller = {
         let userFind = await User.findById(userToken.id);
 
         if (!userFind) {
-            res.status(500).send({
+            return res.status(500).send({
                 status: "error",
                 message: "This user doesn't exists"
             })
@@ -1549,6 +1545,176 @@ var controller = {
         return res.status(200).send({
             status: "success",
             addressUpdate
+        })
+        
+    },
+
+    getLastAddress: async (req, res) => {
+
+        let token = req.get('Authorization')
+        token = token.split(" ")[1]
+        let userToken;
+
+        try {
+            userToken = jwt.decode(token)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Token invalid"
+            })
+        }
+
+        let userFind = await User.findById(userToken.id);
+
+        if (!userFind) {
+            return res.status(500).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let address = await Address.find({user_id: userFind._id}).limit(2)
+
+        if(!address || address.length == 0){
+            return res.status(500).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            address
+        })
+        
+    },
+
+    // * -----------------------------------------------------------
+
+    // * ----------------------- COMMENTS ----------------------------
+
+    getCommentsProduct: async (req, res) => {
+
+        const id_product = req.params.idProduct;
+
+        let comments = await Comment.find({product_id: id_product})
+
+        if(!comments || comments.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "This product doesn't has comments"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            comments
+        })
+        
+    },
+
+    createComment: async (req, res) => {
+
+        let { message, product_id, score } = req.body
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        let newComment = Comment({
+            user_id: userFind._id,
+            message,
+            product_id,
+            score
+        })
+
+        let commentSave = await newComment.save()
+
+        if(!commentSave){
+            return res.status(404).send({
+                status: "error",
+                message: "This comment has not been saved"
+            })
+        }
+
+        product_id = mongoose.Types.ObjectId(product_id)
+
+        let productFind = await Product.findById(product_id)
+
+        if(!productFind){
+            return res.status(404).send({
+                status: "error",
+                message: "This product doesn't exists"
+            })
+        }
+
+        let comments = productFind.comments
+
+        comments.push(commentSave._id)
+
+        let productUpdate = await Product.findByIdAndUpdate(product_id, {comments: comments}, {new:true})
+
+        if(!productUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This product has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            productUpdate
+        })
+        
+    },
+
+    getUserComments: async (req, res) => {
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        let comments = await Comment.find({user_id: userFind._id})
+
+        if(!comments || comments.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't has comments"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            comments
+        })
+        
+    },
+
+    deleteComment: async (req, res) => {
+
+        const comment_id = req.params.idComment;
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        let commentDelete = await Comment.findByIdAndDelete(comment_id)
+
+        if(!commentDelete){
+            return res.status(404).send({
+                status: "error",
+                message: "This comment has not been deleted"
+            })
+        }
+
+        let newComments = await Comment.find({user_id: userFind._id})
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, {comments: newComments}, {new:true})
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userUpdate
         })
         
     }
