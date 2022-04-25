@@ -11,10 +11,10 @@
     - [Mangas (OK)](#mangas-ok)
     - [Merchandising (OK)](#merchandising-ok)
     - [My account (OK)](#my-account-ok)
-    - [Shopping Cart](#shopping-cart)
+    - [Shopping Cart (OK)](#shopping-cart-ok)
     - [Payment (OK)](#payment-ok)
-    - [Product](#product)
-    - [Login](#login)
+    - [Product (OK)](#product-ok)
+    - [Login (OK)](#login-ok)
     - [Register (OK)](#register-ok)
     - [Email](#email)
     - [Admin Panel](#admin-panel)
@@ -142,7 +142,7 @@
     > OK
 
 
-### Shopping Cart
+### Shopping Cart (OK)
 
 * Shopping cart of a user with the State === P (token)
     * .get /order/cart {authorization: Bearer token} and Middleweare is user or high
@@ -173,11 +173,11 @@
     * .patch /order/:state {authorization: Bearer token}
 > OK without middleweares
 
-### Product
+### Product (OK)
 
 * 1 product with its id
     * .get /product/:id
-    > OK
+> OK
 * All the comments from this product (id) "Product.comments"
     * Send array comments data
     * .get /comments/:idProduct
@@ -186,21 +186,21 @@
 * Delete comment if the user is owner
     * .delete /comment/idComment {authorization: Bearer token} and middleweare is user or high
     > if is admin or vendor, delete (Middleweare)
+> OK
 * Insert a new comment (Token)
     * .post /comment {authorization: Bearer token} and middleweare is user or high
 > OK
 * Update or create a new order (Token{id} and Product.id)
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
     * .put /order/:state {authorization: Bearer token} -> Middleweare is user or high
+> OK
 
 
-### Login
+### Login (OK)
 
 * Check email and password -> Send Token (Option remember me)
     * .post /login   -> Recieve token
 > OK
-* Send a email for recover password
-    * .post /recover
 
 
 ### Register (OK)
@@ -216,6 +216,8 @@
     * exists -> send email
     * not exists -> no send email but pretend yes (for more security)
     * .post /email
+* Recover passsword
+  * .patch /recover 
 
 
 ### Admin Panel

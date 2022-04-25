@@ -1770,8 +1770,85 @@ var controller = {
             userUpdate
         })
 
-    }
+    },
 
+    // * -----------------------------------------------------------
+
+    // * ----------------------- RECOVER ----------------------------
+
+    sendEmail: async (req, res) => {
+
+        const { email } = req.body
+        let validate_email
+
+        try {
+            validate_email = (!validator.isEmpty(email) && validator.isEmail(email))
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        if(!validate_email){
+            return res.status(404).send({
+                status: "error",
+                message: "Email invalid"
+            })
+        }
+
+        let userFind = await User.findOne({email: email})
+
+        if(!userFind){
+            return res.status(404).send({
+                status: "error",
+                message: "Doesn't exists any user with this email"
+            })
+        }
+
+        // ! Send email
+
+        res.send("Send email")
+        
+    },
+
+    recoverPassword: async (req, res) => {
+
+        const { password, confirm_password } = req.body
+
+        const reg_password = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        let validate_password, validate_confirm
+
+        try {
+            validate_password = (!validator.isEmpty(password) && reg_password.test(password))
+            validate_confirm = (!validator.isEmpty(confirm_password) && reg_password.test(confirm_password))
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        if(!validate_password && !validate_confirm){
+            return res.status(404).send({
+                status: "error",
+                message: "Password invalids"
+            })
+        }
+
+        if(password != confirm_password){
+            return res.status(404).send({
+                status: "error",
+                message: "Passwords do not match"
+            })
+        }
+
+        // ! Updated the user with the new password
+
+        res.send("User password updated")
+        
+    }
+    
     // * -----------------------------------------------------------
 
 }
