@@ -37,6 +37,8 @@ router.post("/order", controllers.createOrder); // Create new order
 router.patch("/order", controllers.addProductOrder); // Add product in the order that have state === "P"
 router.put("/order", controllers.updateOrder); // Finish the order
 router.get("/orders/user", controllers.getUserOrders); // Get all the orders of a user
+router.get("/order/cart", controllers.getOrderCart); // Get the shopping cart
+router.put("/order/product",  controllers.updateShoppingCart); // Delete a product of a cart
 
 // * -----------------------------------------------------------
 

@@ -145,10 +145,12 @@
 ### Shopping Cart
 
 * Shopping cart of a user with the State === P (token)
-    * .get /order/:state {authorization: Bearer token} and Middleweare is user or high
+    * .get /order/cart {authorization: Bearer token} and Middleweare is user or high
+> OK
 * Edit cart of a user with the State === P -> new data and delete product (token)
     * .put /order/:state {authorization: Bearer token}  and Middleweare is user or high
     * .delete /order/:state {authorization: Bearer token} -> only if order is empty and Middleweare is user or high
+> OK
 
 ### Payment (OK)
 
@@ -365,6 +367,10 @@
   * .put /order {Authorization: Bearer token}
 * User orders
   * .get /orders/user {Authorization: Bearer token}
+* Get the shopping cart of a user
+  * .get /order/cart {authorization: Bearer token}
+* Delete one product of the shopping cart
+  * .put /order/product {authorization: Bearer token}
 
 
 ## Address

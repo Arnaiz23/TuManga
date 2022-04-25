@@ -983,9 +983,23 @@ var controller = {
 
     },
 
-    getOrder: async (req, res) => {
+    getOrderCart: async (req, res) => {
 
+        let userFind = await globalFunctions.getUserToken(req, res)
 
+        let cart = await Order.findOne({ id_client: userFind._id, state: "P" })
+
+        if (!cart) {
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't has a shopping cart"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            cart
+        })
 
     },
 
@@ -1072,6 +1086,45 @@ var controller = {
         res.status(200).send({
             status: "success",
             orders
+        })
+
+    },
+
+    updateShoppingCart: async (req, res) => {
+
+        let { id_product } = req.body
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        let cart = await Order.findOne({ id_client: userFind._id, state: "P" })
+
+        if (!cart) {
+            return res.status(404).send({
+                status: "Error",
+                message: "This user doesn't has a shopping cart"
+            })
+        }
+
+        let products = cart.products
+
+        if (products.includes(id_product)) {
+            let indice = products.indexOf(id_product)
+            if (indice != -1) {
+                products.splice(indice, 1)
+            }
+        }
+
+        let orderUpdate = await Order.findByIdAndUpdate(cart._id, {products: products}, {new:true})
+
+        if(!orderUpdate){
+            return res.status(404).send({
+                status: "Error",
+                message: "This order has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "Error",
+            orderUpdate
         })
 
     },
@@ -1240,9 +1293,9 @@ var controller = {
             })
         }
 
-        let cards = await Billing.find({id_client: userFind._id});
+        let cards = await Billing.find({ id_client: userFind._id });
 
-        if(!cards || cards.length == 0){
+        if (!cards || cards.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't have cards"
@@ -1283,18 +1336,18 @@ var controller = {
 
         let cardDelete = await Billing.findByIdAndDelete(id_card);
 
-        if(!cardDelete){
+        if (!cardDelete) {
             return res.status(404).send({
                 status: "error",
                 message: "This card has not been deleted"
             })
         }
 
-        let cards = await Billing.find({user_id: userFind._id});
+        let cards = await Billing.find({ user_id: userFind._id });
 
-        let userUpdate = await User.findByIdAndUpdate(userFind.id, {billing: cards}, {new:true});
+        let userUpdate = await User.findByIdAndUpdate(userFind.id, { billing: cards }, { new: true });
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been updated"
@@ -1506,36 +1559,36 @@ var controller = {
 
         let address = await Address.findById(id_address)
 
-        if(!address){
+        if (!address) {
             return res.status(404).send({
                 status: "error",
                 message: "This address doesn't exists"
             })
         }
 
-        if(body.name){
+        if (body.name) {
             address.name = body.name
         }
 
-        if(body.number){
+        if (body.number) {
             address.number = body.number
         }
 
-        if(body.floor){
+        if (body.floor) {
             address.floor = body.floor
         }
 
-        if(body.name_person){
+        if (body.name_person) {
             address.name_person = body.name_person
         }
 
-        if(body.location){
+        if (body.location) {
             address.location = body.location
         }
 
-        let addressUpdate = await Address.findByIdAndUpdate(address._id, address, {new:true});
+        let addressUpdate = await Address.findByIdAndUpdate(address._id, address, { new: true });
 
-        if(!addressUpdate){
+        if (!addressUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This address has not been updated"
@@ -1546,7 +1599,7 @@ var controller = {
             status: "success",
             addressUpdate
         })
-        
+
     },
 
     getLastAddress: async (req, res) => {
@@ -1573,9 +1626,9 @@ var controller = {
             })
         }
 
-        let address = await Address.find({user_id: userFind._id}).limit(2)
+        let address = await Address.find({ user_id: userFind._id }).limit(2)
 
-        if(!address || address.length == 0){
+        if (!address || address.length == 0) {
             return res.status(500).send({
                 status: "error",
                 message: "This user doesn't exists"
@@ -1586,7 +1639,7 @@ var controller = {
             status: "success",
             address
         })
-        
+
     },
 
     // * -----------------------------------------------------------
@@ -1597,9 +1650,9 @@ var controller = {
 
         const id_product = req.params.idProduct;
 
-        let comments = await Comment.find({product_id: id_product})
+        let comments = await Comment.find({ product_id: id_product })
 
-        if(!comments || comments.length == 0){
+        if (!comments || comments.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "This product doesn't has comments"
@@ -1610,7 +1663,7 @@ var controller = {
             status: "success",
             comments
         })
-        
+
     },
 
     createComment: async (req, res) => {
@@ -1628,7 +1681,7 @@ var controller = {
 
         let commentSave = await newComment.save()
 
-        if(!commentSave){
+        if (!commentSave) {
             return res.status(404).send({
                 status: "error",
                 message: "This comment has not been saved"
@@ -1639,7 +1692,7 @@ var controller = {
 
         let productFind = await Product.findById(product_id)
 
-        if(!productFind){
+        if (!productFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This product doesn't exists"
@@ -1650,9 +1703,9 @@ var controller = {
 
         comments.push(commentSave._id)
 
-        let productUpdate = await Product.findByIdAndUpdate(product_id, {comments: comments}, {new:true})
+        let productUpdate = await Product.findByIdAndUpdate(product_id, { comments: comments }, { new: true })
 
-        if(!productUpdate){
+        if (!productUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This product has not been updated"
@@ -1663,16 +1716,16 @@ var controller = {
             status: "success",
             productUpdate
         })
-        
+
     },
 
     getUserComments: async (req, res) => {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let comments = await Comment.find({user_id: userFind._id})
+        let comments = await Comment.find({ user_id: userFind._id })
 
-        if(!comments || comments.length == 0){
+        if (!comments || comments.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't has comments"
@@ -1683,7 +1736,7 @@ var controller = {
             status: "success",
             comments
         })
-        
+
     },
 
     deleteComment: async (req, res) => {
@@ -1694,18 +1747,18 @@ var controller = {
 
         let commentDelete = await Comment.findByIdAndDelete(comment_id)
 
-        if(!commentDelete){
+        if (!commentDelete) {
             return res.status(404).send({
                 status: "error",
                 message: "This comment has not been deleted"
             })
         }
 
-        let newComments = await Comment.find({user_id: userFind._id})
+        let newComments = await Comment.find({ user_id: userFind._id })
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, {comments: newComments}, {new:true})
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true })
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been updated"
@@ -1716,7 +1769,7 @@ var controller = {
             status: "success",
             userUpdate
         })
-        
+
     }
 
     // * -----------------------------------------------------------

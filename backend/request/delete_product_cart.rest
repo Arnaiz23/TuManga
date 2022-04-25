@@ -1,7 +1,7 @@
-PATCH http://localhost:3900/api/v1/order
+PUT http://localhost:3900/api/v1/order/product HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjJhMTYwZmUxNmNmZjYwMzVmZjJhOSIsImVtYWlsIjoiYWRyaWFuNUBnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yMlQxMjozNjo0OC4wNjRaIiwiaWF0IjoxNjUwNjMxMDA4LCJleHAiOjE2NTA3MTc0MDh9.CisnZG9PFIsyaaCgjl5LEoF6m2kPqafauJCU_lF224c
 
 {
-    "id_product" : "62613b9aacd5a9764b235061"
+    "id_product" : "6261390558cce88590889f8e"
 }
