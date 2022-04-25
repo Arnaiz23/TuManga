@@ -357,6 +357,7 @@
   * .put /user {Authorization: Bearer token}
 * Delete the user
   * .delete /user {Authorization: Bearer token}
+    * When you delete the user -> delete his comments, his address, his billings and delete the _id comment of it product
 
 
 ## Billing
