@@ -3,7 +3,7 @@ POST http://localhost:3900/api/v1/product
 content-type: application/json
 
 {
-    "name" : "Prueba Imagen",
+    "name" : "Tokyo Revengers 100",
     "price" : 100,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
@@ -11,7 +11,7 @@ content-type: application/json
     "stock" : 5,
     "categories" : ["realidad virtual"],
     "type" : "novela ligera",
-    "number_sales" : 5,
+    "number_sales" : 200,
     "authors" : "Prueba",
     "editorial" : "Prueba",
     "series" : "Prueba",

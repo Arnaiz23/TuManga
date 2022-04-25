@@ -51,6 +51,11 @@ var Order = new Schema({
         type : Number,
         unique : false,
         required : false
+    },
+    total: {
+        type: Number,
+        required: true,
+        unique: false
     }
 });
 

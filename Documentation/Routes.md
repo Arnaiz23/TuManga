@@ -11,14 +11,14 @@
     - [Mangas (OK)](#mangas-ok)
     - [Merchandising (OK)](#merchandising-ok)
     - [My account (OK)](#my-account-ok)
-    - [Shopping Cart](#shopping-cart)
+    - [Shopping Cart (OK)](#shopping-cart-ok)
     - [Payment (OK)](#payment-ok)
-    - [Product](#product)
-    - [Login](#login)
+    - [Product (OK)](#product-ok)
+    - [Login (OK)](#login-ok)
     - [Register (OK)](#register-ok)
-    - [Email](#email)
-    - [Admin Panel](#admin-panel)
-    - [Admin Panel 2](#admin-panel-2)
+    - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword)
+    - [Admin Panel (OK)](#admin-panel-ok)
+    - [Admin Panel 2 (OK)](#admin-panel-2-ok)
     - [Admin Panel 3](#admin-panel-3)
     - [Admin Panel 4](#admin-panel-4)
     - [Order details](#order-details)
@@ -32,6 +32,8 @@
   - [Orders](#orders)
   - [Address](#address)
   - [Comments](#comments)
+  - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword-1)
+  - [Admin](#admin)
   - [Missing](#missing)
 
 ---
@@ -142,7 +144,7 @@
     > OK
 
 
-### Shopping Cart
+### Shopping Cart (OK)
 
 * Shopping cart of a user with the State === P (token)
     * .get /order/cart {authorization: Bearer token} and Middleweare is user or high
@@ -173,11 +175,11 @@
     * .patch /order/:state {authorization: Bearer token}
 > OK without middleweares
 
-### Product
+### Product (OK)
 
 * 1 product with its id
     * .get /product/:id
-    > OK
+> OK
 * All the comments from this product (id) "Product.comments"
     * Send array comments data
     * .get /comments/:idProduct
@@ -186,21 +188,22 @@
 * Delete comment if the user is owner
     * .delete /comment/idComment {authorization: Bearer token} and middleweare is user or high
     > if is admin or vendor, delete (Middleweare)
+> OK
 * Insert a new comment (Token)
     * .post /comment {authorization: Bearer token} and middleweare is user or high
 > OK
 * Update or create a new order (Token{id} and Product.id)
     * .post /order {authorization: Bearer token} -> Middleweare is user or high
     * .put /order/:state {authorization: Bearer token} -> Middleweare is user or high
+> OK
 
 
-### Login
+
+### Login (OK)
 
 * Check email and password -> Send Token (Option remember me)
     * .post /login   -> Recieve token
 > OK
-* Send a email for recover password
-    * .post /recover
 
 
 ### Register (OK)
@@ -210,29 +213,36 @@
 > OK
 
 
-### Email
+### Email (In process on the branch "recoverPassword")
 
 * Receive email and check if exists
     * exists -> send email
     * not exists -> no send email but pretend yes (for more security)
     * .post /email
+* Recover passsword
+    * .patch /recover
 
 
-### Admin Panel
+
+### Admin Panel (OK)
 
 * **(Token admin or vendor)**
 * Get the total of the collection "Orders" (return only the number)
     * .get /total/orders -> Middleweare  {authorization: Bearer token}
+> OK
 * Get the total of the collection "Users" (return only the number)
     * .get /total/users -> Middleweare  {authorization: Bearer token}
+> OK
 * Get the total_earnings of the collection "Orders" (return only the number) **Miss**
    * Go to all the orders and save in a variable the result of the price
    * Create a new field in the Orders collection with the total price???
+> OK
 * Get the 5 or 10 most best sellers products for the statistics
    * Filter with the "nº sales"
    * .get /products/sales/:limit -> Middleweare  {authorization: Bearer token}
+> OK
 
-### Admin Panel 2
+### Admin Panel 2 (OK)
 
 * **(Token admin or vendor)**
 * Get all the "Users or option selected"
@@ -241,18 +251,21 @@
     * .get /products -> Middleweare {authorization: Bearer token}
     > OK without middleweare
     * .get /orders -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /roles -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /comments -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
 
 ### Admin Panel 3
 
 * **(Token admin or vendor)**
 * Edit the option selected
-    * .put /user/:id -> Middleweare {authorization: Bearer token}
-    * .put /product/:id -> Middleweare {authorization: Bearer token}
-    * .put /order/:id -> Middleweare {authorization: Bearer token}
-    * .put /role/:id -> Middleweare {authorization: Bearer token}
-    * .put /comment/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/product/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/order/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/role/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/comment/:id -> Middleweare {authorization: Bearer token}
 * Get this user(id)
     * .get /user/:id -> Middleweare {authorization: Bearer token}
 * Delete this user(id)
@@ -334,22 +347,22 @@
 
 * Create new user (Register) **(not admin)**
     * .post /user
-* Get all users º
-    * .get /users
 * Get user with token
     * .get /user {Authorization: Bearer token}
 * Change user state with token
     * .patch /user {Authorization: Bearer token}
 * Login
     * .post /login
+* Update the user
+  * .put /user {Authorization: Bearer token}
+* Delete the user
+  * .delete /user {Authorization: Bearer token}
 
 
 ## Billing
 
 * Create card
     * .post /card {Authorization: Bearer token}
-* Get all cards
-    * .get /cards
 * Get last 2 cards
     * .get /cards/last {Authorization: Bearer token}
 * Get the user cards
@@ -397,6 +410,30 @@
   * .get /comments/user {authorization: Bearer token}
 * Delete a comment
   * .delete /comment/:idComment {authorization: Bearer token}
+
+## Email (In process on the branch "recoverPassword")
+
+
+## Admin
+
+* Get the total orders
+  * .get /total/orders -> Middleweare {Authorization: Bearer token}
+* Get the total users
+  * .get /total/users -> Middleweare {Authorization: Bearer token}
+* Get the total earnings
+  * .get /total/earnings -> Middleweare {Authorization: Bearer token}
+* Get the most betsellers products
+  * .get /products/sales/:limit -> Middleweare {authorization: Bearer token}
+* Get all orders
+  * .get /admin/orders -> Middleweare {authorization: Bearer token}
+* Get all users º
+  * .get /admin/users -> Middleweare {authorization: Bearer token}
+* Get all cards º
+    * .get /admin/cards -> Middleweare {authorization: Bearer token}
+* Get all roles º
+    * .get /admin/roles -> Middleweare {authorization: Bearer token}
+* Get all comments º
+    * .get /admin/comments -> Middleweare {authorization: Bearer token}
 
 ---
 

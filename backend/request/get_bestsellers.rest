@@ -1,0 +1,2 @@
+GET http://localhost:3900/api/v1/products/sales/5 HTTP/1.1
+# ! Miss authorization

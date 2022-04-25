@@ -23,10 +23,11 @@ router.get("/product/:id", controllers.getProduct); // Get one product
 // * ----------------------- USER ------------------------------
 
 router.post("/user", controllers.createUser); // Create a new user
-router.get("/users", controllers.getAllUsers); // Get all users
 router.get("/user", controllers.getUser); // Get one user with token
 router.patch("/user", controllers.changeUserState); // Change the state of user
 router.post("/login", controllers.login); // Login
+router.put("/user", controllers.updateUser); // Update the user
+router.delete("/user", controllers.deleteUser); // Delete the user
 
 // * -----------------------------------------------------------
 
@@ -45,7 +46,6 @@ router.put("/order/product",  controllers.updateShoppingCart); // Delete a produ
 // * --------------------- BILLING -----------------------------
 
 router.post("/card" , controllers.createCard); // Create new card
-router.get("/cards", controllers.getAllCards); // Get all cards
 router.get("/cards/last", controllers.getLastCards); // Get 2 last cards
 router.get("/cards/user", controllers.getUserCards); // Get all the cards of a user
 router.delete("/card/:id", controllers.deleteCard); // Delete one card
@@ -86,6 +86,20 @@ router.get("/filter/product/:type/:option&:limit&:skip", controllers.filterProdu
 
 router.get("/sort/products/manga/:option&:limit&:skip", controllers.sortManga); // Sort mangas
 router.get("/sort/products/merchandising/:option&:limit&:skip", controllers.sortMerchandising); // Sort merchandising
+
+// * ---------------------------------------------------------
+
+// * --------------------- ADMIN ----------------------------
+
+router.get("/total/orders", controllers.totalOrders); // Get the total orders (Admin)
+router.get("/total/users", controllers.totalUsers); // Get the total users (Admin)
+router.get("/total/earnings", controllers.totalEarnings); // Get the total earnings (Admin)
+router.get("/products/sales/:limit", controllers.mostBestsellers); // Get the most bestsellers products
+router.get("/admin/orders", controllers.getAllOrders); // Get all the orders
+router.get("/admin/users", controllers.getAllUsers); // Get all users
+router.get("/admin/cards", controllers.getAllCards); // Get all cards
+router.get("/admin/roles", controllers.getAllRoles); // Get all roles
+router.get("/admin/comments", controllers.getAllComments); // Get all comments
 
 // * ---------------------------------------------------------
 

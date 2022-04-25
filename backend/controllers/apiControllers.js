@@ -761,6 +761,118 @@ var controller = {
 
     },
 
+    updateUser: async (req, res) => {
+
+        const body = req.body
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        // Nombre apellidos password
+        if(body.name){
+            userFind.name = body.name
+        }
+
+        if(body.last_name){
+            userFind.last_name = body.last_name
+        }
+
+        if(body.password && body.confirm_password){
+            const regex = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+
+            if(body.password != body.confirm_password){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The passwords don't match"
+                })
+            }
+
+            if(!regex.test(body.password)){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The passwords do not meet the requirements"
+                })
+            }
+
+            let userCompare = await User.comparePasswords(body.password, userFind.password_hash)
+
+            if(userCompare){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The old password and the new are the same"
+                })
+            }
+
+            let newPassword = await User.encrypt(body.password)
+
+            userFind.password_hash = newPassword
+
+        }
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, {new:true})
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userUpdate
+        })
+        
+    },
+
+    deleteUser: async (req, res) => {
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        let userDelete = await User.findByIdAndDelete(userFind._id)
+
+        if(!userDelete){
+            return res.status(404).send({
+                status: "error",
+                message: "The user has not been deleted"
+            })
+        }
+
+        let addressUser = await Address.find({user_id: userFind._id})
+        
+        if(addressUser.length > 0){
+            addressUser.forEach(async address => {
+                await Address.findByIdAndDelete(address._id)
+            })
+        }
+
+        let billingAddress = await Billing.find({user_id: userFind._id})
+
+        if(billingAddress.length > 0){
+            billingAddress.forEach(async bill => {
+                await Billing.findByIdAndDelete(bill._id)
+            })
+        }
+
+        let commentsUser = await Comment.find({user_id: userFind._id})
+
+        if(commentsUser.length > 0){
+            commentsUser.forEach(async comment => {
+                await Comment.findByIdAndDelete(comment._id)
+                let product = await Product.findById(comment.product_id)
+                let comments = product.comments
+                let indice = comments.indexOf(comment._id)
+                comments.splice(indice, 1)
+                await Product.findByIdAndUpdate(comment.product_id, {comments: comments})
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userDelete
+        })
+        
+    },
+
     // * -----------------------------------------------------------
 
     // * ----------------------- ORDERS ----------------------------
@@ -769,28 +881,7 @@ var controller = {
 
         const { id_product } = req.body;
 
-        let token = req.get("Authorization");
-        token = token.split(" ")[1];
-
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let user = await User.findById(userToken.id);
-
-        if (!user) {
-            return res.status(404).send({
-                status: "error",
-                message: "User not found"
-            })
-        }
+        let user = await globalFunctions.getUserToken(req, res)
 
         let newOrder = Order();
 
@@ -818,6 +909,7 @@ var controller = {
         newOrder.state = "P"
         newOrder.send_date = null
         newOrder.id_client = user.id
+        newOrder.total = product.price
 
         newOrder.save((err, saveOrder) => {
             if (err || !saveOrder) {
@@ -854,86 +946,50 @@ var controller = {
 
         const { id_product } = req.body;
 
-        let token = req.get("Authorization");
-        token = token.split(" ")[1];
+        let userFind = await globalFunctions.getUserToken(req, res)
 
-        let userToken;
+        let order = await Order.findOne({id_client: userFind._id, state: "P"})
 
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
+        if (!order || order.length == 0) {
             return res.status(404).send({
                 status: "error",
-                message: "Token not valid"
+                message: "This user doesn't have orders in proccess"
             })
         }
 
-        let userFind = await User.findById(userToken.id)
+        let newProduct = await Product.findById(id_product)
 
-        if (!userFind) {
-            res.status(404).send({
+        if(!newProduct){
+            return res.status(404).send({
                 status: "error",
-                message: "This user doesn't exists"
+                message: "This product doesn't exists"
             })
         }
 
-        Order.findOne({ id_client: userFind._id, state: "P" }, (err, order) => {
-
-            if (err) {
-                // ! Errorhandler
-            }
-
-            if (!order || order.length == 0) {
-                return res.status(404).send({
-                    status: "error",
-                    message: "This user doesn't have orders in proccess"
-                })
-            }
-
-            let ordersNew = order.products;
+        let ordersNew = order.products;
             ordersNew.push(id_product)
 
-            Order.findByIdAndUpdate(order._id, { products: ordersNew }, { new: true }, (err, orderUpdate) => {
-                if (err || !orderUpdate) {
-                    return res.status(500).send({
-                        status: "error",
-                        message: "The order has not been update"
-                    })
-                }
+        let total = order.total + newProduct.price
 
-                return res.status(200).send({
-                    status: "success",
-                    orderUpdate
-                })
+        let orderUpdate = await Order.findByIdAndUpdate(order._id, { products: ordersNew, total: total }, { new: true })
+        
+        if (!orderUpdate) {
+            return res.status(500).send({
+                status: "error",
+                message: "The order has not been update"
             })
+        }
 
-        });
+        return res.status(200).send({
+            status: "success",
+            orderUpdate
+        })
     },
 
     updateOrder: async (req, res) => {
         let { delivery_address, billing, telephone } = req.body;
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(404).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
+        
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let orderProcess = await Order.findOne({ id_client: userFind._id, state: "P" });
 
@@ -1047,8 +1103,22 @@ var controller = {
 
     },
 
-    getAllOrders: (req, res) => {
+    getAllOrders: async (req, res) => {
 
+        let orders = await Order.find()
+
+        if(!orders || orders.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Doesn't exists orders"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            orders
+        })
+        
     },
 
     getUserOrders: async (req, res) => {
@@ -1703,6 +1773,18 @@ var controller = {
 
         comments.push(commentSave._id)
 
+        let commentsUser = userFind.comments
+        commentsUser.push(commentSave._id)
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id,{comments: commentsUser},{new:true})
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
         let productUpdate = await Product.findByIdAndUpdate(product_id, { comments: comments }, { new: true })
 
         if (!productUpdate) {
@@ -1770,9 +1852,115 @@ var controller = {
             userUpdate
         })
 
-    }
+    },
+
+    getAllComments: async (req, res) => {
+
+        let comments = await Comment.find()
+
+        if(!comments || comments.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Doesn't exists comments"
+            })
+        }
+        
+        return res.status(200).send({
+            status: "success",
+            comments
+        })
+        
+    },
 
     // * -----------------------------------------------------------
+
+    // * ----------------------- ADMIN ----------------------------
+
+    totalOrders: async (req, res) => {
+
+        let totalOrders = await Order.find()
+
+        totalOrders = totalOrders.length
+
+        return res.status(200).send({
+            status: "success",
+            totalOrders
+        })
+        
+    },
+
+    totalUsers: async (req, res) => {
+
+        let totalUsers = await User.find()
+
+        totalUsers = totalUsers.length
+
+        return res.status(200).send({
+            status: "success",
+            totalUsers
+        })
+        
+    },
+
+    totalEarnings: async (req, res) => {
+
+        let totalOrders = await Order.find({ state: "F" })
+        let totalEarnings = 0
+
+        totalOrders.forEach(order => {
+            totalEarnings += order.total
+        })
+
+        return res.status(200).send({
+            status: "success",
+            totalEarnings
+        })
+        
+    },
+
+    mostBestsellers: async (req, res) => {
+
+        const {limit} = req.params
+
+        let products = await Product.find().sort({ number_sales: "desc" }).limit(limit)
+
+        if(!products || products.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Doesn't exists products"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            products
+        })
+        
+    },
+
+    // * ----------------------------------------------------------
+
+    // * -------------------------- ROLES ----------------------------
+
+    getAllRoles: async (req, res) => {
+
+        let roles = await Role.find()
+
+        if(!roles || roles.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Roles doesn't found"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            roles
+        })
+        
+    }
+    
+    // * -------------------------------------------------------------
 
 }
 
