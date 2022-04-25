@@ -19,7 +19,7 @@
     - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword)
     - [Admin Panel (OK)](#admin-panel-ok)
     - [Admin Panel 2 (OK)](#admin-panel-2-ok)
-    - [Admin Panel 3](#admin-panel-3)
+    - [Admin Panel 3 (OK)](#admin-panel-3-ok)
     - [Admin Panel 4](#admin-panel-4)
     - [Order details](#order-details)
     - [Others](#others)
@@ -257,31 +257,30 @@
     * .get /comments -> Middleweare {authorization: Bearer token}
     > OK without middleweare
 
-### Admin Panel 3
+### Admin Panel 3 (OK)
 
 * **(Token admin or vendor)**
 * Edit the option selected
     * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
+    > OK
     * .put /admin/product/:id -> Middleweare {authorization: Bearer token}
-    * .put /admin/order/:id -> Middleweare {authorization: Bearer token}
-    * .put /admin/role/:id -> Middleweare {authorization: Bearer token}
-    * .put /admin/comment/:id -> Middleweare {authorization: Bearer token}
+    > OK
+> OK
 * Get this user(id)
     * .get /user/:id -> Middleweare {authorization: Bearer token}
+> OK
 * Delete this user(id)
     * .delete /user/:id -> Middleweare {authorization: Bearer token}
+> OK
 
 ### Admin Panel 4
 
 * **(Token admin or vendor)**
 * Insert the option selected
     * .post /user -> Middleweare {authorization: Bearer token}
-    > OK without middleweare
+    
     * .post /product -> Middleweare {authorization: Bearer token}
     > OK without middleweare
-    * .post /order -> Middleweare {authorization: Bearer token}
-    * .post /role -> Middleweare {authorization: Bearer token}
-    * .post /comment -> Middleweare {authorization: Bearer token}
 
 ### Order details
 
@@ -435,6 +434,14 @@
     * .get /admin/roles -> Middleweare {authorization: Bearer token}
 * Get all comments º
     * .get /admin/comments -> Middleweare {authorization: Bearer token}
+* Update one user (Admin)
+  * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Update one product (Admin)
+  * .put /admin/product/:id -> Middleweare {authorization: Bearer token}
+* Get one user (Admin)
+  * .get /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Delete one user (Admin)
+  * .delete /admin/user/:id -> Middleweare {authorization: Bearer token}
 
 ---
 
@@ -444,3 +451,5 @@
 * Reuse the trycatch jwt
 * Create the user admin automatically
 * No send the password_hash
+* Increase the number_sales of the products purchased
+* DeleteComments -> delete in the product

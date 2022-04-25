@@ -12,7 +12,6 @@ router.get("/", controllers.test);
 // * --------------------- PRODUCTS ----------------------------
 
 router.get("/products/new", controllers.getNewProducts); // Get the 8 new products
-router.post("/product", controllers.newProduct); // Create a new product
 router.get("/products/manga/:limit&:skip", controllers.getMangas); // Get mangas or light novel 8 to 8
 router.get("/products/merchandising/:limit&:skip", controllers.getMerchandising); // Get merchandising 8 to 8
 router.get("/products", controllers.getAllProducts); // Get all products
@@ -100,6 +99,12 @@ router.get("/admin/users", controllers.getAllUsers); // Get all users
 router.get("/admin/cards", controllers.getAllCards); // Get all cards
 router.get("/admin/roles", controllers.getAllRoles); // Get all roles
 router.get("/admin/comments", controllers.getAllComments); // Get all comments
+router.put("/admin/user/:id", controllers.updateUserAdmin); // Update one user (Admin)
+router.put("/admin/product/:id", controllers.updateProductAdmin); // Update one product (Admin)
+router.get("/admin/user/:id", controllers.getUserAdmin); // Get one user (Admin)
+router.delete("/admin/user/:id", controllers.deleteUserAdmin); // Delete one user (Admin)
+router.post("/admin/user", controllers.createUserAdmin); // Create one user
+router.post("/product", controllers.newProduct); // Create a new product
 
 // * ---------------------------------------------------------
 

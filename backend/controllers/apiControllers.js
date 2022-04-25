@@ -16,6 +16,10 @@ const fs = require('fs')
 
 let globalFunctions = require('../globalFunctions/globalFunctions');
 
+// * --------------------- VARIABLES ----------------------
+
+// * ------------------------------------------------------
+
 var controller = {
     test: (req, res) => {
         return res.send("Hello test");
@@ -768,25 +772,25 @@ var controller = {
         let userFind = await globalFunctions.getUserToken(req, res)
 
         // Nombre apellidos password
-        if(body.name){
+        if (body.name) {
             userFind.name = body.name
         }
 
-        if(body.last_name){
+        if (body.last_name) {
             userFind.last_name = body.last_name
         }
 
-        if(body.password && body.confirm_password){
+        if (body.password && body.confirm_password) {
             const regex = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
 
-            if(body.password != body.confirm_password){
+            if (body.password != body.confirm_password) {
                 return res.status(404).send({
                     status: "error",
                     message: "The passwords don't match"
                 })
             }
 
-            if(!regex.test(body.password)){
+            if (!regex.test(body.password)) {
                 return res.status(404).send({
                     status: "error",
                     message: "The passwords do not meet the requirements"
@@ -795,7 +799,7 @@ var controller = {
 
             let userCompare = await User.comparePasswords(body.password, userFind.password_hash)
 
-            if(userCompare){
+            if (userCompare) {
                 return res.status(404).send({
                     status: "error",
                     message: "The old password and the new are the same"
@@ -808,9 +812,9 @@ var controller = {
 
         }
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, {new:true})
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, { new: true })
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been updated"
@@ -821,7 +825,7 @@ var controller = {
             status: "success",
             userUpdate
         })
-        
+
     },
 
     deleteUser: async (req, res) => {
@@ -830,39 +834,39 @@ var controller = {
 
         let userDelete = await User.findByIdAndDelete(userFind._id)
 
-        if(!userDelete){
+        if (!userDelete) {
             return res.status(404).send({
                 status: "error",
                 message: "The user has not been deleted"
             })
         }
 
-        let addressUser = await Address.find({user_id: userFind._id})
-        
-        if(addressUser.length > 0){
+        let addressUser = await Address.find({ user_id: userFind._id })
+
+        if (addressUser.length > 0) {
             addressUser.forEach(async address => {
                 await Address.findByIdAndDelete(address._id)
             })
         }
 
-        let billingAddress = await Billing.find({user_id: userFind._id})
+        let billingAddress = await Billing.find({ user_id: userFind._id })
 
-        if(billingAddress.length > 0){
+        if (billingAddress.length > 0) {
             billingAddress.forEach(async bill => {
                 await Billing.findByIdAndDelete(bill._id)
             })
         }
 
-        let commentsUser = await Comment.find({user_id: userFind._id})
+        let commentsUser = await Comment.find({ user_id: userFind._id })
 
-        if(commentsUser.length > 0){
+        if (commentsUser.length > 0) {
             commentsUser.forEach(async comment => {
                 await Comment.findByIdAndDelete(comment._id)
                 let product = await Product.findById(comment.product_id)
                 let comments = product.comments
                 let indice = comments.indexOf(comment._id)
                 comments.splice(indice, 1)
-                await Product.findByIdAndUpdate(comment.product_id, {comments: comments})
+                await Product.findByIdAndUpdate(comment.product_id, { comments: comments })
             })
         }
 
@@ -870,7 +874,7 @@ var controller = {
             status: "success",
             userDelete
         })
-        
+
     },
 
     // * -----------------------------------------------------------
@@ -948,7 +952,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let order = await Order.findOne({id_client: userFind._id, state: "P"})
+        let order = await Order.findOne({ id_client: userFind._id, state: "P" })
 
         if (!order || order.length == 0) {
             return res.status(404).send({
@@ -959,7 +963,7 @@ var controller = {
 
         let newProduct = await Product.findById(id_product)
 
-        if(!newProduct){
+        if (!newProduct) {
             return res.status(404).send({
                 status: "error",
                 message: "This product doesn't exists"
@@ -967,12 +971,12 @@ var controller = {
         }
 
         let ordersNew = order.products;
-            ordersNew.push(id_product)
+        ordersNew.push(id_product)
 
         let total = order.total + newProduct.price
 
         let orderUpdate = await Order.findByIdAndUpdate(order._id, { products: ordersNew, total: total }, { new: true })
-        
+
         if (!orderUpdate) {
             return res.status(500).send({
                 status: "error",
@@ -988,7 +992,7 @@ var controller = {
 
     updateOrder: async (req, res) => {
         let { delivery_address, billing, telephone } = req.body;
-        
+
         let userFind = await globalFunctions.getUserToken(req, res)
 
         let orderProcess = await Order.findOne({ id_client: userFind._id, state: "P" });
@@ -1107,7 +1111,7 @@ var controller = {
 
         let orders = await Order.find()
 
-        if(!orders || orders.length == 0){
+        if (!orders || orders.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Doesn't exists orders"
@@ -1118,7 +1122,7 @@ var controller = {
             status: "success",
             orders
         })
-        
+
     },
 
     getUserOrders: async (req, res) => {
@@ -1183,9 +1187,9 @@ var controller = {
             }
         }
 
-        let orderUpdate = await Order.findByIdAndUpdate(cart._id, {products: products}, {new:true})
+        let orderUpdate = await Order.findByIdAndUpdate(cart._id, { products: products }, { new: true })
 
-        if(!orderUpdate){
+        if (!orderUpdate) {
             return res.status(404).send({
                 status: "Error",
                 message: "This order has not been updated"
@@ -1776,9 +1780,9 @@ var controller = {
         let commentsUser = userFind.comments
         commentsUser.push(commentSave._id)
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id,{comments: commentsUser},{new:true})
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: commentsUser }, { new: true })
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been updated"
@@ -1858,18 +1862,18 @@ var controller = {
 
         let comments = await Comment.find()
 
-        if(!comments || comments.length == 0){
+        if (!comments || comments.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Doesn't exists comments"
             })
         }
-        
+
         return res.status(200).send({
             status: "success",
             comments
         })
-        
+
     },
 
     // * -----------------------------------------------------------
@@ -1886,7 +1890,7 @@ var controller = {
             status: "success",
             totalOrders
         })
-        
+
     },
 
     totalUsers: async (req, res) => {
@@ -1899,7 +1903,7 @@ var controller = {
             status: "success",
             totalUsers
         })
-        
+
     },
 
     totalEarnings: async (req, res) => {
@@ -1915,16 +1919,16 @@ var controller = {
             status: "success",
             totalEarnings
         })
-        
+
     },
 
     mostBestsellers: async (req, res) => {
 
-        const {limit} = req.params
+        const { limit } = req.params
 
         let products = await Product.find().sort({ number_sales: "desc" }).limit(limit)
 
-        if(!products || products.length == 0){
+        if (!products || products.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Doesn't exists products"
@@ -1935,6 +1939,238 @@ var controller = {
             status: "success",
             products
         })
+
+    },
+
+    updateUserAdmin: async (req, res) => {
+
+        const id_user = req.params.id
+        const body = req.body
+
+        let userFind = await User.findById(id_user)
+
+        if (!userFind) {
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+
+        // name, last_name, email, state, role
+
+        // ? If user is admin
+        // * req.admin = true (In the middleweare admin)
+        if (req.admin && body.role) {
+            let newRole = await Role.findOne({ name: { $in: body.role } })
+
+            if (!newRole) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "This role doesn't exists"
+                })
+            }
+
+            userFind.role = newRole._id
+        }
+
+        if (body.name) {
+            userFind.name = body.name
+        }
+
+        if (body.last_name) {
+            userFind.last_name = body.last_name
+        }
+
+        if (body.email) {
+            userFind.email = body.email
+        }
+
+        if (body.state) {
+            userFind.email = body.email
+        }
+
+        let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true })
+
+        if (!userUpdate) {
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userUpdate
+        })
+
+    },
+
+    updateProductAdmin: async (req, res) => {
+
+        const id_product = req.params.id
+        const body = req.body
+
+        const $state = ["new", "old"];
+        const $numberValid = /^[0-9]+$/;
+        const $categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
+        const $type = ["manga", "novela ligera", "merchandising"];
+
+        // name price description short_description state stock categories type number_sales authors editorial series
+
+        let productFind = await Product.findById(id_product)
+
+        if (!productFind) {
+            return res.status(404).send({
+                status: "error",
+                message: "This product doesn't exists"
+            })
+        }
+
+        if (body.name) {
+            productFind.name = body.name
+        }
+
+        if (body.price && $numberValid.test(body.price)) {
+            productFind.price = body.price
+        }
+
+        if (body.description) {
+            productFind.description = body.description
+        }
+
+        if (body.short_description) {
+            productFind.short_description = body.short_description
+        }
+
+        if (body.state && $state.includes(body.state)) {
+            productFind.state = body.state
+        }
+
+        if (body.stock && $numberValid.test(body.stock)) {
+            productFind.stock = body.stock
+        }
+
+        if (body.categories) {
+
+            let validateCategories = body.categories.map(categorie => {
+                if ($categories.includes(categorie)) {
+                    return true
+                } else {
+                    return false
+                }
+            });
+            
+            let validateCategories2 = !validateCategories.includes(false);
+
+            if (validateCategories2) {
+                productFind.categories = body.categories
+            }
+        }
+
+        if (body.type && $type.includes(body.type)) {
+            productFind.type = body.type
+        }
+
+        if (body.number_sales && $numberValid.test(body.number_sales)) {
+            productFind.number_sales = body.number_sales
+        }
+
+        if (body.authors) {
+            productFind.authors = body.authors
+        }
+
+        if (body.editorial) {
+            productFind.editorial = body.editorial
+        }
+
+        if (body.series) {
+            productFind.series = body.series
+        }
+
+        let productUpdate = await Product.findByIdAndUpdate(id_product, productFind, {new:true})
+
+        if(!productUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This product has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            productUpdate
+        })
+
+    },
+
+    getUserAdmin: async (req, res) => {
+
+        const id_user = req.params.id
+
+        let userFind = await User.findById(id_user)
+
+        if(!userFind){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userFind
+        })
+        
+    },
+
+    deleteUserAdmin: async (req, res) => {
+
+        const id_user = req.params.id
+
+        let userDelete = await User.findByIdAndDelete(id_user)
+
+        if(!userDelete){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been deleted"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            userDelete
+        })
+
+    },
+
+    createUserAdmin: async (req, res) => {
+
+        const { name, last_name, email, password, state, role } = req.body
+
+        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        let validate_email, validate_password
+
+        try {
+            validate_email = (!validator.isEmpty(email) && validator.isEmail(email))
+            validate_password = regexp.test(password)
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found"
+            })
+        }
+
+        if(validate_email && validate_password){
+
+            // ! Create the user
+
+        }else{
+            return res.status(404).send({
+                status: "error",
+                message: "Data invalid"
+            })
+        }
         
     },
 
@@ -1946,7 +2182,7 @@ var controller = {
 
         let roles = await Role.find()
 
-        if(!roles || roles.length == 0){
+        if (!roles || roles.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Roles doesn't found"
@@ -1957,9 +2193,9 @@ var controller = {
             status: "success",
             roles
         })
-        
+
     }
-    
+
     // * -------------------------------------------------------------
 
 }
