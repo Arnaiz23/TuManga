@@ -39,6 +39,7 @@ router.put("/order", controllers.updateOrder); // Finish the order
 router.get("/orders/user", controllers.getUserOrders); // Get all the orders of a user
 router.get("/order/cart", controllers.getOrderCart); // Get the shopping cart
 router.put("/order/product",  controllers.updateShoppingCart); // Delete a product of a cart
+router.get("/order/:id", controllers.getOrderId); // Get one order
 
 // * -----------------------------------------------------------
 

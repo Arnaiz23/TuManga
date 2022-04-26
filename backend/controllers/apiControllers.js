@@ -749,11 +749,18 @@ var controller = {
 
             let token = jwt.sign(payload, config.JWT_key, { expiresIn: rememberTime });
 
-            res.status(200).send({
-                status: "success",
-                rememberTime,
-                token
-            })
+            if(user.state === "Disabled"){
+                res.status(200).send({
+                    status: "success",
+                    token,
+                    "userState" : "Disabled"
+                })
+            }else{
+                res.status(200).send({
+                    status: "success",
+                    token
+                })
+            }
 
 
         } else {
@@ -1201,6 +1208,78 @@ var controller = {
             orderUpdate
         })
 
+    },
+
+    getOrderId: async (req, res) => {
+
+        // IMG product, name product, address, payment method, total order
+
+        const id_order = req.params.id
+
+        let userFind = await globalFunctions.getUserToken(req, res)
+
+        if(!userFind.cart.includes(id_order)){
+            return res.status(404).send({
+                status: "error",
+                message: "This id not match with the user orders"
+            })
+        }
+
+        let order = await Order.findById(id_order)
+
+        if(!order){
+            return res.status(404).send({
+                status: "error",
+                message: "This order doesn't exists"
+            })
+        }
+
+        let billing = await Billing.findById(order.billing, {_id: false, user_id: false, encrypt_card: false})
+
+        if(!billing){
+            return res.status(404).send({
+                status: "error",
+                message: "This card doesn't exists"
+            })
+        }
+
+        let address = await Address.findById(order.delivery_address, {_id: false, user_id: false})
+
+        if(!address){
+            return res.status(404).send({
+                status: "error",
+                message: "This address doesn't exists"
+            })
+        }
+
+        let searchProducts = async () => {
+
+            let productArray = []
+            
+            for await (let product of order.products){
+                let productData = await Product.findById(product._id, {name: true, _id: false, image: true})
+                productArray.push(productData)
+            }
+
+            return productArray
+        }
+
+        let products = await searchProducts()
+
+        let data = {
+            products : products,
+            address : address,
+            payment : billing,
+            total: order.total,
+            telephone: order.telephone,
+            delivered_date : order.send_date
+        }
+
+        return res.status(200).send({
+            status: "success",
+            data
+        })
+        
     },
 
     // * -----------------------------------------------------------
@@ -2149,11 +2228,14 @@ var controller = {
         const { name, last_name, email, password, state, role } = req.body
 
         const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
-        let validate_email, validate_password
+        const $role = ["usuario", "admin", "owner", "empleado"]
+        const $state = ["Active", "Disabled"]
+        let validate_email, validate_password, validate_role
 
         try {
             validate_email = (!validator.isEmpty(email) && validator.isEmail(email))
             validate_password = regexp.test(password)
+            validate_role = (!validator.isEmpty(role) && $role.includes(role))
         } catch (error) {
             return res.status(404).send({
                 status: "error",
@@ -2161,9 +2243,50 @@ var controller = {
             })
         }
 
-        if(validate_email && validate_password){
+        if(validate_email && validate_password && validate_role){
+
+            let userMatch = await User.find({email: email})
+
+            if(userMatch.length > 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "This email already exists"
+                })
+            }
 
             // ! Create the user
+
+            const password_hash = await User.encrypt(password)
+
+            let newUser = new User({
+                name,
+                last_name,
+                email,
+                password_hash,
+                role
+            })
+
+            if(state && $state.includes(state)){
+                newUser.state = state
+            }
+
+            let roleId = await Role.findOne({ name: { $in: role } })
+
+            newUser.role = roleId._id
+
+            let userSave = await newUser.save()
+
+            if(!userSave){
+                return res.status(404).send({
+                    status: "error",
+                    message: "This user has not been saved"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                userSave
+            })
 
         }else{
             return res.status(404).send({

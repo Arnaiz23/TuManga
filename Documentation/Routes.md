@@ -20,8 +20,8 @@
     - [Admin Panel (OK)](#admin-panel-ok)
     - [Admin Panel 2 (OK)](#admin-panel-2-ok)
     - [Admin Panel 3 (OK)](#admin-panel-3-ok)
-    - [Admin Panel 4](#admin-panel-4)
-    - [Order details](#order-details)
+    - [Admin Panel 4 (OK)](#admin-panel-4-ok)
+    - [Order details (OK)](#order-details-ok)
     - [Others](#others)
   - [Products](#products)
   - [Search](#search)
@@ -273,16 +273,16 @@
     * .delete /user/:id -> Middleweare {authorization: Bearer token}
 > OK
 
-### Admin Panel 4
+### Admin Panel 4 (OK)
 
 * **(Token admin or vendor)**
 * Insert the option selected
     * .post /user -> Middleweare {authorization: Bearer token}
-    
+    > OK without middleweare
     * .post /product -> Middleweare {authorization: Bearer token}
     > OK without middleweare
 
-### Order details
+### Order details (OK)
 
 * Get the order that had the id who recive
     * .get /order/:id {authorization: Bearer token} and middleweare is user or high
@@ -308,8 +308,6 @@
 
 * Get the 8 new products
     * .get /products/new
-* Create a new product º
-    * .post /product
 * Get mangas or ligth novels with paginate *
     * .get /products/manga/:limit&:skip
 * Get merchandising with paginate *
@@ -352,6 +350,7 @@
     * .patch /user {Authorization: Bearer token}
 * Login
     * .post /login
+    > If the user has the state = "Disabled" and login, question in the Frontend if want change the state. Yes -> change state || No -> delete the token and logout
 * Update the user
   * .put /user {Authorization: Bearer token}
 * Delete the user
@@ -384,6 +383,8 @@
   * .get /order/cart {authorization: Bearer token}
 * Delete one product of the shopping cart
   * .put /order/product {authorization: Bearer token}
+* Get one order with id (OrderDetails)
+  * .get /order/:id {authorization: Bearer token} and middleweare is user or high
 
 
 ## Address
@@ -429,11 +430,11 @@
 * Get all users º
   * .get /admin/users -> Middleweare {authorization: Bearer token}
 * Get all cards º
-    * .get /admin/cards -> Middleweare {authorization: Bearer token}
+  * .get /admin/cards -> Middleweare {authorization: Bearer token}
 * Get all roles º
-    * .get /admin/roles -> Middleweare {authorization: Bearer token}
+  * .get /admin/roles -> Middleweare {authorization: Bearer token}
 * Get all comments º
-    * .get /admin/comments -> Middleweare {authorization: Bearer token}
+  * .get /admin/comments -> Middleweare {authorization: Bearer token}
 * Update one user (Admin)
   * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
 * Update one product (Admin)
@@ -442,6 +443,10 @@
   * .get /admin/user/:id -> Middleweare {authorization: Bearer token}
 * Delete one user (Admin)
   * .delete /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Create one user
+  * .post /admin/user -> Middleweare {authorization: Bearer token}
+* Create a new product º
+  * .post /product
 
 ---
 

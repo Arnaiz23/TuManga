@@ -1,0 +1,12 @@
+POST http://localhost:3900/api/v1/admin/user HTTP/1.1
+Content-Type: application/json
+# ! Authorization
+
+{
+    "email" : "disable4@gmail.com",
+    "password" : "098765",
+    "role" : "empleado",
+    "name" : "Disabled",
+    "last_name" : "Disabled",
+    "state" : "new"
+}
