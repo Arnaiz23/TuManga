@@ -134,3 +134,4 @@ The principal route is "/api/v1"
 * When the web fetch the products, check if the product.stock > 0
   * No -> btnAdd disabled (red) -> does not work the createOrder or addProductOrder
   * Yes -> all normal
+* In adminPanel of the employee, don't show the total earnings

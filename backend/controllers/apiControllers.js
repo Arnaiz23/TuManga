@@ -658,7 +658,7 @@ var controller = {
 
         let { email, password, remember } = req.body;
 
-        const regexPassword = /^[a-zA-Z0-9\*\$\%\&\^\Ç]{6,16}$/;
+        const regexPassword = /^[a-zA-Z0-9\*\$\%\&\^\Ç]{6,17}$/;
         let validatePassword, validateEmail;
 
         try {

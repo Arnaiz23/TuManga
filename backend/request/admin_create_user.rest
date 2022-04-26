@@ -3,10 +3,7 @@ Content-Type: application/json
 # ! Authorization
 
 {
-    "email" : "disable4@gmail.com",
-    "password" : "098765",
-    "role" : "empleado",
-    "name" : "Disabled",
-    "last_name" : "Disabled",
-    "state" : "new"
+    "email" : "empleado@gmail.com",
+    "password" : "123456",
+    "role" : "empleado"
 }
