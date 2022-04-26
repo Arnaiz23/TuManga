@@ -442,7 +442,6 @@
 
 * \º All the middleweares
 * Reuse the trycatch jwt
-* Create the user admin automatically
 * No send the password_hash
 * Increase the number_sales of the products purchased
 * Get image
