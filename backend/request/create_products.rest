@@ -3,15 +3,15 @@ POST http://localhost:3900/api/v1/product
 content-type: application/json
 
 {
-    "name" : "Tokyo Revengers 04",
+    "name" : "Tokyo Revengers 05",
     "price" : 15,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
     "state" : "new",
-    "stock" : 20,
+    "stock" : 15,
     "categories" : ["realidad virtual"],
     "type" : "manga",
-    "number_sales" : 200,
+    "number_sales" : 0,
     "authors" : "Prueba",
     "editorial" : "Prueba",
     "series" : "Prueba",

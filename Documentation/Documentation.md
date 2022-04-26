@@ -131,3 +131,6 @@ The principal route is "/api/v1"
 ### Extra information
 
 * If the user want delete the account, give the option to disable the account. If dont want, delete the account. (Confirm)
+* When the web fetch the products, check if the product.stock > 0
+  * No -> btnAdd disabled (red) -> does not work the createOrder or addProductOrder
+  * Yes -> all normal

@@ -1011,7 +1011,8 @@ var controller = {
                 }
 
                 let number_sales = productFind.number_sales + 1
-                let productUpdate = await Product.findByIdAndUpdate(productFind._id, {number_sales : number_sales}, {new: true})
+                let stock = productFind.stock - 1
+                let productUpdate = await Product.findByIdAndUpdate(productFind._id, {number_sales : number_sales, stock: stock}, {new: true})
 
                 if(!productUpdate){
                     return res.status(404).send({
