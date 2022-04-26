@@ -441,8 +441,6 @@
 ## Missing
 
 * \º All the middleweares
-* Reuse the trycatch jwt
-* Increase the number_sales of the products purchased
 * Get image
     * .get /image/:id
 * Upload image

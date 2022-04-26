@@ -960,6 +960,7 @@ var controller = {
     },
 
     updateOrder: async (req, res) => {
+
         let { delivery_address, billing, telephone } = req.body;
 
         let userFind = await globalFunctions.getUserToken(req, res)
@@ -995,6 +996,33 @@ var controller = {
         orderProcess.billing = mongoose.Types.ObjectId(billing)
         orderProcess.state = "F"
         orderProcess.telephone = telephone
+
+        let products = orderProcess.products
+        
+        let updateProducts = async () => {
+            products.forEach(async id => {
+                let productFind = await Product.findById(id)
+
+                if(!productFind){
+                    return res.status(404).send({
+                        status: "error",
+                        message: "This product doesn't exists"
+                    })
+                }
+
+                let number_sales = productFind.number_sales + 1
+                let productUpdate = await Product.findByIdAndUpdate(productFind._id, {number_sales : number_sales}, {new: true})
+
+                if(!productUpdate){
+                    return res.status(404).send({
+                        status: "error",
+                        message: "This product has not been updated"
+                    })
+                }
+            })
+        }
+
+        await updateProducts()
 
         let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess, { new: true });
 
