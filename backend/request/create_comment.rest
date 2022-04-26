@@ -1,10 +1,10 @@
 POST http://localhost:3900/api/v1/comment HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY5ZDE5YjBkNDcyNzE0MDZiZWFkNyIsImVtYWlsIjoiZGVsZXRlMkBnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yNVQxMzowNzozNy43NDZaIiwiaWF0IjoxNjUwODkyMDU3LCJleHAiOjE2NTA5Nzg0NTd9.qTHGe91InvO4gGhJBr-RfRFzkQdI0m9kHyOGvxZGQoI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdiYTU2MWM0MGE4ZTU4MDBjNTVlYiIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTI2VDA5OjI0OjM4LjEwMVoiLCJpYXQiOjE2NTA5NjUwNzgsImV4cCI6MTY1MTA1MTQ3OH0.rcAPCj1e4f8Wdwwghjrzl5c1pGz_1x4Koim_wOCaDrI
 
 
 {
     "message" : "This manga is wonderful - Delete2",
-    "product_id" : "62669be5879f8b749087f60c",
+    "product_id" : "6267bade1c40a8e5800c55f9",
     "score" : 5
 }

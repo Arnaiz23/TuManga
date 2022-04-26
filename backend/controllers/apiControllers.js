@@ -1932,6 +1932,23 @@ var controller = {
 
         let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true })
 
+        let commentsProducts = await Product.findById(commentDelete.product_id)
+
+        commentsProducts = commentsProducts.comments
+
+        let indexComment = commentsProducts.indexOf(comment_id)
+
+        commentsProducts.splice(indexComment, 1)
+
+        let productUpdate = await Product.findByIdAndUpdate(commentDelete.product_id, {comments: commentsProducts}, {new: true})
+
+        if(!productUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This product has not been updated"
+            })
+        }
+
         if (!userUpdate) {
             return res.status(404).send({
                 status: "error",

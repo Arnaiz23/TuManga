@@ -22,7 +22,6 @@
     - [Admin Panel 3 (OK)](#admin-panel-3-ok)
     - [Admin Panel 4 (OK)](#admin-panel-4-ok)
     - [Order details (OK)](#order-details-ok)
-    - [Others](#others)
   - [Products](#products)
   - [Search](#search)
   - [Filter](#filter)
@@ -288,17 +287,6 @@
     * .get /order/:id {authorization: Bearer token} and middleweare is user or high
 
 
-### Others
-
-* Get image
-    * .get /image/:id
-* Upload image
-    * .post /image/:id?
-    * id upload in a specific product
-* Search an user in admin ????
-* Change the state of the user (in adminPanel or account)
-    * .patch /user/:state
-> OK
 
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -457,4 +445,9 @@
 * Create the user admin automatically
 * No send the password_hash
 * Increase the number_sales of the products purchased
-* DeleteComments -> delete in the product
+* Get image
+    * .get /image/:id
+* Upload image
+    * .post /image/:id?
+    * id upload in a specific product
+* Search an user in admin ????
