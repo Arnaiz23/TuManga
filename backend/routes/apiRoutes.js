@@ -110,4 +110,11 @@ router.post("/product", middleweares.isEmployee, controllers.newProduct); // Cre
 
 // * ---------------------------------------------------------
 
+// * --------------------- IMAGES ----------------------------
+
+router.get("/image/:image", controllers.getImage); // Get a image
+router.post("/image/:id", controllers.uploadImage); // Upload a image
+
+// * ---------------------------------------------------------
+
 module.exports = router;

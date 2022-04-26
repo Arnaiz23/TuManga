@@ -13,6 +13,7 @@ var jwt = require('jsonwebtoken');
 var config = require('../config/config');
 const { default: mongoose } = require('mongoose');
 const fs = require('fs')
+var path = require("path");
 
 let globalFunctions = require('../globalFunctions/globalFunctions');
 
@@ -2155,6 +2156,50 @@ var controller = {
             roles
         })
 
+    },
+
+    // * -------------------------------------------------------------
+
+    // * -------------------------- ROLES ----------------------------
+
+    getImage: async (req, res) => {
+
+        const { image } = req.params
+
+        const path_file = './upload/images/'+image
+
+        fs.exists(path_file, (exists) => {
+            if (exists) {
+                return res.sendFile(path.resolve(path_file));
+            } else {
+                return res.status(404).send({
+                    status: "error",
+                    message: "The image doesn't exists"
+                });
+            }
+        })
+
+    },
+
+    uploadImage: async (req, res) => {
+
+        // ! View the DecemberProyect because i added the image in the newProduct
+
+        const id_product = req.params.id
+
+        let productFind = await Product.findById(id_product)
+
+        if(!productFind){
+            return res.status(404).send({
+                status: "error",
+                message: "This product doesn't exists"
+            })
+        }
+
+
+
+        res.send(id_product)
+        
     }
 
     // * -------------------------------------------------------------

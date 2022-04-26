@@ -1,6 +1,7 @@
 
 POST http://localhost:3900/api/v1/product
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTdmZjczMDE0MjgzZjkwNmQyOCIsImVtYWlsIjoib3duZXJAZ21haWwuY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDQtMjZUMTI6MTE6NDMuNzE4WiIsImlhdCI6MTY1MDk3NTE0MSwiZXhwIjoxNjUxMDYxNTQxfQ.Ni_V8bDaOyqe7dohjgv1MBcjo_OCs7LmkwX_QND9i28
 
 {
     "name" : "Tokyo Revengers 05",
