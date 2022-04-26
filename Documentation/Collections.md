@@ -62,11 +62,13 @@
 ## **Billing**
 
 - _id (Default)
-- Users_id (Ref "Users_id", required, !unique)
+- User_id (Ref "Users_id", required, !unique)
 - Card_name (String, required, !unique)
 - Expiration_date (Date, required, !unique)
 - Last_4_digits (Number, required, !unique)
-- number_encrypt_card (String, required, !unique)
+- encrypt_card (String, required, !unique)
+- type (String, required, !unique)
+- image (String, required, !unique)
 
 ## **Address**
 

@@ -1289,21 +1289,16 @@ var controller = {
 
         let data = req.body;
 
-        let token = req.get('Authorization');
-        token = token.split(" ");
-
-        try {
-            var user = jwt.decode(token[1]);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            });
-        }
-
-        let userFind = await User.findById(user.id);
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         const regexNumber = /^[0-9]{16}$/;
+
+        const $name_card = {
+            "3" : "American Express",
+            "4" : "Visa",
+            "5" : "MasterCard",
+            "6" : "Discovery"
+        }
 
         try {
             var validateName = !validator.isEmpty(data.card_name);
@@ -1332,6 +1327,20 @@ var controller = {
             newCard.last_4_digits = data.number_card.slice(12, 16);
             newCard.encrypt_card = card_hash;
             newCard.expiration_date = newDate;
+
+            let firstNumber = data.number_card.slice(0,1)
+
+            if(firstNumber <= 2 || firstNumber >= 7 ){
+                return res.status(404).send({
+                    status: "error",
+                    message: "This number card is invalid"
+                })
+            }
+
+            const imagesCards = '../assets/images/cards'
+
+            newCard.type = $name_card[firstNumber]
+            newCard.image = `${firstNumber}.png`
 
             newCard.save((err, card) => {
 

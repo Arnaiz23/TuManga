@@ -33,6 +33,16 @@ var Billing = new Schema({
         type: String,
         unique : false,
         required: true
+    },
+    type : {
+        type: String,
+        unique: false,
+        required: true
+    },
+    image : {
+        type: String,
+        unique: false,
+        required : true
     }
 });
 
