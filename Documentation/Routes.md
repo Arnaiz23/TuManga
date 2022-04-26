@@ -33,6 +33,7 @@
   - [Comments](#comments)
   - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword-1)
   - [Admin](#admin)
+  - [Images](#images)
   - [Missing](#missing)
 
 ---
@@ -436,13 +437,16 @@
 * Create a new product º
   * .post /product
 
+
+## Images
+* Get image
+  * .get /image/:image
+
 ---
 
 ## Missing
 
 * \º All the middleweares
-* Get image
-    * .get /image/:id
 * Upload image
     * .post /image/:id?
     * id upload in a specific product
