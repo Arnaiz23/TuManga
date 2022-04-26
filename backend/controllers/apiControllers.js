@@ -598,85 +598,47 @@ var controller = {
 
     },
 
-    getAllUsers: (req, res) => {
-        User.find((err, users) => {
+    getAllUsers: async (req, res) => {
 
-            if (err) {
-                // ! ErrorHandler
-            }
+        let users = await User.find({}, {password_hash: false})
 
-            if (!users || users.length == 0) {
-                return res.status(404).send({
-                    status: "error",
-                    message: "Not found users"
-                });
-            }
+        if(!users || users.length == 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Not found users"
+            });
+        }
 
-            return res.status(200).send({
-                status: "success",
-                users
-            })
-
+        return res.status(200).send({
+            status: "success",
+            users
         })
     },
 
     getUser: async (req, res) => {
 
-        let token = req.get('authorization');
-        token = token.split(" ");
+        let userFind = await globalFunctions.getUserToken(req, res)
 
-        try {
-            var user = await jwt.decode(token[1]);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token error"
-            })
-        }
-
-        User.findById(user.id, (err, userFind) => {
-
-            if (err || !userFind) {
-                return res.status(404).send({
-                    status: "error",
-                    message: "User not found"
-                })
-            }
-
-            return res.status(200).send({
-                status: "success",
-                userFind
-            })
-
-        });
+        return res.status(200).send({
+            status: "success",
+            userFind
+        })
 
     },
 
     changeUserState: async (req, res) => {
 
-        let token = req.get('authorization');
-        token = token.split(" ");
-
-        try {
-            var user = await jwt.decode(token[1]);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token error"
-            })
-        }
-
-        let userOld = await User.findById(user.id);
+        let userOld = await globalFunctions.getUserToken(req, res)
 
         let newState = "";
 
         if (userOld.state === "Active") {
-            newState = "Disable"
+            newState = "Disabled"
         } else {
             newState = "Active"
         }
 
-        User.findByIdAndUpdate(userOld.id, { state: newState }, { new: true }, (err, userUpdate) => {
+        User.findByIdAndUpdate(userOld.id, { state: newState }, { fields: {password_hash: false}, new: true }, (err, userUpdate) => {
             if (err || !userUpdate) {
                 return res.status(404).send({
                     status: "error",
@@ -819,7 +781,7 @@ var controller = {
 
         }
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, { new: true })
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, { fields: {password_hash: false}, new: true })
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -1072,19 +1034,7 @@ var controller = {
 
     getOrderProccess: async (req, res) => {
 
-        let token = req.get('Authorization');
-        token = token.split(" ");
-
-        try {
-            var user = await jwt.decode(token[1]);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(user.id);
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         if (userFind.cart.length != 0) {
             Order.findOne({ id_client: userFind._id, state: "P" }, (err, orders) => {
@@ -1133,27 +1083,8 @@ var controller = {
     },
 
     getUserOrders: async (req, res) => {
-        let token = req.get("Authorization");
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(500).send({
-                status: "error",
-                message: "User not found"
-            })
-        }
+        
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let orders = await Order.find({ id_client: userFind._id, state: "F" });
 
@@ -1337,8 +1268,6 @@ var controller = {
                 })
             }
 
-            const imagesCards = '../assets/images/cards'
-
             newCard.type = $name_card[firstNumber]
             newCard.image = `${firstNumber}.png`
 
@@ -1363,6 +1292,8 @@ var controller = {
                         })
                     }
 
+                    card.encrypt_card = null
+
                     return res.status(201).send({
                         status: "success",
                         message: "The card has been save correctly",
@@ -1383,7 +1314,7 @@ var controller = {
     },
 
     getAllCards: (req, res) => {
-        Billing.find((err, cards) => {
+        Billing.find({},{encrypt_card: false},(err, cards) => {
 
             if (err) {
                 // ! ErrorHandler
@@ -1406,21 +1337,9 @@ var controller = {
 
     getLastCards: async (req, res) => {
 
-        let token = req.get("Authorization");
-        token = token.split(" ");
+        let userFind = await globalFunctions.getUserToken(req, res)
 
-        try {
-            var user = await jwt.decode(token[1]);
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token not valid"
-            })
-        }
-
-        let userFind = await User.findById(user.id);
-
-        Billing.find({ user_id: userFind._id }, (err, cards) => {
+        Billing.find({ user_id: userFind._id }, {encrypt_card: false}, (err, cards) => {
 
             return res.status(200).send({
                 status: "success",
@@ -1433,29 +1352,9 @@ var controller = {
 
     getUserCards: async (req, res) => {
 
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
+        let userFind = await globalFunctions.getUserToken(req, res)
 
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            res.status(500).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
-
-        let cards = await Billing.find({ id_client: userFind._id });
+        let cards = await Billing.find({ id_client: userFind._id }, {encrypt_card: false});
 
         if (!cards || cards.length == 0) {
             return res.status(404).send({
@@ -1474,27 +1373,8 @@ var controller = {
     deleteCard: async (req, res) => {
 
         const id_card = req.params.id;
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            res.status(500).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
+        
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let cardDelete = await Billing.findByIdAndDelete(id_card);
 
@@ -1507,7 +1387,7 @@ var controller = {
 
         let cards = await Billing.find({ user_id: userFind._id });
 
-        let userUpdate = await User.findByIdAndUpdate(userFind.id, { billing: cards }, { new: true });
+        let userUpdate = await User.findByIdAndUpdate(userFind.id, { billing: cards }, { new: true, fields: {password_hash: false} });
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -1531,27 +1411,7 @@ var controller = {
 
         const { name, number, name_person, location, floor } = req.body;
 
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(500).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let newAddress = Address({
             name,
@@ -1594,27 +1454,8 @@ var controller = {
     },
 
     getUserAddress: async (req, res) => {
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
 
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(404).send({
-                status: "error",
-                message: "User not found"
-            })
-        }
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let address = await Address.find({ user_id: userFind._id });
 
@@ -1634,27 +1475,8 @@ var controller = {
     deleteAddress: async (req, res) => {
 
         let { id } = req.params
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(404).send({
-                status: "error",
-                message: "User not found"
-            })
-        }
+        
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         try {
 
@@ -1669,7 +1491,7 @@ var controller = {
 
             let newAddress = await Address.find({ user_id: userFind._id });
 
-            let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: newAddress }, { new: true });
+            let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: newAddress }, { new: true, fields: {password_hash: false} });
 
             if (!userUpdate) {
                 return res.status(404).send({
@@ -1697,27 +1519,8 @@ var controller = {
 
         const id_address = req.params.id;
         let body = req.body;
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(404).send({
-                status: "error",
-                message: "User not found"
-            })
-        }
+        
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let address = await Address.findById(id_address)
 
@@ -1766,27 +1569,7 @@ var controller = {
 
     getLastAddress: async (req, res) => {
 
-        let token = req.get('Authorization')
-        token = token.split(" ")[1]
-        let userToken;
-
-        try {
-            userToken = jwt.decode(token)
-        } catch (error) {
-            return res.status(404).send({
-                status: "error",
-                message: "Token invalid"
-            })
-        }
-
-        let userFind = await User.findById(userToken.id);
-
-        if (!userFind) {
-            return res.status(500).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
+        let userFind = await globalFunctions.getUserToken(req, res)
 
         let address = await Address.find({ user_id: userFind._id }).limit(2)
 
@@ -1930,7 +1713,7 @@ var controller = {
 
         let newComments = await Comment.find({ user_id: userFind._id })
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true })
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true, fields: {password_hash: false} })
 
         let commentsProducts = await Product.findById(commentDelete.product_id)
 
@@ -2095,7 +1878,7 @@ var controller = {
             userFind.email = body.email
         }
 
-        let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true })
+        let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true, fields: {password_hash: false} })
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -2213,7 +1996,7 @@ var controller = {
 
         const id_user = req.params.id
 
-        let userFind = await User.findById(id_user)
+        let userFind = await User.findById(id_user, {password_hash: false})
 
         if(!userFind){
             return res.status(404).send({
