@@ -23,7 +23,7 @@ let globalFunctions = require('../globalFunctions/globalFunctions');
 
 var controller = {
     test: (req, res) => {
-        return res.send("Hello test");
+        return res.status(200).send("Hello test");
     },
 
     // * --------------------- PRODUCTS ----------------------------

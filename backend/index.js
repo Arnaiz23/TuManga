@@ -15,3 +15,5 @@ mongoose.connect(`mongodb+srv://${user_bbdd}:${password_bbdd}@tumanga.1l58o.mong
         console.log("Server running in http://localhost:"+port);
     })
 })
+
+module.exports = app
