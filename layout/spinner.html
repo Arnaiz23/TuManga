@@ -71,7 +71,7 @@
                 </a>
             </span>
             <span>
-                <i id="buttonMenu">&#9776;</i>
+                <i class="fa-regular fa-bars" id="buttonMenu"></i>
             </span>
         </div>
     </header>
@@ -92,6 +92,7 @@
         <button class="btn btn-light" id="btnAccessPanel" role="button">Acceder al panel</button>
         <button class="btn btn-danger" id="btnLogout" role="button">Cerrar sesión</button>
     </nav>
+
     <!-- * ----------------------------------------------------------------------------- -->
 
     <!-- * ----------- ----------- SOCIAL ICONS ----------- ----------- -->
@@ -106,10 +107,8 @@
 
     <!-- * ----------- ----------- SLIDER ----------- ----------- -->
 
-    <div class="slider">
-        <button class="iconSlider iconSliderLeft" role="button"><i class="fa-regular fa-angle-left"></i></button>
-        <img src="https://wowslider.com/sliders/demo-18/data1/images/shanghai.jpg" alt="imagenes slider mangas">
-        <button class="iconSlider iconSliderRight" role="button"><i class="fa-regular fa-angle-right"></i></button>
+    <div class="sliderSmall">
+        <h3 class="sliderTitle">Mangas</h3>
     </div>
 
     <!-- * ----------------------------------------------------------------------------- -->
@@ -117,19 +116,161 @@
     <!-- * ----------- ----------- MAIN ----------- ----------- -->
 
     <main class="center">
-        <h2 class="subtitle">Novedades</h2>
-        <div class="containerProducts">
-            <!-- ! Eliminar el id -->
-            <div class="card" id="cardTemplate">
-                <img src="./assets/images/tokyorevnegers4.jpeg" alt="tokyo revengers cover volume 04">
-                <footer class="cardFooter">
-                    <h3>Tokyo Revengers</h3>
-                    <div class="priceContainer">
-                        <p class="price">15€</p>
-                        <p class="textStock"><i class="fa-solid fa-check"></i>STOCK</p>
+        <div class="selectOrder">
+            <div class="filterResponsive">
+                <button role="button" class="btnFilter"><i class="fa-solid fa-sliders"></i>Filtrar</button>
+            </div>
+            <div class="optionsFilterResponsive">
+                <header>
+                    <button role="button" id="closeModalFilter">
+                        <i class="fa-solid fa-xmark"></i>
+                        Cerrar
+                    </button>
+                </header>
+                <main>
+                    <div class="containerFilterResponsive">
+                        <h3>Tipos</h3>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Novela ligera</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Manga</p>
+                        </div>
                     </div>
-                    <button class="addCart"><i class="fa-solid fa-cart-shopping" id="iconCart"></i></button>
+                    <div class="containerFilterResponsive">
+                        <h3>Categorias</h3>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Novela ligera</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Manga</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Novela ligera</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Manga</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Novela ligera</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>Manga</p>
+                        </div>
+                    </div>
+                </main>
+                <footer>
+                    <button role="button" class="btn btn-primary">Aplicar filtros</button>
                 </footer>
+            </div>
+            <div>
+                <button role="button" class="selectOrderOptions">
+                    Ordenar<i class="fa-solid fa-angle-down"></i>
+                </button>
+                <ul class="optionsSelectOrder">
+                    <li>Precio más bajo</li>
+                    <li>Precio más alto</li>
+                    <li>Novedades</li>
+                    <li>Más vendidos</li>
+                </ul>
+            </div>
+        </div>
+        <div class="containerGlobalProducts">
+            <div class="containersFilters">
+                <div class="containerFilter">
+                    <header>Tipos</header>
+                    <div class="lineFilter"></div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Novela ligera</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Novela ligera</p>
+                    </div>
+                </div>
+                <div class="containerFilter">
+                    <header>Categorias</header>
+                    <div class="lineFilter"></div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Isekai</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Spokon</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Mechas</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Shojo</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Ecchi</p>
+                    </div>
+                    <div class="optionFilter">
+                        <input type="checkbox" id="" class="checkboxFilter">
+                        <p>Romance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="containerTestSpinner">
+                <div class="containerSpinner">
+                    <div class="spinner"></div>
+                    <h2>Cargando...</h4>
+                </div>
+    
+                <div class="containerSpinnerCenter">
+                    <div class="loader-wrapper">
+                        <div class="loader">
+                            <div class="loader loader-inner"></div>
+                        </div>
+                    </div>
+                    <h2>Cargando...</h2>
+                </div>
+                <div class="containerSpinnerCenter">
+                    <div class="spinner2"></div>
+                    <h2>Cargando...</h2>
+                </div>
+                <div class="containerSpinnerCenter">
+                    <div class="spinner3">
+                        <div class="spinner3-1">
+                            <div class="spinner3-1 spinner3-2"></div>
+                        </div>
+                    </div>
+                    <h2>Cargando...</h2>
+                </div>
+                <div class="containerSpinnerCenter">
+                    <div class="spinner3">
+                        <div class="spinner3-1 spinner5">
+                            <div class="spinner3-1 spinner3-2 spinner5"></div>
+                        </div>
+                    </div>
+                    <h2>Cargando...</h2>
+                </div>
+            </div>
+        </div>
+        <div class="containerPaginator">
+            <div class="paginator">
+                <p class="pageActive">1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
             </div>
         </div>
     </main>
