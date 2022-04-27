@@ -4,13 +4,13 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTdmZjczMDE0MjgzZjkwNmQyOCIsImVtYWlsIjoib3duZXJAZ21haWwuY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDQtMjZUMTI6MTE6NDMuNzE4WiIsImlhdCI6MTY1MDk3NTE0MSwiZXhwIjoxNjUxMDYxNTQxfQ.Ni_V8bDaOyqe7dohjgv1MBcjo_OCs7LmkwX_QND9i28
 
 {
-    "name" : "Tokyo Revengers 05",
+    "name" : "Tokyo Revengers 04",
     "price" : 15,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
     "state" : "new",
     "stock" : 15,
-    "categories" : ["realidad virtual"],
+    "categories" : ["gore"],
     "type" : "manga",
     "number_sales" : 0,
     "authors" : "Prueba",
