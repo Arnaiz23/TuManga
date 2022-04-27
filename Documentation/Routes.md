@@ -436,6 +436,10 @@
   * .post /admin/user -> Middleweare {authorization: Bearer token}
 * Create a new product º
   * .post /product
+* Search products or users
+  * .get /admin/search/:search&:option -> Middleweare {authorization: Bearer token}
+    * search -> params you find
+    * option -> user or product
 
 
 ## Images
@@ -450,4 +454,3 @@
 * Upload image
     * .post /image/:id?
     * id upload in a specific product
-* Search an user in admin ????

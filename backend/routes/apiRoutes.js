@@ -107,6 +107,7 @@ router.get("/admin/user/:id", middleweares.isEmployee, controllers.getUserAdmin)
 router.delete("/admin/user/:id", middleweares.isAdmin, controllers.deleteUserAdmin); // Delete one user (Admin)
 router.post("/admin/user", middleweares.isAdmin, controllers.createUserAdmin); // Create one user
 router.post("/product", middleweares.isEmployee, controllers.newProduct); // Create a new product
+router.get("/admin/search/:search&:option", middleweares.isEmployee, controllers.searchAdmin); // Search users
 
 // * ---------------------------------------------------------
 

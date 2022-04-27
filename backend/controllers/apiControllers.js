@@ -2136,6 +2136,72 @@ var controller = {
         
     },
 
+    searchAdmin: async (req, res) => {
+
+        let { search, option } = req.params
+
+        const $option = ["user", "product"]
+
+        if(!$option.includes(option)){
+            return res.status(404).send({
+                status: "error",
+                message: "Option invalid"
+            })
+        }
+
+        option = option.toLowerCase()
+
+        if(option === "user"){
+
+            let userSearch = await User.find({
+                "$or" : [
+                    { "name": { "$regex" : search, "$options" : "i" } },
+                    { "last_name": { "$regex" : search, "$options" : "i" } },
+                    { "email": { "$regex" : search, "$options" : "i" } }
+                ]
+            }, {password_hash: false})
+
+            if(!userSearch || userSearch.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Not exists users with these params"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                userSearch
+            })
+            
+        }else{
+
+            let productSearch = await Product.find({
+                "$or": [
+                    { "name": { "$regex": search, "$options": "i" } },
+                    { "description": { "$regex": search, "$options": "i" } },
+                    { "short_description": { "$regex": search, "$options": "i" } },
+                    { "authors": { "$regex": search, "$options": "i" } },
+                    { "editorial": { "$regex": search, "$options": "i" } },
+                    { "series": { "$regex": search, "$options": "i" } },
+                ]
+            }, {password_hash: false})
+
+            if(!productSearch || productSearch.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Not exists products with these params"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                productSearch
+            })
+
+        }
+        
+    },
+
     // * ----------------------------------------------------------
 
     // * -------------------------- ROLES ----------------------------
@@ -2160,7 +2226,7 @@ var controller = {
 
     // * -------------------------------------------------------------
 
-    // * -------------------------- ROLES ----------------------------
+    // * -------------------------- IMAGES ----------------------------
 
     getImage: async (req, res) => {
 
