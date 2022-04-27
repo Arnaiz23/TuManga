@@ -445,12 +445,11 @@
 ## Images
 * Get image
   * .get /image/:image
+* Upload an image
+  * .post /image/:idProduct-> Middleweare {authorization: Bearer token}
 
 ---
 
 ## Missing
 
 * \º All the middleweares
-* Upload image
-    * .post /image/:id?
-    * id upload in a specific product
