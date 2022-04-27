@@ -2403,6 +2403,32 @@
   font-weight: 700;
 }
 
+.containerAdminOptions{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+  align-items: center;
+}
+
+.inputSearchAdmin{
+  width: 200px;
+  height: 30px;
+  padding: 2px 5px;
+  font-size: .9rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.inputSearchAdmin:focus{
+  outline: none;
+}
+
+.iconSearch{
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .containerTable{
   width: 95%;
   margin-top: 40px 0;
@@ -2583,6 +2609,60 @@
 
 .inputAdmin .inputPassword i{
   right: calc(100% - 240px);
+}
+
+.modalSearchAdmin{
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #aaa;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  gap: 30px;
+}
+
+.modalSearchAdmin h3{
+  font-size: 35px;
+}
+
+.modalSearchAdminShow{
+  display: flex;
+}
+
+.modalSearchAdmin form{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.inputSearchAdminModal{
+  width: 400px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  font-size: .9rem;
+  padding: 3px 5px;
+  text-align: center;
+}
+
+.inputSearchAdminModal:focus{
+  outline: none;
+}
+
+.iconCloseModal{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 25px;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -2855,6 +2935,15 @@
     right: 5px;
   }
 }
+@media screen and (max-width: 974px) {
+  .inputSearchAdmin{
+    display: none;
+  }
+
+  .iconSearch{
+    display: block;
+  }
+}
 
 @media screen and (max-width: 970px) {
   .containersFilters {
@@ -2950,6 +3039,14 @@
 
   .adminHeader{
     padding: 5px;
+  }
+}
+
+@media screen and (max-width: 778px) {
+  .rowAdminTitle .btn{
+    width: 150px;
+    height: 40px;
+    font-size: 1.2rem;
   }
 }
 
@@ -3059,9 +3156,9 @@
     display: none;
   }
 
-  .rowAdminTitle .btn-success{
+  /* .rowAdminTitle .btn-success{
     width: 50%;
-  }
+  } */
 }
 
 @media screen and (max-width: 559px) {
@@ -3091,6 +3188,10 @@
     text-align: center;
     padding: 0 10px;
   }
+
+  .rowAdminTitle{
+    padding: 20px 20px;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -3100,6 +3201,8 @@
 
   .rowAdminTitle{
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -3138,6 +3241,10 @@
 
   .modalInformation .modalCenter{
     min-width: auto;
+  }
+
+  .inputSearchAdminModal{
+    width: 90%;
   }
 }
 

@@ -135,4 +135,4 @@ The principal route is "/api/v1"
   * No -> btnAdd disabled (red) -> does not work the createOrder or addProductOrder
   * Yes -> all normal
 * In adminPanel of the employee, don't show the total earnings
-* In adminPanel -> Create the system to search users and products
+* In adminPanel -> Create the system to search users and products (Ok in adminPanel2)
