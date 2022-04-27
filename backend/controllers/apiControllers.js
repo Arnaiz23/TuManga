@@ -2249,8 +2249,6 @@ var controller = {
 
     uploadImage: async (req, res) => {
 
-        // ! View the DecemberProyect because i added the image in the newProduct
-
         const id_product = req.params.id
 
         let productFind = await Product.findById(id_product)
@@ -2262,9 +2260,43 @@ var controller = {
             })
         }
 
+        let file_name = "Image not uploaded..."
 
+        if(!req.files){
+            return res.status(404).send({
+                status: "error",
+                message: file_name
+            })
+        }
 
-        res.send(id_product)
+        let file_path = req.files.file0.path
+        file_name = file_path.split("/")[2]
+        let file_extension = file_name.split(".")[1]
+
+        if (file_extension != "png" && file_extension != "jpg" && file_extension != "jpeg") {
+            fs.unlink(file_path, (err) => {
+                return res.status(404).send({
+                    status: "error",
+                    message: "The extension of the image is invalid"
+                })
+            })
+        }
+
+        let productUpdate = await Product.findByIdAndUpdate(productFind._id, {image: file_name}, {new: true})
+
+        if(!productUpdate){
+            fs.unlink(file_path, (err) => {
+                return res.status(404).send({
+                    status: "error",
+                    message: "This product has not been updated"
+                })
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            productUpdate
+        })
         
     }
 

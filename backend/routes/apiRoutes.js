@@ -114,7 +114,7 @@ router.get("/admin/search/:search&:option", middleweares.isEmployee, controllers
 // * --------------------- IMAGES ----------------------------
 
 router.get("/image/:image", controllers.getImage); // Get a image
-router.post("/image/:id", controllers.uploadImage); // Upload a image
+router.post("/image/:id", [middleweares.isEmployee, md_upload],controllers.uploadImage); // Upload a image
 
 // * ---------------------------------------------------------
 
