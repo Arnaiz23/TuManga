@@ -15,6 +15,8 @@ const { default: mongoose } = require('mongoose');
 const fs = require('fs')
 var path = require("path");
 
+const crypto = require('crypto');
+
 let globalFunctions = require('../globalFunctions/globalFunctions');
 
 // * --------------------- VARIABLES ----------------------
@@ -556,7 +558,11 @@ var controller = {
                     user.role = role._id;
                 }
 
-                // res.send(user)
+                let tokenRecover = await crypto.randomBytes(128)
+
+                tokenRecover = tokenRecover.toString('hex')
+
+                user.tokenRecover = tokenRecover
 
                 user.save(async (err, newUser) => {
 
@@ -2358,11 +2364,13 @@ var controller = {
 
         // ! Send email
 
-        res.send("Send email")
+        res.send(userFind)
         
     },
 
     recoverPassword: async (req, res) => {
+
+        const {token} = req.params
 
         const { password, confirm_password } = req.body
 
@@ -2393,9 +2401,41 @@ var controller = {
             })
         }
 
+        let userFind = await User.findOne({tokenRecover: token})
+
+        if(!userFind){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't exists"
+            })
+        }
+
+        let passMatch = await User.comparePasswords(password, userFind.password_hash)
+
+        if(passMatch){
+            return res.status(404).send({
+                status: "error",
+                message: "The passwords agree"
+            })
+        }
+
+        let newPassword = await User.encrypt(password)
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, {password_hash: newPassword}, {new:true, fields: {password_hash: false, tokenRecover: false}})
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
         // ! Updated the user with the new password
 
-        res.send("User password updated")
+        return res.status(200).send({
+            status: "success",
+            userUpdate
+        })
         
     }
     

@@ -93,7 +93,7 @@ router.get("/sort/products/merchandising/:option&:limit&:skip", controllers.sort
 // * --------------------- PASSWORD ----------------------------
 
 router.post("/email", controllers.sendEmail); // Send email if forgot the password
-router.post("/recover", controllers.recoverPassword); // Change the password
+router.post("/recover/:token", controllers.recoverPassword); // Change the password
 
 // * --------------------- ADMIN ----------------------------
 
