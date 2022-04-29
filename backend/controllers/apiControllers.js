@@ -620,9 +620,20 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
+        let role = await Role.findById(userFind.role)
+
+        role = role.name
+
+        userFind.role = null
+
+        let userInfo = {
+            userFind,
+            roleName : role
+        }
+
         return res.status(200).send({
             status: "success",
-            userFind
+            userInfo
         })
 
     },

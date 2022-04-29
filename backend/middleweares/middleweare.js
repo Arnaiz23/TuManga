@@ -24,7 +24,7 @@ let middleweares = {
                 return
             }
 
-            return res.status(404).send({
+            return res.status(403).send({
                 status: "error",
                 message: "This user has no privileges"
             })
@@ -53,7 +53,7 @@ let middleweares = {
                 return
             }
 
-            return res.status(404).send({
+            return res.status(403).send({
                 status: "error",
                 message: "This user has no privileges"
             })
@@ -81,7 +81,7 @@ let middleweares = {
                 return
             }
 
-            return res.status(404).send({
+            return res.status(403).send({
                 status: "error",
                 message: "This user has no privileges"
             })
@@ -109,7 +109,7 @@ let middleweares = {
                 return
             }
 
-            return res.status(404).send({
+            return res.status(403).send({
                 status: "error",
                 message: "This user has no privileges"
             })
