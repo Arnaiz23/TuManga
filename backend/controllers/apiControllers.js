@@ -2369,23 +2369,12 @@ var controller = {
             })
         }
 
-        /* let mailOptions = {
-            from: 'tutsmake@gmail.com',
-            to: email,
-            subject: 'Reset Password Link - Tutsmake.com',
-            html: '<p>You requested for reset password, kindly use this <a href="http://localhost:4000/reset-password?token=' + token + '">link</a> to reset your password</p>'
-     
-        }; */
-
-        // ! Send email
-
         let transporter = await globalFunctions.getTransport()
 
         let info = await transporter.sendMail({
             from: '"TuManga" <foo@example.com>',
             to: email,
             subject: "Recover password",
-            // text: "Re",
             html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
         });
 
