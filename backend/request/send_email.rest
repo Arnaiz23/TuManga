@@ -2,5 +2,5 @@ POST http://localhost:3900/api/v1/email HTTP/1.1
 Content-Type: application/json
 
 {
-    "email" : "prueba9@gmail.com"
+    "email" : "prueba10@gmail.com"
 }

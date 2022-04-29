@@ -558,12 +558,6 @@ var controller = {
                     user.role = role._id;
                 }
 
-                let tokenRecover = await crypto.randomBytes(128)
-
-                tokenRecover = tokenRecover.toString('hex')
-
-                user.tokenRecover = tokenRecover
-
                 user.save(async (err, newUser) => {
 
                     if (err || !newUser) {
@@ -2141,12 +2135,6 @@ var controller = {
 
             newUser.role = roleId._id
 
-            let tokenRecover = await crypto.randomBytes(128)
-
-            tokenRecover = tokenRecover.toString('hex')
-
-            newUser.tokenRecover = tokenRecover
-
             let userSave = await newUser.save()
 
             if (!userSave) {
@@ -2368,9 +2356,30 @@ var controller = {
             })
         }
 
+        let tokenRecover = await crypto.randomBytes(128)
+
+        tokenRecover = tokenRecover.toString('hex')
+
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, {tokenRecover: tokenRecover})
+
+        if(!userUpdate){
+            return res.status(404).send({
+                status: "error",
+                message: "Token could not be generated"
+            })
+        }
+
+        /* let mailOptions = {
+            from: 'tutsmake@gmail.com',
+            to: email,
+            subject: 'Reset Password Link - Tutsmake.com',
+            html: '<p>You requested for reset password, kindly use this <a href="http://localhost:4000/reset-password?token=' + token + '">link</a> to reset your password</p>'
+     
+        }; */
+
         // ! Send email
 
-        res.send(userFind)
+        res.send(userUpdate)
 
     },
 
@@ -2427,7 +2436,7 @@ var controller = {
 
         let newPassword = await User.encrypt(password)
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, { password_hash: newPassword }, { new: true, fields: { password_hash: false, tokenRecover: false } })
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { password_hash: newPassword, tokenRecover: null }, { new: true, fields: { password_hash: false, tokenRecover: false } })
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -2435,8 +2444,6 @@ var controller = {
                 message: "This user has not been updated"
             })
         }
-
-        // ! Updated the user with the new password
 
         return res.status(200).send({
             status: "success",

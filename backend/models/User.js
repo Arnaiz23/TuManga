@@ -80,7 +80,7 @@ var User = new Schema({
     ],
     tokenRecover: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     }
 });
