@@ -85,7 +85,22 @@
             <div class="containerDataAdmin">
                 <div class="rowAdminTitle">
                     <h2>Usuarios</h2>
-                    <button class="btn btn-success">Añadir usuario</button>
+                    <div class="containerAdminOptions">
+                        <form>
+                            <i class="fa-solid fa-magnifying-glass iconSearch"></i>
+                            <input type="text" name="" id="" class="inputSearchAdmin" placeholder="Busca un usuario...">
+                        </form>
+                        <button class="btn btn-success">Añadir usuario</button>
+                    </div>
+                </div>
+                <div class="modalSearchAdmin">
+                    <h3>Search:</h3>
+                    <form>
+                        <input type="text" name="" id="" class="inputSearchAdminModal"
+                            placeholder="Busca un usuario...">
+                        <input type="submit" value="Buscar" class="btn btn-primary">
+                    </form>
+                    <i class="fa-solid fa-xmark iconCloseModal"></i>
                 </div>
                 <div class="containerTable">
                     <table>

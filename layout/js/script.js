@@ -1,5 +1,7 @@
 const views = ["account", "address", "cards", "comments", "index", "mangas", "orderDetails", "orders", "payment", "product", "shoppingCart"];
 
+let $ = (selector) => document.querySelector(selector)
+
 views.map(view => {
     if(location.href.includes(view)){
         const btnMenu = document.getElementById("buttonMenu");
@@ -303,6 +305,10 @@ if(location.href.includes("adminPanel2")){
     const modal = document.querySelector(".modalInformation")
     const showModal = document.querySelectorAll(".btnShowModal")
 
+    const $closeModalSearch = $(".iconCloseModal")
+    const $modalSearch = $(".modalSearchAdmin")
+    const $openModalSearch = $(".iconSearch")
+
     const btnEdit = document.querySelectorAll(".btnEditData")
 
     const newUser = document.querySelector(".rowAdminTitle button")
@@ -325,6 +331,15 @@ if(location.href.includes("adminPanel2")){
     newUser.addEventListener("click", () => {
         location.href = "adminPanel4.html"
     })
+
+    $openModalSearch.addEventListener("click", () => {
+        $modalSearch.classList.add("modalSearchAdminShow")
+    })
+
+    $closeModalSearch.addEventListener("click", () => {
+        $modalSearch.classList.remove("modalSearchAdminShow")
+    })
+
 }
 
 if(location.href.includes("adminPanel3") || location.href.includes("adminPanel4")){

@@ -16,13 +16,12 @@
     - [Product (OK)](#product-ok)
     - [Login (OK)](#login-ok)
     - [Register (OK)](#register-ok)
-    - [Email](#email)
-    - [Admin Panel](#admin-panel)
-    - [Admin Panel 2](#admin-panel-2)
-    - [Admin Panel 3](#admin-panel-3)
-    - [Admin Panel 4](#admin-panel-4)
-    - [Order details](#order-details)
-    - [Others](#others)
+    - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword)
+    - [Admin Panel (OK)](#admin-panel-ok)
+    - [Admin Panel 2 (OK)](#admin-panel-2-ok)
+    - [Admin Panel 3 (OK)](#admin-panel-3-ok)
+    - [Admin Panel 4 (OK)](#admin-panel-4-ok)
+    - [Order details (OK)](#order-details-ok)
   - [Products](#products)
   - [Search](#search)
   - [Filter](#filter)
@@ -32,6 +31,9 @@
   - [Orders](#orders)
   - [Address](#address)
   - [Comments](#comments)
+  - [Email (In process on the branch "recoverPassword")](#email-in-process-on-the-branch-recoverpassword-1)
+  - [Admin](#admin)
+  - [Images](#images)
   - [Missing](#missing)
 
 ---
@@ -210,7 +212,7 @@
 > OK
 
 
-### Email
+### Email (In process on the branch "recoverPassword")
 
 * Receive email and check if exists
     * exists -> send email
@@ -220,21 +222,26 @@
   * .patch /recover 
 
 
-### Admin Panel
+
+### Admin Panel (OK)
 
 * **(Token admin or vendor)**
 * Get the total of the collection "Orders" (return only the number)
     * .get /total/orders -> Middleweare  {authorization: Bearer token}
+> OK
 * Get the total of the collection "Users" (return only the number)
     * .get /total/users -> Middleweare  {authorization: Bearer token}
+> OK
 * Get the total_earnings of the collection "Orders" (return only the number) **Miss**
    * Go to all the orders and save in a variable the result of the price
    * Create a new field in the Orders collection with the total price???
+> OK
 * Get the 5 or 10 most best sellers products for the statistics
    * Filter with the "nº sales"
    * .get /products/sales/:limit -> Middleweare  {authorization: Bearer token}
+> OK
 
-### Admin Panel 2
+### Admin Panel 2 (OK)
 
 * **(Token admin or vendor)**
 * Get all the "Users or option selected"
@@ -243,24 +250,29 @@
     * .get /products -> Middleweare {authorization: Bearer token}
     > OK without middleweare
     * .get /orders -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /roles -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
     * .get /comments -> Middleweare {authorization: Bearer token}
+    > OK without middleweare
 
-### Admin Panel 3
+### Admin Panel 3 (OK)
 
 * **(Token admin or vendor)**
 * Edit the option selected
-    * .put /user/:id -> Middleweare {authorization: Bearer token}
-    * .put /product/:id -> Middleweare {authorization: Bearer token}
-    * .put /order/:id -> Middleweare {authorization: Bearer token}
-    * .put /role/:id -> Middleweare {authorization: Bearer token}
-    * .put /comment/:id -> Middleweare {authorization: Bearer token}
+    * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
+    > OK
+    * .put /admin/product/:id -> Middleweare {authorization: Bearer token}
+    > OK
+> OK
 * Get this user(id)
     * .get /user/:id -> Middleweare {authorization: Bearer token}
+> OK
 * Delete this user(id)
     * .delete /user/:id -> Middleweare {authorization: Bearer token}
+> OK
 
-### Admin Panel 4
+### Admin Panel 4 (OK)
 
 * **(Token admin or vendor)**
 * Insert the option selected
@@ -268,38 +280,18 @@
     > OK without middleweare
     * .post /product -> Middleweare {authorization: Bearer token}
     > OK without middleweare
-    * .post /order -> Middleweare {authorization: Bearer token}
-    * .post /role -> Middleweare {authorization: Bearer token}
-    * .post /comment -> Middleweare {authorization: Bearer token}
 
-### Order details
+### Order details (OK)
 
 * Get the order that had the id who recive
     * .get /order/:id {authorization: Bearer token} and middleweare is user or high
 
-
-### Others
-
-* Get image
-    * .get /image/:id
-* Upload image
-    * .post /image/:id?
-    * id upload in a specific product
-* Search an user in admin ????
-* Change the state of the user (in adminPanel or account)
-    * .patch /user/:state
-> OK
-
-
-<!-- ------------------------------------------------------------------------------ -->
 ---
 
 ## Products
 
 * Get the 8 new products
     * .get /products/new
-* Create a new product º
-    * .post /product
 * Get mangas or ligth novels with paginate *
     * .get /products/manga/:limit&:skip
 * Get merchandising with paginate *
@@ -336,22 +328,24 @@
 
 * Create new user (Register) **(not admin)**
     * .post /user
-* Get all users º
-    * .get /users
 * Get user with token
     * .get /user {Authorization: Bearer token}
 * Change user state with token
     * .patch /user {Authorization: Bearer token}
 * Login
     * .post /login
+    > If the user has the state = "Disabled" and login, question in the Frontend if want change the state. Yes -> change state || No -> delete the token and logout
+* Update the user
+  * .put /user {Authorization: Bearer token}
+* Delete the user
+  * .delete /user {Authorization: Bearer token}
+    * When you delete the user -> delete his comments, his address, his billings and delete the _id comment of it product
 
 
 ## Billing
 
 * Create card
     * .post /card {Authorization: Bearer token}
-* Get all cards
-    * .get /cards
 * Get last 2 cards
     * .get /cards/last {Authorization: Bearer token}
 * Get the user cards
@@ -373,6 +367,8 @@
   * .get /order/cart {authorization: Bearer token}
 * Delete one product of the shopping cart
   * .put /order/product {authorization: Bearer token}
+* Get one order with id (OrderDetails)
+  * .get /order/:id {authorization: Bearer token} and middleweare is user or high
 
 
 ## Address
@@ -400,11 +396,55 @@
 * Delete a comment
   * .delete /comment/:idComment {authorization: Bearer token}
 
+## Email (In process on the branch "recoverPassword")
+
+
+## Admin
+
+* Get the total orders
+  * .get /total/orders -> Middleweare {Authorization: Bearer token}
+* Get the total users
+  * .get /total/users -> Middleweare {Authorization: Bearer token}
+* Get the total earnings
+  * .get /total/earnings -> Middleweare {Authorization: Bearer token}
+* Get the most betsellers products
+  * .get /products/sales/:limit -> Middleweare {authorization: Bearer token}
+* Get all orders
+  * .get /admin/orders -> Middleweare {authorization: Bearer token}
+* Get all users º
+  * .get /admin/users -> Middleweare {authorization: Bearer token}
+* Get all cards º
+  * .get /admin/cards -> Middleweare {authorization: Bearer token}
+* Get all roles º
+  * .get /admin/roles -> Middleweare {authorization: Bearer token}
+* Get all comments º
+  * .get /admin/comments -> Middleweare {authorization: Bearer token}
+* Update one user (Admin)
+  * .put /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Update one product (Admin)
+  * .put /admin/product/:id -> Middleweare {authorization: Bearer token}
+* Get one user (Admin)
+  * .get /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Delete one user (Admin)
+  * .delete /admin/user/:id -> Middleweare {authorization: Bearer token}
+* Create one user
+  * .post /admin/user -> Middleweare {authorization: Bearer token}
+* Create a new product º
+  * .post /product
+* Search products or users
+  * .get /admin/search/:search&:option -> Middleweare {authorization: Bearer token}
+    * search -> params you find
+    * option -> user or product
+
+
+## Images
+* Get image
+  * .get /image/:image
+* Upload an image
+  * .post /image/:idProduct-> Middleweare {authorization: Bearer token}
+
 ---
 
 ## Missing
 
 * \º All the middleweares
-* Reuse the trycatch jwt
-* Create the user admin automatically
-* No send the password_hash

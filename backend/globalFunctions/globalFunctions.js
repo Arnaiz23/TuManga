@@ -19,7 +19,7 @@ let globalFunctions = {
             })
         }
 
-        let userFind = await User.findById(userToken.id);
+        let userFind = await User.findById(userToken.id, {password_hash: false});
 
         if (!userFind) {
             return res.status(500).send({

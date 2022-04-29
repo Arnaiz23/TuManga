@@ -1,9 +1,9 @@
 PUT  http://localhost:3900/api/v1/order
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjJhMTYwZmUxNmNmZjYwMzVmZjJhOSIsImVtYWlsIjoiYWRyaWFuNUBnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yMlQxMjozNjo0OC4wNjRaIiwiaWF0IjoxNjUwNjMxMDA4LCJleHAiOjE2NTA3MTc0MDh9.CisnZG9PFIsyaaCgjl5LEoF6m2kPqafauJCU_lF224c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTc3ZjczMDE0MjgzZjkwNmQyNCIsImVtYWlsIjoidXN1YXJpb0BnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yNlQxMjoxMTozNS42ODdaIiwiaWF0IjoxNjUwOTc1MTY5LCJleHAiOjE2NTEwNjE1Njl9._8wH5TSl3mxzumEyOGJ_OA2bwmvlNuEKUSt_m3SEPlM
 
 {
-    "delivery_address" : "62646f0a7b3a7127375c70fc",
-    "billing" : "626472e14839951a78f40ce7",
+    "delivery_address" : "6267e9c13224c282caecafaf",
+    "billing" : "6267e9d63224c282caecafb5",
     "telephone" : 123456789
 }

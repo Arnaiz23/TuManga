@@ -1,0 +1,8 @@
+PUT http://localhost:3900/api/v1/user HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdjYzM1YzUwNjJmOWQyNjJhYjU3ZiIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTI2VDEwOjQwOjUzLjg0OVoiLCJpYXQiOjE2NTA5NzA0MTcsImV4cCI6MTY1MTA1NjgxN30.RZ0tb7Z9KWM9ZWNJSu4cqUcYRVQ_Ez17lp_TEIzJwxA
+
+{
+    "name" : "PruebaUpdate",
+    "last_name" : "PruebaUpdate"
+}

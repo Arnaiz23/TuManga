@@ -8,9 +8,14 @@ var bodyParser = require("body-parser");
 
 var app = express();
 
-initialConfig.createRoles();
+let init = async () => {
+    await initialConfig.createRoles();
+    await initialConfig.createAdmin();
+}
 
-app.use(bodyParser.urlencoded({extended:false}));
+init()
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
