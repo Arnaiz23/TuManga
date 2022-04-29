@@ -12,7 +12,7 @@ const tokens = {
     "user" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTc3ZjczMDE0MjgzZjkwNmQyNCIsImVtYWlsIjoidXN1YXJpb0BnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yNlQxMjoxMTozNS42ODdaIiwiaWF0IjoxNjUxMDkzMjk3LCJleHAiOjE2NTExNzk2OTd9.WYE2H_tT7-aPWU10YWKGnO1MWbqYVU1tGr42oM1XkK8"
 }
 
-/* describe('users', () => {
+describe('users', () => {
     it('users is returned as json', async () => {
         await api
             .get("/api/v1/admin/users")
@@ -34,26 +34,4 @@ const tokens = {
             .expect(201)
             .expect('Content-type', /application\/json/)
     })
-}) */
-
-test('users is returned as json', async () => {
-    await api
-        .get("/api/v1/admin/users")
-        .expect(200)
-        .expect('Content-type', /application\/json/)
-        .set({ Authorization: `Bearer ${tokens.employee}` })
-})
-
-test('create a new user (Register)', async () => {
-    const newUser = {
-        "email" : "prueba2@gmail.com",
-        "password" : "123456",
-        "confirm_password" : "123456"
-    }
-
-    await api
-        .post("/api/v1/user")
-        .send(newUser)
-        .expect(201)
-        .expect('Content-type', /application\/json/)
 })

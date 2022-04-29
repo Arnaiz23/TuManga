@@ -16,4 +16,4 @@ mongoose.connect(`mongodb+srv://${user_bbdd}:${password_bbdd}@tumanga.1l58o.mong
     })
 })
 
-module.exports = app
+module.exports = {app}
