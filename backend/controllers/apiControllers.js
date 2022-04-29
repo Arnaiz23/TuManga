@@ -530,7 +530,7 @@ var controller = {
             var validateConfirmPassword = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password));
 
         } catch (error) {
-            return res.status(400).send({
+            return res.status(404).send({
                 status: "error",
                 message: "Data empty"
             });

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest --verbose --silent"
+    "test": "jest --verbose --silent --forceExit"
   },
   "author": "Adrian Arnaiz Fernandez",
   "license": "ISC",
