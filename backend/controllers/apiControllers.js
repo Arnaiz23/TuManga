@@ -607,9 +607,9 @@ var controller = {
 
     getAllUsers: async (req, res) => {
 
-        let users = await User.find({}, {password_hash: false})
+        let users = await User.find({}, { password_hash: false })
 
-        if(!users || users.length == 0){
+        if (!users || users.length == 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Not found users"
@@ -634,7 +634,7 @@ var controller = {
 
         let userInfo = {
             userFind,
-            roleName : role
+            roleName: role
         }
 
         return res.status(200).send({
@@ -656,7 +656,7 @@ var controller = {
             newState = "Active"
         }
 
-        User.findByIdAndUpdate(userOld.id, { state: newState }, { fields: {password_hash: false}, new: true }, (err, userUpdate) => {
+        User.findByIdAndUpdate(userOld.id, { state: newState }, { fields: { password_hash: false }, new: true }, (err, userUpdate) => {
             if (err || !userUpdate) {
                 return res.status(404).send({
                     status: "error",
@@ -729,13 +729,13 @@ var controller = {
 
             let token = jwt.sign(payload, config.JWT_key, { expiresIn: rememberTime });
 
-            if(user.state === "Disabled"){
+            if (user.state === "Disabled") {
                 res.status(200).send({
                     status: "success",
                     token,
-                    "userState" : "Disabled"
+                    "userState": "Disabled"
                 })
-            }else{
+            } else {
                 res.status(200).send({
                     status: "success",
                     token
@@ -801,7 +801,7 @@ var controller = {
 
         }
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, { fields: {password_hash: false}, new: true })
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, userFind, { fields: { password_hash: false }, new: true })
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -878,7 +878,7 @@ var controller = {
 
         let orderProcess = await Order.find({ id_client: user._id, state: "P" })
 
-        if(orderProcess.length > 0){
+        if (orderProcess.length > 0) {
             return res.status(404).send({
                 status: "error",
                 message: "Sorry, this user already has one order in process"
@@ -1027,12 +1027,12 @@ var controller = {
         orderProcess.telephone = telephone
 
         let products = orderProcess.products
-        
+
         let updateProducts = async () => {
             products.forEach(async id => {
                 let productFind = await Product.findById(id)
 
-                if(!productFind){
+                if (!productFind) {
                     return res.status(404).send({
                         status: "error",
                         message: "This product doesn't exists"
@@ -1041,9 +1041,9 @@ var controller = {
 
                 let number_sales = productFind.number_sales + 1
                 let stock = productFind.stock - 1
-                let productUpdate = await Product.findByIdAndUpdate(productFind._id, {number_sales : number_sales, stock: stock}, {new: true})
+                let productUpdate = await Product.findByIdAndUpdate(productFind._id, { number_sales: number_sales, stock: stock }, { new: true })
 
-                if(!productUpdate){
+                if (!productUpdate) {
                     return res.status(404).send({
                         status: "error",
                         message: "This product has not been updated"
@@ -1141,7 +1141,7 @@ var controller = {
     },
 
     getUserOrders: async (req, res) => {
-        
+
         let userFind = await globalFunctions.getUserToken(req, res)
 
         let orders = await Order.find({ id_client: userFind._id, state: "F" });
@@ -1207,7 +1207,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        if(!userFind.cart.includes(id_order)){
+        if (!userFind.cart.includes(id_order)) {
             return res.status(404).send({
                 status: "error",
                 message: "This id not match with the user orders"
@@ -1216,25 +1216,25 @@ var controller = {
 
         let order = await Order.findById(id_order)
 
-        if(!order){
+        if (!order) {
             return res.status(404).send({
                 status: "error",
                 message: "This order doesn't exists"
             })
         }
 
-        let billing = await Billing.findById(order.billing, {_id: false, user_id: false, encrypt_card: false})
+        let billing = await Billing.findById(order.billing, { _id: false, user_id: false, encrypt_card: false })
 
-        if(!billing){
+        if (!billing) {
             return res.status(404).send({
                 status: "error",
                 message: "This card doesn't exists"
             })
         }
 
-        let address = await Address.findById(order.delivery_address, {_id: false, user_id: false})
+        let address = await Address.findById(order.delivery_address, { _id: false, user_id: false })
 
-        if(!address){
+        if (!address) {
             return res.status(404).send({
                 status: "error",
                 message: "This address doesn't exists"
@@ -1244,9 +1244,9 @@ var controller = {
         let searchProducts = async () => {
 
             let productArray = []
-            
-            for await (let product of order.products){
-                let productData = await Product.findById(product._id, {name: true, _id: false, image: true})
+
+            for await (let product of order.products) {
+                let productData = await Product.findById(product._id, { name: true, _id: false, image: true })
                 productArray.push(productData)
             }
 
@@ -1256,19 +1256,19 @@ var controller = {
         let products = await searchProducts()
 
         let data = {
-            products : products,
-            address : address,
-            payment : billing,
+            products: products,
+            address: address,
+            payment: billing,
             total: order.total,
             telephone: order.telephone,
-            delivered_date : order.send_date
+            delivered_date: order.send_date
         }
 
         return res.status(200).send({
             status: "success",
             data
         })
-        
+
     },
 
     // * -----------------------------------------------------------
@@ -1283,10 +1283,10 @@ var controller = {
         const regexNumber = /^[0-9]{16}$/;
 
         const $name_card = {
-            "3" : "American Express",
-            "4" : "Visa",
-            "5" : "MasterCard",
-            "6" : "Discovery"
+            "3": "American Express",
+            "4": "Visa",
+            "5": "MasterCard",
+            "6": "Discovery"
         }
 
         try {
@@ -1317,9 +1317,9 @@ var controller = {
             newCard.encrypt_card = card_hash;
             newCard.expiration_date = newDate;
 
-            let firstNumber = data.number_card.slice(0,1)
+            let firstNumber = data.number_card.slice(0, 1)
 
-            if(firstNumber <= 2 || firstNumber >= 7 ){
+            if (firstNumber <= 2 || firstNumber >= 7) {
                 return res.status(404).send({
                     status: "error",
                     message: "This number card is invalid"
@@ -1372,7 +1372,7 @@ var controller = {
     },
 
     getAllCards: (req, res) => {
-        Billing.find({},{encrypt_card: false},(err, cards) => {
+        Billing.find({}, { encrypt_card: false }, (err, cards) => {
 
             if (err) {
                 // ! ErrorHandler
@@ -1397,7 +1397,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        Billing.find({ user_id: userFind._id }, {encrypt_card: false}, (err, cards) => {
+        Billing.find({ user_id: userFind._id }, { encrypt_card: false }, (err, cards) => {
 
             return res.status(200).send({
                 status: "success",
@@ -1412,7 +1412,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let cards = await Billing.find({ id_client: userFind._id }, {encrypt_card: false});
+        let cards = await Billing.find({ id_client: userFind._id }, { encrypt_card: false });
 
         if (!cards || cards.length == 0) {
             return res.status(404).send({
@@ -1431,7 +1431,7 @@ var controller = {
     deleteCard: async (req, res) => {
 
         const id_card = req.params.id;
-        
+
         let userFind = await globalFunctions.getUserToken(req, res)
 
         let cardDelete = await Billing.findByIdAndDelete(id_card);
@@ -1445,7 +1445,7 @@ var controller = {
 
         let cards = await Billing.find({ user_id: userFind._id });
 
-        let userUpdate = await User.findByIdAndUpdate(userFind.id, { billing: cards }, { new: true, fields: {password_hash: false} });
+        let userUpdate = await User.findByIdAndUpdate(userFind.id, { billing: cards }, { new: true, fields: { password_hash: false } });
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -1533,7 +1533,7 @@ var controller = {
     deleteAddress: async (req, res) => {
 
         let { id } = req.params
-        
+
         let userFind = await globalFunctions.getUserToken(req, res)
 
         try {
@@ -1549,7 +1549,7 @@ var controller = {
 
             let newAddress = await Address.find({ user_id: userFind._id });
 
-            let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: newAddress }, { new: true, fields: {password_hash: false} });
+            let userUpdate = await User.findByIdAndUpdate(userFind._id, { address: newAddress }, { new: true, fields: { password_hash: false } });
 
             if (!userUpdate) {
                 return res.status(404).send({
@@ -1577,7 +1577,7 @@ var controller = {
 
         const id_address = req.params.id;
         let body = req.body;
-        
+
         let userFind = await globalFunctions.getUserToken(req, res)
 
         let address = await Address.findById(id_address)
@@ -1771,7 +1771,7 @@ var controller = {
 
         let newComments = await Comment.find({ user_id: userFind._id })
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true, fields: {password_hash: false} })
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true, fields: { password_hash: false } })
 
         let commentsProducts = await Product.findById(commentDelete.product_id)
 
@@ -1781,9 +1781,9 @@ var controller = {
 
         commentsProducts.splice(indexComment, 1)
 
-        let productUpdate = await Product.findByIdAndUpdate(commentDelete.product_id, {comments: commentsProducts}, {new: true})
+        let productUpdate = await Product.findByIdAndUpdate(commentDelete.product_id, { comments: commentsProducts }, { new: true })
 
-        if(!productUpdate){
+        if (!productUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This product has not been updated"
@@ -1936,7 +1936,7 @@ var controller = {
             userFind.email = body.email
         }
 
-        let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true, fields: {password_hash: false} })
+        let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true, fields: { password_hash: false } })
 
         if (!userUpdate) {
             return res.status(404).send({
@@ -2006,7 +2006,7 @@ var controller = {
                     return false
                 }
             });
-            
+
             let validateCategories2 = !validateCategories.includes(false);
 
             if (validateCategories2) {
@@ -2034,9 +2034,9 @@ var controller = {
             productFind.series = body.series
         }
 
-        let productUpdate = await Product.findByIdAndUpdate(id_product, productFind, {new:true})
+        let productUpdate = await Product.findByIdAndUpdate(id_product, productFind, { new: true })
 
-        if(!productUpdate){
+        if (!productUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This product has not been updated"
@@ -2054,9 +2054,9 @@ var controller = {
 
         const id_user = req.params.id
 
-        let userFind = await User.findById(id_user, {password_hash: false})
+        let userFind = await User.findById(id_user, { password_hash: false })
 
-        if(!userFind){
+        if (!userFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't exists"
@@ -2067,7 +2067,7 @@ var controller = {
             status: "success",
             userFind
         })
-        
+
     },
 
     deleteUserAdmin: async (req, res) => {
@@ -2076,7 +2076,7 @@ var controller = {
 
         let userDelete = await User.findByIdAndDelete(id_user)
 
-        if(!userDelete){
+        if (!userDelete) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been deleted"
@@ -2110,11 +2110,11 @@ var controller = {
             })
         }
 
-        if(validate_email && validate_password && validate_role){
+        if (validate_email && validate_password && validate_role) {
 
-            let userMatch = await User.find({email: email})
+            let userMatch = await User.find({ email: email })
 
-            if(userMatch.length > 0){
+            if (userMatch.length > 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "This email already exists"
@@ -2133,7 +2133,7 @@ var controller = {
                 role
             })
 
-            if(state && $state.includes(state)){
+            if (state && $state.includes(state)) {
                 newUser.state = state
             }
 
@@ -2141,9 +2141,15 @@ var controller = {
 
             newUser.role = roleId._id
 
+            let tokenRecover = await crypto.randomBytes(128)
+
+            tokenRecover = tokenRecover.toString('hex')
+
+            newUser.tokenRecover = tokenRecover
+
             let userSave = await newUser.save()
 
-            if(!userSave){
+            if (!userSave) {
                 return res.status(404).send({
                     status: "error",
                     message: "This user has not been saved"
@@ -2155,13 +2161,13 @@ var controller = {
                 userSave
             })
 
-        }else{
+        } else {
             return res.status(404).send({
                 status: "error",
                 message: "Data invalid"
             })
         }
-        
+
     },
 
     searchAdmin: async (req, res) => {
@@ -2170,7 +2176,7 @@ var controller = {
 
         const $option = ["user", "product"]
 
-        if(!$option.includes(option)){
+        if (!$option.includes(option)) {
             return res.status(404).send({
                 status: "error",
                 message: "Option invalid"
@@ -2179,17 +2185,17 @@ var controller = {
 
         option = option.toLowerCase()
 
-        if(option === "user"){
+        if (option === "user") {
 
             let userSearch = await User.find({
-                "$or" : [
-                    { "name": { "$regex" : search, "$options" : "i" } },
-                    { "last_name": { "$regex" : search, "$options" : "i" } },
-                    { "email": { "$regex" : search, "$options" : "i" } }
+                "$or": [
+                    { "name": { "$regex": search, "$options": "i" } },
+                    { "last_name": { "$regex": search, "$options": "i" } },
+                    { "email": { "$regex": search, "$options": "i" } }
                 ]
-            }, {password_hash: false})
+            }, { password_hash: false })
 
-            if(!userSearch || userSearch.length == 0){
+            if (!userSearch || userSearch.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Not exists users with these params"
@@ -2200,8 +2206,8 @@ var controller = {
                 status: "success",
                 userSearch
             })
-            
-        }else{
+
+        } else {
 
             let productSearch = await Product.find({
                 "$or": [
@@ -2212,9 +2218,9 @@ var controller = {
                     { "editorial": { "$regex": search, "$options": "i" } },
                     { "series": { "$regex": search, "$options": "i" } },
                 ]
-            }, {password_hash: false})
+            }, { password_hash: false })
 
-            if(!productSearch || productSearch.length == 0){
+            if (!productSearch || productSearch.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Not exists products with these params"
@@ -2227,7 +2233,7 @@ var controller = {
             })
 
         }
-        
+
     },
 
     // * ----------------------------------------------------------
@@ -2260,7 +2266,7 @@ var controller = {
 
         const { image } = req.params
 
-        const path_file = './upload/images/'+image
+        const path_file = './upload/images/' + image
 
         fs.exists(path_file, (exists) => {
             if (exists) {
@@ -2281,7 +2287,7 @@ var controller = {
 
         let productFind = await Product.findById(id_product)
 
-        if(!productFind){
+        if (!productFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This product doesn't exists"
@@ -2290,7 +2296,7 @@ var controller = {
 
         let file_name = "Image not uploaded..."
 
-        if(!req.files){
+        if (!req.files) {
             return res.status(404).send({
                 status: "error",
                 message: file_name
@@ -2310,9 +2316,9 @@ var controller = {
             })
         }
 
-        let productUpdate = await Product.findByIdAndUpdate(productFind._id, {image: file_name}, {new: true})
+        let productUpdate = await Product.findByIdAndUpdate(productFind._id, { image: file_name }, { new: true })
 
-        if(!productUpdate){
+        if (!productUpdate) {
             fs.unlink(file_path, (err) => {
                 return res.status(404).send({
                     status: "error",
@@ -2325,7 +2331,7 @@ var controller = {
             status: "success",
             productUpdate
         })
-        
+
     },
 
     // * -------------------------------------------------------------
@@ -2346,16 +2352,16 @@ var controller = {
             })
         }
 
-        if(!validate_email){
+        if (!validate_email) {
             return res.status(404).send({
                 status: "error",
                 message: "Email invalid"
             })
         }
 
-        let userFind = await User.findOne({email: email})
+        let userFind = await User.findOne({ email: email })
 
-        if(!userFind){
+        if (!userFind) {
             return res.status(404).send({
                 status: "error",
                 message: "Doesn't exists any user with this email"
@@ -2365,12 +2371,12 @@ var controller = {
         // ! Send email
 
         res.send(userFind)
-        
+
     },
 
     recoverPassword: async (req, res) => {
 
-        const {token} = req.params
+        const { token } = req.params
 
         const { password, confirm_password } = req.body
 
@@ -2387,23 +2393,23 @@ var controller = {
             })
         }
 
-        if(!validate_password && !validate_confirm){
+        if (!validate_password && !validate_confirm) {
             return res.status(404).send({
                 status: "error",
                 message: "Password invalids"
             })
         }
 
-        if(password != confirm_password){
+        if (password != confirm_password) {
             return res.status(404).send({
                 status: "error",
                 message: "Passwords do not match"
             })
         }
 
-        let userFind = await User.findOne({tokenRecover: token})
+        let userFind = await User.findOne({ tokenRecover: token })
 
-        if(!userFind){
+        if (!userFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't exists"
@@ -2412,7 +2418,7 @@ var controller = {
 
         let passMatch = await User.comparePasswords(password, userFind.password_hash)
 
-        if(passMatch){
+        if (passMatch) {
             return res.status(404).send({
                 status: "error",
                 message: "The passwords agree"
@@ -2421,9 +2427,9 @@ var controller = {
 
         let newPassword = await User.encrypt(password)
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, {password_hash: newPassword}, {new:true, fields: {password_hash: false, tokenRecover: false}})
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { password_hash: newPassword }, { new: true, fields: { password_hash: false, tokenRecover: false } })
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "This user has not been updated"
@@ -2436,9 +2442,9 @@ var controller = {
             status: "success",
             userUpdate
         })
-        
+
     }
-    
+
     // * -----------------------------------------------------------
 
 }
