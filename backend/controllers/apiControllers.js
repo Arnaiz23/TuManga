@@ -857,6 +857,15 @@ var controller = {
 
         let user = await globalFunctions.getUserToken(req, res)
 
+        let orderProcess = await Order.find({ id_client: user._id, state: "P" })
+
+        if(orderProcess.length > 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Sorry, this user already has one order in process"
+            })
+        }
+
         let newOrder = Order();
 
         try {
