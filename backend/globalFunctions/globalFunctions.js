@@ -2,6 +2,10 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const fs = require('fs')
 
+const nodemailer = require("nodemailer");
+
+const config = require("../config/config")
+
 let globalFunctions = {
 
     getUserToken: async (req, res) => {
@@ -19,7 +23,7 @@ let globalFunctions = {
             })
         }
 
-        let userFind = await User.findById(userToken.id, {password_hash: false, tokenRecover: false});
+        let userFind = await User.findById(userToken.id, { password_hash: false, tokenRecover: false });
 
         if (!userFind) {
             return res.status(500).send({
@@ -56,7 +60,7 @@ let globalFunctions = {
                 })
             })
         }
-        
+
         return file_name
 
     },
@@ -65,7 +69,7 @@ let globalFunctions = {
 
         let userFind = await User.findById(id)
 
-        if(!userFind){
+        if (!userFind) {
             return res.status(404).send({
                 status: "error",
                 message: "This user doesn't exists"
@@ -73,7 +77,23 @@ let globalFunctions = {
         }
 
         return userFind.password_hash
-        
+
+    },
+
+    getTransport: async () => {
+
+        let transport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: config.userGmail, 
+                pass: config.passwordGmail,
+            },
+        });
+
+        return transport
+
     }
 
 }

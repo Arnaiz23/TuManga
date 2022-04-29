@@ -398,6 +398,11 @@
 
 ## Email (In process on the branch "recoverPassword")
 
+* Send email (In this route is created the tokenRecover)
+  * .post /email
+* Change the password (In this route is deleted the tokenRecover)
+  * .post /recover/:token
+
 
 ## Admin
 

@@ -2360,9 +2360,9 @@ var controller = {
 
         tokenRecover = tokenRecover.toString('hex')
 
-        let userUpdate = await User.findByIdAndUpdate(userFind._id, {tokenRecover: tokenRecover})
+        let userUpdate = await User.findByIdAndUpdate(userFind._id, { tokenRecover: tokenRecover })
 
-        if(!userUpdate){
+        if (!userUpdate) {
             return res.status(404).send({
                 status: "error",
                 message: "Token could not be generated"
@@ -2379,7 +2379,20 @@ var controller = {
 
         // ! Send email
 
-        res.send(userUpdate)
+        let transporter = await globalFunctions.getTransport()
+
+        let info = await transporter.sendMail({
+            from: '"TuManga" <foo@example.com>',
+            to: email,
+            subject: "Recover password",
+            // text: "Re",
+            html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
+        });
+
+        return res.status(200).send({
+            status: "success",
+            message: "The email is sent"
+        })
 
     },
 
