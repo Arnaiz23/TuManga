@@ -620,9 +620,20 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
+        let role = await Role.findById(userFind.role)
+
+        role = role.name
+
+        userFind.role = null
+
+        let userInfo = {
+            userFind,
+            roleName : role
+        }
+
         return res.status(200).send({
             status: "success",
-            userFind
+            userInfo
         })
 
     },
@@ -856,6 +867,15 @@ var controller = {
         const { id_product } = req.body;
 
         let user = await globalFunctions.getUserToken(req, res)
+
+        let orderProcess = await Order.find({ id_client: user._id, state: "P" })
+
+        if(orderProcess.length > 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Sorry, this user already has one order in process"
+            })
+        }
 
         let newOrder = Order();
 
