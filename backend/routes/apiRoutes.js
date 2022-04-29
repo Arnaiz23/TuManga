@@ -102,7 +102,7 @@ router.get("/total/users", middleweares.isEmployee, controllers.totalUsers); // 
 router.get("/total/earnings", middleweares.isOwner, controllers.totalEarnings); // Get the total earnings (Admin)
 router.get("/products/sales/:limit", middleweares.isEmployee, controllers.mostBestsellers); // Get the most bestsellers products
 router.get("/admin/orders", middleweares.isEmployee, controllers.getAllOrders); // Get all the orders
-router.get("/admin/users", middleweares.isEmployee, controllers.getAllUsers); // Get all users
+router.get("/admin/users/:filter?", middleweares.isEmployee, controllers.getAllUsers); // Get all users
 router.get("/admin/cards", middleweares.isEmployee, controllers.getAllCards); // Get all cards
 router.get("/admin/roles", middleweares.isAdmin, controllers.getAllRoles); // Get all roles
 router.get("/admin/comments", middleweares.isEmployee, controllers.getAllComments); // Get all comments

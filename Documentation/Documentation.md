@@ -115,8 +115,7 @@ The principal route is "/api/v1"
 
 ### Missing views
 
-* adminPanel -> sort and filter
-* adminPanel -> search products and users
+* adminPanel -> filter
 * Spinner
 
 

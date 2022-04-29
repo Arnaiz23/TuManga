@@ -601,7 +601,17 @@ var controller = {
 
     getAllUsers: async (req, res) => {
 
-        let users = await User.find({}, { password_hash: false })
+        const { filter } = req.params
+
+        const state = ["Disabled", "Active"]
+
+        let users
+
+        if(filter && state.includes(filter)){
+            users = await User.find({state: filter}, { password_hash: false })
+        }else{
+            users = await User.find({}, { password_hash: false })
+        }
 
         if (!users || users.length == 0) {
             return res.status(404).send({
