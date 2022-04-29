@@ -778,7 +778,9 @@ var controller = {
                 })
             }
 
-            let userCompare = await User.comparePasswords(body.password, userFind.password_hash)
+            let password_hash = await globalFunctions.getPasswordHash(userFind._id)
+
+            let userCompare = await User.comparePasswords(body.password, password_hash)
 
             if (userCompare) {
                 return res.status(404).send({
