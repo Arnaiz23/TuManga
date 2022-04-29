@@ -30,7 +30,7 @@ let middleweares = {
             })
 
         } catch (error) {
-            return res.status(500).send({ message: "No funciono" });
+            return res.status(500).send({ message: "Did not work" });
         }
 
     },
@@ -59,7 +59,7 @@ let middleweares = {
             })
 
         } catch (error) {
-            return res.status(500).send({ message: "No funciono" });
+            return res.status(500).send({ message: "Did not work" });
         }
     },
 
@@ -87,7 +87,7 @@ let middleweares = {
             })
 
         } catch (error) {
-            return res.status(500).send({ message: "No funciono" });
+            return res.status(500).send({ message: "Did not work" });
         }
     },
 
@@ -115,7 +115,7 @@ let middleweares = {
             })
 
         } catch (error) {
-            return res.status(500).send({ message: "No funciono" });
+            return res.status(500).send({ message: "Did not work" });
         }
     }
 }

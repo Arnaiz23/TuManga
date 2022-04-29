@@ -4,8 +4,9 @@
   "description": "tumanga backend",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "jest --verbose --silent --forceExit"
   },
   "author": "Adrian Arnaiz Fernandez",
   "license": "ISC",
@@ -18,7 +19,14 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.0",
-    "nodemon": "^2.0.15",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^28.0.2",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
+  },
+  "jest" : {
+    "testEnvironment" : "node"
   }
 }

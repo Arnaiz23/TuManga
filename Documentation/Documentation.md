@@ -107,6 +107,7 @@ The principal route is "/api/v1"
 * Pagination YES
 * Filter for x price ¿?
 * Comments YES
+* Think in a difference of the role owner and role employee
 
 
 ---

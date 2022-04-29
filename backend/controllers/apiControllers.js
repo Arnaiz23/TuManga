@@ -23,7 +23,7 @@ let globalFunctions = require('../globalFunctions/globalFunctions');
 
 var controller = {
     test: (req, res) => {
-        return res.send("Hello test");
+        return res.status(200).send("Hello test");
     },
 
     // * --------------------- PRODUCTS ----------------------------
@@ -530,7 +530,7 @@ var controller = {
             var validateConfirmPassword = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password));
 
         } catch (error) {
-            return res.status(400).send({
+            return res.status(404).send({
                 status: "error",
                 message: "Data empty"
             });
@@ -778,7 +778,9 @@ var controller = {
                 })
             }
 
-            let userCompare = await User.comparePasswords(body.password, userFind.password_hash)
+            let password_hash = await globalFunctions.getPasswordHash(userFind._id)
+
+            let userCompare = await User.comparePasswords(body.password, password_hash)
 
             if (userCompare) {
                 return res.status(404).send({

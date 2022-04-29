@@ -3,5 +3,6 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTc3ZjczMDE0MjgzZjkwNmQyNCIsImVtYWlsIjoidXN1YXJpb0BnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yNlQxMjoxMTozNS42ODdaIiwiaWF0IjoxNjUwOTc1MTY5LCJleHAiOjE2NTEwNjE1Njl9._8wH5TSl3mxzumEyOGJ_OA2bwmvlNuEKUSt_m3SEPlM
 
 {
+    
     "id_product" : "6267e96e3224c282caecafa0"
 }
