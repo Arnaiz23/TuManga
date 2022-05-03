@@ -3,9 +3,9 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
-import Header from "../../components/Header/Header";
-import Footer from "components/Footer/Footer";
-import SocialNetwork from "components/SocialNetworks/SocialNetworks";
+import Header from "../../../components/publicFolder/Header/Header";
+import Footer from "components/publicFolder/Footer/Footer";
+import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
 
 export default function Account() {
     return (

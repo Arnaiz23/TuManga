@@ -6,7 +6,7 @@ import { faShoppingCart, faSearch, faUser, faBars } from '@fortawesome/free-soli
 
 import Brand from 'BrandTransparent.png'
 
-import Nav from "components/Nav/Nav";
+import Nav from "components/publicFolder/Nav/Nav";
 
 export default function Header() {
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardProduct from "components/CardProduct/CardProduct";
+import CardProduct from "components/publicFolder/CardProduct/CardProduct";
 
 export default function ListOfProducts({ products }){
     return <div className="containerProducts">

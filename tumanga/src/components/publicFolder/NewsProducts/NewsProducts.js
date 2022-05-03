@@ -1,4 +1,4 @@
-import ListOfProducts from "components/ListOfProducts/ListOfProducts";
+import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
 import React, { useEffect, useState } from "react";
 import getNewsProducts from "services/getNewsProducts";
 
