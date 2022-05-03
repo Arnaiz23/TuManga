@@ -3,5 +3,5 @@
 
 ## Components function missing
 
-* ModalProductFilter (Services)
-* FilterProducts (Services)
+* FilterCheckbox (Services)
+* Spinner

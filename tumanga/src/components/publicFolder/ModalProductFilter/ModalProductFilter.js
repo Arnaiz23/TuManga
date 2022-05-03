@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faSliders, faXmark } from '@fortawesome/free-solid-svg-icons'
+import getFilters from "services/getFilters";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 export default function ModalProductFilter() {
 
     const [modalShow, setModalShow] = useState('')
     const [optionsShow, setOptionsShow] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [filters, setFilters] = useState([])
+
+    useEffect(() => {
+        setLoading(true)
+        getFilters().then(res => {
+            setLoading(false)
+            setFilters(res.categories)
+            // console.log(res.products);
+        })
+    }, [])
 
     const showModal = () => {
         modalShow === 'modalFilterActive'
@@ -19,7 +32,7 @@ export default function ModalProductFilter() {
             ? setOptionsShow('')
             : setOptionsShow('selectActive')
     }
-    
+
     return (
         <div className="selectOrder">
             <div className="filterResponsive" onClick={showModal}>
@@ -27,7 +40,7 @@ export default function ModalProductFilter() {
             </div>
             <div className={`optionsFilterResponsive ${modalShow}`}>
                 <header>
-                    <button role="button" id="closeModalFilter"  onClick={showModal}>
+                    <button role="button" id="closeModalFilter" onClick={showModal}>
                         <i><FontAwesomeIcon icon={faXmark} /></i>
                         Cerrar
                     </button>
@@ -46,30 +59,11 @@ export default function ModalProductFilter() {
                     </div>
                     <div className="containerFilterResponsive">
                         <h3>Categorias</h3>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Novela ligera</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Manga</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Novela ligera</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Manga</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Novela ligera</p>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Manga</p>
-                        </div>
+                        {
+                            (
+                                filters.map(filter => <FilterCheckbox name={filter} size='none' key={filter} />)
+                            )
+                        }
                     </div>
                 </main>
                 <footer>
