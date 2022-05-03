@@ -143,61 +143,76 @@ var controller = {
         }
 
     },
-    getMangas: (req, res) => {
+    getMangas: async (req, res) => {
 
         const { limit, skip } = req.params;
 
-        Product.find({
+        let allProducts = await Product.find({
             "$or": [
                 { "type": "manga" },
                 { "type": "novela ligera" }
             ]
-        }, (err, mangas) => {
+        })
 
-            if (err) {
-                // ! ErrorHandler
-            }
-
-            if (!mangas || mangas.length == 0) {
-                return res.status(404).send({
-                    status: "error",
-                    message: "Mangas not found"
-                });
-            }
-
-            return res.status(200).send({
-                status: "success",
-                mangas
+        if (!allProducts || allProducts.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "Mangas not found"
             });
+        }
 
+        let count = allProducts.length
+
+        let products = await Product.find({
+            "$or": [
+                { "type": "manga" },
+                { "type": "novela ligera" }
+            ]
         }).limit(limit).skip(skip);
 
+        if (!products || products.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "Mangas not found"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            products,
+            count
+        });
+
     },
-    getMerchandising: (req, res) => {
+    getMerchandising: async (req, res) => {
 
         const { limit, skip } = req.params;
 
-        Product.find({ type: "merchandising" }, (err, merchandising) => {
+        let allProducts = await Product.find({ type: "merchandising"})
 
-            if (err) {
-                // ! Errorhandler
-            }
-
-            if (!merchandising || merchandising.length == 0) {
-
-                return res.status(404).send({
-                    status: "error",
-                    message: "Products don't have merchandising"
-                });
-
-            }
-
-            return res.status(200).send({
-                status: "success",
-                merchandising
+        if (!allProducts || allProducts.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "Merchandising not found"
             });
+        }
 
-        }).limit(limit).skip(skip);
+        let count = allProducts.length
+
+        let products = await Product.find({ type: "merchandising"}).limit(limit).skip(skip);
+
+        if (!products || products.length == 0) {
+            return res.status(404).send({
+                status: "error",
+                message: "Merchandising not found"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            products,
+            count
+        });
 
     },
     getAllProducts: (req, res) => {
