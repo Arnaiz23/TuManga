@@ -57,6 +57,8 @@ export default function ProductsView() {
     }
 
     useEffect(() => {
+
+        if(page > 0) return
     
         setLoading(true)
 
@@ -66,21 +68,27 @@ export default function ProductsView() {
             setLoading(false)
         })
 
-        setPage(location.split("/")[location.split("/").length-1])
+        let pageNumber = location.split("/")[location.split("/").length-1]
+        setPage(pageNumber)
         
     }, [])
 
-    useEffect(() => {
+    useEffect(async () => {
 
         if(page === 0) return
 
         setLoading(true)
+        // ! Fallaaaaaaa !!!!!!!!
+        let pageNumber = location.split("/")[location.split("/").length-1]
+        console.log(pageNumber);
+        setPage(pageNumber)
+        console.log(page);
 
-        getMangas().then(data => {
+        getMangas(8*page).then(data => {
             setProducts(data.products)
             setLoading(false)
         })
-        alert("Hey")
+        // alert("Hey")
 
     },[location])
 

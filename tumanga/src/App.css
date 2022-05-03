@@ -770,6 +770,8 @@ a{
 .containersFilters {
   width: 16%;
   min-width: 220px;
+  position: sticky;
+  top: 1em;
 }
 
 .containerFilter {
@@ -778,8 +780,6 @@ a{
   padding: 20px;
   margin: 30px 0;
   background-color: var(--soft-blue);
-  position: sticky;
-  top: 1em;
 }
 
 .containerFilter header {
