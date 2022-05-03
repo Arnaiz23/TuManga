@@ -246,6 +246,28 @@ var controller = {
 
         })
     },
+    getFilters: async (req, res) => {
+        let products = await Product.find()
+        let categories = []
+
+        if(!products || products.length <= 0){
+            return res.status(404).send({
+                status: "error",
+                message: "The products doesn't exists"
+            })
+        }
+
+        products.forEach(product => {
+            product.categories.forEach(categorie => {
+                if(!categories.includes(categorie)) categories.push(categorie)
+            })
+        })
+
+        return res.status(200).send({
+            status: "success",
+            categories
+        })
+    },
 
     // * -----------------------------------------------------------
 
