@@ -17,7 +17,9 @@ export default function CardProduct({ product }) {
 
     return (
         <div className="card" id="cardTemplate" key={product._id}>
-            <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} />
+            {/* Create default */}
+            {/* <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} /> */}
+            <img src="https://wellnessinmind.ca/wp-content/themes/wellness/img/default_new_image.jpg" alt={`Portada del volumen de ${product.name}`} />
                 <footer className="cardFooter">
                     <h3>{product.name}</h3>
                     <div className="priceContainer">

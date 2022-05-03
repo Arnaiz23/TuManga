@@ -12,12 +12,17 @@ import FilterProducts from "components/publicFolder/FilterProducts/FilterProduct
 import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
 
 import getMangas from "services/getMangas";
+import Paginate from "components/publicFolder/Paginate/Paginate";
+
+const INITIAL_PAGE = 1
 
 export default function ProductsView() {
 
     const [location, setLocation] = useLocation()
     const [loading, setLoading] = useState(false)
     const [products, setProducts] = useState([])
+    const [count, setCount] = useState(0)
+    const [page, setPage] = useState(0)
 
     let type = ""
 
@@ -52,13 +57,32 @@ export default function ProductsView() {
     }
 
     useEffect(() => {
+    
         setLoading(true)
 
         getMangas().then(data => {
-            setProducts(data.mangas)
+            setProducts(data.products)
+            setCount(Math.ceil(data.count / 8))
             setLoading(false)
         })
+
+        setPage(location.split("/")[location.split("/").length-1])
+        
     }, [])
+
+    useEffect(() => {
+
+        if(page === 0) return
+
+        setLoading(true)
+
+        getMangas().then(data => {
+            setProducts(data.products)
+            setLoading(false)
+        })
+        alert("Hey")
+
+    },[location])
 
     return (
         <>
@@ -76,6 +100,7 @@ export default function ProductsView() {
                         }
                     </div>
                 </div>
+                <Paginate size={count} />
             </main>
             <button id="btn-up" onClick={goUp} ref={btnUpRef}><i><FontAwesomeIcon icon={faAngleUp} /></i></button>
             <Footer />

@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Route path='/' component={PublicHome} />
       <Route path='/account' component={Account} />
-      <Route path='/products/mangas' component={ProductsView} />
+      <Route path='/products/mangas/:page' component={ProductsView} />
       <Route path='/products/merchandising' component={ProductsView} />
     </div>
   );
