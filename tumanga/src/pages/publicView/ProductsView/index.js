@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "wouter";
 
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -11,18 +11,14 @@ import ModalProductFilter from "components/publicFolder/ModalProductFilter/Modal
 import FilterProducts from "components/publicFolder/FilterProducts/FilterProducts";
 import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
 
-import getMangas from "services/getMangas";
 import Paginate from "components/publicFolder/Paginate/Paginate";
-
-const INITIAL_PAGE = 1
+import useProducts from "hooks/useProducts";
 
 export default function ProductsView() {
 
     const [location, setLocation] = useLocation()
-    const [loading, setLoading] = useState(false)
-    const [products, setProducts] = useState([])
-    const [count, setCount] = useState(0)
-    const [page, setPage] = useState(0)
+
+    const { loading, products, count } = useProducts()
 
     let type = ""
 
@@ -56,42 +52,6 @@ export default function ProductsView() {
         }
     }
 
-    useEffect(() => {
-
-        if(page > 0) return
-    
-        setLoading(true)
-
-        getMangas().then(data => {
-            setProducts(data.products)
-            setCount(Math.ceil(data.count / 8))
-            setLoading(false)
-        })
-
-        let pageNumber = location.split("/")[location.split("/").length-1]
-        setPage(pageNumber)
-        
-    }, [])
-
-    useEffect(async () => {
-
-        if(page === 0) return
-
-        setLoading(true)
-        // ! Fallaaaaaaa !!!!!!!!
-        let pageNumber = location.split("/")[location.split("/").length-1]
-        console.log(pageNumber);
-        setPage(pageNumber)
-        console.log(page);
-
-        getMangas(8*page).then(data => {
-            setProducts(data.products)
-            setLoading(false)
-        })
-        // alert("Hey")
-
-    },[location])
-
     return (
         <>
             <Header />
@@ -108,7 +68,8 @@ export default function ProductsView() {
                         }
                     </div>
                 </div>
-                <Paginate size={count} />
+                {/* <Paginate size={count} /> */}
+                <Paginate  />
             </main>
             <button id="btn-up" onClick={goUp} ref={btnUpRef}><i><FontAwesomeIcon icon={faAngleUp} /></i></button>
             <Footer />

@@ -1,37 +1,35 @@
+import useProducts from "hooks/useProducts";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 
-export default function Paginate({ size }) {
+export default function Paginate() {
 
-    const [count, setCount] = useState([])
-    const [location, setLocation] = useLocation()
-    const [page, setPage] = useState(1)
+    const [count2, setCount2] = useState([])
+
+    const { setPage, count } = useProducts()
 
     const options = () => {
         let data = []
 
-        for(let i = 1; i <= size; i++){
+        for(let i = 1; i <= count; i++){
             data.push(i)
         }
 
-        setCount(data)
+        setCount2(data)
     }
 
     useEffect(() => {
         options()
-    }, [size])
+    }, [count])
 
     const changePage = (e) => {
-        setLocation("/products/mangas/"+e.target.innerHTML)
-        setPage(e.target.innerHTML)
+        setPage(e.target.innerHTML - 1)
     }
     
     return (
         <div className="containerPaginator">
             <div className="paginator">
-                {/* <p class="pageActive">1</p> */}
                 {
-                    count.map(number => <p key={number} onClick={changePage}>{number}</p>)
+                    count2.map(number => <p key={number} onClick={changePage}>{number}</p>)
                 }
                 {/*  className="pageActive" */}
             </div>
