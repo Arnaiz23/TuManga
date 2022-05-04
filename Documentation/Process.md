@@ -1,0 +1,1 @@
+View why the component render much times

@@ -314,6 +314,7 @@
 * Filter any product
     * .get /filter/product/:type/:option&:limit&:skip
 > If you dont need a concrete option(category), write null
+> If you need many categories, split ;
 
 ## Sort
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +17,10 @@ import useProducts from "hooks/useProducts";
 export default function ProductsView() {
 
     const [location, setLocation] = useLocation()
-    const { loading, products, count } = useProducts()
+    const [filter, setFilter] = useState([])
+    const { loading, products, count, setReloadPage } = useProducts(filter)
+
+    // console.log(filter);
 
     let type = ""
 
@@ -59,7 +62,7 @@ export default function ProductsView() {
             <main className="center">
                 <ModalProductFilter />
                 <div className="containerGlobalProducts">
-                    <FilterProducts />
+                    <FilterProducts change={setFilter} />
                     <div className="containerProducts">
                         {loading
                             ? <h2>Cargando...</h2>

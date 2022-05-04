@@ -495,9 +495,11 @@ var controller = {
 
         let data;
 
+        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
+
         if (type === "novela") {
             type = "novela ligera"
-        } else if (type != "novela" || type != "manga" || type != "merchandising") {
+        } else if (type != "novela" && type != "manga" && type != "merchandising") {
             return res.status(404).send({
                 status: "error",
                 message: "Route not found"
@@ -505,8 +507,17 @@ var controller = {
         }
 
         if (option != "null") {
+
+            let options = option.split(";")
+
+            let index = []
+
+            options.map(option => {
+                index.push(categories.find(name => name.includes(option)))
+            })
+            
             Product.find({
-                type: type, categories: { "$in": option }
+                type: type, categories: { "$in": index }
             }, (err, products) => {
 
                 if (err) {
