@@ -13,6 +13,7 @@ import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProduct
 
 import Paginate from "components/publicFolder/Paginate/Paginate";
 import useProducts from "hooks/useProducts";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 
 export default function ProductsView() {
 
@@ -28,30 +29,6 @@ export default function ProductsView() {
         type = "mangas"
     } else if (location.includes("merchandising")) {
         type = "merchandising"
-    }
-
-    const btnUpRef = React.createRef()
-
-    window.onscroll = () => {
-        var scroll = document.documentElement.scrollTop;
-
-        if (scroll > 100) {
-            btnUpRef.current.style.transform = "scale(1)";
-        } else if (scroll < 100) {
-            btnUpRef.current.style.transform = "scale(0)";
-        }
-
-    }
-
-    const goUp = () => {
-        var currentScroll = document.documentElement.scrollTop;
-
-        if (currentScroll > 0) {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
     }
 
     return (
@@ -73,7 +50,7 @@ export default function ProductsView() {
                 {/* <Paginate size={count} /> */}
                 <Paginate  />
             </main>
-            <button id="btn-up" onClick={goUp} ref={btnUpRef}><i><FontAwesomeIcon icon={faAngleUp} /></i></button>
+            <BtnUp />
             <Footer />
         </>
     )

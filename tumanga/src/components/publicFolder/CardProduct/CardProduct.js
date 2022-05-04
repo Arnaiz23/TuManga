@@ -4,6 +4,8 @@ import { api_URL } from "services/config";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useLocation } from "wouter";
+import { Link } from "wouter";
 
 export default function CardProduct({ product }) {
 
@@ -19,21 +21,23 @@ export default function CardProduct({ product }) {
         <div className="card" id="cardTemplate" key={product._id}>
             {/* Create default */}
             {/* <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} /> */}
-            <img src="https://wellnessinmind.ca/wp-content/themes/wellness/img/default_new_image.jpg" alt={`Portada del volumen de ${product.name}`} />
-                <footer className="cardFooter">
-                    <h3>{product.name}</h3>
-                    <div className="priceContainer">
-                        <p className="price">{product.price}€</p>
-                        {
-                            product.stock > 0
-                                ? (<p className="textStock"><i><FontAwesomeIcon icon={faCheck} /></i>STOCK</p>)
-                                : (<p className="textStockOut"><i><FontAwesomeIcon icon={faXmark} /></i>AGOTADO</p>)
-                        }
-                    </div>
-                    <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={addCart}><i id="iconCart"><FontAwesomeIcon icon={
-                        btnCart ? faShoppingCart : faCheck
-                    } /></i></button>
-                </footer>
+            <Link to={`/product/${product._id}`}>
+                <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt={`Portada del volumen de ${product.name}`}/>
+            </Link>
+            <footer className="cardFooter">
+                <h3>{product.name}</h3>
+                <div className="priceContainer">
+                    <p className="price">{product.price}€</p>
+                    {
+                        product.stock > 0
+                            ? (<p className="textStock"><i><FontAwesomeIcon icon={faCheck} /></i>STOCK</p>)
+                            : (<p className="textStockOut"><i><FontAwesomeIcon icon={faXmark} /></i>AGOTADO</p>)
+                    }
+                </div>
+                <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={addCart}><i id="iconCart"><FontAwesomeIcon icon={
+                    btnCart ? faShoppingCart : faCheck
+                } /></i></button>
+            </footer>
         </div>
     )
 }

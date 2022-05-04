@@ -117,6 +117,7 @@ The principal route is "/api/v1"
 
 * adminPanel -> filter
 * Spinner
+* In the detailProduct, stars
 
 
 ### Views for public

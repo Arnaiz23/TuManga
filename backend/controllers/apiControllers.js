@@ -1710,7 +1710,8 @@ var controller = {
         if (!comments || comments.length == 0) {
             return res.status(404).send({
                 status: "error",
-                message: "This product doesn't has comments"
+                message: "This product doesn't has comments",
+                comments: []
             })
         }
 

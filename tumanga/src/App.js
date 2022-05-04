@@ -6,6 +6,7 @@ import Account from 'pages/publicView/Account';
 import ProductsView from 'pages/publicView/ProductsView';
 
 import { ProductsContextProvider } from 'context/ProductsContext'
+import ProductView from 'pages/publicView/ProductView';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/products/mangas' component={ProductsView} />
         <Route path='/products/merchandising' component={ProductsView} />
       </ProductsContextProvider>
+      <Route path='/product/:id' component={ProductView} />
     </div>
   );
 }
