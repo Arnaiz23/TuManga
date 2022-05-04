@@ -967,6 +967,15 @@ a{
   text-transform: capitalize;
 }
 
+#closeModalAccount:active{
+  transform: scale(.9);
+  background-color: rgba(0, 0, 0, .2);
+}
+
+#closeModalAccount i{
+  margin-right: 5px;
+}
+
 .containerFilterResponsive h3 {
   font-size: 20px;
   text-align: center;

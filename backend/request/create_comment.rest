@@ -4,7 +4,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2Q5O
 
 
 {
-    "message" : "This manga is wonderful",
+    "message" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt debitis corporis laudantium sed molestias, veritatis fugiat eveniet deleniti, aliquam repellendus blanditiis distinctio amet ipsam assumenda provident esse hic. Animi, voluptates incidunt impedit quis laboriosam molestias ut ad mollitia veniam libero itaque vitae perferendis corrupti esse, quae nam autem facere blanditiis?",
     "product_id" : "6267e96e3224c282caecafa0",
-    "score" : 3
+    "score" : 1,
+    "name" : "Federico"
 }

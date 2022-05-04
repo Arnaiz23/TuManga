@@ -6,3 +6,4 @@
 * FilterCheckbox (Services)
   * Search examples for this service
 * Spinner
+* Manga and merchandising (Filter and the products that I have on display)

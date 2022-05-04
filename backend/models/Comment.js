@@ -33,6 +33,11 @@ var Comment = new Schema({
     date : {
         type: Date,
         default : Date.now
+    },
+    name: {
+        type: String,
+        required: true,
+        unique: false
     }
 });
 

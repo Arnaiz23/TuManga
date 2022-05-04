@@ -1724,7 +1724,7 @@ var controller = {
 
     createComment: async (req, res) => {
 
-        let { message, product_id, score } = req.body
+        let { message, product_id, score, name } = req.body
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
@@ -1732,7 +1732,8 @@ var controller = {
             user_id: userFind._id,
             message,
             product_id,
-            score
+            score,
+            name
         })
 
         let commentSave = await newComment.save()
