@@ -23,6 +23,6 @@ export default function useProducts(){
 
     },[page])
 
-    return { loading, products, setPage, count }
+    return { loading, products, setPage, count, page }
     
 }

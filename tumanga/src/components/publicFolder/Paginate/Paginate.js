@@ -5,7 +5,7 @@ export default function Paginate() {
 
     const [count2, setCount2] = useState([])
 
-    const { setPage, count } = useProducts()
+    const { setPage, count, page } = useProducts()
 
     const options = () => {
         let data = []
@@ -29,7 +29,14 @@ export default function Paginate() {
         <div className="containerPaginator">
             <div className="paginator">
                 {
-                    count2.map(number => <p key={number} onClick={changePage}>{number}</p>)
+                    // count2.map(number => <p key={number} onClick={changePage}>{number}</p>)
+                    count2.map(number => {
+                        if((page + 1) === number){
+                            return <p key={number} onClick={changePage} className="pageActive">{number}</p>
+                        }else{
+                            return <p key={number} onClick={changePage}>{number}</p>
+                        }
+                    })
                 }
                 {/*  className="pageActive" */}
             </div>
