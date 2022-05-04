@@ -17,7 +17,6 @@ import useProducts from "hooks/useProducts";
 export default function ProductsView() {
 
     const [location, setLocation] = useLocation()
-
     const { loading, products, count } = useProducts()
 
     let type = ""

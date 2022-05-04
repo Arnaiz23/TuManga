@@ -25,7 +25,7 @@ export default function Nav({ state }) {
             <div className="navOptions">
                 <ul>
                     <li><Link to="/"><i className="fa-solid fa-house"></i>Inicio</Link></li>
-                    <li><Link to="/products/mangas/1"><i className="fa-solid fa-book"></i>Mangas</Link></li>
+                    <li><Link to="/products/mangas"><i className="fa-solid fa-book"></i>Mangas</Link></li>
                     <li><Link to="/products/merchandising"><i className="fa-solid fa-child-reaching"></i>Merchandising</Link></li>
                     <li><Link to="account"><i className="fa-solid fa-user"></i>Mi Cuenta</Link></li>
                 </ul>

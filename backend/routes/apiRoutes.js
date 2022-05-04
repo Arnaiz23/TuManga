@@ -13,7 +13,7 @@ router.get("/", controllers.test);
 // * --------------------- PRODUCTS ----------------------------
 
 router.get("/products/new", controllers.getNewProducts); // Get the 8 new products
-router.get("/products/manga/:limit&:skip", controllers.getMangas); // Get mangas or light novel 8 to 8
+router.get("/products/mangas/:limit&:skip", controllers.getMangas); // Get mangas or light novel 8 to 8
 router.get("/products/merchandising/:limit&:skip", controllers.getMerchandising); // Get merchandising 8 to 8
 router.get("/products", middleweares.isEmployee, controllers.getAllProducts); // Get all products
 router.get("/product/:id", controllers.getProduct); // Get one product

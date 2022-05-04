@@ -13,7 +13,7 @@ export default function useProducts(){
     useEffect(() => {
 
         setLoading(true)
-        
+
 
         getMangas(8*page).then(data => {
             setProducts(data.products)

@@ -963,6 +963,10 @@ a{
   width: 100%;
 }
 
+.containerFilterResponsive p{
+  text-transform: capitalize;
+}
+
 .containerFilterResponsive h3 {
   font-size: 20px;
   text-align: center;

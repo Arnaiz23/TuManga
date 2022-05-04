@@ -4,4 +4,5 @@
 ## Components function missing
 
 * FilterCheckbox (Services)
+  * Search examples for this service
 * Spinner
