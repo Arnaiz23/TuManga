@@ -54,15 +54,15 @@ export default function PasswordAccount() {
                 <div className="row">
                     <div className="col">
                         <label htmlFor="userName">Antigua</label>
-                        <input type="text" id="userName" name="old_password" onChange={changeData} />
+                        <input type="password" id="userName" name="old_password" onChange={changeData} />
                     </div>
                     <div className="col">
                         <label htmlFor="userLastName">Nueva</label>
-                        <input type="text" id="userLastName" name="new_password" onChange={changeData} />
+                        <input type="password" id="userLastName" name="new_password" onChange={changeData} />
                     </div>
                     <div className="col">
                         <label htmlFor="userLastName">Repetir</label>
-                        <input type="text" id="userLastName" name="confirm_password" onChange={changeData} />
+                        <input type="password" id="userLastName" name="confirm_password" onChange={changeData} />
                     </div>
                 </div>
                 <div className="rowBetween">

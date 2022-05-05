@@ -98,3 +98,24 @@ export function deleteUser(){
         })
     
 }
+
+
+export function login (body) {
+
+    return fetch(`${api_URL}/login`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ message, status, token, userState }) => {
+            if(status === "success"){
+                return {token, userState}
+            }else{
+                return message
+            }
+        })
+    
+}
