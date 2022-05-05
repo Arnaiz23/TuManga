@@ -1,10 +1,9 @@
 import useUser from "hooks/useUser";
 import React, { useState } from "react";
+import { userChangePasswords } from "services/Users";
 
 export default function PasswordAccount() {
 
-    const { userData, setUserData } = useUser()
-    // const [loadingUpdate, setLoadingUpdate] = useState(false)
     const [passwords, setPasswords] = useState({
         "old_password": "",
         "new_password": "",
@@ -13,7 +12,7 @@ export default function PasswordAccount() {
 
     const changePassword = (e) => {
         e.preventDefault()
-        // ! Create a route to change the password (old, new, confirm)
+        
         if (passwords.confirm_password === "" || passwords.new_password === "" || passwords.old_password === "") {
             alert("Rellene todos los campos")
         } else {
@@ -21,7 +20,19 @@ export default function PasswordAccount() {
                 if (passwords.confirm_password === passwords.old_password) {
                     alert("La contraseña antigua y las nuevas son iguales")
                 } else {
-                    alert("La password se van a cambiar")
+                    userChangePasswords(passwords).then(data => {
+                        if(data.message){
+                            alert(data.message)
+                        }else if(data.userUpdate){
+                            alert("La password se ha actualizado correctamente")
+                            e.target.reset()
+                            setPasswords({
+                                "old_password": "",
+                                "new_password": "",
+                                "confirm_password": ""
+                            })
+                        }
+                    })
                 }
             } else {
                 alert("Las passwords no coinciden")

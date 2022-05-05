@@ -872,8 +872,7 @@ var controller = {
     updatePasswords : async (req, res) => {
         
         const { old_password, new_password, confirm_password } = req.body
-
-        console.log(req.body);
+        
         const userFind = await globalFunctions.getUserToken(req, res)
         const password_hash = await globalFunctions.getPasswordHash(userFind._id)
 

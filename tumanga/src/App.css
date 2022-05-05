@@ -252,9 +252,9 @@ a{
   font-weight: bold;
 }
 
-#navHome .btn-danger {
+#navHome .btn-danger, #navHome .btn-success {
   position: absolute;
-  bottom: 10vh;
+  /* bottom: 10vh; */
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -2907,7 +2907,8 @@ a{
 }
 
 @media screen and (max-width: 1214px) {
-  #navHome .btn-danger {
+  #navHome .btn-danger,
+  #navHome .btn-success  {
     bottom: 15vh;
   }
 

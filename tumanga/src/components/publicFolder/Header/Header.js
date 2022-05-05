@@ -7,10 +7,13 @@ import { faShoppingCart, faSearch, faUser, faBars } from '@fortawesome/free-soli
 import Brand from 'BrandTransparent.png'
 
 import Nav from "components/publicFolder/Nav/Nav";
+import useToken from "hooks/useToken";
 
 export default function Header() {
 
-    const [ navActive, setNavActive ] = useState('')
+    const [navActive, setNavActive] = useState('')
+
+    const { tokenInfo } = useToken()
 
     let changeNavState = () => {
         // alert("Hola")
@@ -66,10 +69,20 @@ export default function Header() {
                 </div> */}
 
                     <span>
-                        <Link to="/account">
-                            {/* <i className="fa-regular fa-user"></i> */}
-                            <i><FontAwesomeIcon icon={faUser} /></i>
-                        </Link>
+                        {tokenInfo
+                            ? (
+                                <Link to="/account">
+                                    {/* <i className="fa-regular fa-user"></i> */}
+                                    <i><FontAwesomeIcon icon={faUser} /></i>
+                                </Link>
+                            )
+                            : (
+                                <Link to="/login">
+                                    {/* <i className="fa-regular fa-user"></i> */}
+                                    <i><FontAwesomeIcon icon={faUser} /></i>
+                                </Link>
+                            )
+                        }
                     </span>
                     <span onClick={changeNavState}>
                         {/* <i id="buttonMenu">&#9776;</i> */}

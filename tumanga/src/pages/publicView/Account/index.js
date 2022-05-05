@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "../../../components/publicFolder/Header/Header";
 import Footer from "components/publicFolder/Footer/Footer";
@@ -14,8 +14,8 @@ import useUser from "hooks/useUser";
 
 export default function Account() {
 
-    const { loading, userData } = useUser()
-    
+    const { loading, userData, setUserData } = useUser()
+
     return (
         <>
             <Header />
@@ -27,11 +27,18 @@ export default function Account() {
                     <NavAccountResp />
                     <section className="containerInformation">
                         <h2 className="subtitle">Mi Información</h2>
-                        <DataAccount />
-                        <div className="lineAccount"></div>
-                        <PasswordAccount />
-                        <div className="lineAccount"></div>
-                        {/* <DeleteAccount data={userData} /> */}
+                        {loading
+                            ? <h2>Cargando...</h2>
+                            : (
+                                <>
+                                    <DataAccount data={userData} change={setUserData} />
+                                    <div className="lineAccount"></div>
+                                    <PasswordAccount />
+                                    <div className="lineAccount"></div>
+                                    <DeleteAccount />
+                                </>
+                            )
+                        }
                     </section>
                 </div>
             </main>
