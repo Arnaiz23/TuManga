@@ -1,12 +1,16 @@
 PUT http://localhost:3900/api/v1/user HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjliNmY2ODUyZmVjZGM4NmM1YTY0OCIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTI3VDIxOjM0OjQ2LjEzM1oiLCJpYXQiOjE2NTEyMjg2MDgsImV4cCI6MTY1MTMxNTAwOH0.gq6k9RWBKXMZ2NcfHiwPwPcAflfq0UlMgbIPVnKogr0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTc3ZjczMDE0MjgzZjkwNmQyNCIsImVtYWlsIjoidXN1YXJpb0BnbWFpbC5jb20iLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wNC0yNlQxMjoxMTozNS42ODdaIiwiaWF0IjoxNjUxNzM2OTE0LCJleHAiOjE2NTE4MjMzMTR9.ffVQhUCbTb2NxdRc5WYEWuL5Pl17Nb79XDKqSN3HHeI
 
 # {
 #     "name" : "PruebaUpdate",
 #     "last_name" : "PruebaUpdate"
 # }
 
+# {
+#     "password" : "9999999"
+# }
+
 {
-    "password" : "9999999"
+    "name" : "Usuario2"
 }
