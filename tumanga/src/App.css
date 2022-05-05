@@ -456,7 +456,7 @@ a{
   position: absolute;
   z-index: 10;
   right: calc(100% - 78%);
-  top: 10px;
+  top: 25%;
   display: none;
   cursor: pointer;
 }
@@ -3124,7 +3124,7 @@ a{
 
   .containerCenter{
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     min-width: 80%;
   }
 

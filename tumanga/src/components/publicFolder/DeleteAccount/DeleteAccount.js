@@ -1,25 +1,30 @@
 import React from "react";
-import { userChangeState } from "services/Users";
+import { deleteUser, userChangeState } from "services/Users";
 
 import Swal from 'sweetalert2'
+import { useLocation } from "wouter";
 
 export default function DeleteAccount() {
 
+    const [location, setLocation] = useLocation()
+
     const deleteAccount = () => {
         Swal.fire({
+            icon: 'warning',
             title: '¿Seguro que no prefieres deshabilitar la cuenta?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Deshabilitar',
             denyButtonText: `Eliminar`,
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 // Disabled
                 userChangeState().then(data => {
-                    if(data.userUpdate){
+                    if (data.userUpdate) {
                         Swal.fire('Deshabilitada', 'La cuenta ha sido deshabilitada satisfactoriamente', 'success')
                         localStorage.removeItem("token")
-                    }else{
+                        setLocation("/")
+                    } else {
                         console.log(data);
                     }
                 })
@@ -33,16 +38,24 @@ export default function DeleteAccount() {
                     confirmButtonColor: '#b10005',
                     cancelButtonColor: '#6e7881',
                     confirmButtonText: 'Sí, eliminarla'
-                  }).then((result) => {
+                }).then((result) => {
                     if (result.isConfirmed) {
-                      Swal.fire('Eliminada', 'La cuenta ha sido eliminada satisfactoriamente', 'success')
+                        deleteUser().then(res => {
+                            if (res.userDelete) {
+                                Swal.fire('Eliminada', 'La cuenta ha sido eliminada satisfactoriamente', 'success')
+                                localStorage.removeItem("token")
+                                setLocation("/")
+                            } else {
+                                console.log(res);
+                            }
+                        })
                     }
-                  })
-                
+                })
+
             }
-          })
+        })
     }
-    
+
     return (
         <div className="colCenter">
             <h3>Eliminar Cuenta</h3>

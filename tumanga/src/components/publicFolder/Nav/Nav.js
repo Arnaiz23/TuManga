@@ -41,11 +41,8 @@ export default function Nav({ state }) {
                     <li><Link to="/products/merchandising"><i className="fa-solid fa-child-reaching"></i>Merchandising</Link></li>
                     <li>
                         {tokenInfo
-                            ? (
+                            && (
                                 <Link to="/account"><i className="fa-solid fa-user"></i>Mi Cuenta</Link>
-                            )
-                            : (
-                                <Link to="/login"><i className="fa-solid fa-user"></i>Mi Cuenta</Link>
                             )
                         }
                     </li>

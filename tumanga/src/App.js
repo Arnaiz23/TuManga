@@ -7,6 +7,8 @@ import ProductsView from 'pages/publicView/ProductsView';
 
 import { ProductsContextProvider } from 'context/ProductsContext'
 import ProductView from 'pages/publicView/ProductView';
+import Login from 'pages/publicView/Login/Login';
+import Register from 'pages/publicView/Register/Register';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path='/products/merchandising' component={ProductsView} />
       </ProductsContextProvider>
       <Route path='/product/:id' component={ProductView} />
+      <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
     </div>
   );
 }

@@ -79,3 +79,22 @@ export function userChangeState(){
     
     
 }
+
+export function deleteUser(){
+
+    return fetch(`${api_URL}/user`, {
+        method: "DELETE",
+        headers: new Headers({
+            'Authorization': `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, userDelete, message }) => {
+            if(status === "success"){
+                return {userDelete}
+            }else{
+                return {message}
+            }
+        })
+    
+}
