@@ -14,10 +14,18 @@ export default function PasswordAccount() {
     const changePassword = (e) => {
         e.preventDefault()
         // ! Create a route to change the password (old, new, confirm)
-        if(passwords.new_password === passwords.confirm_password){
-            alert("La password se van a cambiar")
-        }else{
-            alert("Las passwords no coinciden")
+        if (passwords.confirm_password === "" || passwords.new_password === "" || passwords.old_password === "") {
+            alert("Rellene todos los campos")
+        } else {
+            if (passwords.new_password === passwords.confirm_password) {
+                if (passwords.confirm_password === passwords.old_password) {
+                    alert("La contraseña antigua y las nuevas son iguales")
+                } else {
+                    alert("La password se van a cambiar")
+                }
+            } else {
+                alert("Las passwords no coinciden")
+            }
         }
     }
 

@@ -869,6 +869,82 @@ var controller = {
 
     },
 
+    updatePasswords : async (req, res) => {
+        
+        const { old_password, new_password, confirm_password } = req.body
+
+        console.log(req.body);
+        const userFind = await globalFunctions.getUserToken(req, res)
+        const password_hash = await globalFunctions.getPasswordHash(userFind._id)
+
+        let validate_old, validate_new, validate_confirm
+
+        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+
+        try {
+
+            validate_old = (!validator.isEmpty(old_password) && regexp.test(old_password))
+            validate_new = (!validator.isEmpty(new_password) && regexp.test(new_password))
+            validate_confirm = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password))
+            
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Data not found",
+                error
+            })
+        }
+
+        if(validate_old && validate_new && validate_confirm){
+
+            if(new_password !== confirm_password){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The passwords doesn't match"
+                })
+            }
+
+            let passwordMatch = await User.comparePasswords(old_password, password_hash)
+
+            if(!passwordMatch){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The old password doesn't match"
+                })
+            }
+
+            if(old_password === new_password){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The old password and new password is equals"
+                })
+            }
+
+            let newPassword = await User.encrypt(new_password)
+
+            let userUpdate = await User.findByIdAndUpdate(userFind._id, {password_hash: newPassword}, {new: true})
+
+            if(!userUpdate){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The user has not been updated"
+                })
+            }
+
+            return res.status(200).send({
+                status: "success",
+                userUpdate
+            })
+            
+        }else{
+            return res.status(404).send({
+                status: "error",
+                message: "Is obligatory all the fields"
+            })
+        }
+        
+    },
+
     deleteUser: async (req, res) => {
 
         let userFind = await globalFunctions.getUserToken(req, res)

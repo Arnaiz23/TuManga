@@ -3,7 +3,7 @@ POST http://localhost:3900/api/v1/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email" : "prueba@gmail.com",
-    "password" : "123456",
+    "email" : "usuario@gmail.com",
+    "password" : "1234561",
     "remember" : true
 }

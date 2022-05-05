@@ -27,6 +27,7 @@ router.get("/user", middleweares.isUser, controllers.getUser); // Get one user w
 router.patch("/user", middleweares.isUser, controllers.changeUserState); // Change the state of user
 router.post("/login", controllers.login); // Login
 router.put("/user", middleweares.isUser, controllers.updateUser); // Update the user
+router.put("/user/password", middleweares.isUser, controllers.updatePasswords); // Change password
 router.delete("/user", middleweares.isUser, controllers.deleteUser); // Delete the user
 
 // * -----------------------------------------------------------
