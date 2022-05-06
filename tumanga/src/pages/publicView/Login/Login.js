@@ -26,8 +26,7 @@ export default function Login() {
         e.preventDefault()
 
         if (userData.email !== "" && userData.password !== "") {
-            // alert("Iniciando sesion...")
-            // console.log(userData);
+            
             login(userData).then(res => {
                 if (res.token) {
 
@@ -42,18 +41,19 @@ export default function Login() {
                             confirmButtonText: 'Activar'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                Swal.fire(
-                                    'Activada',
-                                    'Tu cuenta ha sido activada',
-                                    'success'
-                                )
+                                localStorage.setItem("token", JSON.stringify(res.token))
                                 userChangeState().then(data => {
                                     if (data.userUpdate) {
-                                        localStorage.setItem("token", JSON.stringify(res.token))
+                                        Swal.fire(
+                                            'Activada',
+                                            'Tu cuenta ha sido activada',
+                                            'success'
+                                        )
                                         setTokenInfo(res.token)
                                         setLocation("/")
                                     }else{
                                         alert(data.message)
+                                        // localStorage.removeItem("token")
                                     }
                                 })
 

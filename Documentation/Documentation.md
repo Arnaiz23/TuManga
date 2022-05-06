@@ -121,6 +121,7 @@ The principal route is "/api/v1"
 * In the detailProduct, stars
 * In account (change the alerts)
 * In login, forgot password
+* Format the dates
 
 
 ### Views for public
@@ -140,3 +141,11 @@ The principal route is "/api/v1"
   * Yes -> all normal
 * In adminPanel of the employee, don't show the total earnings
 * In adminPanel -> Create the system to search users and products (Ok in adminPanel2)
+
+### Complete views
+
+* Home
+* Account
+* Login
+* Register
+* Mangas

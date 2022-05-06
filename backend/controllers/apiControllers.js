@@ -1273,6 +1273,8 @@ var controller = {
 
         let orders = await Order.find({ id_client: userFind._id, state: "F" });
 
+        // order_Date total dataBilling(All) _id send_date ProductData(name, image)
+
         if (!orders || orders.length == 0) {
             return res.status(404).send({
                 status: "error",
@@ -1373,7 +1375,7 @@ var controller = {
             let productArray = []
 
             for await (let product of order.products) {
-                let productData = await Product.findById(product._id, { name: true, _id: false, image: true })
+                let productData = await Product.findById(product._id, { name: true, _id: true, image: true })
                 productArray.push(productData)
             }
 
@@ -1388,7 +1390,8 @@ var controller = {
             payment: billing,
             total: order.total,
             telephone: order.telephone,
-            delivered_date: order.send_date
+            delivered_date: order.send_date,
+            realized_date: order.order_date
         }
 
         return res.status(200).send({

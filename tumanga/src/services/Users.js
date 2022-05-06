@@ -1,37 +1,36 @@
-import { api_URL } from "./config";
+import { api_URL, getToken } from "./config";
 
-let token
 
-try {
-    token = JSON.parse(localStorage.getItem("token"))
-} catch (error) {
-    token = ""
-}
 
 export function getUser() {
+
+    let token = getToken()
+
     return fetch(`${api_URL}/user`, {
         headers: new Headers({
             'Authorization': `Bearer ${token}`,
-            'Content-type' : 'application/json'
+            'Content-type': 'application/json'
         })
     })
         .then(res => res.json())
         .then(({ status, userInfo, message }) => {
-            if(status === "success"){
+            if (status === "success") {
                 return userInfo
-            }else{
-                return {message}
+            } else {
+                return { message }
             }
         })
 }
 
 export function updateUser(body) {
 
+    let token = getToken()
+
     return fetch(`${api_URL}/user`, {
         method: "put",
         headers: new Headers({
             'Authorization': `Bearer ${token}`,
-            'Content-type' : 'application/json'
+            'Content-type': 'application/json'
         }),
         body: JSON.stringify(body)
     })
@@ -41,26 +40,30 @@ export function updateUser(body) {
 
 export function userChangePasswords(body) {
 
+    let token = getToken()
+
     return fetch(`${api_URL}/user/password`, {
         method: "put",
         headers: new Headers({
             'Authorization': `Bearer ${token}`,
-            'Content-type' : 'application/json'
+            'Content-type': 'application/json'
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, userUpdate, message }) => {
-            if(status === "success"){
-                return {userUpdate}
-            }else{
-                return {message}
+            if (status === "success") {
+                return { userUpdate }
+            } else {
+                return { message }
             }
         })
-    
+
 }
 
-export function userChangeState(){
+export function userChangeState() {
+
+    let token = getToken()
 
     return fetch(`${api_URL}/user`, {
         method: "PATCH",
@@ -70,17 +73,19 @@ export function userChangeState(){
     })
         .then(res => res.json())
         .then(({ status, userUpdate, message }) => {
-            if(status === "success"){
-                return {userUpdate}
-            }else{
-                return {message}
+            if (status === "success") {
+                return { userUpdate }
+            } else {
+                return { message }
             }
         })
-    
-    
+
+
 }
 
-export function deleteUser(){
+export function deleteUser() {
+
+    let token = getToken()
 
     return fetch(`${api_URL}/user`, {
         method: "DELETE",
@@ -90,48 +95,64 @@ export function deleteUser(){
     })
         .then(res => res.json())
         .then(({ status, userDelete, message }) => {
-            if(status === "success"){
-                return {userDelete}
-            }else{
-                return {message}
+            if (status === "success") {
+                return { userDelete }
+            } else {
+                return { message }
             }
         })
-    
+
 }
 
 
-export function login (body) {
+export function login(body) {
 
     return fetch(`${api_URL}/login`, {
         method: "POST",
         headers: new Headers({
-            "Content-type" : "application/json"
+            "Content-type": "application/json"
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ message, status, token, userState }) => {
-            if(status === "success"){
-                return {token, userState}
-            }else{
+            if (status === "success") {
+                return { token, userState }
+            } else {
                 return message
             }
         })
-    
+
 }
 
-export function register(body){
+export function register(body) {
 
     return fetch(`${api_URL}/user`, {
         method: "POST",
         headers: new Headers({
-            "Content-type" : "application/json"
+            "Content-type": "application/json"
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, message, token }) => {
-            return status === "success" ? {token} : {message}
+            return status === "success" ? { token } : { message }
+        })
+
+}
+
+export function getUserOrders() {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/orders/user`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, orders }) => {
+            return status === "success" ? {orders} : {message}
         })
     
 }

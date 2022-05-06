@@ -69,13 +69,6 @@ let globalFunctions = {
 
         let userFind = await User.findById(id)
 
-        if (!userFind) {
-            return res.status(404).send({
-                status: "error",
-                message: "This user doesn't exists"
-            })
-        }
-
         return userFind.password_hash
 
     },
