@@ -11,6 +11,7 @@ import Login from 'pages/publicView/Login/Login';
 import Register from 'pages/publicView/Register/Register';
 import OrdersAccount from 'pages/publicView/Account/OrdersAccount';
 import AddressAccount from 'pages/publicView/Account/AddressAccount';
+import CardsAccount from 'pages/publicView/Account/CardsAccount/CardsAccount';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path='/account' component={Account} />
       <Route path='/account/orders' component={OrdersAccount} />
       <Route path='/account/address' component={AddressAccount} />
+      <Route path='/account/cards' component={CardsAccount} />
       <ProductsContextProvider>
         <Route path='/products/mangas' component={ProductsView} />
         <Route path='/products/merchandising' component={ProductsView} />

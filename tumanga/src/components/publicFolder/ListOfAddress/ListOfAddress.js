@@ -16,6 +16,7 @@ export default function ListOfAddress() {
             if(data.message) {
                 setError(data.message)
                 setAddressEmpty(true)
+                return
             }
 
             setAddress(data.address)

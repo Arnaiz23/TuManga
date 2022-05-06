@@ -122,6 +122,7 @@ The principal route is "/api/v1"
 * In account (change the alerts)
 * In login, forgot password
 * Format the dates
+* AddressAccount -> AddressEmpty don't change
 
 
 ### Views for public
