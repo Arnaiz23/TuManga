@@ -2581,6 +2581,58 @@ a{
 
 .modalInformation .modalCenter main .modalInfo label{
   font-weight: bold;
+  text-transform: uppercase;
+}
+
+.newAddress{
+  width: 100%;
+  padding: 20px 0;
+}
+
+.newAddress h2{
+  text-align: center;
+}
+
+.newAddressForm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.obligatoryFields{
+  color: #f44;
+  font-weight: bold;
+}
+
+.newAddressData{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  width: 80%;
+  margin: 30px auto;
+}
+
+.newAddressGroup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.newAddressGroup input{
+  width: 250px;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.newAddressGroup input:focus{
+  outline: none;
 }
 
 .containerAdminCenter{

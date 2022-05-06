@@ -1354,21 +1354,21 @@ var controller = {
 
         let billing = await Billing.findById(order.billing, { _id: false, user_id: false, encrypt_card: false })
 
-        if (!billing) {
+        /* if (!billing) {
             return res.status(404).send({
                 status: "error",
                 message: "This card doesn't exists"
             })
-        }
+        } */
 
         let address = await Address.findById(order.delivery_address, { _id: false, user_id: false })
 
-        if (!address) {
+        /* if (!address) {
             return res.status(404).send({
                 status: "error",
                 message: "This address doesn't exists"
             })
-        }
+        } */
 
         let searchProducts = async () => {
 
@@ -1634,9 +1634,11 @@ var controller = {
             })
         }
 
+        let allAddress = await Address.find({user_id: userUpdate._id})
+
         return res.status(201).send({
             status: "success",
-            addressSave
+            allAddress
         })
 
     },
@@ -1689,7 +1691,7 @@ var controller = {
             }
 
             return res.status(200).send({
-                status: "error",
+                status: "success",
                 newAddress,
                 userUpdate
             })
