@@ -119,3 +119,19 @@ export function login (body) {
         })
     
 }
+
+export function register(body){
+
+    return fetch(`${api_URL}/user`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, token }) => {
+            return status === "success" ? {token} : {message}
+        })
+    
+}

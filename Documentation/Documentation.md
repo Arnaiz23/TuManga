@@ -116,9 +116,11 @@ The principal route is "/api/v1"
 ### Missing views
 
 * adminPanel -> filter
+* All the alerts
 * Spinner
 * In the detailProduct, stars
 * In account (change the alerts)
+* In login, forgot password
 
 
 ### Views for public

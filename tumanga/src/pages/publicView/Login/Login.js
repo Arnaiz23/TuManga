@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "wouter";
-import { login } from "services/Users";
+import { login, userChangeState } from "services/Users";
 import useToken from "hooks/useToken";
 import { useLocation } from "wouter";
+import Swal from "sweetalert2";
 
 export default function Login() {
 
@@ -24,20 +25,57 @@ export default function Login() {
     const handleForm = (e) => {
         e.preventDefault()
 
-        if(userData.email !== "" && userData.password !== ""){
+        if (userData.email !== "" && userData.password !== "") {
             // alert("Iniciando sesion...")
             // console.log(userData);
             login(userData).then(res => {
-                if(res.token){
-                    localStorage.setItem("token", JSON.stringify(res.token))
-                    setTokenInfo(res.token)
-                    // ! En caso de que recibas userState
-                    setLocation("/")
-                }else{
+                if (res.token) {
+
+                    if (res.userState !== undefined) {
+                        Swal.fire({
+                            title: 'Cuenta deshabilitada',
+                            text: "Tu cuenta esta deshabilitada. ¿Quieres volver a ponerla activa??",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Activar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                    'Activada',
+                                    'Tu cuenta ha sido activada',
+                                    'success'
+                                )
+                                userChangeState().then(data => {
+                                    if (data.userUpdate) {
+                                        localStorage.setItem("token", JSON.stringify(res.token))
+                                        setTokenInfo(res.token)
+                                        setLocation("/")
+                                    }else{
+                                        alert(data.message)
+                                    }
+                                })
+
+                            } else {
+                                Swal.fire(
+                                    'Deshabilitada',
+                                    'Tu cuenta seguirá deshabilitada',
+                                    'success'
+                                )
+                                    e.target.reset()
+                            }
+                        })
+                    } else {
+                        localStorage.setItem("token", JSON.stringify(res.token))
+                        setTokenInfo(res.token)
+                        setLocation("/")
+                    }
+                } else {
                     alert(res)
                 }
             })
-        }else{
+        } else {
             alert("Rellene todos los datos")
         }
     }
@@ -46,10 +84,10 @@ export default function Login() {
 
         let valor = event.target.value
 
-        if(event.target.name === "remember"){
+        if (event.target.name === "remember") {
             valor = event.target.checked
         }
-        
+
         setUserData({
             ...userData,
             [event.target.name]: valor
@@ -61,11 +99,11 @@ export default function Login() {
         let hide = hidePasswordRef.current
         let show = showPasswordRef.current
 
-        if(input.type === "text"){
+        if (input.type === "text") {
             input.type = "password"
             show.classList.toggle("passwordShow")
             hide.classList.toggle("passwordShow")
-        }else{
+        } else {
             input.type = "text"
             show.classList.toggle("passwordShow")
             hide.classList.toggle("passwordShow")
