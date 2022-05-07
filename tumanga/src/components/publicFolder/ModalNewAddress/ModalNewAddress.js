@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createAddress } from "services/Address";
 import Swal from "sweetalert2";
 
-export default function ModalNewAddress({ change, closeModal }) {
+export default function ModalNewAddress({ change, closeModal, empty }) {
 
     const [address, setAddress] = useState({
         "name": "",
@@ -36,6 +36,7 @@ export default function ModalNewAddress({ change, closeModal }) {
                 'success'
             )
             closeModal(false)
+            empty(false)
         })
     }
 

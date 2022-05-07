@@ -4,7 +4,7 @@ import React from "react";
 import ModalAdddress from "../ModalAddress/ModalAddress";
 import ModalNewAddress from "../ModalNewAddress/ModalNewAddress";
 
-export default function ModalInfo({ change, data, type, changeAddress }) {
+export default function ModalInfo({ change, data, type, changeAddress, empty }) {
 
     const closeModal = () => {
         change(false)
@@ -20,7 +20,7 @@ export default function ModalInfo({ change, data, type, changeAddress }) {
                     type === "address" && <ModalAdddress data={data} />
                 }
                 {
-                    type === "newAddress" && <ModalNewAddress change={changeAddress} closeModal={change} />
+                    type === "newAddress" && <ModalNewAddress change={changeAddress} closeModal={change} empty={empty} />
                 }
             </div>
         </div>

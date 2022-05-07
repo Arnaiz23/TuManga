@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import getFilters from "services/getFilters";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function FilterProducts({ change }) {
+export default function FilterProducts({ change, filterOrigin }) {
 
     const [loading, setLoading] = useState(false)
     const [filters, setFilters] = useState([])
@@ -37,7 +37,7 @@ export default function FilterProducts({ change }) {
                     loading
                         ? <h2>Cargando...</h2>
                         : (
-                            filters.map(filter => <FilterCheckbox name={filter} key={filter} change={change} />)
+                            filters.map(filter => <FilterCheckbox name={filter} key={filter} change={change} filterOrigin={filterOrigin} />)
                         )
                 }
             </div>

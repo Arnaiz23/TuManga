@@ -17,11 +17,9 @@ import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 
 export default function ProductsView() {
 
-    const [location, setLocation] = useLocation()
-    const [filter, setFilter] = useState([])
-    const { loading, products, count, setReloadPage } = useProducts(filter)
-
-    // console.log(filter);
+    const location = useLocation()[0]
+    const [filter, setFilter] = useState(["null"])
+    const { loading, products, count } = useProducts(filter)
 
     let type = ""
 
@@ -39,7 +37,7 @@ export default function ProductsView() {
             <main className="center">
                 <ModalProductFilter />
                 <div className="containerGlobalProducts">
-                    <FilterProducts change={setFilter} />
+                    <FilterProducts change={setFilter} filterOrigin={filter} />
                     <div className="containerProducts">
                         {loading
                             ? <h2>Cargando...</h2>
@@ -47,8 +45,7 @@ export default function ProductsView() {
                         }
                     </div>
                 </div>
-                {/* <Paginate size={count} /> */}
-                <Paginate  />
+                <Paginate size={count} />
             </main>
             <BtnUp />
             <Footer />

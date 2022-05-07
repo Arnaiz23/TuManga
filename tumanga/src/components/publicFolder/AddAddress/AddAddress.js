@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import ModalInfo from "../ModalInfo/ModalInfo";
 
-export default function AddAddress({ change }) {
+export default function AddAddress({ change, empty }) {
 
     const [showModal, setShowModal] = useState(false)
 
@@ -17,7 +17,7 @@ export default function AddAddress({ change }) {
                 <i><FontAwesomeIcon icon={faCirclePlus} /></i>
                 <h3>Añadir dirección</h3>
             </div>
-            {showModal && <ModalInfo change={setShowModal} type="newAddress" changeAddress={change} />}
+            {showModal && <ModalInfo change={setShowModal} type="newAddress" changeAddress={change} empty={empty} />}
         </>
     )
 }

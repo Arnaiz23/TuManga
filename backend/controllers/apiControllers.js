@@ -489,11 +489,9 @@ var controller = {
 
     // * ----------------------- FILTER ----------------------------
 
-    filterProduct: (req, res) => {
+    filterProduct: async (req, res) => {
 
         let { type, option, limit, skip } = req.params;
-
-        let data;
 
         const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
 
@@ -515,6 +513,19 @@ var controller = {
             options.map(option => {
                 index.push(categories.find(name => name.includes(option)))
             })
+
+            let allProducts = await Product.find({
+                type: type, categories: { "$in": index }
+            })
+    
+            if (!allProducts || allProducts.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Mangas not found"
+                });
+            }
+    
+            let count = allProducts.length
             
             Product.find({
                 type: type, categories: { "$in": index }
@@ -533,11 +544,29 @@ var controller = {
 
                 return res.status(200).send({
                     status: "success",
-                    products
+                    products,
+                    count
                 })
 
             }).limit(limit).skip(skip);
         } else {
+
+            let allProducts = await Product.find({
+                "$or": [
+                    { "type": "manga" },
+                    { "type": "novela ligera" }
+                ]
+            })
+    
+            if (!allProducts || allProducts.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Mangas not found"
+                });
+            }
+    
+            let count = allProducts.length
+
             Product.find({
                 type: type
             }, (err, products) => {
@@ -555,7 +584,8 @@ var controller = {
 
                 return res.status(200).send({
                     status: "success",
-                    products
+                    products,
+                    count
                 })
 
             }).limit(limit).skip(skip);

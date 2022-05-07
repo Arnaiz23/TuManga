@@ -26,14 +26,14 @@ export default function ListOfAddress() {
     return (
         <>
             <div className="containerGrid">
-                <AddAddress change={setAddress} />
+                <AddAddress change={setAddress} empty={setAddressEmpty} />
                 {loading
                     ? <h1>Cargando...</h1>
                     : (
                         addressEmpty
                             ? <h3 className="userDataEmpty">{error}</h3>
                             : (
-                                address.map(addressData => <AddressCard key={addressData._id} data={addressData} change={setAddress} />)
+                                address.map(addressData => <AddressCard key={addressData._id} data={addressData} change={setAddress} empty={setAddressEmpty} />)
                             )
                     )
                 }

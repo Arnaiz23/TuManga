@@ -22,7 +22,15 @@ export default function CardProduct({ product }) {
             {/* Create default */}
             {/* <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} /> */}
             <Link to={`/product/${product._id}`}>
-                <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt={`Portada del volumen de ${product.name}`}/>
+                {
+                    product.image !== null
+                        ? (
+                            <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} />
+                        )
+                        : (
+                            <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt={`Portada del volumen de ${product.name}`} />
+                        )
+                }
             </Link>
             <footer className="cardFooter">
                 <h3>{product.name}</h3>

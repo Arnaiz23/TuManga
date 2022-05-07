@@ -3,7 +3,7 @@ import { deleteUserAddress } from "services/Address";
 import Swal from "sweetalert2";
 import ModalInfo from "../ModalInfo/ModalInfo";
 
-export default function AddressCard({ data, change }) {
+export default function AddressCard({ data, change, empty }) {
 
     const [showModal, setShowModal] = useState(false)
 
@@ -19,6 +19,7 @@ export default function AddressCard({ data, change }) {
                 'success'
             )
             change(data.newAddress)
+            if(data.newAddress.length === 0) empty(true)
         })
     }
 

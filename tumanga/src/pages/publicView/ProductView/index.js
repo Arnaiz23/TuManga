@@ -13,12 +13,13 @@ export default function ProductView({ params }) {
 
     const [product, setProduct] = useState({})
     const [comments, setComments] = useState([])
+    const [commentsEmpty, setCommentsEmpty] = useState(null)
     const [loading, setLoading] = useState(false)
 
     useEffect((() => {
 
         setLoading(true)
-        
+
         getOneProduct(params.id)
             .then(data => {
                 setProduct(data.product)
@@ -27,6 +28,13 @@ export default function ProductView({ params }) {
 
         getCommentsProduct(params.id)
             .then(data => {
+                if (data.message) {
+                    setComments(data.comments)
+                    setLoading(false)
+                    setCommentsEmpty(data.message)
+                    return
+                }
+
                 setComments(data.comments)
                 setLoading(false)
             })
@@ -38,8 +46,19 @@ export default function ProductView({ params }) {
             <SliderName name={"Producto"} />
             <SocialNetwork />
             <main className="center">
-                <ProductDetail product={product} />
-                <CommentsContainer comments={comments} />
+                {
+                    loading
+                        ? <h1>Cargando...</h1>
+                        : (
+                            <>
+                                <ProductDetail product={product} />
+                                {commentsEmpty
+                                    ? <CommentsContainer comments={comments} empty={commentsEmpty} />
+                                    : <CommentsContainer comments={comments} />
+                                }
+                            </>
+                        )
+                }
             </main>
             <BtnUp />
             <Footer />

@@ -1,21 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
-import getMangas from "services/getMangas";
-import ProductContext from "context/ProductsContext";
+import {useContext, useEffect, useState } from "react";
 
-export default function useProducts(filter = []){
+import ProductContext from "context/ProductsContext";
+import getFilterProducts from "services/getFilterProducts";
+
+export default function useProducts(){
 
     const [page, setPage] = useState(0)
-    const { products, setProducts } = useContext(ProductContext)
+    const { products, setProducts, count, setCount } = useContext(ProductContext)
     const [loading, setLoading] = useState(false)
-    const [count, setCount] = useState(0)
 
-    const [reloadPage, setReloadPage] = useState(false)
+    const [filter, setFilter] = useState(["null"])
+
+    const setReloadPage = useState(false)[1]
 
     useEffect(() => {
 
         setLoading(true)
 
-        getMangas((8*page), filter).then(data => {
+        getFilterProducts((8*page), filter).then(data =>{
             setProducts(data.products)
             setCount(Math.ceil(data.count / 8))
             setLoading(false)
@@ -23,19 +25,8 @@ export default function useProducts(filter = []){
 
         setReloadPage(false)
 
-    },[page])
-    /* useEffect(() => {
+    },[page, filter])
 
-        setLoading(true)
-
-        getMangas((8*page), filter).then(data => {
-            setProducts(data.products)
-            setCount(Math.ceil(data.count / 8))
-            setLoading(false)
-        })
-
-    },[page]) */
-
-    return { loading, products, setPage, count, page, setReloadPage }
+    return { loading, products, setPage, count, page, setReloadPage, setProducts, setCount, setFilter }
     
 }

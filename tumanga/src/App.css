@@ -278,6 +278,11 @@ a{
   transform: scale(0.9);
 }
 
+.btn-warning{
+  background-color: #ffc107;
+  color: #000;
+}
+
 .btn-light {
   background-color: #fff;
   color: #000;
