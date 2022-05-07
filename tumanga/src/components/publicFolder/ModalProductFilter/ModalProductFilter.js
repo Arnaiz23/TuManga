@@ -9,7 +9,7 @@ export default function ModalProductFilter() {
 
     const [modalShow, setModalShow] = useState('')
     const [optionsShow, setOptionsShow] = useState('')
-    const [loading, setLoading] = useState(false)
+    const setLoading = useState(false)[1]
     const [filters, setFilters] = useState([])
 
     useEffect(() => {
@@ -36,11 +36,11 @@ export default function ModalProductFilter() {
     return (
         <div className="selectOrder">
             <div className="filterResponsive" onClick={showModal}>
-                <button role="button" className="btnFilter"><i><FontAwesomeIcon icon={faSliders} /></i>Filtrar</button>
+                <button className="btnFilter"><i><FontAwesomeIcon icon={faSliders} /></i>Filtrar</button>
             </div>
             <div className={`optionsFilterResponsive ${modalShow}`}>
                 <header>
-                    <button role="button" id="closeModalFilter" onClick={showModal}>
+                    <button id="closeModalFilter" onClick={showModal}>
                         <i><FontAwesomeIcon icon={faXmark} /></i>
                         Cerrar
                     </button>
@@ -67,11 +67,11 @@ export default function ModalProductFilter() {
                     </div>
                 </main>
                 <footer>
-                    <button role="button" className="btn btn-primary">Aplicar filtros</button>
+                    <button className="btn btn-primary">Aplicar filtros</button>
                 </footer>
             </div>
             <div>
-                <button role="button" className="selectOrderOptions" onClick={showOptions}>
+                <button className="selectOrderOptions" onClick={showOptions}>
                     Ordenar<i><FontAwesomeIcon icon={faAngleDown} /></i>
                 </button>
                 <ul className={`optionsSelectOrder ${optionsShow}`}>

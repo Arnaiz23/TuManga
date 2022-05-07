@@ -17,17 +17,19 @@ import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 
 export default function ProductsView() {
 
-    const location = useLocation()[0]
-    const [filter, setFilter] = useState(["null"])
-    const { loading, products, count } = useProducts(filter)
 
     let type = ""
+    const location = useLocation()[0]
 
     if (location.includes("mangas")) {
         type = "mangas"
     } else if (location.includes("merchandising")) {
         type = "merchandising"
     }
+
+    const { loading, products, count, error } = useProducts()
+
+    
 
     return (
         <>
@@ -37,11 +39,13 @@ export default function ProductsView() {
             <main className="center">
                 <ModalProductFilter />
                 <div className="containerGlobalProducts">
-                    <FilterProducts change={setFilter} filterOrigin={filter} />
+                    <FilterProducts type={type} />
                     <div className="containerProducts">
                         {loading
                             ? <h2>Cargando...</h2>
-                            : <ListOfProducts products={products} />
+                            : error 
+                                ? <h1>No hay coincidencias</h1>
+                                : <ListOfProducts products={products} />
                         }
                     </div>
                 </div>

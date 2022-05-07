@@ -8,6 +8,7 @@ export default function useProducts(){
     const [page, setPage] = useState(0)
     const { products, setProducts, count, setCount } = useContext(ProductContext)
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     const [filter, setFilter] = useState(["null"])
 
@@ -18,6 +19,7 @@ export default function useProducts(){
         setLoading(true)
 
         getFilterProducts((8*page), filter).then(data =>{
+            if(data.message) return setError(true)
             setProducts(data.products)
             setCount(Math.ceil(data.count / 8))
             setLoading(false)
@@ -27,6 +29,6 @@ export default function useProducts(){
 
     },[page, filter])
 
-    return { loading, products, setPage, count, page, setReloadPage, setProducts, setCount, setFilter }
+    return { loading, products, setPage, count, page, setReloadPage, setProducts, setCount, setFilter, error }
     
 }

@@ -81,7 +81,7 @@ router.get("/search/products/:search", controllers.searchProducts); // Search in
 // * --------------------- FILTER ----------------------------
 
 router.get("/filter/product/:type/:option&:limit&:skip", controllers.filterProduct); // Filter any product
-router.get("/filters" , controllers.getFilters ); // Get all the filter
+router.get("/filters/:type" , controllers.getFilters ); // Get all the filter
 
 // * ---------------------------------------------------------
 

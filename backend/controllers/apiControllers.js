@@ -49,7 +49,7 @@ var controller = {
                 products
             });
 
-        }).limit(8);
+        }).limit(8).sort({upload_date: "desc"});
     },
     newProduct: async (req, res) => {
 
@@ -262,7 +262,20 @@ var controller = {
         })
     },
     getFilters: async (req, res) => {
-        let products = await Product.find()
+
+        let {type} = req.params
+
+        let products
+        
+        if(type === "merchandising"){
+            products = await Product.find({type: type})
+        }else{
+            products = await Product.find({"$or": [
+                { "type": "manga" },
+                { "type": "novela ligera" }
+            ]})
+        }
+        
         let categories = []
 
         if(!products || products.length <= 0){
@@ -552,10 +565,7 @@ var controller = {
         } else {
 
             let allProducts = await Product.find({
-                "$or": [
-                    { "type": "manga" },
-                    { "type": "novela ligera" }
-                ]
+                type: type
             })
     
             if (!allProducts || allProducts.length == 0) {

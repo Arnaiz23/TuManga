@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import getFilters from "services/getFilters";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function FilterProducts({ change, filterOrigin }) {
+export default function FilterProducts({ type }) {
 
     const [loading, setLoading] = useState(false)
     const [filters, setFilters] = useState([])
@@ -18,18 +18,21 @@ export default function FilterProducts({ change, filterOrigin }) {
 
     return (
         <div className="containersFilters">
-            <div className="containerFilter">
-                <header>Tipos</header>
-                <div className="lineFilter"></div>
-                <div className="optionFilter">
-                    <input type="checkbox" id="" className="checkboxFilter" />
-                    <p>Manga</p>
-                </div>
-                <div className="optionFilter">
-                    <input type="checkbox" id="" className="checkboxFilter" />
-                    <p>Novela ligera</p>
-                </div>
-            </div>
+            {type === "mangas"
+                && (
+                    <div className="containerFilter">
+                        <header>Tipos</header>
+                        <div className="lineFilter"></div>
+                        <div className="optionFilter">
+                            <input type="checkbox" id="" className="checkboxFilter" />
+                            <p>Manga</p>
+                        </div>
+                        <div className="optionFilter">
+                            <input type="checkbox" id="" className="checkboxFilter" />
+                            <p>Novela ligera</p>
+                        </div>
+                    </div>
+                )}
             <div className="containerFilter">
                 <header>Categorias</header>
                 <div className="lineFilter"></div>
@@ -37,7 +40,7 @@ export default function FilterProducts({ change, filterOrigin }) {
                     loading
                         ? <h2>Cargando...</h2>
                         : (
-                            filters.map(filter => <FilterCheckbox name={filter} key={filter} change={change} filterOrigin={filterOrigin} />)
+                            filters.map(filter => <FilterCheckbox name={filter} key={filter} />)
                         )
                 }
             </div>

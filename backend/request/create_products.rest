@@ -4,14 +4,14 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdlMTdmZjczMDE0MjgzZjkwNmQyOCIsImVtYWlsIjoib3duZXJAZ21haWwuY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDQtMjZUMTI6MTE6NDMuNzE4WiIsImlhdCI6MTY1MDk3NTE0MSwiZXhwIjoxNjUxMDYxNTQxfQ.Ni_V8bDaOyqe7dohjgv1MBcjo_OCs7LmkwX_QND9i28
 
 {
-    "name" : "SAO",
+    "name" : "Novela",
     "price" : 30,
     "description" : "Descripcion larga",
     "short_description" : "Descripcion corta",
-    "state" : "new",
+    "state" : "old",
     "stock" : 0,
-    "categories" : ["gore"],
-    "type" : "manga",
+    "categories" : ["cyberpunk"],
+    "type" : "novela ligera",
     "number_sales" : 0,
     "authors" : "Prueba",
     "editorial" : "Prueba",

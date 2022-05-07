@@ -1,7 +1,7 @@
 import useProducts from "hooks/useProducts";
 import React from "react";
 
-export default function FilterCheckbox({ name, size, change, filterOrigin }) {
+export default function FilterCheckbox({ name, size }) {
 
     const { setFilter } = useProducts()
 
