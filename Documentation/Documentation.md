@@ -122,7 +122,10 @@ The principal route is "/api/v1"
 * In account (change the alerts)
 * In login, forgot password
 * Format the dates
-* AddressAccount -> AddressEmpty don't change
+* Filter for manga or light novel
+* More of 1 filter (.join(";") -> send string)
+* Sort by x
+* Component error
 
 
 ### Views for public
