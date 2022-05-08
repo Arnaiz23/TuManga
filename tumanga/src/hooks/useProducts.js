@@ -29,6 +29,6 @@ export default function useProducts(){
 
     },[page, filter])
 
-    return { loading, products, setPage, count, page, setReloadPage, setProducts, setCount, setFilter, error }
+    return { loading, products, setPage, count, page, setReloadPage, setProducts, setCount, setFilter, error, filter }
     
 }

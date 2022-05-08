@@ -1,4 +1,6 @@
 # GET http://localhost:3900/api/v1/filter/product/novela/null&8&0 HTTP/1.1
 # GET http://localhost:3900/api/v1/filter/product/manga/realidad;gore;isekai&8&0 HTTP/1.1
-GET http://localhost:3900/api/v1/filter/product/merchandising/null&8&0 HTTP/1.1
+# GET http://localhost:3900/api/v1/filter/product/merchandising/null&8&0 HTTP/1.1
+GET http://localhost:3900/api/v1/filter/product/comics/null&8&0 HTTP/1.1
+# GET http://localhost:3900/api/v1/filter/product/comics/cyberpunk&17&0 HTTP/1.1
 # GET http://localhost:3900/api/v1/filter/product/hola/null&8&0 HTTP/1.1

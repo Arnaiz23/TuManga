@@ -3,7 +3,7 @@ import React from "react";
 
 export default function FilterCheckbox({ name, size }) {
 
-    const { setFilter } = useProducts()
+    const { setFilter, filter } = useProducts()
 
     const handleChange = (e) => {
         if(e.target.checked){

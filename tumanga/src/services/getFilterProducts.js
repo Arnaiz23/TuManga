@@ -4,7 +4,7 @@ export default function getFilterProducts(skip = 0, option) {
 
     let type = window.location.pathname.split("/")[2];
 
-    if(type === "mangas") type = "manga"
+    if(type === "mangas") type = "comics"
     
     return fetch(`${api_URL}/filter/product/${type}/${option}&8&${skip}`)
         .then(res => res.json())

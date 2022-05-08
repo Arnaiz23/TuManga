@@ -49,7 +49,7 @@ var controller = {
                 products
             });
 
-        }).limit(8).sort({upload_date: "desc"});
+        }).limit(8).sort({ upload_date: "desc" });
     },
     newProduct: async (req, res) => {
 
@@ -188,7 +188,7 @@ var controller = {
 
         const { limit, skip } = req.params;
 
-        let allProducts = await Product.find({ type: "merchandising"})
+        let allProducts = await Product.find({ type: "merchandising" })
 
         if (!allProducts || allProducts.length == 0) {
             return res.status(404).send({
@@ -199,7 +199,7 @@ var controller = {
 
         let count = allProducts.length
 
-        let products = await Product.find({ type: "merchandising"}).limit(limit).skip(skip);
+        let products = await Product.find({ type: "merchandising" }).limit(limit).skip(skip);
 
         if (!products || products.length == 0) {
             return res.status(404).send({
@@ -263,22 +263,24 @@ var controller = {
     },
     getFilters: async (req, res) => {
 
-        let {type} = req.params
+        let { type } = req.params
 
         let products
-        
-        if(type === "merchandising"){
-            products = await Product.find({type: type})
-        }else{
-            products = await Product.find({"$or": [
-                { "type": "manga" },
-                { "type": "novela ligera" }
-            ]})
+
+        if (type === "merchandising") {
+            products = await Product.find({ type: type })
+        } else {
+            products = await Product.find({
+                "$or": [
+                    { "type": "manga" },
+                    { "type": "novela ligera" }
+                ]
+            })
         }
-        
+
         let categories = []
 
-        if(!products || products.length <= 0){
+        if (!products || products.length <= 0) {
             return res.status(404).send({
                 status: "error",
                 message: "The products doesn't exists"
@@ -287,7 +289,7 @@ var controller = {
 
         products.forEach(product => {
             product.categories.forEach(categorie => {
-                if(!categories.includes(categorie)) categories.push(categorie)
+                if (!categories.includes(categorie)) categories.push(categorie)
             })
         })
 
@@ -510,7 +512,7 @@ var controller = {
 
         if (type === "novela") {
             type = "novela ligera"
-        } else if (type != "novela" && type != "manga" && type != "merchandising") {
+        } else if (type != "novela" && type != "manga" && type != "merchandising" && type != "comics") {
             return res.status(404).send({
                 status: "error",
                 message: "Route not found"
@@ -527,78 +529,113 @@ var controller = {
                 index.push(categories.find(name => name.includes(option)))
             })
 
-            let allProducts = await Product.find({
-                type: type, categories: { "$in": index }
-            })
-    
+            let allProducts
+
+            if (type === "comics") {
+                allProducts = await Product.find({
+                    "$or": [
+                        { "type": "manga" },
+                        { "type": "novela ligera" }
+                    ]
+                    , categories: { "$in": index }
+                })
+            } else {
+                allProducts = await Product.find({
+                    type: type, categories: { "$in": index }
+                })
+            }
+
             if (!allProducts || allProducts.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Mangas not found"
                 });
             }
-    
+
             let count = allProducts.length
-            
-            Product.find({
-                type: type, categories: { "$in": index }
-            }, (err, products) => {
 
-                if (err) {
-                    // ! ErrorHandle
-                }
+            let products
 
-                if (!products || products.length == 0) {
-                    return res.status(404).send({
-                        status: "error",
-                        message: "Products not found"
-                    })
-                }
+            if(type === "comics"){
+                products = await Product.find({
+                    "$or": [
+                        { "type": "manga" },
+                        { "type": "novela ligera" }
+                    ]
+                    , categories: { "$in": index }
+                }).limit(limit).skip(skip);
+            }else{
+                products = await Product.find({
+                    type: type, categories: { "$in": index }
+                }).limit(limit).skip(skip);
+            }
 
-                return res.status(200).send({
-                    status: "success",
-                    products,
-                    count
+            if(!products || products.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Products not found"
                 })
+            }
 
-            }).limit(limit).skip(skip);
+            return res.status(200).send({
+                status: "success",
+                products,
+                count
+            })
+
         } else {
 
-            let allProducts = await Product.find({
-                type: type
-            })
-    
+            let allProducts
+
+            if(type === "comics"){
+                allProducts = await Product.find({
+                    "$or" : [
+                        {"type" : "manga"},
+                        {"type" : "novela ligera"}
+                    ]
+                })
+            }else{
+                allProducts = await Product.find({
+                    type: type
+                })
+            }
+
             if (!allProducts || allProducts.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Mangas not found"
                 });
             }
-    
+
             let count = allProducts.length
 
-            Product.find({
-                type: type
-            }, (err, products) => {
+            let products
 
-                if (err) {
-                    // ! ErrorHandle
-                }
+            if(type === "comics"){
+                products = await Product.find({
+                    "$or" : [
+                        {"type" : "manga"},
+                        {"type" : "novela ligera"}
+                    ]
+                }).limit(limit).skip(skip);
+            }else{
+                products = await Product.find({
+                    type: type
+                }).limit(limit).skip(skip);
+            }
 
-                if (!products || products.length == 0) {
-                    return res.status(404).send({
-                        status: "error",
-                        message: "Products not found"
-                    })
-                }
-
-                return res.status(200).send({
-                    status: "success",
-                    products,
-                    count
+            if(!products || products.length == 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Products not found"
                 })
+            }
 
-            }).limit(limit).skip(skip);
+            return res.status(200).send({
+                status: "success",
+                products,
+                count
+            })
         }
 
     },
@@ -611,7 +648,7 @@ var controller = {
 
         let { email, password, confirm_password } = req.body;
 
-        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        const regexp = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
 
         try {
 
@@ -695,9 +732,9 @@ var controller = {
 
         let users
 
-        if(filter && state.includes(filter)){
-            users = await User.find({state: filter}, { password_hash: false })
-        }else{
+        if (filter && state.includes(filter)) {
+            users = await User.find({ state: filter }, { password_hash: false })
+        } else {
             users = await User.find({}, { password_hash: false })
         }
 
@@ -909,10 +946,10 @@ var controller = {
 
     },
 
-    updatePasswords : async (req, res) => {
-        
+    updatePasswords: async (req, res) => {
+
         const { old_password, new_password, confirm_password } = req.body
-        
+
         const userFind = await globalFunctions.getUserToken(req, res)
         const password_hash = await globalFunctions.getPasswordHash(userFind._id)
 
@@ -925,7 +962,7 @@ var controller = {
             validate_old = (!validator.isEmpty(old_password) && regexp.test(old_password))
             validate_new = (!validator.isEmpty(new_password) && regexp.test(new_password))
             validate_confirm = (!validator.isEmpty(confirm_password) && regexp.test(confirm_password))
-            
+
         } catch (error) {
             return res.status(404).send({
                 status: "error",
@@ -934,9 +971,9 @@ var controller = {
             })
         }
 
-        if(validate_old && validate_new && validate_confirm){
+        if (validate_old && validate_new && validate_confirm) {
 
-            if(new_password !== confirm_password){
+            if (new_password !== confirm_password) {
                 return res.status(404).send({
                     status: "error",
                     message: "The passwords doesn't match"
@@ -945,14 +982,14 @@ var controller = {
 
             let passwordMatch = await User.comparePasswords(old_password, password_hash)
 
-            if(!passwordMatch){
+            if (!passwordMatch) {
                 return res.status(404).send({
                     status: "error",
                     message: "The old password doesn't match"
                 })
             }
 
-            if(old_password === new_password){
+            if (old_password === new_password) {
                 return res.status(404).send({
                     status: "error",
                     message: "The old password and new password is equals"
@@ -961,9 +998,9 @@ var controller = {
 
             let newPassword = await User.encrypt(new_password)
 
-            let userUpdate = await User.findByIdAndUpdate(userFind._id, {password_hash: newPassword}, {new: true})
+            let userUpdate = await User.findByIdAndUpdate(userFind._id, { password_hash: newPassword }, { new: true })
 
-            if(!userUpdate){
+            if (!userUpdate) {
                 return res.status(404).send({
                     status: "error",
                     message: "The user has not been updated"
@@ -974,14 +1011,14 @@ var controller = {
                 status: "success",
                 userUpdate
             })
-            
-        }else{
+
+        } else {
             return res.status(404).send({
                 status: "error",
                 message: "Is obligatory all the fields"
             })
         }
-        
+
     },
 
     deleteUser: async (req, res) => {
@@ -1674,7 +1711,7 @@ var controller = {
             })
         }
 
-        let allAddress = await Address.find({user_id: userUpdate._id})
+        let allAddress = await Address.find({ user_id: userUpdate._id })
 
         return res.status(201).send({
             status: "success",
