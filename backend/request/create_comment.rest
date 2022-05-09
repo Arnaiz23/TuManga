@@ -1,11 +1,11 @@
 POST http://localhost:3900/api/v1/comment HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2Q5OWIyYzVkMmMxOTI1NTZiMSIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTI5VDEwOjU0OjE3LjM0NFoiLCJpYXQiOjE2NTE2NzAwMTksImV4cCI6MTY1MTc1NjQxOX0.mHT2XVIt1kCDnH-lQHtcx6mTNyQlHz04TBiwy7zXHgk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNzRmNzlkYTM5MmJiNWNjYzNhNWFkNSIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA1LTA2VDEwOjI1OjMzLjg5MloiLCJpYXQiOjE2NTIwOTQyODAsImV4cCI6MTY1MjEwMTQ4MH0.jtD9OvjQeL_7OIt_VzZvpWKnflPIXF9UUyfyi607OIo
 
 
 {
     "message" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt debitis corporis laudantium sed molestias, veritatis fugiat eveniet deleniti, aliquam repellendus blanditiis distinctio amet ipsam assumenda provident esse hic. Animi, voluptates incidunt impedit quis laboriosam molestias ut ad mollitia veniam libero itaque vitae perferendis corrupti esse, quae nam autem facere blanditiis?",
-    "product_id" : "6267e96e3224c282caecafa0",
+    "product_id" : "627121ed02fb647836475451",
     "score" : 1,
-    "name" : "Federico"
+    "name" : "prueba"
 }

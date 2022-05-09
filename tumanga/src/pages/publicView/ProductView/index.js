@@ -53,8 +53,8 @@ export default function ProductView({ params }) {
                             <>
                                 <ProductDetail product={product} />
                                 {commentsEmpty
-                                    ? <CommentsContainer comments={comments} empty={commentsEmpty} />
-                                    : <CommentsContainer comments={comments} />
+                                    ? <CommentsContainer comments={comments} changeEmpty={setCommentsEmpty} change={setComments} empty={commentsEmpty} />
+                                    : <CommentsContainer comments={comments} change={setComments} changeEmpty={setCommentsEmpty} />
                                 }
                             </>
                         )

@@ -38,6 +38,11 @@ var Comment = new Schema({
         type: String,
         required: true,
         unique: false
+    },
+    product_name : {
+        type: String,
+        required: true,
+        unique: false
     }
 });
 

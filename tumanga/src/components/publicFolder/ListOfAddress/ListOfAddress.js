@@ -8,13 +8,12 @@ export default function ListOfAddress() {
 
     const { loading } = useUser()
     const [address, setAddress] = useState([])
-    const [error, setError] = useState('false')
+    const error = useState('No tienes direcciones registradas')[0]
     const [addressEmpty, setAddressEmpty] = useState(false)
 
     useEffect(() => {
         getAddressUser().then(data => {
             if(data.message) {
-                setError(data.message)
                 setAddressEmpty(true)
                 return
             }
@@ -26,7 +25,7 @@ export default function ListOfAddress() {
     return (
         <>
             <div className="containerGrid">
-                <AddAddress change={setAddress} empty={setAddressEmpty} />
+                <AddAddress change={setAddress} empty={setAddressEmpty} type={"dirección"} />
                 {loading
                     ? <h1>Cargando...</h1>
                     : (

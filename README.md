@@ -21,3 +21,5 @@ This project build in these technologies:
     * Folder that contains the documentations files of the project 
 * Backend
     * Folder that containes the files of the backend
+* Frontend
+    * Folder that contains the frontend project with ReactJS

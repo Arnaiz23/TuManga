@@ -153,3 +153,13 @@ The principal route is "/api/v1"
 * Login
 * Register
 * Mangas
+* AccountCards
+* AccountAddress
+* AccountOrders
+* AccountComments
+* ProductDetail (exception: score)
+
+
+### Input file Admin
+
+![Image](..%5Clayout%5Cassets%5Cimages%5CinputFile.PNG)

@@ -42,9 +42,11 @@ export default function CardProduct({ product }) {
                             : (<p className="textStockOut"><i><FontAwesomeIcon icon={faXmark} /></i>AGOTADO</p>)
                     }
                 </div>
-                <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={addCart}><i id="iconCart"><FontAwesomeIcon icon={
-                    btnCart ? faShoppingCart : faCheck
-                } /></i></button>
+                {product.stock > 0 &&
+                    <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={addCart}><i id="iconCart"><FontAwesomeIcon icon={
+                        btnCart ? faShoppingCart : faCheck
+                    } /></i></button>
+                }
             </footer>
         </div>
     )

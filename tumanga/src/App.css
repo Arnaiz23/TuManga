@@ -1239,7 +1239,7 @@ a{
   font-weight: 700;
 }
 
-.containerComments textarea {
+.containerComments textarea, .containerComments input[type="text"] {
   resize: none;
   width: 100%;
   margin: 20px 0;
@@ -1251,8 +1251,13 @@ a{
   padding: 10px;
 }
 
-.containerComments textarea:focus {
+.containerComments textarea:focus, .containerComments input[type="text"]:focus {
   outline: none;
+}
+
+.containerComments input[type="text"]{
+  height: auto;
+  margin-bottom: 0;
 }
 
 .containerComments div:not(.row, .rowStars) {
@@ -1264,6 +1269,35 @@ a{
 
 .containerComments div .btn {
   font-weight: bold;
+}
+
+.containerCommentData{
+  width: 100%;
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  gap: 0 20px;
+}
+
+.rowStarsSelect{
+  direction: rtl;
+}
+
+.rowStars input[type="radio"]{
+  display: none;
+}
+
+.rowStars input[type = "radio"]:checked ~ .starsSelect{
+  color: rgb(240, 208, 26);
+}
+
+.starsSelect:hover,
+.starsSelect:hover ~ .starsSelect{
+  color: rgb(240, 208, 26);
+}
+
+.containerCommentData input[type="text"]{
+  width: 60%;
 }
 
 .lineComments {
@@ -1739,6 +1773,7 @@ a{
   flex-direction: column;
   padding: 20px;
   gap: 20px;
+  position: relative;
 }
 
 .cardTarget header {
@@ -1771,6 +1806,13 @@ a{
   margin: 0 auto;
 }
 
+.cardTarget i{
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
 .comment {
   position: relative;
   width: 100%;
@@ -1779,6 +1821,10 @@ a{
   /* height: 100px; */
   padding: 0 20px 40px;
   margin-top: 30px;
+}
+
+.deleteComment{
+  cursor: pointer;
 }
 
 .comment .row h3 {
@@ -3162,6 +3208,10 @@ a{
   .lineCommentsSeparator {
     display: block;
   }
+
+  .containerCommentData input[type="text"]{
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 726px) {
@@ -3363,6 +3413,12 @@ a{
 
   .containerRecover main form{
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 386px) {
+  .containerCommentData{
+    flex-wrap: wrap;
   }
 }
 

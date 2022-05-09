@@ -12,6 +12,7 @@ import Register from 'pages/publicView/Register/Register';
 import OrdersAccount from 'pages/publicView/Account/OrdersAccount';
 import AddressAccount from 'pages/publicView/Account/AddressAccount';
 import CardsAccount from 'pages/publicView/Account/CardsAccount/CardsAccount';
+import CommentsAccount from 'pages/publicView/Account/CommentsAccount';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path='/account/orders' component={OrdersAccount} />
       <Route path='/account/address' component={AddressAccount} />
       <Route path='/account/cards' component={CardsAccount} />
+      <Route path='/account/comments' component={CommentsAccount} />
       <ProductsContextProvider>
         <Route path='/products/mangas' component={ProductsView} />
         <Route path='/products/merchandising' component={ProductsView} />

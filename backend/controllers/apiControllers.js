@@ -1548,7 +1548,7 @@ var controller = {
                 let cards = userFind.billing;
                 cards.push(card._id);
 
-                User.findByIdAndUpdate(userFind._id, { billing: cards }, { new: true }, (err, user) => {
+                User.findByIdAndUpdate(userFind._id, { billing: cards }, { new: true }, async (err, user) => {
 
                     if (err || !user) {
                         return res.status(404).send({
@@ -1559,10 +1559,12 @@ var controller = {
 
                     card.encrypt_card = null
 
+                    let allCards = await Billing.find({user_id : user._id})
+
                     return res.status(201).send({
                         status: "success",
                         message: "The card has been save correctly",
-                        card
+                        allCards
                     });
 
                 });
@@ -1885,23 +1887,6 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let newComment = Comment({
-            user_id: userFind._id,
-            message,
-            product_id,
-            score,
-            name
-        })
-
-        let commentSave = await newComment.save()
-
-        if (!commentSave) {
-            return res.status(404).send({
-                status: "error",
-                message: "This comment has not been saved"
-            })
-        }
-
         product_id = mongoose.Types.ObjectId(product_id)
 
         let productFind = await Product.findById(product_id)
@@ -1910,6 +1895,24 @@ var controller = {
             return res.status(404).send({
                 status: "error",
                 message: "This product doesn't exists"
+            })
+        }
+
+        let newComment = Comment({
+            user_id: userFind._id,
+            message,
+            product_id,
+            score,
+            name,
+            product_name: productFind.name
+        })
+
+        let commentSave = await newComment.save()
+
+        if (!commentSave) {
+            return res.status(404).send({
+                status: "error",
+                message: "This comment has not been saved"
             })
         }
 
@@ -1938,9 +1941,11 @@ var controller = {
             })
         }
 
+        let allComments = await Comment.find({product_id : productFind._id})
+
         return res.status(200).send({
             status: "success",
-            productUpdate
+            allComments
         })
 
     },
@@ -1985,6 +1990,7 @@ var controller = {
         let userUpdate = await User.findByIdAndUpdate(userFind._id, { comments: newComments }, { new: true, fields: { password_hash: false } })
 
         let commentsProducts = await Product.findById(commentDelete.product_id)
+        let productId = commentsProducts._id
 
         commentsProducts = commentsProducts.comments
 
@@ -2008,9 +2014,12 @@ var controller = {
             })
         }
 
+        let productComments = await Comment.find({product_id : productId})
+
         return res.status(200).send({
             status: "success",
-            userUpdate
+            comments: newComments,
+            productComments
         })
 
     },

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-export default function CardItem({ data }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { deleteUserCard } from 'services/Cards';
+import Swal from 'sweetalert2';
+
+export default function CardItem({ data, empty, change }) {
 
     const [date, setDate] = useState('')
 
@@ -12,10 +17,25 @@ export default function CardItem({ data }) {
         year = month+"/"+year[2]+year[3]
         setDate(year)
     },[])
+
+    const deleteCard = () => {
+        
+        deleteUserCard(data._id).then(data => {
+            if(data.message) return alert(data.message)
+
+            change(data.cards)
+            Swal.fire(
+                'Tarjeta',
+                'Tarjeta eliminada correctamente',
+                'success'
+            )
+            if(data.cards.length === 0) empty(true)
+        })
+    }
     
     return (
         <>
-            <div className="cardTarget" id="templateCard">
+            <div className="cardTarget">
                 <header>
                     <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" className="imgBrandCard" />
                     <h3>{data.type}</h3>
@@ -27,6 +47,7 @@ export default function CardItem({ data }) {
                 <footer>
                     ************{data.last_4_digits}
                 </footer>
+                <i onClick={deleteCard}><FontAwesomeIcon icon={faTrash} /></i>
             </div>
         </>
     )
