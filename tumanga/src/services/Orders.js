@@ -15,3 +15,58 @@ export function getOrderId(id){
         })
     
 }
+
+
+export function createOrder(body){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/order`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, saveOrder }) => {
+            return status === "success" ? {saveOrder} : {message}
+        })
+    
+}
+
+export function addProductOrder(body){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/order`, {
+        method: "PATCH",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, orderUpdate }) => {
+            return status === "success" ? {orderUpdate} : {message}
+        })
+    
+}
+
+export function getOrderProccess(){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/order/process`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, orders }) => {
+            return status === "success" ? {orders} : {message}
+        })
+    
+}

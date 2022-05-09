@@ -118,7 +118,6 @@ The principal route is "/api/v1"
 * adminPanel -> filter
 * All the alerts
 * Spinner
-* In the detailProduct, stars
 * In account (change the alerts)
 * In login, forgot password
 * Format the dates
@@ -126,6 +125,11 @@ The principal route is "/api/v1"
 * More of 1 filter (.join(";") -> send string)
 * Sort by x
 * Component error
+* DetailsProduct in accountOrders
+* Add products in order (Create a context for share the order)
+* Show order
+* Finish order and pay
+* Slider in Home
 
 
 ### Views for public
@@ -157,7 +161,7 @@ The principal route is "/api/v1"
 * AccountAddress
 * AccountOrders
 * AccountComments
-* ProductDetail (exception: score)
+* ProductDetail
 
 
 ### Input file Admin

@@ -8,10 +8,13 @@ import Brand from 'BrandTransparent.png'
 
 import Nav from "components/publicFolder/Nav/Nav";
 import useToken from "hooks/useToken";
+import useOrderData from "hooks/useOrderData";
 
 export default function Header() {
 
     const [navActive, setNavActive] = useState('')
+
+    const { count, order } = useOrderData()
 
     const { tokenInfo } = useToken()
 
@@ -37,36 +40,38 @@ export default function Header() {
                     <span id="spanBadge">
                         <Link to="/">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
-                            <span className="badge">4</span>
+                            {count > 1 && <span className="badge">{count}</span>}
                         </Link>
                     </span>
-                    {/* <div className="containerCart">
-                    <div className="cardCart">
-                        <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
-                        <div>
-                            <h4>Tokyo Revenger 04</h4>
-                            <span className="amountCart">
-                                <p>Cant: </p>
-                                <p>1</p>
-                            </span>
+
+                    <div className="containerCart">
+                        {/* Get the last 3 products add */}
+                        <div className="cardCart">
+                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
+                            <div>
+                                <h4>Tokyo Revenger 04</h4>
+                                <span className="amountCart">
+                                    <p>Cant: </p>
+                                    <p>1</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="lineCart"></div>
+                        <div className="cardCart">
+                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
+                            <div>
+                                <h4>Tokyo Revenger 04</h4>
+                                <span className="amountCart">
+                                    <p>Cant: </p>
+                                    <p>1</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="totalCart">
+                            <p>Total</p>
+                            <p>{order.total}€</p>
                         </div>
                     </div>
-                    <div className="lineCart"></div>
-                    <div className="cardCart">
-                        <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
-                        <div>
-                            <h4>Tokyo Revenger 04</h4>
-                            <span className="amountCart">
-                                <p>Cant: </p>
-                                <p>1</p>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="totalCart">
-                        <p>Total</p>
-                        <p>100€</p>
-                    </div>
-                </div> */}
 
                     <span>
                         {tokenInfo

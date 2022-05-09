@@ -5,7 +5,7 @@ import { faAngleDown, faSliders, faXmark } from '@fortawesome/free-solid-svg-ico
 import getFilters from "services/getFilters";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-export default function ModalProductFilter() {
+export default function ModalProductFilter({ type }) {
 
     const [modalShow, setModalShow] = useState('')
     const [optionsShow, setOptionsShow] = useState('')
@@ -33,6 +33,10 @@ export default function ModalProductFilter() {
             : setOptionsShow('selectActive')
     }
 
+    const changeFilters = () => {
+        setModalShow('')
+    }
+
     return (
         <div className="selectOrder">
             <div className="filterResponsive" onClick={showModal}>
@@ -46,17 +50,19 @@ export default function ModalProductFilter() {
                     </button>
                 </header>
                 <main>
-                    <div className="containerFilterResponsive">
-                        <h3>Tipos</h3>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Novela ligera</p>
+                    {type === "mangas" &&
+                        <div className="containerFilterResponsive">
+                            <h3>Tipos</h3>
+                            <div>
+                                <input type="checkbox" name="" id="" />
+                                <p>Novela ligera</p>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="" />
+                                <p>Manga</p>
+                            </div>
                         </div>
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            <p>Manga</p>
-                        </div>
-                    </div>
+                    }
                     <div className="containerFilterResponsive">
                         <h3>Categorias</h3>
                         {
@@ -67,7 +73,7 @@ export default function ModalProductFilter() {
                     </div>
                 </main>
                 <footer>
-                    <button className="btn btn-primary">Aplicar filtros</button>
+                    <button className="btn btn-primary" onClick={changeFilters}>Aplicar filtros</button>
                 </footer>
             </div>
             <div>

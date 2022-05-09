@@ -13,22 +13,25 @@ import OrdersAccount from 'pages/publicView/Account/OrdersAccount';
 import AddressAccount from 'pages/publicView/Account/AddressAccount';
 import CardsAccount from 'pages/publicView/Account/CardsAccount/CardsAccount';
 import CommentsAccount from 'pages/publicView/Account/CommentsAccount';
+import { OrderContextProvider } from 'context/OrderContext';
 
 
 function App() {
   return (
     <div className="App">
-      <Route path='/' component={PublicHome} />
-      <Route path='/account' component={Account} />
-      <Route path='/account/orders' component={OrdersAccount} />
-      <Route path='/account/address' component={AddressAccount} />
-      <Route path='/account/cards' component={CardsAccount} />
-      <Route path='/account/comments' component={CommentsAccount} />
-      <ProductsContextProvider>
-        <Route path='/products/mangas' component={ProductsView} />
-        <Route path='/products/merchandising' component={ProductsView} />
-      </ProductsContextProvider>
-      <Route path='/product/:id' component={ProductView} />
+      <OrderContextProvider>
+        <Route path='/' component={PublicHome} />
+        <Route path='/account' component={Account} />
+        <Route path='/account/orders' component={OrdersAccount} />
+        <Route path='/account/address' component={AddressAccount} />
+        <Route path='/account/cards' component={CardsAccount} />
+        <Route path='/account/comments' component={CommentsAccount} />
+        <ProductsContextProvider>
+          <Route path='/products/mangas' component={ProductsView} />
+          <Route path='/products/merchandising' component={ProductsView} />
+        </ProductsContextProvider>
+        <Route path='/product/:id' component={ProductView} />
+      </OrderContextProvider>
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
     </div>

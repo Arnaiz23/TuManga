@@ -37,7 +37,7 @@ export default function ProductsView() {
             <SocialNetwork />
             <SliderName name={type} />
             <main className="center">
-                <ModalProductFilter />
+                <ModalProductFilter type={type} />
                 <div className="containerGlobalProducts">
                     <FilterProducts type={type} />
                     <div className="containerProducts">

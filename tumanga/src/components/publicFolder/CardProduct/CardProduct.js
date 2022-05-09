@@ -1,20 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { api_URL } from "services/config";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { useLocation } from "wouter";
 import { Link } from "wouter";
+import { addProductOrder, createOrder, getOrderProccess } from "services/Orders";
+import Swal from "sweetalert2";
+import useOrderData from "hooks/useOrderData";
 
 export default function CardProduct({ product }) {
 
     const [btnCart, setBtnCart] = useState(true)
+    // const [orderProcess, setOrderProcess] = useState(false)
+    const { orderProcess, setOrderProcess, setOrder, setCount } = useOrderData()
 
     const addCart = () => {
         // alert("Add this product")
         setBtnCart(false)
-        setTimeout(() => setBtnCart(true), 500)
+        createOrder({ "id_product" : product._id}).then(data => {
+            if(data.message) return setOrderProcess(true)
+
+            Swal.fire(
+                'Carrito',
+                'Producto añadido correctamente al pedido',
+                'success'
+            )
+            setBtnCart(true)
+        })
+        // setTimeout(() => setBtnCart(true), 500)
+    }
+
+    /* useEffect(() => {
+        getOrderProccess().then(data => {
+            if(data.orders) setOrderProcess(true)
+        })
+    }, []) */
+
+    const addCartProcess = () => {
+        setBtnCart(false)
+        addProductOrder({ "id_product" : product._id }).then(data => {
+            if(data.message) return alert(data.message)
+
+            Swal.fire(
+                'Carrito',
+                'Producto añadido correctamente al pedido',
+                'success'
+            )
+            setBtnCart(true)
+            setOrder(data.orderUpdate)
+            setCount(data.orderUpdate.products.length)
+        })
     }
 
     return (
@@ -28,7 +64,7 @@ export default function CardProduct({ product }) {
                             <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} />
                         )
                         : (
-                            <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt={`Portada del volumen de ${product.name}`} />
+                            <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt={`Portada del volumen de ${product.name}`} />
                         )
                 }
             </Link>
@@ -43,7 +79,7 @@ export default function CardProduct({ product }) {
                     }
                 </div>
                 {product.stock > 0 &&
-                    <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={addCart}><i id="iconCart"><FontAwesomeIcon icon={
+                    <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={orderProcess ? addCartProcess : addCart}><i id="iconCart"><FontAwesomeIcon icon={
                         btnCart ? faShoppingCart : faCheck
                     } /></i></button>
                 }
