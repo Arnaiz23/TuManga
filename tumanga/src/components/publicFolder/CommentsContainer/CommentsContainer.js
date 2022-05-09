@@ -1,6 +1,6 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { createComment } from "services/Comments";
 import { getUser } from "services/Users";
 import Swal from "sweetalert2";
@@ -40,9 +40,18 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
     }
 
     const handleChange = (e) => {
+
+        let data = e.target.value
+        let name = e.currentTarget.name
+
+        if(e.currentTarget.classList.contains("starsSelect")){
+            data = parseInt(e.currentTarget.control.value)
+            name = "score"
+        }
+
         setComment({
             ...comment,
-            [e.target.name]: e.target.value
+            [name]: data
         })
     }
 
@@ -69,8 +78,8 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
                         <span className="rowStars rowStarsSelect">
                             {stars.map(i =>
                                 <React.Fragment key={i}>
-                                    <input type="radio" id={`star${i}`} name="starsScore" />
-                                    <label htmlFor={`star${i}`} className="starsSelect" ><i><FontAwesomeIcon icon={faStar} /></i></label>
+                                    <input type="radio" id={`star${6-i}`} name="score" value={6-i} />
+                                    <label htmlFor={`star${6-i}`} className="starsSelect" onClick={handleChange} value={i}><i><FontAwesomeIcon icon={faStar} /></i></label>
                                 </React.Fragment>
                             )}
                         </span>
