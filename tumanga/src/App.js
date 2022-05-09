@@ -14,6 +14,7 @@ import AddressAccount from 'pages/publicView/Account/AddressAccount';
 import CardsAccount from 'pages/publicView/Account/CardsAccount/CardsAccount';
 import CommentsAccount from 'pages/publicView/Account/CommentsAccount';
 import { OrderContextProvider } from 'context/OrderContext';
+import OrderProcess from 'pages/publicView/OrderProcess/OrderProcess';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/products/merchandising' component={ProductsView} />
         </ProductsContextProvider>
         <Route path='/product/:id' component={ProductView} />
+        <Route path='/order' component={OrderProcess} />
       </OrderContextProvider>
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />

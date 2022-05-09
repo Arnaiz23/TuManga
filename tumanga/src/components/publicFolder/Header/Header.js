@@ -9,12 +9,13 @@ import Brand from 'BrandTransparent.png'
 import Nav from "components/publicFolder/Nav/Nav";
 import useToken from "hooks/useToken";
 import useOrderData from "hooks/useOrderData";
+import ProductHeader from "../ProductHeader/ProductHeader";
 
 export default function Header() {
 
     const [navActive, setNavActive] = useState('')
 
-    const { count, order } = useOrderData()
+    const { count, order, products } = useOrderData()
 
     const { tokenInfo } = useToken()
 
@@ -38,15 +39,18 @@ export default function Header() {
                 </div>
                 <div className="headerOptions">
                     <span id="spanBadge">
-                        <Link to="/">
+                        <Link to="/order">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
-                            {count > 1 && <span className="badge">{count}</span>}
+                            {order && count > 1 && <span className="badge">{count}</span>}
                         </Link>
                     </span>
 
                     <div className="containerCart">
                         {/* Get the last 3 products add */}
-                        <div className="cardCart">
+                        {products.map((data, index) => {
+                            return <ProductHeader key={data._id} data={data} />
+                        })}
+                        {/* <div className="cardCart">
                             <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
                             <div>
                                 <h4>Tokyo Revenger 04</h4>
@@ -70,7 +74,7 @@ export default function Header() {
                         <div className="totalCart">
                             <p>Total</p>
                             <p>{order.total}€</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     <span>

@@ -1287,9 +1287,12 @@ var controller = {
             })
         }
 
+        let products = await Product.find({_id : {"$in" : cart.products}})
+
         return res.status(200).send({
             status: "success",
-            cart
+            cart,
+            products
         })
 
     },
@@ -1299,7 +1302,7 @@ var controller = {
         let userFind = await globalFunctions.getUserToken(req, res)
 
         if (userFind.cart.length != 0) {
-            Order.findOne({ id_client: userFind._id, state: "P" }, (err, orders) => {
+            Order.findOne({ id_client: userFind._id, state: "P" }, async (err, orders) => {
 
                 if (err) {
                     // ! Errorhandler
@@ -1312,9 +1315,12 @@ var controller = {
                     })
                 }
 
+                let products = await Product.find({_id : {"$in" : orders.products}})
+
                 return res.status(200).send({
                     status: "success",
-                    orders
+                    orders,
+                    products
                 })
             })
         } else {

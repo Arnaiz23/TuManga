@@ -93,11 +93,12 @@ a{
   background-color: var(--passion-red);
   color: #fff;
   border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: .8rem;
 }
 
 .headerSearch {
@@ -137,6 +138,8 @@ a{
   padding: 40px 20px;
   box-shadow: 5px 5px 5px #000;
   visibility: hidden;
+  max-height: 353px;
+  overflow: hidden;
 }
 
 .cardCart {

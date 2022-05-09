@@ -65,8 +65,24 @@ export function getOrderProccess(){
         })
     })
         .then(res => res.json())
-        .then(({ status, message, orders }) => {
-            return status === "success" ? {orders} : {message}
+        .then(({ status, message, orders, products }) => {
+            return status === "success" ? {orders, products} : {message}
         })
+    
+}
+
+export function getShoppingCart(){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/order/cart`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, cart, products }) => {
+            return status === "success" ? {cart, products} : {message}
+        }) 
     
 }

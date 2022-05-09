@@ -126,10 +126,10 @@ The principal route is "/api/v1"
 * Sort by x
 * Component error
 * DetailsProduct in accountOrders
-* Add products in order (Create a context for share the order)
 * Show order
 * Finish order and pay
 * Slider in Home
+* Header 3 products
 
 
 ### Views for public
