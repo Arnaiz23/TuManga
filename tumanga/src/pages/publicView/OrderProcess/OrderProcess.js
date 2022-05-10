@@ -6,6 +6,7 @@ import SliderName from "components/publicFolder/SliderName/SliderName";
 import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
 import useOrderData from "hooks/useOrderData";
 import React from "react";
+import { Link } from "wouter";
 
 export default function OrderProcess() {
 
@@ -19,7 +20,7 @@ export default function OrderProcess() {
             <main className="center">
                 <div className="containerCenterRadius">
                     <div className="optionsRight">
-                        <p className="totalPriceShopping">Total:
+                        <p className="totalPriceShopping">Total: 
                             {order.length !== 0
                                 ? order.total
                                 : 0}
@@ -27,15 +28,16 @@ export default function OrderProcess() {
                     </div>
 
                     <div className="containerProductCenter">
-                        {order.length !== 0
+                        {order.length !== 0 && order.products.length > 0
                             ? <ListOfOrder products={order.products} />
                             : <h2>Actualmente tu carrito esta vacío</h2>
                         }
                     </div>
                     <div className="optionsRight">
-                        {order.length !== 0 && <button className="btn btn-success">Finalizar compra</button>}
+                        {order.length !== 0 && order.products.length > 0 &&
+                            <Link to='/payment'><button className="btn btn-success">Finalizar compra</button></Link>
+                        }
                     </div>
-
                 </div>
             </main>
             <BtnUp />

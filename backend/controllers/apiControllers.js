@@ -1430,31 +1430,36 @@ var controller = {
 
         if (!cart) {
             return res.status(404).send({
-                status: "Error",
+                status: "error",
                 message: "This user doesn't has a shopping cart"
             })
         }
 
         let products = cart.products
 
-        if (products.includes(id_product)) {
-            let indice = products.indexOf(id_product)
-            if (indice != -1) {
-                products.splice(indice, 1)
-            }
-        }
+        let deleteProduct
 
-        let orderUpdate = await Order.findByIdAndUpdate(cart._id, { products: products }, { new: true })
+        products.map((product, index) => {
+            if(product.product_id.equals(id_product)){
+                deleteProduct = products.splice(index, 1)
+            }
+        })
+
+        let price = deleteProduct.map(deleted => deleted.total_price)
+
+        price = cart.total - price
+
+        let orderUpdate = await Order.findByIdAndUpdate(cart._id, { products: products, total: price }, { new: true })
 
         if (!orderUpdate) {
             return res.status(404).send({
-                status: "Error",
+                status: "error",
                 message: "This order has not been updated"
             })
         }
 
         return res.status(200).send({
-            status: "Error",
+            status: "success",
             orderUpdate
         })
 
@@ -1659,7 +1664,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let cards = await Billing.find({ id_client: userFind._id }, { encrypt_card: false });
+        let cards = await Billing.find({ user_id: userFind._id }, { encrypt_card: false });
 
         if (!cards || cards.length == 0) {
             return res.status(404).send({

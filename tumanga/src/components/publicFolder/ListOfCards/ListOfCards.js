@@ -18,7 +18,7 @@ export default function ListOfCards() {
                 setCardsEmpty(true)
                 return
             }
-
+            
             setCards(data.cards)
 
         })

@@ -153,7 +153,7 @@ The principal route is "/api/v1"
 
 * Home
 * Account
-* Login
+* Login (Exception: forget password)
 * Register
 * Mangas
 * AccountCards
