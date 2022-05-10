@@ -1,7 +1,15 @@
 PATCH http://localhost:3900/api/v1/order
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjdkYTMwMmY2ZTYyYmM2NmNkOGU4OSIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJlZ2lzdGVyX2RhdGUiOiIyMDIyLTA0LTI2VDExOjQwOjMyLjc2NVoiLCJpYXQiOjE2NTA5NzMyMzIsImV4cCI6MTY1MTA1OTYzMn0.ywd6Le2MS4h6DdBw53t4mzT1r2qr6CzKLVZwLAvRelU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2EzMDIzNzNjODM0OTc0YmRkOGFiMSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDUtMTBUMDk6Mjg6MDMuOTYxWiIsImlhdCI6MTY1MjE3NDk1NywiZXhwIjoxNjUyMjYxMzU3fQ.Dvf_DVZADzRKiY1JfxdlmTvglOl00aX-qM9Xt28vIjI
 
 {
-    "id_product" : "6267d9fd90c7d9e853832da5"
+    "id_product" : "627a302473c834974bdd8ab7",
+    "item" : {
+            "product_id" : "627a302473c834974bdd8aba",
+            "quantity" : 1,
+            "price" : 30,
+            "name": "",
+            "image": "",
+            "total_price": 0
+        }
 }

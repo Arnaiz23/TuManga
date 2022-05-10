@@ -4,7 +4,8 @@ var Product = require('../models/Product');
 var Address = require('../models/Address');
 var Billing = require('../models/Billing');
 var Comment = require('../models/Comment');
-var Order = require('../models/Order');
+var {Order} = require('../models/Order');
+var {ItemCart} = require('../models/Order');
 var Role = require('../models/Role');
 var User = require('../models/User');
 
@@ -1112,7 +1113,20 @@ var controller = {
             })
         }
 
-        newOrder.products.push(new_id_product);
+        // console.log(product);
+
+        let newItem = {
+            product_id : product._id,
+            quantity : 1,
+            price : product.price,
+            name: product.name,
+            image: product.image,
+            total_price: product.price
+        }
+
+        newOrder.products.push(newItem)
+
+        // newOrder.products.push(new_id_product);
         newOrder.state = "P"
         newOrder.send_date = null
         newOrder.id_client = user.id
@@ -1120,6 +1134,7 @@ var controller = {
 
         newOrder.save((err, saveOrder) => {
             if (err || !saveOrder) {
+                console.log(err);
                 return res.status(500).send({
                     status: "error",
                     message: "The order has not been saved"
@@ -1174,7 +1189,30 @@ var controller = {
         }
 
         let ordersNew = order.products;
-        ordersNew.push(id_product)
+        let coincidence = false
+
+        ordersNew.map(data => {
+            if(data.product_id.equals(mongoose.Types.ObjectId(id_product))){
+                console.log("Coinciden");
+                data.quantity = data.quantity + 1
+                data.total_price = data.quantity * data.price
+                coincidence = true
+            }else{
+                coincidence = false
+            }
+        })
+
+        if(!coincidence){
+            let newItem = {
+                product_id : newProduct._id,
+                quantity : 1,
+                price : newProduct.price,
+                name: newProduct.name,
+                image: newProduct.image,
+                total_price: newProduct.price
+            }
+            ordersNew.push(newItem)
+        }
 
         let total = order.total + newProduct.price
 
@@ -1233,7 +1271,9 @@ var controller = {
 
         let products = orderProcess.products
 
-        let updateProducts = async () => {
+        console.log(products);
+
+        /* let updateProducts = async () => {
             products.forEach(async id => {
                 let productFind = await Product.findById(id)
 
@@ -1255,9 +1295,9 @@ var controller = {
                     })
                 }
             })
-        }
+        } */
 
-        await updateProducts()
+        /* await updateProducts()
 
         let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess, { new: true });
 
@@ -1271,7 +1311,7 @@ var controller = {
         return res.status(200).send({
             status: "Success",
             orderUpdate
-        })
+        }) */
 
     },
 

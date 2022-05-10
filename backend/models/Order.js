@@ -8,32 +8,32 @@ var ItemCart = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Product",
         unique: false,
-        required: true
+        required: false
     },
     quantity : {
         type: Number,
         min: 1,
-        required: true,
+        required: false,
         unique: false
     },
     price : {
         type: Number,
-        required: true,
+        required: false,
         unique: false
     },
     name: {
         type: String,
-        required: true,
+        required: false,
         unique: false
     },
     image : {
         type: String,
-        required: true,
+        required: false,
         unique: false
     },
     total_price: {
         type: Number,
-        required: true,
+        required: false,
         unique: false
     }
 })
@@ -95,4 +95,6 @@ var Order = new Schema({
     }
 });
 
-module.exports = mongoose.model("Order", Order);
+module.exports = {
+    Order : mongoose.model("Order", Order)
+}
