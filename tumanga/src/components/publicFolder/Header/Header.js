@@ -45,37 +45,13 @@ export default function Header() {
                         </Link>
                     </span>
 
-                    <div className="containerCart">
-                        {/* Get the last 3 products add */}
-                        {products.map((data, index) => {
-                            return <ProductHeader key={data._id} data={data} />
-                        })}
-                        {/* <div className="cardCart">
-                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
-                            <div>
-                                <h4>Tokyo Revenger 04</h4>
-                                <span className="amountCart">
-                                    <p>Cant: </p>
-                                    <p>1</p>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="lineCart"></div>
-                        <div className="cardCart">
-                            <img src="./assets/images/tokyorevnegers4.jpeg" alt="portada de Tokyo revengers 04" />
-                            <div>
-                                <h4>Tokyo Revenger 04</h4>
-                                <span className="amountCart">
-                                    <p>Cant: </p>
-                                    <p>1</p>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="totalCart">
-                            <p>Total</p>
-                            <p>{order.total}€</p>
-                        </div> */}
-                    </div>
+                    {products.length !== 0 &&
+                        <div className="containerCart">
+                            {/* Get the last 3 products add */}
+                            {products.map((data, index) => {
+                                return <ProductHeader key={data._id} data={data} />
+                            })}
+                        </div>}
 
                     <span>
                         {tokenInfo

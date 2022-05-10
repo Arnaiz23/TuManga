@@ -11,6 +11,7 @@ var app = express();
 let init = async () => {
     await initialConfig.createRoles();
     await initialConfig.createAdmin();
+    await initialConfig.createProducts()
 }
 
 init()

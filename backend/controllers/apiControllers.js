@@ -57,7 +57,7 @@ var controller = {
 
         const state = ["new", "old"];
         const numberValid = /^[0-9]+$/;
-        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
+        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
         const type = ["manga", "novela ligera", "merchandising"];
 
 
@@ -508,7 +508,7 @@ var controller = {
 
         let { type, option, limit, skip } = req.params;
 
-        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
+        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
 
         if (type === "novela") {
             type = "novela ligera"
@@ -676,7 +676,7 @@ var controller = {
                 user.password_hash = passwordHash;
 
                 if (req.body.roles) {
-                    const foundRoles = await Role.find({ name: { $in: roles } });
+                    const foundRoles = await Role.find({ name: { $in: req.body.roles } });
                     user.role = foundRoles.map(role => role._id);
                 } else {
                     const role = await Role.findOne({ name: "usuario" });
@@ -686,6 +686,7 @@ var controller = {
                 user.save(async (err, newUser) => {
 
                     if (err || !newUser) {
+                        console.log(err);
                         return res.status(500).send({
                             status: "error",
                             message: "The user has not been saved"
@@ -1286,6 +1287,8 @@ var controller = {
                 message: "This user doesn't has a shopping cart"
             })
         }
+
+
 
         let products = await Product.find({_id : {"$in" : cart.products}})
 

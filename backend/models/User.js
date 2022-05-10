@@ -77,12 +77,7 @@ var User = new Schema({
             unique: false,
             required : true
         }
-    ],
-    tokenRecover: {
-        type: String,
-        required: false,
-        unique: true
-    }
+    ]
 });
 
 User.statics.encrypt = async (password) => {

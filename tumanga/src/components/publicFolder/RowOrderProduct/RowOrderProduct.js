@@ -1,14 +1,15 @@
 import React from "react";
+import { api_URL } from "services/config";
 
 export default function RowOrderProduct({ data }) {
     return (
         <div className="row">
-            <img src="./assets/images/tokyorevnegers4.jpeg" alt="imagen portada Tokyo Revengers 04" />
+            <img src={`${api_URL}/image/${data.image}`} alt={`imagen portada ${data.name}`} />
             <div className="contentShopping">
-                <h4 className="titleBlue">Tokyo Revengers 04</h4>
+                <h4 className="titleBlue">{data.name}</h4>
                 <div>
                     <p>Cantidad: 1</p>
-                    <p>Precio: 15€</p>
+                    <p>Precio: {data.price}€</p>
                 </div>
             </div>
             <span>

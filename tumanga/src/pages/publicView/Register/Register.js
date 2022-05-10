@@ -47,16 +47,13 @@ export default function Register() {
 
         // ! Send data
 
-        console.log(userData);
-
         register(userData).then(data => {
-            console.log(data);
             if(data.token){
                 localStorage.setItem("token", JSON.stringify(data.token))
                 setTokenInfo(data.token)
                 setLocation("/")
             }else{
-                alert(data.message)
+                return alert(data.message)
             }
         })
     }
