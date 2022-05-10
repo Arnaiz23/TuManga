@@ -1,2 +1,2 @@
 GET http://localhost:3900/api/v1/admin/orders HTTP/1.1
-# ! Authorization
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2EzMDIzNzNjODM0OTc0YmRkOGFiMSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDUtMTBUMDk6Mjg6MDMuOTYxWiIsImlhdCI6MTY1MjE3NDk1NywiZXhwIjoxNjUyMjYxMzU3fQ.Dvf_DVZADzRKiY1JfxdlmTvglOl00aX-qM9Xt28vIjI

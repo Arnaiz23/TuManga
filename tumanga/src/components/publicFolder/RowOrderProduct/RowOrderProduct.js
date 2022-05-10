@@ -8,8 +8,8 @@ export default function RowOrderProduct({ data }) {
             <div className="contentShopping">
                 <h4 className="titleBlue">{data.name}</h4>
                 <div>
-                    <p>Cantidad: 1</p>
-                    <p>Precio: {data.price}€</p>
+                    <p>Cantidad: {data.quantity}</p>
+                    <p>Precio: {data.total_price}€</p>
                 </div>
             </div>
             <span>

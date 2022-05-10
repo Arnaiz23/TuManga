@@ -138,8 +138,6 @@ a{
   padding: 40px 20px;
   box-shadow: 5px 5px 5px #000;
   visibility: hidden;
-  max-height: 353px;
-  overflow: hidden;
 }
 
 .cardCart {

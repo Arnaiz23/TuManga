@@ -9,7 +9,9 @@ import React from "react";
 
 export default function OrderProcess() {
 
-    const { order, products } = useOrderData()
+    const { order } = useOrderData()
+
+    console.log(order);
 
     return (
         <>
@@ -23,7 +25,7 @@ export default function OrderProcess() {
                     </div>
 
                     <div className="containerProductCenter">
-                        <ListOfOrder products={products} />
+                        <ListOfOrder products={order.products} />
                     </div>
                     <div className="optionsRight">
                         <button className="btn btn-success">Finalizar compra</button>

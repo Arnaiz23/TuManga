@@ -57,7 +57,7 @@ export default function OrdersAccount() {
                                     : (
                                         <>
                                             {
-                                                orders.map(order => <OrderWindow key={order._id} data={order._id} />)
+                                                orders.map(order => <OrderWindow key={order._id} data={order} />)
                                             }
                                         </>
                                     )

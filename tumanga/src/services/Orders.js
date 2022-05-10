@@ -65,8 +65,8 @@ export function getOrderProccess(){
         })
     })
         .then(res => res.json())
-        .then(({ status, message, orders, products }) => {
-            return status === "success" ? {orders, products} : {message}
+        .then(({ status, message, orders }) => {
+            return status === "success" ? {orders} : {message}
         })
     
 }

@@ -129,7 +129,7 @@ The principal route is "/api/v1"
 * Show order
 * Finish order and pay
 * Slider in Home
-* Header 3 products
+* If you have a shoppingCart and you logout, the order exists until you reload the page
 
 
 ### Views for public

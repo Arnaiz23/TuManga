@@ -1,7 +1,7 @@
 import React from "react";
 import { api_URL } from "services/config";
 
-export default function ProductHeader({ data }) {
+export default function ProductHeader({ data, index }) {
     return (
         <>
             <div className="cardCart">
@@ -10,11 +10,11 @@ export default function ProductHeader({ data }) {
                     <h4>{data.name}</h4>
                     <span className="amountCart">
                         <p>Cant: </p>
-                        <p>1</p>
+                        <p>{data.quantity}</p>
                     </span>
                 </div>
             </div>
-            <div className="lineCart"></div>
+            {index < 2 && <div className="lineCart"></div>}
         </>
     )
 }

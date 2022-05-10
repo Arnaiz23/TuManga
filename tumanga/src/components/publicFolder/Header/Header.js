@@ -15,7 +15,7 @@ export default function Header() {
 
     const [navActive, setNavActive] = useState('')
 
-    const { count, order, products } = useOrderData()
+    const { count, order } = useOrderData()
 
     const { tokenInfo } = useToken()
 
@@ -41,16 +41,20 @@ export default function Header() {
                     <span id="spanBadge">
                         <Link to="/order">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
-                            {order && count > 1 && <span className="badge">{count}</span>}
+                            {order && count >= 1 && <span className="badge">{count}</span>}
                         </Link>
                     </span>
 
-                    {products.length !== 0 &&
+                    {order.length !== 0 && order.products.length !== 0 &&
                         <div className="containerCart">
-                            {/* Get the last 3 products add */}
-                            {products.map((data, index) => {
-                                return <ProductHeader key={data._id} data={data} />
+                            {order.products.map((data, index) => {
+                                if (index >= 3) return
+                                return <ProductHeader key={data._id} data={data} index={index} />
                             })}
+                            <div class="totalCart">
+                                <p>Total</p>
+                                <p>{order.total}€</p>
+                            </div>
                         </div>}
 
                     <span>

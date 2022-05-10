@@ -4,7 +4,7 @@ var Product = require('../models/Product');
 var Address = require('../models/Address');
 var Billing = require('../models/Billing');
 var Comment = require('../models/Comment');
-var {Order} = require('../models/Order');
+var { Order } = require('../models/Order');
 var Role = require('../models/Role');
 var User = require('../models/User');
 
@@ -556,7 +556,7 @@ var controller = {
 
             let products
 
-            if(type === "comics"){
+            if (type === "comics") {
                 products = await Product.find({
                     "$or": [
                         { "type": "manga" },
@@ -564,13 +564,13 @@ var controller = {
                     ]
                     , categories: { "$in": index }
                 }).limit(limit).skip(skip);
-            }else{
+            } else {
                 products = await Product.find({
                     type: type, categories: { "$in": index }
                 }).limit(limit).skip(skip);
             }
 
-            if(!products || products.length == 0){
+            if (!products || products.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Products not found"
@@ -587,14 +587,14 @@ var controller = {
 
             let allProducts
 
-            if(type === "comics"){
+            if (type === "comics") {
                 allProducts = await Product.find({
-                    "$or" : [
-                        {"type" : "manga"},
-                        {"type" : "novela ligera"}
+                    "$or": [
+                        { "type": "manga" },
+                        { "type": "novela ligera" }
                     ]
                 })
-            }else{
+            } else {
                 allProducts = await Product.find({
                     type: type
                 })
@@ -611,20 +611,20 @@ var controller = {
 
             let products
 
-            if(type === "comics"){
+            if (type === "comics") {
                 products = await Product.find({
-                    "$or" : [
-                        {"type" : "manga"},
-                        {"type" : "novela ligera"}
+                    "$or": [
+                        { "type": "manga" },
+                        { "type": "novela ligera" }
                     ]
                 }).limit(limit).skip(skip);
-            }else{
+            } else {
                 products = await Product.find({
                     type: type
                 }).limit(limit).skip(skip);
             }
 
-            if(!products || products.length == 0){
+            if (!products || products.length == 0) {
                 return res.status(404).send({
                     status: "error",
                     message: "Products not found"
@@ -1115,9 +1115,9 @@ var controller = {
         // console.log(product);
 
         let newItem = {
-            product_id : product._id,
-            quantity : 1,
-            price : product.price,
+            product_id: product._id,
+            quantity: 1,
+            price: product.price,
             name: product.name,
             image: product.image,
             total_price: product.price
@@ -1192,12 +1192,12 @@ var controller = {
 
         let coincidence = ordersNew.map(data => {
             console.log("-----");
-            if(data.product_id.equals(mongoose.Types.ObjectId(id_product))){
+            if (data.product_id.equals(mongoose.Types.ObjectId(id_product))) {
                 data.quantity = data.quantity + 1
                 data.total_price = data.quantity * data.price
                 // coincidence = true
                 return true
-            }else{
+            } else {
                 // coincidence = false
                 return false
             }
@@ -1205,11 +1205,11 @@ var controller = {
 
         console.log(coincidence);
 
-        if(!coincidence.includes(true)){
+        if (!coincidence.includes(true)) {
             let newItem = {
-                product_id : newProduct._id,
-                quantity : 1,
-                price : newProduct.price,
+                product_id: newProduct._id,
+                quantity: 1,
+                price: newProduct.price,
                 name: newProduct.name,
                 image: newProduct.image,
                 total_price: newProduct.price
@@ -1329,14 +1329,9 @@ var controller = {
             })
         }
 
-
-
-        let products = await Product.find({_id : {"$in" : cart.products}})
-
         return res.status(200).send({
             status: "success",
-            cart,
-            products
+            cart
         })
 
     },
@@ -1405,6 +1400,19 @@ var controller = {
                 message: "This user doesn't have orders finished"
             })
         }
+
+        /* let newOrders = await Promise.all(
+            orders.map(async (order) => {
+                let address = await Address.findById(order.delivery_address)
+                let card = await Billing.findById(order.billing)
+                let data = {
+                    order,
+                    address,
+                    card
+                }
+                return data
+            })
+        ) */
 
         res.status(200).send({
             status: "success",
@@ -1494,26 +1502,9 @@ var controller = {
             })
         } */
 
-        let searchProducts = async () => {
-
-            let productArray = []
-
-            for await (let product of order.products) {
-                let productData = await Product.findById(product._id, { name: true, _id: true, image: true })
-                productArray.push(productData)
-            }
-
-            return productArray
-        }
-
-        let products = await searchProducts()
-
         let data = {
-            products: products,
             address: address,
             payment: billing,
-            total: order.total,
-            telephone: order.telephone,
             delivered_date: order.send_date,
             realized_date: order.order_date
         }
@@ -1606,7 +1597,7 @@ var controller = {
 
                     card.encrypt_card = null
 
-                    let allCards = await Billing.find({user_id : user._id})
+                    let allCards = await Billing.find({ user_id: user._id })
 
                     return res.status(201).send({
                         status: "success",
@@ -1988,7 +1979,7 @@ var controller = {
             })
         }
 
-        let allComments = await Comment.find({product_id : productFind._id})
+        let allComments = await Comment.find({ product_id: productFind._id })
 
         return res.status(200).send({
             status: "success",
@@ -2061,7 +2052,7 @@ var controller = {
             })
         }
 
-        let productComments = await Comment.find({product_id : productId})
+        let productComments = await Comment.find({ product_id: productId })
 
         return res.status(200).send({
             status: "success",
