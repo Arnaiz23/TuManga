@@ -10,9 +10,7 @@ import React from "react";
 export default function OrderProcess() {
 
     const { order } = useOrderData()
-
-    console.log(order);
-
+    
     return (
         <>
             <Header />

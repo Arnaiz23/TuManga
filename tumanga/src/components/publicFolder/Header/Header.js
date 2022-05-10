@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "wouter";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,11 +11,14 @@ import useToken from "hooks/useToken";
 import useOrderData from "hooks/useOrderData";
 import ProductHeader from "../ProductHeader/ProductHeader";
 
+import OrderContext from "context/OrderContext";
+
 export default function Header() {
 
     const [navActive, setNavActive] = useState('')
 
     const { count, order } = useOrderData()
+    const { setUser, user } = useContext(OrderContext)
 
     const { tokenInfo } = useToken()
 
@@ -39,19 +42,27 @@ export default function Header() {
                 </div>
                 <div className="headerOptions">
                     <span id="spanBadge">
-                        <Link to="/order">
+                        {user
+                            && (
+                                <Link to="/order">
+                                    <i><FontAwesomeIcon icon={faShoppingCart} /></i>
+                                    {order && count >= 1 && <span className="badge">{count}</span>}
+                                </Link>
+                            )
+                        }
+                        {/* <Link to="/order">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
                             {order && count >= 1 && <span className="badge">{count}</span>}
-                        </Link>
+                        </Link> */}
                     </span>
 
-                    {order.length !== 0 && order.products.length !== 0 &&
+                    {order.length !== 0 && order.products.length !== 0 && user &&
                         <div className="containerCart">
                             {order.products.map((data, index) => {
                                 if (index >= 3) return
                                 return <ProductHeader key={data._id} data={data} index={index} />
                             })}
-                            <div class="totalCart">
+                            <div className="totalCart">
                                 <p>Total</p>
                                 <p>{order.total}€</p>
                             </div>
@@ -79,7 +90,7 @@ export default function Header() {
                     </span>
                 </div>
             </header>
-            <Nav state={navActive} />
+            <Nav state={navActive} user={setUser} />
         </>
     )
 }

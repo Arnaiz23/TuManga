@@ -33,9 +33,11 @@ function App() {
         </ProductsContextProvider>
         <Route path='/product/:id' component={ProductView} />
         <Route path='/order' component={OrderProcess} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
       </OrderContextProvider>
-      <Route path='/login' component={Login} />
-      <Route path='/register' component={Register} />
+      {/* <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} /> */}
     </div>
   );
 }

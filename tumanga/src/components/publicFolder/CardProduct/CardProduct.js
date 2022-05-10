@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { api_URL } from "services/config";
 
@@ -8,18 +8,21 @@ import { Link } from "wouter";
 import { addProductOrder, createOrder, getOrderProccess } from "services/Orders";
 import Swal from "sweetalert2";
 import useOrderData from "hooks/useOrderData";
+import OrderContext from "context/OrderContext";
 
 export default function CardProduct({ product }) {
 
     const [btnCart, setBtnCart] = useState(true)
     // const [orderProcess, setOrderProcess] = useState(false)
     const { orderProcess, setOrderProcess, setOrder, setCount } = useOrderData()
+    const { user } = useContext(OrderContext)
 
     const addCart = () => {
         // alert("Add this product")
         setBtnCart(false)
         createOrder({ "id_product" : product._id}).then(data => {
-            if(data.message) return setOrderProcess(true)
+
+            if(data.message)return setOrderProcess(true)
 
             Swal.fire(
                 'Carrito',
@@ -78,7 +81,7 @@ export default function CardProduct({ product }) {
                             : (<p className="textStockOut"><i><FontAwesomeIcon icon={faXmark} /></i>AGOTADO</p>)
                     }
                 </div>
-                {product.stock > 0 &&
+                {(product.stock > 0 && user) &&
                     <button className={btnCart ? "addCart" : "addCart addCartChecked"} onClick={orderProcess ? addCartProcess : addCart}><i id="iconCart"><FontAwesomeIcon icon={
                         btnCart ? faShoppingCart : faCheck
                     } /></i></button>

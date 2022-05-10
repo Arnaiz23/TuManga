@@ -6,7 +6,7 @@ import { getOrderProccess } from "services/Orders";
 
 export default function useOrderData(){
 
-    const { order, setOrder, count, setCount } = useContext(OrderContext)
+    const { order, setOrder, count, setCount, setUser } = useContext(OrderContext)
     const [orderProcess, setOrderProcess] = useState(false)
 
     useEffect(() => {
@@ -24,6 +24,6 @@ export default function useOrderData(){
 
     },[setOrder])
 
-    return { order, setOrder, count, setCount, orderProcess, setOrderProcess }
+    return { order, setOrder, count, setCount, orderProcess, setOrderProcess, setUser }
     
 }

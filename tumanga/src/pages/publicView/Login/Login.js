@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "wouter";
@@ -6,6 +6,8 @@ import { login, userChangeState } from "services/Users";
 import useToken from "hooks/useToken";
 import { useLocation } from "wouter";
 import Swal from "sweetalert2";
+
+import OrderContext from "context/OrderContext";
 
 export default function Login() {
 
@@ -17,6 +19,8 @@ export default function Login() {
 
     const { setTokenInfo } = useToken()
     const [location, setLocation] = useLocation()
+
+    const { setUser } = useContext(OrderContext)
 
     const inputPasswordRef = React.createRef()
     const hidePasswordRef = React.createRef()
@@ -50,6 +54,7 @@ export default function Login() {
                                             'success'
                                         )
                                         setTokenInfo(res.token)
+                                        setUser(true)
                                         setLocation("/")
                                     }else{
                                         alert(data.message)
@@ -69,6 +74,7 @@ export default function Login() {
                     } else {
                         localStorage.setItem("token", JSON.stringify(res.token))
                         setTokenInfo(res.token)
+                        setUser(true)
                         setLocation("/")
                     }
                 } else {
