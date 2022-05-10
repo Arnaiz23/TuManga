@@ -6,7 +6,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import useToken from "hooks/useToken";
 import { useLocation } from "wouter";
 
-export default function Nav({ state, user }) {
+export default function Nav({ state, user, changeProcess }) {
 
     let navState = state
 
@@ -29,6 +29,7 @@ export default function Nav({ state, user }) {
         setTokenInfo(false)
         alert("Cerrando sesion")
         user(false)
+        changeProcess(false)
         setLocation("/")
     }
 

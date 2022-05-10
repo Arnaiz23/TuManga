@@ -22,7 +22,10 @@ export default function CardProduct({ product }) {
         setBtnCart(false)
         createOrder({ "id_product" : product._id}).then(data => {
 
-            if(data.message)return setOrderProcess(true)
+            if(data.message){
+                setBtnCart(true)
+                return setOrderProcess(true)
+            }
 
             Swal.fire(
                 'Carrito',
@@ -30,6 +33,9 @@ export default function CardProduct({ product }) {
                 'success'
             )
             setBtnCart(true)
+            setOrderProcess(true)
+            setOrder(data.saveOrder)
+            setCount(data.saveOrder.products.length)
         })
         // setTimeout(() => setBtnCart(true), 500)
     }

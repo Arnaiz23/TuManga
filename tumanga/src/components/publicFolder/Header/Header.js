@@ -18,7 +18,7 @@ export default function Header() {
     const [navActive, setNavActive] = useState('')
 
     const { count, order } = useOrderData()
-    const { setUser, user } = useContext(OrderContext)
+    const { setUser, user, setOrderProcess } = useContext(OrderContext)
 
     const { tokenInfo } = useToken()
 
@@ -90,7 +90,7 @@ export default function Header() {
                     </span>
                 </div>
             </header>
-            <Nav state={navActive} user={setUser} />
+            <Nav state={navActive} user={setUser} changeProcess={setOrderProcess} />
         </>
     )
 }

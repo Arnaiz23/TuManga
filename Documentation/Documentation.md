@@ -129,9 +129,6 @@ The principal route is "/api/v1"
 * Show order
 * Finish order and pay
 * Slider in Home
-* If you have a shoppingCart and you logout, the order exists until you reload the page
-* Not running the register
-* I need one hook to check if user is user
 
 
 ### Views for public

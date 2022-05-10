@@ -1362,7 +1362,7 @@ var controller = {
         } else {
             return res.status(404).send({
                 status: "error",
-                message: "This user has no orders"
+                message: "This user doesn't have orders in proccess"
             })
         }
 

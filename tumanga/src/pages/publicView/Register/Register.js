@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,8 @@ import { Link } from "wouter";
 import { register } from "services/Users";
 import { useLocation } from "wouter";
 import useToken from "hooks/useToken";
+
+import OrderContext from "context/OrderContext";
 
 export default function Register() {
 
@@ -18,6 +20,8 @@ export default function Register() {
 
     const [location, setLocation] = useLocation()
     const { setTokenInfo } = useToken()
+
+    const { setUser } = useContext(OrderContext)
 
     const [userData, setUserData] = useState({
         "email" : "",
@@ -51,6 +55,7 @@ export default function Register() {
             if(data.token){
                 localStorage.setItem("token", JSON.stringify(data.token))
                 setTokenInfo(data.token)
+                setUser(true)
                 setLocation("/")
             }else{
                 return alert(data.message)

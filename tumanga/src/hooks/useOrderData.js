@@ -6,15 +6,22 @@ import { getOrderProccess } from "services/Orders";
 
 export default function useOrderData(){
 
-    const { order, setOrder, count, setCount, setUser } = useContext(OrderContext)
-    const [orderProcess, setOrderProcess] = useState(false)
+    const { order, setOrder, count, setCount, setUser, setOrderProcess, orderProcess } = useContext(OrderContext)
+    // const [orderProcess, setOrderProcess] = useState(false)
 
     useEffect(() => {
 
 
         getOrderProccess().then(data => {
-            if(data.message === "Did not work") return
-            if(data.message === "This user doesn't have orders in proccess") return
+            if(data.message === "Did not work") {
+                setUser(false)
+                return
+            }
+            if(data.message === "This user doesn't have orders in proccess") {
+                setCount(0)
+                setOrder([])
+                return
+            }
             if(data.orders){
                 setOrderProcess(true)
                 setOrder(data.orders)

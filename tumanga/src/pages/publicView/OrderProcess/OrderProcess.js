@@ -10,7 +10,7 @@ import React from "react";
 export default function OrderProcess() {
 
     const { order } = useOrderData()
-    
+
     return (
         <>
             <Header />
@@ -19,14 +19,21 @@ export default function OrderProcess() {
             <main className="center">
                 <div className="containerCenterRadius">
                     <div className="optionsRight">
-                        <p className="totalPriceShopping">Total: {order.total}€</p>
+                        <p className="totalPriceShopping">Total:
+                            {order.length !== 0
+                                ? order.total
+                                : 0}
+                            €</p>
                     </div>
 
                     <div className="containerProductCenter">
-                        <ListOfOrder products={order.products} />
+                        {order.length !== 0
+                            ? <ListOfOrder products={order.products} />
+                            : <h2>Actualmente tu carrito esta vacío</h2>
+                        }
                     </div>
                     <div className="optionsRight">
-                        <button className="btn btn-success">Finalizar compra</button>
+                        {order.length !== 0 && <button className="btn btn-success">Finalizar compra</button>}
                     </div>
 
                 </div>
