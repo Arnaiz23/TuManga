@@ -1271,11 +1271,9 @@ var controller = {
 
         let products = orderProcess.products
 
-        console.log(products);
-
-        /* let updateProducts = async () => {
-            products.forEach(async id => {
-                let productFind = await Product.findById(id)
+        let updateProducts = async () => {
+            products.forEach(async item => {
+                let productFind = await Product.findById(item.product_id)
 
                 if (!productFind) {
                     return res.status(404).send({
@@ -1284,8 +1282,8 @@ var controller = {
                     })
                 }
 
-                let number_sales = productFind.number_sales + 1
-                let stock = productFind.stock - 1
+                let number_sales = productFind.number_sales + item.quantity
+                let stock = productFind.stock - item.quantity
                 let productUpdate = await Product.findByIdAndUpdate(productFind._id, { number_sales: number_sales, stock: stock }, { new: true })
 
                 if (!productUpdate) {
@@ -1295,9 +1293,9 @@ var controller = {
                     })
                 }
             })
-        } */
+        }
 
-        /* await updateProducts()
+        await updateProducts()
 
         let orderUpdate = await Order.findByIdAndUpdate(orderProcess._id, orderProcess, { new: true });
 
@@ -1311,7 +1309,7 @@ var controller = {
         return res.status(200).send({
             status: "Success",
             orderUpdate
-        }) */
+        })
 
     },
 
