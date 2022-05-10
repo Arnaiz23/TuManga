@@ -5,7 +5,6 @@ var Address = require('../models/Address');
 var Billing = require('../models/Billing');
 var Comment = require('../models/Comment');
 var {Order} = require('../models/Order');
-var {ItemCart} = require('../models/Order');
 var Role = require('../models/Role');
 var User = require('../models/User');
 
@@ -1189,20 +1188,24 @@ var controller = {
         }
 
         let ordersNew = order.products;
-        let coincidence = false
+        // let coincidence = false
 
-        ordersNew.map(data => {
+        let coincidence = ordersNew.map(data => {
+            console.log("-----");
             if(data.product_id.equals(mongoose.Types.ObjectId(id_product))){
-                console.log("Coinciden");
                 data.quantity = data.quantity + 1
                 data.total_price = data.quantity * data.price
-                coincidence = true
+                // coincidence = true
+                return true
             }else{
-                coincidence = false
+                // coincidence = false
+                return false
             }
         })
 
-        if(!coincidence){
+        console.log(coincidence);
+
+        if(!coincidence.includes(true)){
             let newItem = {
                 product_id : newProduct._id,
                 quantity : 1,
@@ -1356,12 +1359,9 @@ var controller = {
                     })
                 }
 
-                let products = await Product.find({_id : {"$in" : orders.products}})
-
                 return res.status(200).send({
                     status: "success",
-                    orders,
-                    products
+                    orders
                 })
             })
         } else {

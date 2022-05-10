@@ -4,13 +4,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2EzMDIzN
 
 {
     
-    "id_product" : "627a302473c834974bdd8aba",
-    "item" : {
-            "product_id" : "627a302473c834974bdd8aba",
-            "quantity" : 1,
-            "price" : 30,
-            "name": "",
-            "image": "",
-            "total_price": ""
-        }
+    "id_product" : "627a302473c834974bdd8aba"
 }
