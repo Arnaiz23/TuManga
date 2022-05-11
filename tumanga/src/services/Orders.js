@@ -105,3 +105,22 @@ export function deleteProductCart(body){
         })
     
 }
+
+export function finishShoppingCart(body){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/order`, {
+        method: "PUT",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, orderUpdate }) => {
+            return status === "success" ? {orderUpdate} : {message}
+        })
+
+}

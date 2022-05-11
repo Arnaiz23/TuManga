@@ -2,10 +2,14 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-export default function ModalPaymentBilling({ modal, change, cards }) {
+export default function ModalPaymentBilling({ modal, change, cards, changeModal }) {
 
     const closeModal = () => {
         change(false)
+    }
+
+    const showModal = () => {
+        changeModal(true)
     }
 
     return (
@@ -32,7 +36,7 @@ export default function ModalPaymentBilling({ modal, change, cards }) {
                 : <h3>No hay tarjetas</h3>
             }
             <div className="rowEnd">
-                <button className="btn btn-success">Añadir tarjeta</button>
+                <button className="btn btn-success" onClick={showModal}>Añadir tarjeta</button>
             </div>
         </div>
     )

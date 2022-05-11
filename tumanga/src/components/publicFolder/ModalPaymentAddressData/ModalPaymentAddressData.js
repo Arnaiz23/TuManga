@@ -1,0 +1,102 @@
+import React, { useState } from "react";
+import { createAddress } from "services/Address";
+import Swal from "sweetalert2";
+
+export default function ModalPaymentAddressData({ changeLastAddress, closeModal }) {
+
+    const [newAddress, setNewAddress] = useState({
+        "name" : "",
+        "number" : "",
+        "floor" : "",
+        "name_person" : "",
+        "location" : ""
+    })
+
+    const handleFormAddress = (e) => {
+        e.preventDefault()
+
+        const regexpName = /^[a-zA-Záéíóú ]+$/
+        const regexpAddress = /^[a-zA-Z0-9 ]+$/
+        const regexpNumber = /^[0-9]+$/
+
+        if(newAddress.name === "" || newAddress.location === "" || newAddress.name_person === ""){
+            return Swal.fire(
+                'Datos no válidos',
+                'Debes rellenar todos los campos obligatorios',
+                'warning'
+            )
+        }
+
+        if(!regexpName.test(newAddress.name_person)){
+            return Swal.fire(
+                'Nombre',
+                'No puede contener números ni caractéres especiales',
+                'error'
+            )
+        }
+
+        if(!regexpAddress.test(newAddress.name)){
+            return Swal.fire(
+                'Dirección',
+                'No puede contener caractéres especiales',
+                'error'
+            )
+        }
+
+        if((newAddress.floor !== "" && !regexpNumber.test(newAddress.floor)) || (newAddress.number !== "" && !regexpNumber.test(newAddress.number))){
+            return Swal.fire(
+                'Datos no válidos',
+                'No puede contener letras ni caractéres especiales',
+                'error'
+            )
+        }
+
+        createAddress(newAddress).then(data => {
+            if(data.message) return alert(data.message)
+            changeLastAddress(data.allAddress[data.allAddress.length - 1])
+            closeModal(false)
+        })
+    }
+
+    const changeData = (e) => {
+        setNewAddress({
+            ...newAddress,
+            [e.target.name] : e.target.value
+        })
+    }
+    
+    return (
+        <div className="modalCenter">
+            <main>
+                <h2>Nueva dirección</h2>
+                <form onSubmit={handleFormAddress}>
+                    <section>
+                        <div className="formField">
+                            <label htmlFor="name">Nombre <span className="obligatoryFields" title="Campo obligatorio">*</span></label>
+                            <input type="text" id="name" name="name_person" onChange={changeData} />
+                        </div>
+                        <div className="formField">
+                            <label htmlFor="address">Dirección <span className="obligatoryFields" title="Campo obligatorio">*</span></label>
+                            <input type="text" id="address" name="name" onChange={changeData} />
+                        </div>
+                        <div className="formField">
+                            <label htmlFor="number">Numero</label>
+                            <input type="number" id="number" name="number" onChange={changeData} />
+                        </div>
+                        <div className="formField">
+                            <label htmlFor="floor">Piso</label>
+                            <input type="number" id="floor" name="floor" onChange={changeData} />
+                        </div>
+                        <div className="formField">
+                            <label htmlFor="location">Localidad <span className="obligatoryFields" title="Campo obligatorio">*</span></label>
+                            <input type="text" id="location" name="location" onChange={changeData} />
+                        </div>
+                    </section>
+                    <div className="formButton">
+                        <button className="btn btn-success">Añadir dirección</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    )
+}

@@ -28,13 +28,6 @@ export default function RowPaymentProducts({ order }) {
                         </div>
                     )}
                 </div>
-                <div className="col">
-                    <h4>Elige opción de envío</h4>
-                    <span>
-                        <input type="checkbox" id="" />
-                        <p>Entrega estándar</p>
-                    </span>
-                </div>
             </div>
         </div>
     )

@@ -117,6 +117,7 @@ The principal route is "/api/v1"
 
 * adminPanel -> filter
 * All the alerts
+* Change alert register fail
 * Spinner
 * In account (change the alerts)
 * In login, forgot password
@@ -125,10 +126,14 @@ The principal route is "/api/v1"
 * More of 1 filter (.join(";") -> send string)
 * Sort by x
 * Component error
-* DetailsProduct in accountOrders
-* Show order
-* Finish order and pay
+* DetailsOrder in accountOrders
+* Change the telephone when pay
+* Pay successful -> change the cart (for buy new mangas)
+* Pay checkbox
 * Slider in Home
+* Add on the cart in ProductDetail
+* Update address in AddressAccount (or change "Editar" by "Ver")
+* Hidden the addBTN in the ProductDetail if you don't are user
 
 
 ### Views for public

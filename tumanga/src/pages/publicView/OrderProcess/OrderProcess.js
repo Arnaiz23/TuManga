@@ -5,12 +5,13 @@ import ListOfOrder from "components/publicFolder/ListOfOrder/ListOfOrder";
 import SliderName from "components/publicFolder/SliderName/SliderName";
 import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
 import useOrderData from "hooks/useOrderData";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "wouter";
+import OrderContext from "context/OrderContext";
 
 export default function OrderProcess() {
 
-    const { order } = useOrderData()
+    const { order } = useContext(OrderContext)
 
     return (
         <>
@@ -20,15 +21,15 @@ export default function OrderProcess() {
             <main className="center">
                 <div className="containerCenterRadius">
                     <div className="optionsRight">
-                        <p className="totalPriceShopping">Total: 
-                            {order.length !== 0
+                        <p className="totalPriceShopping">Total:
+                            {order.length > 0 && order.products.length !== 0
                                 ? order.total
                                 : 0}
                             €</p>
                     </div>
 
                     <div className="containerProductCenter">
-                        {order.length !== 0 && order.products.length > 0
+                        {order.length > 0 && order.products.length > 0
                             ? <ListOfOrder products={order.products} />
                             : <h2>Actualmente tu carrito esta vacío</h2>
                         }

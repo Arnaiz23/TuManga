@@ -2,10 +2,14 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-export default function ModalPaymentAddress({ modal, change, address }) {
+export default function ModalPaymentAddress({ modal, change, address, changeModal }) {
 
     const closeModal = () => {
         change(false)
+    }
+
+    const addAddress = () => {
+        changeModal(true)
     }
 
     return (
@@ -29,7 +33,7 @@ export default function ModalPaymentAddress({ modal, change, address }) {
                 : <h3>No hay direcciones</h3>
             }
             <div className="rowEnd">
-                <button className="btn btn-success">Añadir dirección</button>
+                <button className="btn btn-success" onClick={addAddress}>Añadir dirección</button>
             </div>
         </div>
     )

@@ -1191,7 +1191,6 @@ var controller = {
         // let coincidence = false
 
         let coincidence = ordersNew.map(data => {
-            console.log("-----");
             if (data.product_id.equals(mongoose.Types.ObjectId(id_product))) {
                 data.quantity = data.quantity + 1
                 data.total_price = data.quantity * data.price
@@ -1202,8 +1201,6 @@ var controller = {
                 return false
             }
         })
-
-        console.log(coincidence);
 
         if (!coincidence.includes(true)) {
             let newItem = {
@@ -1310,7 +1307,7 @@ var controller = {
         }
 
         return res.status(200).send({
-            status: "Success",
+            status: "success",
             orderUpdate
         })
 

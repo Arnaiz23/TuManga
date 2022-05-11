@@ -4,8 +4,10 @@ import React from "react";
 import ModalAdddress from "../ModalAddress/ModalAddress";
 import ModalNewAddress from "../ModalNewAddress/ModalNewAddress";
 import ModalNewCard from "../ModalNewCard/ModalNewCard";
+import ModalPaymentAddressData from "../ModalPaymentAddressData/ModalPaymentAddressData";
+import ModalPaymentBillingData from "../ModalPaymentBillingData/ModalPaymentBillingData";
 
-export default function ModalInfo({ change, data, type, changeAddress, changeCard, empty }) {
+export default function ModalInfo({ change, data, type, changeAddress, changeCard, empty, changeLastAddress, changeLastBilling }) {
 
     const closeModal = () => {
         change(false)
@@ -25,6 +27,12 @@ export default function ModalInfo({ change, data, type, changeAddress, changeCar
                 }
                 {
                     type === "newCard" && <ModalNewCard change={changeCard} closeModal={change} empty={empty} />
+                }
+                {
+                    type === "paymentAddress" && <ModalPaymentAddressData changeLastAddress={changeLastAddress} closeModal={change} />
+                }
+                {
+                    type === "paymentBilling" && <ModalPaymentBillingData changeLastBilling={changeLastBilling} closeModal={change} />
                 }
             </div>
         </div>
