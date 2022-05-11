@@ -20,7 +20,7 @@ export default function ModalInfo({ change, data, type, changeAddress, changeCar
                     <i onClick={closeModal}><FontAwesomeIcon icon={faXmark} /></i>
                 </header>
                 {
-                    type === "address" && <ModalAdddress data={data} />
+                    type === "address" && <ModalAdddress data={data} changeAddress={changeAddress} closeModal={change} />
                 }
                 {
                     type === "newAddress" && <ModalNewAddress change={changeAddress} closeModal={change} empty={empty} />

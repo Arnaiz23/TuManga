@@ -66,3 +66,23 @@ export function getLastAddress(){
         })
     
 }
+
+
+export function updateUserAddress(id, body) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/address/${id}`, {
+        method: "PUT",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, addressUpdate, allAddress }) => {
+            return status === "success" ? {addressUpdate, allAddress} : {message}
+        })
+    
+}

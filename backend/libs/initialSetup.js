@@ -73,7 +73,8 @@ const data = {
                     "authors": "Ken Wakui",
                     "editorial": "NORMA Editorial",
                     "series": "TOKYO REVENGERS",
-                    "comments": []
+                    "comments": [],
+                    "image" : "TokyoRevengers7.jpeg"
                 }).save(),
                 new Product({
                     "name": "Solo Leveling 5",
@@ -88,10 +89,11 @@ const data = {
                     "authors": "Chugong",
                     "editorial": "NORMA Editorial",
                     "series": "SOLO LEVELING",
-                    "comments": []
+                    "comments": [],
+                    "image" : "SoloLeveling5.jpg"
                 }).save(),
                 new Product({
-                    "name": "My Hero Academia nº 30 ",
+                    "name": "My Hero Academia nº 30",
                     "price": 6,
                     "description": "¿¡Se puede saber por qué está pasando esto!? Este gigantesco enemigo va dejando devastación a su paso. ¡Hay que informar a todos los demás; se están jugando la vida ahora mismo! Hay que conseguir rescatar al mayor número de personas posible. ¡Hay que protegerlos a todos! ¡Debo lograrlo por los compañeros caídos! ¡¡Plus ultra! ",
                     "short_description": "YA ES OFICIAL: ¡ MI HERO ACADEMIA 30 ESTA AQUI!",
@@ -103,10 +105,11 @@ const data = {
                     "authors": "Kohei Horikoshi",
                     "editorial": "Planeta comic",
                     "series": "My Hero Academia",
-                    "comments": []
+                    "comments": [],
+                    "image" : "BNH30.jpg"
                 }).save(),
                 new Product({
-                    "name": "Sword Art Online progressive 03 ",
+                    "name": "Sword Art Online progressive 03",
                     "price": 8,
                     "description": "Después de llegar al segundo piso de Aincrad, Asuna decide que un herrero controlado por un jugador mejore su espada, una rara Wind Fleuret, pero en el proceso sucede lo inimaginable, la espada se hace añicos ante sus ojos. Kirito sospecha que hay juego sucio y que el herrero le ha dado el cambiazo. ¿El herrero realmente acaba de destruir un artículo tan increíblemente valioso? Y si no, ¿hay alguna forma de recuperarlo? Y, si realmente hay una conspiración de ladrones, ¿cómo se le puede detener? ",
                     "short_description": "Después de llegar al segundo piso de Aincrad, Asuna decide que un herrero controlado por un jugador mejore su espada...",
@@ -118,7 +121,8 @@ const data = {
                     "authors": "Reki Kawahara",
                     "editorial": "Planeta comic",
                     "series": "Sword Art Online",
-                    "comments": []
+                    "comments": [],
+                    "image" : "SAO03.jpg"
                 }).save(),
                 new Product({
                     "name": "Figura Funko POP! de Tanjiro Vs Rui de Kimetsu No Yaiba (15cm)",
@@ -131,7 +135,8 @@ const data = {
                     "type": "merchandising",
                     "number_sales": 0,
                     "series": "Kimetsu no Yaiba",
-                    "comments": []
+                    "comments": [],
+                    "image" : "FPOPTvsR.jpg"
                 }).save(),
                 new Product({
                     "name": "Figura POP! DBZ S8 de Goku (First Appearance) de Dragon Ball",
@@ -144,7 +149,8 @@ const data = {
                     "type": "merchandising",
                     "number_sales": 0,
                     "series": "Dragon Ball",
-                    "comments": []
+                    "comments": [],
+                    "image" : "FPOPGoku.jpg"
                 }).save(),
                 new Product({
                     "name": "Camiseta de Goku pequeño",
@@ -157,7 +163,8 @@ const data = {
                     "type": "merchandising",
                     "number_sales": 0,
                     "series": "Dragon Ball",
-                    "comments": []
+                    "comments": [],
+                    "image" : "CamisetaGoku.jpg"
                 }).save(),
                 new Product({
                     "name": "Figura de Eren Jaeguer de Shingeki No Kyojin (15cm)",
@@ -170,7 +177,8 @@ const data = {
                     "type": "merchandising",
                     "number_sales": 0,
                     "series": "Shingeki no Kyojin",
-                    "comments": []
+                    "comments": [],
+                    "image" : "FiguraEren.jpg"
                 }).save()
             ]);
 

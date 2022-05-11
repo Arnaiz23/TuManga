@@ -961,6 +961,18 @@ a{
   transform: translateX(0);
 }
 
+.modalInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalInfo input{
+  width: 200px;
+  padding: 5px;
+  font-size: .9rem;
+}
+
 .optionsFilterResponsive header,
 .submenuFloat header {
   width: 100%;

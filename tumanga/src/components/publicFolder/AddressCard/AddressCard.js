@@ -45,7 +45,7 @@ export default function AddressCard({ data, change, empty }) {
                     <p onClick={deleteAddress}>Eliminar</p>
                 </div>
             </main>
-            {showModal && <ModalInfo change={setShowModal} data={data} type="address" /> }
+            {showModal && <ModalInfo change={setShowModal} data={data} type="address" changeAddress={change} /> }
         </div>
     )
 }

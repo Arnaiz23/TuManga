@@ -1869,9 +1869,19 @@ var controller = {
             })
         }
 
+        let allAddress = await Address.find({user_id: userFind._id})
+
+        if(!allAddress || allAddress.length === 0){
+            return res.status(404).send({
+                status: "error",
+                message: "This user doesn't have address"
+            })
+        }
+
         return res.status(200).send({
             status: "success",
-            addressUpdate
+            addressUpdate,
+            allAddress
         })
 
     },

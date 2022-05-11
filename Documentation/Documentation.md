@@ -131,7 +131,7 @@ The principal route is "/api/v1"
 * Slider in Home
 * Update address in AddressAccount (or change "Editar" by "Ver")
 * Update the documents without spinner
-* Payment -> !address and !billing Not validation
+* Search -> In responsive miss the input
 
 
 ### Views for public
