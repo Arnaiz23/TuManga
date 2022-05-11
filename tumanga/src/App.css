@@ -2055,8 +2055,8 @@ a{
   overflow: hidden;
 }
 
-.dataDown > .row,
-.dataDown > .rowEnd {
+.dataDown  .row,
+.dataDown  .rowEnd {
   padding: 30px 20px;
   flex-wrap: wrap;
   gap: 20px;

@@ -50,3 +50,19 @@ export function createAddress(body) {
         })
     
 }
+
+export function getLastAddress(){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/address/last`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, address }) => {
+            return status === "success" ? {address} : {message}
+        })
+    
+}

@@ -51,3 +51,20 @@ export function deleteUserCard(id){
         })
     
 }
+
+
+export function getLastCards(){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/cards/last`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, cards }) => {
+            return status === "success" ? {cards} : {message}
+        })
+    
+}

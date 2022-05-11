@@ -7,7 +7,7 @@ import { deleteProductCart } from "services/Orders";
 
 export default function RowOrderProduct({ data }) {
 
-    const { order, setOrder, setCount } = useContext(OrderContext)
+    const { setOrder, setCount } = useContext(OrderContext)
 
     const deleteItem = () => {
         deleteProductCart({"id_product" : data.product_id}).then(data => {
@@ -19,7 +19,10 @@ export default function RowOrderProduct({ data }) {
 
     return (
         <div className="row">
-            <img src={`${api_URL}/image/${data.image}`} alt={`imagen portada ${data.name}`} />
+            {data.image !== null
+                ? <img src={`${api_URL}/image/${data.image}`} alt={`imagen portada ${data.name}`} />
+                : <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt={`Portada del volumen de ${data.name}`} />
+            }
             <div className="contentShopping">
                 <h4 className="titleBlue">{data.name}</h4>
                 <div>

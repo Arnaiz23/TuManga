@@ -1888,7 +1888,7 @@ var controller = {
         if (!address || address.length == 0) {
             return res.status(500).send({
                 status: "error",
-                message: "This user doesn't exists"
+                message: "This user doesn't has address"
             })
         }
 
