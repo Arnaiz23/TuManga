@@ -4,21 +4,30 @@ import { api_URL } from "services/config";
 import ModalPaymentAddress from "../ModalPayment/ModalPaymentAddress";
 import ModalPaymentBilling from "../ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
 
-export default function RowPayment({ type, changeModal, changeAddress, lastAddress, changeBilling, lastBilling }) {
+export default function RowPayment({ type, changeModal, changeAddress, lastAddress, changeBilling, lastBilling, addressEmpty, changeAddressEmpty, billingEmpty, changeBillingEmpty, modal, changeModalLast }) {
 
     // ! Peticion direcciones
-    const [modalOpen, setModalOpen] = useState(false)
+    // const [modalOpen, setModalOpen] = useState(false)
     const { address, billing, loadingAddress, loadingBilling } = useGetDataPayment()
+    /* const [addressEmpty, setAddressEmpty] = useState(true)
+    const [billingEmpty, setBillingEmpty] = useState(true) */
     /* const [ lastAddress, setLastAddress ] = useState({})
     const [ lastbilling, setLastBilling ] = useState({}) */
 
     useEffect(() => {
-        if(address.length > 0 && type === "address") changeAddress(address[0])
-        if(billing.length > 0 && type === "billing") changeBilling(billing[0])
+        if(address.length > 0 && type === "address"){
+            changeAddress(address[0])
+            changeAddressEmpty(false)
+        }
+        if(billing.length > 0 && type === "billing") {
+            changeBilling(billing[0])
+            changeBillingEmpty(false)
+        }
     },[address])
 
     const openModal = () => {
-        setModalOpen(true)
+        changeModalLast(true)
+        // setModalOpen(true)
     }
 
     return (
@@ -31,7 +40,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         {loadingAddress && address.length === 0
                             ? <h3>Cargando...</h3>
                             : (
-                                address.length > 0
+                                !addressEmpty
                                     ? (
                                         <div className="col">
                                             <h4>{lastAddress.name_person}</h4>
@@ -49,7 +58,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentAddress modal={modalOpen} change={setModalOpen} address={address} changeModal={changeModal} />
+                    <ModalPaymentAddress modal={modal} change={changeModalLast} address={address} changeModal={changeModal} addressEmpty={addressEmpty} />
                 </>
             }
             {type === "billing" &&
@@ -60,7 +69,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         {loadingBilling && billing.length === 0
                             ? <h3>Cargando...</h3>
                             : (
-                                billing.length > 0
+                                !billingEmpty
                                     ? (
                                         <div className="row">
                                             <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" className="imgBrandCard" />
@@ -77,7 +86,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentBilling modal={modalOpen} change={setModalOpen} cards={billing} changeModal={changeModal} />
+                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} />
                 </>
             }
         </>

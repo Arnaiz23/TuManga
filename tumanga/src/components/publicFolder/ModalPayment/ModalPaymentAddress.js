@@ -2,7 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-export default function ModalPaymentAddress({ modal, change, address, changeModal }) {
+export default function ModalPaymentAddress({ modal, change, address, changeModal, addressEmpty }) {
 
     const closeModal = () => {
         change(false)
@@ -18,7 +18,7 @@ export default function ModalPaymentAddress({ modal, change, address, changeModa
                 <h2>Usadas más recientes</h2>
                 <button className="dataDownClose" onClick={closeModal}><i><FontAwesomeIcon icon={faXmark} /></i> Cerrar</button>
             </div>
-            {address.length > 0
+            {!addressEmpty
                 ? address.map((data, index) =>
                     <div key={data._id}>
                         <div className="row">

@@ -11,6 +11,7 @@ import DataAccount from "components/publicFolder/DataAccount/DataAccount";
 import PasswordAccount from "../PasswordAccount/PasswordAccount";
 import DeleteAccount from "components/publicFolder/DeleteAccount/DeleteAccount";
 import useUser from "hooks/useUser";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 
 export default function Account() {
 
@@ -28,7 +29,7 @@ export default function Account() {
                     <section className="containerInformation">
                         <h2 className="subtitle">Mi Información</h2>
                         {loading
-                            ? <h2>Cargando...</h2>
+                            ? <Spinner />
                             : (
                                 <>
                                     <DataAccount data={userData} change={setUserData} />

@@ -22,14 +22,14 @@ export default function OrderProcess() {
                 <div className="containerCenterRadius">
                     <div className="optionsRight">
                         <p className="totalPriceShopping">Total:
-                            {order.length > 0 && order.products.length !== 0
+                            {order.length !== 0 && order.products.length !== 0
                                 ? order.total
                                 : 0}
                             €</p>
                     </div>
 
                     <div className="containerProductCenter">
-                        {order.length > 0 && order.products.length > 0
+                        {order.length !== 0 && order.products.length > 0
                             ? <ListOfOrder products={order.products} />
                             : <h2>Actualmente tu carrito esta vacío</h2>
                         }

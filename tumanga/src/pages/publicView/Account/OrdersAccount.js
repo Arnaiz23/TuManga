@@ -12,6 +12,7 @@ import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks
 import useUser from "hooks/useUser"
 import OrderWindow from "components/publicFolder/OrderWindow/OrderWindow";
 import { getUserOrders } from "services/Users";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 
 export default function OrdersAccount() {
 
@@ -28,12 +29,14 @@ export default function OrdersAccount() {
                 if (data.message) {
                     setOrderEmpty(true)
                     setError(data.message)
+                    setLoadingOrders(false)
                     return
                 }
 
                 setOrders(data.orders)
+                setLoadingOrders(false)
             })
-        setLoadingOrders(false)
+        
     }, [loading])
 
     return (
@@ -48,11 +51,11 @@ export default function OrdersAccount() {
                     <section className="containerInformation">
                         <h2 className="subtitle">Mis Pedidos</h2>
                         {loadingOrders
-                            ? <h2>Cargando...</h2>
+                            ? <Spinner />
                             : (
                                 orderEmpty
                                     ? (
-                                        <h3 className="userDataEmpty">{error}</h3>
+                                        <h3 className="userDataEmpty">Este usuario no tiene pedidos</h3>
                                     )
                                     : (
                                         <>

@@ -2764,6 +2764,28 @@
   animation: spin 1s linear infinite;
 }
 
+.spinnerBlue{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 7px solid var(--dark-blue);
+  border-right-color: #ddd;
+  border-left-color: #ddd;
+  animation: rotateSpinner 3s infinite;
+}
+
+@keyframes rotateSpinner{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(360deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
 .spinner3{
   width: 80px;
   height: 80px;

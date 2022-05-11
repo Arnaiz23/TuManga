@@ -5,6 +5,7 @@ import Header from "components/publicFolder/Header/Header";
 import ProductDetail from "components/publicFolder/ProductDetail/ProductDetail";
 import SliderName from "components/publicFolder/SliderName/SliderName";
 import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import getCommentsProduct from "services/getCommentsProduct";
 import getOneProduct from "services/getOneProduct";
@@ -48,7 +49,7 @@ export default function ProductView({ params }) {
             <main className="center">
                 {
                     loading
-                        ? <h1>Cargando...</h1>
+                        ? <Spinner />
                         : (
                             <>
                                 <ProductDetail product={product} />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createCard } from "services/Cards";
 import Swal from "sweetalert2";
 
-export default function ModalPaymentBillingData({ changeLastBilling, closeModal }){
+export default function ModalPaymentBillingData({ changeLastBilling, closeModal, changeBillingEmpty, closeModalLast }){
 
     const [newCard, setNewCard] = useState({
         "card_name" : "",
@@ -74,11 +74,13 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal 
         createCard(newCard).then(data => {
             if(data.message) return alert(data.message)
             changeLastBilling(data.allCards[data.allCards.length -1 ])
+            changeBillingEmpty(false)
             Swal.fire(
                 'Tarjeta',
                 'Tarjeta creada con éxito',
                 'success'
             )
+            closeModalLast(false)
             closeModal(false)
         })
     }

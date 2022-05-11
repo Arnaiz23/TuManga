@@ -11,6 +11,7 @@ import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
 import { finishShoppingCart } from "services/Orders";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 
 export default function Payment() {
 
@@ -29,9 +30,23 @@ export default function Payment() {
     const [ lastAddress, setLastAddress ] = useState({})
     const [ lastBilling, setLastBilling ] = useState({})
 
+    const [addressEmpty, setAddressEmpty] = useState(true)
+    const [billingEmpty, setBillingEmpty] = useState(true)
+
+    const [modalOpenAddress, setModalOpenAddress] = useState(false)
+    const [modalOpenBilling, setModalOpenBilling] = useState(false)
+
     const finishOrder = () => {
         dataPayment.billing = lastBilling._id
         dataPayment.delivery_address = lastAddress._id
+
+        if(dataPayment.billing === undefined || dataPayment.billing === undefined){
+            return Swal.fire(
+                'Datos incorrectos',
+                'Rellene todos los datos necesario',
+                'error'
+            )
+        }
 
         finishShoppingCart(dataPayment).then(data => {
             if(data.message) return alert(data.message)
@@ -53,13 +68,13 @@ export default function Payment() {
             <main className="center">
                 <div className="containerPayment">
                     <div className="paymentLeft">
-                        <RowPayment type={"address"} changeModal={setShowModalAddress} changeAddress={setLastAddress} lastAddress={lastAddress} />
+                        <RowPayment type={"address"} changeModal={setShowModalAddress} changeAddress={setLastAddress} lastAddress={lastAddress} addressEmpty={addressEmpty} changeAddressEmpty={setAddressEmpty} modal={modalOpenAddress} changeModalLast={setModalOpenAddress} />
                         <div className="linePayment"></div>
-                        <RowPayment type={"billing"} changeModal={setShowModalBilling} changeBilling={setLastBilling} lastBilling={lastBilling} />
+                        <RowPayment type={"billing"} changeModal={setShowModalBilling} changeBilling={setLastBilling} lastBilling={lastBilling} billingEmpty={billingEmpty} changeBillingEmpty={setBillingEmpty} modal={modalOpenBilling} changeModalLast={setModalOpenBilling} />
                         <div className="linePayment"></div>
                         {order.length !== 0 
                             ? <RowPaymentProducts order={order} />
-                            : <h2>Cargando...</h2>
+                            : <Spinner />
                         }
                     </div>
                     <div className="paymentRight">
@@ -71,8 +86,8 @@ export default function Payment() {
                         </div>
                     </div>
                 </div>
-                {showModalAddress && <ModalInfo change={setShowModalAddress} type="paymentAddress" changeLastAddress={setLastAddress} /> }
-                {showModalBilling && <ModalInfo change={setShowModalBilling} type="paymentBilling" changeLastBilling={setLastBilling} /> }
+                {showModalAddress && <ModalInfo change={setShowModalAddress} type="paymentAddress" changeLastAddress={setLastAddress} changeAddressEmpty={setAddressEmpty} closeModalLast={setModalOpenAddress} /> }
+                {showModalBilling && <ModalInfo change={setShowModalBilling} type="paymentBilling" changeLastBilling={setLastBilling} changeBillingEmpty={setBillingEmpty} closeModalLast={setModalOpenBilling} /> }
             </main>
             <BtnUp />
             <Footer />

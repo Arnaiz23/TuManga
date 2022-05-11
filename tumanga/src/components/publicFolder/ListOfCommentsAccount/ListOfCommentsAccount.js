@@ -2,6 +2,7 @@ import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { getUserComments } from "services/Comments";
 import CommentAccountRow from "../CommentAccountRow/CommentAccountRow";
+import Spinner from "../Spinner/Spinner";
 
 export default function ListOfCommentsAccount() {
 
@@ -24,7 +25,7 @@ export default function ListOfCommentsAccount() {
     return (
         <div className="containerCommentsFlex">
             {loading
-                ? <h1>Cargando...</h1>
+                ? <Spinner />
                 : (
                     commentsEmpty
                         ? <h3 className="userDataEmpty">{error}</h3>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { getUserCards } from "services/Cards";
 import AddAddress from "../AddAddress/AddAddress";
 import CardItem from "../CardItem/CardItem";
+import Spinner from "../Spinner/Spinner";
 
 export default function ListOfCards() {
 
@@ -31,7 +32,7 @@ export default function ListOfCards() {
                 <AddAddress type={"tarjeta"} change={setCards} empty={setCardsEmpty}/>
                 {
                     loading
-                        ? <h1>Cargando...</h1>
+                        ? <Spinner />
                         : (
                             cardsEmpty
                                 ? <h3 className="userDataEmpty">{error}</h3>

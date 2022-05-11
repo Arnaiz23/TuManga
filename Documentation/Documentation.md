@@ -118,7 +118,6 @@ The principal route is "/api/v1"
 * adminPanel -> filter
 * All the alerts
 * Change alert register fail
-* Spinner
 * In account (change the alerts)
 * In login, forgot password
 * Format the dates
@@ -128,12 +127,11 @@ The principal route is "/api/v1"
 * Component error
 * DetailsOrder in accountOrders
 * Change the telephone when pay
-* Pay successful -> change the cart (for buy new mangas)
 * Pay checkbox
 * Slider in Home
-* Add on the cart in ProductDetail
 * Update address in AddressAccount (or change "Editar" by "Ver")
-* Hidden the addBTN in the ProductDetail if you don't are user
+* Update the documents without spinner
+* Payment -> !address and !billing Not validation
 
 
 ### Views for public

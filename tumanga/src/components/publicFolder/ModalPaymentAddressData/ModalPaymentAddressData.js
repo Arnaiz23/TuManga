@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createAddress } from "services/Address";
 import Swal from "sweetalert2";
 
-export default function ModalPaymentAddressData({ changeLastAddress, closeModal }) {
+export default function ModalPaymentAddressData({ changeLastAddress, closeModal, changeAddressEmpty, closeModalLast }) {
 
     const [newAddress, setNewAddress] = useState({
         "name" : "",
@@ -54,6 +54,13 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal 
         createAddress(newAddress).then(data => {
             if(data.message) return alert(data.message)
             changeLastAddress(data.allAddress[data.allAddress.length - 1])
+            Swal.fire(
+                'Dirección',
+                'Dirección creada con éxito',
+                'success'
+            )
+            changeAddressEmpty(false)
+            closeModalLast(false)
             closeModal(false)
         })
     }

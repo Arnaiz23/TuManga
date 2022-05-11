@@ -14,6 +14,7 @@ import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProduct
 import Paginate from "components/publicFolder/Paginate/Paginate";
 import useProducts from "hooks/useProducts";
 import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 
 export default function ProductsView() {
 
@@ -42,7 +43,7 @@ export default function ProductsView() {
                     <FilterProducts type={type} />
                     <div className="containerProducts">
                         {loading
-                            ? <h2>Cargando...</h2>
+                            ? <Spinner />
                             : error 
                                 ? <h1>No hay coincidencias</h1>
                                 : <ListOfProducts products={products} />

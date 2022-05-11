@@ -2,6 +2,7 @@ import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProduct
 import useOrderData from "hooks/useOrderData";
 import React, { useEffect, useState } from "react";
 import getNewsProducts from "services/getNewsProducts";
+import Spinner from "../Spinner/Spinner";
 
 export default function NewsProducts() {
 
@@ -23,7 +24,7 @@ export default function NewsProducts() {
             <h2 className="subtitle">Novedades</h2>
                 
                 {loading
-                    ? <h2>Cargando...</h2>
+                    ? <Spinner />
                     : <ListOfProducts products={products} />
                 }
 

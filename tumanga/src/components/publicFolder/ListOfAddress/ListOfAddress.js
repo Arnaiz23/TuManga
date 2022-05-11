@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getAddressUser } from "services/Address";
 import AddAddress from "../AddAddress/AddAddress";
 import AddressCard from "../AddressCard/AddressCard";
+import Spinner from "../Spinner/Spinner";
 
 export default function ListOfAddress() {
 
@@ -27,7 +28,7 @@ export default function ListOfAddress() {
             <div className="containerGrid">
                 <AddAddress change={setAddress} empty={setAddressEmpty} type={"dirección"} />
                 {loading
-                    ? <h1>Cargando...</h1>
+                    ? <Spinner />
                     : (
                         addressEmpty
                             ? <h3 className="userDataEmpty">{error}</h3>
