@@ -13,7 +13,7 @@ export default function useOrderData(){
 
 
         getOrderProccess().then(data => {
-            if(data.message === "Did not work") {
+            if(data.message === "Did not work" || data.message === "This user doesn't exists") {
                 setUser(false)
                 return
             }

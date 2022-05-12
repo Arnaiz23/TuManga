@@ -1508,7 +1508,10 @@ var controller = {
             address: address,
             payment: billing,
             delivered_date: order.send_date,
-            realized_date: order.order_date
+            realized_date: order.order_date,
+            products: order.products,
+            total: order.total,
+            telephone: order.telephone
         }
 
         return res.status(200).send({

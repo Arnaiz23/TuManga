@@ -59,7 +59,7 @@ export default function Header() {
                     {order.length !== 0 && order.products.length !== 0 && user &&
                         <div className="containerCart">
                             {order.products.map((data, index) => {
-                                if (index >= 3) return
+                                if (index >= 3) return ""
                                 return <ProductHeader key={data._id} data={data} index={index} />
                             })}
                             <div className="totalCart">

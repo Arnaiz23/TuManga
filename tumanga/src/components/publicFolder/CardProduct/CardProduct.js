@@ -14,8 +14,8 @@ export default function CardProduct({ product }) {
 
     const [btnCart, setBtnCart] = useState(true)
     // const [orderProcess, setOrderProcess] = useState(false)
-    const { orderProcess, setOrderProcess, setOrder, setCount } = useOrderData()
-    const { user } = useContext(OrderContext)
+    /* const { orderProcess, setOrderProcess, setOrder, setCount } = useOrderData() */
+    const { user, orderProcess, setOrderProcess, setOrder, setCount } = useContext(OrderContext)
 
     const addCart = () => {
         // alert("Add this product")

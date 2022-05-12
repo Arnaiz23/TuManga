@@ -59,15 +59,19 @@ export function getOrderProccess(){
 
     let token = getToken()
 
-    return fetch(`${api_URL}/order/process`, {
-        headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+    try {
+        return fetch(`${api_URL}/order/process`, {
+            headers: new Headers({
+                "Authorization" : `Bearer ${token}`
+            })
         })
-    })
-        .then(res => res.json())
-        .then(({ status, message, orders }) => {
-            return status === "success" ? {orders} : {message}
-        })
+            .then(res => res.json())
+            .then(({ status, message, orders }) => {
+                return status === "success" ? {orders} : {message}
+            })
+    } catch (error) {
+        console.log("Error token");
+    }
     
 }
 

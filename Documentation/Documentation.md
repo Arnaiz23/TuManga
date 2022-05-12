@@ -125,11 +125,9 @@ The principal route is "/api/v1"
 * More of 1 filter (.join(";") -> send string)
 * Sort by x
 * Component error
-* DetailsOrder in accountOrders
 * Change the telephone when pay
 * Pay checkbox
 * Slider in Home
-* Update address in AddressAccount (or change "Editar" by "Ver")
 * Update the documents without spinner
 * Search -> In responsive miss the input
 
