@@ -101,6 +101,10 @@ a{
   font-size: .8rem;
 }
 
+.iconShoppingHide{
+  display: none;
+}
+
 .headerSearch {
   border: 1px solid var(--grey);
   width: 450px;
@@ -125,6 +129,91 @@ a{
 
 #headerSearch:focus {
   outline: none;
+}
+
+#iconSearch {
+  display: none;
+}
+
+.modalSearchBackground {
+  z-index: 20;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(1, 1, 22, 1) 10%,
+    rgba(3, 44, 52, 0.4121848568528974) 94%
+  );
+}
+
+.modalSearchBackground section{
+  width: 100%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.modalSearchBackground .fa-xmark{
+  color: #fff;
+}
+
+.closeModalSearch{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.inputSearchContainer{
+  width: 350px;
+  padding: 5px 0;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+}
+
+.inputSearchContainer input{
+  height: inherit;
+  width: 100%;
+  border: none;
+  padding-left: 10px;
+  font-size: .9rem;
+}
+
+.inputSearchContainer input:focus{
+  outline: none;
+}
+
+.inputSearchContainer button{
+  background-color: var(--dark-blue);
+  width: 20%;
+  color: #fff;
+  border: none;
+  height: inherit;
+  cursor: pointer;
+}
+
+.inputSearchContainer button:hover{
+  background-color: #034066;
+}
+
+.modalSearchBackgroundShow {
+  display: grid;
 }
 
 .containerCart {
@@ -712,6 +801,7 @@ a{
 
 .sliderTitle {
   color: #fff;
+  user-select: none;
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 900;
@@ -3216,6 +3306,10 @@ a{
 @media screen and (max-width: 882px) {
   .headerSearch {
     display: none;
+  }
+
+  #iconSearch {
+    display: block;
   }
 
   .containerComments .row {

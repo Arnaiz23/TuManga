@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "wouter";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faSearch, faUser, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faSearch, faUser, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import Brand from 'BrandTransparent.png'
 
@@ -18,6 +18,7 @@ export default function Header() {
 
     const [navActive, setNavActive] = useState('')
     const [search, setSearch] = useState('')
+    const [modalSearch, setModalSearch] = useState(false)
     const setLocation = useLocation()[1]
 
     const { count, order } = useOrderData()
@@ -36,9 +37,20 @@ export default function Header() {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        if(search === "") return setLocation(`/`)
+        if (modalSearch) {
+            setModalSearch(false)
+        }
+        if (search === "") return setLocation(`/`)
         setLocation(`/search/${search}`)
         e.target.reset()
+    }
+
+    const openModalSearch = () => {
+        setModalSearch(true)
+    }
+
+    const hideModalSearch = () => {
+        setModalSearch(false)
     }
 
     return (
@@ -55,19 +67,25 @@ export default function Header() {
                     <input type="search" id="headerSearch" placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />
                 </form>
                 <div className="headerOptions">
-                    <span id="spanBadge">
-                        {user
-                            && (
-                                <Link to="/order">
-                                    <i><FontAwesomeIcon icon={faShoppingCart} /></i>
-                                    {order && count >= 1 && <span className="badge">{count}</span>}
-                                </Link>
-                            )
-                        }
-                        {/* <Link to="/order">
+                    <span id="iconSearch" onClick={openModalSearch}>
+                        <i class="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i>
+                    </span>
+                    <section class={modalSearch ? 'modalSearchBackground modalSearchBackgroundShow' : 'modalSearchBackground'}>
+                        <span class="closeModalSearch" onClick={hideModalSearch}>
+                            <i className="fa-solid fa-xmark"><FontAwesomeIcon icon={faXmark} /></i>
+                        </span>
+                        <section>
+                            <form class="inputSearchContainer" onSubmit={handleSearch}>
+                                <input type="search" name="" id="" placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />
+                                <button type="submit" role="search"><i class="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i></button>
+                            </form>
+                        </section>
+                    </section>
+                    <span id="spanBadge" className={!user && 'iconShoppingHide'}>
+                        <Link to="/order">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
                             {order && count >= 1 && <span className="badge">{count}</span>}
-                        </Link> */}
+                        </Link>
                     </span>
 
                     {order.length !== 0 && order.products.length !== 0 && user &&

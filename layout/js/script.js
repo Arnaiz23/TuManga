@@ -14,6 +14,18 @@ views.map(view => {
 
         const platform = document.getElementById("btnAccessPanel")
 
+        const $btnSearchResp = $("#iconSearch")
+        const $modalSearchResp = $(".modalSearchBackground")
+        const $closeModalSearch = $(".closeModalSearch")
+
+        $btnSearchResp.addEventListener("click", () => {
+            $modalSearchResp.classList.add("modalSearchBackgroundShow")
+        })
+
+        $closeModalSearch.addEventListener("click", () => {
+            $modalSearchResp.classList.remove("modalSearchBackgroundShow")
+        })
+
         platform.addEventListener("click", () => {
             location.href = "adminPanel.html"
         })

@@ -126,7 +126,6 @@ The principal route is "/api/v1"
 * Pay checkbox
 * Slider in Home (Splide is an alternative)
 * Update the documents without spinner
-* Search -> In responsive miss the input
 * Name of the cardPerson in the CardAccount or option view???
 
 

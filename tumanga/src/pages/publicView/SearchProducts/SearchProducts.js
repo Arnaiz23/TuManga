@@ -26,7 +26,7 @@ export default function SearchProducts({ params }) {
     return (
         <>
             <Header />
-            <SliderName name={`Busqueda: ${params.search}`} />
+            <SliderName name={`Busqueda: '${decodeURI(params.search)}'`} />
             <SocialNetwork />
             <main className="center">
                 {loading

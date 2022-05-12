@@ -117,6 +117,90 @@
   outline: none;
 }
 
+#iconSearch {
+  display: none;
+}
+
+.modalSearchBackground {
+  z-index: 20;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(1, 1, 22, 1) 10%,
+    rgba(3, 44, 52, 0.4121848568528974) 94%
+  );
+}
+
+.modalSearchBackground section{
+  width: 100%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.modalSearchBackground .fa-xmark{
+  color: #fff;
+}
+
+.closeModalSearch{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.inputSearchContainer{
+  width: 350px;
+  padding: 5px 0;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+}
+
+.inputSearchContainer input{
+  height: inherit;
+  width: 100%;
+  border: none;
+  padding-left: 10px;
+}
+
+.inputSearchContainer input:focus{
+  outline: none;
+}
+
+.inputSearchContainer button{
+  background-color: var(--dark-blue);
+  width: 20%;
+  color: #fff;
+  border: none;
+  height: inherit;
+  cursor: pointer;
+}
+
+.inputSearchContainer button:hover{
+  background-color: #034066;
+}
+
+.modalSearchBackgroundShow {
+  display: grid;
+}
+
 .containerCart {
   position: absolute;
   top: 70px;
@@ -293,12 +377,12 @@
   background-color: var(--medium-green);
 }
 
-.btn-info{
-  background-color: #81C9FA;
+.btn-info {
+  background-color: #81c9fa;
   color: #000;
 }
 
-.btn-info:hover{
+.btn-info:hover {
   background-color: #56b9fc;
 }
 
@@ -306,16 +390,16 @@
 
 /* * ----------- ----------- LOGIN LOGOUT ----------- ----------- */
 
-.centerLog{
+.centerLog {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
-.containerCenter{
+.containerCenter {
   background-color: #fff;
   width: 50%;
   min-width: 940px;
@@ -327,7 +411,7 @@
   overflow: hidden;
 }
 
-.containerLogLeft{
+.containerLogLeft {
   background-color: var(--dark-blue);
   width: 50%;
   height: 100%;
@@ -339,15 +423,15 @@
   gap: 40px;
 }
 
-.containerLogLeft h2{
+.containerLogLeft h2 {
   color: #fff;
 }
 
-.containerLogLeft > button{
+.containerLogLeft > button {
   font-weight: bold;
 }
 
-.containerLogRight{
+.containerLogRight {
   width: 50%;
   display: flex;
   justify-content: center;
@@ -355,7 +439,7 @@
   height: 600px;
 }
 
-.contentLog{
+.contentLog {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -364,7 +448,7 @@
   width: 70%;
 }
 
-.inputsLog{
+.inputsLog {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -373,18 +457,18 @@
   width: 100%;
 }
 
-.inputsLog input{
+.inputsLog input {
   width: 80%;
   padding: 5px;
   font-size: 1rem;
 }
 
-.inputsLog input:focus{
+.inputsLog input:focus {
   outline: none;
   border: 2px solid #000;
 }
 
-.containerRemember{
+.containerRemember {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -392,31 +476,31 @@
   padding-left: 20px;
 }
 
-.contentLog > button{
+.contentLog > button {
   width: 90%;
 }
 
-.forgetPassword{
+.forgetPassword {
   color: #000;
   font-weight: bold;
   width: 100%;
   text-align: center;
 }
 
-.containerLogRight.containerColumn{
+.containerLogRight.containerColumn {
   gap: 40px;
-  background-color: #81C9FA;
+  background-color: #81c9fa;
 }
 
-.containerLogRight.containerColumn > button{
+.containerLogRight.containerColumn > button {
   font-weight: bold;
 }
 
-.containerWhite{
+.containerWhite {
   background-color: transparent;
 }
 
-.containerWhite .contentLog h2{
+.containerWhite .contentLog h2 {
   color: #000;
 }
 
@@ -429,12 +513,12 @@
   align-items: flex-start;
 }
 
-.inputPassword{
+.inputPassword {
   width: 100%;
   position: relative;
 }
 
-.inputPassword i{
+.inputPassword i {
   position: absolute;
   z-index: 10;
   right: calc(100% - 78%);
@@ -443,7 +527,7 @@
   cursor: pointer;
 }
 
-.passwordShow{
+.passwordShow {
   display: block !important;
 }
 
@@ -451,7 +535,7 @@
 
 /* * ----------- ----------- RECOVER PASSWORD ----------- ----------- */
 
-.containerRecover{
+.containerRecover {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -460,13 +544,13 @@
   height: 600px;
 }
 
-.containerRecover > header{
+.containerRecover > header {
   width: 100%;
   padding: 15px !important;
 }
 
-.containerRecover > main{
-  background-color: #C4C4C4;
+.containerRecover > main {
+  background-color: #c4c4c4;
   width: 100%;
   height: calc(600px - 30px);
   display: flex;
@@ -476,15 +560,15 @@
   /* gap: 40px; */
 }
 
-.containerRecover > main h2{
+.containerRecover > main h2 {
   font-size: 28px;
 }
 
-.containerRecover > main button{
+.containerRecover > main button {
   font-weight: bold;
 }
 
-.containerRecover main form{
+.containerRecover main form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -494,11 +578,11 @@
   gap: 30px;
 }
 
-.containerRecover main form > button{
+.containerRecover main form > button {
   margin-top: 30px;
 }
 
-.inputRecover{
+.inputRecover {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -507,12 +591,12 @@
   gap: 15px;
 }
 
-.inputRecover label{
+.inputRecover label {
   font-size: 18px;
   font-weight: 500;
 }
 
-.inputRecover input{
+.inputRecover input {
   padding: 5px;
   font-size: 1rem;
   width: 100%;
@@ -521,7 +605,7 @@
   outline: 1px solid #000;
 }
 
-.inputRecover input:focus{
+.inputRecover input:focus {
   outline: none;
   border: 2px solid #000;
 }
@@ -1610,7 +1694,8 @@
   overflow: hidden;
 }
 
-.cardMac header, .containerRecover > header {
+.cardMac header,
+.containerRecover > header {
   background-color: #000;
   padding: 10px;
   display: flex;
@@ -1619,21 +1704,25 @@
   gap: 8px;
 }
 
-.cardMac header span, .containerRecover > header span {
+.cardMac header span,
+.containerRecover > header span {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-.cardMac header span:first-child, .containerRecover > header span:first-child {
+.cardMac header span:first-child,
+.containerRecover > header span:first-child {
   background-color: #ff605c;
 }
 
-.cardMac header span:nth-child(2), .containerRecover > header span:nth-child(2) {
+.cardMac header span:nth-child(2),
+.containerRecover > header span:nth-child(2) {
   background-color: #ffbd44;
 }
 
-.cardMac header span:last-child, .containerRecover > header span:last-child {
+.cardMac header span:last-child,
+.containerRecover > header span:last-child {
   background-color: #00ca4e;
 }
 
@@ -2013,7 +2102,7 @@
   align-items: center;
 }
 
-.modalBackgroundShow{
+.modalBackgroundShow {
   display: flex;
 }
 
@@ -2199,44 +2288,44 @@
 
 /* * ----------- ----------- ADMIN PANEL ----------- ----------- */
 
-.gridAdmin{
+.gridAdmin {
   display: grid;
   grid-template-rows: 10vh repeat(2, 1fr);
   grid-template-columns: minmax(190px, 10%) repeat(2, 1fr);
-  grid-template-areas: 
+  grid-template-areas:
     "nav header header"
     "nav main main"
-    "nav main main"
-  ;
+    "nav main main";
   align-items: flex-start;
 }
 
-.adminNav{
+.adminNav {
   grid-area: nav;
   height: 100%;
   min-height: 100vh;
   width: 10%;
-  background-color: #03588C;
+  background-color: #03588c;
   /* position: fixed; */
   min-width: 190px;
   transition: transform 1s;
 }
 
-.adminNav header{
+.adminNav header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 10vh;
-  background-color: #2FC0B8;
+  background-color: #2fc0b8;
   cursor: pointer;
 }
 
-.adminNav header img{
+.adminNav header img {
   width: 40px;
   border-radius: 50%;
 }
 
-.adminNav ul, .smallNav ul{
+.adminNav ul,
+.smallNav ul {
   height: 60vh;
   display: flex;
   flex-direction: column;
@@ -2247,11 +2336,12 @@
   width: 100%;
 }
 
-.smallNav ul{
+.smallNav ul {
   align-items: center;
 }
 
-.adminNav ul li, .smallNav ul li{
+.adminNav ul li,
+.smallNav ul li {
   cursor: pointer;
   display: flex;
   justify-content: space-evenly;
@@ -2260,32 +2350,32 @@
   font-size: 17px;
 }
 
-.smallNav{
+.smallNav {
   grid-area: nav;
   height: 100%;
   /* position: fixed; */
   min-width: 50px;
-  background-color: #03588C;
+  background-color: #03588c;
   display: none;
   min-height: 100vh;
 }
 
-.smallNav header{
+.smallNav header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2FC0B8;
+  background-color: #2fc0b8;
   width: 100%;
   height: 10vh;
   cursor: pointer;
 }
 
-.smallNav header img{
+.smallNav header img {
   width: 50px;
   border-radius: 50%;
 }
 
-.adminHeader{
+.adminHeader {
   grid-area: header;
   height: 100%;
   width: 100%;
@@ -2293,18 +2383,18 @@
   justify-content: space-between;
   padding: 0 40px;
   align-items: center;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   border-bottom: 2px solid #000;
 }
 
-.adminBrand{
+.adminBrand {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
 }
 
-.adminMain{
+.adminMain {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -2314,8 +2404,9 @@
   padding-top: 20px;
 }
 
-.containerStatistics, .containerStatisticsProducts{
-  background-color: #ECECEC;
+.containerStatistics,
+.containerStatisticsProducts {
+  background-color: #ececec;
   width: 95%;
   display: flex;
   justify-content: space-evenly;
@@ -2323,14 +2414,15 @@
   flex-direction: column;
 }
 
-.containerStatistics h2, .containerStatisticsProducts h2{
+.containerStatistics h2,
+.containerStatisticsProducts h2 {
   font-weight: bold;
   border-bottom: 1px solid #000;
   width: 100%;
   padding: 10px;
 }
 
-.containerOptions{
+.containerOptions {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -2338,7 +2430,7 @@
   padding: 40px 0;
 }
 
-.rowOptionAdmin{
+.rowOptionAdmin {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -2346,8 +2438,8 @@
   font-size: 18px;
 }
 
-.rowOptionAdmin span{
-  background-color: #0CC5DE;
+.rowOptionAdmin span {
+  background-color: #0cc5de;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -2358,16 +2450,16 @@
   font-size: 20px;
 }
 
-.spanGreen{
-  background-color: #13BD24 !important;
+.spanGreen {
+  background-color: #13bd24 !important;
 }
 
 .earnings {
-  color: #26CD23;
+  color: #26cd23;
   font-weight: bold;
 }
 
-.rowOptionAdmin div{
+.rowOptionAdmin div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2375,22 +2467,22 @@
   gap: 5px;
 }
 
-.containerStatisticsProducts main{
+.containerStatisticsProducts main {
   height: 500px;
 }
 
-.containerDataAdmin{
+.containerDataAdmin {
   width: 90%;
   grid-area: main;
   min-height: 80vh;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-items: center;
 }
 
-.rowAdminTitle{
+.rowAdminTitle {
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -2398,72 +2490,73 @@
   padding: 20px 40px;
 }
 
-.rowAdminTitle h2{
+.rowAdminTitle h2 {
   text-transform: uppercase;
   font-weight: 700;
 }
 
-.containerAdminOptions{
+.containerAdminOptions {
   display: flex;
   justify-content: space-evenly;
   gap: 30px;
   align-items: center;
 }
 
-.inputSearchAdmin{
+.inputSearchAdmin {
   width: 200px;
   height: 30px;
   padding: 2px 5px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   border: 1px solid #000;
   border-radius: 5px;
 }
 
-.inputSearchAdmin:focus{
+.inputSearchAdmin:focus {
   outline: none;
 }
 
-.iconSearch{
+.iconSearch {
   display: none;
   font-size: 20px;
   cursor: pointer;
 }
 
-.containerTable{
+.containerTable {
   width: 95%;
   margin-top: 40px 0;
 }
 
-.containerTable table{
+.containerTable table {
   width: 100%;
   border: 2px solid #000;
   text-align: center;
   border-collapse: collapse;
 }
 
-.containerTable table thead{
+.containerTable table thead {
   border-bottom: 2px solid #000;
   border-collapse: collapse;
 }
 
-.containerTable table thead th{
+.containerTable table thead th {
   min-width: 140px;
   text-transform: uppercase;
 }
 
-.containerTable td, .containerTable th{
+.containerTable td,
+.containerTable th {
   padding: 5px 0;
 }
 
-.containerTable td > i{
+.containerTable td > i {
   cursor: pointer;
 }
 
-.containerTable tbody tr:nth-child(even){
-  background-color: #D4D4D4;
+.containerTable tbody tr:nth-child(even) {
+  background-color: #d4d4d4;
 }
 
-.containerTableResponsive{
+.containerTableResponsive {
   display: none;
   justify-content: space-evenly;
   align-items: center;
@@ -2472,48 +2565,50 @@
   /* gap: 20px; */
 }
 
-.containerTableResponsive header{
+.containerTableResponsive header {
   border-bottom: 1px solid #000;
 }
 
-.containerTableResponsive header, .containerTableResponsive main{
+.containerTableResponsive header,
+.containerTableResponsive main {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.containerTableResponsive main{
+.containerTableResponsive main {
   flex-direction: column;
   gap: 10px;
 }
 
-.rowTable{
+.rowTable {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
 }
 
-.rowTable p, .containerTableResponsive header b{
+.rowTable p,
+.containerTableResponsive header b {
   padding: 5px 0;
   width: 100px;
   text-align: center;
 }
 
-.rowTable:nth-child(even){
-  background-color: #D4D4D4;
+.rowTable:nth-child(even) {
+  background-color: #d4d4d4;
 }
 
-.rowTable p i{
+.rowTable p i {
   cursor: pointer;
 }
 
-.modalInformation{
+.modalInformation {
   width: 100vw;
   position: fixed;
   height: 100vh;
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   display: none;
@@ -2521,16 +2616,16 @@
   align-items: center;
 }
 
-.showModal{
+.showModal {
   display: flex;
 }
 
-.modalInformation .modalCenter{
+.modalInformation .modalCenter {
   min-height: 500px;
   width: 80%;
 }
 
-.modalInformation .modalCenter main{
+.modalInformation .modalCenter main {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -2538,13 +2633,13 @@
   align-items: flex-start;
 }
 
-.modalInformation .modalCenter main .modalInfo label{
+.modalInformation .modalCenter main .modalInfo label {
   font-weight: bold;
 }
 
-.containerAdminCenter{
+.containerAdminCenter {
   width: 90%;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -2554,16 +2649,16 @@
   gap: 50px;
 }
 
-.containerAdminCenter header{
+.containerAdminCenter header {
   width: 100%;
   border-bottom: 1px solid #000;
 }
 
-.containerAdminCenter header h2{
+.containerAdminCenter header h2 {
   padding: 10px 40px;
 }
 
-.containerAdminCenter footer{
+.containerAdminCenter footer {
   width: 100%;
   display: flex;
   align-items: center;
@@ -2571,15 +2666,15 @@
   padding: 20px 40px;
 }
 
-.containerAdminCenter main{
+.containerAdminCenter main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px , 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   width: 90%;
   margin: 0 auto;
 }
 
-.inputAdmin{
+.inputAdmin {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -2587,31 +2682,32 @@
   gap: 10px;
 }
 
-.inputAdmin label{
+.inputAdmin label {
   font-size: 18px;
   font-weight: bold;
 }
 
-.inputAdmin input, .inputAdmin select{
+.inputAdmin input,
+.inputAdmin select {
   width: 250px;
   border-radius: 5px;
   border: 2px solid transparent;
   outline: 1px solid #000;
-  background-color: #E9E9E9;
+  background-color: #e9e9e9;
   font-size: 16px;
   padding: 3px 5px;
 }
 
-.inputAdmin input:focus{
+.inputAdmin input:focus {
   outline: none;
   border: 2px solid #000;
 }
 
-.inputAdmin .inputPassword i{
+.inputAdmin .inputPassword i {
   right: calc(100% - 240px);
 }
 
-.modalSearchAdmin{
+.modalSearchAdmin {
   display: none;
   height: 100vh;
   width: 100%;
@@ -2626,15 +2722,15 @@
   gap: 30px;
 }
 
-.modalSearchAdmin h3{
+.modalSearchAdmin h3 {
   font-size: 35px;
 }
 
-.modalSearchAdminShow{
+.modalSearchAdminShow {
   display: flex;
 }
 
-.modalSearchAdmin form{
+.modalSearchAdmin form {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -2643,21 +2739,21 @@
   width: 100%;
 }
 
-.inputSearchAdminModal{
+.inputSearchAdminModal {
   width: 400px;
   height: 30px;
   border: 1px solid #000;
   border-radius: 10px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 3px 5px;
   text-align: center;
 }
 
-.inputSearchAdminModal:focus{
+.inputSearchAdminModal:focus {
   outline: none;
 }
 
-.iconCloseModal{
+.iconCloseModal {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -2669,14 +2765,14 @@
 
 /* * ----------- ----------- SPINNER ----------- ----------- */
 
-.containerTestSpinner{
+.containerTestSpinner {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.spinner{
-  border: 7px solid rgba(0, 0, 0, .1);
+.spinner {
+  border: 7px solid rgba(0, 0, 0, 0.1);
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -2685,7 +2781,7 @@
   animation: spin 1s linear infinite;
 }
 
-.containerSpinner{
+.containerSpinner {
   width: 100%;
   min-height: 200px;
   display: flex;
@@ -2694,7 +2790,7 @@
   gap: 30px;
 }
 
-.containerSpinner h2{
+.containerSpinner h2 {
   font-size: 32px;
 }
 
@@ -2702,12 +2798,12 @@
   0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
 
-.containerSpinnerCenter{
+.containerSpinnerCenter {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -2717,16 +2813,16 @@
   height: 200px;
 }
 
-.containerSpinnerCenter h2{
+.containerSpinnerCenter h2 {
   font-size: 32px;
 }
 
-.loader-wrapper{
+.loader-wrapper {
   width: 80px;
   height: 80px;
 }
 
-.loader{
+.loader {
   width: 100%;
   height: 100%;
   border: 7px solid #162534;
@@ -2736,25 +2832,25 @@
   animation: rotate 8s linear infinite;
 }
 
-.loader-inner{
+.loader-inner {
   border-top-color: #36f372;
   border-bottom-color: #f33;
   animation-duration: 2.5s;
 }
 
 @keyframes rotate {
-  0%{
+  0% {
     transform: scale(1) rotate(360deg);
   }
-  50%{
-    transform: scale(.8) rotate(-360deg);
+  50% {
+    transform: scale(0.8) rotate(-360deg);
   }
-  100%{
+  100% {
     transform: scale(1) rotate(360deg);
   }
 }
 
-.spinner2{
+.spinner2 {
   width: 70px;
   height: 70px;
   border: 8px solid #ddd;
@@ -2764,7 +2860,7 @@
   animation: spin 1s linear infinite;
 }
 
-.spinnerBlue{
+.spinnerBlue {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -2774,24 +2870,24 @@
   animation: rotateSpinner 3s infinite;
 }
 
-@keyframes rotateSpinner{
-  0%{
+@keyframes rotateSpinner {
+  0% {
     transform: rotate(0deg);
   }
-  50%{
+  50% {
     transform: rotate(360deg);
   }
-  100%{
+  100% {
     transform: rotate(0deg);
   }
 }
 
-.spinner3{
+.spinner3 {
   width: 80px;
   height: 80px;
 }
 
-.spinner3-1{
+.spinner3-1 {
   width: 100%;
   height: 100%;
   border: 7px solid #ddd;
@@ -2799,22 +2895,19 @@
   border-left-color: #03588c;
   border-right-color: #09f;
 
-  animation: rotate 7s linear infinite ;
+  animation: rotate 7s linear infinite;
 }
 
-.spinner3-2{
+.spinner3-2 {
   border-left-color: var(--green);
   border-right-color: rgb(68, 218, 68);
 
   animation-duration: 4s;
 }
 
-.spinner5{
+.spinner5 {
   border-right-color: #ddd;
 }
-
-
-
 
 /* * ----------------------------------------------------------------------------- */
 
@@ -2862,8 +2955,8 @@
   }
 }
 
-@media screen and (max-width: 1352px){
-  .containerTable{
+@media screen and (max-width: 1352px) {
+  .containerTable {
     display: block;
     overflow: scroll;
   }
@@ -2892,11 +2985,11 @@
     bottom: 15vh;
   }
 
-  .containerTable{
+  .containerTable {
     display: none;
   }
 
-  .containerTableResponsive{
+  .containerTableResponsive {
     display: flex;
   }
 }
@@ -2945,24 +3038,24 @@
 }
 
 @media screen and (max-width: 990px) {
-  .containerCenter{
+  .containerCenter {
     min-width: 645px;
   }
 
-  .inputsLog input{
+  .inputsLog input {
     width: 100%;
   }
 
-  .inputPassword i{
+  .inputPassword i {
     right: 5px;
   }
 }
 @media screen and (max-width: 974px) {
-  .inputSearchAdmin{
+  .inputSearchAdmin {
     display: none;
   }
 
-  .iconSearch{
+  .iconSearch {
     display: block;
   }
 }
@@ -3027,6 +3120,10 @@
     display: none;
   }
 
+  #iconSearch {
+    display: block;
+  }
+
   .containerComments .row {
     flex-direction: column;
     align-items: flex-start;
@@ -3045,7 +3142,7 @@
 }
 
 @media screen and (max-width: 864px) {
-  .rowTable p{
+  .rowTable p {
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -3059,13 +3156,13 @@
     gap: 20px;
   }
 
-  .adminHeader{
+  .adminHeader {
     padding: 5px;
   }
 }
 
 @media screen and (max-width: 778px) {
-  .rowAdminTitle .btn{
+  .rowAdminTitle .btn {
     width: 150px;
     height: 40px;
     font-size: 1.2rem;
@@ -3102,35 +3199,36 @@
     width: 100%;
   }
 
-  .containerCenter{
+  .containerCenter {
     flex-direction: column;
     justify-content: flex-start;
     min-width: 80%;
   }
 
-  .containerLogLeft, .containerLogRight{
+  .containerLogLeft,
+  .containerLogRight {
     width: 100%;
   }
 
-  .containerLogLeft{
+  .containerLogLeft {
     height: auto;
     padding: 40px 0;
   }
 
-  .containerLogRight{
+  .containerLogRight {
     height: auto;
     padding: 40px 0;
   }
 
-  .adminNav{
+  .adminNav {
     display: none;
   }
 
-  .smallNav{
+  .smallNav {
     display: block;
   }
 
-  .gridAdmin{
+  .gridAdmin {
     grid-template-columns: minmax(50px, 10%) repeat(2, 1fr);
   }
 }
@@ -3144,13 +3242,13 @@
     display: block;
   }
 
-  .containerRecover main form{
+  .containerRecover main form {
     width: 70%;
   }
 }
 
 @media screen and (max-width: 608px) {
-  .containerOptions{
+  .containerOptions {
     gap: 20px;
     flex-wrap: wrap;
   }
@@ -3174,7 +3272,7 @@
     gap: 10px;
   }
 
-  .adminBrand h1{
+  .adminBrand h1 {
     display: none;
   }
 
@@ -3206,22 +3304,22 @@
     width: 80%;
   }
 
-  .containerRecover > main h2{
+  .containerRecover > main h2 {
     text-align: center;
     padding: 0 10px;
   }
 
-  .rowAdminTitle{
+  .rowAdminTitle {
     padding: 20px 20px;
   }
 }
 
 @media screen and (max-width: 470px) {
-  .rowAdminTitle .btn-success{
+  .rowAdminTitle .btn-success {
     font-size: 16px;
   }
 
-  .rowAdminTitle{
+  .rowAdminTitle {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
@@ -3261,17 +3359,17 @@
     justify-content: center;
   }
 
-  .modalInformation .modalCenter{
+  .modalInformation .modalCenter {
     min-width: auto;
   }
 
-  .inputSearchAdminModal{
+  .inputSearchAdminModal {
     width: 90%;
   }
 }
 
 @media screen and (max-width: 422px) {
-  .modalCenter main{
+  .modalCenter main {
     padding-left: 40px;
   }
 }
@@ -3281,7 +3379,7 @@
     padding-left: 2rem;
   }
 
-  .containerRecover main form{
+  .containerRecover main form {
     width: 90%;
   }
 }
