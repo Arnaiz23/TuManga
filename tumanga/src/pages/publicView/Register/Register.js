@@ -8,6 +8,7 @@ import { useLocation } from "wouter";
 import useToken from "hooks/useToken";
 
 import OrderContext from "context/OrderContext";
+import Swal from "sweetalert2";
 
 export default function Register() {
 
@@ -35,18 +36,27 @@ export default function Register() {
         const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/
 
         if(userData.email === "" || userData.password === "" || userData.confirm_password === ""){
-            alert("Rellena todos los campos")
-            return
+            return Swal.fire(
+                'Datos inválidos',
+                'Rellene todos los datos',
+                'warning'
+            )
         }
 
         if(userData.password !== userData.confirm_password){
-            alert("Las contraseñas no coinciden")
-            return
+            return Swal.fire(
+                'Datos inválidos',
+                'Las contraseñas no coinciden',
+                'error'
+            )
         }
 
         if(!regex.test(userData.password)){
-            alert("La contraseña no cumple con los requisitos")
-            return
+            return Swal.fire(
+                'Datos inválidos',
+                'Las contraseñas no cumplen con los requisitos',
+                'error'
+            )
         }
 
         // ! Send data
@@ -58,7 +68,11 @@ export default function Register() {
                 setUser(true)
                 setLocation("/")
             }else{
-                return alert(data.message)
+                return Swal.fire(
+                    'Datos inválidos',
+                    'Email y/o datos no válidos',
+                    'error'
+                )
             }
         })
     }

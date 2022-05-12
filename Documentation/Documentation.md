@@ -117,7 +117,6 @@ The principal route is "/api/v1"
 
 * adminPanel -> filter
 * All the alerts
-* Change alert register fail
 * In account (change the alerts)
 * In login, forgot password
 * Format the dates
@@ -127,7 +126,7 @@ The principal route is "/api/v1"
 * Component error
 * Change the telephone when pay
 * Pay checkbox
-* Slider in Home
+* Slider in Home (Splide is an alternative)
 * Update the documents without spinner
 * Search -> In responsive miss the input
 * Name of the cardPerson in the CardAccount or option view???

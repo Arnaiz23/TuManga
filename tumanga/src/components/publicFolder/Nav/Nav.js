@@ -27,7 +27,6 @@ export default function Nav({ state, user, changeProcess }) {
     const logout = () => {
         localStorage.removeItem("token")
         setTokenInfo(false)
-        alert("Cerrando sesion")
         user(false)
         changeProcess(false)
         setLocation("/")

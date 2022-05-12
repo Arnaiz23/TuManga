@@ -1,6 +1,7 @@
 import useUser from "hooks/useUser";
 import React, { useState } from "react";
 import { userChangePasswords } from "services/Users";
+import Swal from "sweetalert2";
 
 export default function PasswordAccount() {
 
@@ -14,17 +15,34 @@ export default function PasswordAccount() {
         e.preventDefault()
         
         if (passwords.confirm_password === "" || passwords.new_password === "" || passwords.old_password === "") {
-            alert("Rellene todos los campos")
+            Swal.fire(
+                'Datos inválidos',
+                'Rellene todos los campos',
+                'warning'
+            )
+
         } else {
             if (passwords.new_password === passwords.confirm_password) {
                 if (passwords.confirm_password === passwords.old_password) {
-                    alert("La contraseña antigua y las nuevas son iguales")
+                    Swal.fire(
+                        'Contraseñas incorrectas',
+                        'La contraseña antigua y las nuevas son iguales',
+                        'error'
+                    )
                 } else {
                     userChangePasswords(passwords).then(data => {
                         if(data.message){
-                            alert(data.message)
+                            Swal.fire(
+                                'Contraseña incorrecta',
+                                'La contraseña antigua no coincide',
+                                'error'
+                            )
                         }else if(data.userUpdate){
-                            alert("La password se ha actualizado correctamente")
+                            Swal.fire(
+                                'Contraseña',
+                                'Contraseña actualizada correctamente',
+                                'success'
+                            )
                             e.target.reset()
                             setPasswords({
                                 "old_password": "",
@@ -35,7 +53,11 @@ export default function PasswordAccount() {
                     })
                 }
             } else {
-                alert("Las passwords no coinciden")
+                Swal.fire(
+                    'Contraseñas incorrectas',
+                    'Las contraseñas no coinciden',
+                    'error'
+                )
             }
         }
     }

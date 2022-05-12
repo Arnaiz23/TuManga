@@ -1,6 +1,7 @@
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { updateUser } from "services/Users";
+import Swal from "sweetalert2";
 
 export default function DataAccount({ data, change }) {
 
@@ -21,7 +22,11 @@ export default function DataAccount({ data, change }) {
         updateUser(body).then(({ status, userUpdate }) => {
             if (status === "success") {
                 change({ userUpdate })
-                alert("Usuario actualizado")
+                Swal.fire(
+                    'Usuario',
+                    'Usuario actualizado correctamente',
+                    'success'
+                )
                 e.target.reset()
             }
 

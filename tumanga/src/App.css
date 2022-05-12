@@ -1722,6 +1722,7 @@ a{
 
 .cardNewAddress {
   width: 300px;
+  user-select: none;
   border: 3px solid #000;
   border-style: dashed;
   border-radius: 10px;

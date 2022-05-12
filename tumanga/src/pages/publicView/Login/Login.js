@@ -78,11 +78,19 @@ export default function Login() {
                         setLocation("/")
                     }
                 } else {
-                    alert(res)
+                    Swal.fire(
+                        'Datos incorrectos',
+                        'El email y/o contraseña no coinciden',
+                        'error'
+                    )
                 }
             })
         } else {
-            alert("Rellene todos los datos")
+            Swal.fire(
+                'Datos incorrectos',
+                'Rellene todos los datos',
+                'warning'
+            )
         }
     }
 
@@ -130,7 +138,7 @@ export default function Login() {
                             <div className="inputsLog">
                                 <input type="text" id="" placeholder="Email" name="email" onChange={changeData} />
                                 <div className="inputPassword">
-                                    <input type="password" id="inputPassword" placeholder="Password" name="password" onChange={changeData} ref={inputPasswordRef} />
+                                    <input type="password" id="inputPassword" placeholder="Contraseña" name="password" onChange={changeData} ref={inputPasswordRef} />
                                     <i className="passwordShow" id="passwordShow" ref={showPasswordRef} onClick={togglePassword}><FontAwesomeIcon icon={faEye} /></i>
                                     <i id="passwordHide" ref={hidePasswordRef} onClick={togglePassword}><FontAwesomeIcon icon={faEyeSlash} /></i>
                                 </div>
