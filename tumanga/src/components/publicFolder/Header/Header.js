@@ -81,7 +81,7 @@ export default function Header() {
                             </form>
                         </section>
                     </section>
-                    <span id="spanBadge" className={!user && 'iconShoppingHide'}>
+                    <span id="spanBadge" className={user ? '' : 'iconShoppingHide'}>
                         <Link to="/order">
                             <i><FontAwesomeIcon icon={faShoppingCart} /></i>
                             {order && count >= 1 && <span className="badge">{count}</span>}
