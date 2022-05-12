@@ -1536,7 +1536,7 @@ var controller = {
             "3": "American Express",
             "4": "Visa",
             "5": "MasterCard",
-            "6": "Discovery"
+            "6": "Discover"
         }
 
         try {

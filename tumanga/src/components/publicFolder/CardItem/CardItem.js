@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { deleteUserCard } from 'services/Cards';
 import Swal from 'sweetalert2';
+import { api_URL } from 'services/config';
 
 export default function CardItem({ data, empty, change }) {
 
@@ -37,7 +38,7 @@ export default function CardItem({ data, empty, change }) {
         <>
             <div className="cardTarget">
                 <header>
-                    <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" className="imgBrandCard" />
+                    <img src={`${api_URL}/image/${data.image}`} alt={`imagen logo ${data.type}`} className="imgBrandCard" />
                     <h3>{data.type}</h3>
                 </header>
                 <main>

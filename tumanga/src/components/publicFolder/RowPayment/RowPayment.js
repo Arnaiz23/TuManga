@@ -72,7 +72,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                                 !billingEmpty
                                     ? (
                                         <div className="row">
-                                            <img src="https://mecen.es/wp-content/uploads/2020/04/cc-mastercard.png" alt="imagen logo Mastercard" className="imgBrandCard" />
+                                            <img src={`${api_URL}/image/${lastBilling.image}`} alt={`imagen logo ${lastBilling.type}`} className="imgBrandCard" />
                                             {/* <img src={`${api_URL}/image/${billing[0].image}`} alt={`imagen logo ${billing[0].type}`} className="imgBrandCard" /> */}
                                             <p><b>{lastBilling.type}</b> que termina en <b>{lastBilling.last_4_digits}</b></p>
                                         </div>

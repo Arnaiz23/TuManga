@@ -2,6 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "wouter";
 
 export default function Footer() {
     return (
@@ -11,9 +12,9 @@ export default function Footer() {
                     <h4 className="footerSubtitle">Mi Cuenta</h4>
                     <div className="footerLine"></div>
                     <ul className="footerContainerOptions">
-                        <li><a href=""><i><FontAwesomeIcon icon={faAngleRight} /></i>Mi Cuenta</a></li>
-                        <li><a href=""><i><FontAwesomeIcon icon={faAngleRight} /></i>Historial de pedidos</a></li>
-                        <li><a href=""><i><FontAwesomeIcon icon={faAngleRight} /></i>Mis Direcciones</a></li>
+                        <li><Link to="/account"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mi Cuenta</Link></li>
+                        <li><Link to="/account/orders"><i><FontAwesomeIcon icon={faAngleRight} /></i>Historial de pedidos</Link></li>
+                        <li><Link to="/account/address"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mis Direcciones</Link></li>
                     </ul>
                 </div>
                 <div className="footerInformation footerContainer">

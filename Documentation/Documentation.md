@@ -130,6 +130,7 @@ The principal route is "/api/v1"
 * Slider in Home
 * Update the documents without spinner
 * Search -> In responsive miss the input
+* Name of the cardPerson in the CardAccount or option view???
 
 
 ### Views for public

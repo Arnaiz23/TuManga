@@ -20,7 +20,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
     const handleFormAddress = (e) => {
         e.preventDefault()
 
-        const regexpName = /^[a-zA-Z ]+$/
+        const regexpName = /^[a-zA-Záíóúé ]+$/
         const regexpDate = /^[0-9]{2}[/]{1}[0-9]{2}$/
         const regexpNumber = /^[0-9]{16}$/
         const today = new Date()

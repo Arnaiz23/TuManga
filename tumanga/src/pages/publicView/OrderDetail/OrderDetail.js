@@ -36,7 +36,7 @@ export default function OrderDetail({ params }) {
                     : (
                         <div className="containerOrderDetails">
                             <h2>Detalles del pedido</h2>
-                            <p>Comprado <Moment fromNow>{order.realized_date}</Moment></p>
+                            <p>Comprado <Moment format="D MMM YYYY">{order.realized_date}</Moment></p>
                             <div className="container">
                                 {order.address &&
                                     <div className="col">
