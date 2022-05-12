@@ -17,6 +17,7 @@ import { OrderContextProvider } from 'context/OrderContext';
 import OrderProcess from 'pages/publicView/OrderProcess/OrderProcess';
 import Payment from 'pages/publicView/Payment/Payment';
 import OrderDetail from 'pages/publicView/OrderDetail/OrderDetail';
+import SearchProducts from 'pages/publicView/SearchProducts/SearchProducts';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/account/address' component={AddressAccount} />
         <Route path='/account/cards' component={CardsAccount} />
         <Route path='/account/comments' component={CommentsAccount} />
+        <Route path='/search/:search' component={SearchProducts} />
         <ProductsContextProvider>
           <Route path='/products/mangas' component={ProductsView} />
           <Route path='/products/merchandising' component={ProductsView} />

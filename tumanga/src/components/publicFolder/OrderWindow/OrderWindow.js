@@ -43,7 +43,7 @@ export default function OrderWindow({ data }) {
                         <div className="modalOrderInfo" ref={modalRef}>
                             <div>
                                 <h4>Pedido realizado</h4>
-                                <p>{order.realized_date}</p>
+                                <p><Moment format="D MMM YYYY">{order.realized_date}</Moment></p>
                             </div>
                             <div>
                                 <h4>Total</h4>
@@ -66,7 +66,7 @@ export default function OrderWindow({ data }) {
                         <div className="containerOrderInformation">
                             <div>
                                 <h4>Pedido realizado</h4>
-                                <p className="greySmall">{order.realized_date}</p>
+                                <p className="greySmall"><Moment format="D MMM YYYY">{order.realized_date}</Moment></p>
                             </div>
                             <div>
                                 <h4>Total</h4>

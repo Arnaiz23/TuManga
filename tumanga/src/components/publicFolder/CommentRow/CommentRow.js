@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { deleteUserComment } from "services/Comments";
 import Swal from "sweetalert2";
+import Moment from "react-moment";
+import "moment/locale/es"
 
 export default function CommentRow({ comment, userId, currentlUser, change, changeEmpty }) {
 
@@ -36,7 +38,7 @@ export default function CommentRow({ comment, userId, currentlUser, change, chan
             <div className="row">
                 <header>
                     <h4>{comment.name || "No tiene nombre"}</h4>
-                    <p>{comment.date}</p>
+                    <p><Moment format="D/MM/YYYY">{comment.date}</Moment></p>
                 </header>
                 <main>
                     <div className="rowStars">

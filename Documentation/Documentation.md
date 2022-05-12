@@ -116,8 +116,6 @@ The principal route is "/api/v1"
 ### Missing views
 
 * adminPanel -> filter
-* All the alerts
-* In account (change the alerts)
 * In login, forgot password
 * Format the dates
 * Filter for manga or light novel

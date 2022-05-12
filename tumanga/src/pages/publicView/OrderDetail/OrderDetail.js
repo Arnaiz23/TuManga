@@ -19,7 +19,6 @@ export default function OrderDetail({ params }) {
         setLoading(true)
         getOrderId(params.id).then(data => {
             if (data.message) return alert(data.message)
-            console.log(data.data);
             setOrder(data.data)
             setLoading(false)
         })
@@ -67,7 +66,7 @@ export default function OrderDetail({ params }) {
                                 {order.products && order.products.length > 0
                                     &&
                                     order.products.map(product => (
-                                        <div className="row">
+                                        <div className="row" key={product._id}>
                                             <img src={`${api_URL}/image/${product.image}`} alt={`portada ${product.name}`} />
                                             <h3>{product.name}</h3>
                                         </div>

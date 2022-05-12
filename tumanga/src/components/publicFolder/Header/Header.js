@@ -12,10 +12,13 @@ import useOrderData from "hooks/useOrderData";
 import ProductHeader from "../ProductHeader/ProductHeader";
 
 import OrderContext from "context/OrderContext";
+import { useLocation } from "wouter";
 
 export default function Header() {
 
     const [navActive, setNavActive] = useState('')
+    const [search, setSearch] = useState('')
+    const setLocation = useLocation()[1]
 
     const { count, order } = useOrderData()
     const { setUser, user, setOrderProcess } = useContext(OrderContext)
@@ -27,6 +30,17 @@ export default function Header() {
         navActive === '' ? setNavActive('navActive') : setNavActive('')
     }
 
+    const handleChangeInput = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        if(search === "") return setLocation(`/`)
+        setLocation(`/search/${search}`)
+        e.target.reset()
+    }
+
     return (
         <>
             <header id="header">
@@ -36,10 +50,10 @@ export default function Header() {
                         <h1>TuManga</h1>
                     </Link>
                 </div>
-                <div className="headerSearch">
+                <form className="headerSearch" onSubmit={handleSearch}>
                     <i><FontAwesomeIcon icon={faSearch} /></i>
-                    <input type="text" id="headerSearch" placeholder="Busca en nuestro catálogo" />
-                </div>
+                    <input type="search" id="headerSearch" placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />
+                </form>
                 <div className="headerOptions">
                     <span id="spanBadge">
                         {user
