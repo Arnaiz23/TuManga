@@ -18,6 +18,8 @@ import OrderProcess from 'pages/publicView/OrderProcess/OrderProcess';
 import Payment from 'pages/publicView/Payment/Payment';
 import OrderDetail from 'pages/publicView/OrderDetail/OrderDetail';
 import SearchProducts from 'pages/publicView/SearchProducts/SearchProducts';
+import ForgetPassword from 'pages/publicView/ForgetPassword/ForgetPassword';
+import RecoverPassword from 'pages/publicView/RecoverPassword/RecoverPassword';
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
       </OrderContextProvider>
+      <Route path='/forgetPassword' component={ForgetPassword} />
+      <Route path='/recoverPassword' component={RecoverPassword} />
     </div>
   );
 }

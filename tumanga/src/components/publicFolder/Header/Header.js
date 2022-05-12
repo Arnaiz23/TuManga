@@ -68,16 +68,16 @@ export default function Header() {
                 </form>
                 <div className="headerOptions">
                     <span id="iconSearch" onClick={openModalSearch}>
-                        <i class="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i>
+                        <i className="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i>
                     </span>
-                    <section class={modalSearch ? 'modalSearchBackground modalSearchBackgroundShow' : 'modalSearchBackground'}>
-                        <span class="closeModalSearch" onClick={hideModalSearch}>
+                    <section className={modalSearch ? 'modalSearchBackground modalSearchBackgroundShow' : 'modalSearchBackground'}>
+                        <span className="closeModalSearch" onClick={hideModalSearch}>
                             <i className="fa-solid fa-xmark"><FontAwesomeIcon icon={faXmark} /></i>
                         </span>
                         <section>
-                            <form class="inputSearchContainer" onSubmit={handleSearch}>
+                            <form className="inputSearchContainer" onSubmit={handleSearch}>
                                 <input type="search" name="" id="" placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />
-                                <button type="submit" role="search"><i class="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i></button>
+                                <button type="submit" role="search"><i className="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i></button>
                             </form>
                         </section>
                     </section>

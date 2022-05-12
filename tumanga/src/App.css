@@ -606,6 +606,125 @@ a{
 
 /* * ----------------------------------------------------------------------------- */
 
+/* * ----------- ----------- FORGET PASSWORD ----------- ----------- */
+
+.containerBodyForget{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerMacForget{
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 70%;
+}
+
+.containerMacForget header{
+  background-color: #000;
+  width: 100%;
+  /* height: 20px; */
+  padding: 10px 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.containerMacForget header .circleMac{
+  background-color: #fff;
+  border-radius: 50%;
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+.containerMacForget header .circleMac:first-child{
+  background-color: #ff605c;
+}
+
+.containerMacForget header .circleMac:nth-child(2){
+  background-color: #ffbd44;
+}
+
+.containerMacForget header .circleMac:last-child{
+  background-color: #00ca4e;
+}
+
+.mainForget{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.mainForget section{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 20px;
+  width: 100%;
+}
+
+.mainForget section h2{
+  text-align: center;
+  width: 100%;
+}
+
+.formForget{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.inputFieldForget{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  width: 60%;
+}
+
+.inputFieldForget label{
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.inputFieldForget input{
+  width: 100%;
+  padding: 5px;
+  font-size: .9rem;
+  border: 1px solid #777;
+}
+
+.inputFieldForget input:focus{
+  outline: none;
+  border-color: #000;
+}
+
+.informationForget{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.informationForget p{
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.informationForget ul{
+  padding-left: 20px;
+}
+
+/* * ----------------------------------------------------------------------------- */
+
 /* * ----------- ----------- RECOVER PASSWORD ----------- ----------- */
 
 .containerRecover{
@@ -3476,6 +3595,10 @@ a{
   .contentShopping {
     width: 100%;
   }
+
+  .inputFieldForget{
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 518px) {
@@ -3514,6 +3637,10 @@ a{
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .inputFieldForget{
+    width: 90%;
   }
 }
 

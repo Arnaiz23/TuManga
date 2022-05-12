@@ -149,7 +149,7 @@ export default function Login() {
                             </span>
                             <button className="btn btn-info">Iniciar sesión</button>
                         </form>
-                        <a className="forgetPassword" href="recoverPassword.html">¿Olvidastes la contraseña?</a>
+                        <Link to="/forgetPassword" className="forgetPassword" >¿Olvidastes la contraseña?</Link>
                     </div>
                 </div>
             </div>
