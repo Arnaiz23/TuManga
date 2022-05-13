@@ -9,7 +9,7 @@ export default function AddressCard({ data, change, empty }) {
 
     const deleteAddress = () => {
         deleteUserAddress(data._id).then(data => {
-            if(data.message){
+            if (data.message) {
                 return alert(data.message)
             }
 
@@ -19,7 +19,7 @@ export default function AddressCard({ data, change, empty }) {
                 'success'
             )
             change(data.newAddress)
-            if(data.newAddress.length === 0) empty(true)
+            if (data.newAddress.length === 0) empty(true)
         })
     }
 
@@ -34,7 +34,10 @@ export default function AddressCard({ data, change, empty }) {
             </header>
             <main>
                 <h3>{data.name_person}</h3>
-                <h4>{data.name}</h4>
+                <div className="containerAddressData">
+                    <h4>{data.name}</h4>
+                    <h4>{data.telephone}</h4>
+                </div>
                 <div className="containerAddressInfo">
                     <p>{data.number}</p>
                     <p>{data.floor}</p>
@@ -45,7 +48,7 @@ export default function AddressCard({ data, change, empty }) {
                     <p onClick={deleteAddress}>Eliminar</p>
                 </div>
             </main>
-            {showModal && <ModalInfo change={setShowModal} data={data} type="address" changeAddress={change} /> }
+            {showModal && <ModalInfo change={setShowModal} data={data} type="address" changeAddress={change} />}
         </div>
     )
 }

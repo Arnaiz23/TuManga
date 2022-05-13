@@ -1,4 +1,4 @@
-<h1 align="center"><img src="../layout/assets/images/BrandTransparentMD.png" alt="arnaizDev brand" /> TuManga</h1>
+<h1 style="display:flex;width=100%;justify-content:center;align-items:center;gap: 15px"><img src="../layout/assets/images/BrandT2.png" alt="arnaizDev brand" style="width:120px" /> TuManga</h1>
 
 ## Steps
 
@@ -122,11 +122,10 @@ The principal route is "/api/v1"
 * More of 1 filter (.join(";") -> send string)
 * Sort by x
 * Component error
-* Change the telephone when pay
 * Pay checkbox
 * Slider in Home (Splide is an alternative)
 * Update the documents without spinner
-* Name of the cardPerson in the CardAccount or option view???
+* Edit address and billing in the PaymentView
 
 
 ### Views for public

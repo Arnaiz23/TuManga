@@ -9,7 +9,8 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
         "number": "",
         "floor": "",
         "name_person": "",
-        "location": ""
+        "location": "",
+        "telephone" : ""
     })
 
     const handleData = (e) => {
@@ -22,8 +23,22 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
     const handleFormAddress = (e) => {
         e.preventDefault()
 
-        if(address.name === "" || address.name_person === "" || address.location === ""){
-            return alert("Rellene los campos obligatorios")
+        const regexpPhone = /^[0-9]{9}$/
+
+        if(address.name === "" || address.name_person === "" || address.location === "" || address.telephone === ""){
+            return Swal.fire(
+                'Datos erróneos',
+                'Debes rellenar todos los datos obligatorios',
+                'warning'
+            )
+        }
+
+        if(!regexpPhone.test(address.telephone)){
+            return Swal.fire(
+                'Datos erróneos',
+                'Número de teléfono no válido',
+                'error'
+            )
         }
 
         createAddress(address).then(data => {
@@ -64,6 +79,10 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
                     <div className="newAddressGroup">
                         <label htmlFor="name_person">Nombre <span className="obligatoryFields">*</span></label>
                         <input type="text" id="name_person" name="name_person" onChange={handleData} />
+                    </div>
+                    <div className="newAddressGroup">
+                        <label htmlFor="telephone">Número de teléfono <span className="obligatoryFields">*</span></label>
+                        <input type="number" id="telephone" name="telephone" onChange={handleData} />
                     </div>
                 </section>
                 <input type="submit" className="btn btn-success" value="Crear dirección" />

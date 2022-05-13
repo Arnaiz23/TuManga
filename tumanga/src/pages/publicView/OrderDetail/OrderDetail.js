@@ -42,7 +42,7 @@ export default function OrderDetail({ params }) {
                                         <h3>Dirección de envío</h3>
                                         <h4>{order.address.name_person}</h4>
                                         <p>{order.address.name}</p>
-                                        <p>Teléfono: {order.telephone}</p>
+                                        <p>Teléfono: {order.address.telephone}</p>
                                     </div>
                                 }
                                 <div className="lineCommentsSeparator"></div>

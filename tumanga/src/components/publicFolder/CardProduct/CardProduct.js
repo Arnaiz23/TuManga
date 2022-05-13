@@ -70,10 +70,10 @@ export default function CardProduct({ product }) {
                 {
                     product.image !== null
                         ? (
-                            <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} />
+                            <img loading="lazy" src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} />
                         )
                         : (
-                            <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt={`Portada del volumen de ${product.name}`} />
+                            <img loading="lazy" src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt={`Portada del volumen de ${product.name}`} />
                         )
                 }
             </Link>

@@ -23,7 +23,7 @@ export default function OrderWindow({ data }) {
             setOrder(info.data)
             setLoadingOrder(false)
         })
-    }, [setOrder])
+    }, [data._id])
 
     const showInfo = () => {
         modalRef.current.classList.toggle("modalOrderActive")
@@ -56,7 +56,7 @@ export default function OrderWindow({ data }) {
                                         <>
                                             <p>{order.address.name_person}</p>
                                             <p>{order.address.name}</p>
-                                            <p>Teléfono: {data.telephone}</p>
+                                            <p>Teléfono: {order.address.telephone}</p>
                                         </>
                                     )
                                     : <p>Dirección no encontrada</p>
@@ -82,7 +82,7 @@ export default function OrderWindow({ data }) {
                                             <div className="modalInformationOrder">
                                                 <h4>{order.address.name_person}</h4>
                                                 <p className="greySmall">{order.address.name}</p>
-                                                <p className="greySmall">Teléfono: {data.telephone}</p>
+                                                <p className="greySmall">Teléfono: {order.address.telephone}</p>
                                             </div>
                                         </>
                                     )
@@ -110,10 +110,10 @@ export default function OrderWindow({ data }) {
                                     {
                                         product.image === null
                                             ? (
-                                                <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt="portada tokyo revengers 04" />
+                                                <img loading="lazy" src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt="portada tokyo revengers 04" />
                                             )
                                             : (
-                                                <img src={`${api_URL}/image/${product.image}`} alt="portada tokyo revengers 04" />
+                                                <img loading="lazy" src={`${api_URL}/image/${product.image}`} alt="portada tokyo revengers 04" />
                                             )
                                     }
                                     <h3>{product.name} X{product.quantity}</h3>

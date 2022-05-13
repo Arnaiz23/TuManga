@@ -9,7 +9,8 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
         "number" : "",
         "floor" : "",
         "name_person" : "",
-        "location" : ""
+        "location" : "",
+        "telephone" : ""
     })
 
     const handleFormAddress = (e) => {
@@ -18,8 +19,9 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
         const regexpName = /^[a-zA-Záéíóú ]+$/
         const regexpAddress = /^[a-zA-Z0-9 ]+$/
         const regexpNumber = /^[0-9]+$/
+        const regexpPhone = /^[0-9]{9}$/
 
-        if(newAddress.name === "" || newAddress.location === "" || newAddress.name_person === ""){
+        if(newAddress.name === "" || newAddress.location === "" || newAddress.name_person === "" || newAddress.telephone === ""){
             return Swal.fire(
                 'Datos no válidos',
                 'Debes rellenar todos los campos obligatorios',
@@ -47,6 +49,14 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
             return Swal.fire(
                 'Datos no válidos',
                 'No puede contener letras ni caractéres especiales',
+                'error'
+            )
+        }
+
+        if(!regexpPhone.test(newAddress.telephone)){
+            return Swal.fire(
+                'Datos no válidos',
+                'Número de teléfono no válido',
                 'error'
             )
         }
@@ -97,6 +107,10 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
                         <div className="formField">
                             <label htmlFor="location">Localidad <span className="obligatoryFields" title="Campo obligatorio">*</span></label>
                             <input type="text" id="location" name="location" onChange={changeData} />
+                        </div>
+                        <div className="formField">
+                            <label htmlFor="telephone">Teléfono <span className="obligatoryFields" title="Campo obligatorio">*</span></label>
+                            <input type="number" id="telephone" name="telephone" onChange={changeData} />
                         </div>
                     </section>
                     <div className="formButton">

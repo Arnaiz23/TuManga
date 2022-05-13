@@ -38,6 +38,15 @@ var Address = new Schema({
         type : String,
         unique : false,
         required : true
+    },
+    telephone: {
+        type: Number,
+        unique: false,
+        required: true
+    },
+    created_date: {
+        type: Date,
+        default: Date.now
     }
 });
 

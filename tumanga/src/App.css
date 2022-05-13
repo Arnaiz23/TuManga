@@ -2006,6 +2006,14 @@ a{
   color: #777;
 }
 
+.containerAddressData{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
 .containerAddressActions {
   display: flex;
   justify-content: flex-start;

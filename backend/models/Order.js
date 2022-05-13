@@ -83,11 +83,6 @@ var Order = new Schema({
         unique: false,
         required: true
     },
-    telephone: {
-        type: Number,
-        unique: false,
-        required: false
-    },
     total: {
         type: Number,
         required: true,

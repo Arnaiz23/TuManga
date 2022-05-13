@@ -44,6 +44,7 @@ export default function CardItem({ data, empty, change }) {
                 <main>
                     <h4>{data.name}</h4>
                     <p>{date}</p>
+                    <p>{data.card_name}</p>
                 </main>
                 <footer>
                     ************{data.last_4_digits}

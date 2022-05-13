@@ -1233,7 +1233,7 @@ var controller = {
 
     updateOrder: async (req, res) => {
 
-        let { delivery_address, billing, telephone } = req.body;
+        let { delivery_address, billing } = req.body;
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
@@ -1267,7 +1267,6 @@ var controller = {
         orderProcess.delivery_address = mongoose.Types.ObjectId(delivery_address)
         orderProcess.billing = mongoose.Types.ObjectId(billing)
         orderProcess.state = "F"
-        orderProcess.telephone = telephone
 
         let products = orderProcess.products
 
@@ -1719,15 +1718,25 @@ var controller = {
 
     createAddress: async (req, res) => {
 
-        const { name, number, name_person, location, floor } = req.body;
+        const { name, number, name_person, location, floor, telephone } = req.body;
 
         let userFind = await globalFunctions.getUserToken(req, res)
+
+        const regexpPhone = /^[0-9]{9}$/
+
+        if(!regexpPhone.test(telephone)){
+            return res.status(404).send({
+                status: "error",
+                message: "The phone number is invalid"
+            })
+        }
 
         let newAddress = Address({
             name,
             number,
             name_person,
             location,
+            telephone,
             user_id: userFind._id
         })
 
@@ -1843,6 +1852,10 @@ var controller = {
             })
         }
 
+        if(body.telephone){
+            address.telephone = body.telephone
+        }
+
         if (body.name) {
             address.name = body.name
         }
@@ -1893,7 +1906,7 @@ var controller = {
 
         let userFind = await globalFunctions.getUserToken(req, res)
 
-        let address = await Address.find({ user_id: userFind._id }).limit(2)
+        let address = await Address.find({ user_id: userFind._id }).limit(2).sort({created_date: "desc"})
 
         if (!address || address.length == 0) {
             return res.status(500).send({

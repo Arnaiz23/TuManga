@@ -16,6 +16,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
 
     useEffect(() => {
         if(address.length > 0 && type === "address"){
+            console.log(address);
             changeAddress(address[0])
             changeAddressEmpty(false)
         }
@@ -45,6 +46,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                                         <div className="col">
                                             <h4>{lastAddress.name_person}</h4>
                                             <p>{lastAddress.name}</p>
+                                            <p>{lastAddress.telephone}</p>
                                             {/* <h4>{address[0].name_person}</h4>
                                             <p>{address[0].name}</p> */}
                                         </div>

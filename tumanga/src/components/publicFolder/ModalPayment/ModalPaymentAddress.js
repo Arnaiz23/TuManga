@@ -24,7 +24,7 @@ export default function ModalPaymentAddress({ modal, change, address, changeModa
                         <div className="row">
                             <input type="radio" id="" />
                             <h4>{data.name_person}</h4>
-                            <p>{data.name}, {data.number && data.number + ","} {data.floor && data.floor + ","} {data.location}</p>
+                            <p>{data.name}, {data.telephone}, {data.number && data.number + ","} {data.floor && data.floor + ","} {data.location}</p>
                             <p className="editAddress">Editar dirección</p>
                         </div>
                         { address.length === 2 && index < 1 && <div className="linePayment" />}
