@@ -21,7 +21,7 @@ export default function ForgetPassword() {
     const handleSendEmail = (e) => {
         e.preventDefault()
 
-        const regexpEmail = /^[a-zA-Z]+@[a-z]+.[a-z]+$/
+        const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/
 
         if(email.email === ""){
             return Swal.fire(

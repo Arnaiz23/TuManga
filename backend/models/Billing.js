@@ -43,6 +43,10 @@ var Billing = new Schema({
         type: String,
         unique: false,
         required : true
+    },
+    created_date : {
+        type: Date,
+        default: Date.now
     }
 });
 

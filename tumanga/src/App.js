@@ -45,7 +45,7 @@ function App() {
         <Route path='/register' component={Register} />
       </OrderContextProvider>
       <Route path='/forgetPassword' component={ForgetPassword} />
-      <Route path='/recoverPassword' component={RecoverPassword} />
+      <Route path='/recoverPassword/:token' component={RecoverPassword} />
     </div>
   );
 }

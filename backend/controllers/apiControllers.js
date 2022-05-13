@@ -1655,7 +1655,7 @@ var controller = {
                 cards
             })
 
-        }).limit(2);
+        }).limit(2).sort({created_date: "desc"});
 
     },
 
@@ -2667,7 +2667,7 @@ var controller = {
             from: '"TuManga" <foo@example.com>',
             to: email,
             subject: "Recover password",
-            html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
+            html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='http://localhost:3000/recoverPassword/${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
         });
 
         return res.status(200).send({
@@ -2741,6 +2741,7 @@ var controller = {
 
         return res.status(200).send({
             status: "success",
+            message: "Update password successfully!!!",
             userUpdate
         })
 

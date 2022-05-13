@@ -15,3 +15,19 @@ export function forgetPassword(body){
         })
     
 }
+
+export function recoverPassword(token, body){
+
+    return fetch(`${api_URL}/recover/${token}`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ message }) => {
+            return {message}
+        })
+
+}
