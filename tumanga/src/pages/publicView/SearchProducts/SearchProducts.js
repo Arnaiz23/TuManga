@@ -16,7 +16,11 @@ export default function SearchProducts({ params }) {
     useEffect(() => {
         setLoading(true)
         searchProducts(params.search).then(data => {
-            if (data.message) return alert(data.message)
+            if (data.message) {
+                setProducts([])
+                setLoading(false)
+                return
+            }
             setProducts(data.searchProducts)
             setLoading(false)
         })
@@ -31,7 +35,9 @@ export default function SearchProducts({ params }) {
             <main className="center">
                 {loading
                     ? <Spinner />
-                    : <ListOfProducts products={products} />
+                    : products.length > 0
+                        ? <ListOfProducts products={products} />
+                        : <h2>No hay productos que coincidan con la búsqueda</h2>
                 }
             </main>
             <BtnUp />

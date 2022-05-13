@@ -124,7 +124,6 @@ The principal route is "/api/v1"
 * Component error
 * Slider in Home (Splide is an alternative)
 * Update the documents without spinner
-* Recover Password functional
 
 
 ### Views for public
