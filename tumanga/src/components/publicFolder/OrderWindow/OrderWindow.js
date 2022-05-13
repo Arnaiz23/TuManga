@@ -72,7 +72,7 @@ export default function OrderWindow({ data }) {
                                 <h4>Total</h4>
                                 <p className="greySmall">{data.total} €</p>
                             </div>
-                            <div id="orderClient">
+                            <div id="orderClient" onClick={showInfo}>
                                 <h4>Enviar a</h4>
                                 {order.address
                                     ? (

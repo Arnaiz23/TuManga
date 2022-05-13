@@ -122,10 +122,8 @@ The principal route is "/api/v1"
 * More of 1 filter (.join(";") -> send string)
 * Sort by x
 * Component error
-* Pay checkbox
 * Slider in Home (Splide is an alternative)
 * Update the documents without spinner
-* Edit address and billing in the PaymentView
 
 
 ### Views for public

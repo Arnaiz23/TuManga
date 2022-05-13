@@ -1,9 +1,10 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RowBillingPayment from "components/publicFolder/RowBillingPayment/RowBillingPayment";
 import React from "react";
 import { api_URL } from "services/config";
 
-export default function ModalPaymentBilling({ modal, change, cards, changeModal }) {
+export default function ModalPaymentBilling({ modal, change, cards, changeModal, changeBilling }) {
 
     const closeModal = () => {
         change(false)
@@ -21,18 +22,7 @@ export default function ModalPaymentBilling({ modal, change, cards, changeModal 
             </div>
             {cards.length > 0
                 ? (
-                    cards.map((card, index) =>
-                        <div key={card._id}>
-                            <div className="row">
-                                <input type="radio" id="" />
-                                <img src={`${api_URL}/image/${card.image}`} alt={`imagen logo ${card.type}`} className="imgBrandCard" />
-                                <p>{card.type} que termina en {card.last_4_digits}</p>
-                                <h4>{card.card_name}</h4>
-                                <p>{card.expiration_date.split("-")[1] + "/" + card.expiration_date.split("-")[0]}</p>
-                            </div>
-                            {cards.length === 2 && index < 1 && <div className="linePayment"></div>}
-                        </div>
-                    )
+                    cards.map((card, index) => <RowBillingPayment key={card._id} card={card} index={index} changeBilling={changeBilling} cards={cards} />)
                 )
                 : <h3>No hay tarjetas</h3>
             }

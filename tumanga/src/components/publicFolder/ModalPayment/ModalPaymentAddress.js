@@ -1,8 +1,10 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import ModalInfo from "../ModalInfo/ModalInfo";
+import RowAddressPayment from "../RowAddressPayment/RowAddressPayment";
 
-export default function ModalPaymentAddress({ modal, change, address, changeModal, addressEmpty }) {
+export default function ModalPaymentAddress({ modal, change, address, changeModal, addressEmpty, changeAddress }) {
 
     const closeModal = () => {
         change(false)
@@ -19,17 +21,7 @@ export default function ModalPaymentAddress({ modal, change, address, changeModa
                 <button className="dataDownClose" onClick={closeModal}><i><FontAwesomeIcon icon={faXmark} /></i> Cerrar</button>
             </div>
             {!addressEmpty
-                ? address.map((data, index) =>
-                    <div key={data._id}>
-                        <div className="row">
-                            <input type="radio" id="" />
-                            <h4>{data.name_person}</h4>
-                            <p>{data.name}, {data.telephone}, {data.number && data.number + ","} {data.floor && data.floor + ","} {data.location}</p>
-                            <p className="editAddress">Editar dirección</p>
-                        </div>
-                        { address.length === 2 && index < 1 && <div className="linePayment" />}
-                    </div>
-                )
+                ? address.map((data, index) => <RowAddressPayment key={data._id} data={data} index={index} address={address} changeAddress={changeAddress} />)
                 : <h3>No hay direcciones</h3>
             }
             <div className="rowEnd">

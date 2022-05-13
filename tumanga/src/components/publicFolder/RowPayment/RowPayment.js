@@ -16,7 +16,6 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
 
     useEffect(() => {
         if(address.length > 0 && type === "address"){
-            console.log(address);
             changeAddress(address[0])
             changeAddressEmpty(false)
         }
@@ -60,7 +59,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentAddress modal={modal} change={changeModalLast} address={address} changeModal={changeModal} addressEmpty={addressEmpty} />
+                    <ModalPaymentAddress modal={modal} change={changeModalLast} address={address} changeModal={changeModal} addressEmpty={addressEmpty} changeAddress={changeAddress} />
                 </>
             }
             {type === "billing" &&
@@ -88,7 +87,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} />
+                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} changeBilling={changeBilling} />
                 </>
             }
         </>

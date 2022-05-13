@@ -2275,6 +2275,10 @@ a{
   width: 100%;
 }
 
+.rowGap4{
+  gap: 2rem 4rem !important;
+}
+
 .lastPayment > .row {
   background-color: #fff;
   border-radius: 10px;
@@ -3419,10 +3423,6 @@ a{
 
   .rowEnd {
     justify-content: flex-start;
-  }
-
-  .modalInformationOrder {
-    display: none;
   }
 
   .comment main.row {

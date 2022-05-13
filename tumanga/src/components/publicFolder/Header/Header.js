@@ -76,7 +76,7 @@ export default function Header() {
                         </span>
                         <section>
                             <form className="inputSearchContainer" onSubmit={handleSearch}>
-                                <input type="search" name="" id="" placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />
+                                {modalSearch && <input type="search" name="" id="" autoFocus placeholder="Busca en nuestro catálogo" onChange={handleChangeInput} />}
                                 <button type="submit" role="search"><i className="fa-solid fa-search"><FontAwesomeIcon icon={faSearch} /></i></button>
                             </form>
                         </section>
