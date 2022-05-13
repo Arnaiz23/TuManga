@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,11 @@ import useProducts from "hooks/useProducts";
 import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import Spinner from "components/publicFolder/Spinner/Spinner";
 
+import ProductContext from "context/ProductsContext";
+
 export default function ProductsView() {
+
+    const { products, setProducts, count, setCount } = useContext(ProductContext)
 
 
     let type = ""
@@ -28,7 +32,7 @@ export default function ProductsView() {
         type = "merchandising"
     }
 
-    const { loading, products, count, error } = useProducts()
+    const { loading, error } = useProducts()
 
     
 

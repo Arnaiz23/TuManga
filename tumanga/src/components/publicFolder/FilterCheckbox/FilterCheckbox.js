@@ -1,24 +1,38 @@
 import useProducts from "hooks/useProducts";
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
+import ProductContext from "context/ProductsContext";
+import getFilterProducts from "services/getFilterProducts";
 
 export default function FilterCheckbox({ name, size }) {
 
-    const { setFilter, filter } = useProducts()
+    const { page } = useProducts()
+    const { setProducts, setCount, filter, setFilter, actualType } = useContext(ProductContext)
 
     const handleChange = (e) => {
-        if(e.target.checked){
-            setFilter(e.target.id)
-        }else{
-            setFilter("null")
+        if (e.target.checked) {
+            let filterAll = filter
+            filterAll.push(e.target.id)
+            setFilter(filter)
+        } else {
+            let filterAll = filter
+            filterAll.splice(filterAll.indexOf(e.target.id), 1)
+            setFilter(filterAll)
         }
-        /* change(prevData => {
-            if(!prevData.includes(e.target.id)){
-                return prevData.concat(e.target.id)
-            }else{
-                prevData.splice(prevData.indexOf(e.target.id), 1)
-                return prevData
-            }
-        }) */
+
+        let finalFilter
+
+        if(filter.length > 0){
+            finalFilter = filter.join(";") 
+        }else{
+            finalFilter = "null"
+        }
+
+        getFilterProducts((8*page), finalFilter, actualType).then(data =>{
+            setProducts(data.products)
+            setCount(Math.ceil(data.count / 8))
+        })
+
     }
 
     return (
