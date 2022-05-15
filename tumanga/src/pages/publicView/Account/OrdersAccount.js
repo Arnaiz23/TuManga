@@ -24,19 +24,18 @@ export default function OrdersAccount() {
 
     useEffect(() => {
         setLoadingOrders(true)
-        loading &&
-            getUserOrders().then(data => {
-                if (data.message) {
-                    setOrderEmpty(true)
-                    setError(data.message)
-                    setLoadingOrders(false)
-                    return
-                }
-
-                setOrders(data.orders)
+        getUserOrders().then(data => {
+            if (data.message) {
+                setOrderEmpty(true)
+                setError(data.message)
                 setLoadingOrders(false)
-            })
-        
+                return
+            }
+
+            setOrders(data.orders)
+            setLoadingOrders(false)
+        })
+
     }, [loading])
 
     return (

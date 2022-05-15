@@ -6,6 +6,7 @@ import { getOrderId } from "services/Orders";
 import { Link } from "wouter";
 import Moment from "react-moment";
 import 'moment/locale/es';
+import Spinner from "../Spinner/Spinner";
 
 export default function OrderWindow({ data }) {
 
@@ -33,7 +34,7 @@ export default function OrderWindow({ data }) {
 
     return (
         loadingOrder || order === null
-            ? <h1>Cargando...</h1>
+            ? <Spinner />
             : (
                 <div className="containerOrder">
                     <header>

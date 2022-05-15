@@ -37,7 +37,11 @@ export default function SearchProducts({ params }) {
                     ? <Spinner />
                     : products.length > 0
                         ? <ListOfProducts products={products} />
-                        : <h2>No hay productos que coincidan con la búsqueda</h2>
+                        : (
+                            <div className="searchEmpty">
+                                <h2>No hay productos que coincidan con la búsqueda</h2>
+                            </div>
+                        )
                 }
             </main>
             <BtnUp />

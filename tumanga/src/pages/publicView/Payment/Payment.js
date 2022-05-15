@@ -23,8 +23,7 @@ export default function Payment() {
 
     const [dataPayment, setDataPayment] = useState({
         "delivery_address" : "",
-        "billing" : "",
-        "telephone" : 123456789
+        "billing" : ""
     })
 
     const [ lastAddress, setLastAddress ] = useState({})

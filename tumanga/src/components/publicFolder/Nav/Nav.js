@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "wouter";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import useToken from "hooks/useToken";
 import { useLocation } from "wouter";
+import OrderContext from "context/OrderContext";
+
+const ROLES = ["owner", "admin", "empleado"]
 
 export default function Nav({ state, user, changeProcess }) {
 
@@ -12,6 +15,7 @@ export default function Nav({ state, user, changeProcess }) {
 
     const { tokenInfo, setTokenInfo } = useToken()
     const [location, setLocation] = useLocation()
+    const { userData, setUserData } = useContext(OrderContext)
 
     let navRef = React.createRef()
 
@@ -28,6 +32,7 @@ export default function Nav({ state, user, changeProcess }) {
         localStorage.removeItem("token")
         setTokenInfo(false)
         user(false)
+        setUserData({})
         changeProcess(false)
         setLocation("/")
     }
@@ -49,7 +54,7 @@ export default function Nav({ state, user, changeProcess }) {
                     </li>
                 </ul>
             </div>
-            <button className="btn btn-light" id="btnAccessPanel" role="button">Acceder al panel</button>
+            {ROLES.includes(userData.roleName) && <button className="btn btn-light" id="btnAccessPanel" role="button">Acceder al panel</button>}
             {tokenInfo
                 ? (<button className="btn btn-danger" id="btnLogout" role="button" onClick={logout}>Cerrar sesión</button>)
                 : (<Link to="/login"><button className="btn btn-success" role="button">Login</button></Link>)

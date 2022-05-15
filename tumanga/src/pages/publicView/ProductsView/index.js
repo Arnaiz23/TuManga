@@ -20,7 +20,7 @@ import ProductContext from "context/ProductsContext";
 
 export default function ProductsView() {
 
-    const { products, setProducts, count, setCount } = useContext(ProductContext)
+    const { products, setProducts, count, setCount, productsEmpty } = useContext(ProductContext)
 
 
     let type = ""
@@ -48,8 +48,8 @@ export default function ProductsView() {
                     <div className="containerProducts">
                         {loading
                             ? <Spinner />
-                            : error 
-                                ? <h1>No hay coincidencias</h1>
+                            : error || productsEmpty
+                                ? <h2 className="notMatch">No hay coincidencias</h2>
                                 : <ListOfProducts products={products} />
                         }
                     </div>

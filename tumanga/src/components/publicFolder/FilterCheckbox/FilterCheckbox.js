@@ -7,7 +7,7 @@ import getFilterProducts from "services/getFilterProducts";
 export default function FilterCheckbox({ name, size }) {
 
     const { page } = useProducts()
-    const { setProducts, setCount, filter, setFilter, actualType } = useContext(ProductContext)
+    const { setProducts, setCount, filter, setFilter, actualType, setProductsEmpty } = useContext(ProductContext)
 
     const handleChange = (e) => {
         if (e.target.checked) {
@@ -29,8 +29,10 @@ export default function FilterCheckbox({ name, size }) {
         }
 
         getFilterProducts((8*page), finalFilter, actualType).then(data =>{
+            if(data.message) return setProductsEmpty(true)
             setProducts(data.products)
             setCount(Math.ceil(data.count / 8))
+            setProductsEmpty(false)
         })
 
     }

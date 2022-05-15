@@ -13,6 +13,7 @@ import ProductHeader from "../ProductHeader/ProductHeader";
 
 import OrderContext from "context/OrderContext";
 import { useLocation } from "wouter";
+import useUser from "hooks/useUser";
 
 export default function Header() {
 
@@ -25,6 +26,8 @@ export default function Header() {
     const { setUser, user, setOrderProcess } = useContext(OrderContext)
 
     const { tokenInfo } = useToken()
+
+    useUser()
 
     let changeNavState = () => {
         // alert("Hola")

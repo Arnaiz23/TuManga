@@ -22,7 +22,7 @@ export default function ModalPaymentAddress({ modal, change, address, changeModa
             </div>
             {!addressEmpty
                 ? address.map((data, index) => <RowAddressPayment key={data._id} data={data} index={index} address={address} changeAddress={changeAddress} />)
-                : <h3>No hay direcciones</h3>
+                : <h3 className="emptyDataPayment">No hay direcciones</h3>
             }
             <div className="rowEnd">
                 <button className="btn btn-success" onClick={addAddress}>Añadir dirección</button>

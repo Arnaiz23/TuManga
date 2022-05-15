@@ -24,7 +24,7 @@ export default function ModalPaymentBilling({ modal, change, cards, changeModal,
                 ? (
                     cards.map((card, index) => <RowBillingPayment key={card._id} card={card} index={index} changeBilling={changeBilling} cards={cards} />)
                 )
-                : <h3>No hay tarjetas</h3>
+                : <h3 className="emptyDataPayment">No hay tarjetas</h3>
             }
             <div className="rowEnd">
                 <button className="btn btn-success" onClick={showModal}>Añadir tarjeta</button>

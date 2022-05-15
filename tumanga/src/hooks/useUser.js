@@ -3,11 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { getUser } from "services/Users";
 import { useLocation } from "wouter";
 
+import OrderContext from "context/OrderContext";
+
 export default function useUser() {
 
     const [loading, setLoading] = useState(false)
-    const [userData, setUserData] = useState({})
+    // const [userData, setUserData] = useState({})
     const [location, setLocation] = useLocation()
+    const { setUserData } = useContext(OrderContext)
 
     useEffect(() => {
 
@@ -15,7 +18,7 @@ export default function useUser() {
 
         getUser().then(data => {
             if (data.message) {
-                setLocation("/login")
+                // setLocation("/login")
             } else {
                 setUserData(data)
                 setLoading(false)
@@ -24,6 +27,6 @@ export default function useUser() {
 
     }, [setUserData])
 
-    return { loading, userData, setUserData }
+    return { loading, setUserData }
 
 }

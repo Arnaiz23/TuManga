@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Header from "../../../components/publicFolder/Header/Header";
 import Footer from "components/publicFolder/Footer/Footer";
@@ -12,10 +12,12 @@ import PasswordAccount from "../PasswordAccount/PasswordAccount";
 import DeleteAccount from "components/publicFolder/DeleteAccount/DeleteAccount";
 import useUser from "hooks/useUser";
 import Spinner from "components/publicFolder/Spinner/Spinner";
+import OrderContext from 'context/OrderContext';
 
 export default function Account() {
 
-    const { loading, userData, setUserData } = useUser()
+    const { loading } = useUser()
+    const { userData, setUserData} = useContext(OrderContext)
 
     return (
         <>

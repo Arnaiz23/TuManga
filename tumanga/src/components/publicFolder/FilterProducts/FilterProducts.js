@@ -26,6 +26,7 @@ export default function FilterProducts({ type }) {
             setFilters(res.categories)
             // console.log(res.products);
         })
+        setActualType("comics")
     }, [])
 
     const handleChange = (e) => {
@@ -33,16 +34,14 @@ export default function FilterProducts({ type }) {
         // ! Comprobar que hay alguno check, sino "comics"
         // ! Uncheck el otro
 
-        // ! No se resetea al cambiar de pagina
-
         if(!mangaRef.current.checked && !novelaRef.current.checked){
             setActualType("comics")
-        }else if(mangaRef.current.checked && !novelaRef.current.checked){
+        }else if(mangaRef.current.checked && !novelaRef.current.checked && e.target.name === "manga"){ 
             setActualType("manga")
         }else{
             setActualType("novela")
         }
-
+        
         getFilterProducts((8*page), filter, actualType).then(data =>{
             setProducts(data.products)
             setCount(Math.ceil(data.count / 8))
