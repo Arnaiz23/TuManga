@@ -2112,15 +2112,28 @@ var controller = {
 
     // * ----------------------- ADMIN ----------------------------
 
-    totalOrders: async (req, res) => {
+    totalAdminData: async (req, res) => {
 
         let totalOrders = await Order.find()
 
         totalOrders = totalOrders.length
 
+        let totalUsers = await User.find()
+
+        totalUsers = totalUsers.length
+
+        let totalOrdersF = await Order.find({ state: "F" })
+        let totalEarnings = 0
+
+        totalOrdersF.forEach(order => {
+            totalEarnings += order.total
+        })
+
         return res.status(200).send({
             status: "success",
-            totalOrders
+            totalOrders,
+            totalUsers,
+            totalEarnings
         })
 
     },

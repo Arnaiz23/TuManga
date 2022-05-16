@@ -120,6 +120,9 @@ The principal route is "/api/v1"
 * Sort by x
 * Component error
 * Slider in Home (Splide is an alternative)
+* Alerts of the data.message in Platform
+* Functional platform Users
+* Change the role in the usersTable
 
 
 ### Views for public
@@ -144,7 +147,7 @@ The principal route is "/api/v1"
 
 * Home
 * Account
-* Login (Exception: forget password)
+* Login
 * Register
 * Mangas
 * AccountCards
@@ -152,6 +155,9 @@ The principal route is "/api/v1"
 * AccountOrders
 * AccountComments
 * ProductDetail
+* Payment
+* OrderDetail
+* ShoppingCart
 
 
 ### Input file Admin

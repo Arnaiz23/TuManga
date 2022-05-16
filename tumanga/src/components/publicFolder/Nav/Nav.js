@@ -54,10 +54,10 @@ export default function Nav({ state, user, changeProcess }) {
                     </li>
                 </ul>
             </div>
-            {ROLES.includes(userData.roleName) && <button className="btn btn-light" id="btnAccessPanel" role="button">Acceder al panel</button>}
+            {ROLES.includes(userData.roleName) && <Link to="/platform"><button className="btn btn-light" id="btnAccessPanel">Acceder al panel</button></Link>}
             {tokenInfo
-                ? (<button className="btn btn-danger" id="btnLogout" role="button" onClick={logout}>Cerrar sesión</button>)
-                : (<Link to="/login"><button className="btn btn-success" role="button">Login</button></Link>)
+                ? (<button className="btn btn-danger" id="btnLogout" onClick={logout}>Cerrar sesión</button>)
+                : (<Link to="/login"><button className="btn btn-success">Login</button></Link>)
             }
         </nav>
     )

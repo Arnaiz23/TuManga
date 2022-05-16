@@ -20,6 +20,9 @@ import OrderDetail from 'pages/publicView/OrderDetail/OrderDetail';
 import SearchProducts from 'pages/publicView/SearchProducts/SearchProducts';
 import ForgetPassword from 'pages/publicView/ForgetPassword/ForgetPassword';
 import RecoverPassword from 'pages/publicView/RecoverPassword/RecoverPassword';
+import PlatformHome from 'pages/platform/PlatformHome';
+import { AdminContextProvider } from 'context/AdminContext';
+import PlatformUsers from 'pages/platform/PlatformUsers';
 
 
 function App() {
@@ -46,6 +49,10 @@ function App() {
       </OrderContextProvider>
       <Route path='/forgetPassword' component={ForgetPassword} />
       <Route path='/recoverPassword/:token' component={RecoverPassword} />
+      <AdminContextProvider>
+        <Route path='/platform' component={PlatformHome} />
+        <Route path='/platform/users' component={PlatformUsers} />
+      </AdminContextProvider>
     </div>
   );
 }

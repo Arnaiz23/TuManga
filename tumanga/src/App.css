@@ -2416,6 +2416,7 @@ a{
   /* border: 1px solid #000; */
   overflow: hidden;
   min-width: 393px;
+  max-width: 50%;
 }
 
 .modalCenter header {
@@ -2643,19 +2644,21 @@ a{
   color: #fff;
   padding: 0 20px;
   width: 100%;
+  list-style: none;
 }
 
 .smallNav ul{
   align-items: center;
 }
 
-.adminNav ul li, .smallNav ul li{
+.adminNav ul li a, .smallNav ul li i{
   cursor: pointer;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
   font-size: 17px;
+  color: #fff;
 }
 
 .smallNav{
@@ -2702,6 +2705,12 @@ a{
   cursor: pointer;
 }
 
+.adminBrand > a{
+  display: inherit;
+  color: inherit;
+  align-items: inherit;
+}
+
 .adminMain{
   grid-area: main;
   display: flex;
@@ -2734,6 +2743,10 @@ a{
   align-items: center;
   width: 100%;
   padding: 40px 0;
+}
+
+.containerOptions h4{
+  text-transform: capitalize;
 }
 
 .rowOptionAdmin{
@@ -2853,6 +2866,13 @@ a{
   padding: 5px 0;
 }
 
+.tableTrId{
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px !important;
+}
+
 .containerTable td > i{
   cursor: pointer;
 }
@@ -2872,6 +2892,10 @@ a{
 
 .containerTableResponsive header{
   border-bottom: 1px solid #000;
+}
+
+.containerTableResponsive header b{
+  text-transform: uppercase;
 }
 
 .containerTableResponsive header, .containerTableResponsive main{

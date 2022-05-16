@@ -99,7 +99,7 @@ router.post("/recover/:token", controllers.recoverPassword); // Change the passw
 
 // * --------------------- ADMIN ----------------------------
 
-router.get("/total/orders", middleweares.isEmployee, controllers.totalOrders); // Get the total orders (Admin)
+router.get("/total/data", middleweares.isEmployee, controllers.totalAdminData); // Get the total orders (Admin)
 router.get("/total/users", middleweares.isEmployee, controllers.totalUsers); // Get the total users (Admin)
 router.get("/total/earnings", middleweares.isOwner, controllers.totalEarnings); // Get the total earnings (Admin)
 router.get("/products/sales/:limit", middleweares.isEmployee, controllers.mostBestsellers); // Get the most bestsellers products

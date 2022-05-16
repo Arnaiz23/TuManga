@@ -15,7 +15,7 @@ export function getUser() {
         .then(res => res.json())
         .then(({ status, userInfo, message }) => {
             if (status === "success") {
-                return userInfo
+                return {userInfo}
             } else {
                 return { message }
             }
