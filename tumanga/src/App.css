@@ -24,6 +24,10 @@
   box-sizing: border-box;
 }
 
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 a{
   text-decoration: none;
 }
@@ -2741,8 +2745,10 @@ a{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 40px 0;
+  padding: 40px 10px;
+  gap: 20px 30px;
 }
 
 .containerOptions h4{
@@ -2751,10 +2757,11 @@ a{
 
 .rowOptionAdmin{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 30px;
   font-size: 18px;
+  min-width: 200px;
 }
 
 .rowOptionAdmin span{
@@ -3612,7 +3619,7 @@ a{
 
 @media screen and (max-width: 608px) {
   .containerOptions{
-    gap: 20px;
+    /* gap: 20px; */
     flex-wrap: wrap;
   }
 }

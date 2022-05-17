@@ -20,7 +20,7 @@ export default function useUser() {
             if (data.message) {
                 // setLocation("/login")
             } else {
-                setUserData(data)
+                setUserData(data.userInfo)
                 setLoading(false)
             }
         })

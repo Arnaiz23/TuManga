@@ -1,5 +1,6 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PlatformModalUsers from "components/platform/PlatformModalUsers";
 import React from "react";
 import ModalAdddress from "../ModalAddress/ModalAddress";
 import ModalNewAddress from "../ModalNewAddress/ModalNewAddress";
@@ -33,6 +34,9 @@ export default function ModalInfo({ change, data, type, changeAddress, changeCar
                 }
                 {
                     type === "paymentBilling" && <ModalPaymentBillingData changeLastBilling={changeLastBilling} closeModal={change} changeBillingEmpty={changeBillingEmpty} closeModalLast={closeModalLast} />
+                }
+                {
+                    type === "platformUsers" && <PlatformModalUsers data={data} />
                 }
             </div>
         </div>

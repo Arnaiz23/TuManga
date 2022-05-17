@@ -67,7 +67,7 @@ export default function DataAccount({ data, change }) {
                     </div>
                 </div>
                 <div className="rowEnd">
-                    <button className="btn btn-success" role="button">Guardar</button>
+                    <button className="btn btn-success">Guardar</button>
                 </div>
             </form>
         </div>

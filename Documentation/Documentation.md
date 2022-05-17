@@ -129,7 +129,7 @@ The principal route is "/api/v1"
 
 * Public -> public web
 * User -> public web and user section
-* Vendor -> public web, user section and adminPanel
+* Employee -> public web, user section and adminPanel
     * The role section NO
 * Admin -> public web, user section and all the adminPanel sections
 

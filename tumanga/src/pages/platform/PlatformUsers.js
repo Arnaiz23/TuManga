@@ -1,3 +1,5 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlatformHeader from "components/platform/PlatformHeader";
 import PlatformMainRowTitle from "components/platform/PlatformMainRowTitle";
 import PlatformNav from "components/platform/PlatformNav";
@@ -55,40 +57,6 @@ export default function PlatformUsers() {
                         )
                     }
 
-
-                    <div className="modalInformation">
-                        <div className="modalCenter">
-                            <header>
-                                <i className="fa-solid fa-xmark"></i>
-                            </header>
-                            <main>
-                                <div className="modalInfo">
-                                    <label htmlFor="id">ID</label>
-                                    <p>1</p>
-                                </div>
-                                <div className="modalInfo">
-                                    <label htmlFor="email">EMAIL</label>
-                                    <p>admin@admin.com</p>
-                                </div>
-                                <div className="modalInfo">
-                                    <label htmlFor="state">ESTADO</label>
-                                    <p>Activo</p>
-                                </div>
-                                <div className="modalInfo">
-                                    <label htmlFor="id">FECHA REGISTRO</label>
-                                    <p>11/04/2022</p>
-                                </div>
-                                <div className="modalInfo">
-                                    <label htmlFor="role">ROL</label>
-                                    <p>Admin</p>
-                                </div>
-                                <div className="modalInfo">
-                                    <label htmlFor="orders">Nº PEDIDOS</label>
-                                    <p>0</p>
-                                </div>
-                            </main>
-                        </div>
-                    </div>
                 </div>
             </main >
         </div >
