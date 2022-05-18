@@ -126,12 +126,12 @@ export default function Register() {
                             <div className="inputsLog">
                                 <input type="email" id="" placeholder="Email" onChange={handleChange} name="email" />
                                 <div className="inputPassword">
-                                    <input type="password" id="inputPassword" placeholder="Password" name="password" onChange={handleChange} ref={inputPasswordRef} />
+                                    <input type="password" id="inputPassword" placeholder="Password" name="password" onChange={handleChange} ref={inputPasswordRef} title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`} />
                                     <i className="passwordShow" id="passwordShow" onClick={togglePassword} ref={showPasswordRef}><FontAwesomeIcon icon={faEye} /></i>
                                     <i id="passwordHide" onClick={togglePassword} ref={hidePasswordRef}><FontAwesomeIcon icon={faEyeSlash} /></i>
                                 </div>
                                 <div className="inputPassword">
-                                    <input type="password" id="inputPassword2" placeholder="Confirmar Password" onChange={handleChange} name="confirm_password" ref={inputPasswordRef2} />
+                                    <input type="password" id="inputPassword2" placeholder="Confirmar Password" onChange={handleChange} name="confirm_password" ref={inputPasswordRef2} title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`} />
                                     <i className="passwordShow" id="passwordShow2" onClick={togglePassword2} ref={showPasswordRef2} ><FontAwesomeIcon icon={faEye}/></i>
                                     <i id="passwordHide2" onClick={togglePassword2} ref={hidePasswordRef2} ><FontAwesomeIcon icon={faEyeSlash} /></i>
                                 </div>

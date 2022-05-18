@@ -2,6 +2,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { searchData } from "services/Admin";
+import { Link } from "wouter";
 
 export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setUsersEmpty, setUsersData }) {
 
@@ -38,7 +39,7 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setU
                     <i className="iconSearch"><FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleChangeModal} /></i>
                     <input type="text" name="" id="" className="inputSearchAdmin" placeholder={`Busca un ${nameAdd}...`} onChange={handleChange} />
                 </form>
-                <button className="btn btn-success">Añadir {nameAdd}</button>
+                <Link to="/platform/user"><button className="btn btn-success">Añadir {nameAdd}</button></Link>
             </div>
         </div>
     )

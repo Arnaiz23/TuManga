@@ -4,15 +4,15 @@ import PlatformNav from "components/platform/PlatformNav";
 import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import React from "react";
 
-export default function PlatformEditUser({ params }) {
+export default function PlatformNewUser(){
 
     return (
         <div className="gridAdmin">
+            <PlatformHeader />
             <PlatformNav />
             <PlatformNavResponsive />
-            <PlatformHeader />
-            <PlatformEditForm title="Editar Usuario" type="user" data={params.id} />
+            <PlatformEditForm title="Añadir Usuario" type={"newUser"} />
         </div>
     )
-
+    
 }

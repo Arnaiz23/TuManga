@@ -99,3 +99,22 @@ export function updateOneUser(id, body) {
         })
     
 }
+
+export function createUser(body){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/user`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, userSave }) => {
+            return status === "success" ? {userSave} : {message}
+        })
+    
+}

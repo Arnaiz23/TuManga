@@ -24,6 +24,7 @@ import PlatformHome from 'pages/platform/PlatformHome';
 import { AdminContextProvider } from 'context/AdminContext';
 import PlatformUsers from 'pages/platform/PlatformUsers';
 import PlatformEditUser from 'pages/platform/PlatformEditUser';
+import PlatformNewUser from 'pages/platform/PlatformNewUser';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path='/platform' component={PlatformHome} />
         <Route path='/platform/users' component={PlatformUsers} />
         <Route path='/platform/user/:id' component={PlatformEditUser} />
+        <Route path='/platform/user' component={PlatformNewUser} />
       </AdminContextProvider>
     </div>
   );
