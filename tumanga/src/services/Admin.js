@@ -31,3 +31,19 @@ export function getAllUsers(){
         })
     
 }
+
+export function searchData(search, option){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/search/${search}&${option}`, {
+        headers: new Headers({
+            "Authorization" : `BEarer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, userSearch, productSearch }) => {
+            return status === "success" ? {userSearch, productSearch} : {message}
+        })
+    
+}

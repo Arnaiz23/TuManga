@@ -2480,6 +2480,10 @@ var controller = {
 
         if (option === "user") {
 
+            if(search === "null"){
+                search = ""
+            }
+
             let userSearch = await User.find({
                 "$or": [
                     { "name": { "$regex": search, "$options": "i" } },

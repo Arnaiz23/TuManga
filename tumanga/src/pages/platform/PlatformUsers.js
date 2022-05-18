@@ -45,14 +45,14 @@ export default function PlatformUsers() {
             <PlatformHeader />
             <main className="adminMain">
                 <div className="containerDataAdmin">
-                    <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} />
-                    <PlatformSearchModal changeModal={setModalOpen} modal={modalOpen} title="usuario" />
+                    <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} />
+                    <PlatformSearchModal setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" />
                     {loading
                         ? <h2>Cargando...</h2>
                         : (
                             <>
-                                <PlatformTable titles={TITLES_TABLE} users={usersData} />
-                                <PlatformTableResponsive titles={TITLES_TABLE_RESPONSIVE} users={usersData} />
+                                <PlatformTable titles={TITLES_TABLE} users={usersData} usersEmpty={usersEmpty} />
+                                <PlatformTableResponsive titles={TITLES_TABLE_RESPONSIVE} users={usersData} usersEmpty={usersEmpty} />
                             </>
                         )
                     }
