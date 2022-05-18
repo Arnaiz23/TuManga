@@ -3,6 +3,7 @@ import { faBook, faBoxOpen, faClipboardList, faHome, faUser, faWrench } from "@f
 import React, { useContext } from "react";
 import { Link } from "wouter";
 import AdminContext from "context/AdminContext";
+import { api_URL } from "services/config";
 
 export default function PlatformNav() {
 
@@ -11,7 +12,7 @@ export default function PlatformNav() {
     return (
         <nav className="adminNav">
             <header>
-                <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                <img src={`${api_URL}/image/DefaultUser2.png`}
                     alt="icon user" />
                 <h2>Admin</h2>
             </header>

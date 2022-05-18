@@ -1,6 +1,7 @@
 import { faBook, faBoxOpen, faClipboardList, faHome, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { api_URL } from "services/config";
 import { Link } from "wouter";
 
 export default function PlatformNavResponsive() {
@@ -8,7 +9,7 @@ export default function PlatformNavResponsive() {
     return (
         <div className="smallNav">
             <header>
-                <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                <img src={`${api_URL}/image/DefaultUser2.png`}
                     alt="icon user" />
             </header>
             <ul>
