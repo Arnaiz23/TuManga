@@ -303,13 +303,30 @@ var controller = {
 
     // * --------------------- SEARCH ----------------------------
 
-    searchProducts: (req, res) => {
+    searchProducts: async (req, res) => {
 
         const { search } = req.params;
 
         // $or -> anyone option
         // $regex -> string to search
         // $options $i -> insensitive upper and lower
+
+        if(search === "null"){
+            let searchProducts = await Product.find()
+
+            if(!searchProducts || searchProducts.length <= 0){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Doesn't exists products"
+                })
+            }
+            
+            return res.status(200).send({
+                status: "success",
+                searchProducts
+            })
+        }
+
         Product.find({
             "$or": [
                 { "name": { "$regex": search, "$options": "i" } },

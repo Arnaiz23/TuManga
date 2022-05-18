@@ -3,7 +3,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchData } from "services/Admin";
 
-export default function PlatformSearchModal({ changeModal, modal, title, setUsersData, setUsersEmpty }) {
+export default function PlatformSearchModal({ changeModal, modal, title, setUsersData, setUsersEmpty, type }) {
 
     let [search, setSearch] = useState('')
 
@@ -15,8 +15,7 @@ export default function PlatformSearchModal({ changeModal, modal, title, setUser
         setSearch(e.target.value)
     }
 
-    const handleSearch= (e) => {
-        e.preventDefault()
+    const fetchSearchUsers = () => {
         if(search === "") search = 'null'
         searchData(search, 'user').then(data => {
             if(data.message) {
@@ -28,6 +27,21 @@ export default function PlatformSearchModal({ changeModal, modal, title, setUser
             setUsersEmpty(false)
             changeModal(false)
         })
+    }
+
+    const handleSearch= (e) => {
+        e.preventDefault()
+        if(type === "users"){
+            fetchSearchUsers()
+            return
+        }
+
+        if(type === "products"){
+            alert("products")
+            return
+        }
+        
+        
     }
 
     const handleResetForm = () => {

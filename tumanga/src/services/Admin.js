@@ -118,3 +118,20 @@ export function createUser(body){
         })
     
 }
+
+
+export function getAllProducts(){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/products`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, products }) => {
+            return status === "success" ? {products} : {message}
+        })
+    
+}

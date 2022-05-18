@@ -122,6 +122,7 @@ The principal route is "/api/v1"
 * Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
 * Change the role in the usersTable
+* Max-heigth in the platformData -> Look in the PlatformProducts
 
 
 ### Views for public

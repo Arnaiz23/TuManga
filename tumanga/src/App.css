@@ -2828,6 +2828,7 @@ a {
   align-items: center;
   display: flex;
   padding: 20px 40px;
+  gap: 20px;
 }
 
 .rowAdminTitle h2 {
@@ -2982,6 +2983,14 @@ a {
 .modalInformation .modalCenter {
   min-height: 500px;
   width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modalInformation .modalCenter header{
+  position: sticky;
+  top: 0;
+  justify-content: flex-start;
 }
 
 .modalInformation .modalCenter main {
@@ -3692,6 +3701,12 @@ a {
     padding: 30px 0;
   }
 
+  .rowAdminTitle {
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .informationProduct header button {
     width: 100%;
   }
@@ -3717,12 +3732,6 @@ a {
 @media screen and (max-width: 470px) {
   .rowAdminTitle .btn-success {
     font-size: 16px;
-  }
-
-  .rowAdminTitle {
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
   .inputFieldForget {

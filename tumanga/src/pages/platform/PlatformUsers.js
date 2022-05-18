@@ -43,8 +43,8 @@ export default function PlatformUsers() {
             <PlatformHeader />
             <main className="adminMain">
                 <div className="containerDataAdmin">
-                    <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} />
-                    <PlatformSearchModal setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" />
+                    <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} setDataEmpty={setUsersEmpty} setDataData={setUsersData} link="user" type={"users"} />
+                    <PlatformSearchModal setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" type="users" />
                     {loading
                         ? <h2>Cargando...</h2>
                         : (
