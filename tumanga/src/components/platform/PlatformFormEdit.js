@@ -69,7 +69,13 @@ export default function PlatformEditForm({ title, type, data }) {
         }
 
         createUser(newUser).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message === "This email already exists"){
+                return Swal.fire(
+                    'Datos incorrectos',
+                    'Ya existe un usuario con ese correo',
+                    'error'
+                )
+            }
             Swal.fire(
                 'Usuario',
                 'Usuario creado con éxito',

@@ -1,12 +1,30 @@
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 export default function PlatformSectionNewUser({ user, setUser }) {
+
+    const showRef = React.createRef()
+    const hideRef = React.createRef()
+    const passwordRef = React.createRef()
 
     const handleChanges = (e) => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
+    }
+
+    const showPassword = () => {
+        hideRef.current.classList.add("passwordShow")
+        showRef.current.classList.remove("passwordShow")
+        passwordRef.current.type = "text"
+    }
+
+    const hidePassword = () => {
+        showRef.current.classList.add("passwordShow")
+        hideRef.current.classList.remove("passwordShow")
+        passwordRef.current.type = "password"
     }
 
     return (
@@ -36,9 +54,16 @@ export default function PlatformSectionNewUser({ user, setUser }) {
             <div className="inputAdmin">
                 <label htmlFor="password">Password <span className="obligatoryFields">*</span></label>
                 <div className="inputPassword">
-                    <input type="password" id="password" name="password" onChange={handleChanges} title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`}/>
-                    <i className="fa-solid fa-eye passwordShow" id="passwordShow"></i>
-                    <i className="fa-solid fa-eye-slash" id="passwordHide"></i>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        onChange={handleChanges}
+                        ref={passwordRef}
+                        title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`}
+                    />
+                    <i className="passwordShow" id="passwordShow" ref={showRef} onClick={showPassword}><FontAwesomeIcon icon={faEye} /></i>
+                    <i id="passwordHide" onClick={hidePassword} ref={hideRef}><FontAwesomeIcon icon={faEyeSlash} /></i>
                 </div>
             </div>
             <div className="inputAdmin">

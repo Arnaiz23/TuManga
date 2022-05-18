@@ -121,9 +121,7 @@ The principal route is "/api/v1"
 * Component error
 * Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
-* Functional platform Users (Create user)
 * Change the role in the usersTable
-* Create USer -> message This email exists and other
 
 
 ### Views for public
