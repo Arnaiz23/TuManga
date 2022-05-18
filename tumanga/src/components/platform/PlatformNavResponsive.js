@@ -1,4 +1,4 @@
-import { faBook, faBoxOpen, faClipboardList, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBoxOpen, faClipboardList, faHome, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "wouter";
@@ -12,6 +12,11 @@ export default function PlatformNavResponsive() {
                     alt="icon user" />
             </header>
             <ul>
+                <li>
+                    <Link to="/platform">
+                        <i><FontAwesomeIcon icon={faHome} /></i>
+                    </Link>
+                </li>
                 <li id="btnUser2">
                     <Link to="/platform/users">
                         <i><FontAwesomeIcon icon={faUser} /></i>

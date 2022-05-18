@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faBoxOpen, faClipboardList, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBoxOpen, faClipboardList, faHome, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext } from "react";
 import { Link } from "wouter";
 import AdminContext from "context/AdminContext";
@@ -16,6 +16,12 @@ export default function PlatformNav() {
                 <h2>Admin</h2>
             </header>
             <ul>
+                <li>
+                    <Link to="/platform">
+                        <i><FontAwesomeIcon icon={faHome} /></i>
+                        <h3>Inicio</h3>
+                    </Link>
+                </li>
                 <li id="btnUser">
                     <Link to="/platform/users">
                         <i><FontAwesomeIcon icon={faUser} /></i>

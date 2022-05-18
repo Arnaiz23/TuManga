@@ -116,7 +116,7 @@ The principal route is "/api/v1"
 ### Missing views
 
 * adminPanel -> filter
-* Format the **dates**
+* Format the dates
 * Sort by x
 * Component error
 * Slider in Home (Splide is an alternative)
