@@ -3063,6 +3063,7 @@ a {
 .containerAdminCenter header {
   width: 100%;
   border-bottom: 1px solid #000;
+  text-transform: uppercase;
 }
 
 .containerAdminCenter header h2 {
@@ -3077,7 +3078,7 @@ a {
   padding: 20px 40px;
 }
 
-.containerAdminCenter main {
+.containerAdminCenter section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;

@@ -1,7 +1,7 @@
-PUT http://localhost:3900/api/v1/admin/user/6267d1827c709df370643e26 HTTP/1.1
+PUT http://localhost:3900/api/v1/admin/user/627e57ae723a2594bd14a79a HTTP/1.1
 Content-Type: application/json
-# ! Authorization
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2MxNTI4MzFhZGQ4Y2JlNDYzNGIyMCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDUtMTFUMTk6NTc6MjguODc5WiIsImlhdCI6MTY1Mjg2MzY4MCwiZXhwIjoxNjUyODcwODgwfQ.DXMU5z-1vL5su0l8Pn1zVbLiegtX1Rx0TzTGXV-lV1Y
 
 {
-    "role" : "owner"
+    "role" : "Owner"
 }

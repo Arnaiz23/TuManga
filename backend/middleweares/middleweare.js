@@ -43,6 +43,7 @@ let middleweares = {
             }
 
             if (role.name === "admin") {
+                req.admin = true
                 next()
                 return
             }

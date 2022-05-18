@@ -14,7 +14,7 @@ export function getStatistics() {
 
 }
 
-export function getAllUsers(){
+export function getAllUsers() {
 
     let token = getToken()
 
@@ -22,28 +22,80 @@ export function getAllUsers(){
 
     return fetch(`${api_URL}/admin/users`, {
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, users }) => {
-            return status === "success" ? {users} : {message}
+            return status === "success" ? { users } : { message }
         })
-    
+
 }
 
-export function searchData(search, option){
+export function searchData(search, option) {
 
     let token = getToken()
 
     return fetch(`${api_URL}/admin/search/${search}&${option}`, {
         headers: new Headers({
-            "Authorization" : `BEarer ${token}`
+            "Authorization": `BEarer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, userSearch, productSearch }) => {
-            return status === "success" ? {userSearch, productSearch} : {message}
+            return status === "success" ? { userSearch, productSearch } : { message }
+        })
+
+}
+
+export function getOnerUser(id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/user/${id}`, {
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, userFind, roleName }) => {
+            return status === "success" ? { userFind, roleName } : { message }
+        })
+
+}
+
+
+export function getAllRoles() {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/roles`, {
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, roles }) => {
+            return status === "success" ? { roles } : { message }
+        })
+
+}
+
+export function updateOneUser(id, body) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/user/${id}`, {
+        method: "PUT",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, userUpdate }) => {
+            return status === "success" ? {userUpdate} : {message}
         })
     
 }

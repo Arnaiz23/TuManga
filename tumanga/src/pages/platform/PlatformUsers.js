@@ -1,5 +1,3 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlatformHeader from "components/platform/PlatformHeader";
 import PlatformMainRowTitle from "components/platform/PlatformMainRowTitle";
 import PlatformNav from "components/platform/PlatformNav";

@@ -2207,7 +2207,7 @@ var controller = {
         // ? If user is admin
         // * req.admin = true (In the middleweare admin)
         if (req.admin && body.role) {
-            let newRole = await Role.findOne({ name: { $in: body.role } })
+            let newRole = await Role.findOne({ name: { $in: body.role.toLowerCase() } })
 
             if (!newRole) {
                 return res.status(404).send({
@@ -2232,7 +2232,7 @@ var controller = {
         }
 
         if (body.state) {
-            userFind.email = body.email
+            userFind.state = body.state
         }
 
         let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true, fields: { password_hash: false } })
@@ -2353,7 +2353,7 @@ var controller = {
 
         const id_user = req.params.id
 
-        let userFind = await User.findById(id_user, { password_hash: false })
+        let userFind = await User.findById(id_user, { password_hash: false, address: false, billing: false, comments: false, tokenRecover: false, cart: false, _id: false })
 
         if (!userFind) {
             return res.status(404).send({
@@ -2362,9 +2362,12 @@ var controller = {
             })
         }
 
+        let roleName = await Role.findById(userFind.role)
+
         return res.status(200).send({
             status: "success",
-            userFind
+            userFind,
+            roleName: roleName.name
         })
 
     },

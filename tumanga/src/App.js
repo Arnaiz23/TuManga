@@ -23,6 +23,7 @@ import RecoverPassword from 'pages/publicView/RecoverPassword/RecoverPassword';
 import PlatformHome from 'pages/platform/PlatformHome';
 import { AdminContextProvider } from 'context/AdminContext';
 import PlatformUsers from 'pages/platform/PlatformUsers';
+import PlatformEditUser from 'pages/platform/PlatformEditUser';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
       <AdminContextProvider>
         <Route path='/platform' component={PlatformHome} />
         <Route path='/platform/users' component={PlatformUsers} />
+        <Route path='/platform/user/:id' component={PlatformEditUser} />
       </AdminContextProvider>
     </div>
   );
