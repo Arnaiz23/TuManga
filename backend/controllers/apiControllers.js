@@ -2300,7 +2300,7 @@ var controller = {
 
         const $state = ["new", "old"];
         const $numberValid = /^[0-9]+$/;
-        const $categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "funko"];
+        const $categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
         const $type = ["manga", "novela ligera", "merchandising"];
 
         // name price description short_description state stock categories type number_sales authors editorial series
@@ -2349,6 +2349,13 @@ var controller = {
             });
 
             let validateCategories2 = !validateCategories.includes(false);
+
+            if(!validateCategories2){
+                return res.status(404).send({
+                    status: "error",
+                    message: "The categories are invalid"
+                })
+            }
 
             if (validateCategories2) {
                 productFind.categories = body.categories

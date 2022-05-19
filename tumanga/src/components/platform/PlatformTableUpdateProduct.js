@@ -2,17 +2,21 @@ import React, { useEffect, useState } from "react";
 import { api_URL } from "services/config";
 import getOneProduct from 'services/getOneProduct'
 
-export default function PlatformTableUpdateProduct({ data, product, setProduct, setImage, image }) {
+export default function PlatformTableUpdateProduct({ data, product, setProduct, setImage, setCategories, categories }) {
 
     const [loading, setLoading] = useState(false)
+    const [newCategorie, setNewCategorie] = useState('')
+
+    const inputCategorieRef = React.createRef()
 
     useEffect(() => {
         setLoading(true)
         getOneProduct(data).then(data => {
             setProduct(data.product)
             setLoading(false)
+            setCategories(data.product.categories)
         })
-    }, [data, setProduct])
+    }, [data, setProduct, setCategories])
 
     const handleChange = (e) => {
         setProduct({
@@ -23,6 +27,26 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
 
     const handleImage = (e) => {
         setImage(e.target.files[0])
+    }
+
+    const handleAddCategorie = (e) => {
+        e.preventDefault()
+        if (newCategorie === "") return
+        const categories = product.categories
+        categories.push(newCategorie)
+        setCategories(categories)
+        e.target.reset()
+        setNewCategorie('')
+    }
+
+    const deleteCategorie = (e) => {
+        const categories = product.categories
+        categories.splice(categories.indexOf(e.target.innerHTML), 1)
+        setCategories(categories)
+    }
+
+    const handleChangeCategorie = (e) => {
+        setNewCategorie(e.target.value)
     }
 
     return (
@@ -60,10 +84,26 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
                             <label htmlFor="stock">Stock</label>
                             <input type="number" id="stock" name="stock" value={product.stock} onChange={handleChange} />
                         </div>
-                        {/* <div className="inputAdmin">
-                    <label htmlFor="stock">Categorias</label>
-                    <input type="number" id="stock" name="stock" value={product.stock} />
-                </div> */}
+
+                        <div className="inputAdmin">
+                            <label htmlFor="categories">Categorias</label>
+                            <form className="addCategorie" onSubmit={handleAddCategorie}>
+                                <input type="text" id="categories" name="categories" placeholder="Añade una categoría" onChange={handleChangeCategorie} ref={inputCategorieRef} />
+                                <button className="btnCategorieAdd">Add</button>
+                            </form>
+                            {/* {categories && <p>{categories.join(" - ")}</p>} */}
+                            <span className="spanCategoriesAdmin">
+                                {categories.map((cat, index) => {
+                                    return (
+                                        <React.Fragment key={cat + index}>
+                                            <b onClick={deleteCategorie}>{cat}</b>
+                                            {index < categories.length - 1 && <p> - </p>}
+                                        </React.Fragment>
+                                    )
+                                })}
+                            </span>
+                        </div>
+
                         <div className="inputAdmin">
                             <label htmlFor="type">Tipo</label>
                             <select id="type" name="type" defaultValue={product.type} onChange={handleChange}>

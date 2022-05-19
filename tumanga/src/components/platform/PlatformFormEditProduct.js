@@ -4,20 +4,31 @@ import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 import PlatformTableUpdateProduct from "./PlatformTableUpdateProduct";
 
-// const ROLES = ["admin", "empleado", "owner", "usuario"]
+const ERROR_RESPONSES = {
+    "The categories are invalid" : "Las categorias no son válidas",
+    "This product has not been updated" : `Error al actualizarse el producto.\nReinténtelo más tarde.`
+}
 
 export default function PlatformEditFormProduct({ title, type, data }) {
 
     let [product, setProduct] = useState({})
     const [image, setImage] = useState()
+    const [categories, setCategories] = useState([])
     // const [role, setRole] = useState('')
 
     const handleUpdate = () => {
 
         // ! Validate the data
+        product.categories = categories
 
-        updateProduct(product, product._id).then(data => {
-            if (data.message) return alert(data.message)
+        updateProduct(product, product._id).then(data => {console.log(data);
+            if (data.message) {
+                return Swal.fire(
+                    'Error datos',
+                    ERROR_RESPONSES[data.message],
+                    'error'
+                )
+            }
 
             if (image !== undefined) {
                 const formData = new FormData();
@@ -78,7 +89,7 @@ export default function PlatformEditFormProduct({ title, type, data }) {
                     <h2>{title}</h2>
                 </header>
                 {
-                    type === "editProduct" && <PlatformTableUpdateProduct data={data} product={product} setProduct={setProduct} setImage={setImage} image={image} />
+                    type === "editProduct" && <PlatformTableUpdateProduct data={data} product={product} setProduct={setProduct} setImage={setImage} image={image} setCategories={setCategories} categories={categories} />
                 }
                 <footer>
                     {

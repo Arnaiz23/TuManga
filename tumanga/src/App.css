@@ -3114,6 +3114,37 @@ a {
   gap: 10px;
 }
 
+.addCategorie{
+  width: 100%;
+  position: relative;
+}
+
+.addCategorie .btnCategorieAdd{
+  position: absolute;
+  right: 20%;
+  top: 0;
+  width: 20%;
+  background-color: var(--green);
+  height: 100%;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.spanCategoriesAdmin{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.spanCategoriesAdmin > b:hover{
+  color: var(--passion-red);
+}
+
 .inputAdmin label {
   font-size: 18px;
   font-weight: bold;

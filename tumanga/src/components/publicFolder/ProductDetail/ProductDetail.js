@@ -106,6 +106,12 @@ export default function ProductDetail({ product }) {
                                     <p>{product.series}</p>
                                 </li>
                             }
+                            {product.categories &&
+                                <li>
+                                    <b>Categorías:</b>
+                                    <p>{product.categories.join(" - ")}</p>
+                                </li>
+                            }
                         </ul>
                     </main>
                     <footer>

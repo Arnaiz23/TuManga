@@ -125,10 +125,12 @@ The principal route is "/api/v1"
 * Max-heigth in the platformData -> Look in the PlatformProducts
 * PlatformProductsView
   * EditView
-    * Categories
+    * Categories (add and delete one)
+      * Miss update the view
     * Change the style of the btn upload file
     * Validate data
 * Modals change the main for section
+* ProductDetail -> Edit the style of categories
 
 
 ### Views for public
