@@ -125,7 +125,8 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
                             <input type="text" id="series" name="series" value={product.series} onChange={handleChange} />
                         </div>
                         <div className="inputAdmin">
-                            <label htmlFor="image">Imagen</label>
+                            <label>Imagen</label>
+                            <label htmlFor="image" className="btn btn-primary">Subir</label>
                             <input type="file" name="image" id="image" onChange={handleImage}></input>
                         </div>
                         <div className="inputAdmin">

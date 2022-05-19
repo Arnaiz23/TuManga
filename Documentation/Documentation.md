@@ -127,7 +127,6 @@ The principal route is "/api/v1"
   * EditView
     * Categories (add and delete one)
       * Miss update the view
-    * Change the style of the btn upload file
     * Validate data
 * Modals change the main for section
 * ProductDetail -> Edit the style of categories

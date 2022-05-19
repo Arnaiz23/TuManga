@@ -3174,6 +3174,17 @@ a {
   resize: none;
 }
 
+.inputAdmin input[type="file"]{
+  display: none;
+}
+
+.inputAdmin > .btn-primary{
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .imageSmall {
   width: 12rem;
 }
