@@ -88,50 +88,87 @@ export function updateOneUser(id, body) {
     return fetch(`${api_URL}/admin/user/${id}`, {
         method: "PUT",
         headers: new Headers({
-            "Content-type" : "application/json",
-            "Authorization" : `Bearer ${token}`
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, message, userUpdate }) => {
-            return status === "success" ? {userUpdate} : {message}
+            return status === "success" ? { userUpdate } : { message }
         })
-    
+
 }
 
-export function createUser(body){
+export function createUser(body) {
 
     let token = getToken()
 
     return fetch(`${api_URL}/admin/user`, {
         method: "POST",
         headers: new Headers({
-            "Content-type" : "application/json",
-            "Authorization" : `Bearer ${token}`
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, message, userSave }) => {
-            return status === "success" ? {userSave} : {message}
+            return status === "success" ? { userSave } : { message }
         })
-    
+
 }
 
 
-export function getAllProducts(){
+export function getAllProducts() {
 
     let token = getToken()
 
     return fetch(`${api_URL}/products`, {
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, products }) => {
-            return status === "success" ? {products} : {message}
+            return status === "success" ? { products } : { message }
+        })
+
+}
+
+export function uploadImage(id, image) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/image/${id}`, {
+        method: "POST",
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        }),
+        body: image
+    })
+        .then(res => res.json())
+        .then(({ status, message, productUpdate }) => {
+            return status === "success" ? { productUpdate } : { message }
+        })
+
+}
+
+export function updateProduct(body, id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/product/${id}`,{
+        method: "PUT",
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`,
+            "Content-type" : "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, productUpdate }) => {
+            return status === "success" ? {productUpdate} : {message}
         })
     
 }

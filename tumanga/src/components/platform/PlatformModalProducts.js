@@ -12,7 +12,7 @@ export default function PlatformModalProducts({ data }) {
             </div>
             <div className="modalInfo">
                 <label htmlFor="name">NOMBRE</label>
-                <p>{data.name}</p>
+                <p className="capitalize">{data.name}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="price">PRECIO</label>
@@ -32,7 +32,7 @@ export default function PlatformModalProducts({ data }) {
             </div>
             <div className="modalInfo">
                 <label htmlFor="state">ESTADO</label>
-                <p>{data.state}</p>
+                <p className="capitalize">{data.state}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="stock">STOCK</label>
@@ -40,7 +40,7 @@ export default function PlatformModalProducts({ data }) {
             </div>
             <div className="modalInfo">
                 <label htmlFor="type">TIPO</label>
-                <p>{data.type}</p>
+                <p className="capitalize">{data.type}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="categories">Categorias</label>
@@ -52,15 +52,15 @@ export default function PlatformModalProducts({ data }) {
             </div>
             <div className="modalInfo">
                 <label htmlFor="authors">Autores</label>
-                <p>{data.authors}</p>
+                <p className="capitalize">{data.authors}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="editorial">Editorial</label>
-                <p>{data.editorial}</p>
+                <p className="capitalize">{data.editorial}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="series">Series</label>
-                <p>{data.series}</p>
+                <p className="capitalize">{data.series}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="comments">Nº Comentarios</label>

@@ -15,6 +15,14 @@ export default function PlatformModalUsers({ data }) {
                 <p>{data.email}</p>
             </div>
             <div className="modalInfo">
+                <label htmlFor="name">NOMBRE</label>
+                <p>{data.name}</p>
+            </div>
+            <div className="modalInfo">
+                <label htmlFor="last_name">APELLIDOS</label>
+                <p>{data.last_name}</p>
+            </div>
+            <div className="modalInfo">
                 <label htmlFor="state">ESTADO</label>
                 {data.state === "Active"
                     ? <p>Activo</p>
@@ -32,6 +40,18 @@ export default function PlatformModalUsers({ data }) {
             <div className="modalInfo">
                 <label htmlFor="orders">Nº PEDIDOS</label>
                 <p>{data.cart.length}</p>
+            </div>
+            <div className="modalInfo">
+                <label htmlFor="address">Nº DIRECCIONES</label>
+                <p>{data.address.length}</p>
+            </div>
+            <div className="modalInfo">
+                <label htmlFor="billing">Nº FACTURACIONES</label>
+                <p>{data.billing.length}</p>
+            </div>
+            <div className="modalInfo">
+                <label htmlFor="comments">Nº COMENTARIOS</label>
+                <p>{data.comments.length}</p>
             </div>
         </main>
     )

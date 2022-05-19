@@ -8,7 +8,7 @@ import PlatformTableResponsive from "components/platform/PlatformTableResponsive
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "services/Admin";
 
-const TITLES_TABLE = ["id", "email", "estado", "fecha registro", "rol", "nºpedidos", ""]
+const TITLES_TABLE = ["id", "email", "estado", "fecha registro", "rol", "nºpedidos", "Edit"]
 const TITLES_TABLE_RESPONSIVE = ["id", "email", "show", "edit"]
 
 export default function PlatformUsers() {
@@ -44,7 +44,7 @@ export default function PlatformUsers() {
             <main className="adminMain">
                 <div className="containerDataAdmin">
                     <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} setDataEmpty={setUsersEmpty} setDataData={setUsersData} link="user" type={"users"} />
-                    <PlatformSearchModal setUsersEmpty={setUsersEmpty} setUsersData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" type="users" />
+                    <PlatformSearchModal setDataEmpty={setUsersEmpty} setDataData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" type="users" />
                     {loading
                         ? <h2>Cargando...</h2>
                         : (

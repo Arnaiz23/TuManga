@@ -62,6 +62,10 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
                         <input type="email" name="email" id="email" value={user.email} onChange={handleChangeData} />
                     </div>
                     <div className="inputAdmin">
+                        <label htmlFor="password">Contraseña</label>
+                        <input type="password" name="password" id="password" title="Escriba una contraseña si desea cambiarla" placeholder="Escriba una contraseña si desea cambiarla" onChange={handleChangeData} />
+                    </div>
+                    <div className="inputAdmin">
                         <label htmlFor="state">Estado</label>
                         <select id="state" name="state" onChange={handleChangeData} defaultValue={user.state}>
                             <option value="Active">Activo</option>

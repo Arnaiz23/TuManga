@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchData } from "services/Admin";
+import { searchProducts } from "services/Orders";
 
-export default function PlatformSearchModal({ changeModal, modal, title, setUsersData, setUsersEmpty, type }) {
+export default function PlatformSearchModal({ changeModal, modal, title, setDataData, setDataEmpty, type }) {
 
     let [search, setSearch] = useState('')
 
@@ -15,16 +16,34 @@ export default function PlatformSearchModal({ changeModal, modal, title, setUser
         setSearch(e.target.value)
     }
 
-    const fetchSearchUsers = () => {
+    const fetchSearchUsers = (value) => {
         if(search === "") search = 'null'
+
+        if(value) search = "null"
         searchData(search, 'user').then(data => {
             if(data.message) {
-                setUsersEmpty(true)
+                setDataEmpty(true)
                 changeModal(false)
                 return
             }
-            setUsersData(data.userSearch)
-            setUsersEmpty(false)
+            setDataData(data.userSearch)
+            setDataEmpty(false)
+            changeModal(false)
+        })
+    }
+
+    const fetchSearchProducts = (value) => {
+        if(search === "") search = 'null'
+
+        if(value) search = "null"
+        searchProducts(search).then(data => {
+            if(data.message){
+                setDataEmpty(true)
+                return
+            }
+
+            setDataData(data.searchProducts)
+            setDataEmpty(false)
             changeModal(false)
         })
     }
@@ -37,7 +56,7 @@ export default function PlatformSearchModal({ changeModal, modal, title, setUser
         }
 
         if(type === "products"){
-            alert("products")
+            fetchSearchProducts()
             return
         }
         
@@ -45,16 +64,15 @@ export default function PlatformSearchModal({ changeModal, modal, title, setUser
     }
 
     const handleResetForm = () => {
-        searchData("null", 'user').then(data => {
-            if(data.message) {
-                setUsersEmpty(true)
-                changeModal(false)
-                return
-            }
-            setUsersData(data.userSearch)
-            setUsersEmpty(false)
-            changeModal(false)
-        })
+        if(type === "users"){
+            fetchSearchUsers("null")
+            return
+        }
+
+        if(type === "products"){
+            fetchSearchProducts("null")
+            return
+        }
     }
 
     return (

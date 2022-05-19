@@ -1,10 +1,13 @@
 import { faBook, faBoxOpen, faClipboardList, faHome, faUser, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { api_URL } from "services/config";
 import { Link } from "wouter";
+import AdminContext from "context/AdminContext";
 
 export default function PlatformNavResponsive() {
+
+    const { userData } = useContext(AdminContext)
 
     return (
         <div className="smallNav">
@@ -33,12 +36,14 @@ export default function PlatformNavResponsive() {
                         <i><FontAwesomeIcon icon={faBoxOpen} /></i>
                     </Link>
                 </li>
-                <li>
-                    {/* ! If the user is admin */}
-                    <Link to="/platform/roles">
-                        <i><FontAwesomeIcon icon={faWrench} /></i>
-                    </Link>
-                </li>
+                {userData.roleName === "admin" &&
+                    <li>
+                        {/* ! If the user is admin */}
+                        <Link to="/platform/roles">
+                            <i><FontAwesomeIcon icon={faWrench} /></i>
+                        </Link>
+                    </li>
+                }
                 <li>
                     <Link to="/platform/comments">
                         <i><FontAwesomeIcon icon={faClipboardList} /></i>

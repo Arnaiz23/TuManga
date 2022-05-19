@@ -1,11 +1,14 @@
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import "moment/locale/es"
 import Moment from "react-moment";
 import { Link } from "wouter";
+import AdminContext from "context/AdminContext";
 
 export default function PlatformTable({ titles, users, usersEmpty }) {
+
+    const { userData } = useContext(AdminContext)
 
     return (
         <div className="containerTable">
@@ -30,7 +33,11 @@ export default function PlatformTable({ titles, users, usersEmpty }) {
                                     <td><Moment format="DD/MM/YYYY">{user.register_date}</Moment></td>
                                     <td>{user.role}</td>
                                     <td>{user.cart.length}</td>
-                                    <Link to={`/platform/user/${user._id}`}><td className="btnEditData"><i><FontAwesomeIcon icon={faPenToSquare} /></i></td></Link>
+                                    {
+                                        userData.roleName === "admin" 
+                                            ? <Link to={`/platform/user/${user._id}`}><td className="btnEditData"><i><FontAwesomeIcon icon={faPenToSquare} /></i></td></Link>
+                                            : <td className="btnEditData"><i><FontAwesomeIcon icon={faXmark} /></i></td>
+                                    }
                                 </tr>
                             )
                         })}

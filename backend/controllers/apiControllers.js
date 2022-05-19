@@ -2252,6 +2252,31 @@ var controller = {
             userFind.state = body.state
         }
 
+        if(body.password) {
+
+            const regexpPassword = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/
+
+            if(!regexpPassword.test(body.password)){
+                return res.status(404).send({
+                    status: "error",
+                    message: "La contraseña no cumple con los requisitos"
+                })
+            }
+            
+            let match = await User.comparePasswords(body.password, userFind.password_hash)
+
+            if(match){
+                return res.status(404).send({
+                    status: "error",
+                    message: "La contraseña coindice con la actual"
+                })
+            }
+
+            let newPassword = await User.encrypt(body.password)
+
+            userFind.password_hash = newPassword
+        }
+
         let userUpdate = await User.findByIdAndUpdate(id_user, userFind, { new: true, fields: { password_hash: false } })
 
         if (!userUpdate) {
@@ -2621,7 +2646,15 @@ var controller = {
         }
 
         let file_path = req.files.file0.path
-        file_name = file_path.split("/")[2]
+
+        // * ---------------------------- LINUX OR WINDOWS ---------------------------------
+        // ! Descomment if is linux
+        // file_name = file_path.split("/")[2]
+        // ! Comment windows
+        file_name = file_path.split("\\")[2]
+
+        // * -----------------------------------------------------------------
+
         let file_extension = file_name.split(".")[1]
 
         if (file_extension != "png" && file_extension != "jpg" && file_extension != "jpeg") {
