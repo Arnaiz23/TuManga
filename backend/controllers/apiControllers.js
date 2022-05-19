@@ -79,7 +79,7 @@ var controller = {
             })
         }
 
-        var validateCategories = newProduct.categories.map(categorie => {
+        /* var validateCategories = newProduct.categories.map(categorie => {
             if (categories.includes(categorie)) {
                 return true
             } else {
@@ -87,7 +87,7 @@ var controller = {
             }
         });
 
-        var validateCategories2 = !validateCategories.includes(false);
+        var validateCategories2 = !validateCategories.includes(false); */
 
         var validateType = type.includes(newProduct.type);
 
@@ -98,7 +98,7 @@ var controller = {
 
         // * ------------------------------------------------------------------
 
-        if (validateName && validateDescription && validateShortDescription && validateState && validatePrice && validateStock && validateCategories2 && validateType && validateSales) {
+        if (validateName && validateDescription && validateShortDescription && validateState && validatePrice && validateStock  && validateType && validateSales) {
 
             let newProductScheme = new Product();
             newProductScheme.name = newProduct.name;
@@ -540,11 +540,11 @@ var controller = {
 
             let options = option.split(";")
 
-            let index = []
+            /* let index = []
 
             options.map(option => {
                 index.push(categories.find(name => name.includes(option)))
-            })
+            }) */
 
             let allProducts
 
@@ -554,11 +554,11 @@ var controller = {
                         { "type": "manga" },
                         { "type": "novela ligera" }
                     ]
-                    , categories: { "$in": index }
+                    , categories: { "$in": options }
                 })
             } else {
                 allProducts = await Product.find({
-                    type: type, categories: { "$in": index }
+                    type: type, categories: { "$in": options }
                 })
             }
 
@@ -579,11 +579,11 @@ var controller = {
                         { "type": "manga" },
                         { "type": "novela ligera" }
                     ]
-                    , categories: { "$in": index }
+                    , categories: { "$in": options }
                 }).limit(limit).skip(skip);
             } else {
                 products = await Product.find({
-                    type: type, categories: { "$in": index }
+                    type: type, categories: { "$in": options }
                 }).limit(limit).skip(skip);
             }
 
@@ -2340,7 +2340,7 @@ var controller = {
 
         if (body.categories) {
 
-            let validateCategories = body.categories.map(categorie => {
+            /* let validateCategories = body.categories.map(categorie => {
                 if ($categories.includes(categorie)) {
                     return true
                 } else {
@@ -2359,7 +2359,9 @@ var controller = {
 
             if (validateCategories2) {
                 productFind.categories = body.categories
-            }
+            } */
+
+            productFind.categories = body.categories
         }
 
         if (body.type && $type.includes(body.type)) {

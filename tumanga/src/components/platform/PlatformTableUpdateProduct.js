@@ -33,7 +33,7 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
         e.preventDefault()
         if (newCategorie === "") return
         const categories = product.categories
-        categories.push(newCategorie)
+        categories.push(newCategorie.toLocaleLowerCase())
         setCategories(categories)
         e.target.reset()
         setNewCategorie('')
@@ -59,7 +59,7 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
                     <>
                         <div className="inputAdmin">
                             <label htmlFor="name">Nombre</label>
-                            <input type="text" id="name" name="name" value={product.name} onChange={handleChange} />
+                            <input type="text" id="name" name="name" value={product.name} onChange={handleChange} title={product.name} />
                         </div>
                         <div className="inputAdmin">
                             <label htmlFor="price">Precio</label>
