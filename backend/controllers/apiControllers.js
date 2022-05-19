@@ -128,7 +128,8 @@ var controller = {
 
                 return res.status(201).send({
                     status: "success",
-                    message: "The product has been save correctly"
+                    message: "The product has been save correctly",
+                    product_id: productStore._id
                 })
 
             });

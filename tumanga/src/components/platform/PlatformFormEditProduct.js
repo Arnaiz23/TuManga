@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { updateProduct, uploadImage } from "services/Admin";
+import { createProduct, updateProduct, uploadImage } from "services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
+import PlatformTableNewProduct from "./PlatformTableNewProduct";
 import PlatformTableUpdateProduct from "./PlatformTableUpdateProduct";
 
 const ERROR_RESPONSES = {
-    "The categories are invalid" : "Las categorias no son válidas",
-    "This product has not been updated" : `Error al actualizarse el producto.\nReinténtelo más tarde.`
+    "The categories are invalid": "Las categorias no son válidas",
+    "This product has not been updated": `Error al actualizarse el producto.\nReinténtelo más tarde.`
 }
 
 export default function PlatformEditFormProduct({ title, type, data }) {
@@ -14,14 +15,32 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     let [product, setProduct] = useState({})
     const [image, setImage] = useState()
     const [categories, setCategories] = useState([])
-    // const [role, setRole] = useState('')
 
     const handleUpdate = () => {
 
-        // ! Validate the data
+        const regexpNumber = /^[0-9]+$/
+        const regexpNames = /^[a-zA-Z]+$/
+
+        if (!regexpNumber.test(product.price) || !regexpNumber.test(product.stock)) {
+            return Swal.fire(
+                'Datos erróneos',
+                'Los campos precio y stock solo deben contener números',
+                'error'
+            )
+        }
+
+        if (!regexpNames.test(product.authors) || !regexpNames.test(product.editorial) || !regexpNames.test(product.series)) {
+            return Swal.fire(
+                'Datos erróneos',
+                'El autor, editorial y serie solo puede contener letras',
+                'error'
+            )
+        }
+
         product.categories = categories
 
-        updateProduct(product, product._id).then(data => {console.log(data);
+        updateProduct(product, product._id).then(data => {
+            console.log(data);
             if (data.message) {
                 return Swal.fire(
                     'Error datos',
@@ -60,7 +79,7 @@ export default function PlatformEditFormProduct({ title, type, data }) {
 
     }
 
-    const [newProduct, setNewProduct] = useState({
+    let [newProduct, setNewProduct] = useState({
         "name": "",
         "price": 0,
         "description": "",
@@ -79,7 +98,57 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     const setLocation = useLocation()[1]
 
     const handleCreate = () => {
-        alert("Create")
+
+        const regexpNumber = /^[0-9]+$/
+        const regexpNames = /^[a-zA-Záéíóú !?¿*]+$/
+
+        if (newProduct.name === "" || newProduct.description === "" || newProduct.short_description === "" || newProduct.state === "" || newProduct.stock === 0 || newProduct.categories.length <= 0 || newProduct.state === "" || image === undefined) {
+            return Swal.fire(
+                'Campos vacíos',
+                'Debes rellenar todos los campos obligatorios',
+                'warning'
+            )
+        }
+
+        if (!regexpNumber.test(newProduct.price) || !regexpNumber.test(newProduct.stock)) {
+            return Swal.fire(
+                'Datos erróneos',
+                'Los campos precio y stock solo deben contener números',
+                'error'
+            )
+        }
+
+        if (!regexpNames.test(newProduct.authors) || !regexpNames.test(newProduct.editorial) || !regexpNames.test(newProduct.series)) {
+            return Swal.fire(
+                'Datos erróneos',
+                'El autor, editorial y serie solo puede contener letras',
+                'error'
+            )
+        }
+
+        newProduct.price = parseInt(newProduct.price)
+        newProduct.stock = parseInt(newProduct.stock)
+
+        createProduct(newProduct).then(data => {
+            if (data.status !== "success") return alert(data)
+
+            const formData = new FormData();
+            formData.append(
+                'file0',
+                image,
+                image.name
+            );
+
+            uploadImage(data.product_id, formData).then(data => {
+                if (data.message) return alert(data.message)
+                Swal.fire(
+                    'Producto',
+                    'Producto creado correctamente',
+                    'success'
+                )
+                setLocation("/platform/products")
+            })
+        })
     }
 
     return (
@@ -90,6 +159,9 @@ export default function PlatformEditFormProduct({ title, type, data }) {
                 </header>
                 {
                     type === "editProduct" && <PlatformTableUpdateProduct data={data} product={product} setProduct={setProduct} setImage={setImage} image={image} setCategories={setCategories} categories={categories} />
+                }
+                {
+                    type === "createProduct" && <PlatformTableNewProduct setNewProduct={setNewProduct} newProduct={newProduct} setImage={setImage} />
                 }
                 <footer>
                     {

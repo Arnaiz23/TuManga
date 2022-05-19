@@ -127,9 +127,11 @@ The principal route is "/api/v1"
   * EditView
     * Categories (add and delete one)
       * Miss update the view
-    * Validate data
+* Delete the product and user
 * Modals change the main for section
 * ProductDetail -> Edit the style of categories
+* BTN-UP in platform
+* Update the style of the Loading in Platform
 
 
 ### Views for public

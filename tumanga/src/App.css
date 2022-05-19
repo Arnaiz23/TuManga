@@ -1000,6 +1000,10 @@ a {
   align-items: center;
 }
 
+.cardFooter h3{
+  text-align: center;
+}
+
 .cardFooter .priceContainer {
   display: flex;
   width: 200px;

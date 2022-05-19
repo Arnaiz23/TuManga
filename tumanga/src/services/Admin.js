@@ -172,3 +172,22 @@ export function updateProduct(body, id) {
         })
     
 }
+
+export function createProduct(body) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/product`, {
+        method: "POST",
+        headers: new Headers({
+            "Content-type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, product_id }) => {
+            return {status, product_id}
+        })
+    
+}

@@ -27,6 +27,7 @@ import PlatformEditUser from 'pages/platform/PlatformEditUser';
 import PlatformNewUser from 'pages/platform/PlatformNewUser';
 import PlatformProducts from 'pages/platform/PlatformProducts';
 import PlatformEditProducts from 'pages/platform/PlatformEditProducts';
+import PlatformNewProduct from 'pages/platform/PlatformNewProduct';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path='/platform/user' component={PlatformNewUser} />
         <Route path='/platform/products' component={PlatformProducts} />
         <Route path='/platform/product/:id' component={PlatformEditProducts} />
+        <Route path='/platform/product' component={PlatformNewProduct} />
       </AdminContextProvider>
     </div>
   );
