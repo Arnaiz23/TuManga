@@ -158,19 +158,19 @@ export function updateProduct(body, id) {
 
     let token = getToken()
 
-    return fetch(`${api_URL}/admin/product/${id}`,{
+    return fetch(`${api_URL}/admin/product/${id}`, {
         method: "PUT",
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`,
-            "Content-type" : "application/json"
+            "Authorization": `Bearer ${token}`,
+            "Content-type": "application/json"
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, message, productUpdate }) => {
-            return status === "success" ? {productUpdate} : {message}
+            return status === "success" ? { productUpdate } : { message }
         })
-    
+
 }
 
 export function createProduct(body) {
@@ -180,16 +180,16 @@ export function createProduct(body) {
     return fetch(`${api_URL}/product`, {
         method: "POST",
         headers: new Headers({
-            "Content-type" : "application/json",
-            "Authorization" : `Bearer ${token}`
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, product_id }) => {
-            return {status, product_id}
+            return { status, product_id }
         })
-    
+
 }
 
 export function deleteProduct(id) {
@@ -199,14 +199,14 @@ export function deleteProduct(id) {
     return fetch(`${api_URL}/admin/product/${id}`, {
         method: "DELETE",
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, productDelete }) => {
-            return status === "success" ? {productDelete} : {message}
+            return status === "success" ? { productDelete } : { message }
         })
-    
+
 }
 
 
@@ -217,12 +217,28 @@ export function deleteUser(id) {
     return fetch(`${api_URL}/admin/user/${id}`, {
         method: "DELETE",
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, userDelete }) => {
-            return status === "success" ? {userDelete} : {message}
+            return status === "success" ? { userDelete } : { message }
+        })
+
+}
+
+export function getAllOrders() {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/orders`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, orders }) => {
+            return status === "success" ? {orders} : {message}
         })
     
 }

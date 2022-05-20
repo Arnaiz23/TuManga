@@ -127,6 +127,8 @@ The principal route is "/api/v1"
 * ProductDetail -> Edit the style of categories
 * BTN-UP in platform
 * Update the style of the Loading in Platform
+* PlatformOrders
+  * See if I can get the backend to send back the user's email address
 
 
 ### Views for public

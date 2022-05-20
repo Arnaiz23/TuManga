@@ -1384,7 +1384,7 @@ var controller = {
 
     getAllOrders: async (req, res) => {
 
-        let orders = await Order.find()
+        let orders = await Order.find({state: "F"})
 
         if (!orders || orders.length == 0) {
             return res.status(404).send({
