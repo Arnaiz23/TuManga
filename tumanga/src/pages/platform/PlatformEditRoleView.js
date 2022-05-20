@@ -2,6 +2,7 @@ import PlatformEditRole from "components/platform/PlatformEditRole";
 import PlatformHeader from "components/platform/PlatformHeader";
 import PlatformNav from "components/platform/PlatformNav";
 import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import React, { useEffect, useState } from "react";
 import { getOneRole } from "services/Admin";
 
@@ -30,6 +31,7 @@ export default function PlatformEditRoleView({ params }) {
             <PlatformNav />
             <PlatformNavResponsive />
             <PlatformEditRole type={"role"} role={role} loading={loading} setRole={setRole} />
+            <BtnUp />
         </div>
     )
     

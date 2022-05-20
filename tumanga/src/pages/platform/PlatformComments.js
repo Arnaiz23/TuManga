@@ -3,6 +3,8 @@ import PlatformNav from "components/platform/PlatformNav";
 import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import PlatformTableComments from "components/platform/PlatformTableComments";
 import PlatformTableResponsiveComments from "components/platform/PlatformTableResponsiveComments";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getAllComments } from "services/Admin";
 
@@ -44,7 +46,7 @@ export default function PlatformComments() {
                         <h2>Comentarios</h2>
                     </div>
                     {loading
-                        ? <h2>Cargando...</h2>
+                        ? <Spinner />
                         : (
                             <>
                                 <PlatformTableComments titles={TITLES_TABLE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} />
@@ -55,6 +57,7 @@ export default function PlatformComments() {
 
                 </div>
             </main>
+            <BtnUp />
         </div>
     )
 

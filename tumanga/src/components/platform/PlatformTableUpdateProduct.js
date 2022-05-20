@@ -1,3 +1,4 @@
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { api_URL } from "services/config";
 import getOneProduct from 'services/getOneProduct'
@@ -49,7 +50,7 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
         <section>
             {loading
                 ? (
-                    <h2>Cargando...</h2>
+                    <Spinner />
                 )
                 : (
                     <>

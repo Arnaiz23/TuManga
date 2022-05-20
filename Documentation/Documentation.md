@@ -115,22 +115,14 @@ The principal route is "/api/v1"
 
 ### Missing views
 
-* adminPanel -> filter
-* Format the dates
 * Sort by x
 * Component error
 * Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
 * Change the role in the usersTable
-* Max-heigth in the platformData -> Look in the PlatformProducts
 * Modals change the main for section
-* ProductDetail -> Edit the style of categories
-* BTN-UP in platform
-* Update the style of the Loading in Platform
 * PlatformOrders
   * See if I can get the backend to send back the user's email address
-* PlatformComment
-  * Delete comment
 
 
 ### Views for public

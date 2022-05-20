@@ -4,6 +4,8 @@ import PlatformNav from "components/platform/PlatformNav";
 import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import PlatformSearchModal from "components/platform/PlatformSearchModal";
 import PlatformTableResponsiveRoles from "components/platform/PlatformTableResponsiveRoles";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, {  useEffect, useState } from "react";
 import { getAllRoles } from "services/Admin";
 
@@ -40,7 +42,7 @@ export default function PlatformRoles() {
                     <PlatformSearchModal setDataData={setRoles} setDataEmpty={setRolesEmpty} changeModal={setModalOpen} modal={modalOpen} title="Rol" type="roles" />
 
                     {loading
-                        ? <h2>Cargando...</h2>
+                        ? <Spinner />
                         : (
                             <>
                                 <PlatformTableResponsiveRoles data={roles} titles={TABLE_TITLES_RESPONSIVE} dataEmpty={rolesEmpty} setDataData={setRoles} />
@@ -50,6 +52,7 @@ export default function PlatformRoles() {
 
                 </div>
             </main>
+            <BtnUp />
         </div>
     )
 

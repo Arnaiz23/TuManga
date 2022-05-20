@@ -1,3 +1,4 @@
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useState } from "react";
 
 export default function PlatformTableNewProduct({ setNewProduct, newProduct, setImage, categories, setCategories }) {
@@ -37,7 +38,7 @@ export default function PlatformTableNewProduct({ setNewProduct, newProduct, set
         <section>
             {loading
                 ? (
-                    <h2>Cargando...</h2>
+                    <Spinner />
                 )
                 : (
                     <>

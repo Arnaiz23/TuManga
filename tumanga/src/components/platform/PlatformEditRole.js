@@ -1,3 +1,4 @@
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useState } from "react";
 import { createRole, deleteRole, updateRole } from "services/Admin";
 import Swal from "sweetalert2";
@@ -125,7 +126,7 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
                     type === "role" &&
                     <section>
                         {loading
-                            ? <h2>Cargando...</h2>
+                            ? <Spinner />
                             : (
 
                                 <div className="inputAdmin">

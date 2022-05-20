@@ -1,3 +1,4 @@
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getOnerUser } from "services/Admin";
 
@@ -30,7 +31,7 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
     return (
         <section>
             {loading
-                ? <h2>Cargando...</h2>
+                ? <Spinner />
                 : <>
                     <div className="inputAdmin">
                         <label htmlFor="name">Nombre</label>

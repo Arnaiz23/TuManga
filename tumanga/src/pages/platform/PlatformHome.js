@@ -5,6 +5,7 @@ import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import React, { useContext, useEffect } from "react";
 import { getUser } from "services/Users";
 import AdminContext from "context/AdminContext";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 
 export default function PlatformHome() {
 
@@ -27,6 +28,7 @@ export default function PlatformHome() {
             <PlatformNavResponsive />
             <PlatformHeader />
             <PlatformMain />
+            <BtnUp />
         </div>
     )
 

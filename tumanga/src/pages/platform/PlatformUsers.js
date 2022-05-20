@@ -5,6 +5,8 @@ import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import PlatformSearchModal from "components/platform/PlatformSearchModal";
 import PlatformTable from "components/platform/PlatformTable";
 import PlatformTableResponsive from "components/platform/PlatformTableResponsive";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "services/Admin";
 
@@ -46,7 +48,7 @@ export default function PlatformUsers() {
                     <PlatformMainRowTitle title="Usuarios" nameAdd="usuario" changeModal={setModalOpen} setDataEmpty={setUsersEmpty} setDataData={setUsersData} link="user" type={"users"} />
                     <PlatformSearchModal setDataEmpty={setUsersEmpty} setDataData={setUsersData} changeModal={setModalOpen} modal={modalOpen} title="usuario" type="users" />
                     {loading
-                        ? <h2>Cargando...</h2>
+                        ? <Spinner />
                         : (
                             <>
                                 <PlatformTable titles={TITLES_TABLE} users={usersData} usersEmpty={usersEmpty} />
@@ -57,6 +59,7 @@ export default function PlatformUsers() {
 
                 </div>
             </main >
+            <BtnUp />
         </div >
     )
 

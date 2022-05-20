@@ -5,6 +5,8 @@ import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import PlatformSearchModal from "components/platform/PlatformSearchModal";
 import PlatformTableOrders from "components/platform/PlatformTableOrders";
 import PlatformTableResponsiveOrders from "components/platform/PlatformTableResponsiveOrders";
+import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getAllOrders } from "services/Admin";
 
@@ -48,7 +50,7 @@ export default function PlatformOrders() {
                     </header>
 
                     {loading
-                        ? <h2>Cargando...</h2>
+                        ? <Spinner />
                         : (
                             <>
                                 <PlatformTableOrders dataEmpty={ordersEmpty} data={orders} titles={TABLE_TITLES} />
@@ -59,6 +61,7 @@ export default function PlatformOrders() {
 
                 </div>
             </main>
+            <BtnUp />
         </div>
     )
 

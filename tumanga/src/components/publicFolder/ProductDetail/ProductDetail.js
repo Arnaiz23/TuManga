@@ -28,7 +28,7 @@ export default function ProductDetail({ product }) {
             })
         } else {
             createOrder({ "id_product": product._id }).then(data => {
-                if(data.message) return alert(data.message)
+                if (data.message) return alert(data.message)
                 setOrderProcess(true)
                 setOrder(data.saveOrder)
                 setCount(data.saveOrder.products.length)
@@ -106,13 +106,17 @@ export default function ProductDetail({ product }) {
                                     <p>{product.series}</p>
                                 </li>
                             }
-                            {product.categories &&
-                                <li>
-                                    <b>Categorías:</b>
-                                    <p>{product.categories.join(" - ")}</p>
-                                </li>
-                            }
                         </ul>
+                        {product.categories &&
+                            <section className="productCategories">
+                                <header>
+                                    <b>Categorías:</b>
+                                </header>
+                                <footer>
+                                    <p>{product.categories.join(" - ")}</p>
+                                </footer>
+                            </section>
+                        }
                     </main>
                     <footer>
                         <p>
