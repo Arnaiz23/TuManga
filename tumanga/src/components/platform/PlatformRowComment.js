@@ -2,11 +2,48 @@ import React from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
+import Swal from "sweetalert2";
+import { deleteCommentAdmin } from "services/Admin";
 
-export default function PlatformRowComment({ comment }) {
+export default function PlatformRowComment({ comment, setCommentsEmpty, setComments }) {
 
     const deleteComment = () => {
-        alert("eliminando: "+comment._id)
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Una vez eliminado, no se podrá recuperar",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar.',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteCommentAdmin(comment._id).then(data => {
+                    if (data.message) return alert(data.message)
+
+                    Swal.fire(
+                        'Comentario',
+                        'Comentario eliminado correctamente',
+                        'success'
+                    )
+
+                    if(data.allComments.length <= 0) return setCommentsEmpty(true)
+
+                    setComments(data.allComments)
+
+                })
+            }else{
+                Swal.fire(
+                    'Comentario',
+                    'El comentario está a salvo',
+                    'success'
+                )
+            }
+        })
+
+
     }
 
     return (

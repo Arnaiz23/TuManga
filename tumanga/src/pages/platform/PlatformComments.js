@@ -47,8 +47,8 @@ export default function PlatformComments() {
                         ? <h2>Cargando...</h2>
                         : (
                             <>
-                                <PlatformTableComments titles={TITLES_TABLE} data={comments} dataEmpty={commentsEmpty} />
-                                <PlatformTableResponsiveComments titles={TITLES_TABLE_RESPONSIVE} data={comments} dataEmpty={commentsEmpty} />
+                                <PlatformTableComments titles={TITLES_TABLE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} />
+                                <PlatformTableResponsiveComments titles={TITLES_TABLE_RESPONSIVE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} />
                             </>
                         )
                     }

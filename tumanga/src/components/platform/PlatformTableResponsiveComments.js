@@ -1,7 +1,7 @@
 import React from "react";
 import PlatformRowCommentsResponsive from "./PlatformRowCommentsResponsive";
 
-export default function PlatformTableResponsiveComments({ dataEmpty, data, titles }) {
+export default function PlatformTableResponsiveComments({ dataEmpty, data, titles, setData, setDataEmpty }) {
 
     return (
         <>
@@ -18,6 +18,8 @@ export default function PlatformTableResponsiveComments({ dataEmpty, data, title
                                     <PlatformRowCommentsResponsive
                                         comment={comment}
                                         key={comment._id}
+                                        setComments={setData}
+                                        setCommentsEmpty={setDataEmpty}
                                     />
                                 )
                             })}

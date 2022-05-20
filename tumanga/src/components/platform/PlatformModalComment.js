@@ -4,8 +4,6 @@ import 'moment/locale/es'
 
 export default function PlatformModalComment({ data }) {
 
-    console.log(data);
-
     return (
         <main>
             <div className="modalInfo">

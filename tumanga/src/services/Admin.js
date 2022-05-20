@@ -345,3 +345,20 @@ export function getAllComments() {
             return status === "success" ? { comments } : { message }
         })
 }
+
+export function deleteCommentAdmin(id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/comment/${id}`, {
+        method: "DELETE",
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, allComments }) => {
+            return status === "success" ? { allComments } : { message }
+        })
+
+}

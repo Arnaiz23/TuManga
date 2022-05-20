@@ -2205,6 +2205,28 @@ var controller = {
 
     },
 
+    deleteCommentAdmin: async (req, res) => {
+
+        const {id} = req.params
+
+        let deleteComment = await Comment.findByIdAndDelete(id)
+
+        if(!deleteComment){
+            return res.status(404).send({
+                status: "error",
+                message: "This comment has not been deleted"
+            })
+        }
+
+        let allComments = await Comment.find()
+
+        return res.status(200).send({
+            status: "success",
+            allComments
+        })
+
+    },
+
     updateUserAdmin: async (req, res) => {
 
         const id_user = req.params.id

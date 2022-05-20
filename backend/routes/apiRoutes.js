@@ -121,6 +121,7 @@ router.post("/admin/role", middleweares.isAdmin, controllers.createRole); // Cre
 router.get("/admin/role/:id", middleweares.isAdmin, controllers.getOneRole) ; // Get one role
 router.put("/admin/role/:id", middleweares.isAdmin, controllers.updateRole); // Update one role
 router.delete("/admin/role/:id", middleweares.isAdmin, controllers.deleteRole); // Delete one role
+router.delete("/admin/comment/:id", middleweares.isAdmin, controllers.deleteCommentAdmin); //Delete one comment
 
 // * ---------------------------------------------------------
 
