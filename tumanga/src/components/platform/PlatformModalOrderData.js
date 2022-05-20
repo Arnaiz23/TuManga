@@ -8,7 +8,7 @@ export default function PlatformModalOrderData({ data }) {
     console.log(data);
 
     return (
-        <main>
+        <section>
             <div className="modalInfo">
                 <label htmlFor="id">ID</label>
                 <p>{data._id}</p>
@@ -37,7 +37,7 @@ export default function PlatformModalOrderData({ data }) {
                 <label htmlFor="total">TOTAL</label>
                 <p>{data.total} €</p>
             </div>
-        </main>
+        </section>
     )
     
 }

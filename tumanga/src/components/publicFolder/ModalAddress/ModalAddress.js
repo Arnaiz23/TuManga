@@ -38,7 +38,7 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
     }
 
     return (
-        <main>
+        <section>
             <form onSubmit={handleSubmitForm}>
                 <section>
                     <div className="modalInfo">
@@ -64,6 +64,6 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
                 </section>
                 <button className='btn btn-success'>Editar</button>
             </form>
-        </main>
+        </section>
     )
 }

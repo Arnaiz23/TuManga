@@ -41,11 +41,11 @@ export default function CardItem({ data, empty, change }) {
                     <img src={`${api_URL}/image/${data.image}`} alt={`imagen logo ${data.type}`} className="imgBrandCard" />
                     <h3>{data.type}</h3>
                 </header>
-                <main>
+                <section>
                     <h4>{data.name}</h4>
                     <p>{date}</p>
                     <p>{data.card_name}</p>
-                </main>
+                </section>
                 <footer>
                     ************{data.last_4_digits}
                 </footer>

@@ -32,7 +32,7 @@ export default function AddressCard({ data, change, empty }) {
             <header>
                 <span></span><span></span><span></span>
             </header>
-            <main>
+            <section>
                 <h3>{data.name_person}</h3>
                 <div className="containerAddressData">
                     <h4>{data.name}</h4>
@@ -47,7 +47,7 @@ export default function AddressCard({ data, change, empty }) {
                     <div className="lineHorizontal"></div>
                     <p onClick={deleteAddress}>Eliminar</p>
                 </div>
-            </main>
+            </section>
             {showModal && <ModalInfo change={setShowModal} data={data} type="address" changeAddress={change} />}
         </div>
     )

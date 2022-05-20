@@ -12,13 +12,13 @@ export default function PlatformTableResponsiveOrders({ dataEmpty, titles, data 
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
-                        <main>
+                        <section>
                             {data.map(info => {
                                 return (
                                     <PlatformModalOrders data={info} key={info._id} />
                                 )
                             })}
-                        </main>
+                        </section>
                     </>
                 }
             </div>

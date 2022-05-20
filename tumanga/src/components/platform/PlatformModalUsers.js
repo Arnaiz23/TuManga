@@ -5,7 +5,7 @@ import Moment from "react-moment";
 export default function PlatformModalUsers({ data }) {
 
     return (
-        <main>
+        <section>
             <div className="modalInfo">
                 <label htmlFor="id">ID</label>
                 <p>{data._id}</p>
@@ -53,7 +53,7 @@ export default function PlatformModalUsers({ data }) {
                 <label htmlFor="comments">Nº COMENTARIOS</label>
                 <p>{data.comments.length}</p>
             </div>
-        </main>
+        </section>
     )
 
 }

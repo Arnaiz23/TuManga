@@ -14,7 +14,7 @@ export default function PlatformTableResponsiveRoles({ titles, data, dataEmpty }
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
-                        <main>
+                        <section>
                             {data.map(role => {
                                 return (
                                     <div className="rowTable" key={role._id}>
@@ -24,7 +24,7 @@ export default function PlatformTableResponsiveRoles({ titles, data, dataEmpty }
                                     </div>
                                 )
                             })}
-                        </main>
+                        </section>
                     </>
                 )
 

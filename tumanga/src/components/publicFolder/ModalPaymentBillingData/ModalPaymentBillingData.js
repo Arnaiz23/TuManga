@@ -94,7 +94,7 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
     
     return (
         <div className="modalCenter">
-            <main>
+            <section>
                 <h2>Nueva tarjeta</h2>
                 <form onSubmit={handleNewCard}>
                     <section>
@@ -115,7 +115,7 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
                         <button className="btn btn-success">Añadir tarjeta</button>
                     </div>
                 </form>
-            </main>
+            </section>
         </div>
     )
 }

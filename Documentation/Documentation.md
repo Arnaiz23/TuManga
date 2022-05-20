@@ -120,9 +120,10 @@ The principal route is "/api/v1"
 * Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
 * Change the role in the usersTable
-* Modals change the main for section
+* Edit Address style
 * PlatformOrders
   * See if I can get the backend to send back the user's email address
+* In platformHome statistics
 
 
 ### Views for public
@@ -132,16 +133,6 @@ The principal route is "/api/v1"
 * Employee -> public web, user section and adminPanel
     * The role section NO
 * Admin -> public web, user section and all the adminPanel sections
-
-
-### Extra information
-
-* If the user want delete the account, give the option to disable the account. If dont want, delete the account. (Confirm)
-* When the web fetch the products, check if the product.stock > 0
-  * No -> btnAdd disabled (red) -> does not work the createOrder or addProductOrder
-  * Yes -> all normal
-* In adminPanel of the employee, don't show the total earnings
-* In adminPanel -> Create the system to search users and products (Ok in adminPanel2)
 
 ### Complete views
 
@@ -158,8 +149,3 @@ The principal route is "/api/v1"
 * Payment
 * OrderDetail
 * ShoppingCart
-
-
-### Input file Admin
-
-![Image](..%5Clayout%5Cassets%5Cimages%5CinputFile.PNG)

@@ -40,7 +40,7 @@ export default function CommentRow({ comment, userId, currentlUser, change, chan
                     <h4>{comment.name || "No tiene nombre"}</h4>
                     <p><Moment format="D/MM/YYYY">{comment.date}</Moment></p>
                 </header>
-                <main>
+                <section>
                     <div className="rowStars">
                         {
                             stars.map(star => {
@@ -49,7 +49,7 @@ export default function CommentRow({ comment, userId, currentlUser, change, chan
                         }
                     </div>
                     <p>{comment.message}</p>
-                </main>
+                </section>
                 {/* Show only in the case if the user is owner */}
                 {currentlUser === userId &&
                     <footer>

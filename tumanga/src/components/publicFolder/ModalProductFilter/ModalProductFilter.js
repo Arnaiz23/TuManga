@@ -49,7 +49,7 @@ export default function ModalProductFilter({ type }) {
                         Cerrar
                     </button>
                 </header>
-                <main>
+                <section>
                     {type === "mangas" &&
                         <div className="containerFilterResponsive">
                             <h3>Tipos</h3>
@@ -71,7 +71,7 @@ export default function ModalProductFilter({ type }) {
                             )
                         }
                     </div>
-                </main>
+                </section>
                 <footer>
                     <button className="btn btn-primary" onClick={changeFilters}>Aplicar filtros</button>
                 </footer>

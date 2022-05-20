@@ -84,7 +84,7 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
     
     return (
         <div className="modalCenter">
-            <main>
+            <section>
                 <h2>Nueva dirección</h2>
                 <form onSubmit={handleFormAddress}>
                     <section>
@@ -117,7 +117,7 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
                         <button className="btn btn-success">Añadir dirección</button>
                     </div>
                 </form>
-            </main>
+            </section>
         </div>
     )
 }

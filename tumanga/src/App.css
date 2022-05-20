@@ -1254,7 +1254,7 @@ a {
   margin-right: 10px;
 }
 
-.optionsFilterResponsive main {
+.optionsFilterResponsive section {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1521,23 +1521,23 @@ a {
   text-align: center;
 }
 
-.informationProduct main {
+.informationProduct section {
   width: 70%;
   margin: 20px auto;
 }
 
-.informationProduct main ul {
+.informationProduct section ul {
   list-style: none;
 }
 
-.informationProduct main ul li {
+.informationProduct section ul li {
   margin: 10px 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.informationProduct main ul li b {
+.informationProduct section ul li b {
   margin-right: 20px;
 }
 
@@ -1650,7 +1650,7 @@ a {
   color: #757575;
 }
 
-.containerComments .row main {
+.containerComments .row section {
   width: 70%;
 }
 
@@ -1842,24 +1842,24 @@ a {
   color: #000;
 }
 
-.containerOrder main h4 {
+.containerOrder section h4 {
   padding: 50px 0 0 50px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.containerOrder main .row {
+.containerOrder section .row {
   justify-content: flex-start;
   gap: 30px;
   padding-left: 50px;
   flex-wrap: wrap;
 }
 
-.containerOrder main .row:last-child {
+.containerOrder section .row:last-child {
   padding-bottom: 30px;
 }
 
-.containerOrder main .row h3 {
+.containerOrder section .row h3 {
   color: #3a95b1;
   font-size: 25px;
 }
@@ -1926,11 +1926,11 @@ a {
   z-index: 11;
 }
 
-.submenuFloat main {
+.submenuFloat section {
   padding: 40px;
 }
 
-.submenuFloat main ul {
+.submenuFloat section ul {
   list-style: none;
   width: 100%;
   display: flex;
@@ -1941,12 +1941,12 @@ a {
   height: 60vh;
 }
 
-.submenuFloat main ul li a {
+.submenuFloat section ul li a {
   color: #000;
   font-size: 20px;
 }
 
-.submenuFloat main ul li:hover {
+.submenuFloat section ul li:hover {
   transform: scale(1.1);
 }
 
@@ -2045,7 +2045,7 @@ a {
   background-color: #00ca4e;
 }
 
-.cardMac main {
+.cardMac section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2054,7 +2054,7 @@ a {
   gap: 20px;
 }
 
-.cardMac main h4 {
+.cardMac section h4 {
   color: #777;
   padding-left: 20px;
 }
@@ -2127,11 +2127,11 @@ a {
   background-color: #fff;
 }
 
-.cardTarget main h4 {
+.cardTarget section h4 {
   font-size: 20px;
 }
 
-.cardTarget main p {
+.cardTarget section p {
   opacity: 0.8;
   font-size: 18px;
   padding-left: 10px;
@@ -2475,11 +2475,11 @@ a {
   cursor: pointer;
 }
 
-.modalCenter main {
+.modalCenter section {
   padding: 30px;
 }
 
-.modalCenter main form {
+.modalCenter section form {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -2489,7 +2489,7 @@ a {
   gap: 30px 20px;
 }
 
-.modalCenter main form section {
+.modalCenter section form section {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -2835,7 +2835,7 @@ a {
   gap: 5px;
 }
 
-.containerStatisticsProducts main {
+.containerStatisticsProducts section{
   height: 500px;
 }
 
@@ -2962,14 +2962,14 @@ a {
 }
 
 .containerTableResponsive header,
-.containerTableResponsive main {
+.containerTableResponsive section{
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.containerTableResponsive main {
+.containerTableResponsive section{
   flex-direction: column;
   gap: 10px;
 }
@@ -3026,7 +3026,7 @@ a {
   justify-content: flex-start;
 }
 
-.modalInformation .modalCenter main {
+.modalInformation .modalCenter section {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -3034,7 +3034,7 @@ a {
   align-items: flex-start;
 }
 
-.modalInformation .modalCenter main .modalInfo label {
+.modalInformation .modalCenter section .modalInfo label {
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -3219,7 +3219,7 @@ a {
 }
 
 .inputAdmin .inputPassword i {
-  right: calc(100% - 240px);
+  right: 23%;
 }
 
 .modalSearchAdmin {
@@ -3572,13 +3572,13 @@ a {
 @media screen and (max-width: 952px) {
   .informationProduct,
   .informationProduct header,
-  .informationProduct main,
+  .informationProduct section,
   .informationProduct footer {
     width: 100%;
     min-width: initial;
   }
 
-  .containerOrder main .row h3 {
+  .containerOrder section .row h3 {
     font-size: 20px;
   }
 }
@@ -3625,7 +3625,7 @@ a {
   }
 
   .containerComments .row header,
-  .containerComments .row main,
+  .containerComments .row section,
   .containerComments .row footer {
     width: 90%;
     margin: auto;
@@ -3876,7 +3876,7 @@ a {
 }
 
 @media screen and (max-width: 422px) {
-  .modalCenter main {
+  .modalCenter section {
     padding-left: 40px;
   }
 }

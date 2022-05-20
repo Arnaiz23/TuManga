@@ -36,7 +36,7 @@ export default function NavAccountResp() {
                         Cerrar
                     </button>
                 </header>
-                <main>
+                <section>
                     <ul>
                         <li>
                             <ActiveLink href="/account">Mi Información</ActiveLink>
@@ -54,7 +54,7 @@ export default function NavAccountResp() {
                             <ActiveLink href="/account/comments">Mis Comentarios</ActiveLink>
                         </li>
                     </ul>
-                </main>
+                </section>
             </nav>
         </>
     )

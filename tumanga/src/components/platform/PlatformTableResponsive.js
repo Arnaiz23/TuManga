@@ -12,7 +12,7 @@ export default function PlatformTableResponsive({ titles, users, showModalData, 
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
-                        <main>
+                        <section>
                             {users.map(user => {
                                 return (
                                     <PlatformModalShow
@@ -21,7 +21,7 @@ export default function PlatformTableResponsive({ titles, users, showModalData, 
                                     />
                                 )
                             })}
-                        </main>
+                        </section>
                     </>
                 }
             </div>

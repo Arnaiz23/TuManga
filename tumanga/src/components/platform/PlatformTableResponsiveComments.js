@@ -12,7 +12,7 @@ export default function PlatformTableResponsiveComments({ dataEmpty, data, title
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
-                        <main>
+                        <section>
                             {data.map(comment => {
                                 return (
                                     <PlatformRowCommentsResponsive
@@ -23,7 +23,7 @@ export default function PlatformTableResponsiveComments({ dataEmpty, data, title
                                     />
                                 )
                             })}
-                        </main>
+                        </section>
                     </>
                 }
             </div>

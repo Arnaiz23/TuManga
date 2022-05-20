@@ -5,7 +5,7 @@ import 'moment/locale/es'
 export default function PlatformModalComment({ data }) {
 
     return (
-        <main>
+        <section>
             <div className="modalInfo">
                 <label htmlFor="id">ID</label>
                 <p>{data._id}</p>
@@ -34,7 +34,7 @@ export default function PlatformModalComment({ data }) {
                 <label htmlFor="user_id">ID USUARIO</label>
                 <p>{data.user_id}</p>
             </div>
-        </main>
+        </section>
     )
     
 }

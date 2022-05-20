@@ -95,7 +95,7 @@ export default function OrderWindow({ data }) {
                             <Link to={`/order/${data._id}`}>Ver detalles del pedido</Link>
                         </div>
                     </header>
-                    <main>
+                    <section>
                         {(order.delivered_date.split("-")[1] >= today.getMonth() && order.delivered_date.split("-")[2].substring(0,2) > today.getDate())
                             ? (
                                 <h4>Entrega <Moment fromNow>{order.delivered_date}</Moment></h4>
@@ -121,7 +121,7 @@ export default function OrderWindow({ data }) {
                                 </div>
                             )
                         })}
-                    </main>
+                    </section>
                 </div>
             )
     )

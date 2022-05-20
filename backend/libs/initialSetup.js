@@ -195,6 +195,22 @@ const data = {
                     "series": "Haikyuu!!",
                     "comments": [],
                     "image" : "Haikyuu33.jpg"
+                }).save(),
+                new Product({
+                    "name": "Haikyuu!! Vol.45",
+                    "price": 10,
+                    "description": "Con el partido de los Adlers y los Black Jackals en pleno apogeo y con años de rivalidad y amistad a flor de piel, Hinata y Kageyama siguen enfrentándose en la cancha. ¿Conseguirá finalmente Hinata declarar una gran victoria sobre Kageyama? ¡No te pierdas el emocionante final! Para el público adolescente.",
+                    "short_description": "Adlers vs Jackals. Hinata vs Kageyama.",
+                    "state": "new",
+                    "stock": 15,
+                    "categories": ["instituto", "comedia", "deportes"],
+                    "type": "manga",
+                    "number_sales": 0,
+                    "authors": "Haruichi Furudate",
+                    "editorial": "Planeta comic",
+                    "series": "Haikyuu!!",
+                    "comments": [],
+                    "image" : "Haikyuu45.jpg"
                 }).save()
             ]);
 

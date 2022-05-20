@@ -67,9 +67,9 @@ export default function PlatformMain() {
             </div>
             <div className="containerStatisticsProducts">
                 <h2>Productos</h2>
-                <main>
+                <section>
 
-                </main>
+                </section>
             </div>
         </main>
     )

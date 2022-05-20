@@ -13,13 +13,13 @@ export default function PlatformTableResponsiveProducts({ titles, products, prod
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
-                        <main>
+                        <section>
                             {products.map(product => {
                                 return (
                                     <PlatformModalShowProducts product={product} key={product._id} />
                                 )
                             })}
-                        </main>
+                        </section>
                     </>
                 }
             </div>

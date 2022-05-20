@@ -89,7 +89,7 @@ export default function ProductDetail({ product }) {
                             )
                         }
                     </header>
-                    <main>
+                    <section>
                         <ul>
                             {product.author &&
                                 <li><b>Autores:</b>
@@ -117,7 +117,7 @@ export default function ProductDetail({ product }) {
                                 </footer>
                             </section>
                         }
-                    </main>
+                    </section>
                     <footer>
                         <p>
                             {product.description}
