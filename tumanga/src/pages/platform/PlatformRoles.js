@@ -13,6 +13,7 @@ export default function PlatformRoles() {
 
     const [loading, setLoading] = useState(false)
     const [roles, setRoles] = useState([])
+    const [rolesEmpty, setRolesEmpty] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
 
     let fetchRoles = () => {
@@ -35,14 +36,14 @@ export default function PlatformRoles() {
             <main className="adminMain">
                 <div className="containerDataAdmin">
 
-                    <PlatformMainRowTitle title="Roles" nameAdd="Rol" changeModal={setModalOpen}  setDataData={setRoles} link="rol" type={"roles"} />
-                    <PlatformSearchModal setDataData={setRoles} changeModal={setModalOpen} modal={modalOpen} title="Rol" type="roles" />
+                    <PlatformMainRowTitle title="Roles" nameAdd="Rol" changeModal={setModalOpen}  setDataData={setRoles} link="rol" type={"roles"} setDataEmpty={setRolesEmpty} />
+                    <PlatformSearchModal setDataData={setRoles} setDataEmpty={setRolesEmpty} changeModal={setModalOpen} modal={modalOpen} title="Rol" type="roles" />
 
                     {loading
                         ? <h2>Cargando...</h2>
                         : (
                             <>
-                                <PlatformTableResponsiveRoles data={roles} titles={TABLE_TITLES_RESPONSIVE} />
+                                <PlatformTableResponsiveRoles data={roles} titles={TABLE_TITLES_RESPONSIVE} dataEmpty={rolesEmpty} setDataData={setRoles} />
                             </>
                         )
                     }

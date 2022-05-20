@@ -242,3 +242,19 @@ export function getAllOrders() {
         })
     
 }
+
+export function searchRole(search) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/role/${search}`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, resultSearch }) => {
+            return status === "success" ? {resultSearch} : {message}
+        })
+    
+}

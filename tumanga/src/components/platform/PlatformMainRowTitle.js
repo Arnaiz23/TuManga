@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { searchData } from "services/Admin";
+import { searchData, searchRole } from "services/Admin";
 import { searchProducts } from "services/Orders";
 import { Link } from "wouter";
 
@@ -39,6 +39,19 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
         })
     }
 
+    const fetchSearchRoles = () => {
+        searchRole(search).then(data => {
+            if(data.message){
+                setDataEmpty(true)
+                return
+            }
+
+            setDataData(data.resultSearch)
+            setDataEmpty(false)
+            changeModal(false)
+        })
+    }
+
     const handleForm = (e) => {
         e.preventDefault()
         if (type === "users") {
@@ -50,6 +63,11 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
         if(type === "products"){
             if (search === "") search = 'null'
             fetchSearchProducts()
+        }
+
+        if(type === "roles"){
+            if (search === "") search = 'null'
+            fetchSearchRoles()
         }
     }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { searchData } from "services/Admin";
+import { searchData, searchRole } from "services/Admin";
 import { searchProducts } from "services/Orders";
 
 export default function PlatformSearchModal({ changeModal, modal, title, setDataData, setDataEmpty, type }) {
@@ -17,11 +17,11 @@ export default function PlatformSearchModal({ changeModal, modal, title, setData
     }
 
     const fetchSearchUsers = (value) => {
-        if(search === "") search = 'null'
+        if (search === "") search = 'null'
 
-        if(value) search = "null"
+        if (value) search = "null"
         searchData(search, 'user').then(data => {
-            if(data.message) {
+            if (data.message) {
                 setDataEmpty(true)
                 changeModal(false)
                 return
@@ -33,11 +33,11 @@ export default function PlatformSearchModal({ changeModal, modal, title, setData
     }
 
     const fetchSearchProducts = (value) => {
-        if(search === "") search = 'null'
+        if (search === "") search = 'null'
 
-        if(value) search = "null"
+        if (value) search = "null"
         searchProducts(search).then(data => {
-            if(data.message){
+            if (data.message) {
                 setDataEmpty(true)
                 return
             }
@@ -48,29 +48,54 @@ export default function PlatformSearchModal({ changeModal, modal, title, setData
         })
     }
 
-    const handleSearch= (e) => {
+    const fetchSearchRoles = (value) => {
+        if (search === "") search = 'null'
+        if (value) search = "null"
+        searchRole(search).then(data => {
+            if (data.message) {
+                setDataEmpty(true)
+                changeModal(false)
+                return
+            }
+
+            setDataData(data.resultSearch)
+            setDataEmpty(false)
+            changeModal(false)
+        })
+    }
+
+    const handleSearch = (e) => {
         e.preventDefault()
-        if(type === "users"){
+        if (type === "users") {
             fetchSearchUsers()
             return
         }
 
-        if(type === "products"){
+        if (type === "products") {
             fetchSearchProducts()
             return
         }
-        
-        
+
+        if (type === "roles") {
+            fetchSearchRoles()
+            return
+        }
+
     }
 
     const handleResetForm = () => {
-        if(type === "users"){
+        if (type === "users") {
             fetchSearchUsers("null")
             return
         }
 
-        if(type === "products"){
+        if (type === "products") {
             fetchSearchProducts("null")
+            return
+        }
+
+        if (type === "roles") {
+            fetchSearchRoles("null")
             return
         }
     }

@@ -2294,6 +2294,40 @@ var controller = {
 
     },
 
+    createRole: async (req, res) => {
+
+    },
+
+    searchRole: async (req, res) => {
+
+        const {search} = req.params
+
+        let resultSearch
+
+        if(search === "null"){
+            resultSearch = await Role.find()
+        }else{
+            resultSearch = await Role.find({
+                "$or" : [
+                    { "name": { "$regex": search, "$options": "i" } }
+                ]
+            })
+        }
+
+        if(!resultSearch || resultSearch.length <= 0){
+            return res.status(404).send({
+                status: "error",
+                message: "Doesn't exists roles with this name"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            resultSearch
+        })
+        
+    },
+
     updateProductAdmin: async (req, res) => {
 
         const id_product = req.params.id
