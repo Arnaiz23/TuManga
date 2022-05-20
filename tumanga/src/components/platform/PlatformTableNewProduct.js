@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-export default function PlatformTableNewProduct({ setNewProduct, newProduct, setImage }) {
+export default function PlatformTableNewProduct({ setNewProduct, newProduct, setImage, categories, setCategories }) {
 
     const [loading, setLoading] = useState(false)
     const [newCategorie, setNewCategorie] = useState('')
-    const [categories, setCategories] = useState([])
+    // const [categories, setCategories] = useState([])
 
     const handleChange = (e) => {
         setNewProduct({
@@ -20,21 +20,17 @@ export default function PlatformTableNewProduct({ setNewProduct, newProduct, set
     const handleAddCategorie = (e) => {
         e.preventDefault()
         if (newCategorie === "") return
-        const categories = newProduct.categories
-        categories.push(newCategorie.toLocaleLowerCase())
-        setCategories(categories)
+        setCategories([...categories, newCategorie.toLocaleLowerCase()])
         e.target.reset()
         setNewCategorie('')
     }
 
-    const deleteCategorie = (e) => {
-        const categories = newProduct.categories
-        categories.splice(categories.indexOf(e.target.innerHTML), 1)
-        setCategories(categories)
-    }
-
     const handleChangeCategorie = (e) => {
         setNewCategorie(e.target.value)
+    }
+
+    const deleteCategorie = (e) => {
+        setCategories(categories.filter(cat => cat !== e.target.innerHTML))
     }
 
     return (
@@ -52,7 +48,7 @@ export default function PlatformTableNewProduct({ setNewProduct, newProduct, set
                         <div className="inputAdmin">
                             <label htmlFor="price">Precio <span className="obligatoryFields">*</span></label>
                             <input type="number" id="price" name="price" onChange={handleChange} min="0" max="100" value={newProduct.price} />
-                        </div> 
+                        </div>
                         <div className="inputAdmin">
                             <label htmlFor="description">Descripción <span className="obligatoryFields">*</span></label>
                             <textarea name="description" id="description" onChange={handleChange} value={newProduct.description}></textarea>
@@ -76,20 +72,17 @@ export default function PlatformTableNewProduct({ setNewProduct, newProduct, set
 
                         <div className="inputAdmin">
                             <label htmlFor="categories">Categorias <span className="obligatoryFields">*</span></label>
-                            <form className="addCategorie" onSubmit={handleAddCategorie}>
+                            <form className="addCategorie" onSubmit={handleAddCategorie} autoComplete="off">
                                 <input type="text" id="categories" name="categories" placeholder="Añade una categoría" onChange={handleChangeCategorie} />
                                 <button className="btnCategorieAdd">Add</button>
                             </form>
-                            {/* {categories && <p>{categories.join(" - ")}</p>} */}
                             <span className="spanCategoriesAdmin">
-                                {categories.map((cat, index) => {
-                                    return (
-                                        <React.Fragment key={cat + index}>
-                                            <b onClick={deleteCategorie}>{cat}</b>
-                                            {index < categories.length - 1 && <p> - </p>}
-                                        </React.Fragment>
-                                    )
-                                })}
+                                {categories.length > 0 && categories.map((cat, index) =>
+                                    <React.Fragment key={cat+index}>
+                                        <b onClick={deleteCategorie}>{cat}</b>
+                                        {index < categories.length - 1 && <p> - </p>}
+                                    </React.Fragment>
+                                )}
                             </span>
                         </div>
 
@@ -124,5 +117,5 @@ export default function PlatformTableNewProduct({ setNewProduct, newProduct, set
             }
         </section>
     )
-    
+
 }

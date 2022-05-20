@@ -1001,7 +1001,8 @@ a {
 }
 
 .cardFooter h3{
-  text-align: center;
+  text-align: center
+  ;
 }
 
 .cardFooter .priceContainer {
@@ -3098,7 +3099,9 @@ a {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
   padding: 20px 40px;
 }
 

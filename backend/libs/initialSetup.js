@@ -179,6 +179,22 @@ const data = {
                     "series": "Shingeki no Kyojin",
                     "comments": [],
                     "image" : "FiguraEren.jpg"
+                }).save(),
+                new Product({
+                    "name": "Haikyuu!! Vol.33",
+                    "price": 21,
+                    "description": "Hinata Shoyo quiere demostrar que no hace falta ser alto para volar. Hace tiempo el veía al legendario jugador conocido como 'El pequeño gigante' que competía en las finales nacionales de voleibol. Hinata está apuntando a ser el mejor jugador de la historia del voleibol! El dice que no hace falta ser alto para poder saltar que ningún otro.",
+                    "short_description": "Hinata Shoyo quiere demostrar que no hace falta ser alto para volar.",
+                    "state": "new",
+                    "stock": 20,
+                    "categories": ["instituto", "comedia", "deportes"],
+                    "type": "manga",
+                    "number_sales": 0,
+                    "authors": "Haruichi Furudate",
+                    "editorial": "Planeta comic",
+                    "series": "Haikyuu!!",
+                    "comments": [],
+                    "image" : "Haikyuu33.jpg"
                 }).save()
             ]);
 

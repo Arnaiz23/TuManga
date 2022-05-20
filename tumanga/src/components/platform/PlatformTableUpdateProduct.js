@@ -32,17 +32,13 @@ export default function PlatformTableUpdateProduct({ data, product, setProduct, 
     const handleAddCategorie = (e) => {
         e.preventDefault()
         if (newCategorie === "") return
-        const categories = product.categories
-        categories.push(newCategorie.toLocaleLowerCase())
-        setCategories(categories)
+        setCategories([...categories, newCategorie.toLocaleLowerCase()])
         e.target.reset()
         setNewCategorie('')
     }
 
     const deleteCategorie = (e) => {
-        const categories = product.categories
-        categories.splice(categories.indexOf(e.target.innerHTML), 1)
-        setCategories(categories)
+        setCategories(categories.filter(cat => cat !== e.target.innerHTML))
     }
 
     const handleChangeCategorie = (e) => {

@@ -123,11 +123,6 @@ The principal route is "/api/v1"
 * Alerts of the data.message in Platform
 * Change the role in the usersTable
 * Max-heigth in the platformData -> Look in the PlatformProducts
-* PlatformProductsView
-  * EditView
-    * Categories (add and delete one)
-      * Miss update the view
-* Delete the product and user
 * Modals change the main for section
 * ProductDetail -> Edit the style of categories
 * BTN-UP in platform

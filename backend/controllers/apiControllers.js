@@ -2405,7 +2405,7 @@ var controller = {
 
         const id_user = req.params.id
 
-        let userFind = await User.findById(id_user, { password_hash: false, address: false, billing: false, comments: false, tokenRecover: false, cart: false, _id: false })
+        let userFind = await User.findById(id_user, { password_hash: false, address: false, billing: false, comments: false, tokenRecover: false, cart: false })
 
         if (!userFind) {
             return res.status(404).send({
@@ -2586,6 +2586,26 @@ var controller = {
 
         }
 
+    },
+
+    deleteProduct: async (req, res) => {
+
+        const {id} = req.params
+
+        let productDelete = await Product.findByIdAndDelete(id)
+
+        if(!productDelete){
+            return res.status(404).send({
+                status: "error",
+                message: "This product doesn't exists"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            productDelete
+        })
+        
     },
 
     // * ----------------------------------------------------------

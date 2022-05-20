@@ -191,3 +191,38 @@ export function createProduct(body) {
         })
     
 }
+
+export function deleteProduct(id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/product/${id}`, {
+        method: "DELETE",
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, productDelete }) => {
+            return status === "success" ? {productDelete} : {message}
+        })
+    
+}
+
+
+export function deleteUser(id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/user/${id}`, {
+        method: "DELETE",
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, userDelete }) => {
+            return status === "success" ? {userDelete} : {message}
+        })
+    
+}

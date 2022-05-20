@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUser, updateOneUser } from "services/Admin";
+import { createUser, deleteUser, updateOneUser } from "services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 import PlatformSectionNewUser from "./PlatformSectionNewUser";
@@ -51,7 +51,7 @@ export default function PlatformEditForm({ title, type, data }) {
 
         const regexpPassword = /^[a-zA-Z0-9*/$%&Ç]{6,16}$/
 
-        if(!regexpPassword.test(newUser.password)){
+        if (!regexpPassword.test(newUser.password)) {
             return Swal.fire(
                 'Datos incorrectos',
                 'La contraseña no cumple con los requisitos',
@@ -61,7 +61,7 @@ export default function PlatformEditForm({ title, type, data }) {
 
         const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/
 
-        if(!regexpEmail.test(newUser.email)){
+        if (!regexpEmail.test(newUser.email)) {
             return Swal.fire(
                 'Datos incorrectos',
                 'El correo no cumple con los requisitos'
@@ -69,7 +69,7 @@ export default function PlatformEditForm({ title, type, data }) {
         }
 
         createUser(newUser).then(data => {
-            if(data.message === "This email already exists"){
+            if (data.message === "This email already exists") {
                 return Swal.fire(
                     'Datos incorrectos',
                     'Ya existe un usuario con ese correo',
@@ -85,6 +85,43 @@ export default function PlatformEditForm({ title, type, data }) {
         })
     }
 
+    const handleDelete = () => {
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "Una vez eliminado, no se podrá recuperar",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser(user._id).then(data => {
+                    if (data.message) return alert(data.message)
+
+                    Swal.fire(
+                        'Usuario',
+                        'Usuario eliminado correctamente',
+                        'success'
+                    )
+
+                    setLocation("/platform/users")
+
+                })
+
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                    'Cancelado',
+                    'El usuario está a salvo',
+                    'error'
+                )
+            }
+        })
+
+    }
+
     return (
         <main className="adminMain">
             <div className="containerAdminCenter">
@@ -98,6 +135,7 @@ export default function PlatformEditForm({ title, type, data }) {
                     type === "newUser" && <PlatformSectionNewUser user={newUser} setUser={setNewUser} />
                 }
                 <footer>
+                    <button className="btn btn-danger" onClick={handleDelete}>Eliminar</button>
                     {
                         type === "user" && <button className="btn btn-success" onClick={handleUpdate}>Guardar</button>
                     }
