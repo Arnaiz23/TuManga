@@ -2936,6 +2936,10 @@ a {
   /* gap: 20px; */
 }
 
+.containerTableCool{
+  display: flex;
+}
+
 .containerTableResponsive header {
   border-bottom: 1px solid #000;
 }

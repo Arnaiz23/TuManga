@@ -29,6 +29,7 @@ import PlatformProducts from 'pages/platform/PlatformProducts';
 import PlatformEditProducts from 'pages/platform/PlatformEditProducts';
 import PlatformNewProduct from 'pages/platform/PlatformNewProduct';
 import PlatformOrders from 'pages/platform/PlatformOrders';
+import PlatformRoles from 'pages/platform/PlatformRoles';
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <Route path='/platform/product/:id' component={PlatformEditProducts} />
         <Route path='/platform/product' component={PlatformNewProduct} />
         <Route path='/platform/orders' component={PlatformOrders} />
+        <Route path='/platform/roles' component={PlatformRoles} />
       </AdminContextProvider>
     </div>
   );

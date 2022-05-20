@@ -15,7 +15,7 @@ export default function PlatformTableResponsiveOrders({ dataEmpty, titles, data 
                         <main>
                             {data.map(info => {
                                 return (
-                                    <PlatformModalOrders data={info} key={data._id} />
+                                    <PlatformModalOrders data={info} key={info._id} />
                                 )
                             })}
                         </main>
