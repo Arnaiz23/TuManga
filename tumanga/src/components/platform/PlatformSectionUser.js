@@ -46,7 +46,6 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
                             : <input type="text" id="lastName" name="last_name" value="" onChange={handleChangeData} />
                         }
                     </div>
-                    {/* ------------------ Missing ------------------ */}
                     <div className="inputAdmin">
                         <label htmlFor="role">Rol</label>
                         <select id="role" name="role" defaultValue={role} onChange={handleChangeData}>
@@ -56,7 +55,6 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
                             <option value="usuario">Usuario</option>
                         </select>
                     </div>
-                    {/* --------------------------------------------- */}
                     <div className="inputAdmin">
                         <label htmlFor="email">Email</label>
                         <input type="email" name="email" id="email" value={user.email} onChange={handleChangeData} />

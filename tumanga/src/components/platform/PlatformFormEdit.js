@@ -135,7 +135,7 @@ export default function PlatformEditForm({ title, type, data }) {
                     type === "newUser" && <PlatformSectionNewUser user={newUser} setUser={setNewUser} />
                 }
                 <footer>
-                    <button className="btn btn-danger" onClick={handleDelete}>Eliminar</button>
+                    { type === "user" && <button className="btn btn-danger" onClick={handleDelete}>Eliminar</button>}
                     {
                         type === "user" && <button className="btn btn-success" onClick={handleUpdate}>Guardar</button>
                     }

@@ -116,8 +116,11 @@ router.post("/admin/user", middleweares.isAdmin, controllers.createUserAdmin); /
 router.post("/product", middleweares.isEmployee, controllers.newProduct); // Create a new product
 router.get("/admin/search/:search&:option", middleweares.isEmployee, controllers.searchAdmin); // Search users
 router.delete("/admin/product/:id", middleweares.isEmployee, controllers.deleteProduct); // Delete a product
-router.get("/admin/role/:search", middleweares.isAdmin, controllers.searchRole); // Search roles
+router.get("/admin/role/search/:search", middleweares.isAdmin, controllers.searchRole); // Search roles
 router.post("/admin/role", middleweares.isAdmin, controllers.createRole); // Create role
+router.get("/admin/role/:id", middleweares.isAdmin, controllers.getOneRole) ; // Get one role
+router.put("/admin/role/:id", middleweares.isAdmin, controllers.updateRole); // Update one role
+router.delete("/admin/role/:id", middleweares.isAdmin, controllers.deleteRole); // Delete one role
 
 // * ---------------------------------------------------------
 

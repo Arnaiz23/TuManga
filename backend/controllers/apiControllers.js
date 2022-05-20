@@ -2295,7 +2295,86 @@ var controller = {
     },
 
     createRole: async (req, res) => {
+        const {name} = req.body
+        
+        let newRole = new Role({
+            name
+        })
 
+        let saveRole = await newRole.save()
+
+        if(!saveRole){
+            return res.status(404).send({
+                status: "error",
+                message: "This role has not been created"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            saveRole
+        })
+    },
+
+    getOneRole: async (req, res) => {
+
+        const {id} = req.params
+
+        let role = await Role.findById(id)
+
+        if(!role){
+            return res.status(404).send({
+                status: "error",
+                message : "This role doesn't exists"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            role
+        })
+        
+    },
+
+    updateRole: async (req, res) => {
+
+        const {id} = req.params
+        const body = req.body
+
+        let updateRole = await Role.findByIdAndUpdate(id, body)
+
+        if(!updateRole){
+            return res.status(404).send({
+                status: "error",
+                message: "This user has not been updated"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            updateRole
+        })
+
+    },
+
+    deleteRole: async (req, res) => {
+
+        const {id} = req.params
+
+        let deleteRole = await Role.findByIdAndDelete(id)
+
+        if(!deleteRole){
+            return res.status(404).send({
+                status: "error",
+                message: "This role has not been deleted"
+            })
+        }
+
+        return res.status(200).send({
+            status: "success",
+            deleteRole
+        })
+        
     },
 
     searchRole: async (req, res) => {

@@ -36,7 +36,7 @@ export default function PlatformRoles() {
             <main className="adminMain">
                 <div className="containerDataAdmin">
 
-                    <PlatformMainRowTitle title="Roles" nameAdd="Rol" changeModal={setModalOpen}  setDataData={setRoles} link="rol" type={"roles"} setDataEmpty={setRolesEmpty} />
+                    <PlatformMainRowTitle title="Roles" nameAdd="Rol" changeModal={setModalOpen}  setDataData={setRoles} link="role" type={"roles"} setDataEmpty={setRolesEmpty} />
                     <PlatformSearchModal setDataData={setRoles} setDataEmpty={setRolesEmpty} changeModal={setModalOpen} modal={modalOpen} title="Rol" type="roles" />
 
                     {loading

@@ -233,28 +233,99 @@ export function getAllOrders() {
 
     return fetch(`${api_URL}/admin/orders`, {
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, orders }) => {
-            return status === "success" ? {orders} : {message}
+            return status === "success" ? { orders } : { message }
         })
-    
+
 }
 
 export function searchRole(search) {
 
     let token = getToken()
 
-    return fetch(`${api_URL}/admin/role/${search}`, {
+    return fetch(`${api_URL}/admin/role/search/${search}`, {
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, resultSearch }) => {
+            return status === "success" ? { resultSearch } : { message }
+        })
+
+}
+
+export function createRole(body) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/role`, {
+        method: "POST",
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`,
+            "Content-type": "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, saveRole }) => {
+            return status === "success" ? { saveRole } : { message }
+        })
+
+}
+
+export function getOneRole(id) {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/role/${id}`, {
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, role }) => {
+            return status === "success" ? {role} : {message}
+        })
+
+}
+
+export function updateRole(id, body){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/role/${id}`,{
+        method: "PUT",
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`,
+            "Content-type" : "application/json"
+        }),
+        body: JSON.stringify(body)
+    })
+        .then(res => res.json())
+        .then(({ status, message, updateRole }) => {
+            return status === "success" ? {updateRole} : {message}
+        }) 
+    
+}
+
+export function deleteRole(id){
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/role/${id}`,{
+        method: "DELETE",
         headers: new Headers({
             "Authorization" : `Bearer ${token}`
         })
     })
         .then(res => res.json())
-        .then(({ status, message, resultSearch }) => {
-            return status === "success" ? {resultSearch} : {message}
-        })
+        .then(({ status, message, deleteRole }) => {
+            return status === "success" ? {deleteRole} : {message}
+        }) 
     
 }
