@@ -289,43 +289,59 @@ export function getOneRole(id) {
     })
         .then(res => res.json())
         .then(({ status, message, role }) => {
-            return status === "success" ? {role} : {message}
+            return status === "success" ? { role } : { message }
         })
 
 }
 
-export function updateRole(id, body){
+export function updateRole(id, body) {
 
     let token = getToken()
 
-    return fetch(`${api_URL}/admin/role/${id}`,{
+    return fetch(`${api_URL}/admin/role/${id}`, {
         method: "PUT",
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`,
-            "Content-type" : "application/json"
+            "Authorization": `Bearer ${token}`,
+            "Content-type": "application/json"
         }),
         body: JSON.stringify(body)
     })
         .then(res => res.json())
         .then(({ status, message, updateRole }) => {
-            return status === "success" ? {updateRole} : {message}
-        }) 
-    
+            return status === "success" ? { updateRole } : { message }
+        })
+
 }
 
-export function deleteRole(id){
+export function deleteRole(id) {
 
     let token = getToken()
 
-    return fetch(`${api_URL}/admin/role/${id}`,{
+    return fetch(`${api_URL}/admin/role/${id}`, {
         method: "DELETE",
         headers: new Headers({
-            "Authorization" : `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         })
     })
         .then(res => res.json())
         .then(({ status, message, deleteRole }) => {
-            return status === "success" ? {deleteRole} : {message}
-        }) 
-    
+            return status === "success" ? { deleteRole } : { message }
+        })
+
+}
+
+export function getAllComments() {
+
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/admin/comments`, {
+        headers: new Headers({
+            "Authorization": `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ status, message, comments }) => {
+            return status === "success" ? { comments } : { message }
+        })
 }

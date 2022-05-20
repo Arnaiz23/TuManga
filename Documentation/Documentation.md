@@ -129,6 +129,8 @@ The principal route is "/api/v1"
 * Update the style of the Loading in Platform
 * PlatformOrders
   * See if I can get the backend to send back the user's email address
+* PlatformComment
+  * Delete comment
 
 
 ### Views for public

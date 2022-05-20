@@ -1,23 +1,23 @@
 import React from "react";
-import PlatformModalShow from "./PlatformModalShow";
+import PlatformRowCommentsResponsive from "./PlatformRowCommentsResponsive";
 
-export default function PlatformTableResponsive({ titles, users, showModalData, usersEmpty }) {
+export default function PlatformTableResponsiveComments({ dataEmpty, data, titles }) {
 
     return (
         <>
             <div className="containerTableResponsive">
-                {usersEmpty
+                {dataEmpty
                     ? <h2>No hay usuarios con esas condiciones</h2>
                     : <>
                         <header>
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
                         <main>
-                            {users.map(user => {
+                            {data.map(comment => {
                                 return (
-                                    <PlatformModalShow
-                                        user={user}
-                                        key={user._id}
+                                    <PlatformRowCommentsResponsive
+                                        comment={comment}
+                                        key={comment._id}
                                     />
                                 )
                             })}

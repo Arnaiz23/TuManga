@@ -1,5 +1,6 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PlatformModalComment from "components/platform/PlatformModalComment";
 import PlatformModalOrderData from "components/platform/PlatformModalOrderData";
 import PlatformModalProducts from "components/platform/PlatformModalProducts";
 import PlatformModalUsers from "components/platform/PlatformModalUsers";
@@ -45,6 +46,9 @@ export default function ModalInfo({ change, data, type, changeAddress, changeCar
                 }
                 {
                     type === "platformOrders" && <PlatformModalOrderData data={data} />
+                }
+                {
+                    type === "platformComments" && <PlatformModalComment data={data} />
                 }
             </div>
         </div>

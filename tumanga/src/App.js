@@ -32,6 +32,7 @@ import PlatformOrders from 'pages/platform/PlatformOrders';
 import PlatformRoles from 'pages/platform/PlatformRoles';
 import PlatformNewRole from 'pages/platform/PlatformNewRole';
 import PlatformEditRoleView from 'pages/platform/PlatformEditRoleView';
+import PlatformComments from 'pages/platform/PlatformComments';
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
         <Route path='/platform/roles' component={PlatformRoles} />
         <Route path='/platform/role' component={PlatformNewRole} />
         <Route path='/platform/role/:id' component={PlatformEditRoleView} />
+        <Route path='/platform/comments' component={PlatformComments} />
       </AdminContextProvider>
     </div>
   );
