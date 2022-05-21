@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
 import React, { useState } from "react";
 
-export default function PlatformModalOrders({ data }) {
+export default function PlatformModalOrders({ data, emails }) {
 
     const [modalShowData, setModalShowData] = useState(false)
 
@@ -18,7 +18,7 @@ export default function PlatformModalOrders({ data }) {
                 <p>{data.products.length}</p>
                 <p className="btnShowModal"><i onClick={handleShowModal}><FontAwesomeIcon icon={faEye} /></i></p>
             </div>
-            {modalShowData && <ModalInfo type="platformOrders" change={setModalShowData} data={data} />}
+            {modalShowData && <ModalInfo type="platformOrders" change={setModalShowData} data={data} emails={emails} />}
         </>
     )
     

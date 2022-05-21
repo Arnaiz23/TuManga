@@ -11,7 +11,7 @@ import ModalNewCard from "../ModalNewCard/ModalNewCard";
 import ModalPaymentAddressData from "../ModalPaymentAddressData/ModalPaymentAddressData";
 import ModalPaymentBillingData from "../ModalPaymentBillingData/ModalPaymentBillingData";
 
-export default function ModalInfo({ change, data, type, changeAddress, changeCard, empty, changeLastAddress, changeLastBilling, changeBillingEmpty, changeAddressEmpty, closeModalLast }) {
+export default function ModalInfo({ change, data, type, changeAddress, changeCard, empty, changeLastAddress, changeLastBilling, changeBillingEmpty, changeAddressEmpty, closeModalLast, emails }) {
 
     const closeModal = () => {
         change(false)
@@ -45,7 +45,7 @@ export default function ModalInfo({ change, data, type, changeAddress, changeCar
                     type === "platformProducts" && <PlatformModalProducts data={data} />
                 }
                 {
-                    type === "platformOrders" && <PlatformModalOrderData data={data} />
+                    type === "platformOrders" && <PlatformModalOrderData data={data} emails={emails} />
                 }
                 {
                     type === "platformComments" && <PlatformModalComment data={data} />

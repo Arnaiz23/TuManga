@@ -1393,9 +1393,21 @@ var controller = {
             })
         }
 
+        const newArray = await Promise.all(
+            orders.map(async order => {
+                if(order.id_client){
+                    let user = await User.findById(order.id_client)
+                    return user.email
+                }
+            })
+        )
+
+        console.log(newArray);
+
         return res.status(200).send({
             status: "success",
-            orders
+            orders,
+            newArray
         })
 
     },
@@ -1595,11 +1607,13 @@ var controller = {
 
             newCard.type = $name_card[firstNumber]
             newCard.image = `${firstNumber}.png`
+            
+            console.log(newCard);
 
             newCard.save((err, card) => {
 
                 if (err || !card) {
-                    res.status(500).send({
+                    return res.status(500).send({
                         status: "error",
                         message: "The card has not been saved"
                     })

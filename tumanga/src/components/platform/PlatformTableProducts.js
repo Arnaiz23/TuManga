@@ -3,7 +3,7 @@ import "moment/locale/es"
 import PlatformRowProducts from "./PlatformRowProducts";
 
 export default function PlatformTableProducts({ titles, products, productsEmpty }) {
-    
+
     return (
         <div className="containerTable">
             {productsEmpty
@@ -17,7 +17,10 @@ export default function PlatformTableProducts({ titles, products, productsEmpty 
                     <tbody>
                         {products.map(product => {
                             return (
-                                <PlatformRowProducts product={product} key={product._id} />
+                                <PlatformRowProducts
+                                    product={product}
+                                    key={product._id}
+                                />
                             )
                         })}
                     </tbody>

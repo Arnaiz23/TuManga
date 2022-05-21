@@ -14,7 +14,7 @@ export default function PlatformNav() {
             <header>
                 <img src={`${api_URL}/image/DefaultUser2.png`}
                     alt="icon user" />
-                <h2>Admin</h2>
+                <h2>{userData.roleName}</h2>
             </header>
             <ul>
                 <li>

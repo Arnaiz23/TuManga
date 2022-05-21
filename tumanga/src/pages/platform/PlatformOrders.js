@@ -10,12 +10,13 @@ import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getAllOrders } from "services/Admin";
 
-const TABLE_TITLES = ["id", "fecha pedido", "id cliente", "fecha envio", "Nº productos", "Teléfono", "Total"]
+const TABLE_TITLES = ["id", "fecha pedido", "cliente", "fecha envio", "Nº productos", "Total"]
 const TABLE_TITLES_RESPONSIVE = ["id", "Nº productos", "ver"]
 
 export default function PlatformOrders() {
 
     const [orders, setOrders] = useState([])
+    const [arrayEmail, setArrayEmail] = useState([])
     const [ordersEmpty, setOrdersEmpty] = useState(false)
     const [loading, setLoading] = useState(false)
 
@@ -30,6 +31,7 @@ export default function PlatformOrders() {
             setOrders(data.orders)
             setOrdersEmpty(false)
             setLoading(false)
+            setArrayEmail(data.newArray)
         })
     }
 
@@ -53,8 +55,8 @@ export default function PlatformOrders() {
                         ? <Spinner />
                         : (
                             <>
-                                <PlatformTableOrders dataEmpty={ordersEmpty} data={orders} titles={TABLE_TITLES} />
-                                <PlatformTableResponsiveOrders data={orders} titles={TABLE_TITLES_RESPONSIVE} dataEmpty={ordersEmpty} />
+                                <PlatformTableOrders dataEmpty={ordersEmpty} data={orders} titles={TABLE_TITLES} emails={arrayEmail} />
+                                <PlatformTableResponsiveOrders data={orders} titles={TABLE_TITLES_RESPONSIVE} dataEmpty={ordersEmpty} emails={arrayEmail} />
                             </>
                         )
                     }

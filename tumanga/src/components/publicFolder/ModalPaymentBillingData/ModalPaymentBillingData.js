@@ -55,7 +55,7 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
             )
         }
 
-        let expiration = newCard.expiration_date.split("/") 
+        let expiration = newCard.expiration_date.split("/")
 
         if(Number(expiration[1]) < Number(year)){
             return Swal.fire(
@@ -67,6 +67,12 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
             return Swal.fire(
                 'Fecha no válida',
                 'Introduzca una fecha posterior a la actual',
+                'error'
+            )
+        }else if(Number(expiration[0]) > 12 || Number(expiration[0]) < 0){
+            return Swal.fire(
+                'Fecha no válida',
+                'Mes inválido',
                 'error'
             )
         }

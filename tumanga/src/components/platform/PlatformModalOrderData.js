@@ -3,9 +3,7 @@ import React from "react";
 import Moment from "react-moment";
 import 'moment/locale/es'
 
-export default function PlatformModalOrderData({ data }) {
-
-    console.log(data);
+export default function PlatformModalOrderData({ data, emails }) {
 
     return (
         <section>
@@ -14,8 +12,8 @@ export default function PlatformModalOrderData({ data }) {
                 <p>{data._id}</p>
             </div>
             <div className="modalInfo">
-                <label htmlFor="id_client">ID CLIENTE</label>
-                <p>{data.id_client}</p>
+                <label htmlFor="id_client">CLIENTE</label>
+                <p>{emails}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="order_date">Fecha pedido</label>
@@ -28,10 +26,6 @@ export default function PlatformModalOrderData({ data }) {
             <div className="modalInfo">
                 <label htmlFor="products">Nº Productos</label>
                 <p>{data.products.length}</p>
-            </div>
-            <div className="modalInfo">
-                <label htmlFor="telephone">Teléfono</label>
-                <p>{data.telephone}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="total">TOTAL</label>

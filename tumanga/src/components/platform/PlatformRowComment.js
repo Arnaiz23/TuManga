@@ -53,7 +53,7 @@ export default function PlatformRowComment({ comment, setCommentsEmpty, setComme
             <td>{comment.name}</td>
             <td>{comment.message}</td>
             <td>{comment.product_name}</td>
-            <td>{comment.user_id}</td>
+            <td className="tableTrId" title={comment.user_id}>{comment.user_id}</td>
             <td>{comment.score}</td>
             <td><i onClick={deleteComment}><FontAwesomeIcon icon={faXmark} /></i></td>
         </tr>

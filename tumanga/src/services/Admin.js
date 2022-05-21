@@ -237,8 +237,8 @@ export function getAllOrders() {
         })
     })
         .then(res => res.json())
-        .then(({ status, message, orders }) => {
-            return status === "success" ? { orders } : { message }
+        .then(({ status, message, orders, newArray }) => {
+            return status === "success" ? { orders, newArray } : { message }
         })
 
 }
