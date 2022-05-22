@@ -26,8 +26,8 @@ export function getAllUsers() {
         })
     })
         .then(res => res.json())
-        .then(({ status, message, users }) => {
-            return status === "success" ? { users } : { message }
+        .then(({ status, message, users, newArrayRoles }) => {
+            return status === "success" ? { users, newArrayRoles } : { message }
         })
 
 }
@@ -341,8 +341,8 @@ export function getAllComments() {
         })
     })
         .then(res => res.json())
-        .then(({ status, message, comments }) => {
-            return status === "success" ? { comments } : { message }
+        .then(({ status, message, comments, newArray }) => {
+            return status === "success" ? { comments, newArray } : { message }
         })
 }
 

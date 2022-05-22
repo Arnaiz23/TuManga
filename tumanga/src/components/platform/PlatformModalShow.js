@@ -5,7 +5,7 @@ import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
 import { Link } from "wouter";
 import AdminContext from "context/AdminContext";
 
-export default function PlatformModalShow({ user }) {
+export default function PlatformModalShow({ user, roleName }) {
 
     const {userData} = useContext(AdminContext)
 
@@ -27,7 +27,7 @@ export default function PlatformModalShow({ user }) {
                         : <p className="btnEditData"><i><FontAwesomeIcon icon={faXmark} /></i></p>
                 }
             </div>
-            {modalShowData && <ModalInfo type="platformUsers" change={setModalShowData} data={user} />}
+            {modalShowData && <ModalInfo type="platformUsers" change={setModalShowData} data={user} roleName={roleName} />}
         </>
     )
 

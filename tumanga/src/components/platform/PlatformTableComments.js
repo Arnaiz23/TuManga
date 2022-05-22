@@ -1,7 +1,7 @@
 import React from "react";
 import PlatformRowComment from "./PlatformRowComment";
 
-export default function PlatformTableComments({ data, dataEmpty, titles, setDataEmpty, setData }) {
+export default function PlatformTableComments({ data, dataEmpty, titles, setDataEmpty, setData, arrayEmails }) {
 
     return (
         <div className="containerTable">
@@ -14,13 +14,14 @@ export default function PlatformTableComments({ data, dataEmpty, titles, setData
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(comment => {
+                        {data.map((comment, index) => {
                             return (
                                 <PlatformRowComment
                                     key={comment._id}
                                     comment={comment}
                                     setComments={setData}
                                     setCommentsEmpty={setDataEmpty}
+                                    arrayEmails={arrayEmails[index]}
                                 />
                             )
                         })}

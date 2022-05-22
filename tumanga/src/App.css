@@ -3065,11 +3065,21 @@ a {
   align-items: center;
   flex-direction: column;
   padding-bottom: 20px;
+  
 }
 
 .obligatoryFields {
   color: #f44;
   font-weight: bold;
+}
+
+.formAddress{
+  width: 100%;
+  align-items: center !important;
+}
+
+.formAddress > section{
+  flex-direction: row !important;
 }
 
 .newAddressData {
@@ -3078,8 +3088,9 @@ a {
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
-  width: 80%;
+  width: 100%;
   margin: 30px auto;
+  flex-direction: row !important;
 }
 
 .newAddressGroup {

@@ -18,6 +18,7 @@ export default function PlatformUsers() {
     const [modalOpen, setModalOpen] = useState(false)
     const [usersEmpty, setUsersEmpty] = useState(false)
     const [usersData, setUsersData] = useState([])
+    const [roleArray, setRoleArray] = useState([])
     const [loading, setLoading] = useState(false)
 
     let fecthDataUsers = () => {
@@ -29,6 +30,7 @@ export default function PlatformUsers() {
                 return
             }
             setUsersData(data.users)
+            setRoleArray(data.newArrayRoles)
             setLoading(false)
 
         })
@@ -51,8 +53,8 @@ export default function PlatformUsers() {
                         ? <Spinner />
                         : (
                             <>
-                                <PlatformTable titles={TITLES_TABLE} users={usersData} usersEmpty={usersEmpty} />
-                                <PlatformTableResponsive titles={TITLES_TABLE_RESPONSIVE} users={usersData} usersEmpty={usersEmpty} />
+                                <PlatformTable titles={TITLES_TABLE} users={usersData} usersEmpty={usersEmpty} roleArray={roleArray} />
+                                <PlatformTableResponsive titles={TITLES_TABLE_RESPONSIVE} users={usersData} usersEmpty={usersEmpty} roleArray={roleArray} />
                             </>
                         )
                     }

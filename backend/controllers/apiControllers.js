@@ -764,9 +764,17 @@ var controller = {
             });
         }
 
+        let newArrayRoles = await Promise.all(
+            users.map(async user => {
+                let role = await Role.findById(user.role)
+                return role.name
+            })
+        )
+
         return res.status(200).send({
             status: "success",
-            users
+            users,
+            newArrayRoles
         })
     },
 
@@ -1402,8 +1410,6 @@ var controller = {
             })
         )
 
-        console.log(newArray);
-
         return res.status(200).send({
             status: "success",
             orders,
@@ -1426,19 +1432,6 @@ var controller = {
                 message: "This user doesn't have orders finished"
             })
         }
-
-        /* let newOrders = await Promise.all(
-            orders.map(async (order) => {
-                let address = await Address.findById(order.delivery_address)
-                let card = await Billing.findById(order.billing)
-                let data = {
-                    order,
-                    address,
-                    card
-                }
-                return data
-            })
-        ) */
 
         res.status(200).send({
             status: "success",
@@ -2133,9 +2126,17 @@ var controller = {
             })
         }
 
+        let newArray = await Promise.all(
+            comments.map(async comment => {
+                let user = await User.findById(comment.user_id)
+                return user.email
+            })
+        )
+
         return res.status(200).send({
             status: "success",
-            comments
+            comments,
+            newArray
         })
 
     },

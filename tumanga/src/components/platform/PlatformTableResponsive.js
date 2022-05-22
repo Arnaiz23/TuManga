@@ -1,7 +1,7 @@
 import React from "react";
 import PlatformModalShow from "./PlatformModalShow";
 
-export default function PlatformTableResponsive({ titles, users, showModalData, usersEmpty }) {
+export default function PlatformTableResponsive({ titles, users, showModalData, usersEmpty, roleArray }) {
 
     return (
         <>
@@ -13,11 +13,12 @@ export default function PlatformTableResponsive({ titles, users, showModalData, 
                             {titles.map(title => <b key={title}>{title}</b>)}
                         </header>
                         <section>
-                            {users.map(user => {
+                            {users.map((user, index) => {
                                 return (
                                     <PlatformModalShow
                                         user={user}
                                         key={user._id}
+                                        roleName={roleArray[index]}
                                     />
                                 )
                             })}

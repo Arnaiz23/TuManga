@@ -2,7 +2,7 @@ import React from "react";
 import "moment/locale/es"
 import Moment from "react-moment";
 
-export default function PlatformModalUsers({ data }) {
+export default function PlatformModalUsers({ data, roleName }) {
 
     return (
         <section>
@@ -35,7 +35,7 @@ export default function PlatformModalUsers({ data }) {
             </div>
             <div className="modalInfo">
                 <label htmlFor="role">ROL</label>
-                <p>{data.role}</p>
+                <p className="capitalize">{roleName}</p>
             </div>
             <div className="modalInfo">
                 <label htmlFor="orders">Nº PEDIDOS</label>

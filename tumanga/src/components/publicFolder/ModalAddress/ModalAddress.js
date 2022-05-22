@@ -39,25 +39,25 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
 
     return (
         <section>
-            <form onSubmit={handleSubmitForm}>
+            <form onSubmit={handleSubmitForm} className="formAddress">
                 <section>
-                    <div className="modalInfo">
+                    <div className="modalInfo newAddressGroup">
                         <label htmlFor="email">Nombre calle</label>
                         <input type="text" value={editAddress.name} onChange={handleChangeData} name="name" />
                     </div>
-                    <div className="modalInfo">
+                    <div className="modalInfo newAddressGroup">
                         <label htmlFor="state">Número</label>
                         <input type="number" value={editAddress.number} onChange={handleChangeData} name="number" />
                     </div>
-                    <div className="modalInfo">
+                    <div className="modalInfo newAddressGroup">
                         <label htmlFor="id">Piso</label>
                         <input type="number" value={editAddress.floor} onChange={handleChangeData} name="floor" />
                     </div>
-                    <div className="modalInfo">
+                    <div className="modalInfo newAddressGroup">
                         <label htmlFor="orders">Localidad</label>
                         <input type="text" value={editAddress.location} onChange={handleChangeData} name="location" />
                     </div>
-                    <div className="modalInfo">
+                    <div className="modalInfo newAddressGroup">
                         <label htmlFor="role">Nombre</label>
                         <input type="text" value={editAddress.name_person} onChange={handleChangeData} name="name_person" />
                     </div>

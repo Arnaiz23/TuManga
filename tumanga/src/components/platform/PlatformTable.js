@@ -6,7 +6,7 @@ import Moment from "react-moment";
 import { Link } from "wouter";
 import AdminContext from "context/AdminContext";
 
-export default function PlatformTable({ titles, users, usersEmpty }) {
+export default function PlatformTable({ titles, users, usersEmpty, roleArray }) {
 
     const { userData } = useContext(AdminContext)
 
@@ -21,7 +21,7 @@ export default function PlatformTable({ titles, users, usersEmpty }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => {
+                        {users.map((user, index) => {
                             return (
                                 <tr key={user._id}>
                                     <td className="tableTrId" title={user._id}>{user._id}</td>
@@ -31,7 +31,7 @@ export default function PlatformTable({ titles, users, usersEmpty }) {
                                         : <td>Deshabilitado</td>
                                     }
                                     <td><Moment format="DD/MM/YYYY">{user.register_date}</Moment></td>
-                                    <td>{user.role}</td>
+                                    <td>{roleArray[index]}</td>
                                     <td>{user.cart.length}</td>
                                     {
                                         userData.roleName === "admin" 

@@ -119,12 +119,7 @@ The principal route is "/api/v1"
 * Component error
 * Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
-* Change the role in the usersTable
-* Edit Address style
-* PlatformComments
-  * See if I can get the backend to send back the user's email address
 * In platformHome statistics
-* Fix the modalStyles
 * Add Alerts, example newCard
 
 ### Views for public

@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import Swal from "sweetalert2";
 import { deleteCommentAdmin } from "services/Admin";
 
-export default function PlatformRowComment({ comment, setCommentsEmpty, setComments }) {
+export default function PlatformRowComment({ comment, setCommentsEmpty, setComments, arrayEmails }) {
 
     const deleteComment = () => {
 
@@ -53,7 +53,7 @@ export default function PlatformRowComment({ comment, setCommentsEmpty, setComme
             <td>{comment.name}</td>
             <td>{comment.message}</td>
             <td>{comment.product_name}</td>
-            <td className="tableTrId" title={comment.user_id}>{comment.user_id}</td>
+            <td title={arrayEmails}>{arrayEmails}</td>
             <td>{comment.score}</td>
             <td><i onClick={deleteComment}><FontAwesomeIcon icon={faXmark} /></i></td>
         </tr>

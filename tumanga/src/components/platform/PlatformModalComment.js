@@ -2,7 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 import 'moment/locale/es'
 
-export default function PlatformModalComment({ data }) {
+export default function PlatformModalComment({ data, arrayEmails }) {
 
     return (
         <section>
@@ -31,8 +31,8 @@ export default function PlatformModalComment({ data }) {
                 <p>{data.score}</p>
             </div>
             <div className="modalInfo">
-                <label htmlFor="user_id">ID USUARIO</label>
-                <p>{data.user_id}</p>
+                <label htmlFor="user">USUARIO</label>
+                <p>{arrayEmails}</p>
             </div>
         </section>
     )

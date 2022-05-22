@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { deleteCommentAdmin } from "services/Admin";
 import Swal from "sweetalert2";
 
-export default function PlatformRowCommentsResponsive({ comment, setCommentsEmpty, setComments }) {
+export default function PlatformRowCommentsResponsive({ comment, setCommentsEmpty, setComments, arrayEmails }) {
 
     const [modalShowData, setModalShowData] = useState(false)
 
@@ -60,7 +60,7 @@ export default function PlatformRowCommentsResponsive({ comment, setCommentsEmpt
                 <p className="btnShowModal"><i onClick={handleShowDetail}><FontAwesomeIcon icon={faEye} /></i></p>
                 <p className="btnShowModal"><i onClick={deleteComment}><FontAwesomeIcon icon={faXmark} /></i></p>
             </div>
-            {modalShowData && <ModalInfo type="platformComments" change={setModalShowData} data={comment} />}
+            {modalShowData && <ModalInfo type="platformComments" change={setModalShowData} data={comment} arrayEmails={arrayEmails} />}
         </>
     )
 

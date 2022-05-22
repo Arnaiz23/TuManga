@@ -8,13 +8,14 @@ import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getAllComments } from "services/Admin";
 
-const TITLES_TABLE = ["id", "Fecha", "Titulo", "Mensaje", "Producto", "Id usuario", "Puntuacion", "Eliminar"]
+const TITLES_TABLE = ["id", "Fecha", "Titulo", "Mensaje", "Producto", "usuario", "Puntuacion", "Eliminar"]
 const TITLES_TABLE_RESPONSIVE = ["id", "Producto", "Ver", "Eliminar"]
 
 export default function PlatformComments() {
 
     const [comments, setComments] = useState([])
     const [commentsEmpty, setCommentsEmpty] = useState(false)
+    const [arrayEmails, setArrayEmails] = useState([])
     const [loading, setLoading] = useState(false)
 
     const fetchComments = () => {
@@ -26,6 +27,7 @@ export default function PlatformComments() {
             }
 
             setComments(data.comments)
+            setArrayEmails(data.newArray)
             setCommentsEmpty(false)
             setLoading(false)
         })
@@ -49,8 +51,8 @@ export default function PlatformComments() {
                         ? <Spinner />
                         : (
                             <>
-                                <PlatformTableComments titles={TITLES_TABLE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} />
-                                <PlatformTableResponsiveComments titles={TITLES_TABLE_RESPONSIVE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} />
+                                <PlatformTableComments titles={TITLES_TABLE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} arrayEmails={arrayEmails} />
+                                <PlatformTableResponsiveComments titles={TITLES_TABLE_RESPONSIVE} data={comments} dataEmpty={commentsEmpty} setData={setComments} setDataEmpty={setCommentsEmpty} arrayEmails={arrayEmails} />
                             </>
                         )
                     }
