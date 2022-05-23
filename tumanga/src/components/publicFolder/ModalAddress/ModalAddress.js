@@ -25,7 +25,13 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
         if (editAddress.floor === undefined) editAddress.floor = ""
         if (editAddress.number === undefined) editAddress.number = ""
         updateUserAddress(data._id, editAddress).then(data => {
-            if (data.message) return alert(data.message)
+            if (data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar actualizarla',
+                    'error'
+                )
+            }
 
             changeAddress(data.allAddress)
             Swal.fire(

@@ -9,6 +9,7 @@ import { api_URL } from "services/config";
 import { getOrderId } from "services/Orders";
 import Moment from "react-moment";
 import 'moment/locale/es';
+import Swal from "sweetalert2";
 
 export default function OrderDetail({ params }) {
 
@@ -18,7 +19,13 @@ export default function OrderDetail({ params }) {
     useEffect(() => {
         setLoading(true)
         getOrderId(params.id).then(data => {
-            if (data.message) return alert(data.message)
+            if (data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar recuperarlo',
+                    'error'
+                )
+            }
             setOrder(data.data)
             setLoading(false)
         })

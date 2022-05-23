@@ -16,7 +16,13 @@ export default function ProductDetail({ product }) {
 
         if (orderProcess) {
             addProductOrder({ "id_product": product._id }).then(data => {
-                if (data.message) return alert(data.message)
+                if (data.message) {
+                    return Swal.fire(
+                        'Lo sentimos',
+                        'Hubo un error al intentar añadirlo',
+                        'error'
+                    )
+                }
                 setOrderProcess(true)
                 setOrder(data.orderUpdate)
                 setCount(data.orderUpdate.products.length)
@@ -28,7 +34,13 @@ export default function ProductDetail({ product }) {
             })
         } else {
             createOrder({ "id_product": product._id }).then(data => {
-                if (data.message) return alert(data.message)
+                if (data.message) {
+                    return Swal.fire(
+                        'Lo sentimos',
+                        'Hubo un error al intentar crearlo',
+                        'error'
+                    )
+                }
                 setOrderProcess(true)
                 setOrder(data.saveOrder)
                 setCount(data.saveOrder.products.length)

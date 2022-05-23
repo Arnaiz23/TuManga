@@ -62,7 +62,13 @@ export default function ModalPaymentAddressData({ changeLastAddress, closeModal,
         }
 
         createAddress(newAddress).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearla',
+                    'error'
+                )
+            }
             changeLastAddress(data.allAddress[data.allAddress.length - 1])
             Swal.fire(
                 'Dirección',

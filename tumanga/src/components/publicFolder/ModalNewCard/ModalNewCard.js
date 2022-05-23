@@ -31,33 +31,67 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         year = `${year[2]}${year[3]}`
 
         if (card.card_name === "" || card.expiration_date === "" || card.number_card === "") {
-            return alert("Rellene los campos obligatorios")
+            return Swal.fire(
+                'Datos incorrectos',
+                'Rellene todos los campos obligatorios',
+                'warning'
+            )
         }
 
         if(!regexpNumber.test(card.number_card)){
-            return alert("Número de la tarjeta no válido")
+            return Swal.fire(
+                'Datos incorrectos',
+                'Número de la tarjeta no válido',
+                'warning'
+            )
         }
 
         if(!regexpName.test(card.card_name)){
-            return alert("El nombre no puede contener ni números ni caractéres especiales")
+            return Swal.fire(
+                'Datos incorrectos',
+                'El nombre no puede contener ni número ni caractéres especiales',
+                'warning'
+            )
         }
 
         if(!regexpDate.test(card.expiration_date)){
-            return alert("La fecha debe tener el formato MM/YY")
+            return Swal.fire(
+                'Datos incorrectos',
+                'La fecha debe tener el formato MM/YY',
+                'warning'
+            )
         }
 
         let expiration_date = card.expiration_date.split("/")
 
         if(expiration_date[1] < year){
-            return alert("Debe ser una fecha posterior al día de hoy")
+            return Swal.fire(
+                'Datos incorrectos',
+                'Debe ser una fecha posterior al día de hoy',
+                'warning'
+            )
         }else if(expiration_date[1] === year && expiration_date[0] < month){
-            return alert("Debe ser una fecha posterior al día de hoy")
+            return Swal.fire(
+                'Datos incorrectos',
+                'Debe ser una fecha posterior al día de hoy',
+                'warning'
+            )
         }else if(parseInt(expiration_date[0]) > 12 || parseInt(expiration_date[0]) <= 0){
-            return alert("Introduzca una fecha válida")
+            return Swal.fire(
+                'Datos incorrectos',
+                'Introduzca una fecha válida',
+                'warning'
+            )
         }
 
         createCard(card).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearla',
+                    'error'
+                )
+            }
 
             change(data.allCards)
             Swal.fire(

@@ -21,7 +21,13 @@ export default function PlatformRowComment({ comment, setCommentsEmpty, setComme
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteCommentAdmin(comment._id).then(data => {
-                    if (data.message) return alert(data.message)
+                    if (data.message) {
+                        return Swal.fire(
+                            'Lo sentimos',
+                            'Hubo un error al intentar eliminarlo',
+                            'error'
+                        )
+                    }
 
                     Swal.fire(
                         'Comentario',

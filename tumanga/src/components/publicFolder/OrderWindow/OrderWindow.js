@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import Moment from "react-moment";
 import 'moment/locale/es';
 import Spinner from "../Spinner/Spinner";
+import Swal from "sweetalert2";
 
 export default function OrderWindow({ data }) {
 
@@ -19,7 +20,11 @@ export default function OrderWindow({ data }) {
         setLoadingOrder(true)
         getOrderId(data._id).then(info => {
             if (info.message) {
-                return alert(info.message)
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar recuperar el pedido',
+                    'error'
+                )
             }
             setOrder(info.data)
             setLoadingOrder(false)

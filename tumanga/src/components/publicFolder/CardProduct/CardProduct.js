@@ -18,7 +18,6 @@ export default function CardProduct({ product }) {
     const { user, orderProcess, setOrderProcess, setOrder, setCount } = useContext(OrderContext)
 
     const addCart = () => {
-        // alert("Add this product")
         setBtnCart(false)
         createOrder({ "id_product" : product._id}).then(data => {
 
@@ -49,7 +48,13 @@ export default function CardProduct({ product }) {
     const addCartProcess = () => {
         setBtnCart(false)
         addProductOrder({ "id_product" : product._id }).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar añadirlo',
+                    'error'
+                )
+            }
 
             Swal.fire(
                 'Carrito',

@@ -57,7 +57,11 @@ export default function Login() {
                                         setUser(true)
                                         setLocation("/")
                                     }else{
-                                        alert(data.message)
+                                        return Swal.fire(
+                                            'Lo sentimos',
+                                            'Hubo un error al intentar cambiar el estado',
+                                            'error'
+                                        )
                                         // localStorage.removeItem("token")
                                     }
                                 })

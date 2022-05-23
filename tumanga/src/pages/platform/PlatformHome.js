@@ -6,6 +6,7 @@ import React, { useContext, useEffect } from "react";
 import { getUser } from "services/Users";
 import AdminContext from "context/AdminContext";
 import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import Swal from "sweetalert2";
 
 export default function PlatformHome() {
 
@@ -13,7 +14,13 @@ export default function PlatformHome() {
 
     let fetchDataUser = () => {
         getUser().then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar recuperarlo',
+                    'error'
+                )
+            }
             setUserData(data.userInfo)
         })
     }

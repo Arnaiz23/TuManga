@@ -30,7 +30,6 @@ export default function Header() {
     useUser()
 
     let changeNavState = () => {
-        // alert("Hola")
         navActive === '' ? setNavActive('navActive') : setNavActive('')
     }
 

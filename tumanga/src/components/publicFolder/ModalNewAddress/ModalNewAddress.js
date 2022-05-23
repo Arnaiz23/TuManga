@@ -42,7 +42,13 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
         }
 
         createAddress(address).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearla',
+                    'error'
+                )
+            }
 
             change(data.allAddress)
             Swal.fire(

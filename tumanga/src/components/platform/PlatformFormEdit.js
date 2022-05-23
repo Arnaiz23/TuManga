@@ -18,7 +18,13 @@ export default function PlatformEditForm({ title, type, data }) {
         }
 
         updateOneUser(data, user).then(update => {
-            if (update.message) return alert(update.message)
+            if (update.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar modificarlo',
+                    'error'
+                )
+            }
             setUser(update.userUpdate)
             Swal.fire(
                 'Usuario',
@@ -97,7 +103,13 @@ export default function PlatformEditForm({ title, type, data }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteUser(user._id).then(data => {
-                    if (data.message) return alert(data.message)
+                    if (data.message) {
+                        return Swal.fire(
+                            'Lo sentimos',
+                            'Hubo un error al intentar crearlo',
+                            'error'
+                        )
+                    }
 
                     Swal.fire(
                         'Usuario',

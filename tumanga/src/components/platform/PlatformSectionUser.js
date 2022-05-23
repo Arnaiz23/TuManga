@@ -1,6 +1,7 @@
 import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { getOnerUser } from "services/Admin";
+import Swal from "sweetalert2";
 
 export default function PlatformSectionUser({ data, setData, user, setUser, role, setRole }) {
 
@@ -13,7 +14,11 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
         getOnerUser(data).then(user => {
             if (user.message) {
                 setLoading(false)
-                return alert(user.message)
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar recuperar al usuario',
+                    'error'
+                )
             }
             setRole(user.roleName)
             setUser(user.userFind)

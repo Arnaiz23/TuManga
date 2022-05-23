@@ -58,7 +58,13 @@ export default function PlatformEditFormProduct({ title, type, data }) {
                     image.name
                 );
                 uploadImage(product._id, formData).then(data => {
-                    if (data.message) return alert(data.message)
+                    if (data.message) {
+                        return Swal.fire(
+                            'Lo sentimos',
+                            'Hubo un error al intentar subir la imagen',
+                            'error'
+                        )
+                    }
                     setProduct(data.productUpdate)
                     Swal.fire(
                         'Producto',
@@ -134,7 +140,13 @@ export default function PlatformEditFormProduct({ title, type, data }) {
 
 
         createProduct(newProduct).then(data => {
-            if (data.status !== "success") return alert(data)
+            if (data.status !== "success") {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearlo',
+                    'error'
+                )
+            }
 
             const formData = new FormData();
             formData.append(
@@ -144,7 +156,13 @@ export default function PlatformEditFormProduct({ title, type, data }) {
             );
 
             uploadImage(data.product_id, formData).then(data => {
-                if (data.message) return alert(data.message)
+                if (data.message)  {
+                    return Swal.fire(
+                        'Lo sentimos',
+                        'Hubo un error al intentar subir la imagen',
+                        'error'
+                    )
+                }
                 Swal.fire(
                     'Producto',
                     'Producto creado correctamente',
@@ -167,7 +185,13 @@ export default function PlatformEditFormProduct({ title, type, data }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteProduct(product._id).then(data => {
-                    if (data.message) return alert(data.message)
+                    if (data.message) {
+                        return Swal.fire(
+                            'Lo sentimos',
+                            'Hubo un error al intentar eliminarlo',
+                            'error'
+                        )
+                    }
 
                     Swal.fire(
                         'Producto',

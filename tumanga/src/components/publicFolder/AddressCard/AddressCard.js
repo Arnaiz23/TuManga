@@ -10,7 +10,11 @@ export default function AddressCard({ data, change, empty }) {
     const deleteAddress = () => {
         deleteUserAddress(data._id).then(data => {
             if (data.message) {
-                return alert(data.message)
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar eliminarla',
+                    'error'
+                )
             }
 
             Swal.fire(

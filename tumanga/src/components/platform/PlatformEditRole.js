@@ -23,7 +23,13 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
         }
 
         createRole(newRole).then(data => {
-            if (data.message) return alert(data.message)
+            if (data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearlo',
+                    'error'
+                )
+            }
 
             Swal.fire(
                 'Rol',
@@ -45,7 +51,13 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
         }
 
         updateRole(role._id, role).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar modificarlo',
+                    'error'
+                )
+            }
             
             Swal.fire(
                 'Rol',
@@ -69,7 +81,13 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
           }).then((result) => {
             if (result.isConfirmed) {
               deleteRole(role._id).then(data => {
-                  if(data.message) return alert(data.message)
+                  if(data.message) {
+                    return Swal.fire(
+                        'Lo sentimos',
+                        'Hubo un error al intentar eliminarlo',
+                        'error'
+                    )
+                  }
 
                   Swal.fire(
                     'Rol',

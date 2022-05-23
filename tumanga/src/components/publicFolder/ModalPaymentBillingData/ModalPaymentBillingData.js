@@ -78,7 +78,13 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
         }
         
         createCard(newCard).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearla',
+                    'error'
+                )
+            }
             changeLastBilling(data.allCards[data.allCards.length -1 ])
             changeBillingEmpty(false)
             Swal.fire(

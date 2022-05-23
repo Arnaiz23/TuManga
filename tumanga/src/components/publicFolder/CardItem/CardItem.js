@@ -22,7 +22,13 @@ export default function CardItem({ data, empty, change }) {
     const deleteCard = () => {
         
         deleteUserCard(data._id).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar eliminarla',
+                    'error'
+                )
+            }
 
             change(data.cards)
             Swal.fire(

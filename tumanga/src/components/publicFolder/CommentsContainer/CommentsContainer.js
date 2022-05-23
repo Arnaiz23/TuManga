@@ -23,7 +23,13 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
         e.preventDefault()
 
         createComment(comment).then(data => {
-            if (data.message) return alert(data.message)
+            if (data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar crearlo',
+                    'error'
+                )
+            }
 
             change(data.allComments)
 

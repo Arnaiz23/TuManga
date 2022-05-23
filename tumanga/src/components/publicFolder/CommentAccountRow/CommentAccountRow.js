@@ -9,7 +9,13 @@ export default function CommentAccountRow({ data, change, empty }) {
 
     const deleteComment = () => {
         deleteUserComment(data._id).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar eliminarlo',
+                    'error'
+                )
+            }
 
             change(data.comments)
             Swal.fire(

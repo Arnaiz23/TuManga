@@ -48,7 +48,13 @@ export default function Payment() {
         }
 
         finishShoppingCart(dataPayment).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar finalizarlo',
+                    'error'
+                )
+            }
             Swal.fire(
                 'Compra',
                 'Compra finalizada con éxito',

@@ -4,6 +4,7 @@ import OrderContext from "context/OrderContext";
 import React, { useContext } from "react";
 import { api_URL } from "services/config";
 import { deleteProductCart } from "services/Orders";
+import Swal from "sweetalert2";
 
 export default function RowOrderProduct({ data }) {
 
@@ -11,7 +12,13 @@ export default function RowOrderProduct({ data }) {
 
     const deleteItem = () => {
         deleteProductCart({"id_product" : data.product_id}).then(data => {
-            if(data.message) return alert(data.message)
+            if(data.message) {
+                return Swal.fire(
+                    'Lo sentimos',
+                    'Hubo un error al intentar eliminarlo',
+                    'error'
+                )
+            }
             setOrder(data.orderUpdate)
             setCount(data.orderUpdate.products.length)
         })
