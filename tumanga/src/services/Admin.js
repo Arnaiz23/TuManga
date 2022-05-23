@@ -362,3 +362,19 @@ export function deleteCommentAdmin(id) {
         })
 
 }
+
+export function getBestsellers() {
+
+    let token = getToken()
+
+    return fetch(`${api_URL}/products/sales/5`, {
+        headers: new Headers({
+            "Authorization" : `Bearer ${token}`
+        })
+    })
+        .then(res => res.json())
+        .then(({ products }) => {
+            return products
+        })
+    
+}

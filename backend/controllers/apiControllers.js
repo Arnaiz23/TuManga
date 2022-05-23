@@ -2204,7 +2204,7 @@ var controller = {
 
         const { limit } = req.params
 
-        let products = await Product.find().sort({ number_sales: "desc" }).limit(limit)
+        let products = await Product.find({},{name: true, number_sales: true}).sort({ number_sales: "desc" }).limit(limit)
 
         if (!products || products.length == 0) {
             return res.status(404).send({

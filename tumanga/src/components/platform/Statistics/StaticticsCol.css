@@ -1,0 +1,50 @@
+
+
+.statisticsCol {
+    /* width: 50px; */
+    width: 10vw;
+    height: 100px;
+    border: 3px solid #ff0000;
+    background-color: rgb(207, 50, 50);
+    border-bottom: 0;
+    /* position: relative; */
+    z-index: 10;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .statisticsCol:nth-child(2) {
+    border-color: #008000;
+    background-color: rgb(30, 172, 30);
+  }
+  .statisticsCol:nth-child(3) {
+    border-color: #ffff00;
+    background-color: rgb(199, 199, 23);
+  }
+  .statisticsCol:nth-child(4) {
+    border-color: #ffa500;
+    background-color: rgb(228, 164, 44);
+  }
+  .statisticsCol:nth-child(5) {
+    border-color: #0000ff;
+    background-color: rgb(109, 109, 243);
+  }
+  
+  .statisticsCol:hover {
+    opacity: 0.8;
+  }
+  
+  .statisticsName {
+    position: absolute;
+    bottom: -9vh;
+    width: inherit;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .statisticsScore {
+    position: absolute;
+    font-size: 1.5rem;
+
+  }
+  

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { getStatistics } from "services/Admin";
 import AdminContext from "context/AdminContext";
+import Statistics from "./Statistics/Statictics";
 
 export default function PlatformMain() {
 
@@ -68,7 +69,7 @@ export default function PlatformMain() {
             <div className="containerStatisticsProducts">
                 <h2>Productos</h2>
                 <section>
-
+                    <Statistics />
                 </section>
             </div>
         </main>
