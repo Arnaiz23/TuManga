@@ -1,5 +1,5 @@
 import useGetDataPayment from "hooks/useGetDataPayment";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { api_URL } from "services/config";
 import ModalPaymentAddress from "../ModalPayment/ModalPaymentAddress";
 import ModalPaymentBilling from "../ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
