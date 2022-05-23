@@ -86,7 +86,7 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
         <div className="containerComments">
             <h3>Comentarios</h3>
             {user &&
-                <form onSubmit={sendComment}>
+                <form onSubmit={sendComment} autoComplete="off">
                     <div className="containerCommentData">
                         <input type='text' placeholder="Escribe tu nombre" name="name" onChange={handleChange}></input>
                         <span className="rowStars rowStarsSelect">
