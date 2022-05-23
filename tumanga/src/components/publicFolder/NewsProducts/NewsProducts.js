@@ -1,5 +1,4 @@
 import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
-import useOrderData from "hooks/useOrderData";
 import React, { useContext, useEffect, useState } from "react";
 import getNewsProducts from "services/getNewsProducts";
 import Spinner from "../Spinner/Spinner";

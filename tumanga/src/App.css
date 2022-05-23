@@ -1947,8 +1947,9 @@ a {
   height: 60vh;
 }
 
-.submenuFloat section ul li a {
+.submenuFloat section ul li p {
   color: #000;
+  cursor: pointer;
   font-size: 20px;
 }
 

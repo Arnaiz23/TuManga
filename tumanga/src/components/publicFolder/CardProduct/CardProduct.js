@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { api_URL } from "services/config";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "wouter";
-import { addProductOrder, createOrder, getOrderProccess } from "services/Orders";
+import { addProductOrder, createOrder } from "services/Orders";
 import Swal from "sweetalert2";
-import useOrderData from "hooks/useOrderData";
 import OrderContext from "context/OrderContext";
 
 export default function CardProduct({ product }) {
 
     const [btnCart, setBtnCart] = useState(true)
-    // const [orderProcess, setOrderProcess] = useState(false)
-    /* const { orderProcess, setOrderProcess, setOrder, setCount } = useOrderData() */
     const { user, orderProcess, setOrderProcess, setOrder, setCount } = useContext(OrderContext)
 
     const addCart = () => {
@@ -36,14 +33,7 @@ export default function CardProduct({ product }) {
             setOrder(data.saveOrder)
             setCount(data.saveOrder.products.length)
         })
-        // setTimeout(() => setBtnCart(true), 500)
     }
-
-    /* useEffect(() => {
-        getOrderProccess().then(data => {
-            if(data.orders) setOrderProcess(true)
-        })
-    }, []) */
 
     const addCartProcess = () => {
         setBtnCart(false)

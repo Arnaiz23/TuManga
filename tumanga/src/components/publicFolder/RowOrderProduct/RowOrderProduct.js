@@ -28,7 +28,7 @@ export default function RowOrderProduct({ data }) {
         <div className="row">
             {data.image !== null
                 ? <img src={`${api_URL}/image/${data.image}`} alt={`imagen portada ${data.name}`} />
-                : <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt={`Portada del volumen de ${data.name}`} />
+                : <img src={`${api_URL}/image/ImageNotFound.jpg`} alt={`Portada del volumen de ${data.name}`} />
             }
             <div className="contentShopping">
                 <h4 className="titleBlue">{data.name}</h4>

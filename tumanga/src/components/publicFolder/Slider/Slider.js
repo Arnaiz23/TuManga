@@ -1,7 +1,4 @@
 import React from "react";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { api_URL } from "services/config";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";

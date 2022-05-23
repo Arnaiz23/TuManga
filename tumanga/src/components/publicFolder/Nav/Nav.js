@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "wouter";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,7 +14,7 @@ export default function Nav({ state, user, changeProcess }) {
     let navState = state
 
     const { tokenInfo, setTokenInfo } = useToken()
-    const [location, setLocation] = useLocation()
+    const setLocation = useLocation()[1]
     const { userData, setUserData } = useContext(OrderContext)
 
     let navRef = React.createRef()

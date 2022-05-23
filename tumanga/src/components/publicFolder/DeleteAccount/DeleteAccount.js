@@ -7,7 +7,7 @@ import OrderContext from "context/OrderContext";
 
 export default function DeleteAccount() {
 
-    const [location, setLocation] = useLocation()
+    const setLocation = useLocation()[1]
     const { setOrderProcess } = useContext(OrderContext)
 
     const deleteAccount = () => {
@@ -63,7 +63,7 @@ export default function DeleteAccount() {
     return (
         <div className="colCenter">
             <h3>Eliminar Cuenta</h3>
-            <button className="btn btn-danger" role="button" onClick={deleteAccount}>Eliminar</button>
+            <button className="btn btn-danger" onClick={deleteAccount}>Eliminar</button>
         </div>
     )
 }

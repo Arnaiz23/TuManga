@@ -1,4 +1,3 @@
-import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { updateUser } from "services/Users";
 import Swal from "sweetalert2";

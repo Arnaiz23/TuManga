@@ -20,7 +20,6 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     const handleUpdate = () => {
 
         const regexpNumber = /^[0-9]+$/
-        const regexpNames = /^[a-zA-Záéíóú !?¿*]+$/
 
         if (!regexpNumber.test(product.price) || !regexpNumber.test(product.stock)) {
             return Swal.fire(
@@ -29,14 +28,6 @@ export default function PlatformEditFormProduct({ title, type, data }) {
                 'error'
             )
         }
-
-        /* if (!regexpNames.test(product.authors) || !regexpNames.test(product.editorial) || !regexpNames.test(product.series)) {
-            return Swal.fire(
-                'Datos erróneos',
-                'El autor, editorial y serie solo puede contener letras',
-                'error'
-            )
-        } */
 
         product.categories = categories
 
@@ -107,7 +98,6 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     const handleCreate = () => {
 
         const regexpNumber = /^[0-9]+$/
-        const regexpNames = /^[a-zA-Záéíóú !?¿*]+$/
 
         newProduct.price = parseInt(newProduct.price)
         newProduct.stock = parseInt(newProduct.stock)
@@ -128,14 +118,6 @@ export default function PlatformEditFormProduct({ title, type, data }) {
                 'error'
             )
         }
-
-        /* if (!regexpNames.test(newProduct.authors) || !regexpNames.test(newProduct.editorial) || !regexpNames.test(newProduct.series)) {
-            return Swal.fire(
-                'Datos erróneos',
-                'El autor, editorial y serie solo puede contener letras',
-                'error'
-            )
-        } */
 
 
 

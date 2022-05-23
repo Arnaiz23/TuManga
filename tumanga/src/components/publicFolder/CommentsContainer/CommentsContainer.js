@@ -1,6 +1,6 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Children, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createComment } from "services/Comments";
 import { getUser } from "services/Users";
 import Swal from "sweetalert2";

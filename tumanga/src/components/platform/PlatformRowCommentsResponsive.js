@@ -1,4 +1,4 @@
-import { faEye, faPenToSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
 import React, { useState } from "react";

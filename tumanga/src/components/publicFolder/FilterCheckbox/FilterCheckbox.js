@@ -1,5 +1,5 @@
 import useProducts from "hooks/useProducts";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import ProductContext from "context/ProductsContext";
 import getFilterProducts from "services/getFilterProducts";

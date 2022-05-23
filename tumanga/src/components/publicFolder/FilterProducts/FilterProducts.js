@@ -27,7 +27,7 @@ export default function FilterProducts({ type }) {
             // console.log(res.products);
         })
         setActualType("comics")
-    }, [])
+    }, [setActualType])
 
     const handleChange = (e) => {
         // setActualType(e.target.name)

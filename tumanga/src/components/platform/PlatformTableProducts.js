@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "moment/locale/es"
 import PlatformRowProducts from "./PlatformRowProducts";
 

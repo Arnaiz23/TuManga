@@ -1,5 +1,4 @@
 import React from "react";
-import PlatformModalShow from "./PlatformModalShow";
 import PlatformModalShowProducts from "./PlatformModalShowProducts";
 
 export default function PlatformTableResponsiveProducts({ titles, products, productsEmpty }) {

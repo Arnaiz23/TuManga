@@ -3,9 +3,8 @@ import React, { useState } from "react";
 
 export default function PlatformTableNewProduct({ setNewProduct, newProduct, setImage, categories, setCategories }) {
 
-    const [loading, setLoading] = useState(false)
+    const loading = useState(false)[0]
     const [newCategorie, setNewCategorie] = useState('')
-    // const [categories, setCategories] = useState([])
 
     const handleChange = (e) => {
         setNewProduct({

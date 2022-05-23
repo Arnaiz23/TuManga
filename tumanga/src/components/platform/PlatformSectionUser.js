@@ -24,7 +24,7 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
             setUser(user.userFind)
             setLoading(false)
         })
-    }, [data, setUser])
+    }, [data, setUser, setRole])
 
     const handleChangeData = (e) => {
         setUser({

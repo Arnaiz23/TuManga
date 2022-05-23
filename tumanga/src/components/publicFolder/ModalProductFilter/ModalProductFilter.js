@@ -19,7 +19,7 @@ export default function ModalProductFilter({ type }) {
             setFilters(res.categories)
             // console.log(res.products);
         })
-    }, [])
+    }, [setLoading])
 
     const showModal = () => {
         modalShow === 'modalFilterActive'

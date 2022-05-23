@@ -13,7 +13,7 @@ export default function NavAccountResp() {
         const [isActive] = useRoute(props.href);
         return (
             <Link {...props}>
-                <a className={isActive ? "submenuOptionActive" : ""}>{props.children}</a>
+                <p className={isActive ? "submenuOptionActive" : ""}>{props.children}</p>
             </Link>
         );
     };
@@ -31,7 +31,7 @@ export default function NavAccountResp() {
             <button className="btnSubmenu" onClick={openNav}><i><FontAwesomeIcon icon={faEllipsisVertical} /></i></button>
             <nav className={`submenuFloat ${stateNav}`}>
                 <header>
-                    <button role="button" id="closeModalAccount" onClick={closeNav}>
+                    <button id="closeModalAccount" onClick={closeNav}>
                         <i><FontAwesomeIcon icon={faXmark} /></i>
                         Cerrar
                     </button>

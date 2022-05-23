@@ -8,7 +8,7 @@ export default function AsideAccount() {
         const [isActive] = useRoute(props.href);
         return (
             <Link {...props}>
-                <a className={isActive ? "activeUnderline" : ""}>{props.children}</a>
+                <p className={isActive ? "activeUnderline" : ""}>{props.children}</p>
             </Link>
         );
     };
