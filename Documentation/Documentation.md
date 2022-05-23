@@ -117,8 +117,6 @@ The principal route is "/api/v1"
 
 * Sort by x
 * Component error
-* Alerts of the data.message in Platform
-* Add Alerts, example newCard
 * If I want, create title for mobile in StatisticsBestsellers (modal)
 
 ### Views for public

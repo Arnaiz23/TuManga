@@ -53,7 +53,7 @@ let globalFunctions = {
         let file_extension = file_name.split(".")[1]
 
         if (file_extension != "png" && file_extension != "jpg" && file_extension != "jpeg") {
-            fs.unlink(file_path, (err) => {
+            fs.unlink(file_path, () => {
                 return res.status(404).send({
                     status: "error",
                     message: "The extension of the image is invalid"

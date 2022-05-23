@@ -57,7 +57,6 @@ var controller = {
 
         const state = ["new", "old"];
         const numberValid = /^[0-9]+$/;
-        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
         const type = ["manga", "novela ligera", "merchandising"];
 
 
@@ -526,8 +525,6 @@ var controller = {
 
         let { type, option, limit, skip } = req.params;
 
-        const categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
-
         if (type === "novela") {
             type = "novela ligera"
         } else if (type != "novela" && type != "manga" && type != "merchandising" && type != "comics") {
@@ -832,7 +829,7 @@ var controller = {
 
         let { email, password, remember } = req.body;
 
-        const regexPassword = /^[a-zA-Z0-9\*\$\%\&\^\Ç]{6,17}$/;
+        const regexPassword = /^[a-zA-Z0-9*$%&^Ç]{6,17}$/;
         let validatePassword, validateEmail;
 
         try {
@@ -924,7 +921,7 @@ var controller = {
         }
 
         if (body.password && body.confirm_password) {
-            const regex = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+            const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
 
             if (body.password != body.confirm_password) {
                 return res.status(404).send({
@@ -982,7 +979,7 @@ var controller = {
 
         let validate_old, validate_new, validate_confirm
 
-        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        const regexp = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
 
         try {
 
@@ -2292,7 +2289,7 @@ var controller = {
 
         if(body.password) {
 
-            const regexpPassword = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/
+            const regexpPassword = /^[a-zA-Z0-9*/$^Ç]{6,16}$/
 
             if(!regexpPassword.test(body.password)){
                 return res.status(404).send({
@@ -2451,7 +2448,6 @@ var controller = {
 
         const $state = ["new", "old"];
         const $numberValid = /^[0-9]+$/;
-        const $categories = ["cyberpunk", "ecchi", "furry", "gekiga", "gore", "harem", "harem inverso", "hentai", "isekai", "kemono", "maho shojo", "mecha", "meitantei", "realidad virtual", "yuri", "yaoi", "spokon", "shota", "lolicon", "nendoroid", "Funko POP", "Shonen", "Seinen", "Kimetsu no Yaiba", "Dragon Ball", "Camisetas", "Shingeki no Kyojin", "Figuras"];
         const $type = ["manga", "novela ligera", "merchandising"];
 
         // name price description short_description state stock categories type number_sales authors editorial series
@@ -2598,7 +2594,7 @@ var controller = {
 
         const { name, last_name, email, password, state, role } = req.body
 
-        const regexp = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        const regexp = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
         const $role = ["usuario", "admin", "owner", "empleado"]
         const $state = ["Active", "Disabled"]
         let validate_email, validate_password, validate_role
@@ -2838,7 +2834,7 @@ var controller = {
         let file_extension = file_name.split(".")[1]
 
         if (file_extension != "png" && file_extension != "jpg" && file_extension != "jpeg") {
-            fs.unlink(file_path, (err) => {
+            fs.unlink(file_path, () => {
                 return res.status(404).send({
                     status: "error",
                     message: "The extension of the image is invalid"
@@ -2849,7 +2845,7 @@ var controller = {
         let productUpdate = await Product.findByIdAndUpdate(productFind._id, { image: file_name }, { new: true })
 
         if (!productUpdate) {
-            fs.unlink(file_path, (err) => {
+            fs.unlink(file_path, () => {
                 return res.status(404).send({
                     status: "error",
                     message: "This product has not been updated"
@@ -2913,7 +2909,7 @@ var controller = {
 
         let transporter = await globalFunctions.getTransport()
 
-        let info = await transporter.sendMail({
+        await transporter.sendMail({
             from: '"TuManga" <foo@example.com>',
             to: email,
             subject: "Recover password",
@@ -2933,7 +2929,7 @@ var controller = {
 
         const { password, confirm_password } = req.body
 
-        const reg_password = /^[a-zA-Z0-9\*\/\$\^\Ç]{6,16}$/;
+        const reg_password = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
         let validate_password, validate_confirm
 
         try {
