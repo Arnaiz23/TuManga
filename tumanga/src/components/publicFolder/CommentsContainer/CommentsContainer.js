@@ -22,6 +22,14 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
     const sendComment = (e) => {
         e.preventDefault()
 
+        if (comment.message === "" || comment.name === "") {
+            return Swal.fire(
+                'Datos incorrectos',
+                'Rellene todos los campos obligatorios',
+                'warning'
+            )
+        }
+
         createComment(comment).then(data => {
             if (data.message) {
                 return Swal.fire(
@@ -50,7 +58,7 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
         let data = e.target.value
         let name = e.currentTarget.name
 
-        if(e.currentTarget.classList.contains("starsSelect")){
+        if (e.currentTarget.classList.contains("starsSelect")) {
             data = parseInt(e.currentTarget.control.value)
             name = "score"
         }
@@ -67,10 +75,10 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
         getUser().then(data => {
             if (data.message) {
                 setUser(false)
-            } else {
-                setUser(true)
-                setUserId(data.userFind._id)
             }
+            setUser(true)
+            setUserId(data.userInfo.userFind._id)
+
         })
     }, [])
 
@@ -84,8 +92,8 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
                         <span className="rowStars rowStarsSelect">
                             {stars.map(i =>
                                 <React.Fragment key={i}>
-                                    <input type="radio" id={`star${6-i}`} name="score" value={6-i} />
-                                    <label htmlFor={`star${6-i}`} className="starsSelect" onClick={handleChange} value={i}><i><FontAwesomeIcon icon={faStar} /></i></label>
+                                    <input type="radio" id={`star${6 - i}`} name="score" value={6 - i} />
+                                    <label htmlFor={`star${6 - i}`} className="starsSelect" onClick={handleChange} value={i}><i><FontAwesomeIcon icon={faStar} /></i></label>
                                 </React.Fragment>
                             )}
                         </span>

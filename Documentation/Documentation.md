@@ -1,39 +1,27 @@
 <h1 style="display:flex;width=100%;justify-content:center;align-items:center;gap: 15px"><img src="../layout/assets/images/BrandT2.png" alt="arnaizDev brand" style="width:120px" /> TuManga</h1>
 
-## Steps
+## **Index**
 
-- Design all the views of the frontend
-- Mock-up the design in HTML, CSS and JS
-- Create the backend
-- Create the frontend
-
-
-## Complete
-
-- Design the views
-- Mock-up
-
-## Missing
-
-- Backend
-- Frontend
-
----
-
-## Index
-
-* [BBDD](#bbdd)
-    * [Collections](#collections)
-* [Backend](#backend)
-    * [Dependencies](#dependencies)
-    * [Routes](./Routes.md)
-* [Frontend](#frontend)
+- [**Index**](#index)
+- [**BBDD**](#bbdd)
+- [**Backend**](#backend)
+  - [Dependencies](#dependencies)
+  - [Init](#init)
+  - [Routes](#routes)
+  - [Middlewares](#middlewares)
+    - [Options](#options)
+  - [Extra information](#extra-information)
+- [**Frontend**](#frontend)
+  - [Missing views](#missing-views)
+  - [Views for public](#views-for-public)
+  - [Complete views](#complete-views)
+- [**Deployment**](#deployment)
 
 ---
 
-## BBDD
+## **BBDD**
 
-- Collections:
+* [Collections:](./Collections.md)
     - Products
     - Users
     - Billing
@@ -42,14 +30,9 @@
     - Address
     - Comments
 
-
-[Information](./Collections.md)
-
 ---
 
 ## **Backend**
-
-    The total price in bbdd or backend??
 
 ### Dependencies
 
@@ -65,16 +48,16 @@
 * Helmet
 
 
-## Init
+### Init
 
 Create all the roles automatic
 
-## Routes
+### Routes
 
 The principal route is "/api/v1"
 
 
-## Middlewares
+### Middlewares
 
 * Admin
 * Vendor
@@ -82,7 +65,7 @@ The principal route is "/api/v1"
 * Handle errors ¿?
 
 
-### Options
+#### Options
 
 * Products
     * get -> all and public
@@ -111,7 +94,7 @@ The principal route is "/api/v1"
 
 
 ---
-## Frontend
+## **Frontend**
 
 ### Missing views
 
@@ -142,3 +125,16 @@ The principal route is "/api/v1"
 * Payment
 * OrderDetail
 * ShoppingCart
+
+
+## **Deployment**
+
+* Backend:
+  * Render (Probably)
+  * Other options:
+    * Fly
+    * Railway
+* Frontend:
+  * Netlify (Probably)
+* Database:
+  * MongoDB Atlas

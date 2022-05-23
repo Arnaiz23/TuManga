@@ -1614,6 +1614,10 @@ a {
   display: none;
 }
 
+.starsSelect{
+  cursor: pointer;
+}
+
 .rowStars input[type="radio"]:checked ~ .starsSelect {
   color: rgb(240, 208, 26);
 }
