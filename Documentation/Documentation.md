@@ -117,7 +117,6 @@ The principal route is "/api/v1"
 
 * Sort by x
 * Component error
-* Slider in Home (Splide is an alternative)
 * Alerts of the data.message in Platform
 * In platformHome statistics
 * Add Alerts, example newCard
