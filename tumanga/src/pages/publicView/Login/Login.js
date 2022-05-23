@@ -18,7 +18,7 @@ export default function Login() {
     })
 
     const { setTokenInfo } = useToken()
-    const [location, setLocation] = useLocation()
+    const setLocation = useLocation()[1]
 
     const { setUser } = useContext(OrderContext)
 

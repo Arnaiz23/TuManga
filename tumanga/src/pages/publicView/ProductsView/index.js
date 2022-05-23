@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useLocation } from "wouter";
 
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "components/publicFolder/Footer/Footer";
 import Header from "components/publicFolder/Header/Header";
 import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
@@ -20,7 +18,7 @@ import ProductContext from "context/ProductsContext";
 
 export default function ProductsView() {
 
-    const { products, setProducts, count, setCount, productsEmpty } = useContext(ProductContext)
+    const { products, count, productsEmpty } = useContext(ProductContext)
 
 
     let type = ""

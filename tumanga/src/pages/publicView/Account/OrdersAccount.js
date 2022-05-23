@@ -18,7 +18,7 @@ export default function OrdersAccount() {
 
     const { loading } = useUser()
     const [loadingOrders, setLoadingOrders] = useState(false)
-    const [error, setError] = useState('false')
+    const setError = useState('false')[1]
     const [orderEmpty, setOrderEmpty] = useState(false)
     const [orders, setOrders] = useState([])
 
@@ -36,7 +36,7 @@ export default function OrdersAccount() {
             setLoadingOrders(false)
         })
 
-    }, [loading])
+    }, [loading, setError])
 
     return (
         <>

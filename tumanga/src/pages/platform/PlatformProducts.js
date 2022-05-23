@@ -3,7 +3,6 @@ import PlatformMainRowTitle from "components/platform/PlatformMainRowTitle";
 import PlatformNav from "components/platform/PlatformNav";
 import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import PlatformSearchModal from "components/platform/PlatformSearchModal";
-import PlatformTable from "components/platform/PlatformTable";
 import PlatformTableProducts from "components/platform/PlatformTableProducts";
 import PlatformTableResponsiveProducts from "components/platform/PlatformTableResponsiveProducts";
 import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";

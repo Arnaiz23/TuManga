@@ -4,7 +4,6 @@ import Header from "components/publicFolder/Header/Header";
 import ListOfOrder from "components/publicFolder/ListOfOrder/ListOfOrder";
 import SliderName from "components/publicFolder/SliderName/SliderName";
 import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
-import useOrderData from "hooks/useOrderData";
 import React, { useContext } from "react";
 import { Link } from "wouter";
 import OrderContext from "context/OrderContext";

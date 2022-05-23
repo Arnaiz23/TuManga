@@ -1,4 +1,3 @@
-import useUser from "hooks/useUser";
 import React, { useState } from "react";
 import { userChangePasswords } from "services/Users";
 import Swal from "sweetalert2";
@@ -94,7 +93,7 @@ export default function PasswordAccount() {
                             <li>Utiliza 6 caracteres o más</li>
                         </ul>
                     </span>
-                    <button className="btn btn-success" role="button">Guardar</button>
+                    <button className="btn btn-success">Guardar</button>
                 </div>
             </form>
         </div>

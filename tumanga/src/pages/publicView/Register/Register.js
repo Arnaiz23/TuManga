@@ -19,7 +19,7 @@ export default function Register() {
     const hidePasswordRef = React.createRef()
     const hidePasswordRef2 = React.createRef()
 
-    const [location, setLocation] = useLocation()
+    const setLocation = useLocation()[1]
     const { setTokenInfo } = useToken()
 
     const { setUser } = useContext(OrderContext)

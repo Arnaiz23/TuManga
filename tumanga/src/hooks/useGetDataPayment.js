@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getLastAddress } from "services/Address";
 import { getLastCards } from "services/Cards";
 
