@@ -2,15 +2,17 @@
 
 Here is all the content of the project **TuManga**
 
+## Technologies
+
 This project build in these technologies:
 
-    1. Database (MongoDB)
-    2. Backend (NodeJS)
-    3. Frontend (ReactJS)
+1. Database (MongoDB)
+2. Backend (NodeJS)
+3. Frontend (ReactJS)
 
 ## Information
 
-    This is a project that consist in a online store that sells Mangas and  Merchandising of anime.
+This is a project that consist in a online store that sells Mangas and  Merchandising of anime.
 
 
 ## Repository content
