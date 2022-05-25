@@ -115,7 +115,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
                     </div>
                     <div className="newAddressGroup">
                         <label htmlFor="number_card">Numero de la tarjeta <span className="obligatoryFields">*</span></label>
-                        <input type="number" id="number_card" name="number_card" onChange={handleData} title="Tienen que ser 16 números" />
+                        <input type="number" id="number_card" name="number_card" onChange={handleData} title="Tienen que ser 16 números" maxLength={"16"} />
                     </div>
                     <div className="newAddressGroup">
                         <label htmlFor="expiration_date">Fecha de expiración <span className="obligatoryFields">*</span></label>

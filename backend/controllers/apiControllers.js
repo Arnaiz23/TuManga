@@ -1597,8 +1597,6 @@ var controller = {
 
             newCard.type = $name_card[firstNumber]
             newCard.image = `${firstNumber}.png`
-            
-            console.log(newCard);
 
             newCard.save((err, card) => {
 
