@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var port = '3900';
+var port = process.env.PORT || '3900';
 var app = require('./app');
 
 if (process.env.NODE_ENV === 'test') {
@@ -10,9 +10,7 @@ if (process.env.NODE_ENV === 'test') {
 
 mongoose.Promise = global.Promise;
 
-var {user_bbdd, password_bbdd} = require('./config/config');
-
-mongoose.connect(`mongodb+srv://${user_bbdd}:${password_bbdd}@tumanga.1l58o.mongodb.net/TuManga?retryWrites=true&w=majority` , {useNewUrlParser : true} , () => {
+mongoose.connect(`mongodb+srv://${process.env.USER_BBDD}:${process.env.PASSWORD_BBDD}@tumanga.1l58o.mongodb.net/TuManga?retryWrites=true&w=majority` , {useNewUrlParser : true} , () => {
     console.log("Connected to the database correctly");
 
     app.listen(port, () =>{

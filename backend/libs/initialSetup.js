@@ -3,7 +3,6 @@
 const Role = require("../models/Role");
 const User = require("../models/User");
 const Product = require("../models/Product")
-const config = require("../config/config");
 
 
 const data = {
@@ -35,7 +34,7 @@ const data = {
 
             let role = await Role.findOne({ name: { $in: "admin" } })
             role = role._id
-            let password_hash = await User.encrypt(config.adminPassword)
+            let password_hash = await User.encrypt(process.env.ADMINPASSWORD)
 
             const values = await Promise.all([
                 new User({

@@ -4,8 +4,6 @@ const fs = require('fs')
 
 const nodemailer = require("nodemailer");
 
-const config = require("../config/config")
-
 let globalFunctions = {
 
     getUserToken: async (req, res) => {
@@ -80,8 +78,8 @@ let globalFunctions = {
             port: 587,
             secure: false, // true for 465, false for other ports
             auth: {
-                user: config.userGmail, 
-                pass: config.passwordGmail,
+                user: process.env.USERGMAIL, 
+                pass: process.env.PASSWORDGMAIL,
             },
         });
 

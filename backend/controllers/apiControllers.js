@@ -10,7 +10,6 @@ var User = require('../models/User');
 
 const validator = require('validator');
 var jwt = require('jsonwebtoken');
-var config = require('../config/config');
 const { default: mongoose } = require('mongoose');
 const fs = require('fs')
 var path = require("path");
@@ -714,7 +713,7 @@ var controller = {
                         register_date: newUser.register_date
                     }
 
-                    const token = await jwt.sign(payload, config.JWT_key, { expiresIn: 60 * 60 * 24 });
+                    const token = await jwt.sign(payload, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 });
 
                     return res.status(201).send({
                         status: "success",
@@ -880,7 +879,7 @@ var controller = {
                 rememberTime = 60 * 60 * 2;
             }
 
-            let token = jwt.sign(payload, config.JWT_key, { expiresIn: rememberTime });
+            let token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: rememberTime });
 
             if (user.state === "Disabled") {
                 res.status(200).send({
@@ -1621,7 +1620,7 @@ var controller = {
 
                     card.encrypt_card = null
 
-                    let allCards = await Billing.find({ user_id: user._id })
+                    let allCards = await Billing.find({ user_id: user._id }).sort({created_date: "desc"});
 
                     return res.status(201).send({
                         status: "success",

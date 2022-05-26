@@ -2,6 +2,7 @@
 
 var routes = require('./routes/apiRoutes');
 const initialConfig = require("./libs/initialSetup");
+require('dotenv').config();
 
 const express = require('express');
 var bodyParser = require("body-parser");
