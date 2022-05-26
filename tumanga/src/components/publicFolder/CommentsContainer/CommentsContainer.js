@@ -74,7 +74,7 @@ export default function CommentsContainer({ comments, empty, change, changeEmpty
     useEffect(() => {
         getUser().then(data => {
             if (data.message) {
-                setUser(false)
+                return setUser(false)
             }
             setUser(true)
             setUserId(data.userInfo.userFind._id)

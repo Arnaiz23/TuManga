@@ -3896,10 +3896,6 @@ a {
     justify-content: center;
   }
 
-  .modalInformation .modalCenter {
-    min-width: auto;
-  }
-
   .inputSearchAdminModal {
     width: 90%;
   }
