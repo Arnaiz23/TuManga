@@ -2906,12 +2906,19 @@ var controller = {
 
         let transporter = await globalFunctions.getTransport()
 
-        await transporter.sendMail({
-            from: '"TuManga" <foo@example.com>',
-            to: email,
-            subject: "Recover password",
-            html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='http://localhost:3000/recoverPassword/${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
-        });
+        try {
+            await transporter.sendMail({
+                from: '"TuManga" <foo@example.com>',
+                to: email,
+                subject: "Recover password",
+                html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='https://astounding-muffin-d1346c.netlify.app/recoverPassword/${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
+            });
+        } catch (error) {
+            return res.status(500).send({
+                status: "error",
+                message: "The email was not sent"
+            })
+        }
 
         return res.status(200).send({
             status: "success",
