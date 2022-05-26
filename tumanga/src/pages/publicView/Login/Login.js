@@ -140,7 +140,7 @@ export default function Login() {
                         <h2>Iniciar sesión</h2>
                         <form onSubmit={handleForm}>
                             <div className="inputsLog">
-                                <input type="text" id="" placeholder="Email" name="email" onChange={changeData} />
+                                <input type="email" id="" placeholder="Email" name="email" onChange={changeData} />
                                 <div className="inputPassword">
                                     <input type="password" id="inputPassword" placeholder="Contraseña" name="password" onChange={changeData} ref={inputPasswordRef} />
                                     <i className="passwordShow" id="passwordShow" ref={showPasswordRef} onClick={togglePassword}><FontAwesomeIcon icon={faEye} /></i>

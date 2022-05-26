@@ -88,7 +88,7 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
                     </div>
                     <div className="newAddressGroup">
                         <label htmlFor="telephone">Número de teléfono <span className="obligatoryFields">*</span></label>
-                        <input type="number" id="telephone" name="telephone" onChange={handleData} />
+                        <input type="tel" id="telephone" name="telephone" onChange={handleData} />
                     </div>
                 </section>
                 <input type="submit" className="btn btn-success" value="Crear dirección" />

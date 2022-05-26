@@ -104,7 +104,7 @@ export default function PlatformSearchModal({ changeModal, modal, title, setData
         <div className={modal ? "modalSearchAdmin modalSearchAdminShow" : "modalSearchAdmin"}>
             <h3>Búsqueda:</h3>
             <form onSubmit={handleSearch}>
-                {modal && <input type="text" name="" id="" className="inputSearchAdminModal"
+                {modal && <input type="search" name="" id="" className="inputSearchAdminModal"
                     placeholder={`Busca un ${title}...`} onChange={handleChangeSearch} autoFocus />}
                 <input type="submit" value="Buscar" className="btn btn-primary" onChange={handleChangeSearch} />
                 <input type="reset" className="btn btn-danger" onClick={handleResetForm} />

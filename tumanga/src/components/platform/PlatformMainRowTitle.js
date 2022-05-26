@@ -81,7 +81,7 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
             <div className="containerAdminOptions">
                 <form onSubmit={handleForm}>
                     <i className="iconSearch"><FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleChangeModal} /></i>
-                    <input type="text" name="" id="" className="inputSearchAdmin" placeholder={`Busca un ${nameAdd}...`} onChange={handleChange} />
+                    <input type="search" name="" id="" className="inputSearchAdmin" placeholder={`Busca un ${nameAdd}...`} onChange={handleChange} />
                 </form>
                 <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
             </div>
