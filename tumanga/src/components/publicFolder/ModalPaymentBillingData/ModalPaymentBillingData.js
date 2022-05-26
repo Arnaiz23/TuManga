@@ -85,7 +85,7 @@ export default function ModalPaymentBillingData({ changeLastBilling, closeModal,
                     'error'
                 )
             }
-            changeLastBilling(data.allCards[data.allCards.length -1 ])
+            changeLastBilling(data.allCards[0])
             changeBillingEmpty(false)
             Swal.fire(
                 'Tarjeta',

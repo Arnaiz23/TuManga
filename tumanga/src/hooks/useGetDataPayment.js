@@ -9,6 +9,8 @@ export default function useGetDataPayment(){
     const [loadingAddress, setLoadingAddress] = useState(false)
     const [loadingBilling, setLoadingBilling] = useState(false)
 
+    const [lastBilling, setLastBilling] = useState(null)
+
     useEffect(() => {
 
         setLoadingAddress(true)
@@ -24,10 +26,11 @@ export default function useGetDataPayment(){
             setLoadingBilling(false)
             if(data.message) return setBilling([])
             setBilling(data.cards)
+            setLastBilling(data.cards[0]);
         })
         
     },[setAddress, setBilling])
 
-    return { address, billing, loadingAddress, loadingBilling }
+    return { address, billing, loadingAddress, loadingBilling, lastBilling, setLastBilling }
     
 }

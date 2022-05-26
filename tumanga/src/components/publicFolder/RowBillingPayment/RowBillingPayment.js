@@ -10,7 +10,7 @@ export default function RowBillingPayment({ card, index, changeBilling, cards })
     return (
         <div>
             <div className="row">
-                <input type="radio" id="" onChange={handleChangeRadio} />
+                <input type="radio" id="" name="card" onChange={handleChangeRadio} />
                 <img src={`${api_URL}/image/${card.image}`} alt={`imagen logo ${card.type}`} className="imgBrandCard" />
                 <p>{card.type} que termina en {card.last_4_digits}</p>
                 <h4>{card.card_name}</h4>

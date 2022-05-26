@@ -4,11 +4,11 @@ import { api_URL } from "services/config";
 import ModalPaymentAddress from "../ModalPayment/ModalPaymentAddress";
 import ModalPaymentBilling from "../ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
 
-export default function RowPayment({ type, changeModal, changeAddress, lastAddress, changeBilling, lastBilling, addressEmpty, changeAddressEmpty, billingEmpty, changeBillingEmpty, modal, changeModalLast }) {
+export default function RowPayment({ type, changeModal, changeAddress, lastAddress, changeBilling, addressEmpty, changeAddressEmpty, billingEmpty, changeBillingEmpty, modal, changeModalLast }) {
 
     // ! Peticion direcciones
     // const [modalOpen, setModalOpen] = useState(false)
-    const { address, billing, loadingAddress, loadingBilling } = useGetDataPayment()
+    const { address, billing, loadingAddress, loadingBilling, lastBilling, setLastBilling } = useGetDataPayment()
     /* const [addressEmpty, setAddressEmpty] = useState(true)
     const [billingEmpty, setBillingEmpty] = useState(true) */
     /* const [ lastAddress, setLastAddress ] = useState({})
@@ -23,7 +23,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
             changeBilling(billing[0])
             changeBillingEmpty(false)
         }
-    },[address])
+    },[address, billing, changeAddress, changeBilling, changeBillingEmpty, changeAddressEmpty, type])
 
     const openModal = () => {
         changeModalLast(true)
@@ -37,6 +37,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                     <div className="row">
                         <h2>1</h2>
                         <h3>Dirección de envío</h3>
+                        {console.log(lastBilling)}
                         {loadingAddress && address.length === 0
                             ? <h3>Cargando...</h3>
                             : (
@@ -87,7 +88,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} changeBilling={changeBilling} />
+                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} changeBilling={setLastBilling} />
                 </>
             }
         </>

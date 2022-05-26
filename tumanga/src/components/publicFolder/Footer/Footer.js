@@ -3,8 +3,12 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "wouter";
+import useToken from "hooks/useToken";
 
 export default function Footer() {
+
+    const { tokenInfo } = useToken()
+
     return (
         <footer id="footer">
             <div className="footerTop">
@@ -12,9 +16,22 @@ export default function Footer() {
                     <h4 className="footerSubtitle">Mi Cuenta</h4>
                     <div className="footerLine"></div>
                     <ul className="footerContainerOptions">
-                        <li><Link to="/account"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mi Cuenta</Link></li>
-                        <li><Link to="/account/orders"><i><FontAwesomeIcon icon={faAngleRight} /></i>Historial de pedidos</Link></li>
-                        <li><Link to="/account/address"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mis Direcciones</Link></li>
+                        {tokenInfo
+                            ? (
+                                <>
+                                    <li><Link to="/account"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mi Cuenta</Link></li>
+                                    <li><Link to="/account/orders"><i><FontAwesomeIcon icon={faAngleRight} /></i>Historial de pedidos</Link></li>
+                                    <li><Link to="/account/address"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mis Direcciones</Link></li>
+                                </>
+                            )
+                            : (
+                                <>
+                                    <li><Link to="/login"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mi Cuenta</Link></li>
+                                    <li><Link to="/login"><i><FontAwesomeIcon icon={faAngleRight} /></i>Historial de pedidos</Link></li>
+                                    <li><Link to="/login"><i><FontAwesomeIcon icon={faAngleRight} /></i>Mis Direcciones</Link></li>
+                                </>
+                            )
+                        }
                     </ul>
                 </div>
                 <div className="footerInformation footerContainer">

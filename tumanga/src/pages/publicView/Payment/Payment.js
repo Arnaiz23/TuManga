@@ -12,8 +12,11 @@ import { finishShoppingCart } from "services/Orders";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 import Spinner from "components/publicFolder/Spinner/Spinner";
+import useGetDataPayment from "hooks/useGetDataPayment";
 
 export default function Payment() {
+
+    const getDataPayment = useGetDataPayment()
 
     const { order, setOrderProcess } = useContext(OrderContext)
 
@@ -27,7 +30,7 @@ export default function Payment() {
     })
 
     const [ lastAddress, setLastAddress ] = useState({})
-    const [ lastBilling, setLastBilling ] = useState({})
+    // const [ lastBilling, setLastBilling ] = useState({})
 
     const [addressEmpty, setAddressEmpty] = useState(true)
     const [billingEmpty, setBillingEmpty] = useState(true)
@@ -36,7 +39,8 @@ export default function Payment() {
     const [modalOpenBilling, setModalOpenBilling] = useState(false)
 
     const finishOrder = () => {
-        dataPayment.billing = lastBilling._id
+        // dataPayment.billing = lastBilling._id
+        dataPayment.billing = getDataPayment.lastBilling._id
         dataPayment.delivery_address = lastAddress._id
 
         if(dataPayment.billing === undefined || dataPayment.billing === undefined){
@@ -75,7 +79,7 @@ export default function Payment() {
                     <div className="paymentLeft">
                         <RowPayment type={"address"} changeModal={setShowModalAddress} changeAddress={setLastAddress} lastAddress={lastAddress} addressEmpty={addressEmpty} changeAddressEmpty={setAddressEmpty} modal={modalOpenAddress} changeModalLast={setModalOpenAddress} />
                         <div className="linePayment"></div>
-                        <RowPayment type={"billing"} changeModal={setShowModalBilling} changeBilling={setLastBilling} lastBilling={lastBilling} billingEmpty={billingEmpty} changeBillingEmpty={setBillingEmpty} modal={modalOpenBilling} changeModalLast={setModalOpenBilling} />
+                        <RowPayment type={"billing"} changeModal={setShowModalBilling} billingEmpty={billingEmpty} changeBillingEmpty={setBillingEmpty} modal={modalOpenBilling} changeModalLast={setModalOpenBilling} changeBilling={getDataPayment.setLastBilling} />
                         <div className="linePayment"></div>
                         {order.length !== 0 
                             ? <RowPaymentProducts order={order} />
@@ -92,7 +96,7 @@ export default function Payment() {
                     </div>
                 </div>
                 {showModalAddress && <ModalInfo change={setShowModalAddress} type="paymentAddress" changeLastAddress={setLastAddress} changeAddressEmpty={setAddressEmpty} closeModalLast={setModalOpenAddress} /> }
-                {showModalBilling && <ModalInfo change={setShowModalBilling} type="paymentBilling" changeLastBilling={setLastBilling} changeBillingEmpty={setBillingEmpty} closeModalLast={setModalOpenBilling} /> }
+                {showModalBilling && <ModalInfo change={setShowModalBilling} type="paymentBilling" changeLastBilling={getDataPayment.setLastBilling} changeBillingEmpty={setBillingEmpty} closeModalLast={setModalOpenBilling} /> }
             </main>
             <BtnUp />
             <Footer />
