@@ -4,11 +4,11 @@ import { api_URL } from "services/config";
 import ModalPaymentAddress from "../ModalPayment/ModalPaymentAddress";
 import ModalPaymentBilling from "../ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
 
-export default function RowPayment({ type, changeModal, changeAddress, lastAddress, changeBilling, addressEmpty, changeAddressEmpty, billingEmpty, changeBillingEmpty, modal, changeModalLast }) {
+export default function RowPayment({ type, changeModal, changeAddress, lastBilling, lastAddress, changeBilling, addressEmpty, changeAddressEmpty, billingEmpty, changeBillingEmpty, modal, changeModalLast }) {
 
     // ! Peticion direcciones
     // const [modalOpen, setModalOpen] = useState(false)
-    const { address, billing, loadingAddress, loadingBilling, lastBilling, setLastBilling } = useGetDataPayment()
+    const { address, billing, loadingAddress, loadingBilling } = useGetDataPayment()
     /* const [addressEmpty, setAddressEmpty] = useState(true)
     const [billingEmpty, setBillingEmpty] = useState(true) */
     /* const [ lastAddress, setLastAddress ] = useState({})
@@ -88,7 +88,7 @@ export default function RowPayment({ type, changeModal, changeAddress, lastAddre
                         }
                         <p className="changeData" onClick={openModal}>Cambiar</p>
                     </div>
-                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} changeBilling={setLastBilling} />
+                    <ModalPaymentBilling modal={modal} change={changeModalLast} cards={billing} changeModal={changeModal} changeBilling={changeBilling} />
                 </>
             }
         </>

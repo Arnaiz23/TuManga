@@ -1620,7 +1620,7 @@ var controller = {
 
                     card.encrypt_card = null
 
-                    let allCards = await Billing.find({ user_id: user._id }).sort({created_date: "desc"});
+                    let allCards = await Billing.find({ user_id: user._id })
 
                     return res.status(201).send({
                         status: "success",
