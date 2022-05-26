@@ -3822,6 +3822,12 @@ a {
   }
 }
 
+@media screen and (max-width: 534px) {
+  .inputSearchContainer{
+    width: 250px;
+  }
+}
+
 @media screen and (max-width: 518px) {
   .containerProduct {
     padding: 30px 0;
@@ -3916,6 +3922,12 @@ a {
 
   .containerRecover main form {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .closeModalSearch {
+    left: .5rem;
   }
 }
 
