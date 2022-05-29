@@ -64,7 +64,7 @@ export default function ProductDetail({ product }) {
                 {
                     product.image !== null
                         ? (
-                            <img src={`${api_URL}/image/${product.image}`} alt="portada volumen Tokyo Revengers 04" />
+                            <img src={`${api_URL}/image/${product.image}`} alt={`portada volumen ${product.name}`} />
                         )
                         : (
                             <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt="not found" />
