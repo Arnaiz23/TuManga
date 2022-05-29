@@ -2822,9 +2822,9 @@ var controller = {
 
         // * ---------------------------- LINUX OR WINDOWS ---------------------------------
         // ! Descomment if is linux
-        // file_name = file_path.split("/")[2]
+        file_name = file_path.split("/")[2]
         // ! Comment windows
-        file_name = file_path.split("\\")[2]
+        // file_name = file_path.split("\\")[2]
 
         // * -----------------------------------------------------------------
 
