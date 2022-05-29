@@ -2136,8 +2136,9 @@ a {
 }
 
 .imgBrandCard {
-  width: 35px !important;
+  width: 40px !important;
   background-color: #fff;
+  height: 35px;
 }
 
 .cardTarget section h4 {
@@ -2390,6 +2391,10 @@ a {
   margin-left: 10px;
   margin-top: 10px;
   font-size: 0.9em;
+}
+
+.banEditUser:hover{
+  cursor: not-allowed;
 }
 
 .dataDown {

@@ -44,23 +44,36 @@ export default function OrderDetail({ params }) {
                             <h2>Detalles del pedido</h2>
                             <p>Comprado <Moment format="D MMM YYYY">{order.realized_date}</Moment></p>
                             <div className="container">
-                                {order.address &&
-                                    <div className="col">
-                                        <h3>Dirección de envío</h3>
-                                        <h4>{order.address.name_person}</h4>
-                                        <p>{order.address.name}</p>
-                                        <p>Teléfono: {order.address.telephone}</p>
-                                    </div>
+                                {order.address
+                                    ? (
+                                        <div className="col">
+                                            <h3>Dirección de envío</h3>
+                                            <h4>{order.address.name_person}</h4>
+                                            <p>{order.address.name}</p>
+                                            <p>Teléfono: {order.address.telephone}</p>
+                                        </div>
+                                    ) : (
+                                        <div className="col">
+                                            <h3>Dirección de envío</h3>
+                                            <h4>Dirección no encontrada</h4>
+                                        </div>
+                                    )
                                 }
                                 <div className="lineCommentsSeparator"></div>
                                 <div className="col">
                                     <h3>Método de pago</h3>
-                                    {order.payment &&
-                                        <div className="row">
-                                            <img src={`${api_URL}/image/${order.payment.image}`} className="imgBrandCard"
-                                                alt={`imagen logo ${order.payment.type}`} />
-                                            <p>****{order.payment.last_4_digits}</p>
-                                        </div>
+                                    {order.payment
+                                        ? (
+                                            <div className="row">
+                                                <img src={`${api_URL}/image/${order.payment.image}`} className="imgBrandCard"
+                                                    alt={`imagen logo ${order.payment.type}`} />
+                                                <p>****{order.payment.last_4_digits}</p>
+                                            </div>
+                                        ) : (
+                                            <div className="row">
+                                                <h4>Tarjeta no encontrada</h4>
+                                            </div>
+                                        )
                                     }
                                     <div>
                                         <h3>Total</h3>

@@ -67,7 +67,7 @@ export default function ProductDetail({ product }) {
                             <img src={`${api_URL}/image/${product.image}`} alt="portada volumen Tokyo Revengers 04" />
                         )
                         : (
-                            <img src="https://www.normaeditorial.com/upload/media/albumes/0001/21/c5d840b61ed5a355bccb3484e12a61b77ba9499b.jpeg" alt="portada volumen Tokyo Revengers 04" />
+                            <img src="https://ia-latam.com/wp-content/uploads/2018/12/No-image-found-1.jpg" alt="not found" />
                         )
                 }
                 <section className="informationProduct">

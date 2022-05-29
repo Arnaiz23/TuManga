@@ -70,7 +70,8 @@ export default function PlatformEditForm({ title, type, data }) {
         if (!regexpEmail.test(newUser.email)) {
             return Swal.fire(
                 'Datos incorrectos',
-                'El correo no cumple con los requisitos'
+                'El correo no cumple con los requisitos',
+                'error'
             )
         }
 

@@ -1,13 +1,17 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { searchData, searchRole } from "services/Admin";
 import { searchProducts } from "services/Orders";
 import { Link } from "wouter";
 
+import AdminContext from 'context/AdminContext'
+
 export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setDataEmpty, setDataData, link, type }) {
 
     let [search, setSearch] = useState('')
+
+    const { userData } = useContext(AdminContext)
 
     const handleChangeModal = () => {
         changeModal(true)
@@ -28,7 +32,7 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
 
     const fetchSearchProducts = () => {
         searchProducts(search).then(data => {
-            if(data.message){
+            if (data.message) {
                 setDataEmpty(true)
                 return
             }
@@ -41,7 +45,7 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
 
     const fetchSearchRoles = () => {
         searchRole(search).then(data => {
-            if(data.message){
+            if (data.message) {
                 setDataEmpty(true)
                 return
             }
@@ -60,12 +64,12 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
             return
         }
 
-        if(type === "products"){
+        if (type === "products") {
             if (search === "") search = 'null'
             fetchSearchProducts()
         }
 
-        if(type === "roles"){
+        if (type === "roles") {
             if (search === "") search = 'null'
             fetchSearchRoles()
         }
@@ -83,7 +87,10 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
                     <i className="iconSearch"><FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleChangeModal} /></i>
                     <input type="search" name="" id="" className="inputSearchAdmin" placeholder={`Busca un ${nameAdd}...`} onChange={handleChange} />
                 </form>
-                <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
+                {
+                    userData.roleName === "admin" &&
+                    <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
+                }
             </div>
         </div>
     )

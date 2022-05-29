@@ -10,7 +10,6 @@ export default function Statistics() {
     const fetchBestsellers = () => {
         getBestsellers().then(info => {
             setData(info)
-            console.log(info);
         })
     }
 
@@ -24,10 +23,6 @@ export default function Statistics() {
                 {data.map(col =>
                     <StatisticsCol data={col} key={col._id} />
                 )}
-                {/* <div className="statisticsCol" style={{ height: "40px" }}></div>
-                <div className="statisticsCol" style={{ height: "40px" }}></div>
-                <div className="statisticsCol" style={{ height: "40px" }}></div>
-                <div className="statisticsCol" style={{ height: "40px" }}></div> */}
             </div>
         </div>
     );

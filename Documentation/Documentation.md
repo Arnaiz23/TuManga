@@ -101,9 +101,6 @@ The principal route is "/api/v1"
 * Sort by x
 * Component error
 * If I want, create title for mobile in StatisticsBestsellers (modal)
-* If I delete one card, in the paymentView don't show. Why?
-* If I add one card, in the paymentView don't show. Why?
-* If I select one card, in the paymentView don't show. Why?
 
 ### Views for public
 

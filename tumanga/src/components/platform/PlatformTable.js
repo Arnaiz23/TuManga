@@ -1,4 +1,4 @@
-import { faPenToSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import "moment/locale/es"
@@ -36,7 +36,7 @@ export default function PlatformTable({ titles, users, usersEmpty, roleArray }) 
                                     {
                                         userData.roleName === "admin" 
                                             ? <Link to={`/platform/user/${user._id}`}><td className="btnEditData"><i><FontAwesomeIcon icon={faPenToSquare} /></i></td></Link>
-                                            : <td className="btnEditData"><i><FontAwesomeIcon icon={faXmark} /></i></td>
+                                            : <td className="btnEditData"><i className="banEditUser"><FontAwesomeIcon icon={faBan} /></i></td>
                                     }
                                 </tr>
                             )
