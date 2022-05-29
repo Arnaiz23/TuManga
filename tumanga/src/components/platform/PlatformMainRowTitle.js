@@ -88,6 +88,10 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
                     <input type="search" name="" id="" className="inputSearchAdmin" placeholder={`Busca un ${nameAdd}...`} onChange={handleChange} />
                 </form>
                 {
+                    link === "product" && 
+                    <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
+                }
+                {
                     userData.roleName === "admin" &&
                     <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
                 }
