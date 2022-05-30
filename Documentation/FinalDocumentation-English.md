@@ -2,21 +2,52 @@
 
 ## Index
 
-- [Index](#index)
-- [Introduction](#introduction)
-- [Objectives](#objectives)
-- [Technologies](#technologies)
-- [Deployment](#deployment)
-- [Database](#database)
-  - [Collections](#collections)
-- [Backend](#backend)
-- [Frontend](#frontend)
-- [Steps](#steps)
-- [Funcionalities](#funcionalities)
-- [Annex](#annex)
-- [Bibliography](#bibliography)
-
-
+<details style="cursor:pointer">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#index">Index</a>
+    </li>
+    <li>
+      <a href="#introduction">Introduction</a>
+    </li>
+    <li>
+      <a href="#objectives">Objectives</a>
+    </li>
+    <li>
+      <a href="#technologies">Technologies</a>
+    </li>
+    <li>
+      <a href="#deployment">Deployment</a>
+    </li>
+    <li>
+      <a href="#database">Database</a>
+      <ul>
+        <li>
+            <a href="#collections">Collections</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#backend">Backend</a>
+    </li>
+    <li>
+      <a href="#frontend">Frontend</a>
+    </li>
+    <li>
+      <a href="#steps">Steps</a>
+    </li>
+    <li>
+      <a href="#funcionalities">Funcionalities</a>
+    </li>
+    <li>
+      <a href="#annex">Annex</a>
+    </li>
+    <li>
+      <a href="#bibliography">Bibliography</a>
+    </li>
+  </ol>
+</details>
 
 ## Introduction
 
@@ -25,13 +56,15 @@ This projects consist in a e-commerce of mangas, ligth novels and merchandising 
 ## Objectives
 
 The objectives are:
-* Buy this articles at a quick form.
-* See the information of your account
-* Sell the articles for the part of the owner
+
+- Buy this articles at a quick form.
+- See the information of your account
+- Sell the articles for the part of the owner
 
 ## Technologies
 
 I used this technologies:
+
 <table>
     <tr>
         <th>Backend</th>
@@ -48,6 +81,7 @@ I used this technologies:
 ## Deployment
 
 For this step I used:
+
 <table>
     <tr>
         <th>Backend</th>
