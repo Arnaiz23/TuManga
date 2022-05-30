@@ -1,9 +1,9 @@
 POST http://localhost:3900/api/v1/admin/user HTTP/1.1
 Content-Type: application/json
-# ! Authorization
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2MxNTI4MzFhZGQ4Y2JlNDYzNGIyMCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicmVnaXN0ZXJfZGF0ZSI6IjIwMjItMDUtMTFUMTk6NTc6MjguODc5WiIsImlhdCI6MTY1Mzg5NzE5MywiZXhwIjoxNjUzOTgzNTkzfQ.-j6I1kV1ZhmMPJ1oCikuyWzTsayMdWQR75uxcS47C7o
 
 {
-    "email" : "owner@gmail.com",
+    "email" : "OWNer@gmail.com",
     "password" : "123456",
     "role" : "owner"
 }

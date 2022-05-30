@@ -681,6 +681,17 @@ var controller = {
 
             if (password === confirm_password) {
 
+                email = email.toLowerCase()
+
+                let userMatch = await User.find({email: email})
+
+                if(userMatch.length > 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "This user already exists"
+                    })
+                }
+
                 let user = new User();
 
                 user.email = email;
@@ -700,7 +711,6 @@ var controller = {
                 user.save(async (err, newUser) => {
 
                     if (err || !newUser) {
-                        console.log(err);
                         return res.status(500).send({
                             status: "error",
                             message: "The user has not been saved"
@@ -842,6 +852,8 @@ var controller = {
         }
 
         if (validateEmail && validatePassword) {
+
+            email = email.toLowerCase()
 
             let user = await User.findOne({ email: email });
 
@@ -2609,7 +2621,9 @@ var controller = {
 
         if (validate_email && validate_password && validate_role) {
 
-            let userMatch = await User.find({ email: email })
+            let newEmail = email.toLowerCase()
+
+            let userMatch = await User.find({ email: newEmail })
 
             if (userMatch.length > 0) {
                 return res.status(404).send({
@@ -2625,7 +2639,7 @@ var controller = {
             let newUser = new User({
                 name,
                 last_name,
-                email,
+                email: newEmail,
                 password_hash,
                 role
             })
