@@ -95,6 +95,10 @@ export default function PlatformMainRowTitle({ title, nameAdd, changeModal, setD
                     userData.roleName === "admin" && link === "user" &&
                     <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
                 }
+                {
+                    userData.roleName === "admin" && link === "role" &&
+                    <Link to={`/platform/${link}`}><button className="btn btn-success">Añadir {nameAdd}</button></Link>
+                }
             </div>
         </div>
     )

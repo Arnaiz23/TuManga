@@ -1,12 +1,24 @@
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import Spinner from "components/publicFolder/Spinner/Spinner";
+import React, { useEffect, useState } from "react";
+import { getAllRoles } from "services/Admin";
 
 export default function PlatformSectionNewUser({ user, setUser }) {
 
     const showRef = React.createRef()
     const hideRef = React.createRef()
     const passwordRef = React.createRef()
+    const [loading, setLoading] = useState(false)
+    const [roles, setRoles] = useState([])
+
+    useEffect(() => {
+        setLoading(true)
+        getAllRoles().then(data => {
+            setRoles(data.roles);
+            setLoading(false)
+        })
+    },[setRoles, setLoading])
 
     const handleChanges = (e) => {
         setUser({
@@ -28,6 +40,9 @@ export default function PlatformSectionNewUser({ user, setUser }) {
     }
 
     return (
+        loading 
+        ? <Spinner />
+        :
         <section>
             <div className="inputAdmin">
                 <label htmlFor="name">Nombre</label>
@@ -41,10 +56,9 @@ export default function PlatformSectionNewUser({ user, setUser }) {
                 <label htmlFor="role">Rol <span className="obligatoryFields">*</span></label>
                 <select id="role" name="role" onChange={handleChanges} defaultValue="0">
                     <option value="0" disabled>Seleccione una opción...</option>
-                    <option value="admin">Admin</option>
-                    <option value="owner">Owner</option>
-                    <option value="empleado">Empleado</option>
-                    <option value="usuario">Usuario</option>
+                    {
+                        roles.map(role => <option value={role.name} key={role.name}>{role.name}</option>)
+                    }
                 </select>
             </div>
             <div className="inputAdmin">

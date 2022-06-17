@@ -2604,14 +2604,15 @@ var controller = {
         const { name, last_name, email, password, state, role } = req.body
 
         const regexp = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
-        const $role = ["usuario", "admin", "owner", "empleado"]
+        const roles = await Role.find();
+        const rolesNames = roles.map(role => role.name)
         const $state = ["Active", "Disabled"]
         let validate_email, validate_password, validate_role
 
         try {
             validate_email = (!validator.isEmpty(email) && validator.isEmail(email))
             validate_password = regexp.test(password)
-            validate_role = (!validator.isEmpty(role) && $role.includes(role))
+            validate_role = (!validator.isEmpty(role) && rolesNames.includes(role))
         } catch (error) {
             return res.status(404).send({
                 status: "error",
