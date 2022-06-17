@@ -63,7 +63,7 @@ export default function ModalProductFilter({ type }) {
                             </div>
                         </div>
                     }
-                    <div className="containerFilterResponsive">
+                    <div className="containerFilterResponsive containerCategories">
                         <h3>Categorias</h3>
                         {
                             (

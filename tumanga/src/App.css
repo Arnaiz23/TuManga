@@ -1269,15 +1269,20 @@ a {
 }
 
 .containerFilterResponsive {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: space-evenly; */
   width: 100%;
 }
 
 .containerFilterResponsive p {
   text-transform: capitalize;
+}
+
+.containerCategories {
+  height: 28rem;
+  overflow: hidden auto;
 }
 
 #closeModalAccount:active {
@@ -1300,7 +1305,7 @@ a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 10px;
+  margin: 20px 10px;
 }
 
 .containerFilterResponsive div input[type="checkbox"] {
@@ -1315,8 +1320,8 @@ a {
 }
 
 .optionsFilterResponsive footer {
-  position: absolute;
-  bottom: 15%;
+ /*  position: absolute;
+  bottom: 15%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1681,6 +1686,8 @@ a {
 }
 
 .containerAside {
+  position: sticky;
+  top: 20px;
   width: 17%;
   background-color: #c2e6ff;
   display: flex;
