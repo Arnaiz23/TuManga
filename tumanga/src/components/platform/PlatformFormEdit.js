@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import { createUser, deleteUser, updateOneUser } from "services/Admin";
+import React, { useEffect, useState } from "react";
+import { createUser, deleteUser, getAllRoles, updateOneUser } from "services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 import PlatformSectionNewUser from "./PlatformSectionNewUser";
 import PlatformSectionUser from "./PlatformSectionUser";
 
-const ROLES = ["admin", "empleado", "owner", "usuario"]
-
 export default function PlatformEditForm({ title, type, data }) {
 
     let [user, setUser] = useState({})
     const [role, setRole] = useState('')
+    const [roles, setRoles] = useState([])
+
+    useEffect(() => {
+        getAllRoles().then(data => {
+            let array = []
+            data.roles.map(role => array.push(role.name))
+            setRoles(array)
+        })
+    }, [setRoles])
 
     const handleUpdate = () => {
-        if (!ROLES.includes(user.role)) {
+        if (!roles.includes(user.role)) {
             user.role = role
         }
 
@@ -31,6 +38,7 @@ export default function PlatformEditForm({ title, type, data }) {
                 'Usuario actualizado con éxito',
                 'success'
             )
+            setLocation("/platform/users")
         })
 
     }

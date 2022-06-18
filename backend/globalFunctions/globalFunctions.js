@@ -83,6 +83,8 @@ let globalFunctions = {
             },
         });
 
+        console.log(transport)
+
         return transport
 
     }

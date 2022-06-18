@@ -2926,12 +2926,13 @@ var controller = {
                 from: '"TuManga" <foo@example.com>',
                 to: email,
                 subject: "Recover password",
-                html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='https://astounding-muffin-d1346c.netlify.app/recoverPassword/${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
+                html: `<p>Has solicitado recuperar tu contraseña. Haz click en <a href='https://tumanga.arnaizdev.com/recoverPassword/${tokenRecover}'>este enlace</a> para poder cambiarla.</p>`
             });
         } catch (error) {
             return res.status(500).send({
                 status: "error",
-                message: "The email was not sent"
+                message: "The email was not sent",
+                error
             })
         }
 

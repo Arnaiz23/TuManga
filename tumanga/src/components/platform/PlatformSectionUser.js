@@ -1,6 +1,6 @@
 import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
-import { getOnerUser } from "services/Admin";
+import { getAllRoles, getOnerUser } from "services/Admin";
 import Swal from "sweetalert2";
 
 export default function PlatformSectionUser({ data, setData, user, setUser, role, setRole }) {
@@ -8,6 +8,7 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
     // const [user, setUser] = useState({})
     // const [role, setRole] = useState('')
     const [loading, setLoading] = useState(false)
+    const [roles, setRoles] = useState([])
 
     useEffect(() => {
         setLoading(true)
@@ -25,6 +26,12 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
             setLoading(false)
         })
     }, [data, setUser, setRole])
+
+    useEffect(() => {
+        getAllRoles().then(data => {
+            setRoles(data.roles)
+        })
+    }, [setRoles])
 
     const handleChangeData = (e) => {
         setUser({
@@ -55,10 +62,9 @@ export default function PlatformSectionUser({ data, setData, user, setUser, role
                     <div className="inputAdmin">
                         <label htmlFor="role">Rol</label>
                         <select id="role" name="role" defaultValue={role} onChange={handleChangeData}>
-                            <option value="admin">Admin</option>
-                            <option value="owner">Owner</option>
-                            <option value="empleado">Empleado</option>
-                            <option value="usuario">Usuario</option>
+                            {
+                                roles.map(role => <option value={role.name} key={role._id}>{role.name}</option>)
+                            }
                         </select>
                     </div>
                     <div className="inputAdmin">
