@@ -1413,7 +1413,7 @@ var controller = {
             orders.map(async order => {
                 if(order.id_client){
                     let user = await User.findById(order.id_client)
-                    return user.email
+                    return user === null ? "eliminado" : user.email
                 }
             })
         )
