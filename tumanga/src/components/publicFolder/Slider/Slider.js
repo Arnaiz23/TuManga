@@ -33,7 +33,7 @@ export default function Slider() {
           </SplideSlide>
           <SplideSlide>
             <img
-              src={`${api_URL}/image/Slider5.png`}
+              src={`${api_URL}/image/Slider6.png`}
               alt="slider mangas"
             />
           </SplideSlide>
