@@ -38,7 +38,7 @@ The backend consist in an API REST that I created in Javascript. This is the bes
 For the frontend I used React because in this moment I wasn't know NextJS.
 
 
-## Project structure (Continue)
+## Project structure 
 
 ```
 $PROJECT_ROOT
@@ -71,3 +71,16 @@ You can create your own online store by forking this project with this condition
 - Add a link to [my store](https://tumanga.arnaizdev.com)
 
 Check out [License](./License.md) for more detail.
+
+
+## Download the project
+
+If you want to work with the project in your local:
+
+- Clone the project
+	- https://github.com/Arnaiz23/TuManga.git
+- cd backend
+	- npm run dev (if you want to work with nodemon)
+	- npm start
+- cd tumanga
+		- npm start
