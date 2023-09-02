@@ -1,18 +1,18 @@
 import React, { useContext } from "react"
-
-import Header from "@components/publicFolder/Header/Header"
-import Footer from "@components/publicFolder/Footer/Footer"
-import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
-import SliderName from "@components/publicFolder/SliderName/SliderName"
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount"
-import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 import DataAccount from "@components/publicFolder/DataAccount/DataAccount"
-import PasswordAccount from "@pages/publicView/PasswordAccount/PasswordAccount"
 import DeleteAccount from "@components/publicFolder/DeleteAccount/DeleteAccount"
-import useUser from "@/hooks/useUser"
+import Footer from "@components/publicFolder/Footer/Footer"
+import Header from "@components/publicFolder/Header/Header"
+import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
+import SliderName from "@components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
+import PasswordAccount from "@pages/publicView/PasswordAccount/PasswordAccount"
+
 import OrderContext from "@/context/OrderContext"
+import useUser from "@/hooks/useUser"
 
 export default function Account() {
   const { loading } = useUser()

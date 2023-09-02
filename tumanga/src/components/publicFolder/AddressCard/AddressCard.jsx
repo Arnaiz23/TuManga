@@ -1,8 +1,8 @@
 import React, { useState } from "react"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 import Swal from "sweetalert2"
 
 import { deleteUserAddress } from "@/services/Address"
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 
 export default function AddressCard({ data, change, empty }) {
   const [showModal, setShowModal] = useState(false)

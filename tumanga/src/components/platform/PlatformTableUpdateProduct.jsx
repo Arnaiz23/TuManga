@@ -1,5 +1,6 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner"
 import React, { useEffect, useState } from "react"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+
 import { apiURL } from "@/services/config"
 import getOneProduct from "@/services/getOneProduct"
 

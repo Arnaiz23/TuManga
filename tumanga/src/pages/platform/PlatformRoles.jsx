@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react"
+
 import PlatformHeader from "@/components/platform/PlatformHeader.jsx"
 import PlatformMainRowTitle from "@/components/platform/PlatformMainRowTitle.jsx"
 import PlatformNav from "@/components/platform/PlatformNav.jsx"
@@ -6,7 +8,6 @@ import PlatformSearchModal from "@/components/platform/PlatformSearchModal.jsx"
 import PlatformTableResponsiveRoles from "@/components/platform/PlatformTableResponsiveRoles.jsx"
 import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx"
 import Spinner from "@/components/publicFolder/Spinner/Spinner.jsx"
-import React, { useEffect, useState } from "react"
 import { getAllRoles } from "@/services/Admin.js"
 
 const TABLE_TITLES_RESPONSIVE = ["id", "nombre", "editar"]
@@ -17,7 +18,7 @@ export default function PlatformRoles() {
   const [rolesEmpty, setRolesEmpty] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
 
-  let fetchRoles = () => {
+  const fetchRoles = () => {
     setLoading(true)
     getAllRoles().then((data) => {
       setRoles(data.roles)

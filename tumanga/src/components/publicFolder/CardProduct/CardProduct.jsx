@@ -1,17 +1,16 @@
 import React, { useContext, useState } from "react"
-
-import { apiURL } from "@/services/config"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-  faShoppingCart,
   faCheck,
+  faShoppingCart,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
-import { Link } from "wouter"
-import { addProductOrder, createOrder } from "@/services/Orders"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
+import { Link } from "wouter"
+
 import OrderContext from "@/context/OrderContext"
+import { apiURL } from "@/services/config"
+import { addProductOrder, createOrder } from "@/services/Orders"
 
 export default function CardProduct({ product }) {
   const [btnCart, setBtnCart] = useState(true)

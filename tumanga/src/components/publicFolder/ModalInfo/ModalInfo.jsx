@@ -1,6 +1,3 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 import PlatformModalComment from "@components/platform/PlatformModalComment"
 import PlatformModalOrderData from "@components/platform/PlatformModalOrderData"
 import PlatformModalProducts from "@components/platform/PlatformModalProducts"
@@ -10,6 +7,8 @@ import ModalNewAddress from "@components/publicFolder/ModalNewAddress/ModalNewAd
 import ModalNewCard from "@components/publicFolder/ModalNewCard/ModalNewCard"
 import ModalPaymentAddressData from "@components/publicFolder/ModalPaymentAddressData/ModalPaymentAddressData"
 import ModalPaymentBillingData from "@components/publicFolder/ModalPaymentBillingData/ModalPaymentBillingData"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function ModalInfo({
   change,

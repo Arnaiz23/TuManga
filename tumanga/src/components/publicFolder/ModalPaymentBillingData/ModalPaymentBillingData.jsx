@@ -22,7 +22,7 @@ export default function ModalPaymentBillingData({
     const regexpNumber = /^[0-9]{16}$/
     const regexpDate = /^[0-9]{2}\/[0-9]{2}$/
 
-    let date = new Date()
+    const date = new Date()
     let year = date.toDateString().split(" ")[3]
     let month = date.getMonth()
     if (month < 10) month = "0" + month
@@ -60,7 +60,7 @@ export default function ModalPaymentBillingData({
       )
     }
 
-    let expiration = newCard.expiration_date.split("/")
+    const expiration = newCard.expiration_date.split("/")
 
     if (Number(expiration[1]) < Number(year)) {
       return Swal.fire(

@@ -1,17 +1,18 @@
-import Swal from "sweetalert2"
-import PlatformMain from "@components/platform/PlatformMain"
+import React, { useContext, useEffect } from "react"
 import PlatformHeader from "@components/platform/PlatformHeader"
+import PlatformMain from "@components/platform/PlatformMain"
 import PlatformNav from "@components/platform/PlatformNav"
 import PlatformNavResponsive from "@components/platform/PlatformNavResponsive"
-import React, { useContext, useEffect } from "react"
-import { getUser } from "@/services/Users"
-import AdminContext from "@/context/AdminContext"
 import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import Swal from "sweetalert2"
+
+import AdminContext from "@/context/AdminContext"
+import { getUser } from "@/services/Users"
 
 export default function PlatformHome() {
   const { setUserData } = useContext(AdminContext)
 
-  let fetchDataUser = () => {
+  const fetchDataUser = () => {
     getUser().then((data) => {
       if (data.message) {
         return Swal.fire(

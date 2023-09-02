@@ -1,4 +1,5 @@
 import React from "react"
+
 import PlatformRowComment from "./PlatformRowComment"
 
 export default function PlatformTableComments({

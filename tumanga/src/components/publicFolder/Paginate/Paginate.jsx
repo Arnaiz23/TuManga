@@ -1,5 +1,6 @@
-import useProducts from "@/hooks/useProducts"
 import React, { useEffect, useState } from "react"
+
+import useProducts from "@/hooks/useProducts"
 
 export default function Paginate({ size }) {
   const [count2, setCount2] = useState([])
@@ -8,7 +9,7 @@ export default function Paginate({ size }) {
 
   useEffect(() => {
     const options = () => {
-      let data = []
+      const data = []
 
       for (let i = 1; i <= count; i++) {
         data.push(i)

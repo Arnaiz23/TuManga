@@ -1,19 +1,18 @@
 import React, { useContext } from "react"
-import { useLocation } from "wouter"
-
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import FilterProducts from "@components/publicFolder/FilterProducts/FilterProducts"
 import Footer from "@components/publicFolder/Footer/Footer"
 import Header from "@components/publicFolder/Header/Header"
-import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
-import SliderName from "@components/publicFolder/SliderName/SliderName"
-import ModalProductFilter from "@components/publicFolder/ModalProductFilter/ModalProductFilter"
-import FilterProducts from "@components/publicFolder/FilterProducts/FilterProducts"
 import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts"
-
+import ModalProductFilter from "@components/publicFolder/ModalProductFilter/ModalProductFilter"
 import Paginate from "@components/publicFolder/Paginate/Paginate"
-import useProducts from "@/hooks/useProducts"
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import SliderName from "@components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
+import { useLocation } from "wouter"
+
 import ProductContext from "@/context/ProductsContext"
+import useProducts from "@/hooks/useProducts"
 
 export default function ProductsView() {
   const { products, count, productsEmpty } = useContext(ProductContext)

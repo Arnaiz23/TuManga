@@ -1,14 +1,15 @@
 import React, { useState } from "react"
+import PlatformTableNewProduct from "@components/platform/PlatformTableNewProduct"
+import PlatformTableUpdateProduct from "@components/platform/PlatformTableUpdateProduct"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
+
 import {
   createProduct,
   deleteProduct,
   updateProduct,
   uploadImage,
 } from "@/services/Admin"
-import Swal from "sweetalert2"
-import { useLocation } from "wouter"
-import PlatformTableNewProduct from "@components/platform/PlatformTableNewProduct"
-import PlatformTableUpdateProduct from "@components/platform/PlatformTableUpdateProduct"
 
 const ERROR_RESPONSES = {
   "The categories are invalid": "Las categorias no son válidas",
@@ -16,7 +17,7 @@ const ERROR_RESPONSES = {
 }
 
 export default function PlatformEditFormProduct({ title, type, data }) {
-  let [product, setProduct] = useState({})
+  const [product, setProduct] = useState({})
   const [image, setImage] = useState()
   const [categories, setCategories] = useState([])
   const [newCategories, setNewCategories] = useState([])
@@ -64,7 +65,7 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     })
   }
 
-  let [newProduct, setNewProduct] = useState({
+  const [newProduct, setNewProduct] = useState({
     name: "",
     price: 0,
     description: "",

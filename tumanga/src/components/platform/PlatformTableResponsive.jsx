@@ -1,4 +1,5 @@
 import React from "react"
+
 import PlatformModalShow from "./PlatformModalShow"
 
 export default function PlatformTableResponsive({

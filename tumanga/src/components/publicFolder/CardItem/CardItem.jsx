@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
 
 import { deleteUserCard } from "@/services/Cards"
@@ -10,8 +10,8 @@ export default function CardItem({ data, empty, change }) {
   const [date, setDate] = useState("")
 
   useEffect(() => {
-    let date = data.expiration_date.split("-")
-    let month = date[1]
+    const date = data.expiration_date.split("-")
+    const month = date[1]
     let year = date[0]
 
     year = month + "/" + year[2] + year[3]

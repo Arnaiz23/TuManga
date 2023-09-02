@@ -1,11 +1,11 @@
+import React, { useContext } from "react"
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useContext } from "react"
 import Swal from "sweetalert2"
 
+import OrderContext from "@/context/OrderContext"
 import { apiURL } from "@/services/config"
 import { deleteProductCart } from "@/services/Orders"
-import OrderContext from "@/context/OrderContext"
 
 export default function RowOrderProduct({ data }) {
   const { setOrder, setCount } = useContext(OrderContext)

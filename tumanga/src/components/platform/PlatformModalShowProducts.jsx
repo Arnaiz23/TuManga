@@ -1,7 +1,7 @@
 import React, { useState } from "react"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 import { Link } from "wouter"
 
 export default function PlatformModalShowProducts({ product }) {

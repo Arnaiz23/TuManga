@@ -1,17 +1,17 @@
+import React, { useEffect, useState } from "react"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 import {
   faAngleDown,
   faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useEffect, useState } from "react"
-import { Link } from "wouter"
 // import Moment from "react-moment";
 // import "moment/locale/es";
 import Swal from "sweetalert2"
+import { Link } from "wouter"
 
 import { apiURL } from "@/services/config"
 import { getOrderId } from "@/services/Orders"
-import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 export default function OrderWindow({ data }) {
   const [order, setOrder] = useState(null)
@@ -38,7 +38,7 @@ export default function OrderWindow({ data }) {
     modalRef.current.classList.toggle("modalOrderActive")
   }
 
-  let today = new Date()
+  const today = new Date()
 
   return loadingOrder || order === null ? (
     <Spinner />

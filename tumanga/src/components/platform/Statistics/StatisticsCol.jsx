@@ -1,4 +1,5 @@
 import React from "react"
+
 import "./StaticticsCol.css"
 
 export default function statisticsCol({ data }) {

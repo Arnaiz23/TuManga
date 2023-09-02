@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react"
-import { Link, useLocation } from "wouter"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link, useLocation } from "wouter"
 
-import useToken from "@/hooks/useToken"
 import OrderContext from "@/context/OrderContext"
+import useToken from "@/hooks/useToken"
 
 const ROLES = ["owner", "admin", "empleado"]
 
@@ -15,14 +15,14 @@ export default function Nav({ state, user, changeProcess }) {
   const setLocation = useLocation()[1]
   const { userData, setUserData } = useContext(OrderContext)
 
-  let navRef = React.createRef()
+  const navRef = React.createRef()
 
   useEffect(() => {
     navState = state
   }, [state])
 
-  let closeNav = () => {
-    let navItem = navRef.current
+  const closeNav = () => {
+    const navItem = navRef.current
     navItem.classList.remove("navActive")
   }
 

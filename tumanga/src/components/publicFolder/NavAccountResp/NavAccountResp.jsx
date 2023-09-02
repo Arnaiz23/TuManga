@@ -1,9 +1,7 @@
 import React, { useState } from "react"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEllipsisVertical, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useRoute } from "wouter"
-import { Link } from "wouter"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link,useRoute  } from "wouter"
 
 export default function NavAccountResp() {
   const [stateNav, setStateNav] = useState("")

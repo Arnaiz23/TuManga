@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { forgetPassword } from "@/services/RecoverPassword.js"
 import Swal from "sweetalert2"
 import { useLocation } from "wouter"
+
+import { forgetPassword } from "@/services/RecoverPassword.js"
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState({

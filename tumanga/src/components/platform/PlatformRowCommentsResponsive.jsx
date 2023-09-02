@@ -1,9 +1,10 @@
+import React, { useState } from "react"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 import { faEye, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
-import React, { useState } from "react"
-import { deleteCommentAdmin } from "@/services/Admin"
 import Swal from "sweetalert2"
+
+import { deleteCommentAdmin } from "@/services/Admin"
 
 export default function PlatformRowCommentsResponsive({
   comment,

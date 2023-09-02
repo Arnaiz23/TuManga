@@ -1,8 +1,9 @@
-import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts.jsx"
 import React, { useContext, useEffect, useState } from "react"
-import getNewsProducts from "@/services/getNewsProducts.js"
+import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts.jsx"
 import Spinner from "@components/publicFolder/Spinner/Spinner.jsx"
+
 import OrderContext from "@/context/OrderContext.jsx"
+import getNewsProducts from "@/services/getNewsProducts.js"
 
 export default function NewsProducts() {
   const [loading, setLoading] = useState(false)

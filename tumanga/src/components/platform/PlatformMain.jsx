@@ -1,9 +1,10 @@
+import React, { useContext, useEffect, useState } from "react"
+import Statistics from "@components/platform/Statistics/Statictics"
 import { faBox, faMoneyBill, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useContext, useEffect, useState } from "react"
-import { getStatistics } from "@/services/Admin"
+
 import AdminContext from "@/context/AdminContext"
-import Statistics from "@components/platform/Statistics/Statictics"
+import { getStatistics } from "@/services/Admin"
 
 export default function PlatformMain() {
   const { userData } = useContext(AdminContext)

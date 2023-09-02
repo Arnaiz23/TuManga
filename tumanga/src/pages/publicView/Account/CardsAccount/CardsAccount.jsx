@@ -1,13 +1,12 @@
 import React from "react"
-
 import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount"
 import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 import Footer from "@components/publicFolder/Footer/Footer"
 import Header from "@components/publicFolder/Header/Header"
+import ListOfCards from "@components/publicFolder/ListOfCards/ListOfCards"
 import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
 import SliderName from "@components/publicFolder/SliderName/SliderName"
 import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
-import ListOfCards from "@components/publicFolder/ListOfCards/ListOfCards"
 
 export default function CardsAccount() {
   return (

@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import Swal from "sweetalert2"
 import { useLocation } from "wouter"
 
-import { deleteUser, userChangeState } from "@/services/Users"
 import OrderContext from "@/context/OrderContext"
+import { deleteUser, userChangeState } from "@/services/Users"
 
 export default function DeleteAccount() {
   const setLocation = useLocation()[1]

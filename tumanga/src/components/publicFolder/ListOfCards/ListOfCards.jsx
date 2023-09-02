@@ -1,10 +1,10 @@
 import React, { useState } from "react"
+import AddAddress from "@components/publicFolder/AddAddress/AddAddress"
+import CardItem from "@components/publicFolder/CardItem/CardItem"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 import useUser from "@/hooks/useUser"
 import { getUserCards } from "@/services/Cards"
-import CardItem from "@components/publicFolder/CardItem/CardItem"
-import Spinner from "@components/publicFolder/Spinner/Spinner"
-import AddAddress from "@components/publicFolder/AddAddress/AddAddress"
 
 export default function ListOfCards() {
   const { loading } = useUser()

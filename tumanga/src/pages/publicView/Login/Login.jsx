@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { Link, useLocation } from "wouter"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
+import { Link, useLocation } from "wouter"
 
-import { login, userChangeState } from "@/services/Users"
-import useToken from "@/hooks/useToken"
 import OrderContext from "@/context/OrderContext"
+import useToken from "@/hooks/useToken"
+import { login, userChangeState } from "@/services/Users"
 
 export default function Login() {
   const [userData, setUserData] = useState({
@@ -103,9 +103,9 @@ export default function Login() {
   }
 
   const togglePassword = () => {
-    let input = inputPasswordRef.current
-    let hide = hidePasswordRef.current
-    let show = showPasswordRef.current
+    const input = inputPasswordRef.current
+    const hide = hidePasswordRef.current
+    const show = showPasswordRef.current
 
     if (input.type === "text") {
       input.type = "password"

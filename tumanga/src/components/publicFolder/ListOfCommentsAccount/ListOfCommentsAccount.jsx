@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
+import CommentAccountRow from "@components/publicFolder/CommentAccountRow/CommentAccountRow"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 import useUser from "@/hooks/useUser"
 import { getUserComments } from "@/services/Comments"
-import CommentAccountRow from "@components/publicFolder/CommentAccountRow/CommentAccountRow"
-import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 export default function ListOfCommentsAccount() {
   const [comments, setComments] = useState([])

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react"
 // import "moment/locale/es";
 import Swal from "sweetalert2"
 
-import { apiURL } from "@/services/config"
-import { getOrderId } from "@/services/Orders"
 import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP"
+import Footer from "@/components/publicFolder/Footer/Footer"
 import Header from "@/components/publicFolder/Header/Header"
 import SliderName from "@/components/publicFolder/SliderName/SliderName"
 import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks"
 import Spinner from "@/components/publicFolder/Spinner/Spinner"
-import Footer from "@/components/publicFolder/Footer/Footer"
+import { apiURL } from "@/services/config"
+import { getOrderId } from "@/services/Orders"
 
 export default function OrderDetail({ params }) {
   const [order, setOrder] = useState({})

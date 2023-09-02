@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
-
 import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount"
 import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 import Footer from "@components/publicFolder/Footer/Footer"
 import Header from "@components/publicFolder/Header/Header"
 import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
+import OrderWindow from "@components/publicFolder/OrderWindow/OrderWindow"
 import SliderName from "@components/publicFolder/SliderName/SliderName"
 import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
-import OrderWindow from "@components/publicFolder/OrderWindow/OrderWindow"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
-import { getUserOrders } from "@/services/Users"
+
 import useUser from "@/hooks/useUser"
+import { getUserOrders } from "@/services/Users"
 
 export default function OrdersAccount() {
   const { loading } = useUser()

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react"
-import { Link, useLocation } from "wouter"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
+import { Link, useLocation } from "wouter"
 
-import { register } from "@/services/Users"
-import useToken from "@/hooks/useToken"
 import OrderContext from "@/context/OrderContext"
+import useToken from "@/hooks/useToken"
+import { register } from "@/services/Users"
 
 export default function Register() {
   const inputPasswordRef = React.createRef()
@@ -82,9 +82,9 @@ export default function Register() {
   }
 
   const togglePassword = () => {
-    let input = inputPasswordRef.current
-    let hide = hidePasswordRef.current
-    let show = showPasswordRef.current
+    const input = inputPasswordRef.current
+    const hide = hidePasswordRef.current
+    const show = showPasswordRef.current
 
     if (input.type === "text") {
       input.type = "password"
@@ -98,9 +98,9 @@ export default function Register() {
   }
 
   const togglePassword2 = () => {
-    let input = inputPasswordRef2.current
-    let hide = hidePasswordRef2.current
-    let show = showPasswordRef2.current
+    const input = inputPasswordRef2.current
+    const hide = hidePasswordRef2.current
+    const show = showPasswordRef2.current
 
     if (input.type === "text") {
       input.type = "password"

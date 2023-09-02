@@ -1,5 +1,5 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner"
 import React, { useState } from "react"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 export default function PlatformTableNewProduct({
   setNewProduct,

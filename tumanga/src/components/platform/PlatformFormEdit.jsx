@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react"
+import PlatformSectionNewUser from "@components/platform/PlatformSectionNewUser"
+import PlatformSectionUser from "@components/platform/PlatformSectionUser"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
+
 import {
   createUser,
   deleteUser,
   getAllRoles,
   updateOneUser,
 } from "@/services/Admin"
-import Swal from "sweetalert2"
-import { useLocation } from "wouter"
-import PlatformSectionNewUser from "@components/platform/PlatformSectionNewUser"
-import PlatformSectionUser from "@components/platform/PlatformSectionUser"
 
 export default function PlatformEditForm({ title, type, data }) {
-  let [user, setUser] = useState({})
+  const [user, setUser] = useState({})
   const [role, setRole] = useState("")
   const [roles, setRoles] = useState([])
 
   useEffect(() => {
     getAllRoles().then((data) => {
-      let array = []
+      const array = []
       data.roles.map((role) => array.push(role.name))
       setRoles(array)
     })

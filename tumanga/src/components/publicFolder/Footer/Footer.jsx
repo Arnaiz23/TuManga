@@ -1,12 +1,12 @@
 import React from "react"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faAngleRight,
-  faPhone,
   faEnvelope,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "wouter"
+
 import useToken from "@/hooks/useToken.js"
 
 export default function Footer() {

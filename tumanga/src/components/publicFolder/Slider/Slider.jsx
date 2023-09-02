@@ -1,7 +1,8 @@
 import React from "react"
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+
 import { apiURL } from "@/services/config.js"
 
-import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/react-splide/css"
 
 export default function Slider() {

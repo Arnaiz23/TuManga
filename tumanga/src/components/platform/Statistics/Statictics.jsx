@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import { getBestsellers } from "@/services/Admin"
-import "./Statistics.css"
 import StatisticsCol from "@components/platform/Statistics/StatisticsCol"
+
+import { getBestsellers } from "@/services/Admin"
+
+import "./Statistics.css"
 
 export default function Statistics() {
   const [data, setData] = useState([])

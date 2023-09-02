@@ -1,7 +1,7 @@
-import useProducts from "@/hooks/useProducts"
 import React, { useContext } from "react"
 
 import ProductContext from "@/context/ProductsContext"
+import useProducts from "@/hooks/useProducts"
 import getFilterProducts from "@/services/getFilterProducts"
 
 export default function FilterCheckbox({ name, size }) {
@@ -17,11 +17,11 @@ export default function FilterCheckbox({ name, size }) {
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      let filterAll = filter
+      const filterAll = filter
       filterAll.push(e.target.id)
       setFilter(filter)
     } else {
-      let filterAll = filter
+      const filterAll = filter
       filterAll.splice(filterAll.indexOf(e.target.id), 1)
       setFilter(filterAll)
     }

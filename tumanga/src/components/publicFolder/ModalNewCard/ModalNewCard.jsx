@@ -66,7 +66,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
       )
     }
 
-    let expiration_date = card.expiration_date.split("/")
+    const expiration_date = card.expiration_date.split("/")
 
     if (expiration_date[1] < year) {
       return Swal.fire(

@@ -1,7 +1,8 @@
+import React, { useContext } from "react"
 import { faBan, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useContext } from "react"
 import { Link } from "wouter"
+
 import AdminContext from "@/context/AdminContext"
 
 export default function PlatformTable({

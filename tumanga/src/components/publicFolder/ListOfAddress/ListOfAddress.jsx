@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
-
-import useUser from "@/hooks/useUser"
-import { getAddressUser } from "@/services/Address"
 import AddAddress from "@components/publicFolder/AddAddress/AddAddress"
 import AddressCard from "@components/publicFolder/AddressCard/AddressCard"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
+
+import useUser from "@/hooks/useUser"
+import { getAddressUser } from "@/services/Address"
 
 export default function ListOfAddress() {
   const { loading } = useUser()

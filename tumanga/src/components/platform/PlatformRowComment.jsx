@@ -2,6 +2,7 @@ import React from "react"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
+
 import { deleteCommentAdmin } from "@/services/Admin"
 
 export default function PlatformRowComment({

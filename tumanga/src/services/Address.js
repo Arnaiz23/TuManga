@@ -1,4 +1,4 @@
-import { getToken, apiURL } from "./config"
+import { apiURL,getToken } from "./config"
 
 export function getAddressUser() {
   const token = getToken()

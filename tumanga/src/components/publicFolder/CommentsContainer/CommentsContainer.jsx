@@ -1,12 +1,12 @@
+import React, { useEffect, useState } from "react"
+import CommentRow from "@components/publicFolder/CommentRow/CommentRow"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useEffect, useState } from "react"
 import Swal from "sweetalert2"
 import { useLocation } from "wouter"
 
 import { createComment } from "@/services/Comments"
 import { getUser } from "@/services/Users"
-import CommentRow from "@components/publicFolder/CommentRow/CommentRow"
 
 export default function CommentsContainer({
   comments,

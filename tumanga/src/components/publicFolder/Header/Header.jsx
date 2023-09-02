@@ -1,25 +1,22 @@
 import React, { useContext, useState } from "react"
-import { Link } from "wouter"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Nav from "@components/publicFolder/Nav/Nav.jsx"
+import ProductHeader from "@components/publicFolder/ProductHeader/ProductHeader.jsx"
 import {
-  faShoppingCart,
-  faSearch,
-  faUser,
   faBars,
+  faSearch,
+  faShoppingCart,
+  faUser,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
-
-import Brand from "/BrandTransparent.png"
-
-import Nav from "@components/publicFolder/Nav/Nav.jsx"
-import useToken from "@/hooks/useToken.js"
-import useOrderData from "@/hooks/useOrderData.js"
-import ProductHeader from "@components/publicFolder/ProductHeader/ProductHeader.jsx"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link , useLocation } from "wouter"
 
 import OrderContext from "@/context/OrderContext.jsx"
-import { useLocation } from "wouter"
+import useOrderData from "@/hooks/useOrderData.js"
+import useToken from "@/hooks/useToken.js"
 import useUser from "@/hooks/useUser.js"
+
+import Brand from "/BrandTransparent.png"
 
 export default function Header() {
   const [navActive, setNavActive] = useState("")
@@ -34,7 +31,7 @@ export default function Header() {
 
   useUser()
 
-  let changeNavState = () => {
+  const changeNavState = () => {
     navActive === "" ? setNavActive("navActive") : setNavActive("")
   }
 

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react"
 import PlatformHeader from "@components/platform/PlatformHeader"
 import PlatformMainRowTitle from "@components/platform/PlatformMainRowTitle"
 import PlatformNav from "@components/platform/PlatformNav"
@@ -7,7 +8,7 @@ import PlatformTableProducts from "@components/platform/PlatformTableProducts"
 import PlatformTableResponsiveProducts from "@components/platform/PlatformTableResponsiveProducts"
 import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
-import React, { useEffect, useState } from "react"
+
 import { getAllProducts } from "@/services/Admin"
 
 const TITLES_TABLE = [

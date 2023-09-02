@@ -37,6 +37,7 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^3.0.3",
     "standard": "^17.1.0"
   },
@@ -47,11 +48,57 @@
     ],
     "rules": {
       "no-unused-vars": "off",
-      "import/no-absolute-path": "off"
+      "import/no-absolute-path": "off",
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
     },
     "env": {
       "browser": true
-    }
+    },
+    "plugins": [
+      "simple-import-sort"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.js",
+          "*.jsx",
+          "*.ts",
+          "*.tsx"
+        ],
+        "rules": {
+          "simple-import-sort/imports": [
+            "error",
+            {
+              "groups": [
+                [
+                  "^react",
+                  "^@?\\w"
+                ],
+                [
+                  "^(@|components)(/.*|$)"
+                ],
+                [
+                  "^\\u0000"
+                ],
+                [
+                  "^\\.\\.(?!/?$)",
+                  "^\\.\\./?$"
+                ],
+                [
+                  "^\\./(?=.*/)(?!/?$)",
+                  "^\\.(?!/?$)",
+                  "^\\./?$"
+                ],
+                [
+                  "^.+\\.?(css)$"
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
   },
   "prettier": {
     "semi": false

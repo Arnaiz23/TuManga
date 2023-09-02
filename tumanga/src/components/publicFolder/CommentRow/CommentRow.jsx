@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
+
 // import Moment from "react-moment";
 // import "moment/locale/es";
-
 import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentRow({

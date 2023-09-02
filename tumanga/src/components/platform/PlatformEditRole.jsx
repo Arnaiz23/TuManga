@@ -1,8 +1,9 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner"
 import React, { useState } from "react"
-import { createRole, deleteRole, updateRole } from "@/services/Admin"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 import Swal from "sweetalert2"
 import { useLocation } from "wouter"
+
+import { createRole, deleteRole, updateRole } from "@/services/Admin"
 
 export default function PlatformEditRole({ type, role, loading, setRole }) {
   const [newRole, setNewRole] = useState({
