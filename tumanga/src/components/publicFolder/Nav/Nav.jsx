@@ -1,40 +1,39 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "wouter";
+import React, { useContext, useEffect } from "react"
+import { Link, useLocation } from "wouter"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import useToken from "hooks/useToken";
-import { useLocation } from "wouter";
-import OrderContext from "context/OrderContext";
+import useToken from "@/hooks/useToken"
+import OrderContext from "@/context/OrderContext"
 
-const ROLES = ["owner", "admin", "empleado"];
+const ROLES = ["owner", "admin", "empleado"]
 
 export default function Nav({ state, user, changeProcess }) {
-  let navState = state;
+  let navState = state
 
-  const { tokenInfo, setTokenInfo } = useToken();
-  const setLocation = useLocation()[1];
-  const { userData, setUserData } = useContext(OrderContext);
+  const { tokenInfo, setTokenInfo } = useToken()
+  const setLocation = useLocation()[1]
+  const { userData, setUserData } = useContext(OrderContext)
 
-  let navRef = React.createRef();
+  let navRef = React.createRef()
 
   useEffect(() => {
-    navState = state;
-  }, [state]);
+    navState = state
+  }, [state])
 
   let closeNav = () => {
-    let navItem = navRef.current;
-    navItem.classList.remove("navActive");
-  };
+    let navItem = navRef.current
+    navItem.classList.remove("navActive")
+  }
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setTokenInfo(false);
-    user(false);
-    setUserData({});
-    changeProcess(false);
-    setLocation("/");
-  };
+    localStorage.removeItem("token")
+    setTokenInfo(false)
+    user(false)
+    setUserData({})
+    changeProcess(false)
+    setLocation("/")
+  }
 
   return (
     <nav id="navHome" className={navState} ref={navRef}>
@@ -84,5 +83,5 @@ export default function Nav({ state, user, changeProcess }) {
         </Link>
       )}
     </nav>
-  );
+  )
 }

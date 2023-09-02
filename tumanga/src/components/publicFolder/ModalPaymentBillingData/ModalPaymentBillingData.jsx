@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { createCard } from "services/Cards";
 import Swal from "sweetalert2";
+
+import { createCard } from "@/services/Cards";
 
 export default function ModalPaymentBillingData({
   changeLastBilling,

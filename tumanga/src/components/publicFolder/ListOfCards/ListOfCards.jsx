@@ -1,9 +1,10 @@
-import useUser from "hooks/useUser";
 import React, { useState } from "react";
-import { getUserCards } from "services/Cards";
-import AddAddress from "../AddAddress/AddAddress";
-import CardItem from "../CardItem/CardItem";
-import Spinner from "../Spinner/Spinner";
+
+import useUser from "@/hooks/useUser";
+import { getUserCards } from "@/services/Cards";
+import CardItem from "@components/publicFolder/CardItem/CardItem";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
+import AddAddress from "@components/publicFolder/AddAddress/AddAddress";
 
 export default function ListOfCards() {
   const { loading } = useUser();

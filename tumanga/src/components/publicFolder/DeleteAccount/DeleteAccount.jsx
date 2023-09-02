@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { deleteUser, userChangeState } from "services/Users";
-
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
-import OrderContext from "context/OrderContext";
+
+import { deleteUser, userChangeState } from "@/services/Users";
+import OrderContext from "@/context/OrderContext";
 
 export default function DeleteAccount() {
   const setLocation = useLocation()[1];

@@ -1,9 +1,9 @@
 import { faBox, faMoneyBill, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { getStatistics } from "services/Admin";
-import AdminContext from "context/AdminContext";
-import Statistics from "./Statistics/Statictics";
+import { getStatistics } from "@/services/Admin";
+import AdminContext from "@/context/AdminContext";
+import Statistics from "@components/platform/Statistics/Statictics";
 
 export default function PlatformMain() {
   const { userData } = useContext(AdminContext);

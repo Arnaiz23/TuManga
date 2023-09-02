@@ -1,9 +1,8 @@
 import React from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Moment from "react-moment";
 import Swal from "sweetalert2";
-import { deleteCommentAdmin } from "services/Admin";
+import { deleteCommentAdmin } from "@/services/Admin";
 
 export default function PlatformRowComment({
   comment,
@@ -53,9 +52,9 @@ export default function PlatformRowComment({
       <td className="tableTrId" title={comment._id}>
         {comment._id}
       </td>
-      <td>
-        <Moment format="DD/MM/YYYY">{comment.date}</Moment>
-      </td>
+      // <td>
+      //   <Moment format="DD/MM/YYYY">{comment.date}</Moment>
+      // </td>
       <td>{comment.name}</td>
       <td>{comment.message}</td>
       <td>{comment.product_name}</td>

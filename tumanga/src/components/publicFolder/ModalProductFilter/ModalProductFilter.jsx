@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
   faSliders,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import getFilters from "services/getFilters";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+
+import getFilters from "@/services/getFilters";
+import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox";
 
 export default function ModalProductFilter({ type }) {
   const [modalShow, setModalShow] = useState("");

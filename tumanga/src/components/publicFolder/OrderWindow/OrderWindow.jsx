@@ -4,13 +4,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { api_URL } from "services/config";
-import { getOrderId } from "services/Orders";
 import { Link } from "wouter";
-import Moment from "react-moment";
-import "moment/locale/es";
-import Spinner from "../Spinner/Spinner";
+// import Moment from "react-moment";
+// import "moment/locale/es";
 import Swal from "sweetalert2";
+
+import { api_URL } from "@/services/config";
+import { getOrderId } from "@/services/Orders";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
 
 export default function OrderWindow({ data }) {
   const [order, setOrder] = useState(null);
@@ -52,9 +53,10 @@ export default function OrderWindow({ data }) {
         <div className="modalOrderInfo" ref={modalRef}>
           <div>
             <h4>Pedido realizado</h4>
-            <p>
-              <Moment format="D MMM YYYY">{order.realized_date}</Moment>
-            </p>
+            <p>12/12/12</p>
+            // <p>
+            //   <Moment format="D MMM YYYY">{order.realized_date}</Moment>
+            // </p>
           </div>
           <div>
             <h4>Total</h4>
@@ -115,11 +117,17 @@ export default function OrderWindow({ data }) {
         {order.delivered_date.split("-")[1] >= today.getMonth() &&
         order.delivered_date.split("-")[2].substring(0, 2) > today.getDate() ? (
           <h4>
+                Entrega 12/12/12
+                {/*
             Entrega <Moment fromNow>{order.delivered_date}</Moment>
+                */}
           </h4>
         ) : (
           <h4>
+                Entregado 12/12/12
+                {/*
             Entregado <Moment fromNow>{order.delivered_date}</Moment>
+                */}
           </h4>
         )}
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { updateUser } from "services/Users";
 import Swal from "sweetalert2";
+
+import { updateUser } from "@/services/Users";
 
 export default function DataAccount({ data, change }) {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ export default function DataAccount({ data, change }) {
   const changeData = (e) => {
     e.preventDefault();
 
-    let body = {
+    const body = {
       name: name || "",
       last_name: lastName || "",
     };

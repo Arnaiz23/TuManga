@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { userChangePasswords } from "services/Users";
 import Swal from "sweetalert2";
+
+import { userChangePasswords } from "@/services/Users";
 
 export default function PasswordAccount() {
   const [passwords, setPasswords] = useState({

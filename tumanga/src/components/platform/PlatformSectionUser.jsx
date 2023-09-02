@@ -1,6 +1,6 @@
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
-import { getAllRoles, getOnerUser } from "services/Admin";
+import { getAllRoles, getOnerUser } from "@/services/Admin";
 import Swal from "sweetalert2";
 
 export default function PlatformSectionUser({

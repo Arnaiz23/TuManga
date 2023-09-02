@@ -1,9 +1,9 @@
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import Moment from "react-moment";
-import { deleteUserComment } from "services/Comments";
+// import Moment from "react-moment";
 import Swal from "sweetalert2";
+
+import { deleteUserComment } from "@/services/Comments";
 
 export default function CommentAccountRow({ data, change, empty }) {
   const deleteComment = () => {
@@ -50,7 +50,10 @@ export default function CommentAccountRow({ data, change, empty }) {
       <main className="row">
         <p>{data.message}</p>
         <p>
-          <Moment format="DD/MM/YYYY">{data.date}</Moment>
+          12/12/12
+          {/*
+          // <Moment format="DD/MM/YYYY">{data.date}</Moment>
+          */}
         </p>
       </main>
     </div>

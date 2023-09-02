@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { deleteUserCard } from "services/Cards";
 import Swal from "sweetalert2";
-import { api_URL } from "services/config";
+
+import { deleteUserCard } from "@/services/Cards";
+import { api_URL } from "@/services/config";
 
 export default function CardItem({ data, empty, change }) {
   const [date, setDate] = useState("");

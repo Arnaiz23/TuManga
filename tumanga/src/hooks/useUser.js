@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
-import { getUser } from "services/Users";
-
-import OrderContext from "context/OrderContext";
+import { getUser } from "@/services/Users";
+import OrderContext from "@/context/OrderContext";
 
 export default function useUser() {
   const [loading, setLoading] = useState(false);

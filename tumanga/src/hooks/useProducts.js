@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
-import ProductContext from "context/ProductsContext";
-import getFilterProducts from "services/getFilterProducts";
+import ProductContext from "@/context/ProductsContext";
+import getFilterProducts from "@/services/getFilterProducts";
 
 export default function useProducts() {
   const [page, setPage] = useState(0);

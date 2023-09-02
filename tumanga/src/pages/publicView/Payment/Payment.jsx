@@ -1,17 +1,18 @@
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
 import React, { useContext, useState } from "react";
-import OrderContext from "context/OrderContext";
-import RowPayment from "components/publicFolder/RowPayment/RowPayment";
-import RowPaymentProducts from "components/publicFolder/RowPaymentProducts/RowPaymentProducts";
-import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
-import { finishShoppingCart } from "services/Orders";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
-import Spinner from "components/publicFolder/Spinner/Spinner";
+
+import SliderName from "@/components/publicFolder/SliderName/SliderName";
+import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks";
+import OrderContext from "@/context/OrderContext";
+import RowPayment from "@/components/publicFolder/RowPayment/RowPayment";
+import RowPaymentProducts from "@/components/publicFolder/RowPaymentProducts/RowPaymentProducts";
+import ModalInfo from "@/components/publicFolder/ModalInfo/ModalInfo";
+import { finishShoppingCart } from "@/services/Orders";
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP";
+import Footer from "@/components/publicFolder/Footer/Footer";
+import Header from "@/components/publicFolder/Header/Header";
+import Spinner from "@/components/publicFolder/Spinner/Spinner";
 
 export default function Payment() {
   const { order, setOrderProcess } = useContext(OrderContext);
@@ -58,7 +59,7 @@ export default function Payment() {
           "error",
         );
       }
-      Swal.fire("Compra", "Compra finalizada con éxito", "success");
+      Swal.fire("@/compra", "Compra finalizada con éxito", "success");
       setOrderProcess(false);
       setLocation("/");
     });
@@ -102,7 +103,7 @@ export default function Payment() {
           </div>
           <div className="paymentRight">
             <button className="btn btn-success" onClick={finishOrder}>
-              Finalizar Compra
+              Finalizar compra
             </button>
             <div className="linePayment"></div>
             <div className="paymentRightPrice">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { updateUserAddress } from "services/Address";
 import Swal from "sweetalert2";
+
+import { updateUserAddress } from "@/services/Address";
 
 export default function ModalAdddress({ data, changeAddress, closeModal }) {
   const [editAddress, setEditAddress] = useState({

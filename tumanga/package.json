@@ -13,10 +13,8 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "moment": "^2.29.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-moment": "^1.1.2",
     "sweetalert2": "^11.4.10",
     "vite": "^4.4.9",
     "vite-jsconfig-paths": "^2.0.1",
@@ -46,6 +44,10 @@
     "extends": [
       "standard",
       "prettier"
-    ]
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "import/no-absolute-path": "off"
+    }
   }
 }

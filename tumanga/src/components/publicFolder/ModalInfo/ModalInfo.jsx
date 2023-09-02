@@ -1,15 +1,15 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PlatformModalComment from "components/platform/PlatformModalComment";
-import PlatformModalOrderData from "components/platform/PlatformModalOrderData";
-import PlatformModalProducts from "components/platform/PlatformModalProducts";
-import PlatformModalUsers from "components/platform/PlatformModalUsers";
-import React from "react";
-import ModalAdddress from "../ModalAddress/ModalAddress";
-import ModalNewAddress from "../ModalNewAddress/ModalNewAddress";
-import ModalNewCard from "../ModalNewCard/ModalNewCard";
-import ModalPaymentAddressData from "../ModalPaymentAddressData/ModalPaymentAddressData";
-import ModalPaymentBillingData from "../ModalPaymentBillingData/ModalPaymentBillingData";
+
+import PlatformModalComment from "@components/platform/PlatformModalComment";
+import PlatformModalOrderData from "@components/platform/PlatformModalOrderData";
+import PlatformModalProducts from "@components/platform/PlatformModalProducts";
+import PlatformModalUsers from "@components/platform/PlatformModalUsers";
+import ModalAdddress from "@components/publicFolder/ModalAddress/ModalAddress";
+import ModalNewAddress from "@components/publicFolder/ModalNewAddress/ModalNewAddress";
+import ModalNewCard from "@components/publicFolder/ModalNewCard/ModalNewCard";
+import ModalPaymentAddressData from "@components/publicFolder/ModalPaymentAddressData/ModalPaymentAddressData";
+import ModalPaymentBillingData from "@components/publicFolder/ModalPaymentBillingData/ModalPaymentBillingData";
 
 export default function ModalInfo({
   change,

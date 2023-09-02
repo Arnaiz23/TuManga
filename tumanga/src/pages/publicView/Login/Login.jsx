@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "wouter";
-import { login, userChangeState } from "services/Users";
-import useToken from "hooks/useToken";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import Swal from "sweetalert2";
 
-import OrderContext from "context/OrderContext";
+import { login, userChangeState } from "@/services/Users";
+import useToken from "@/hooks/useToken";
+import OrderContext from "@/context/OrderContext";
 
 export default function Login() {
   const [userData, setUserData] = useState({

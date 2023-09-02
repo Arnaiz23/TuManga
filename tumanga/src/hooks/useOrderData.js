@@ -1,8 +1,7 @@
 import { useContext, useEffect } from "react";
 
-import OrderContext from "context/OrderContext";
-
-import { getOrderProccess } from "services/Orders";
+import OrderContext from "@/context/OrderContext";
+import { getOrderProccess } from "@/services/Orders";
 
 export default function useOrderData() {
   const {

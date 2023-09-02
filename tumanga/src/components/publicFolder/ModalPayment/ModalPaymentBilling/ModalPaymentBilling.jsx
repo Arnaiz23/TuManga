@@ -1,7 +1,7 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import RowBillingPayment from "components/publicFolder/RowBillingPayment/RowBillingPayment";
-import React from "react";
+
+import RowBillingPayment from "@/components/publicFolder/RowBillingPayment/RowBillingPayment";
 
 export default function ModalPaymentBilling({
   modal,

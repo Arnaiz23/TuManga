@@ -4,11 +4,11 @@ import {
   deleteUser,
   getAllRoles,
   updateOneUser,
-} from "services/Admin";
+} from "@/services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
-import PlatformSectionNewUser from "./PlatformSectionNewUser";
-import PlatformSectionUser from "./PlatformSectionUser";
+import PlatformSectionNewUser from "@components/platform/PlatformSectionNewUser";
+import PlatformSectionUser from "@components/platform/PlatformSectionUser";
 
 export default function PlatformEditForm({ title, type, data }) {
   let [user, setUser] = useState({});

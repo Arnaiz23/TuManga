@@ -1,8 +1,8 @@
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
-import { getAllRoles } from "services/Admin";
+import { getAllRoles } from "@/services/Admin";
 
 export default function PlatformSectionNewUser({ user, setUser }) {
   const showRef = React.createRef();

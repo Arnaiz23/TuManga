@@ -9,8 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext } from "react";
 import { Link } from "wouter";
-import AdminContext from "context/AdminContext";
-import { api_URL } from "services/config";
+import AdminContext from "@/context/AdminContext";
+import { api_URL } from "@/services/config";
 
 export default function PlatformNav() {
   const { userData } = useContext(AdminContext);

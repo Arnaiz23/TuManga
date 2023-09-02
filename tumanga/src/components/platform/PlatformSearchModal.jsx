@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { searchData, searchRole } from "services/Admin";
-import { searchProducts } from "services/Orders";
+import { searchData, searchRole } from "@/services/Admin";
+import { searchProducts } from "@/services/Orders";
 
 export default function PlatformSearchModal({
   changeModal,

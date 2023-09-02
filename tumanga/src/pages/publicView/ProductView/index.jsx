@@ -1,14 +1,15 @@
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import CommentsContainer from "components/publicFolder/CommentsContainer/CommentsContainer";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import ProductDetail from "components/publicFolder/ProductDetail/ProductDetail";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
-import Spinner from "components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
-import getCommentsProduct from "services/getCommentsProduct";
-import getOneProduct from "services/getOneProduct";
+
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
+import CommentsContainer from "@components/publicFolder/CommentsContainer/CommentsContainer";
+import Footer from "@components/publicFolder/Footer/Footer";
+import Header from "@components/publicFolder/Header/Header";
+import ProductDetail from "@components/publicFolder/ProductDetail/ProductDetail";
+import SliderName from "@components/publicFolder/SliderName/SliderName";
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
+import getCommentsProduct from "@/services/getCommentsProduct";
+import getOneProduct from "@/services/getOneProduct";
 
 export default function ProductView({ params }) {
   const [product, setProduct] = useState({});

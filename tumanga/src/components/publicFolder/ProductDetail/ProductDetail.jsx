@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { api_URL } from "services/config";
-
-import OrderContext from "context/OrderContext";
-import { addProductOrder, createOrder } from "services/Orders";
 import Swal from "sweetalert2";
+
+import { api_URL } from "@/services/config";
+import OrderContext from "@/context/OrderContext";
+import { addProductOrder, createOrder } from "@/services/Orders";
 
 export default function ProductDetail({ product }) {
   const { user, orderProcess, setOrderProcess, setOrder, setCount } =

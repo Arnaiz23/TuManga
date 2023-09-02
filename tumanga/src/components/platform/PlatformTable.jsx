@@ -1,10 +1,8 @@
 import { faBan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
-import "moment/locale/es";
-import Moment from "react-moment";
 import { Link } from "wouter";
-import AdminContext from "context/AdminContext";
+import AdminContext from "@/context/AdminContext";
 
 export default function PlatformTable({
   titles,
@@ -42,9 +40,9 @@ export default function PlatformTable({
                   ) : (
                     <td>Deshabilitado</td>
                   )}
-                  <td>
-                    <Moment format="DD/MM/YYYY">{user.register_date}</Moment>
-                  </td>
+                  // <td>
+                  //   <Moment format="DD/MM/YYYY">{user.register_date}</Moment>
+                  // </td>
                   <td>{roleArray[index]}</td>
                   <td>{user.cart.length}</td>
                   {userData.roleName === "admin" ? (

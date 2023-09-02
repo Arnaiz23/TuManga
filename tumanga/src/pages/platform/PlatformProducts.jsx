@@ -1,14 +1,14 @@
-import PlatformHeader from "components/platform/PlatformHeader";
-import PlatformMainRowTitle from "components/platform/PlatformMainRowTitle";
-import PlatformNav from "components/platform/PlatformNav";
-import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
-import PlatformSearchModal from "components/platform/PlatformSearchModal";
-import PlatformTableProducts from "components/platform/PlatformTableProducts";
-import PlatformTableResponsiveProducts from "components/platform/PlatformTableResponsiveProducts";
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Spinner from "components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "services/Admin";
+import PlatformHeader from "@components/platform/PlatformHeader"
+import PlatformMainRowTitle from "@components/platform/PlatformMainRowTitle"
+import PlatformNav from "@components/platform/PlatformNav"
+import PlatformNavResponsive from "@components/platform/PlatformNavResponsive"
+import PlatformSearchModal from "@components/platform/PlatformSearchModal"
+import PlatformTableProducts from "@components/platform/PlatformTableProducts"
+import PlatformTableResponsiveProducts from "@components/platform/PlatformTableResponsiveProducts"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useEffect, useState } from "react"
+import { getAllProducts } from "@/services/Admin"
 
 const TITLES_TABLE = [
   "id",
@@ -18,28 +18,28 @@ const TITLES_TABLE = [
   "number sales",
   "show",
   "edit",
-];
-const TITLES_TABLE_RESPONSIVE = ["id", "name", "show", "edit"];
+]
+const TITLES_TABLE_RESPONSIVE = ["id", "name", "show", "edit"]
 
 export default function PlatformProducts() {
-  const [loading, setLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [productsEmpty, setProductsEmpty] = useState(false);
-  const [productsData, setProductsData] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [productsEmpty, setProductsEmpty] = useState(false)
+  const [productsData, setProductsData] = useState([])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getAllProducts().then((data) => {
       if (data.message) {
-        setProductsEmpty(true);
-        setLoading(false);
-        return;
+        setProductsEmpty(true)
+        setLoading(false)
+        return
       }
-      setProductsData(data.products);
-      setProductsEmpty(false);
-      setLoading(false);
-    });
-  }, []);
+      setProductsData(data.products)
+      setProductsEmpty(false)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <div className="gridAdmin">
@@ -86,5 +86,5 @@ export default function PlatformProducts() {
       </main>
       <BtnUp />
     </div>
-  );
+  )
 }

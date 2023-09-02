@@ -1,8 +1,9 @@
-import useGetDataPayment from "hooks/useGetDataPayment";
 import React, { useEffect } from "react";
-import { api_URL } from "services/config";
-import ModalPaymentAddress from "../ModalPayment/ModalPaymentAddress";
-import ModalPaymentBilling from "../ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
+
+import useGetDataPayment from "@/hooks/useGetDataPayment";
+import { api_URL } from "@/services/config";
+import ModalPaymentAddress from "@components/publicFolder/ModalPayment/ModalPaymentAddress";
+import ModalPaymentBilling from "@components/publicFolder/ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
 
 export default function RowPayment({
   type,

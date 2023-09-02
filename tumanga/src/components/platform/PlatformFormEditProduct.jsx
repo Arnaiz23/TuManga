@@ -4,11 +4,11 @@ import {
   deleteProduct,
   updateProduct,
   uploadImage,
-} from "services/Admin";
+} from "@/services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
-import PlatformTableNewProduct from "./PlatformTableNewProduct";
-import PlatformTableUpdateProduct from "./PlatformTableUpdateProduct";
+import PlatformTableNewProduct from "@components/platform/PlatformTableNewProduct";
+import PlatformTableUpdateProduct from "@components/platform/PlatformTableUpdateProduct";
 
 const ERROR_RESPONSES = {
   "The categories are invalid": "Las categorias no son válidas",

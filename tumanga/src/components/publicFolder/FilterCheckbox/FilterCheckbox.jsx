@@ -1,8 +1,8 @@
-import useProducts from "hooks/useProducts";
+import useProducts from "@/hooks/useProducts";
 import React, { useContext } from "react";
 
-import ProductContext from "context/ProductsContext";
-import getFilterProducts from "services/getFilterProducts";
+import ProductContext from "@/context/ProductsContext";
+import getFilterProducts from "@/services/getFilterProducts";
 
 export default function FilterCheckbox({ name, size }) {
   const { page } = useProducts();

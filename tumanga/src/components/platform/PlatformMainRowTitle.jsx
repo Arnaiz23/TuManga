@@ -1,11 +1,11 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
-import { searchData, searchRole } from "services/Admin";
-import { searchProducts } from "services/Orders";
+import { searchData, searchRole } from "@/services/Admin";
+import { searchProducts } from "@/services/Orders";
 import { Link } from "wouter";
 
-import AdminContext from "context/AdminContext";
+import AdminContext from "@/context/AdminContext";
 
 export default function PlatformMainRowTitle({
   title,

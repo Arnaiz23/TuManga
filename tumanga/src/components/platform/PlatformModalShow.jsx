@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { faBan, faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
 import { Link } from "wouter";
-import AdminContext from "context/AdminContext";
+import AdminContext from "@/context/AdminContext";
 
 export default function PlatformModalShow({ user, roleName }) {
   const { userData } = useContext(AdminContext);

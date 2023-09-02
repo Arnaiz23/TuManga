@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import getFilters from "services/getFilters";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import getFilters from "@/services/getFilters";
+import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox";
 
-import ProductContext from "context/ProductsContext";
-import getFilterProducts from "services/getFilterProducts";
-import useProducts from "hooks/useProducts";
+import ProductContext from "@/context/ProductsContext";
+import getFilterProducts from "@/services/getFilterProducts";
+import useProducts from "@/hooks/useProducts";
 
 export default function FilterProducts({ type }) {
   const [loading, setLoading] = useState(false);

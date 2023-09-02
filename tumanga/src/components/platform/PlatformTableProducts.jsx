@@ -1,6 +1,5 @@
 import React from "react";
-import "moment/locale/es";
-import PlatformRowProducts from "./PlatformRowProducts";
+import PlatformRowProducts from "@components/platform/PlatformRowProducts";
 
 export default function PlatformTableProducts({
   titles,

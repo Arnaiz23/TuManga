@@ -1,34 +1,35 @@
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
-import Spinner from "components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { api_URL } from "services/config";
-import { getOrderId } from "services/Orders";
-import Moment from "react-moment";
-import "moment/locale/es";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react"
+// import Moment from "react-moment";
+// import "moment/locale/es";
+import Swal from "sweetalert2"
+
+import { api_URL } from "@/services/config"
+import { getOrderId } from "@/services/Orders"
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP"
+import Header from "@/components/publicFolder/Header/Header"
+import SliderName from "@/components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks"
+import Spinner from "@/components/publicFolder/Spinner/Spinner"
+import Footer from "@/components/publicFolder/Footer/Footer"
 
 export default function OrderDetail({ params }) {
-  const [order, setOrder] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState({})
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getOrderId(params.id).then((data) => {
       if (data.message) {
         return Swal.fire(
           "Lo sentimos",
           "Hubo un error al intentar recuperarlo",
           "error",
-        );
+        )
       }
-      setOrder(data.data);
-      setLoading(false);
-    });
-  }, [params.id]);
+      setOrder(data.data)
+      setLoading(false)
+    })
+  }, [params.id])
 
   return (
     <>
@@ -42,8 +43,10 @@ export default function OrderDetail({ params }) {
           <div className="containerOrderDetails">
             <h2>Detalles del pedido</h2>
             <p>
-              Comprado{" "}
-              <Moment format="D MMM YYYY">{order.realized_date}</Moment>
+              Comprado 12/12/12
+              {/*
+// <Moment format="D MMM YYYY">{order.realized_date}</Moment>
+              */}
             </p>
             <div className="container">
               {order.address ? (
@@ -84,7 +87,10 @@ export default function OrderDetail({ params }) {
             </div>
             <div className="container containerColumn">
               <h3>
-                Entregado <Moment fromNow>{order.delivered_date}</Moment>
+                  Entregado: 12/12/12
+                  {/*
+                // Entregado <Moment fromNow>{order.delivered_date}</Moment>
+                  */}
               </h3>
               {order.products &&
                 order.products.length > 0 &&
@@ -104,5 +110,5 @@ export default function OrderDetail({ params }) {
       <BtnUp />
       <Footer />
     </>
-  );
+  )
 }

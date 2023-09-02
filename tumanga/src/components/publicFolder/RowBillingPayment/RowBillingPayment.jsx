@@ -1,5 +1,6 @@
 import React from "react";
-import { api_URL } from "services/config";
+
+import { api_URL } from "@/services/config";
 
 export default function RowBillingPayment({
   card,

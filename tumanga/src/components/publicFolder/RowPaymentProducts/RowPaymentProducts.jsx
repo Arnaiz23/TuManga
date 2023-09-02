@@ -1,8 +1,9 @@
 import React from "react";
-import { api_URL } from "services/config";
+
+import { api_URL } from "@/services/config";
 
 export default function RowPaymentProducts({ order }) {
-  let today = new Date();
+  const today = new Date();
 
   return (
     <div className="col lastPayment">

@@ -1,12 +1,12 @@
-import PlatformMain from "components/platform/PlatformMain";
-import PlatformHeader from "components/platform/PlatformHeader";
-import PlatformNav from "components/platform/PlatformNav";
-import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
-import React, { useContext, useEffect } from "react";
-import { getUser } from "services/Users";
-import AdminContext from "context/AdminContext";
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import Swal from "sweetalert2";
+import PlatformMain from "@components/platform/PlatformMain";
+import PlatformHeader from "@components/platform/PlatformHeader";
+import PlatformNav from "@components/platform/PlatformNav";
+import PlatformNavResponsive from "@components/platform/PlatformNavResponsive";
+import React, { useContext, useEffect } from "react";
+import { getUser } from "@/services/Users";
+import AdminContext from "@/context/AdminContext";
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
 
 export default function PlatformHome() {
   const { setUserData } = useContext(AdminContext);

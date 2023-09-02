@@ -1,8 +1,5 @@
 import React from "react";
 
-import Moment from "react-moment";
-import "moment/locale/es";
-
 export default function PlatformTableOrders({
   dataEmpty,
   data,
@@ -29,14 +26,14 @@ export default function PlatformTableOrders({
                   <td title={info._id} className="tableTrId">
                     {info._id}
                   </td>
-                  <td>
-                    <Moment format="DD/MM/YYYY">{info.order_date}</Moment>
-                  </td>
+                  // <td>
+                  //   <Moment format="DD/MM/YYYY">{info.order_date}</Moment>
+                  // </td>
                   {/* <td title={info.id_client} className="tableTrId">{info.id_client}</td> */}
                   <td title={emails[index]}>{emails[index]}</td>
-                  <td>
-                    <Moment format="DD/MM/YYYY">{info.send_date}</Moment>
-                  </td>
+                  // <td>
+                  //   <Moment format="DD/MM/YYYY">{info.send_date}</Moment>
+                  // </td>
                   <td>{info.products.length}</td>
                   <td>{info.total} €</td>
                 </tr>

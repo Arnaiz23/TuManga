@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { deleteUserComment } from "services/Comments";
 import Swal from "sweetalert2";
-import Moment from "react-moment";
-import "moment/locale/es";
+// import Moment from "react-moment";
+// import "moment/locale/es";
+
+import { deleteUserComment } from "@/services/Comments";
 
 export default function CommentRow({
   comment,
@@ -17,7 +17,7 @@ export default function CommentRow({
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
-    let stars2 = [];
+    const stars2 = [];
     for (let i = 1; i <= 5; i++) {
       stars2.push(i);
     }
@@ -40,7 +40,8 @@ export default function CommentRow({
         <header>
           <h4>{comment.name || "No tiene nombre"}</h4>
           <p>
-            <Moment format="D/MM/YYYY">{comment.date}</Moment>
+            // <Moment format="D/MM/YYYY">{comment.date}</Moment>
+            02/09/23
           </p>
         </header>
         <section>

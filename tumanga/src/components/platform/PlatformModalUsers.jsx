@@ -1,6 +1,4 @@
 import React from "react";
-import "moment/locale/es";
-import Moment from "react-moment";
 
 export default function PlatformModalUsers({ data, roleName }) {
   return (
@@ -27,9 +25,9 @@ export default function PlatformModalUsers({ data, roleName }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="id">FECHA REGISTRO</label>
-        <p>
-          <Moment format="DD/MM/YYYY">{data.register_date}</Moment>
-        </p>
+        // <p>
+        //   <Moment format="DD/MM/YYYY">{data.register_date}</Moment>
+        // </p>
       </div>
       <div className="modalInfo">
         <label htmlFor="role">ROL</label>

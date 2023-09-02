@@ -1,6 +1,6 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
 import React, { useState } from "react";
 
 export default function PlatformModalOrders({ data, emails }) {

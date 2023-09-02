@@ -1,4 +1,4 @@
-import useProducts from "hooks/useProducts";
+import useProducts from "@/hooks/useProducts";
 import React, { useEffect, useState } from "react";
 
 export default function Paginate({ size }) {

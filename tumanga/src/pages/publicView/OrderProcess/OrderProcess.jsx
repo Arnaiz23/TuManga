@@ -1,12 +1,13 @@
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import ListOfOrder from "components/publicFolder/ListOfOrder/ListOfOrder";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
 import React, { useContext } from "react";
 import { Link } from "wouter";
-import OrderContext from "context/OrderContext";
+
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
+import Footer from "@components/publicFolder/Footer/Footer";
+import Header from "@components/publicFolder/Header/Header";
+import ListOfOrder from "@components/publicFolder/ListOfOrder/ListOfOrder";
+import SliderName from "@components/publicFolder/SliderName/SliderName";
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks";
+import OrderContext from "@/context/OrderContext";
 
 export default function OrderProcess() {
   const { order } = useContext(OrderContext);

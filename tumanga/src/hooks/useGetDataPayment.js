@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getLastAddress } from "services/Address";
-import { getLastCards } from "services/Cards";
+
+import { getLastAddress } from "@/services/Address";
+import { getLastCards } from "@/services/Cards";
 
 export default function useGetDataPayment() {
   const [address, setAddress] = useState([]);

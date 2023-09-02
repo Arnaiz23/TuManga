@@ -1,6 +1,6 @@
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
 import React, { useState } from "react";
-import { createRole, deleteRole, updateRole } from "services/Admin";
+import { createRole, deleteRole, updateRole } from "@/services/Admin";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 

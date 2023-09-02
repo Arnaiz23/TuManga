@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "wouter";
-import ModalInfo from "components/publicFolder/ModalInfo/ModalInfo";
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
 import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

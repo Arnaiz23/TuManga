@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import AsideAccount from "components/publicFolder/AsideAccount/AsideAccount";
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import NavAccountResp from "components/publicFolder/NavAccountResp/NavAccountResp";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
-
-import useUser from "hooks/useUser";
-import OrderWindow from "components/publicFolder/OrderWindow/OrderWindow";
-import { getUserOrders } from "services/Users";
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount";
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
+import Footer from "@components/publicFolder/Footer/Footer";
+import Header from "@components/publicFolder/Header/Header";
+import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp";
+import SliderName from "@components/publicFolder/SliderName/SliderName";
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks";
+import OrderWindow from "@components/publicFolder/OrderWindow/OrderWindow";
+import Spinner from "@components/publicFolder/Spinner/Spinner";
+import { getUserOrders } from "@/services/Users";
+import useUser from "@/hooks/useUser";
 
 export default function OrdersAccount() {
   const { loading } = useUser();
