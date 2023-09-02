@@ -11,141 +11,189 @@ import OrderContext from "context/OrderContext";
 import Swal from "sweetalert2";
 
 export default function Register() {
+  const inputPasswordRef = React.createRef();
+  const inputPasswordRef2 = React.createRef();
+  const showPasswordRef = React.createRef();
+  const showPasswordRef2 = React.createRef();
+  const hidePasswordRef = React.createRef();
+  const hidePasswordRef2 = React.createRef();
 
-    const inputPasswordRef = React.createRef()
-    const inputPasswordRef2 = React.createRef()
-    const showPasswordRef = React.createRef()
-    const showPasswordRef2 = React.createRef()
-    const hidePasswordRef = React.createRef()
-    const hidePasswordRef2 = React.createRef()
+  const setLocation = useLocation()[1];
+  const { setTokenInfo } = useToken();
 
-    const setLocation = useLocation()[1]
-    const { setTokenInfo } = useToken()
+  const { setUser } = useContext(OrderContext);
 
-    const { setUser } = useContext(OrderContext)
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    confirm_password: "",
+  });
 
-    const [userData, setUserData] = useState({
-        "email" : "",
-        "password" : "",
-        "confirm_password" : ""
-    })
+  const handleForm = (e) => {
+    e.preventDefault();
 
-    const handleForm = (e) => {
-        e.preventDefault()
+    const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
 
-        const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/
-
-        if(userData.email === "" || userData.password === "" || userData.confirm_password === ""){
-            return Swal.fire(
-                'Datos inválidos',
-                'Rellene todos los datos',
-                'warning'
-            )
-        }
-
-        if(userData.password !== userData.confirm_password){
-            return Swal.fire(
-                'Datos inválidos',
-                'Las contraseñas no coinciden',
-                'error'
-            )
-        }
-
-        if(!regex.test(userData.password)){
-            return Swal.fire(
-                'Datos inválidos',
-                'Las contraseñas no cumplen con los requisitos',
-                'error'
-            )
-        }
-
-        // ! Send data
-
-        register(userData).then(data => {
-            if(data.token){
-                localStorage.setItem("token", JSON.stringify(data.token))
-                setTokenInfo(data.token)
-                setUser(true)
-                setLocation("/")
-            }else{
-                return Swal.fire(
-                    'Datos inválidos',
-                    'Email y/o datos no válidos',
-                    'error'
-                )
-            }
-        })
+    if (
+      userData.email === "" ||
+      userData.password === "" ||
+      userData.confirm_password === ""
+    ) {
+      return Swal.fire("Datos inválidos", "Rellene todos los datos", "warning");
     }
 
-    const handleChange = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value
-        })
+    if (userData.password !== userData.confirm_password) {
+      return Swal.fire(
+        "Datos inválidos",
+        "Las contraseñas no coinciden",
+        "error",
+      );
     }
 
-    const togglePassword = () => {
-        let input = inputPasswordRef.current
-        let hide = hidePasswordRef.current
-        let show = showPasswordRef.current
-
-        if (input.type === "text") {
-            input.type = "password"
-            show.classList.toggle("passwordShow")
-            hide.classList.toggle("passwordShow")
-        } else {
-            input.type = "text"
-            show.classList.toggle("passwordShow")
-            hide.classList.toggle("passwordShow")
-        }
+    if (!regex.test(userData.password)) {
+      return Swal.fire(
+        "Datos inválidos",
+        "Las contraseñas no cumplen con los requisitos",
+        "error",
+      );
     }
 
-    const togglePassword2 = () => {
-        let input = inputPasswordRef2.current
-        let hide = hidePasswordRef2.current
-        let show = showPasswordRef2.current
+    // ! Send data
 
-        if (input.type === "text") {
-            input.type = "password"
-            show.classList.toggle("passwordShow")
-            hide.classList.toggle("passwordShow")
-        } else {
-            input.type = "text"
-            show.classList.toggle("passwordShow")
-            hide.classList.toggle("passwordShow")
-        }
+    register(userData).then((data) => {
+      if (data.token) {
+        localStorage.setItem("token", JSON.stringify(data.token));
+        setTokenInfo(data.token);
+        setUser(true);
+        setLocation("/");
+      } else {
+        return Swal.fire(
+          "Datos inválidos",
+          "Email y/o datos no válidos",
+          "error",
+        );
+      }
+    });
+  };
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const togglePassword = () => {
+    let input = inputPasswordRef.current;
+    let hide = hidePasswordRef.current;
+    let show = showPasswordRef.current;
+
+    if (input.type === "text") {
+      input.type = "password";
+      show.classList.toggle("passwordShow");
+      hide.classList.toggle("passwordShow");
+    } else {
+      input.type = "text";
+      show.classList.toggle("passwordShow");
+      hide.classList.toggle("passwordShow");
     }
+  };
 
-    return (
-        <div className="centerLog">
-            <div className="containerCenter">
-                <div className="containerLogLeft containerWhite">
-                    <div className="contentLog">
-                        <h2>Registrarse</h2>
-                        <form onSubmit={handleForm}>
-                            <div className="inputsLog">
-                                <input type="email" id="" placeholder="Email" onChange={handleChange} name="email" />
-                                <div className="inputPassword">
-                                    <input type="password" id="inputPassword" placeholder="Password" name="password" onChange={handleChange} ref={inputPasswordRef} title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`} />
-                                    <i className="passwordShow" id="passwordShow" onClick={togglePassword} ref={showPasswordRef}><FontAwesomeIcon icon={faEye} /></i>
-                                    <i id="passwordHide" onClick={togglePassword} ref={hidePasswordRef}><FontAwesomeIcon icon={faEyeSlash} /></i>
-                                </div>
-                                <div className="inputPassword">
-                                    <input type="password" id="inputPassword2" placeholder="Confirmar Password" onChange={handleChange} name="confirm_password" ref={inputPasswordRef2} title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`} />
-                                    <i className="passwordShow" id="passwordShow2" onClick={togglePassword2} ref={showPasswordRef2} ><FontAwesomeIcon icon={faEye}/></i>
-                                    <i id="passwordHide2" onClick={togglePassword2} ref={hidePasswordRef2} ><FontAwesomeIcon icon={faEyeSlash} /></i>
-                                </div>
-                            </div>
-                            <button className="btn btn-primary">Registrarse</button>
-                        </form>
-                    </div>
+  const togglePassword2 = () => {
+    let input = inputPasswordRef2.current;
+    let hide = hidePasswordRef2.current;
+    let show = showPasswordRef2.current;
+
+    if (input.type === "text") {
+      input.type = "password";
+      show.classList.toggle("passwordShow");
+      hide.classList.toggle("passwordShow");
+    } else {
+      input.type = "text";
+      show.classList.toggle("passwordShow");
+      hide.classList.toggle("passwordShow");
+    }
+  };
+
+  return (
+    <div className="centerLog">
+      <div className="containerCenter">
+        <div className="containerLogLeft containerWhite">
+          <div className="contentLog">
+            <h2>Registrarse</h2>
+            <form onSubmit={handleForm}>
+              <div className="inputsLog">
+                <input
+                  type="email"
+                  id=""
+                  placeholder="Email"
+                  onChange={handleChange}
+                  name="email"
+                />
+                <div className="inputPassword">
+                  <input
+                    type="password"
+                    id="inputPassword"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                    ref={inputPasswordRef}
+                    title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`}
+                  />
+                  <i
+                    className="passwordShow"
+                    id="passwordShow"
+                    onClick={togglePassword}
+                    ref={showPasswordRef}
+                  >
+                    <FontAwesomeIcon icon={faEye} />
+                  </i>
+                  <i
+                    id="passwordHide"
+                    onClick={togglePassword}
+                    ref={hidePasswordRef}
+                  >
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </i>
                 </div>
-                <div className="containerLogRight containerColumn">
-                    <h2>¿Ya tienes cuenta?</h2>
-                    <Link to="/login"><button className="btn btn-light">Iniciar sesión</button></Link>
+                <div className="inputPassword">
+                  <input
+                    type="password"
+                    id="inputPassword2"
+                    placeholder="Confirmar Password"
+                    onChange={handleChange}
+                    name="confirm_password"
+                    ref={inputPasswordRef2}
+                    title={`Requisitos:\n* Letras mayúsculas, letras minúsculas y números\n* Caractéres: *,/,$,%,&,Ç\n* Longitud: mín 6 - máx 16`}
+                  />
+                  <i
+                    className="passwordShow"
+                    id="passwordShow2"
+                    onClick={togglePassword2}
+                    ref={showPasswordRef2}
+                  >
+                    <FontAwesomeIcon icon={faEye} />
+                  </i>
+                  <i
+                    id="passwordHide2"
+                    onClick={togglePassword2}
+                    ref={hidePasswordRef2}
+                  >
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </i>
                 </div>
-            </div>
+              </div>
+              <button className="btn btn-primary">Registrarse</button>
+            </form>
+          </div>
         </div>
-    )
-
+        <div className="containerLogRight containerColumn">
+          <h2>¿Ya tienes cuenta?</h2>
+          <Link to="/login">
+            <button className="btn btn-light">Iniciar sesión</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }

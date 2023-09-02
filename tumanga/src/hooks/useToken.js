@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 
-export default function useToken () {
+export default function useToken() {
+  const [tokenInfo, setTokenInfo] = useState(true);
 
-    const [tokenInfo, setTokenInfo] = useState(true)
+  const token = localStorage.getItem("token");
 
-    let token = localStorage.getItem("token")
+  useEffect(() => {
+    if (token === undefined || token === null) {
+      setTokenInfo(false);
+    } else {
+      setTokenInfo(true);
+    }
+  }, [token, setTokenInfo]);
 
-    useEffect(() => {
-        if(token === undefined || token === null) {
-            setTokenInfo(false)
-        }else{
-            setTokenInfo(true)
-        }
-    }, [token, setTokenInfo])
-
-    return { tokenInfo, setTokenInfo }
-    
+  return { tokenInfo, setTokenInfo };
 }

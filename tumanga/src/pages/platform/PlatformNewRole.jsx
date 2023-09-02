@@ -6,15 +6,13 @@ import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx";
 import React from "react";
 
 export default function PlatformNewRole({ params }) {
-
-    return (
-        <div className="gridAdmin">
-            <PlatformHeader />
-            <PlatformNav />
-            <PlatformNavResponsive />
-            <PlatformEditRole type={"newRole"} />
-            <BtnUp />
-        </div>
-    )
-    
+  return (
+    <div className="gridAdmin">
+      <PlatformHeader />
+      <PlatformNav />
+      <PlatformNavResponsive />
+      <PlatformEditRole type={"newRole"} />
+      <BtnUp />
+    </div>
+  );
 }

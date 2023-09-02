@@ -6,15 +6,13 @@ import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import React from "react";
 
 export default function PlatformNewProduct() {
-
-    return (
-        <div className="gridAdmin">
-            <PlatformHeader />
-            <PlatformNav />
-            <PlatformNavResponsive />
-            <PlatformEditFormProduct title={"Añadir producto"} type="createProduct" />
-            <BtnUp />
-        </div>
-    )
-    
+  return (
+    <div className="gridAdmin">
+      <PlatformHeader />
+      <PlatformNav />
+      <PlatformNavResponsive />
+      <PlatformEditFormProduct title={"Añadir producto"} type="createProduct" />
+      <BtnUp />
+    </div>
+  );
 }

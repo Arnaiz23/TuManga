@@ -12,41 +12,39 @@ import PasswordAccount from "../PasswordAccount/PasswordAccount";
 import DeleteAccount from "components/publicFolder/DeleteAccount/DeleteAccount";
 import useUser from "hooks/useUser";
 import Spinner from "components/publicFolder/Spinner/Spinner";
-import OrderContext from 'context/OrderContext';
+import OrderContext from "context/OrderContext";
 
 export default function Account() {
+  const { loading } = useUser();
+  const { userData, setUserData } = useContext(OrderContext);
 
-    const { loading } = useUser()
-    const { userData, setUserData} = useContext(OrderContext)
-
-    return (
-        <>
-            <Header />
-            <SocialNetwork />
-            <SliderName name="Mi Cuenta" />
-            <main className="center">
-                <div className="containerGlobalProducts">
-                    <AsideAccount />
-                    <NavAccountResp />
-                    <section className="containerInformation">
-                        <h2 className="subtitle">Mi Información</h2>
-                        {loading
-                            ? <Spinner />
-                            : (
-                                <>
-                                    <DataAccount data={userData} change={setUserData} />
-                                    <div className="lineAccount"></div>
-                                    <PasswordAccount />
-                                    <div className="lineAccount"></div>
-                                    <DeleteAccount />
-                                </>
-                            )
-                        }
-                    </section>
-                </div>
-            </main>
-            <BtnUp />
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <SocialNetwork />
+      <SliderName name="Mi Cuenta" />
+      <main className="center">
+        <div className="containerGlobalProducts">
+          <AsideAccount />
+          <NavAccountResp />
+          <section className="containerInformation">
+            <h2 className="subtitle">Mi Información</h2>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <DataAccount data={userData} change={setUserData} />
+                <div className="lineAccount"></div>
+                <PasswordAccount />
+                <div className="lineAccount"></div>
+                <DeleteAccount />
+              </>
+            )}
+          </section>
+        </div>
+      </main>
+      <BtnUp />
+      <Footer />
+    </>
+  );
 }

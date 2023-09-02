@@ -17,45 +17,42 @@ import Spinner from "components/publicFolder/Spinner/Spinner";
 import ProductContext from "context/ProductsContext";
 
 export default function ProductsView() {
+  const { products, count, productsEmpty } = useContext(ProductContext);
 
-    const { products, count, productsEmpty } = useContext(ProductContext)
+  let type = "";
+  const location = useLocation()[0];
 
+  if (location.includes("mangas")) {
+    type = "mangas";
+  } else if (location.includes("merchandising")) {
+    type = "merchandising";
+  }
 
-    let type = ""
-    const location = useLocation()[0]
+  const { loading, error } = useProducts();
 
-    if (location.includes("mangas")) {
-        type = "mangas"
-    } else if (location.includes("merchandising")) {
-        type = "merchandising"
-    }
-
-    const { loading, error } = useProducts()
-
-    
-
-    return (
-        <>
-            <Header />
-            <SocialNetwork />
-            <SliderName name={type} />
-            <main className="center">
-                <ModalProductFilter type={type} />
-                <div className="containerGlobalProducts">
-                    <FilterProducts type={type} />
-                    <div className="containerProducts">
-                        {loading
-                            ? <Spinner />
-                            : error || productsEmpty
-                                ? <h2 className="notMatch">No hay coincidencias</h2>
-                                : <ListOfProducts products={products} />
-                        }
-                    </div>
-                </div>
-                <Paginate size={count} />
-            </main>
-            <BtnUp />
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <SocialNetwork />
+      <SliderName name={type} />
+      <main className="center">
+        <ModalProductFilter type={type} />
+        <div className="containerGlobalProducts">
+          <FilterProducts type={type} />
+          <div className="containerProducts">
+            {loading ? (
+              <Spinner />
+            ) : error || productsEmpty ? (
+              <h2 className="notMatch">No hay coincidencias</h2>
+            ) : (
+              <ListOfProducts products={products} />
+            )}
+          </div>
+        </div>
+        <Paginate size={count} />
+      </main>
+      <BtnUp />
+      <Footer />
+    </>
+  );
 }

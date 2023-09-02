@@ -5,16 +5,14 @@ import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
 import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import React from "react";
 
-export default function PlatformNewUser(){
-
-    return (
-        <div className="gridAdmin">
-            <PlatformHeader />
-            <PlatformNav />
-            <PlatformNavResponsive />
-            <PlatformEditForm title="Añadir Usuario" type={"newUser"} />
-            <BtnUp />
-        </div>
-    )
-    
+export default function PlatformNewUser() {
+  return (
+    <div className="gridAdmin">
+      <PlatformHeader />
+      <PlatformNav />
+      <PlatformNavResponsive />
+      <PlatformEditForm title="Añadir Usuario" type={"newUser"} />
+      <BtnUp />
+    </div>
+  );
 }

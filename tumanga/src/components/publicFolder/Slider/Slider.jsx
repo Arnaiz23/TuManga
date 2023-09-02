@@ -5,7 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 export default function Slider() {
-    /* return (
+  /* return (
         <div className="slider">
             <button className="iconSlider iconSliderLeft"><i><FontAwesomeIcon icon={faAngleLeft} /></i></button>
 
@@ -15,29 +15,25 @@ export default function Slider() {
         </div>
     ) */
 
+  const options = {
+    type: "loop",
+    autoplay: true,
+    pauseOnHover: false,
+    resetProgress: false,
+  };
 
-    const options = {
-        type: "loop",
-        autoplay: true,
-        pauseOnHover: false,
-        resetProgress: false
-      };
-    
-      return (
-        <Splide aria-labelledby="My Favorite Images" options={options} className="slider">
-          <SplideSlide>
-            <img
-              src={`${api_URL}/image/Slider5.png`}
-              alt="slider mangas"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <img
-              src={`${api_URL}/image/Slider6.png`}
-              alt="slider mangas"
-            />
-          </SplideSlide>
-        </Splide>
-      );
-
+  return (
+    <Splide
+      aria-labelledby="My Favorite Images"
+      options={options}
+      className="slider"
+    >
+      <SplideSlide>
+        <img src={`${api_URL}/image/Slider5.png`} alt="slider mangas" />
+      </SplideSlide>
+      <SplideSlide>
+        <img src={`${api_URL}/image/Slider6.png`} alt="slider mangas" />
+      </SplideSlide>
+    </Splide>
+  );
 }

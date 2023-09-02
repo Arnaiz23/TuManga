@@ -5,64 +5,67 @@ import Moment from "react-moment";
 import Swal from "sweetalert2";
 import { deleteCommentAdmin } from "services/Admin";
 
-export default function PlatformRowComment({ comment, setCommentsEmpty, setComments, arrayEmails }) {
+export default function PlatformRowComment({
+  comment,
+  setCommentsEmpty,
+  setComments,
+  arrayEmails,
+}) {
+  const deleteComment = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado, no se podrá recuperar",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar.",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCommentAdmin(comment._id).then((data) => {
+          if (data.message) {
+            return Swal.fire(
+              "Lo sentimos",
+              "Hubo un error al intentar eliminarlo",
+              "error",
+            );
+          }
 
-    const deleteComment = () => {
+          Swal.fire(
+            "Comentario",
+            "Comentario eliminado correctamente",
+            "success",
+          );
 
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "Una vez eliminado, no se podrá recuperar",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar.',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                deleteCommentAdmin(comment._id).then(data => {
-                    if (data.message) {
-                        return Swal.fire(
-                            'Lo sentimos',
-                            'Hubo un error al intentar eliminarlo',
-                            'error'
-                        )
-                    }
+          if (data.allComments.length <= 0) return setCommentsEmpty(true);
 
-                    Swal.fire(
-                        'Comentario',
-                        'Comentario eliminado correctamente',
-                        'success'
-                    )
+          setComments(data.allComments);
+        });
+      } else {
+        Swal.fire("Comentario", "El comentario está a salvo", "success");
+      }
+    });
+  };
 
-                    if(data.allComments.length <= 0) return setCommentsEmpty(true)
-
-                    setComments(data.allComments)
-
-                })
-            }else{
-                Swal.fire(
-                    'Comentario',
-                    'El comentario está a salvo',
-                    'success'
-                )
-            }
-        })
-
-
-    }
-
-    return (
-        <tr>
-            <td className="tableTrId" title={comment._id}>{comment._id}</td>
-            <td><Moment format="DD/MM/YYYY">{comment.date}</Moment></td>
-            <td>{comment.name}</td>
-            <td>{comment.message}</td>
-            <td>{comment.product_name}</td>
-            <td title={arrayEmails}>{arrayEmails}</td>
-            <td>{comment.score}</td>
-            <td><i onClick={deleteComment}><FontAwesomeIcon icon={faXmark} /></i></td>
-        </tr>
-    )
-
+  return (
+    <tr>
+      <td className="tableTrId" title={comment._id}>
+        {comment._id}
+      </td>
+      <td>
+        <Moment format="DD/MM/YYYY">{comment.date}</Moment>
+      </td>
+      <td>{comment.name}</td>
+      <td>{comment.message}</td>
+      <td>{comment.product_name}</td>
+      <td title={arrayEmails}>{arrayEmails}</td>
+      <td>{comment.score}</td>
+      <td>
+        <i onClick={deleteComment}>
+          <FontAwesomeIcon icon={faXmark} />
+        </i>
+      </td>
+    </tr>
+  );
 }

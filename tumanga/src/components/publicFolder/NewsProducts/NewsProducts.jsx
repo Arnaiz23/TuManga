@@ -5,30 +5,25 @@ import Spinner from "@components/publicFolder/Spinner/Spinner.jsx";
 import OrderContext from "@/context/OrderContext.jsx";
 
 export default function NewsProducts() {
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  // const { orderProcess } = useOrderData()
+  const { orderProcess } = useContext(OrderContext);
 
-    const [loading, setLoading] = useState(false)
-    const [products, setProducts] = useState([])
-    // const { orderProcess } = useOrderData()
-    const { orderProcess } = useContext(OrderContext)
+  useEffect(() => {
+    setLoading(true);
+    getNewsProducts().then((res) => {
+      setLoading(false);
+      setProducts(res.products);
+      // console.log(res.products);
+    });
+  }, [orderProcess]);
 
-    useEffect(() => {
-        setLoading(true)
-        getNewsProducts().then(res => {
-            setLoading(false)
-            setProducts(res.products)
-            // console.log(res.products);
-        })
-    }, [orderProcess])
+  return (
+    <main className="center">
+      <h2 className="subtitle">Novedades</h2>
 
-    return (
-        <main className="center">
-            <h2 className="subtitle">Novedades</h2>
-                
-                {loading
-                    ? <Spinner />
-                    : <ListOfProducts products={products} />
-                }
-
-        </main>
-    )
+      {loading ? <Spinner /> : <ListOfProducts products={products} />}
+    </main>
+  );
 }

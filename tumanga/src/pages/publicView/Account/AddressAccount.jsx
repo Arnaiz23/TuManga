@@ -9,26 +9,24 @@ import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks
 
 import React from "react";
 
-export default function AddressAccount (){
-
-    return (
-        <>
-            <Header />
-            <SocialNetwork />
-            <SliderName name="Mi Cuenta" />
-            <main className="center">
-                <div className="containerGlobalProducts">
-                    <AsideAccount />
-                    <NavAccountResp />
-                    <section className="containerInformation">
-                        <h2 className="subtitle">Mis Direcciones</h2>
-                        <ListOfAddress />
-                    </section>
-                </div>
-            </main>
-            <BtnUp />
-            <Footer />
-        </>
-    )
-    
+export default function AddressAccount() {
+  return (
+    <>
+      <Header />
+      <SocialNetwork />
+      <SliderName name="Mi Cuenta" />
+      <main className="center">
+        <div className="containerGlobalProducts">
+          <AsideAccount />
+          <NavAccountResp />
+          <section className="containerInformation">
+            <h2 className="subtitle">Mis Direcciones</h2>
+            <ListOfAddress />
+          </section>
+        </div>
+      </main>
+      <BtnUp />
+      <Footer />
+    </>
+  );
 }

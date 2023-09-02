@@ -9,25 +9,23 @@ import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks
 import React from "react";
 
 export default function CommentsAccount() {
-
-    return (
-        <>
-            <Header />
-            <SocialNetwork />
-            <SliderName name="Mi Cuenta" />
-            <main className="center">
-                <div className="containerGlobalProducts">
-                    <AsideAccount />
-                    <NavAccountResp />
-                    <section className="containerInformation">
-                        <h2 className="subtitle">Mis Comentarios</h2>
-                        <ListOfCommentsAccount />
-                    </section>
-                </div>
-            </main>
-            <BtnUp />
-            <Footer />
-        </>
-    )
-
+  return (
+    <>
+      <Header />
+      <SocialNetwork />
+      <SliderName name="Mi Cuenta" />
+      <main className="center">
+        <div className="containerGlobalProducts">
+          <AsideAccount />
+          <NavAccountResp />
+          <section className="containerInformation">
+            <h2 className="subtitle">Mis Comentarios</h2>
+            <ListOfCommentsAccount />
+          </section>
+        </div>
+      </main>
+      <BtnUp />
+      <Footer />
+    </>
+  );
 }

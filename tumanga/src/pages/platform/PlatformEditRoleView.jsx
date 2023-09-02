@@ -8,38 +8,41 @@ import { getOneRole } from "@/services/Admin.js";
 import Swal from "sweetalert2";
 
 export default function PlatformEditRoleView({ params }) {
+  const [role, setRole] = useState({});
+  const [loading, setLoading] = useState(false);
 
-    const [role, setRole] = useState({})
-    const [loading, setLoading] = useState(false)
+  const fetchRole = () => {
+    setLoading(true);
+    getOneRole(params.id).then((data) => {
+      if (data.message) {
+        return Swal.fire(
+          "Lo sentimos",
+          "Hubo un error al intentar recuperarlo",
+          "error",
+        );
+      }
 
-    const fetchRole = () => {
-        setLoading(true)
-        getOneRole(params.id).then(data => {
-            if(data.message) {
-                return Swal.fire(
-                    'Lo sentimos',
-                    'Hubo un error al intentar recuperarlo',
-                    'error'
-                )
-            }
+      setRole(data.role);
+      setLoading(false);
+    });
+  };
 
-            setRole(data.role)
-            setLoading(false)
-        })
-    }
+  useEffect(() => {
+    fetchRole();
+  }, [params.id]);
 
-    useEffect(() => {
-        fetchRole()
-    },[params.id])
-
-    return (
-        <div className="gridAdmin">
-            <PlatformHeader />
-            <PlatformNav />
-            <PlatformNavResponsive />
-            <PlatformEditRole type={"role"} role={role} loading={loading} setRole={setRole} />
-            <BtnUp />
-        </div>
-    )
-    
+  return (
+    <div className="gridAdmin">
+      <PlatformHeader />
+      <PlatformNav />
+      <PlatformNavResponsive />
+      <PlatformEditRole
+        type={"role"}
+        role={role}
+        loading={loading}
+        setRole={setRole}
+      />
+      <BtnUp />
+    </div>
+  );
 }

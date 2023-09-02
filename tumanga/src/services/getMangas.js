@@ -1,16 +1,15 @@
 import { api_URL } from "./config";
 
 export default function getMangas(skip = 0, filters = []) {
+  // console.log(filters);
 
-    // console.log(filters);
+  return fetch(`${api_URL}/products/mangas/8&${skip}`)
+    .then((res) => res.json())
+    .then((response) => {
+      return response;
+    });
 
-    return fetch(`${api_URL}/products/mangas/8&${skip}`)
-            .then(res => res.json())
-            .then(response => {
-                return response
-            })
-
-    /* if (filters.length <= 0) {
+  /* if (filters.length <= 0) {
         return fetch(`${api_URL}/products/mangas/8&${skip}`)
             .then(res => res.json())
             .then(response => {

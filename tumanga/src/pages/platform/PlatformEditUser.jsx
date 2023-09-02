@@ -6,15 +6,13 @@ import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
 import React from "react";
 
 export default function PlatformEditUser({ params }) {
-
-    return (
-        <div className="gridAdmin">
-            <PlatformNav />
-            <PlatformNavResponsive />
-            <PlatformHeader />
-            <PlatformEditForm title="Editar Usuario" type="user" data={params.id} />
-            <BtnUp />
-        </div>
-    )
-
+  return (
+    <div className="gridAdmin">
+      <PlatformNav />
+      <PlatformNavResponsive />
+      <PlatformHeader />
+      <PlatformEditForm title="Editar Usuario" type="user" data={params.id} />
+      <BtnUp />
+    </div>
+  );
 }

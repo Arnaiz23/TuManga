@@ -1,33 +1,33 @@
-import PlatformHeader from "@/components/platform/PlatformHeader.jsx"
-import PlatformMainRowTitle from "@/components/platform/PlatformMainRowTitle.jsx"
-import PlatformNav from "@/components/platform/PlatformNav.jsx"
-import PlatformNavResponsive from "@/components/platform/PlatformNavResponsive.jsx"
-import PlatformSearchModal from "@/components/platform/PlatformSearchModal.jsx"
-import PlatformTableResponsiveRoles from "@/components/platform/PlatformTableResponsiveRoles.jsx"
-import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx"
-import Spinner from "@/components/publicFolder/Spinner/Spinner.jsx"
-import React, { useEffect, useState } from "react"
-import { getAllRoles } from "@/services/Admin.js"
+import PlatformHeader from "@/components/platform/PlatformHeader.jsx";
+import PlatformMainRowTitle from "@/components/platform/PlatformMainRowTitle.jsx";
+import PlatformNav from "@/components/platform/PlatformNav.jsx";
+import PlatformNavResponsive from "@/components/platform/PlatformNavResponsive.jsx";
+import PlatformSearchModal from "@/components/platform/PlatformSearchModal.jsx";
+import PlatformTableResponsiveRoles from "@/components/platform/PlatformTableResponsiveRoles.jsx";
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx";
+import Spinner from "@/components/publicFolder/Spinner/Spinner.jsx";
+import React, { useEffect, useState } from "react";
+import { getAllRoles } from "@/services/Admin.js";
 
-const TABLE_TITLES_RESPONSIVE = ["id", "nombre", "editar"]
+const TABLE_TITLES_RESPONSIVE = ["id", "nombre", "editar"];
 
 export default function PlatformRoles() {
-  const [loading, setLoading] = useState(false)
-  const [roles, setRoles] = useState([])
-  const [rolesEmpty, setRolesEmpty] = useState(false)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [roles, setRoles] = useState([]);
+  const [rolesEmpty, setRolesEmpty] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   let fetchRoles = () => {
-    setLoading(true)
+    setLoading(true);
     getAllRoles().then((data) => {
-      setRoles(data.roles)
-      setLoading(false)
-    })
-  }
+      setRoles(data.roles);
+      setLoading(false);
+    });
+  };
 
   useEffect(() => {
-    fetchRoles()
-  }, [])
+    fetchRoles();
+  }, []);
 
   return (
     <div className="gridAdmin">
@@ -70,5 +70,5 @@ export default function PlatformRoles() {
       </main>
       <BtnUp />
     </div>
-  )
+  );
 }

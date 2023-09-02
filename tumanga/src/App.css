@@ -366,7 +366,9 @@ a {
   color: #fff;
   background-color: #000;
   cursor: pointer;
-  transition: transform 0.4s, background-color 0.3s;
+  transition:
+    transform 0.4s,
+    background-color 0.3s;
 }
 
 .btn:active {
@@ -885,7 +887,8 @@ a {
   min-width: 100%;
 }
 
-.iconSlider, .splide__arrow {
+.iconSlider,
+.splide__arrow {
   width: 50px !important;
   height: 50% !important;
   border: none !important;
@@ -896,14 +899,16 @@ a {
   opacity: 1 !important;
 }
 
-.iconSlider i, .splide__arrow > svg {
+.iconSlider i,
+.splide__arrow > svg {
   font-size: 28px;
   font-weight: bold;
   color: #fff !important;
   fill: #fff !important;
 }
 
-.iconSlider:hover, .splide__arrow:hover {
+.iconSlider:hover,
+.splide__arrow:hover {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
@@ -1001,9 +1006,8 @@ a {
   align-items: center;
 }
 
-.cardFooter h3{
-  text-align: center
-  ;
+.cardFooter h3 {
+  text-align: center;
 }
 
 .cardFooter .priceContainer {
@@ -1242,7 +1246,9 @@ a {
   background-color: transparent;
   font-size: 17px;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
   border-radius: 10px;
 }
 
@@ -1320,7 +1326,7 @@ a {
 }
 
 .optionsFilterResponsive footer {
- /*  position: absolute;
+  /*  position: absolute;
   bottom: 15%; */
   display: flex;
   justify-content: center;
@@ -1515,18 +1521,18 @@ a {
   font-size: 1em;
 }
 
-.productCategories{
+.productCategories {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.productCategories > header{
+.productCategories > header {
   margin: 0;
 }
 
-.productCategories > footer{
+.productCategories > footer {
   background-color: #fff;
   padding: 1rem;
   border-radius: 10px;
@@ -1534,7 +1540,7 @@ a {
   text-align: center;
 }
 
-.informationProduct  >section {
+.informationProduct > section {
   width: 70%;
   margin: 20px auto;
 }
@@ -1621,7 +1627,7 @@ a {
   display: none;
 }
 
-.starsSelect{
+.starsSelect {
   cursor: pointer;
 }
 
@@ -2400,7 +2406,7 @@ a {
   font-size: 0.9em;
 }
 
-.banEditUser:hover{
+.banEditUser:hover {
   cursor: not-allowed;
 }
 
@@ -2412,7 +2418,9 @@ a {
   /* display: none; */
   /* transition: transform .3s, display .5s; */
 
-  transition: transform 1s, height 1s;
+  transition:
+    transform 1s,
+    height 1s;
   transform-origin: left top;
   /* transform: translateY(-100%); */
   transform: scaleY(0);
@@ -2700,10 +2708,9 @@ a {
   border-radius: 50%;
 }
 
-.adminNav header h2{
+.adminNav header h2 {
   text-transform: capitalize;
-} 
-
+}
 
 .adminNav ul,
 .smallNav ul {
@@ -2865,7 +2872,7 @@ a {
   gap: 5px;
 }
 
-.containerStatisticsProducts section{
+.containerStatisticsProducts section {
   height: 500px;
   width: 100%;
   display: flex;
@@ -2981,7 +2988,7 @@ a {
   /* gap: 20px; */
 }
 
-.containerTableCool{
+.containerTableCool {
   display: flex;
 }
 
@@ -2994,14 +3001,14 @@ a {
 }
 
 .containerTableResponsive header,
-.containerTableResponsive section{
+.containerTableResponsive section {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.containerTableResponsive section{
+.containerTableResponsive section {
   flex-direction: column;
   /* gap: 10px; */
 }
@@ -3087,7 +3094,6 @@ a {
   align-items: center;
   flex-direction: column;
   padding-bottom: 20px;
-  
 }
 
 .obligatoryFields {
@@ -3095,12 +3101,12 @@ a {
   font-weight: bold;
 }
 
-.formAddress{
+.formAddress {
   width: 100%;
   align-items: center !important;
 }
 
-.formAddress > section{
+.formAddress > section {
   flex-direction: row !important;
 }
 
@@ -3182,12 +3188,12 @@ a {
   gap: 10px;
 }
 
-.addCategorie{
+.addCategorie {
   width: 100%;
   position: relative;
 }
 
-.addCategorie .btnCategorieAdd{
+.addCategorie .btnCategorieAdd {
   position: absolute;
   right: 20%;
   top: 0;
@@ -3201,7 +3207,7 @@ a {
   border-radius: 0 5px 5px 0;
 }
 
-.spanCategoriesAdmin{
+.spanCategoriesAdmin {
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -3210,7 +3216,7 @@ a {
   text-transform: capitalize;
 }
 
-.spanCategoriesAdmin > b:hover{
+.spanCategoriesAdmin > b:hover {
   color: var(--passion-red);
 }
 
@@ -3242,11 +3248,11 @@ a {
   resize: none;
 }
 
-.inputAdmin input[type="file"]{
+.inputAdmin input[type="file"] {
   display: none;
 }
 
-.inputAdmin > .btn-primary{
+.inputAdmin > .btn-primary {
   width: 120px;
   display: flex;
   justify-content: center;
@@ -3835,7 +3841,7 @@ a {
 }
 
 @media screen and (max-width: 534px) {
-  .inputSearchContainer{
+  .inputSearchContainer {
     width: 250px;
   }
 }
@@ -3939,7 +3945,7 @@ a {
 
 @media screen and (max-width: 420px) {
   .closeModalSearch {
-    left: .5rem;
+    left: 0.5rem;
   }
 }
 
