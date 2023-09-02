@@ -4,16 +4,16 @@ import { Link } from "wouter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faSearch, faUser, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-import Brand from 'BrandTransparent.png'
+import Brand from '/BrandTransparent.png'
 
-import Nav from "components/publicFolder/Nav/Nav";
-import useToken from "hooks/useToken";
-import useOrderData from "hooks/useOrderData";
-import ProductHeader from "../ProductHeader/ProductHeader";
+import Nav from "@components/publicFolder/Nav/Nav.jsx";
+import useToken from "@/hooks/useToken.js";
+import useOrderData from "@/hooks/useOrderData.js";
+import ProductHeader from "@components/publicFolder/ProductHeader/ProductHeader.jsx";
 
-import OrderContext from "context/OrderContext";
+import OrderContext from "@/context/OrderContext.jsx";
 import { useLocation } from "wouter";
-import useUser from "hooks/useUser";
+import useUser from "@/hooks/useUser.js";
 
 export default function Header() {
 

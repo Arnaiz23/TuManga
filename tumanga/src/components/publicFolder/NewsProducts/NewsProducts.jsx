@@ -1,8 +1,8 @@
-import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
+import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts.jsx";
 import React, { useContext, useEffect, useState } from "react";
-import getNewsProducts from "services/getNewsProducts";
-import Spinner from "../Spinner/Spinner";
-import OrderContext from "context/OrderContext";
+import getNewsProducts from "@/services/getNewsProducts.js";
+import Spinner from "@components/publicFolder/Spinner/Spinner.jsx";
+import OrderContext from "@/context/OrderContext.jsx";
 
 export default function NewsProducts() {
 

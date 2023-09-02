@@ -1,12 +1,12 @@
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "components/publicFolder/Footer/Footer";
-import Header from "components/publicFolder/Header/Header";
-import ListOfProducts from "components/publicFolder/ListOfProducts/ListOfProducts";
-import SliderName from "components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "components/publicFolder/SocialNetworks/SocialNetworks";
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx";
+import Footer from "@/components/publicFolder/Footer/Footer.jsx";
+import Header from "@/components/publicFolder/Header/Header.jsx";
+import ListOfProducts from "@/components/publicFolder/ListOfProducts/ListOfProducts.jsx";
+import SliderName from "@/components/publicFolder/SliderName/SliderName.jsx";
+import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks.jsx";
+import Spinner from "@/components/publicFolder/Spinner/Spinner.jsx";
 import React, { useEffect, useState } from "react";
-import { searchProducts } from "services/Orders";
+import { searchProducts } from "@/services/Orders.js";
 
 export default function SearchProducts({ params }) {
 

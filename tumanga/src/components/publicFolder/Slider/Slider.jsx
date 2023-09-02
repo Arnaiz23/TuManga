@@ -1,5 +1,5 @@
 import React from "react";
-import { api_URL } from "services/config";
+import { api_URL } from "@/services/config.js";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";

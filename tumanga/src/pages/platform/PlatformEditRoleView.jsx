@@ -1,10 +1,10 @@
-import PlatformEditRole from "components/platform/PlatformEditRole";
-import PlatformHeader from "components/platform/PlatformHeader";
-import PlatformNav from "components/platform/PlatformNav";
-import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
+import PlatformEditRole from "@/components/platform/PlatformEditRole.jsx";
+import PlatformHeader from "@/components/platform/PlatformHeader.jsx";
+import PlatformNav from "@/components/platform/PlatformNav.jsx";
+import PlatformNavResponsive from "@/components/platform/PlatformNavResponsive.jsx";
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx";
 import React, { useEffect, useState } from "react";
-import { getOneRole } from "services/Admin";
+import { getOneRole } from "@/services/Admin.js";
 import Swal from "sweetalert2";
 
 export default function PlatformEditRoleView({ params }) {

@@ -1,4 +1,4 @@
-import { api_URL } from "./config";
+import { api_URL } from "@/services/config.js";
 
 export function forgetPassword(body){
 

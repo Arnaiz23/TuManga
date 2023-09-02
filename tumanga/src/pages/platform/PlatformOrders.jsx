@@ -1,12 +1,12 @@
-import PlatformHeader from "components/platform/PlatformHeader";
-import PlatformNav from "components/platform/PlatformNav";
-import PlatformNavResponsive from "components/platform/PlatformNavResponsive";
-import PlatformTableOrders from "components/platform/PlatformTableOrders";
-import PlatformTableResponsiveOrders from "components/platform/PlatformTableResponsiveOrders";
-import BtnUp from "components/publicFolder/BTN-UP/BTN-UP";
-import Spinner from "components/publicFolder/Spinner/Spinner";
+import PlatformHeader from "@/components/platform/PlatformHeader.jsx";
+import PlatformNav from "@/components/platform/PlatformNav.jsx";
+import PlatformNavResponsive from "@/components/platform/PlatformNavResponsive.jsx";
+import PlatformTableOrders from "@/components/platform/PlatformTableOrders.jsx";
+import PlatformTableResponsiveOrders from "@/components/platform/PlatformTableResponsiveOrders.jsx";
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP.jsx";
+import Spinner from "@/components/publicFolder/Spinner/Spinner.jsx";
 import React, { useEffect, useState } from "react";
-import { getAllOrders } from "services/Admin";
+import { getAllOrders } from "@/services/Admin.js";
 
 const TABLE_TITLES = ["id", "fecha pedido", "cliente", "fecha envio", "Nº productos", "Total"]
 const TABLE_TITLES_RESPONSIVE = ["id", "Nº productos", "ver"]

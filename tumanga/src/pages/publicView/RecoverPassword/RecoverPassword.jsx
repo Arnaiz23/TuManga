@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { recoverPassword } from "services/RecoverPassword";
+import { recoverPassword } from "@/services/RecoverPassword.js";
 import Swal from "sweetalert2";
 import { useLocation } from "wouter";
 
