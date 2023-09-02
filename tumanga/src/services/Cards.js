@@ -1,9 +1,9 @@
-import { getToken, api_URL } from "./config";
+import { getToken, apiURL } from "./config";
 
 export function getUserCards() {
   const token = getToken();
 
-  return fetch(`${api_URL}/cards/user`, {
+  return fetch(`${apiURL}/cards/user`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -17,7 +17,7 @@ export function getUserCards() {
 export function createCard(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/card`, {
+  return fetch(`${apiURL}/card`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -34,7 +34,7 @@ export function createCard(body) {
 export function deleteUserCard(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/card/${id}`, {
+  return fetch(`${apiURL}/card/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -49,7 +49,7 @@ export function deleteUserCard(id) {
 export function getLastCards() {
   const token = getToken();
 
-  return fetch(`${api_URL}/cards/last`, {
+  return fetch(`${apiURL}/cards/last`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),

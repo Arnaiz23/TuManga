@@ -9,7 +9,7 @@ import { Link } from "wouter";
 // import "moment/locale/es";
 import Swal from "sweetalert2";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import { getOrderId } from "@/services/Orders";
 import Spinner from "@components/publicFolder/Spinner/Spinner";
 
@@ -21,7 +21,7 @@ export default function OrderWindow({ data }) {
 
   useEffect(() => {
     setLoadingOrder(true);
-    getOrderId(data._id).then((info) => {
+    getOrderId(data.id).then((info) => {
       if (info.message) {
         return Swal.fire(
           "Lo sentimos",
@@ -32,7 +32,7 @@ export default function OrderWindow({ data }) {
       setOrder(info.data);
       setLoadingOrder(false);
     });
-  }, [data._id]);
+  }, [data.id]);
 
   const showInfo = () => {
     modalRef.current.classList.toggle("modalOrderActive");
@@ -55,7 +55,7 @@ export default function OrderWindow({ data }) {
             <h4>Pedido realizado</h4>
             <p>12/12/12</p>
             // <p>
-            //   <Moment format="D MMM YYYY">{order.realized_date}</Moment>
+            //   <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
             // </p>
           </div>
           <div>
@@ -66,7 +66,7 @@ export default function OrderWindow({ data }) {
             <h4>Enviar a</h4>
             {order.address ? (
               <>
-                <p>{order.address.name_person}</p>
+                <p>{order.address.nameperson}</p>
                 <p>{order.address.name}</p>
                 <p>Teléfono: {order.address.telephone}</p>
               </>
@@ -79,7 +79,7 @@ export default function OrderWindow({ data }) {
           <div>
             <h4>Pedido realizado</h4>
             <p className="greySmall">
-              <Moment format="D MMM YYYY">{order.realized_date}</Moment>
+              <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
             </p>
           </div>
           <div>
@@ -91,13 +91,13 @@ export default function OrderWindow({ data }) {
             {order.address ? (
               <>
                 <p className="greySmall" id="orderUserName">
-                  {order.address.name_person}{" "}
+                  {order.address.nameperson}{" "}
                   <i>
                     <FontAwesomeIcon icon={faAngleDown} />
                   </i>
                 </p>
                 <div className="modalInformationOrder">
-                  <h4>{order.address.name_person}</h4>
+                  <h4>{order.address.nameperson}</h4>
                   <p className="greySmall">{order.address.name}</p>
                   <p className="greySmall">
                     Teléfono: {order.address.telephone}
@@ -110,30 +110,30 @@ export default function OrderWindow({ data }) {
           </div>
         </div>
         <div>
-          <Link to={`/order/${data._id}`}>Ver detalles del pedido</Link>
+          <Link to={`/order/${data.id}`}>Ver detalles del pedido</Link>
         </div>
       </header>
       <section>
-        {order.delivered_date.split("-")[1] >= today.getMonth() &&
-        order.delivered_date.split("-")[2].substring(0, 2) > today.getDate() ? (
+        {order.delivereddate.split("-")[1] >= today.getMonth() &&
+        order.delivereddate.split("-")[2].substring(0, 2) > today.getDate() ? (
           <h4>
                 Entrega 12/12/12
                 {/*
-            Entrega <Moment fromNow>{order.delivered_date}</Moment>
+            Entrega <Moment fromNow>{order.delivereddate}</Moment>
                 */}
           </h4>
         ) : (
           <h4>
                 Entregado 12/12/12
                 {/*
-            Entregado <Moment fromNow>{order.delivered_date}</Moment>
+            Entregado <Moment fromNow>{order.delivereddate}</Moment>
                 */}
           </h4>
         )}
 
         {data.products.map((product) => {
           return (
-            <div className="row" key={product._id}>
+            <div className="row" key={product.id}>
               {product.image === null ? (
                 <img
                   loading="lazy"
@@ -143,7 +143,7 @@ export default function OrderWindow({ data }) {
               ) : (
                 <img
                   loading="lazy"
-                  src={`${api_URL}/image/${product.image}`}
+                  src={`${apiURL}/image/${product.image}`}
                   alt="portada tokyo revengers 04"
                 />
               )}

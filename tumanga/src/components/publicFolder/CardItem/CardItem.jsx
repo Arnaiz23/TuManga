@@ -4,7 +4,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
 import { deleteUserCard } from "@/services/Cards";
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 
 export default function CardItem({ data, empty, change }) {
   const [date, setDate] = useState("");
@@ -39,7 +39,7 @@ export default function CardItem({ data, empty, change }) {
       <div className="cardTarget">
         <header>
           <img
-            src={`${api_URL}/image/${data.image}`}
+            src={`${apiURL}/image/${data.image}`}
             alt={`imagen logo ${data.type}`}
             className="imgBrandCard"
           />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 
 export default function RowBillingPayment({
   card,
@@ -17,7 +17,7 @@ export default function RowBillingPayment({
       <div className="row">
         <input type="radio" id="" name="card" onChange={handleChangeRadio} />
         <img
-          src={`${api_URL}/image/${card.image}`}
+          src={`${apiURL}/image/${card.image}`}
           alt={`imagen logo ${card.type}`}
           className="imgBrandCard"
         />

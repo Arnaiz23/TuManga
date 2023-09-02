@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import { Link } from "wouter";
 import AdminContext from "@/context/AdminContext";
 
@@ -18,7 +18,7 @@ export default function PlatformNavResponsive() {
   return (
     <div className="smallNav">
       <header>
-        <img src={`${api_URL}/image/DefaultUser2.png`} alt="icon user" />
+        <img src={`${apiURL}/image/DefaultUser2.png`} alt="icon user" />
       </header>
       <ul>
         <li>

@@ -1,9 +1,9 @@
-import { api_URL, getToken } from "./config";
+import { apiURL, getToken } from "./config";
 
 export function getOrderId(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/order/${id}`, {
+  return fetch(`${apiURL}/order/${id}`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -17,7 +17,7 @@ export function getOrderId(id) {
 export function createOrder(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/order`, {
+  return fetch(`${apiURL}/order`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -34,7 +34,7 @@ export function createOrder(body) {
 export function addProductOrder(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/order`, {
+  return fetch(`${apiURL}/order`, {
     method: "PATCH",
     headers: new Headers({
       "Content-type": "application/json",
@@ -52,7 +52,7 @@ export function getOrderProccess() {
   const token = getToken();
 
   try {
-    return fetch(`${api_URL}/order/process`, {
+    return fetch(`${apiURL}/order/process`, {
       headers: new Headers({
         Authorization: `Bearer ${token}`,
       }),
@@ -69,7 +69,7 @@ export function getOrderProccess() {
 export function getShoppingCart() {
   const token = getToken();
 
-  return fetch(`${api_URL}/order/cart`, {
+  return fetch(`${apiURL}/order/cart`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -83,7 +83,7 @@ export function getShoppingCart() {
 export function deleteProductCart(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/order/product`, {
+  return fetch(`${apiURL}/order/product`, {
     method: "PUT",
     headers: new Headers({
       "Content-type": "application/json",
@@ -100,7 +100,7 @@ export function deleteProductCart(body) {
 export function finishShoppingCart(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/order`, {
+  return fetch(`${apiURL}/order`, {
     method: "PUT",
     headers: new Headers({
       "Content-type": "application/json",
@@ -115,7 +115,7 @@ export function finishShoppingCart(body) {
 }
 
 export function searchProducts(search) {
-  return fetch(`${api_URL}/search/products/${search}`)
+  return fetch(`${apiURL}/search/products/${search}`)
     .then((res) => res.json())
     .then(({ status, message, searchProducts }) => {
       return status === "success" ? { searchProducts } : { message };

@@ -1,9 +1,9 @@
-import { api_URL, getToken } from "./config";
+import { apiURL, getToken } from "./config";
 
 export function getUserComments() {
   const token = getToken();
 
-  return fetch(`${api_URL}/comments/user`, {
+  return fetch(`${apiURL}/comments/user`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -17,7 +17,7 @@ export function getUserComments() {
 export function deleteUserComment(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/comment/${id}`, {
+  return fetch(`${apiURL}/comment/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -32,7 +32,7 @@ export function deleteUserComment(id) {
 export function createComment(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/comment`, {
+  return fetch(`${apiURL}/comment`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",

@@ -1,9 +1,9 @@
-import { api_URL, getToken } from "./config";
+import { apiURL, getToken } from "./config";
 
 export function getStatistics() {
   const token = getToken();
 
-  return fetch(`${api_URL}/total/data`, {
+  return fetch(`${apiURL}/total/data`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -17,7 +17,7 @@ export function getAllUsers() {
 
   // ! /admin/users/:filter?
 
-  return fetch(`${api_URL}/admin/users`, {
+  return fetch(`${apiURL}/admin/users`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -31,7 +31,7 @@ export function getAllUsers() {
 export function searchData(search, option) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/search/${search}&${option}`, {
+  return fetch(`${apiURL}/admin/search/${search}&${option}`, {
     headers: new Headers({
       Authorization: `BEarer ${token}`,
     }),
@@ -45,7 +45,7 @@ export function searchData(search, option) {
 export function getOnerUser(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/user/${id}`, {
+  return fetch(`${apiURL}/admin/user/${id}`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -59,7 +59,7 @@ export function getOnerUser(id) {
 export function getAllRoles() {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/roles`, {
+  return fetch(`${apiURL}/admin/roles`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -73,7 +73,7 @@ export function getAllRoles() {
 export function updateOneUser(id, body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/user/${id}`, {
+  return fetch(`${apiURL}/admin/user/${id}`, {
     method: "PUT",
     headers: new Headers({
       "Content-type": "application/json",
@@ -90,7 +90,7 @@ export function updateOneUser(id, body) {
 export function createUser(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/user`, {
+  return fetch(`${apiURL}/admin/user`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -107,7 +107,7 @@ export function createUser(body) {
 export function getAllProducts() {
   const token = getToken();
 
-  return fetch(`${api_URL}/products`, {
+  return fetch(`${apiURL}/products`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -121,7 +121,7 @@ export function getAllProducts() {
 export function uploadImage(id, image) {
   const token = getToken();
 
-  return fetch(`${api_URL}/image/${id}`, {
+  return fetch(`${apiURL}/image/${id}`, {
     method: "POST",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -137,7 +137,7 @@ export function uploadImage(id, image) {
 export function updateProduct(body, id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/product/${id}`, {
+  return fetch(`${apiURL}/admin/product/${id}`, {
     method: "PUT",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ export function updateProduct(body, id) {
 export function createProduct(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/product`, {
+  return fetch(`${apiURL}/product`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -163,15 +163,15 @@ export function createProduct(body) {
     body: JSON.stringify(body),
   })
     .then((res) => res.json())
-    .then(({ status, product_id }) => {
-      return { status, product_id };
+    .then(({ status, productid }) => {
+      return { status, productid };
     });
 }
 
 export function deleteProduct(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/product/${id}`, {
+  return fetch(`${apiURL}/admin/product/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -186,7 +186,7 @@ export function deleteProduct(id) {
 export function deleteUser(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/user/${id}`, {
+  return fetch(`${apiURL}/admin/user/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -201,7 +201,7 @@ export function deleteUser(id) {
 export function getAllOrders() {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/orders`, {
+  return fetch(`${apiURL}/admin/orders`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -215,7 +215,7 @@ export function getAllOrders() {
 export function searchRole(search) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/role/search/${search}`, {
+  return fetch(`${apiURL}/admin/role/search/${search}`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -229,7 +229,7 @@ export function searchRole(search) {
 export function createRole(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/role`, {
+  return fetch(`${apiURL}/admin/role`, {
     method: "POST",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -246,7 +246,7 @@ export function createRole(body) {
 export function getOneRole(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/role/${id}`, {
+  return fetch(`${apiURL}/admin/role/${id}`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -260,7 +260,7 @@ export function getOneRole(id) {
 export function updateRole(id, body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/role/${id}`, {
+  return fetch(`${apiURL}/admin/role/${id}`, {
     method: "PUT",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -277,7 +277,7 @@ export function updateRole(id, body) {
 export function deleteRole(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/role/${id}`, {
+  return fetch(`${apiURL}/admin/role/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -292,7 +292,7 @@ export function deleteRole(id) {
 export function getAllComments() {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/comments`, {
+  return fetch(`${apiURL}/admin/comments`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),
@@ -306,7 +306,7 @@ export function getAllComments() {
 export function deleteCommentAdmin(id) {
   const token = getToken();
 
-  return fetch(`${api_URL}/admin/comment/${id}`, {
+  return fetch(`${apiURL}/admin/comment/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -321,7 +321,7 @@ export function deleteCommentAdmin(id) {
 export function getBestsellers() {
   const token = getToken();
 
-  return fetch(`${api_URL}/products/sales/5`, {
+  return fetch(`${apiURL}/products/sales/5`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),

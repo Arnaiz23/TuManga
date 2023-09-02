@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import OrderContext from "@/context/OrderContext";
 import { addProductOrder, createOrder } from "@/services/Orders";
 
@@ -53,7 +53,7 @@ export default function ProductDetail({ product }) {
       <div className="containerProduct">
         {product.image !== null ? (
           <img
-            src={`${api_URL}/image/${product.image}`}
+            src={`${apiURL}/image/${product.image}`}
             alt={`portada volumen ${product.name}`}
           />
         ) : (

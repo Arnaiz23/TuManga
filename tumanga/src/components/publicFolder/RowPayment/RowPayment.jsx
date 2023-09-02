@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import useGetDataPayment from "@/hooks/useGetDataPayment";
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import ModalPaymentAddress from "@components/publicFolder/ModalPayment/ModalPaymentAddress";
 import ModalPaymentBilling from "@components/publicFolder/ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
 
@@ -99,11 +99,11 @@ export default function RowPayment({
             ) : !billingEmpty ? (
               <div className="row">
                 <img
-                  src={`${api_URL}/image/${lastBilling.image}`}
+                  src={`${apiURL}/image/${lastBilling.image}`}
                   alt={`imagen logo ${lastBilling.type}`}
                   className="imgBrandCard"
                 />
-                {/* <img src={`${api_URL}/image/${billing[0].image}`} alt={`imagen logo ${billing[0].type}`} className="imgBrandCard" /> */}
+                {/* <img src={`${apiURL}/image/${billing[0].image}`} alt={`imagen logo ${billing[0].type}`} className="imgBrandCard" /> */}
                 <p>
                   <b>{lastBilling.type}</b> que termina en{" "}
                   <b>{lastBilling.last_4_digits}</b>

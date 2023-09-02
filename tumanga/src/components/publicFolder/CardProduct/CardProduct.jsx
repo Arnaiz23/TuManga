@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 
-import { api_URL } from "@/services/config"
+import { apiURL } from "@/services/config"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -63,12 +63,12 @@ export default function CardProduct({ product }) {
   return (
     <div className="card" id="cardTemplate" key={product._id}>
       {/* Create default */}
-      {/* <img src={`${api_URL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} /> */}
+      {/* <img src={`${apiURL}/image/${product.image}`} alt={`Portada del volumen de ${product.name}`} /> */}
       <Link to={`/product/${product._id}`}>
         {product.image !== null ? (
           <img
             loading="lazy"
-            src={`${api_URL}/image/${product.image}`}
+            src={`${apiURL}/image/${product.image}`}
             alt={`Portada del volumen de ${product.name}`}
           />
         ) : (

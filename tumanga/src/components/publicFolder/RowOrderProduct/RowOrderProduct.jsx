@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import { deleteProductCart } from "@/services/Orders";
 import OrderContext from "@/context/OrderContext";
 
@@ -11,7 +11,7 @@ export default function RowOrderProduct({ data }) {
   const { setOrder, setCount } = useContext(OrderContext);
 
   const deleteItem = () => {
-    deleteProductCart({ id_product: data.product_id }).then((data) => {
+    deleteProductCart({ idproduct: data.product_id }).then((data) => {
       if (data.message) {
         return Swal.fire(
           "Lo sentimos",
@@ -28,12 +28,12 @@ export default function RowOrderProduct({ data }) {
     <div className="row">
       {data.image !== null ? (
         <img
-          src={`${api_URL}/image/${data.image}`}
+          src={`${apiURL}/image/${data.image}`}
           alt={`imagen portada ${data.name}`}
         />
       ) : (
         <img
-          src={`${api_URL}/image/ImageNotFound.jpg`}
+          src={`${apiURL}/image/ImageNotFound.jpg`}
           alt={`Portada del volumen de ${data.name}`}
         />
       )}
@@ -41,7 +41,7 @@ export default function RowOrderProduct({ data }) {
         <h4 className="titleBlue">{data.name}</h4>
         <div>
           <p>Cantidad: {data.quantity}</p>
-          <p>Precio: {data.total_price}€</p>
+          <p>Precio: {data.totalprice}€</p>
         </div>
       </div>
       <span>

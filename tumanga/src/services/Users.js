@@ -1,9 +1,9 @@
-import { api_URL, getToken } from "./config";
+import { apiURL, getToken } from "./config";
 
 export function getUser() {
   const token = getToken();
 
-  return fetch(`${api_URL}/user`, {
+  return fetch(`${apiURL}/user`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
       "Content-type": "application/json",
@@ -22,7 +22,7 @@ export function getUser() {
 export function updateUser(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/user`, {
+  return fetch(`${apiURL}/user`, {
     method: "put",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ export function updateUser(body) {
 export function userChangePasswords(body) {
   const token = getToken();
 
-  return fetch(`${api_URL}/user/password`, {
+  return fetch(`${apiURL}/user/password`, {
     method: "put",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ export function userChangePasswords(body) {
 export function userChangeState() {
   const token = getToken();
 
-  return fetch(`${api_URL}/user`, {
+  return fetch(`${apiURL}/user`, {
     method: "PATCH",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export function userChangeState() {
 export function deleteUser() {
   const token = getToken();
 
-  return fetch(`${api_URL}/user`, {
+  return fetch(`${apiURL}/user`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ export function deleteUser() {
 }
 
 export function login(body) {
-  return fetch(`${api_URL}/login`, {
+  return fetch(`${apiURL}/login`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -112,7 +112,7 @@ export function login(body) {
 }
 
 export function register(body) {
-  return fetch(`${api_URL}/user`, {
+  return fetch(`${apiURL}/user`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -128,7 +128,7 @@ export function register(body) {
 export function getUserOrders() {
   const token = getToken();
 
-  return fetch(`${api_URL}/orders/user`, {
+  return fetch(`${apiURL}/orders/user`, {
     headers: new Headers({
       Authorization: `Bearer ${token}`,
     }),

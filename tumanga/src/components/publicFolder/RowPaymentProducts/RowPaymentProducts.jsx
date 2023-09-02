@@ -1,6 +1,6 @@
 import React from "react";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 
 export default function RowPaymentProducts({ order }) {
   const today = new Date();
@@ -29,7 +29,7 @@ export default function RowPaymentProducts({ order }) {
                   />
                 ) : (
                   <img
-                    src={`${api_URL}/image/${product.image}`}
+                    src={`${apiURL}/image/${product.image}`}
                     alt={`portada ${product.name}`}
                   />
                 )}

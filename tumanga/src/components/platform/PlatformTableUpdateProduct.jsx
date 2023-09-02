@@ -1,6 +1,6 @@
 import Spinner from "@components/publicFolder/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 import getOneProduct from "@/services/getOneProduct";
 
 export default function PlatformTableUpdateProduct({
@@ -89,11 +89,11 @@ export default function PlatformTableUpdateProduct({
             ></textarea>
           </div>
           <div className="inputAdmin">
-            <label htmlFor="short_description">Descripción Corta</label>
+            <label htmlFor="shortdescription">Descripción Corta</label>
             <textarea
-              value={product.short_description}
-              name="short_description"
-              id="short_description"
+              value={product.shortdescription}
+              name="shortdescription"
+              id="shortdescription"
               onChange={handleChange}
             ></textarea>
           </div>
@@ -202,11 +202,11 @@ export default function PlatformTableUpdateProduct({
             ></input>
           </div>
           <div className="inputAdmin">
-            <label htmlFor="actual_image">Imagen Actual</label>
+            <label htmlFor="actualimage">Imagen Actual</label>
             {product.image && (
               <img
                 className="imageSmall"
-                src={`${api_URL}/image/${product.image}`}
+                src={`${apiURL}/image/${product.image}`}
                 alt={`portada del manga ${product.name}`}
               />
             )}

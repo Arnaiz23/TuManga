@@ -48,6 +48,9 @@
     "rules": {
       "no-unused-vars": "off",
       "import/no-absolute-path": "off"
+    },
+    "env": {
+      "browser": true
     }
   }
 }

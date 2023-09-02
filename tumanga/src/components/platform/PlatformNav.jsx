@@ -10,7 +10,7 @@ import {
 import React, { useContext } from "react";
 import { Link } from "wouter";
 import AdminContext from "@/context/AdminContext";
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 
 export default function PlatformNav() {
   const { userData } = useContext(AdminContext);
@@ -18,7 +18,7 @@ export default function PlatformNav() {
   return (
     <nav className="adminNav">
       <header>
-        <img src={`${api_URL}/image/DefaultUser2.png`} alt="icon user" />
+        <img src={`${apiURL}/image/DefaultUser2.png`} alt="icon user" />
         <h2>{userData.roleName}</h2>
       </header>
       <ul>

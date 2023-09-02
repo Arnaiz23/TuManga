@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 // import "moment/locale/es";
 import Swal from "sweetalert2"
 
-import { api_URL } from "@/services/config"
+import { apiURL } from "@/services/config"
 import { getOrderId } from "@/services/Orders"
 import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP"
 import Header from "@/components/publicFolder/Header/Header"
@@ -68,7 +68,7 @@ export default function OrderDetail({ params }) {
                 {order.payment ? (
                   <div className="row">
                     <img
-                      src={`${api_URL}/image/${order.payment.image}`}
+                      src={`${apiURL}/image/${order.payment.image}`}
                       className="imgBrandCard"
                       alt={`imagen logo ${order.payment.type}`}
                     />
@@ -97,7 +97,7 @@ export default function OrderDetail({ params }) {
                 order.products.map((product) => (
                   <div className="row" key={product._id}>
                     <img
-                      src={`${api_URL}/image/${product.image}`}
+                      src={`${apiURL}/image/${product.image}`}
                       alt={`portada ${product.name}`}
                     />
                     <h3>{product.name}</h3>

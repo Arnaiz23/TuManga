@@ -1,7 +1,7 @@
-import { api_URL } from "@/services/config.js";
+import { apiURL } from "@/services/config.js";
 
 export function forgetPassword(body) {
-  return fetch(`${api_URL}/email`, {
+  return fetch(`${apiURL}/email`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",
@@ -15,7 +15,7 @@ export function forgetPassword(body) {
 }
 
 export function recoverPassword(token, body) {
-  return fetch(`${api_URL}/recover/${token}`, {
+  return fetch(`${apiURL}/recover/${token}`, {
     method: "POST",
     headers: new Headers({
       "Content-type": "application/json",

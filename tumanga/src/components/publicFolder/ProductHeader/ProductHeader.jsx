@@ -1,13 +1,13 @@
 import React from "react";
 
-import { api_URL } from "@/services/config";
+import { apiURL } from "@/services/config";
 
 export default function ProductHeader({ data, index }) {
   return (
     <>
       <div className="cardCart">
         <img
-          src={`${api_URL}/image/${data.image}`}
+          src={`${apiURL}/image/${data.image}`}
           alt={`portada de ${data.name}`}
         />
         <div>
