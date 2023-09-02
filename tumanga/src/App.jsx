@@ -1,38 +1,38 @@
 import './App.css';
 
 import { Route } from 'wouter'
-import PublicHome from './pages/publicView/PublicHome';
-import Account from 'pages/publicView/Account';
-import ProductsView from 'pages/publicView/ProductsView';
+import PublicHome from '@pages/publicView/PublicHome/index.jsx';
+import Account from '@pages/publicView/Account';
+import ProductsView from '@pages/publicView/ProductsView/index.jsx';
 
-import { ProductsContextProvider } from 'context/ProductsContext'
-import ProductView from 'pages/publicView/ProductView';
-import Login from 'pages/publicView/Login/Login';
-import Register from 'pages/publicView/Register/Register';
-import OrdersAccount from 'pages/publicView/Account/OrdersAccount';
-import AddressAccount from 'pages/publicView/Account/AddressAccount';
-import CardsAccount from 'pages/publicView/Account/CardsAccount/CardsAccount';
-import CommentsAccount from 'pages/publicView/Account/CommentsAccount';
-import { OrderContextProvider } from 'context/OrderContext';
-import OrderProcess from 'pages/publicView/OrderProcess/OrderProcess';
-import Payment from 'pages/publicView/Payment/Payment';
-import OrderDetail from 'pages/publicView/OrderDetail/OrderDetail';
-import SearchProducts from 'pages/publicView/SearchProducts/SearchProducts';
-import ForgetPassword from 'pages/publicView/ForgetPassword/ForgetPassword';
-import RecoverPassword from 'pages/publicView/RecoverPassword/RecoverPassword';
-import PlatformHome from 'pages/platform/PlatformHome';
-import { AdminContextProvider } from 'context/AdminContext';
-import PlatformUsers from 'pages/platform/PlatformUsers';
-import PlatformEditUser from 'pages/platform/PlatformEditUser';
-import PlatformNewUser from 'pages/platform/PlatformNewUser';
-import PlatformProducts from 'pages/platform/PlatformProducts';
-import PlatformEditProducts from 'pages/platform/PlatformEditProducts';
-import PlatformNewProduct from 'pages/platform/PlatformNewProduct';
-import PlatformOrders from 'pages/platform/PlatformOrders';
-import PlatformRoles from 'pages/platform/PlatformRoles';
-import PlatformNewRole from 'pages/platform/PlatformNewRole';
-import PlatformEditRoleView from 'pages/platform/PlatformEditRoleView';
-import PlatformComments from 'pages/platform/PlatformComments';
+import { ProductsContextProvider } from '@/context/ProductsContext.jsx'
+import ProductView from '@pages/publicView/ProductView/index.jsx';
+import Login from '@pages/publicView/Login/Login.jsx';
+import Register from '@pages/publicView/Register/Register.jsx';
+import OrdersAccount from '@pages/publicView/Account/OrdersAccount.jsx';
+import AddressAccount from '@pages/publicView/Account/AddressAccount.jsx';
+import CardsAccount from '@pages/publicView/Account/CardsAccount/CardsAccount.jsx';
+import CommentsAccount from '@pages/publicView/Account/CommentsAccount.jsx';
+import { OrderContextProvider } from '@/context/OrderContext.jsx';
+import OrderProcess from '@pages/publicView/OrderProcess/OrderProcess.jsx';
+import Payment from '@pages/publicView/Payment/Payment.jsx';
+import OrderDetail from '@pages/publicView/OrderDetail/OrderDetail.jsx';
+import SearchProducts from '@pages/publicView/SearchProducts/SearchProducts.jsx';
+import ForgetPassword from '@pages/publicView/ForgetPassword/ForgetPassword.jsx';
+import RecoverPassword from '@pages/publicView/RecoverPassword/RecoverPassword.jsx';
+import PlatformHome from '@pages/platform/PlatformHome.jsx';
+import { AdminContextProvider } from '@/context/AdminContext.jsx';
+import PlatformUsers from '@pages/platform/PlatformUsers.jsx';
+import PlatformEditUser from '@pages/platform/PlatformEditUser.jsx';
+import PlatformNewUser from '@pages/platform/PlatformNewUser.jsx';
+import PlatformProducts from '@pages/platform/PlatformProducts.jsx';
+import PlatformEditProducts from '@pages/platform/PlatformEditProducts.jsx';
+import PlatformNewProduct from '@pages/platform/PlatformNewProduct.jsx';
+import PlatformOrders from '@pages/platform/PlatformOrders.jsx';
+import PlatformRoles from '@pages/platform/PlatformRoles.jsx';
+import PlatformNewRole from '@pages/platform/PlatformNewRole.jsx';
+import PlatformEditRoleView from '@pages/platform/PlatformEditRoleView.jsx';
+import PlatformComments from '@pages/platform/PlatformComments.jsx';
 
 
 function App() {
