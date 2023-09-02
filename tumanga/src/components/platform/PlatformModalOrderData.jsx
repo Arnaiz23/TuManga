@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function PlatformModalOrderData({ data, emails }) {
   return (
@@ -13,15 +13,19 @@ export default function PlatformModalOrderData({ data, emails }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="order_date">Fecha pedido</label>
-        // <p>
-        //   <Moment format="DD/MM/YYYY">{data.order_date}</Moment>
-        // </p>
+        //{" "}
+        <p>
+          // <Moment format="DD/MM/YYYY">{data.order_date}</Moment>
+          //{" "}
+        </p>
       </div>
       <div className="modalInfo">
         <label htmlFor="send_date">FECHA Envio</label>
-        // <p>
-        //   <Moment format="DD/MM/YYYY">{data.send_date}</Moment>
-        // </p>
+        //{" "}
+        <p>
+          // <Moment format="DD/MM/YYYY">{data.send_date}</Moment>
+          //{" "}
+        </p>
       </div>
       <div className="modalInfo">
         <label htmlFor="products">Nº Productos</label>
@@ -32,5 +36,5 @@ export default function PlatformModalOrderData({ data, emails }) {
         <p>{data.total} €</p>
       </div>
     </section>
-  );
+  )
 }

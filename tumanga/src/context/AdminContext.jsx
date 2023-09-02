@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-const Context = React.createContext({});
+const Context = React.createContext({})
 
 export function AdminContextProvider({ children }) {
-  const [order, setOrder] = useState([]);
-  const [user, setUser] = useState(true);
-  const [userData, setUserData] = useState({});
-  const [count, setCount] = useState(0);
-  const [orderProcess, setOrderProcess] = useState(false);
+  const [order, setOrder] = useState([])
+  const [user, setUser] = useState(true)
+  const [userData, setUserData] = useState({})
+  const [count, setCount] = useState(0)
+  const [orderProcess, setOrderProcess] = useState(false)
 
   return (
     <Context.Provider
@@ -26,7 +26,7 @@ export function AdminContextProvider({ children }) {
     >
       {children}
     </Context.Provider>
-  );
+  )
 }
 
-export default Context;
+export default Context

@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import useUser from "@/hooks/useUser";
-import { getUserCards } from "@/services/Cards";
-import CardItem from "@components/publicFolder/CardItem/CardItem";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import AddAddress from "@components/publicFolder/AddAddress/AddAddress";
+import useUser from "@/hooks/useUser"
+import { getUserCards } from "@/services/Cards"
+import CardItem from "@components/publicFolder/CardItem/CardItem"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import AddAddress from "@components/publicFolder/AddAddress/AddAddress"
 
 export default function ListOfCards() {
-  const { loading } = useUser();
-  const [cards, setCards] = useState([]);
-  const error = useState("No tienes tarjetas")[0];
-  const [cardsEmpty, setCardsEmpty] = useState(false);
+  const { loading } = useUser()
+  const [cards, setCards] = useState([])
+  const error = useState("No tienes tarjetas")[0]
+  const [cardsEmpty, setCardsEmpty] = useState(false)
 
   useState(() => {
     getUserCards().then((data) => {
       if (data.message) {
-        setCardsEmpty(true);
-        return;
+        setCardsEmpty(true)
+        return
       }
 
-      setCards(data.cards);
-    });
-  }, []);
+      setCards(data.cards)
+    })
+  }, [])
 
   return (
     <>
@@ -43,5 +43,5 @@ export default function ListOfCards() {
         )}
       </div>
     </>
-  );
+  )
 }

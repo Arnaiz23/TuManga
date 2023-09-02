@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
+import React, { useContext } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
+import Swal from "sweetalert2"
 
-import { apiURL } from "@/services/config";
-import OrderContext from "@/context/OrderContext";
-import { addProductOrder, createOrder } from "@/services/Orders";
+import { apiURL } from "@/services/config"
+import OrderContext from "@/context/OrderContext"
+import { addProductOrder, createOrder } from "@/services/Orders"
 
 export default function ProductDetail({ product }) {
   const { user, orderProcess, setOrderProcess, setOrder, setCount } =
-    useContext(OrderContext);
+    useContext(OrderContext)
 
   const addCart = () => {
     if (orderProcess) {
@@ -19,13 +19,13 @@ export default function ProductDetail({ product }) {
             "Lo sentimos",
             "Hubo un error al intentar añadirlo",
             "error",
-          );
+          )
         }
-        setOrderProcess(true);
-        setOrder(data.orderUpdate);
-        setCount(data.orderUpdate.products.length);
-        Swal.fire("Producto", "Producto añadido al carrito", "success");
-      });
+        setOrderProcess(true)
+        setOrder(data.orderUpdate)
+        setCount(data.orderUpdate.products.length)
+        Swal.fire("Producto", "Producto añadido al carrito", "success")
+      })
     } else {
       createOrder({ id_product: product._id }).then((data) => {
         if (data.message) {
@@ -33,20 +33,20 @@ export default function ProductDetail({ product }) {
             "Lo sentimos",
             "Hubo un error al intentar crearlo",
             "error",
-          );
+          )
         }
-        setOrderProcess(true);
-        setOrder(data.saveOrder);
-        setCount(data.saveOrder.products.length);
-        Swal.fire("Producto", "Producto añadido al carrito", "success");
-      });
+        setOrderProcess(true)
+        setOrder(data.saveOrder)
+        setCount(data.saveOrder.products.length)
+        Swal.fire("Producto", "Producto añadido al carrito", "success")
+      })
     }
     /* 
         setOrderProcess(true)
             setOrder(data.saveOrder)
             setCount(data.saveOrder.products.length)
         */
-  };
+  }
 
   return (
     <div className="containerCenterRadius">
@@ -140,5 +140,5 @@ export default function ProductDetail({ product }) {
         </section>
       </div>
     </div>
-  );
+  )
 }

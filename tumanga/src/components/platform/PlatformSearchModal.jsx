@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { searchData, searchRole } from "@/services/Admin";
-import { searchProducts } from "@/services/Orders";
+import React, { useState } from "react"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { searchData, searchRole } from "@/services/Admin"
+import { searchProducts } from "@/services/Orders"
 
 export default function PlatformSearchModal({
   changeModal,
@@ -12,98 +12,98 @@ export default function PlatformSearchModal({
   setDataEmpty,
   type,
 }) {
-  let [search, setSearch] = useState("");
+  let [search, setSearch] = useState("")
 
   const handleChangeModal = () => {
-    changeModal(false);
-  };
+    changeModal(false)
+  }
 
   const handleChangeSearch = (e) => {
-    setSearch(e.target.value);
-  };
+    setSearch(e.target.value)
+  }
 
   const fetchSearchUsers = (value) => {
-    if (search === "") search = "null";
+    if (search === "") search = "null"
 
-    if (value) search = "null";
+    if (value) search = "null"
     searchData(search, "user").then((data) => {
       if (data.message) {
-        setDataEmpty(true);
-        changeModal(false);
-        return;
+        setDataEmpty(true)
+        changeModal(false)
+        return
       }
-      setDataData(data.userSearch);
-      setDataEmpty(false);
-      changeModal(false);
-    });
-  };
+      setDataData(data.userSearch)
+      setDataEmpty(false)
+      changeModal(false)
+    })
+  }
 
   const fetchSearchProducts = (value) => {
-    if (search === "") search = "null";
+    if (search === "") search = "null"
 
-    if (value) search = "null";
+    if (value) search = "null"
     searchProducts(search).then((data) => {
       if (data.message) {
-        setDataEmpty(true);
-        return;
+        setDataEmpty(true)
+        return
       }
 
-      setDataData(data.searchProducts);
-      setDataEmpty(false);
-      changeModal(false);
-    });
-  };
+      setDataData(data.searchProducts)
+      setDataEmpty(false)
+      changeModal(false)
+    })
+  }
 
   const fetchSearchRoles = (value) => {
-    if (search === "") search = "null";
-    if (value) search = "null";
+    if (search === "") search = "null"
+    if (value) search = "null"
     searchRole(search).then((data) => {
       if (data.message) {
-        setDataEmpty(true);
-        changeModal(false);
-        return;
+        setDataEmpty(true)
+        changeModal(false)
+        return
       }
 
-      setDataData(data.resultSearch);
-      setDataEmpty(false);
-      changeModal(false);
-    });
-  };
+      setDataData(data.resultSearch)
+      setDataEmpty(false)
+      changeModal(false)
+    })
+  }
 
   const handleSearch = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (type === "users") {
-      fetchSearchUsers();
-      return;
+      fetchSearchUsers()
+      return
     }
 
     if (type === "products") {
-      fetchSearchProducts();
-      return;
+      fetchSearchProducts()
+      return
     }
 
     if (type === "roles") {
-      fetchSearchRoles();
-      return;
+      fetchSearchRoles()
+      return
     }
-  };
+  }
 
   const handleResetForm = () => {
     if (type === "users") {
-      fetchSearchUsers("null");
-      return;
+      fetchSearchUsers("null")
+      return
     }
 
     if (type === "products") {
-      fetchSearchProducts("null");
-      return;
+      fetchSearchProducts("null")
+      return
     }
 
     if (type === "roles") {
-      fetchSearchRoles("null");
-      return;
+      fetchSearchRoles("null")
+      return
     }
-  };
+  }
 
   return (
     <div
@@ -140,5 +140,5 @@ export default function PlatformSearchModal({
         <FontAwesomeIcon icon={faXmark} />
       </i>
     </div>
-  );
+  )
 }

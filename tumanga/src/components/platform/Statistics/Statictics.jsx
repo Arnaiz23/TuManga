@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
-import { getBestsellers } from "@/services/Admin";
-import "./Statistics.css";
-import StatisticsCol from "@components/platform/Statistics/StatisticsCol";
+import { useEffect, useState } from "react"
+import { getBestsellers } from "@/services/Admin"
+import "./Statistics.css"
+import StatisticsCol from "@components/platform/Statistics/StatisticsCol"
 
 export default function Statistics() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   const fetchBestsellers = () => {
     getBestsellers().then((info) => {
-      setData(info);
-    });
-  };
+      setData(info)
+    })
+  }
 
   useEffect(() => {
-    fetchBestsellers();
-  }, []);
+    fetchBestsellers()
+  }, [])
 
   return (
     <div className="statisticsContainer">
@@ -24,5 +24,5 @@ export default function Statistics() {
         ))}
       </div>
     </div>
-  );
+  )
 }

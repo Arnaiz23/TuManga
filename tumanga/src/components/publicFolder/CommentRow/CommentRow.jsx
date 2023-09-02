@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons"
+import Swal from "sweetalert2"
 // import Moment from "react-moment";
 // import "moment/locale/es";
 
-import { deleteUserComment } from "@/services/Comments";
+import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentRow({
   comment,
@@ -14,24 +14,24 @@ export default function CommentRow({
   change,
   changeEmpty,
 }) {
-  const [stars, setStars] = useState([]);
+  const [stars, setStars] = useState([])
 
   useEffect(() => {
-    const stars2 = [];
+    const stars2 = []
     for (let i = 1; i <= 5; i++) {
-      stars2.push(i);
+      stars2.push(i)
     }
-    setStars(stars2);
-  }, []);
+    setStars(stars2)
+  }, [])
 
   const deleteComment = () => {
     deleteUserComment(comment._id).then((data) => {
-      change(data.productComments);
-      Swal.fire("Comentario", "Comentario eliminado correctamente", "success");
+      change(data.productComments)
+      Swal.fire("Comentario", "Comentario eliminado correctamente", "success")
 
-      if (data.productComments.length === 0) changeEmpty(true);
-    });
-  };
+      if (data.productComments.length === 0) changeEmpty(true)
+    })
+  }
 
   return (
     <>
@@ -54,7 +54,7 @@ export default function CommentRow({
                     className={comment.score >= star ? "starsActive" : ""}
                   />
                 </i>
-              );
+              )
             })}
           </div>
           <p>{comment.message}</p>
@@ -70,5 +70,5 @@ export default function CommentRow({
       </div>
       <div className="lineComments"></div>
     </>
-  );
+  )
 }

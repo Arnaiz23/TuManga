@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformModalOrders from "./PlatformModalOrders";
+import React from "react"
+import PlatformModalOrders from "./PlatformModalOrders"
 
 export default function PlatformTableResponsiveOrders({
   dataEmpty,
@@ -27,12 +27,12 @@ export default function PlatformTableResponsiveOrders({
                     key={info._id}
                     emails={emails[index]}
                   />
-                );
+                )
               })}
             </section>
           </>
         )}
       </div>
     </>
-  );
+  )
 }

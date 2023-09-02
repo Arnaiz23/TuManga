@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 
-import useGetDataPayment from "@/hooks/useGetDataPayment";
-import { apiURL } from "@/services/config";
-import ModalPaymentAddress from "@components/publicFolder/ModalPayment/ModalPaymentAddress";
-import ModalPaymentBilling from "@components/publicFolder/ModalPayment/ModalPaymentBilling/ModalPaymentBilling";
+import useGetDataPayment from "@/hooks/useGetDataPayment"
+import { apiURL } from "@/services/config"
+import ModalPaymentAddress from "@components/publicFolder/ModalPayment/ModalPaymentAddress"
+import ModalPaymentBilling from "@components/publicFolder/ModalPayment/ModalPaymentBilling/ModalPaymentBilling"
 
 export default function RowPayment({
   type,
@@ -22,7 +22,7 @@ export default function RowPayment({
   // ! Peticion direcciones
   // const [modalOpen, setModalOpen] = useState(false)
   const { address, billing, loadingAddress, loadingBilling } =
-    useGetDataPayment();
+    useGetDataPayment()
   /* const [addressEmpty, setAddressEmpty] = useState(true)
     const [billingEmpty, setBillingEmpty] = useState(true) */
   /* const [ lastAddress, setLastAddress ] = useState({})
@@ -30,12 +30,12 @@ export default function RowPayment({
 
   useEffect(() => {
     if (address.length > 0 && type === "address") {
-      changeAddress(address[0]);
-      changeAddressEmpty(false);
+      changeAddress(address[0])
+      changeAddressEmpty(false)
     }
     if (billing.length > 0 && type === "billing") {
-      changeBilling(billing[0]);
-      changeBillingEmpty(false);
+      changeBilling(billing[0])
+      changeBillingEmpty(false)
     }
   }, [
     address,
@@ -45,12 +45,12 @@ export default function RowPayment({
     changeBillingEmpty,
     changeAddressEmpty,
     type,
-  ]);
+  ])
 
   const openModal = () => {
-    changeModalLast(true);
+    changeModalLast(true)
     // setModalOpen(true)
-  };
+  }
 
   return (
     <>
@@ -128,5 +128,5 @@ export default function RowPayment({
         </>
       )}
     </>
-  );
+  )
 }

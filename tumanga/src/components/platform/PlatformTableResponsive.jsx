@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformModalShow from "./PlatformModalShow";
+import React from "react"
+import PlatformModalShow from "./PlatformModalShow"
 
 export default function PlatformTableResponsive({
   titles,
@@ -28,12 +28,12 @@ export default function PlatformTableResponsive({
                     key={user._id}
                     roleName={roleArray[index]}
                   />
-                );
+                )
               })}
             </section>
           </>
         )}
       </div>
     </>
-  );
+  )
 }

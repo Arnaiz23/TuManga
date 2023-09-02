@@ -1,11 +1,11 @@
-import useProducts from "@/hooks/useProducts";
-import React, { useContext } from "react";
+import useProducts from "@/hooks/useProducts"
+import React, { useContext } from "react"
 
-import ProductContext from "@/context/ProductsContext";
-import getFilterProducts from "@/services/getFilterProducts";
+import ProductContext from "@/context/ProductsContext"
+import getFilterProducts from "@/services/getFilterProducts"
 
 export default function FilterCheckbox({ name, size }) {
-  const { page } = useProducts();
+  const { page } = useProducts()
   const {
     setProducts,
     setCount,
@@ -13,34 +13,34 @@ export default function FilterCheckbox({ name, size }) {
     setFilter,
     actualType,
     setProductsEmpty,
-  } = useContext(ProductContext);
+  } = useContext(ProductContext)
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      let filterAll = filter;
-      filterAll.push(e.target.id);
-      setFilter(filter);
+      let filterAll = filter
+      filterAll.push(e.target.id)
+      setFilter(filter)
     } else {
-      let filterAll = filter;
-      filterAll.splice(filterAll.indexOf(e.target.id), 1);
-      setFilter(filterAll);
+      let filterAll = filter
+      filterAll.splice(filterAll.indexOf(e.target.id), 1)
+      setFilter(filterAll)
     }
 
-    let finalFilter;
+    let finalFilter
 
     if (filter.length > 0) {
-      finalFilter = filter.join(";");
+      finalFilter = filter.join(";")
     } else {
-      finalFilter = "null";
+      finalFilter = "null"
     }
 
     getFilterProducts(8 * page, finalFilter, actualType).then((data) => {
-      if (data.message) return setProductsEmpty(true);
-      setProducts(data.products);
-      setCount(Math.ceil(data.count / 8));
-      setProductsEmpty(false);
-    });
-  };
+      if (data.message) return setProductsEmpty(true)
+      setProducts(data.products)
+      setCount(Math.ceil(data.count / 8))
+      setProductsEmpty(false)
+    })
+  }
 
   return (
     <div className={size ? "" : "optionFilter"}>
@@ -52,5 +52,5 @@ export default function FilterCheckbox({ name, size }) {
       />
       <p>{name}</p>
     </div>
-  );
+  )
 }

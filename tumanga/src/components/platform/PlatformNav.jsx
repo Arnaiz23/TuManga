@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faBook,
   faBoxOpen,
@@ -6,14 +6,14 @@ import {
   faHome,
   faUser,
   faWrench,
-} from "@fortawesome/free-solid-svg-icons";
-import React, { useContext } from "react";
-import { Link } from "wouter";
-import AdminContext from "@/context/AdminContext";
-import { apiURL } from "@/services/config";
+} from "@fortawesome/free-solid-svg-icons"
+import React, { useContext } from "react"
+import { Link } from "wouter"
+import AdminContext from "@/context/AdminContext"
+import { apiURL } from "@/services/config"
 
 export default function PlatformNav() {
-  const { userData } = useContext(AdminContext);
+  const { userData } = useContext(AdminContext)
 
   return (
     <nav className="adminNav">
@@ -75,5 +75,5 @@ export default function PlatformNav() {
         </li>
       </ul>
     </nav>
-  );
+  )
 }

@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react"
+import Swal from "sweetalert2"
 
-import { updateUser } from "@/services/Users";
+import { updateUser } from "@/services/Users"
 
 export default function DataAccount({ data, change }) {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [loadingUpdate, setLoadingUpdate] = useState(false);
+  const [name, setName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [loadingUpdate, setLoadingUpdate] = useState(false)
 
   const changeData = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const body = {
       name: name || "",
       last_name: lastName || "",
-    };
+    }
 
-    setLoadingUpdate(true);
+    setLoadingUpdate(true)
 
     updateUser(body).then(({ status, userUpdate }) => {
       if (status === "success") {
-        change({ userUpdate });
-        Swal.fire("Usuario", "Usuario actualizado correctamente", "success");
-        e.target.reset();
+        change({ userUpdate })
+        Swal.fire("Usuario", "Usuario actualizado correctamente", "success")
+        e.target.reset()
       }
 
-      setLoadingUpdate(false);
-    });
-  };
+      setLoadingUpdate(false)
+    })
+  }
 
   const handleChangeName = (e) => {
-    setName(e.target.value);
-  };
+    setName(e.target.value)
+  }
 
   const handleChangeLastName = (e) => {
-    setLastName(e.target.value);
-  };
+    setLastName(e.target.value)
+  }
 
   useEffect(() => {
     if (data.userFind !== undefined) {
-      setName(data.userFind.name);
-      setLastName(data.userFind.last_name);
+      setName(data.userFind.name)
+      setLastName(data.userFind.last_name)
     } else if (data.userUpdate !== undefined) {
-      setName(data.userUpdate.name);
-      setLastName(data.userUpdate.last_name);
+      setName(data.userUpdate.name)
+      setLastName(data.userUpdate.last_name)
     }
-  }, [loadingUpdate]);
+  }, [loadingUpdate])
 
   return (
     <div className="rowAccount">
@@ -76,5 +76,5 @@ export default function DataAccount({ data, change }) {
         </div>
       </form>
     </div>
-  );
+  )
 }

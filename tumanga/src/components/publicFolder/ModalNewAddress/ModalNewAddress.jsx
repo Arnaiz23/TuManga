@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { createAddress } from "@/services/Address";
+import { createAddress } from "@/services/Address"
 
 export default function ModalNewAddress({ change, closeModal, empty }) {
   const [address, setAddress] = useState({
@@ -11,19 +11,19 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
     name_person: "",
     location: "",
     telephone: "",
-  });
+  })
 
   const handleData = (e) => {
     setAddress({
       ...address,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleFormAddress = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const regexpPhone = /^[0-9]{9}$/;
+    const regexpPhone = /^[0-9]{9}$/
 
     if (
       address.name === "" ||
@@ -35,7 +35,7 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
         "Datos erróneos",
         "Debes rellenar todos los datos obligatorios",
         "warning",
-      );
+      )
     }
 
     if (!regexpPhone.test(address.telephone)) {
@@ -43,7 +43,7 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
         "Datos erróneos",
         "Número de teléfono no válido",
         "error",
-      );
+      )
     }
 
     createAddress(address).then((data) => {
@@ -52,15 +52,15 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
           "Lo sentimos",
           "Hubo un error al intentar crearla",
           "error",
-        );
+        )
       }
 
-      change(data.allAddress);
-      Swal.fire("Dirección", "Nueva dirección creada correctamente", "success");
-      closeModal(false);
-      empty(false);
-    });
-  };
+      change(data.allAddress)
+      Swal.fire("Dirección", "Nueva dirección creada correctamente", "success")
+      closeModal(false)
+      empty(false)
+    })
+  }
 
   return (
     <div className="newAddress">
@@ -132,5 +132,5 @@ export default function ModalNewAddress({ change, closeModal, empty }) {
         />
       </form>
     </div>
-  );
+  )
 }

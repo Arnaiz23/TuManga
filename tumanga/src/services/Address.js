@@ -1,7 +1,7 @@
-import { getToken, apiURL } from "./config";
+import { getToken, apiURL } from "./config"
 
 export function getAddressUser() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/address/user`, {
     headers: new Headers({
@@ -10,12 +10,12 @@ export function getAddressUser() {
   })
     .then((res) => res.json())
     .then(({ status, message, address }) => {
-      return status === "success" ? { address } : { message };
-    });
+      return status === "success" ? { address } : { message }
+    })
 }
 
 export function deleteUserAddress(id) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/address/${id}`, {
     headers: new Headers({
@@ -25,12 +25,12 @@ export function deleteUserAddress(id) {
   })
     .then((res) => res.json())
     .then(({ status, message, newAddress }) => {
-      return status === "success" ? { newAddress } : { message };
-    });
+      return status === "success" ? { newAddress } : { message }
+    })
 }
 
 export function createAddress(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/address`, {
     method: "POST",
@@ -42,12 +42,12 @@ export function createAddress(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, allAddress }) => {
-      return status === "success" ? { allAddress } : { message };
-    });
+      return status === "success" ? { allAddress } : { message }
+    })
 }
 
 export function getLastAddress() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/address/last`, {
     headers: new Headers({
@@ -56,12 +56,12 @@ export function getLastAddress() {
   })
     .then((res) => res.json())
     .then(({ status, message, address }) => {
-      return status === "success" ? { address } : { message };
-    });
+      return status === "success" ? { address } : { message }
+    })
 }
 
 export function updateUserAddress(id, body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/address/${id}`, {
     method: "PUT",
@@ -73,6 +73,6 @@ export function updateUserAddress(id, body) {
   })
     .then((res) => res.json())
     .then(({ status, message, addressUpdate, allAddress }) => {
-      return status === "success" ? { addressUpdate, allAddress } : { message };
-    });
+      return status === "success" ? { addressUpdate, allAddress } : { message }
+    })
 }

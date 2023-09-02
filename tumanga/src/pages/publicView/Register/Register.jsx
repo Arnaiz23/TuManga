@@ -1,43 +1,43 @@
-import React, { useContext, useState } from "react";
-import { Link, useLocation } from "wouter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
+import React, { useContext, useState } from "react"
+import { Link, useLocation } from "wouter"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import Swal from "sweetalert2"
 
-import { register } from "@/services/Users";
-import useToken from "@/hooks/useToken";
-import OrderContext from "@/context/OrderContext";
+import { register } from "@/services/Users"
+import useToken from "@/hooks/useToken"
+import OrderContext from "@/context/OrderContext"
 
 export default function Register() {
-  const inputPasswordRef = React.createRef();
-  const inputPasswordRef2 = React.createRef();
-  const showPasswordRef = React.createRef();
-  const showPasswordRef2 = React.createRef();
-  const hidePasswordRef = React.createRef();
-  const hidePasswordRef2 = React.createRef();
+  const inputPasswordRef = React.createRef()
+  const inputPasswordRef2 = React.createRef()
+  const showPasswordRef = React.createRef()
+  const showPasswordRef2 = React.createRef()
+  const hidePasswordRef = React.createRef()
+  const hidePasswordRef2 = React.createRef()
 
-  const setLocation = useLocation()[1];
-  const { setTokenInfo } = useToken();
+  const setLocation = useLocation()[1]
+  const { setTokenInfo } = useToken()
 
-  const { setUser } = useContext(OrderContext);
+  const { setUser } = useContext(OrderContext)
 
   const [userData, setUserData] = useState({
     email: "",
     password: "",
     confirm_password: "",
-  });
+  })
 
   const handleForm = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/;
+    const regex = /^[a-zA-Z0-9*/$^Ç]{6,16}$/
 
     if (
       userData.email === "" ||
       userData.password === "" ||
       userData.confirm_password === ""
     ) {
-      return Swal.fire("Datos inválidos", "Rellene todos los datos", "warning");
+      return Swal.fire("Datos inválidos", "Rellene todos los datos", "warning")
     }
 
     if (userData.password !== userData.confirm_password) {
@@ -45,7 +45,7 @@ export default function Register() {
         "Datos inválidos",
         "Las contraseñas no coinciden",
         "error",
-      );
+      )
     }
 
     if (!regex.test(userData.password)) {
@@ -53,65 +53,65 @@ export default function Register() {
         "Datos inválidos",
         "Las contraseñas no cumplen con los requisitos",
         "error",
-      );
+      )
     }
 
     // ! Send data
 
     register(userData).then((data) => {
       if (data.token) {
-        localStorage.setItem("token", JSON.stringify(data.token));
-        setTokenInfo(data.token);
-        setUser(true);
-        setLocation("/");
+        localStorage.setItem("token", JSON.stringify(data.token))
+        setTokenInfo(data.token)
+        setUser(true)
+        setLocation("/")
       } else {
         return Swal.fire(
           "Datos inválidos",
           "Email y/o datos no válidos",
           "error",
-        );
+        )
       }
-    });
-  };
+    })
+  }
 
   const handleChange = (e) => {
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const togglePassword = () => {
-    let input = inputPasswordRef.current;
-    let hide = hidePasswordRef.current;
-    let show = showPasswordRef.current;
+    let input = inputPasswordRef.current
+    let hide = hidePasswordRef.current
+    let show = showPasswordRef.current
 
     if (input.type === "text") {
-      input.type = "password";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "password"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     } else {
-      input.type = "text";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "text"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     }
-  };
+  }
 
   const togglePassword2 = () => {
-    let input = inputPasswordRef2.current;
-    let hide = hidePasswordRef2.current;
-    let show = showPasswordRef2.current;
+    let input = inputPasswordRef2.current
+    let hide = hidePasswordRef2.current
+    let show = showPasswordRef2.current
 
     if (input.type === "text") {
-      input.type = "password";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "password"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     } else {
-      input.type = "text";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "text"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     }
-  };
+  }
 
   return (
     <div className="centerLog">
@@ -193,5 +193,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-  );
+  )
 }

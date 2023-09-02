@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function PlatformModalProducts({ data }) {
   return (
@@ -17,9 +17,11 @@ export default function PlatformModalProducts({ data }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="upload_date">FECHA SUBIDA</label>
-        // <p>
-        //   <Moment format="DD/MM/YYYY">{data.upload_date}</Moment>
-        // </p>
+        //{" "}
+        <p>
+          // <Moment format="DD/MM/YYYY">{data.upload_date}</Moment>
+          //{" "}
+        </p>
       </div>
       <div className="modalInfo">
         <label htmlFor="description">DESCRIPCION</label>
@@ -66,5 +68,5 @@ export default function PlatformModalProducts({ data }) {
         <p>{data.comments.length}</p>
       </div>
     </section>
-  );
+  )
 }

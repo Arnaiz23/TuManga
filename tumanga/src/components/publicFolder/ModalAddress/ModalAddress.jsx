@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { updateUserAddress } from "@/services/Address";
+import { updateUserAddress } from "@/services/Address"
 
 export default function ModalAdddress({ data, changeAddress, closeModal }) {
   const [editAddress, setEditAddress] = useState({
@@ -10,34 +10,34 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
     floor: data.floor,
     name_person: data.name_person,
     location: data.location,
-  });
+  })
 
   const handleChangeData = (e) => {
     setEditAddress({
       ...editAddress,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmitForm = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (editAddress.floor === undefined) editAddress.floor = "";
-    if (editAddress.number === undefined) editAddress.number = "";
+    if (editAddress.floor === undefined) editAddress.floor = ""
+    if (editAddress.number === undefined) editAddress.number = ""
     updateUserAddress(data._id, editAddress).then((data) => {
       if (data.message) {
         return Swal.fire(
           "Lo sentimos",
           "Hubo un error al intentar actualizarla",
           "error",
-        );
+        )
       }
 
-      changeAddress(data.allAddress);
-      Swal.fire("Dirección", "Dirección actualizada correctamente", "success");
-      closeModal(false);
-    });
-  };
+      changeAddress(data.allAddress)
+      Swal.fire("Dirección", "Dirección actualizada correctamente", "success")
+      closeModal(false)
+    })
+  }
 
   return (
     <section>
@@ -92,5 +92,5 @@ export default function ModalAdddress({ data, changeAddress, closeModal }) {
         <button className="btn btn-success">Editar</button>
       </form>
     </section>
-  );
+  )
 }

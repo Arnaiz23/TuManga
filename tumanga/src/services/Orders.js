@@ -1,7 +1,7 @@
-import { apiURL, getToken } from "./config";
+import { apiURL, getToken } from "./config"
 
 export function getOrderId(id) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order/${id}`, {
     headers: new Headers({
@@ -10,12 +10,12 @@ export function getOrderId(id) {
   })
     .then((res) => res.json())
     .then(({ status, message, data }) => {
-      return status === "success" ? { data } : { message };
-    });
+      return status === "success" ? { data } : { message }
+    })
 }
 
 export function createOrder(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order`, {
     method: "POST",
@@ -27,12 +27,12 @@ export function createOrder(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, saveOrder }) => {
-      return status === "success" ? { saveOrder } : { message };
-    });
+      return status === "success" ? { saveOrder } : { message }
+    })
 }
 
 export function addProductOrder(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order`, {
     method: "PATCH",
@@ -44,12 +44,12 @@ export function addProductOrder(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, orderUpdate }) => {
-      return status === "success" ? { orderUpdate } : { message };
-    });
+      return status === "success" ? { orderUpdate } : { message }
+    })
 }
 
 export function getOrderProccess() {
-  const token = getToken();
+  const token = getToken()
 
   try {
     return fetch(`${apiURL}/order/process`, {
@@ -59,15 +59,15 @@ export function getOrderProccess() {
     })
       .then((res) => res.json())
       .then(({ status, message, orders }) => {
-        return status === "success" ? { orders } : { message };
-      });
+        return status === "success" ? { orders } : { message }
+      })
   } catch (error) {
-    console.log("Error token");
+    console.log("Error token")
   }
 }
 
 export function getShoppingCart() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order/cart`, {
     headers: new Headers({
@@ -76,12 +76,12 @@ export function getShoppingCart() {
   })
     .then((res) => res.json())
     .then(({ status, message, cart, products }) => {
-      return status === "success" ? { cart, products } : { message };
-    });
+      return status === "success" ? { cart, products } : { message }
+    })
 }
 
 export function deleteProductCart(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order/product`, {
     method: "PUT",
@@ -93,12 +93,12 @@ export function deleteProductCart(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, orderUpdate }) => {
-      return status === "success" ? { orderUpdate } : { message };
-    });
+      return status === "success" ? { orderUpdate } : { message }
+    })
 }
 
 export function finishShoppingCart(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/order`, {
     method: "PUT",
@@ -110,14 +110,14 @@ export function finishShoppingCart(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, orderUpdate }) => {
-      return status === "success" ? { orderUpdate } : { message };
-    });
+      return status === "success" ? { orderUpdate } : { message }
+    })
 }
 
 export function searchProducts(search) {
   return fetch(`${apiURL}/search/products/${search}`)
     .then((res) => res.json())
     .then(({ status, message, searchProducts }) => {
-      return status === "success" ? { searchProducts } : { message };
-    });
+      return status === "success" ? { searchProducts } : { message }
+    })
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformRowCommentsResponsive from "./PlatformRowCommentsResponsive";
+import React from "react"
+import PlatformRowCommentsResponsive from "./PlatformRowCommentsResponsive"
 
 export default function PlatformTableResponsiveComments({
   dataEmpty,
@@ -31,12 +31,12 @@ export default function PlatformTableResponsiveComments({
                     setCommentsEmpty={setDataEmpty}
                     arrayEmails={arrayEmails[index]}
                   />
-                );
+                )
               })}
             </section>
           </>
         )}
       </div>
     </>
-  );
+  )
 }

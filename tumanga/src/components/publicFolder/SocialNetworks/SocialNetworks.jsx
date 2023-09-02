@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faInstagram,
   faFacebook,
   faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+} from "@fortawesome/free-brands-svg-icons"
 
 export default function SocialNetwork() {
   return (
@@ -41,5 +41,5 @@ export default function SocialNetwork() {
         </i>
       </a>
     </div>
-  );
+  )
 }

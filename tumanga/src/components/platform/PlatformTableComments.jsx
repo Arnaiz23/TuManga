@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformRowComment from "./PlatformRowComment";
+import React from "react"
+import PlatformRowComment from "./PlatformRowComment"
 
 export default function PlatformTableComments({
   data,
@@ -32,11 +32,11 @@ export default function PlatformTableComments({
                   setCommentsEmpty={setDataEmpty}
                   arrayEmails={arrayEmails[index]}
                 />
-              );
+              )
             })}
           </tbody>
         </table>
       )}
     </div>
-  );
+  )
 }

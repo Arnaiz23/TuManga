@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
-import useUser from "@/hooks/useUser";
-import { getAddressUser } from "@/services/Address";
-import AddAddress from "@components/publicFolder/AddAddress/AddAddress";
-import AddressCard from "@components/publicFolder/AddressCard/AddressCard";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
+import useUser from "@/hooks/useUser"
+import { getAddressUser } from "@/services/Address"
+import AddAddress from "@components/publicFolder/AddAddress/AddAddress"
+import AddressCard from "@components/publicFolder/AddressCard/AddressCard"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 export default function ListOfAddress() {
-  const { loading } = useUser();
-  const [address, setAddress] = useState([]);
-  const error = useState("No tienes direcciones registradas")[0];
-  const [addressEmpty, setAddressEmpty] = useState(false);
+  const { loading } = useUser()
+  const [address, setAddress] = useState([])
+  const error = useState("No tienes direcciones registradas")[0]
+  const [addressEmpty, setAddressEmpty] = useState(false)
 
   useEffect(() => {
     getAddressUser().then((data) => {
       if (data.message) {
-        setAddressEmpty(true);
-        return;
+        setAddressEmpty(true)
+        return
       }
 
-      setAddress(data.address);
-    });
-  }, [setAddress]);
+      setAddress(data.address)
+    })
+  }, [setAddress])
 
   return (
     <>
@@ -47,5 +47,5 @@ export default function ListOfAddress() {
         )}
       </div>
     </>
-  );
+  )
 }

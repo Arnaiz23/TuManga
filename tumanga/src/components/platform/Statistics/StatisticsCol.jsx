@@ -1,5 +1,5 @@
-import React from "react";
-import "./StaticticsCol.css";
+import React from "react"
+import "./StaticticsCol.css"
 
 export default function statisticsCol({ data }) {
   return (
@@ -11,5 +11,5 @@ export default function statisticsCol({ data }) {
       <div className="statisticsName">{data.name}</div>
       <div className="statisticsScore">{data.number_sales}</div>
     </div>
-  );
+  )
 }

@@ -1,15 +1,15 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useState } from "react";
-import { createRole, deleteRole, updateRole } from "@/services/Admin";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useState } from "react"
+import { createRole, deleteRole, updateRole } from "@/services/Admin"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
 
 export default function PlatformEditRole({ type, role, loading, setRole }) {
   const [newRole, setNewRole] = useState({
     name: "",
-  });
+  })
 
-  const setLocation = useLocation()[1];
+  const setLocation = useLocation()[1]
 
   const handleCreate = () => {
     if (newRole.name === "") {
@@ -17,7 +17,7 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
         "Datos erróneos",
         "Rellene todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     createRole(newRole).then((data) => {
@@ -26,13 +26,13 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
           "Lo sentimos",
           "Hubo un error al intentar crearlo",
           "error",
-        );
+        )
       }
 
-      Swal.fire("Rol", "Rol creado con éxito", "success");
-      setLocation("/platform/roles");
-    });
-  };
+      Swal.fire("Rol", "Rol creado con éxito", "success")
+      setLocation("/platform/roles")
+    })
+  }
 
   const handleUpdate = () => {
     if (role.name === "") {
@@ -40,7 +40,7 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
         "Datos erróneos",
         "Debes rellenar los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     updateRole(role._id, role).then((data) => {
@@ -49,12 +49,12 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
           "Lo sentimos",
           "Hubo un error al intentar modificarlo",
           "error",
-        );
+        )
       }
 
-      Swal.fire("Rol", "Rol actualizado con éxito", "success");
-    });
-  };
+      Swal.fire("Rol", "Rol actualizado con éxito", "success")
+    })
+  }
 
   const handleDelete = () => {
     Swal.fire({
@@ -74,32 +74,32 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
               "Lo sentimos",
               "Hubo un error al intentar eliminarlo",
               "error",
-            );
+            )
           }
 
-          Swal.fire("Rol", "El rol ha sido eliminado correctamente", "success");
+          Swal.fire("Rol", "El rol ha sido eliminado correctamente", "success")
 
-          setLocation("/platform/roles");
-        });
+          setLocation("/platform/roles")
+        })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire("Cancelado", "El rol está a salvo", "error");
+        Swal.fire("Cancelado", "El rol está a salvo", "error")
       }
-    });
-  };
+    })
+  }
 
   const handleChangeData = (e) => {
     setNewRole({
       ...newRole,
       [e.target.name]: e.target.value.toLocaleLowerCase(),
-    });
-  };
+    })
+  }
 
   const handleChangeDataUpdate = (e) => {
     setRole({
       ...role,
       [e.target.name]: e.target.value.toLocaleLowerCase(),
-    });
-  };
+    })
+  }
 
   return (
     <main className="adminMain">
@@ -162,5 +162,5 @@ export default function PlatformEditRole({ type, role, loading, setRole }) {
         </footer>
       </div>
     </main>
-  );
+  )
 }

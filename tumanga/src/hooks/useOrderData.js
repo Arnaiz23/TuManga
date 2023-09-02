@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react"
 
-import OrderContext from "@/context/OrderContext";
-import { getOrderProccess } from "@/services/Orders";
+import OrderContext from "@/context/OrderContext"
+import { getOrderProccess } from "@/services/Orders"
 
 export default function useOrderData() {
   const {
@@ -12,7 +12,7 @@ export default function useOrderData() {
     setUser,
     setOrderProcess,
     orderProcess,
-  } = useContext(OrderContext);
+  } = useContext(OrderContext)
   // const [orderProcess, setOrderProcess] = useState(false)
 
   useEffect(() => {
@@ -21,21 +21,21 @@ export default function useOrderData() {
         data.message === "Did not work" ||
         data.message === "This user doesn't exists"
       ) {
-        setUser(false);
-        return;
+        setUser(false)
+        return
       }
       if (data.message === "This user doesn't have orders in proccess") {
-        setCount(0);
-        setOrder([]);
-        return;
+        setCount(0)
+        setOrder([])
+        return
       }
       if (data.orders) {
-        setOrderProcess(true);
-        setOrder(data.orders);
+        setOrderProcess(true)
+        setOrder(data.orders)
       }
-      setCount(data.orders.products.length);
-    });
-  }, [setOrder]);
+      setCount(data.orders.products.length)
+    })
+  }, [setOrder])
 
   return {
     order,
@@ -45,5 +45,5 @@ export default function useOrderData() {
     orderProcess,
     setOrderProcess,
     setUser,
-  };
+  }
 }

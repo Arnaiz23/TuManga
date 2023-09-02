@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
-import { apiURL } from "@/services/config";
+import { apiURL } from "@/services/config"
 
 export default function RowPaymentProducts({ order }) {
-  const today = new Date();
+  const today = new Date()
 
   return (
     <div className="col lastPayment">
@@ -43,5 +43,5 @@ export default function RowPaymentProducts({ order }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

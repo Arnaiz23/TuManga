@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { userChangePasswords } from "@/services/Users";
+import { userChangePasswords } from "@/services/Users"
 
 export default function PasswordAccount() {
   const [passwords, setPasswords] = useState({
     old_password: "",
     new_password: "",
     confirm_password: "",
-  });
+  })
 
   const changePassword = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (
       passwords.confirm_password === "" ||
       passwords.new_password === "" ||
       passwords.old_password === ""
     ) {
-      Swal.fire("Datos inválidos", "Rellene todos los campos", "warning");
+      Swal.fire("Datos inválidos", "Rellene todos los campos", "warning")
     } else {
       if (passwords.new_password === passwords.confirm_password) {
         if (passwords.confirm_password === passwords.old_password) {
@@ -26,7 +26,7 @@ export default function PasswordAccount() {
             "Contraseñas incorrectas",
             "La contraseña antigua y las nuevas son iguales",
             "error",
-          );
+          )
         } else {
           userChangePasswords(passwords).then((data) => {
             if (data.message) {
@@ -34,38 +34,38 @@ export default function PasswordAccount() {
                 "Contraseña incorrecta",
                 "La contraseña antigua no coincide",
                 "error",
-              );
+              )
             } else if (data.userUpdate) {
               Swal.fire(
                 "Contraseña",
                 "Contraseña actualizada correctamente",
                 "success",
-              );
-              e.target.reset();
+              )
+              e.target.reset()
               setPasswords({
                 old_password: "",
                 new_password: "",
                 confirm_password: "",
-              });
+              })
             }
-          });
+          })
         }
       } else {
         Swal.fire(
           "Contraseñas incorrectas",
           "Las contraseñas no coinciden",
           "error",
-        );
+        )
       }
     }
-  };
+  }
 
   const changeData = (event) => {
     setPasswords({
       ...passwords,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <div className="rowAccount">
@@ -111,5 +111,5 @@ export default function PasswordAccount() {
         </div>
       </form>
     </div>
-  );
+  )
 }

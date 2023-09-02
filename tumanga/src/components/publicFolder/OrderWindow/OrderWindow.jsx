@@ -1,44 +1,44 @@
 import {
   faAngleDown,
   faEllipsisVertical,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { Link } from "wouter";
+} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useEffect, useState } from "react"
+import { Link } from "wouter"
 // import Moment from "react-moment";
 // import "moment/locale/es";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 
-import { apiURL } from "@/services/config";
-import { getOrderId } from "@/services/Orders";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
+import { apiURL } from "@/services/config"
+import { getOrderId } from "@/services/Orders"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 export default function OrderWindow({ data }) {
-  const [order, setOrder] = useState(null);
-  const [loadingOrder, setLoadingOrder] = useState(false);
+  const [order, setOrder] = useState(null)
+  const [loadingOrder, setLoadingOrder] = useState(false)
 
-  const modalRef = React.createRef();
+  const modalRef = React.createRef()
 
   useEffect(() => {
-    setLoadingOrder(true);
+    setLoadingOrder(true)
     getOrderId(data.id).then((info) => {
       if (info.message) {
         return Swal.fire(
           "Lo sentimos",
           "Hubo un error al intentar recuperar el pedido",
           "error",
-        );
+        )
       }
-      setOrder(info.data);
-      setLoadingOrder(false);
-    });
-  }, [data.id]);
+      setOrder(info.data)
+      setLoadingOrder(false)
+    })
+  }, [data.id])
 
   const showInfo = () => {
-    modalRef.current.classList.toggle("modalOrderActive");
-  };
+    modalRef.current.classList.toggle("modalOrderActive")
+  }
 
-  let today = new Date();
+  let today = new Date()
 
   return loadingOrder || order === null ? (
     <Spinner />
@@ -54,9 +54,11 @@ export default function OrderWindow({ data }) {
           <div>
             <h4>Pedido realizado</h4>
             <p>12/12/12</p>
-            // <p>
-            //   <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
-            // </p>
+            //{" "}
+            <p>
+              // <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
+              //{" "}
+            </p>
           </div>
           <div>
             <h4>Total</h4>
@@ -117,15 +119,15 @@ export default function OrderWindow({ data }) {
         {order.delivereddate.split("-")[1] >= today.getMonth() &&
         order.delivereddate.split("-")[2].substring(0, 2) > today.getDate() ? (
           <h4>
-                Entrega 12/12/12
-                {/*
+            Entrega 12/12/12
+            {/*
             Entrega <Moment fromNow>{order.delivereddate}</Moment>
                 */}
           </h4>
         ) : (
           <h4>
-                Entregado 12/12/12
-                {/*
+            Entregado 12/12/12
+            {/*
             Entregado <Moment fromNow>{order.delivereddate}</Moment>
                 */}
           </h4>
@@ -151,9 +153,9 @@ export default function OrderWindow({ data }) {
                 {product.name} X{product.quantity}
               </h3>
             </div>
-          );
+          )
         })}
       </section>
     </div>
-  );
+  )
 }

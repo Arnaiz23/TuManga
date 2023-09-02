@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { createCard } from "@/services/Cards";
+import { createCard } from "@/services/Cards"
 
 export default function ModalNewCard({ change, closeModal, empty }) {
   const [card, setCard] = useState({
     card_name: "",
     expiration_date: "",
     number_card: "",
-  });
+  })
 
   const handleData = (e) => {
     setCard({
       ...card,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleFormAddress = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const regexpName = /^[a-zA-Záíóúé ]+$/;
-    const regexpDate = /^[0-9]{2}[/]{1}[0-9]{2}$/;
-    const regexpNumber = /^[0-9]{16}$/;
-    const today = new Date();
-    let year = today.getFullYear().toString();
-    let month = today.getMonth() + 1;
+    const regexpName = /^[a-zA-Záíóúé ]+$/
+    const regexpDate = /^[0-9]{2}[/]{1}[0-9]{2}$/
+    const regexpNumber = /^[0-9]{16}$/
+    const today = new Date()
+    let year = today.getFullYear().toString()
+    let month = today.getMonth() + 1
 
-    if (month < 10) month = "0" + month;
-    year = `${year[2]}${year[3]}`;
+    if (month < 10) month = "0" + month
+    year = `${year[2]}${year[3]}`
 
     if (
       card.card_name === "" ||
@@ -39,7 +39,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         "Datos incorrectos",
         "Rellene todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     if (!regexpNumber.test(card.number_card)) {
@@ -47,7 +47,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         "Datos incorrectos",
         "Número de la tarjeta no válido",
         "warning",
-      );
+      )
     }
 
     if (!regexpName.test(card.card_name)) {
@@ -55,7 +55,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         "Datos incorrectos",
         "El nombre no puede contener ni número ni caractéres especiales",
         "warning",
-      );
+      )
     }
 
     if (!regexpDate.test(card.expiration_date)) {
@@ -63,23 +63,23 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         "Datos incorrectos",
         "La fecha debe tener el formato MM/YY",
         "warning",
-      );
+      )
     }
 
-    let expiration_date = card.expiration_date.split("/");
+    let expiration_date = card.expiration_date.split("/")
 
     if (expiration_date[1] < year) {
       return Swal.fire(
         "Datos incorrectos",
         "Debe ser una fecha posterior al día de hoy",
         "warning",
-      );
+      )
     } else if (expiration_date[1] === year && expiration_date[0] < month) {
       return Swal.fire(
         "Datos incorrectos",
         "Debe ser una fecha posterior al día de hoy",
         "warning",
-      );
+      )
     } else if (
       parseInt(expiration_date[0]) > 12 ||
       parseInt(expiration_date[0]) <= 0
@@ -88,7 +88,7 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         "Datos incorrectos",
         "Introduzca una fecha válida",
         "warning",
-      );
+      )
     }
 
     createCard(card).then((data) => {
@@ -97,15 +97,15 @@ export default function ModalNewCard({ change, closeModal, empty }) {
           "Lo sentimos",
           "Hubo un error al intentar crearla",
           "error",
-        );
+        )
       }
 
-      change(data.allCards);
-      Swal.fire("Tarjeta", "Nueva tarjeta creada correctamente", "success");
-      closeModal(false);
-      empty(false);
-    });
-  };
+      change(data.allCards)
+      Swal.fire("Tarjeta", "Nueva tarjeta creada correctamente", "success")
+      closeModal(false)
+      empty(false)
+    })
+  }
 
   return (
     <div className="newAddress">
@@ -157,5 +157,5 @@ export default function ModalNewCard({ change, closeModal, empty }) {
         />
       </form>
     </div>
-  );
+  )
 }

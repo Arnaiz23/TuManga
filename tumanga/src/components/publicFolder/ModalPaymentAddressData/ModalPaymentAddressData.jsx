@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { createAddress } from "@/services/Address";
+import { createAddress } from "@/services/Address"
 
 export default function ModalPaymentAddressData({
   changeLastAddress,
@@ -16,15 +16,15 @@ export default function ModalPaymentAddressData({
     name_person: "",
     location: "",
     telephone: "",
-  });
+  })
 
   const handleFormAddress = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const regexpName = /^[a-zA-Záéíóú ]+$/;
-    const regexpAddress = /^[a-zA-Z0-9 ]+$/;
-    const regexpNumber = /^[0-9]+$/;
-    const regexpPhone = /^[0-9]{9}$/;
+    const regexpName = /^[a-zA-Záéíóú ]+$/
+    const regexpAddress = /^[a-zA-Z0-9 ]+$/
+    const regexpNumber = /^[0-9]+$/
+    const regexpPhone = /^[0-9]{9}$/
 
     if (
       newAddress.name === "" ||
@@ -36,7 +36,7 @@ export default function ModalPaymentAddressData({
         "Datos no válidos",
         "Debes rellenar todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     if (!regexpName.test(newAddress.name_person)) {
@@ -44,7 +44,7 @@ export default function ModalPaymentAddressData({
         "Nombre",
         "No puede contener números ni caractéres especiales",
         "error",
-      );
+      )
     }
 
     if (!regexpAddress.test(newAddress.name)) {
@@ -52,7 +52,7 @@ export default function ModalPaymentAddressData({
         "Dirección",
         "No puede contener caractéres especiales",
         "error",
-      );
+      )
     }
 
     if (
@@ -63,7 +63,7 @@ export default function ModalPaymentAddressData({
         "Datos no válidos",
         "No puede contener letras ni caractéres especiales",
         "error",
-      );
+      )
     }
 
     if (!regexpPhone.test(newAddress.telephone)) {
@@ -71,7 +71,7 @@ export default function ModalPaymentAddressData({
         "Datos no válidos",
         "Número de teléfono no válido",
         "error",
-      );
+      )
     }
 
     createAddress(newAddress).then((data) => {
@@ -80,22 +80,22 @@ export default function ModalPaymentAddressData({
           "Lo sentimos",
           "Hubo un error al intentar crearla",
           "error",
-        );
+        )
       }
-      changeLastAddress(data.allAddress[data.allAddress.length - 1]);
-      Swal.fire("Dirección", "Dirección creada con éxito", "success");
-      changeAddressEmpty(false);
-      closeModalLast(false);
-      closeModal(false);
-    });
-  };
+      changeLastAddress(data.allAddress[data.allAddress.length - 1])
+      Swal.fire("Dirección", "Dirección creada con éxito", "success")
+      changeAddressEmpty(false)
+      closeModalLast(false)
+      closeModal(false)
+    })
+  }
 
   const changeData = (e) => {
     setNewAddress({
       ...newAddress,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <div className="modalCenter">
@@ -184,5 +184,5 @@ export default function ModalPaymentAddressData({
         </form>
       </section>
     </div>
-  );
+  )
 }

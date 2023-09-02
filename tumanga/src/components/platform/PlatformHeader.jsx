@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "wouter";
-import Brand from "/BrandTransparentMD.png";
+import React from "react"
+import { Link } from "wouter"
+import Brand from "/BrandTransparentMD.png"
 
 export default function PlatformHeader() {
   return (
@@ -17,5 +17,5 @@ export default function PlatformHeader() {
         </button>
       </Link>
     </header>
-  );
+  )
 }

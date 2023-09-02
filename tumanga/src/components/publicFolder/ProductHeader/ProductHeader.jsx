@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import { apiURL } from "@/services/config";
+import { apiURL } from "@/services/config"
 
 export default function ProductHeader({ data, index }) {
   return (
@@ -20,5 +20,5 @@ export default function ProductHeader({ data, index }) {
       </div>
       {index < 2 && <div className="lineCart"></div>}
     </>
-  );
+  )
 }

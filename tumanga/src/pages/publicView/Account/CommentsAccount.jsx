@@ -1,11 +1,11 @@
-import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount";
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "@components/publicFolder/Footer/Footer";
-import Header from "@components/publicFolder/Header/Header";
-import ListOfCommentsAccount from "@components/publicFolder/ListOfCommentsAccount/ListOfCommentsAccount";
-import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp";
-import SliderName from "@components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks";
+import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import Footer from "@components/publicFolder/Footer/Footer"
+import Header from "@components/publicFolder/Header/Header"
+import ListOfCommentsAccount from "@components/publicFolder/ListOfCommentsAccount/ListOfCommentsAccount"
+import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
+import SliderName from "@components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
 
 export default function CommentsAccount() {
   return (
@@ -26,5 +26,5 @@ export default function CommentsAccount() {
       <BtnUp />
       <Footer />
     </>
-  );
+  )
 }

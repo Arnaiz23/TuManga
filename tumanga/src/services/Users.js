@@ -1,7 +1,7 @@
-import { apiURL, getToken } from "./config";
+import { apiURL, getToken } from "./config"
 
 export function getUser() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/user`, {
     headers: new Headers({
@@ -12,15 +12,15 @@ export function getUser() {
     .then((res) => res.json())
     .then(({ status, userInfo, message }) => {
       if (status === "success") {
-        return { userInfo };
+        return { userInfo }
       } else {
-        return { message };
+        return { message }
       }
-    });
+    })
 }
 
 export function updateUser(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/user`, {
     method: "put",
@@ -31,11 +31,11 @@ export function updateUser(body) {
     body: JSON.stringify(body),
   })
     .then((res) => res.json())
-    .then((response) => response);
+    .then((response) => response)
 }
 
 export function userChangePasswords(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/user/password`, {
     method: "put",
@@ -48,15 +48,15 @@ export function userChangePasswords(body) {
     .then((res) => res.json())
     .then(({ status, userUpdate, message }) => {
       if (status === "success") {
-        return { userUpdate };
+        return { userUpdate }
       } else {
-        return { message };
+        return { message }
       }
-    });
+    })
 }
 
 export function userChangeState() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/user`, {
     method: "PATCH",
@@ -67,15 +67,15 @@ export function userChangeState() {
     .then((res) => res.json())
     .then(({ status, userUpdate, message }) => {
       if (status === "success") {
-        return { userUpdate };
+        return { userUpdate }
       } else {
-        return { message };
+        return { message }
       }
-    });
+    })
 }
 
 export function deleteUser() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/user`, {
     method: "DELETE",
@@ -86,11 +86,11 @@ export function deleteUser() {
     .then((res) => res.json())
     .then(({ status, userDelete, message }) => {
       if (status === "success") {
-        return { userDelete };
+        return { userDelete }
       } else {
-        return { message };
+        return { message }
       }
-    });
+    })
 }
 
 export function login(body) {
@@ -104,11 +104,11 @@ export function login(body) {
     .then((res) => res.json())
     .then(({ message, status, token, userState }) => {
       if (status === "success") {
-        return { token, userState };
+        return { token, userState }
       } else {
-        return message;
+        return message
       }
-    });
+    })
 }
 
 export function register(body) {
@@ -121,12 +121,12 @@ export function register(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, token }) => {
-      return status === "success" ? { token } : { message };
-    });
+      return status === "success" ? { token } : { message }
+    })
 }
 
 export function getUserOrders() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/orders/user`, {
     headers: new Headers({
@@ -135,6 +135,6 @@ export function getUserOrders() {
   })
     .then((res) => res.json())
     .then(({ status, message, orders }) => {
-      return status === "success" ? { orders } : { message };
-    });
+      return status === "success" ? { orders } : { message }
+    })
 }

@@ -1,14 +1,14 @@
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import ModalInfo from "../ModalInfo/ModalInfo";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useState } from "react"
+import ModalInfo from "../ModalInfo/ModalInfo"
 
 export default function AddAddress({ change, empty, type }) {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const addAddress = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   return (
     <>
@@ -35,5 +35,5 @@ export default function AddAddress({ change, empty, type }) {
           />
         ))}
     </>
-  );
+  )
 }

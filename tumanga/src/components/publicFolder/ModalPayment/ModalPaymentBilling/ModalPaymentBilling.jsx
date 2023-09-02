@@ -1,7 +1,7 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import RowBillingPayment from "@/components/publicFolder/RowBillingPayment/RowBillingPayment";
+import RowBillingPayment from "@/components/publicFolder/RowBillingPayment/RowBillingPayment"
 
 export default function ModalPaymentBilling({
   modal,
@@ -11,12 +11,12 @@ export default function ModalPaymentBilling({
   changeBilling,
 }) {
   const closeModal = () => {
-    change(false);
-  };
+    change(false)
+  }
 
   const showModal = () => {
-    changeModal(true);
-  };
+    changeModal(true)
+  }
 
   return (
     <div className={modal ? "dataDown  dataDownShow" : "dataDown"}>
@@ -48,5 +48,5 @@ export default function ModalPaymentBilling({
         </button>
       </div>
     </div>
-  );
+  )
 }

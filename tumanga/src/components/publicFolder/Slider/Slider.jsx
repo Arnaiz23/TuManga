@@ -1,8 +1,8 @@
-import React from "react";
-import { apiURL } from "@/services/config.js";
+import React from "react"
+import { apiURL } from "@/services/config.js"
 
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+import "@splidejs/react-splide/css"
 
 export default function Slider() {
   /* return (
@@ -20,7 +20,7 @@ export default function Slider() {
     autoplay: true,
     pauseOnHover: false,
     resetProgress: false,
-  };
+  }
 
   return (
     <Splide
@@ -35,5 +35,5 @@ export default function Slider() {
         <img src={`${apiURL}/image/Slider6.png`} alt="slider mangas" />
       </SplideSlide>
     </Splide>
-  );
+  )
 }

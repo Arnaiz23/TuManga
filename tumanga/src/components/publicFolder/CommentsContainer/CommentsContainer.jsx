@@ -1,12 +1,12 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
+import { faStar } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useEffect, useState } from "react"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
 
-import { createComment } from "@/services/Comments";
-import { getUser } from "@/services/Users";
-import CommentRow from "@components/publicFolder/CommentRow/CommentRow";
+import { createComment } from "@/services/Comments"
+import { getUser } from "@/services/Users"
+import CommentRow from "@components/publicFolder/CommentRow/CommentRow"
 
 export default function CommentsContainer({
   comments,
@@ -14,25 +14,25 @@ export default function CommentsContainer({
   change,
   changeEmpty,
 }) {
-  const [user, setUser] = useState(false);
-  const location = useLocation()[0];
-  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState(false)
+  const location = useLocation()[0]
+  const [userId, setUserId] = useState("")
   const [comment, setComment] = useState({
     message: "",
     product_id: location.split("/")[2],
     score: 0,
     name: "",
-  });
+  })
 
   const sendComment = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (comment.message === "" || comment.name === "") {
       return Swal.fire(
         "Datos incorrectos",
         "Rellene todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     createComment(comment).then((data) => {
@@ -41,49 +41,45 @@ export default function CommentsContainer({
           "Lo sentimos",
           "Hubo un error al intentar crearlo",
           "error",
-        );
+        )
       }
 
-      change(data.allComments);
+      change(data.allComments)
 
-      Swal.fire(
-        "Comentario",
-        "Comentario creado satisfactoriamente",
-        "success",
-      );
+      Swal.fire("Comentario", "Comentario creado satisfactoriamente", "success")
 
-      changeEmpty(false);
+      changeEmpty(false)
 
-      e.target.reset();
-    });
-  };
+      e.target.reset()
+    })
+  }
 
   const handleChange = (e) => {
-    let data = e.target.value;
-    let name = e.currentTarget.name;
+    let data = e.target.value
+    let name = e.currentTarget.name
 
     if (e.currentTarget.classList.contains("starsSelect")) {
-      data = parseInt(e.currentTarget.control.value);
-      name = "score";
+      data = parseInt(e.currentTarget.control.value)
+      name = "score"
     }
 
     setComment({
       ...comment,
       [name]: data,
-    });
-  };
+    })
+  }
 
-  const stars = [1, 2, 3, 4, 5];
+  const stars = [1, 2, 3, 4, 5]
 
   useEffect(() => {
     getUser().then((data) => {
       if (data.message) {
-        return setUser(false);
+        return setUser(false)
       }
-      setUser(true);
-      setUserId(data.userInfo.userFind._id);
-    });
-  }, []);
+      setUser(true)
+      setUserId(data.userInfo.userFind._id)
+    })
+  }, [])
 
   return (
     <div className="containerComments">
@@ -148,5 +144,5 @@ export default function CommentsContainer({
         ))
       )}
     </div>
-  );
+  )
 }

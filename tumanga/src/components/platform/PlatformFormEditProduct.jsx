@@ -1,28 +1,28 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   createProduct,
   deleteProduct,
   updateProduct,
   uploadImage,
-} from "@/services/Admin";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
-import PlatformTableNewProduct from "@components/platform/PlatformTableNewProduct";
-import PlatformTableUpdateProduct from "@components/platform/PlatformTableUpdateProduct";
+} from "@/services/Admin"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
+import PlatformTableNewProduct from "@components/platform/PlatformTableNewProduct"
+import PlatformTableUpdateProduct from "@components/platform/PlatformTableUpdateProduct"
 
 const ERROR_RESPONSES = {
   "The categories are invalid": "Las categorias no son válidas",
   "This product has not been updated": `Error al actualizarse el producto.\nReinténtelo más tarde.`,
-};
+}
 
 export default function PlatformEditFormProduct({ title, type, data }) {
-  let [product, setProduct] = useState({});
-  const [image, setImage] = useState();
-  const [categories, setCategories] = useState([]);
-  const [newCategories, setNewCategories] = useState([]);
+  let [product, setProduct] = useState({})
+  const [image, setImage] = useState()
+  const [categories, setCategories] = useState([])
+  const [newCategories, setNewCategories] = useState([])
 
   const handleUpdate = () => {
-    const regexpNumber = /^[0-9]+$/;
+    const regexpNumber = /^[0-9]+$/
 
     if (
       !regexpNumber.test(product.price) ||
@@ -32,41 +32,37 @@ export default function PlatformEditFormProduct({ title, type, data }) {
         "Datos erróneos",
         "Los campos precio y stock solo deben contener números",
         "error",
-      );
+      )
     }
 
-    product.categories = categories;
+    product.categories = categories
 
     updateProduct(product, product._id).then((data) => {
-      console.log(data);
+      console.log(data)
       if (data.message) {
-        return Swal.fire("Error datos", ERROR_RESPONSES[data.message], "error");
+        return Swal.fire("Error datos", ERROR_RESPONSES[data.message], "error")
       }
 
       if (image !== undefined) {
-        const formData = new FormData();
-        formData.append("file0", image, image.name);
+        const formData = new FormData()
+        formData.append("file0", image, image.name)
         uploadImage(product._id, formData).then((data) => {
           if (data.message) {
             return Swal.fire(
               "Lo sentimos",
               "Hubo un error al intentar subir la imagen",
               "error",
-            );
+            )
           }
-          setProduct(data.productUpdate);
-          Swal.fire(
-            "Producto",
-            "Producto actualizado correctamente",
-            "success",
-          );
-        });
+          setProduct(data.productUpdate)
+          Swal.fire("Producto", "Producto actualizado correctamente", "success")
+        })
       } else {
-        setProduct(data.productUpdate);
-        Swal.fire("Producto", "Producto actualizado correctamente", "success");
+        setProduct(data.productUpdate)
+        Swal.fire("Producto", "Producto actualizado correctamente", "success")
       }
-    });
-  };
+    })
+  }
 
   let [newProduct, setNewProduct] = useState({
     name: "",
@@ -82,16 +78,16 @@ export default function PlatformEditFormProduct({ title, type, data }) {
     editorial: "",
     series: "",
     comments: [],
-  });
+  })
 
-  const setLocation = useLocation()[1];
+  const setLocation = useLocation()[1]
 
   const handleCreate = () => {
-    const regexpNumber = /^[0-9]+$/;
+    const regexpNumber = /^[0-9]+$/
 
-    newProduct.price = parseInt(newProduct.price);
-    newProduct.stock = parseInt(newProduct.stock);
-    newProduct.categories = newCategories;
+    newProduct.price = parseInt(newProduct.price)
+    newProduct.stock = parseInt(newProduct.stock)
+    newProduct.categories = newCategories
 
     if (
       newProduct.name === "" ||
@@ -107,7 +103,7 @@ export default function PlatformEditFormProduct({ title, type, data }) {
         "Campos vacíos",
         "Debes rellenar todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
     if (
@@ -118,7 +114,7 @@ export default function PlatformEditFormProduct({ title, type, data }) {
         "Datos erróneos",
         "Los campos precio y stock solo deben contener números",
         "error",
-      );
+      )
     }
 
     createProduct(newProduct).then((data) => {
@@ -127,11 +123,11 @@ export default function PlatformEditFormProduct({ title, type, data }) {
           "Lo sentimos",
           "Hubo un error al intentar crearlo",
           "error",
-        );
+        )
       }
 
-      const formData = new FormData();
-      formData.append("file0", image, image.name);
+      const formData = new FormData()
+      formData.append("file0", image, image.name)
 
       uploadImage(data.product_id, formData).then((data) => {
         if (data.message) {
@@ -139,13 +135,13 @@ export default function PlatformEditFormProduct({ title, type, data }) {
             "Lo sentimos",
             "Hubo un error al intentar subir la imagen",
             "error",
-          );
+          )
         }
-        Swal.fire("Producto", "Producto creado correctamente", "success");
-        setLocation("/platform/products");
-      });
-    });
-  };
+        Swal.fire("Producto", "Producto creado correctamente", "success")
+        setLocation("/platform/products")
+      })
+    })
+  }
 
   const handleDelete = () => {
     Swal.fire({
@@ -164,18 +160,18 @@ export default function PlatformEditFormProduct({ title, type, data }) {
               "Lo sentimos",
               "Hubo un error al intentar eliminarlo",
               "error",
-            );
+            )
           }
 
-          Swal.fire("Producto", "Producto eliminado correctamente", "success");
+          Swal.fire("Producto", "Producto eliminado correctamente", "success")
 
-          setLocation("/platform/products");
-        });
+          setLocation("/platform/products")
+        })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire("Cancelado", "El producto está a salvo", "error");
+        Swal.fire("Cancelado", "El producto está a salvo", "error")
       }
-    });
-  };
+    })
+  }
 
   return (
     <main className="adminMain">
@@ -222,5 +218,5 @@ export default function PlatformEditFormProduct({ title, type, data }) {
         </footer>
       </div>
     </main>
-  );
+  )
 }

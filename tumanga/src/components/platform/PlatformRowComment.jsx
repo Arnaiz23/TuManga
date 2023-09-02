@@ -1,8 +1,8 @@
-import React from "react";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from "sweetalert2";
-import { deleteCommentAdmin } from "@/services/Admin";
+import React from "react"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Swal from "sweetalert2"
+import { deleteCommentAdmin } from "@/services/Admin"
 
 export default function PlatformRowComment({
   comment,
@@ -28,33 +28,35 @@ export default function PlatformRowComment({
               "Lo sentimos",
               "Hubo un error al intentar eliminarlo",
               "error",
-            );
+            )
           }
 
           Swal.fire(
             "Comentario",
             "Comentario eliminado correctamente",
             "success",
-          );
+          )
 
-          if (data.allComments.length <= 0) return setCommentsEmpty(true);
+          if (data.allComments.length <= 0) return setCommentsEmpty(true)
 
-          setComments(data.allComments);
-        });
+          setComments(data.allComments)
+        })
       } else {
-        Swal.fire("Comentario", "El comentario está a salvo", "success");
+        Swal.fire("Comentario", "El comentario está a salvo", "success")
       }
-    });
-  };
+    })
+  }
 
   return (
     <tr>
       <td className="tableTrId" title={comment._id}>
         {comment._id}
       </td>
-      // <td>
-      //   <Moment format="DD/MM/YYYY">{comment.date}</Moment>
-      // </td>
+      //{" "}
+      <td>
+        // <Moment format="DD/MM/YYYY">{comment.date}</Moment>
+        //{" "}
+      </td>
       <td>{comment.name}</td>
       <td>{comment.message}</td>
       <td>{comment.product_name}</td>
@@ -66,5 +68,5 @@ export default function PlatformRowComment({
         </i>
       </td>
     </tr>
-  );
+  )
 }

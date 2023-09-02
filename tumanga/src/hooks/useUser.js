@@ -1,25 +1,25 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react"
 
-import { getUser } from "@/services/Users";
-import OrderContext from "@/context/OrderContext";
+import { getUser } from "@/services/Users"
+import OrderContext from "@/context/OrderContext"
 
 export default function useUser() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   // const [userData, setUserData] = useState({})
-  const { setUserData } = useContext(OrderContext);
+  const { setUserData } = useContext(OrderContext)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
 
     getUser().then((data) => {
       if (data.message) {
         // setLocation("/login")
       } else {
-        setUserData(data.userInfo);
-        setLoading(false);
+        setUserData(data.userInfo)
+        setLoading(false)
       }
-    });
-  }, [setUserData]);
+    })
+  }, [setUserData])
 
-  return { loading, setUserData };
+  return { loading, setUserData }
 }

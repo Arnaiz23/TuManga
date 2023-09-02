@@ -1,27 +1,27 @@
-import useProducts from "@/hooks/useProducts";
-import React, { useEffect, useState } from "react";
+import useProducts from "@/hooks/useProducts"
+import React, { useEffect, useState } from "react"
 
 export default function Paginate({ size }) {
-  const [count2, setCount2] = useState([]);
+  const [count2, setCount2] = useState([])
 
-  const { setPage, count, page } = useProducts();
+  const { setPage, count, page } = useProducts()
 
   useEffect(() => {
     const options = () => {
-      let data = [];
+      let data = []
 
       for (let i = 1; i <= count; i++) {
-        data.push(i);
+        data.push(i)
       }
 
-      setCount2(data);
-    };
-    options();
-  }, [count]);
+      setCount2(data)
+    }
+    options()
+  }, [count])
 
   const changePage = (e) => {
-    setPage(e.target.innerHTML - 1);
-  };
+    setPage(e.target.innerHTML - 1)
+  }
 
   return (
     <div className="containerPaginator">
@@ -32,16 +32,16 @@ export default function Paginate({ size }) {
               <p key={number} onClick={changePage} className="pageActive">
                 {number}
               </p>
-            );
+            )
           } else {
             return (
               <p key={number} onClick={changePage}>
                 {number}
               </p>
-            );
+            )
           }
         })}
       </div>
     </div>
-  );
+  )
 }

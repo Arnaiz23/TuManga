@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformRowProducts from "@components/platform/PlatformRowProducts";
+import React from "react"
+import PlatformRowProducts from "@components/platform/PlatformRowProducts"
 
 export default function PlatformTableProducts({
   titles,
@@ -21,13 +21,11 @@ export default function PlatformTableProducts({
           </thead>
           <tbody>
             {products.map((product) => {
-              return (
-                <PlatformRowProducts product={product} key={product._id} />
-              );
+              return <PlatformRowProducts product={product} key={product._id} />
             })}
           </tbody>
         </table>
       )}
     </div>
-  );
+  )
 }

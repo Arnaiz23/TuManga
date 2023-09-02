@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {
   createUser,
   deleteUser,
   getAllRoles,
   updateOneUser,
-} from "@/services/Admin";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
-import PlatformSectionNewUser from "@components/platform/PlatformSectionNewUser";
-import PlatformSectionUser from "@components/platform/PlatformSectionUser";
+} from "@/services/Admin"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
+import PlatformSectionNewUser from "@components/platform/PlatformSectionNewUser"
+import PlatformSectionUser from "@components/platform/PlatformSectionUser"
 
 export default function PlatformEditForm({ title, type, data }) {
-  let [user, setUser] = useState({});
-  const [role, setRole] = useState("");
-  const [roles, setRoles] = useState([]);
+  let [user, setUser] = useState({})
+  const [role, setRole] = useState("")
+  const [roles, setRoles] = useState([])
 
   useEffect(() => {
     getAllRoles().then((data) => {
-      let array = [];
-      data.roles.map((role) => array.push(role.name));
-      setRoles(array);
-    });
-  }, [setRoles]);
+      let array = []
+      data.roles.map((role) => array.push(role.name))
+      setRoles(array)
+    })
+  }, [setRoles])
 
   const handleUpdate = () => {
     if (!roles.includes(user.role)) {
-      user.role = role;
+      user.role = role
     }
 
     updateOneUser(data, user).then((update) => {
@@ -34,13 +34,13 @@ export default function PlatformEditForm({ title, type, data }) {
           "Lo sentimos",
           "Hubo un error al intentar modificarlo",
           "error",
-        );
+        )
       }
-      setUser(update.userUpdate);
-      Swal.fire("Usuario", "Usuario actualizado con éxito", "success");
-      setLocation("/platform/users");
-    });
-  };
+      setUser(update.userUpdate)
+      Swal.fire("Usuario", "Usuario actualizado con éxito", "success")
+      setLocation("/platform/users")
+    })
+  }
 
   const [newUser, setNewUser] = useState({
     email: "",
@@ -49,9 +49,9 @@ export default function PlatformEditForm({ title, type, data }) {
     name: "",
     last_name: "",
     state: "",
-  });
+  })
 
-  const setLocation = useLocation()[1];
+  const setLocation = useLocation()[1]
 
   const handleCreate = () => {
     if (
@@ -64,27 +64,27 @@ export default function PlatformEditForm({ title, type, data }) {
         "Datos incorrectos",
         "Debes rellenar todos los campos obligatorios",
         "warning",
-      );
+      )
     }
 
-    const regexpPassword = /^[a-zA-Z0-9*/$%&Ç]{6,16}$/;
+    const regexpPassword = /^[a-zA-Z0-9*/$%&Ç]{6,16}$/
 
     if (!regexpPassword.test(newUser.password)) {
       return Swal.fire(
         "Datos incorrectos",
         "La contraseña no cumple con los requisitos",
         "error",
-      );
+      )
     }
 
-    const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/;
+    const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/
 
     if (!regexpEmail.test(newUser.email)) {
       return Swal.fire(
         "Datos incorrectos",
         "El correo no cumple con los requisitos",
         "error",
-      );
+      )
     }
 
     createUser(newUser).then((data) => {
@@ -93,12 +93,12 @@ export default function PlatformEditForm({ title, type, data }) {
           "Datos incorrectos",
           "Ya existe un usuario con ese correo",
           "error",
-        );
+        )
       }
-      Swal.fire("Usuario", "Usuario creado con éxito", "success");
-      setLocation("/platform/users");
-    });
-  };
+      Swal.fire("Usuario", "Usuario creado con éxito", "success")
+      setLocation("/platform/users")
+    })
+  }
 
   const handleDelete = () => {
     Swal.fire({
@@ -117,18 +117,18 @@ export default function PlatformEditForm({ title, type, data }) {
               "Lo sentimos",
               "Hubo un error al intentar crearlo",
               "error",
-            );
+            )
           }
 
-          Swal.fire("Usuario", "Usuario eliminado correctamente", "success");
+          Swal.fire("Usuario", "Usuario eliminado correctamente", "success")
 
-          setLocation("/platform/users");
-        });
+          setLocation("/platform/users")
+        })
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire("Cancelado", "El usuario está a salvo", "error");
+        Swal.fire("Cancelado", "El usuario está a salvo", "error")
       }
-    });
-  };
+    })
+  }
 
   return (
     <main className="adminMain">
@@ -167,5 +167,5 @@ export default function PlatformEditForm({ title, type, data }) {
         </footer>
       </div>
     </main>
-  );
+  )
 }

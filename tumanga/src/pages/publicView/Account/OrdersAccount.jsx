@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
-import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount";
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "@components/publicFolder/Footer/Footer";
-import Header from "@components/publicFolder/Header/Header";
-import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp";
-import SliderName from "@components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks";
-import OrderWindow from "@components/publicFolder/OrderWindow/OrderWindow";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import { getUserOrders } from "@/services/Users";
-import useUser from "@/hooks/useUser";
+import AsideAccount from "@components/publicFolder/AsideAccount/AsideAccount"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import Footer from "@components/publicFolder/Footer/Footer"
+import Header from "@components/publicFolder/Header/Header"
+import NavAccountResp from "@components/publicFolder/NavAccountResp/NavAccountResp"
+import SliderName from "@components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
+import OrderWindow from "@components/publicFolder/OrderWindow/OrderWindow"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import { getUserOrders } from "@/services/Users"
+import useUser from "@/hooks/useUser"
 
 export default function OrdersAccount() {
-  const { loading } = useUser();
-  const [loadingOrders, setLoadingOrders] = useState(false);
-  const setError = useState("false")[1];
-  const [orderEmpty, setOrderEmpty] = useState(false);
-  const [orders, setOrders] = useState([]);
+  const { loading } = useUser()
+  const [loadingOrders, setLoadingOrders] = useState(false)
+  const setError = useState("false")[1]
+  const [orderEmpty, setOrderEmpty] = useState(false)
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    setLoadingOrders(true);
+    setLoadingOrders(true)
     getUserOrders().then((data) => {
       if (data.message) {
-        setOrderEmpty(true);
-        setError(data.message);
-        setLoadingOrders(false);
-        return;
+        setOrderEmpty(true)
+        setError(data.message)
+        setLoadingOrders(false)
+        return
       }
 
-      setOrders(data.orders);
-      setLoadingOrders(false);
-    });
-  }, [loading, setError]);
+      setOrders(data.orders)
+      setLoadingOrders(false)
+    })
+  }, [loading, setError])
 
   return (
     <>
@@ -62,5 +62,5 @@ export default function OrdersAccount() {
       <BtnUp />
       <Footer />
     </>
-  );
+  )
 }

@@ -5,15 +5,15 @@ import {
   faHome,
   faUser,
   faWrench,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
-import { apiURL } from "@/services/config";
-import { Link } from "wouter";
-import AdminContext from "@/context/AdminContext";
+} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useContext } from "react"
+import { apiURL } from "@/services/config"
+import { Link } from "wouter"
+import AdminContext from "@/context/AdminContext"
 
 export default function PlatformNavResponsive() {
-  const { userData } = useContext(AdminContext);
+  const { userData } = useContext(AdminContext)
 
   return (
     <div className="smallNav">
@@ -68,5 +68,5 @@ export default function PlatformNavResponsive() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

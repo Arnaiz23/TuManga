@@ -87,8 +87,8 @@ export default function OrderDetail({ params }) {
             </div>
             <div className="container containerColumn">
               <h3>
-                  Entregado: 12/12/12
-                  {/*
+                Entregado: 12/12/12
+                {/*
                 // Entregado <Moment fromNow>{order.delivered_date}</Moment>
                   */}
               </h3>

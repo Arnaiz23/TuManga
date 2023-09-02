@@ -1,14 +1,14 @@
-import PlatformHeader from "@components/platform/PlatformHeader";
-import PlatformMainRowTitle from "@components/platform/PlatformMainRowTitle";
-import PlatformNav from "@components/platform/PlatformNav";
-import PlatformNavResponsive from "@components/platform/PlatformNavResponsive";
-import PlatformSearchModal from "@components/platform/PlatformSearchModal";
-import PlatformTable from "@components/platform/PlatformTable";
-import PlatformTableResponsive from "@components/platform/PlatformTableResponsive";
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { getAllUsers } from "@/services/Admin";
+import PlatformHeader from "@components/platform/PlatformHeader"
+import PlatformMainRowTitle from "@components/platform/PlatformMainRowTitle"
+import PlatformNav from "@components/platform/PlatformNav"
+import PlatformNavResponsive from "@components/platform/PlatformNavResponsive"
+import PlatformSearchModal from "@components/platform/PlatformSearchModal"
+import PlatformTable from "@components/platform/PlatformTable"
+import PlatformTableResponsive from "@components/platform/PlatformTableResponsive"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useEffect, useState } from "react"
+import { getAllUsers } from "@/services/Admin"
 
 const TITLES_TABLE = [
   "id",
@@ -18,33 +18,33 @@ const TITLES_TABLE = [
   "rol",
   "nºpedidos",
   "Edit",
-];
-const TITLES_TABLE_RESPONSIVE = ["id", "email", "show", "edit"];
+]
+const TITLES_TABLE_RESPONSIVE = ["id", "email", "show", "edit"]
 
 export default function PlatformUsers() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [usersEmpty, setUsersEmpty] = useState(false);
-  const [usersData, setUsersData] = useState([]);
-  const [roleArray, setRoleArray] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
+  const [usersEmpty, setUsersEmpty] = useState(false)
+  const [usersData, setUsersData] = useState([])
+  const [roleArray, setRoleArray] = useState([])
+  const [loading, setLoading] = useState(false)
 
   let fecthDataUsers = () => {
-    setLoading(true);
+    setLoading(true)
     getAllUsers().then((data) => {
       if (data.message) {
-        setUsersEmpty(true);
-        setLoading(false);
-        return;
+        setUsersEmpty(true)
+        setLoading(false)
+        return
       }
-      setUsersData(data.users);
-      setRoleArray(data.newArrayRoles);
-      setLoading(false);
-    });
-  };
+      setUsersData(data.users)
+      setRoleArray(data.newArrayRoles)
+      setLoading(false)
+    })
+  }
 
   useEffect(() => {
-    fecthDataUsers();
-  }, []);
+    fecthDataUsers()
+  }, [])
 
   return (
     <div className="gridAdmin">
@@ -92,5 +92,5 @@ export default function PlatformUsers() {
       </main>
       <BtnUp />
     </div>
-  );
+  )
 }

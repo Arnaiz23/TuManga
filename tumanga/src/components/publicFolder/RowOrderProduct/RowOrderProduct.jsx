@@ -1,14 +1,14 @@
-import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
-import Swal from "sweetalert2";
+import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useContext } from "react"
+import Swal from "sweetalert2"
 
-import { apiURL } from "@/services/config";
-import { deleteProductCart } from "@/services/Orders";
-import OrderContext from "@/context/OrderContext";
+import { apiURL } from "@/services/config"
+import { deleteProductCart } from "@/services/Orders"
+import OrderContext from "@/context/OrderContext"
 
 export default function RowOrderProduct({ data }) {
-  const { setOrder, setCount } = useContext(OrderContext);
+  const { setOrder, setCount } = useContext(OrderContext)
 
   const deleteItem = () => {
     deleteProductCart({ idproduct: data.product_id }).then((data) => {
@@ -17,12 +17,12 @@ export default function RowOrderProduct({ data }) {
           "Lo sentimos",
           "Hubo un error al intentar eliminarlo",
           "error",
-        );
+        )
       }
-      setOrder(data.orderUpdate);
-      setCount(data.orderUpdate.products.length);
-    });
-  };
+      setOrder(data.orderUpdate)
+      setCount(data.orderUpdate.products.length)
+    })
+  }
 
   return (
     <div className="row">
@@ -50,5 +50,5 @@ export default function RowOrderProduct({ data }) {
         </i>
       </span>
     </div>
-  );
+  )
 }

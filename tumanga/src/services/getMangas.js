@@ -1,4 +1,4 @@
-import { apiURL } from "./config";
+import { apiURL } from "./config"
 
 export default function getMangas(skip = 0, filters = []) {
   // console.log(filters);
@@ -6,8 +6,8 @@ export default function getMangas(skip = 0, filters = []) {
   return fetch(`${apiURL}/products/mangas/8&${skip}`)
     .then((res) => res.json())
     .then((response) => {
-      return response;
-    });
+      return response
+    })
 
   /* if (filters.length <= 0) {
         return fetch(`${apiURL}/products/mangas/8&${skip}`)

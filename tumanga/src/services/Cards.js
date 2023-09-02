@@ -1,7 +1,7 @@
-import { getToken, apiURL } from "./config";
+import { getToken, apiURL } from "./config"
 
 export function getUserCards() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/cards/user`, {
     headers: new Headers({
@@ -10,12 +10,12 @@ export function getUserCards() {
   })
     .then((res) => res.json())
     .then(({ status, message, cards }) => {
-      return status === "success" ? { cards } : { message };
-    });
+      return status === "success" ? { cards } : { message }
+    })
 }
 
 export function createCard(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/card`, {
     method: "POST",
@@ -27,12 +27,12 @@ export function createCard(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, allCards }) => {
-      return status === "success" ? { allCards } : { message };
-    });
+      return status === "success" ? { allCards } : { message }
+    })
 }
 
 export function deleteUserCard(id) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/card/${id}`, {
     method: "DELETE",
@@ -42,12 +42,12 @@ export function deleteUserCard(id) {
   })
     .then((res) => res.json())
     .then(({ status, message, cards }) => {
-      return status === "success" ? { cards } : { message };
-    });
+      return status === "success" ? { cards } : { message }
+    })
 }
 
 export function getLastCards() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/cards/last`, {
     headers: new Headers({
@@ -56,6 +56,6 @@ export function getLastCards() {
   })
     .then((res) => res.json())
     .then(({ status, message, cards }) => {
-      return status === "success" ? { cards } : { message };
-    });
+      return status === "success" ? { cards } : { message }
+    })
 }

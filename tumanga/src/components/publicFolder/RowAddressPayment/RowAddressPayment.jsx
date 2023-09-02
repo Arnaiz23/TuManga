@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function RowAddressPayment({
   data,
@@ -7,8 +7,8 @@ export default function RowAddressPayment({
   changeAddress,
 }) {
   const handleChangeRadio = () => {
-    changeAddress(data);
-  };
+    changeAddress(data)
+  }
 
   return (
     <div>
@@ -28,5 +28,5 @@ export default function RowAddressPayment({
       </div>
       {address.length === 2 && index < 1 && <div className="linePayment" />}
     </div>
-  );
+  )
 }

@@ -1,64 +1,64 @@
-import React, { useContext, useState } from "react";
-import { Link } from "wouter";
+import React, { useContext, useState } from "react"
+import { Link } from "wouter"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faShoppingCart,
   faSearch,
   faUser,
   faBars,
   faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"
 
-import Brand from "/BrandTransparent.png";
+import Brand from "/BrandTransparent.png"
 
-import Nav from "@components/publicFolder/Nav/Nav.jsx";
-import useToken from "@/hooks/useToken.js";
-import useOrderData from "@/hooks/useOrderData.js";
-import ProductHeader from "@components/publicFolder/ProductHeader/ProductHeader.jsx";
+import Nav from "@components/publicFolder/Nav/Nav.jsx"
+import useToken from "@/hooks/useToken.js"
+import useOrderData from "@/hooks/useOrderData.js"
+import ProductHeader from "@components/publicFolder/ProductHeader/ProductHeader.jsx"
 
-import OrderContext from "@/context/OrderContext.jsx";
-import { useLocation } from "wouter";
-import useUser from "@/hooks/useUser.js";
+import OrderContext from "@/context/OrderContext.jsx"
+import { useLocation } from "wouter"
+import useUser from "@/hooks/useUser.js"
 
 export default function Header() {
-  const [navActive, setNavActive] = useState("");
-  const [search, setSearch] = useState("");
-  const [modalSearch, setModalSearch] = useState(false);
-  const setLocation = useLocation()[1];
+  const [navActive, setNavActive] = useState("")
+  const [search, setSearch] = useState("")
+  const [modalSearch, setModalSearch] = useState(false)
+  const setLocation = useLocation()[1]
 
-  const { count, order } = useOrderData();
-  const { setUser, user, setOrderProcess } = useContext(OrderContext);
+  const { count, order } = useOrderData()
+  const { setUser, user, setOrderProcess } = useContext(OrderContext)
 
-  const { tokenInfo } = useToken();
+  const { tokenInfo } = useToken()
 
-  useUser();
+  useUser()
 
   let changeNavState = () => {
-    navActive === "" ? setNavActive("navActive") : setNavActive("");
-  };
+    navActive === "" ? setNavActive("navActive") : setNavActive("")
+  }
 
   const handleChangeInput = (e) => {
-    setSearch(e.target.value);
-  };
+    setSearch(e.target.value)
+  }
 
   const handleSearch = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (modalSearch) {
-      setModalSearch(false);
+      setModalSearch(false)
     }
-    if (search === "") return setLocation(`/`);
-    setLocation(`/search/${search}`);
-    e.target.reset();
-  };
+    if (search === "") return setLocation(`/`)
+    setLocation(`/search/${search}`)
+    e.target.reset()
+  }
 
   const openModalSearch = () => {
-    setModalSearch(true);
-  };
+    setModalSearch(true)
+  }
 
   const hideModalSearch = () => {
-    setModalSearch(false);
-  };
+    setModalSearch(false)
+  }
 
   return (
     <>
@@ -130,10 +130,10 @@ export default function Header() {
           {order.length !== 0 && order.products.length !== 0 && user && (
             <div className="containerCart">
               {order.products.map((data, index) => {
-                if (index >= 3) return "";
+                if (index >= 3) return ""
                 return (
                   <ProductHeader key={data._id} data={data} index={index} />
-                );
+                )
               })}
               <div className="totalCart">
                 <p>Total</p>
@@ -169,5 +169,5 @@ export default function Header() {
       </header>
       <Nav state={navActive} user={setUser} changeProcess={setOrderProcess} />
     </>
-  );
+  )
 }

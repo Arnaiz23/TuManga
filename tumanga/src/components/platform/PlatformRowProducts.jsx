@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "wouter";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
-import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react"
+import { Link } from "wouter"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
+import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function PlatformRowProducts({ product }) {
-  const [modalShowData, setModalShowData] = useState(false);
+  const [modalShowData, setModalShowData] = useState(false)
 
   const handleShowDetail = () => {
-    setModalShowData(true);
-  };
+    setModalShowData(true)
+  }
 
   return (
     <>
@@ -44,5 +44,5 @@ export default function PlatformRowProducts({ product }) {
         />
       )}
     </>
-  );
+  )
 }

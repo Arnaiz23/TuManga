@@ -1,42 +1,42 @@
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { getAllRoles } from "@/services/Admin";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useEffect, useState } from "react"
+import { getAllRoles } from "@/services/Admin"
 
 export default function PlatformSectionNewUser({ user, setUser }) {
-  const showRef = React.createRef();
-  const hideRef = React.createRef();
-  const passwordRef = React.createRef();
-  const [loading, setLoading] = useState(false);
-  const [roles, setRoles] = useState([]);
+  const showRef = React.createRef()
+  const hideRef = React.createRef()
+  const passwordRef = React.createRef()
+  const [loading, setLoading] = useState(false)
+  const [roles, setRoles] = useState([])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getAllRoles().then((data) => {
-      setRoles(data.roles);
-      setLoading(false);
-    });
-  }, [setRoles, setLoading]);
+      setRoles(data.roles)
+      setLoading(false)
+    })
+  }, [setRoles, setLoading])
 
   const handleChanges = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const showPassword = () => {
-    hideRef.current.classList.add("passwordShow");
-    showRef.current.classList.remove("passwordShow");
-    passwordRef.current.type = "text";
-  };
+    hideRef.current.classList.add("passwordShow")
+    showRef.current.classList.remove("passwordShow")
+    passwordRef.current.type = "text"
+  }
 
   const hidePassword = () => {
-    showRef.current.classList.add("passwordShow");
-    hideRef.current.classList.remove("passwordShow");
-    passwordRef.current.type = "password";
-  };
+    showRef.current.classList.add("passwordShow")
+    hideRef.current.classList.remove("passwordShow")
+    passwordRef.current.type = "password"
+  }
 
   return loading ? (
     <Spinner />
@@ -126,5 +126,5 @@ export default function PlatformSectionNewUser({ user, setUser }) {
         </select>
       </div>
     </section>
-  );
+  )
 }

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
-import { Link } from "wouter";
+import React, { useState } from "react"
+import { faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
+import { Link } from "wouter"
 
 export default function PlatformModalShowProducts({ product }) {
-  const [modalShowData, setModalShowData] = useState(false);
+  const [modalShowData, setModalShowData] = useState(false)
 
   const handleShowModal = (e) => {
-    setModalShowData(true);
-  };
+    setModalShowData(true)
+  }
 
   return (
     <>
@@ -41,5 +41,5 @@ export default function PlatformModalShowProducts({ product }) {
         />
       )}
     </>
-  );
+  )
 }

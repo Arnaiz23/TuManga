@@ -1,44 +1,44 @@
-import React, { useContext, useState } from "react";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
+import React, { useContext, useState } from "react"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
 
-import SliderName from "@/components/publicFolder/SliderName/SliderName";
-import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks";
-import OrderContext from "@/context/OrderContext";
-import RowPayment from "@/components/publicFolder/RowPayment/RowPayment";
-import RowPaymentProducts from "@/components/publicFolder/RowPaymentProducts/RowPaymentProducts";
-import ModalInfo from "@/components/publicFolder/ModalInfo/ModalInfo";
-import { finishShoppingCart } from "@/services/Orders";
-import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP";
-import Footer from "@/components/publicFolder/Footer/Footer";
-import Header from "@/components/publicFolder/Header/Header";
-import Spinner from "@/components/publicFolder/Spinner/Spinner";
+import SliderName from "@/components/publicFolder/SliderName/SliderName"
+import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks"
+import OrderContext from "@/context/OrderContext"
+import RowPayment from "@/components/publicFolder/RowPayment/RowPayment"
+import RowPaymentProducts from "@/components/publicFolder/RowPaymentProducts/RowPaymentProducts"
+import ModalInfo from "@/components/publicFolder/ModalInfo/ModalInfo"
+import { finishShoppingCart } from "@/services/Orders"
+import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP"
+import Footer from "@/components/publicFolder/Footer/Footer"
+import Header from "@/components/publicFolder/Header/Header"
+import Spinner from "@/components/publicFolder/Spinner/Spinner"
 
 export default function Payment() {
-  const { order, setOrderProcess } = useContext(OrderContext);
+  const { order, setOrderProcess } = useContext(OrderContext)
 
-  const [showModalAddress, setShowModalAddress] = useState(false);
-  const [showModalBilling, setShowModalBilling] = useState(false);
-  const setLocation = useLocation()[1];
+  const [showModalAddress, setShowModalAddress] = useState(false)
+  const [showModalBilling, setShowModalBilling] = useState(false)
+  const setLocation = useLocation()[1]
 
   const [dataPayment, setDataPayment] = useState({
     delivery_address: "",
     billing: "",
-  });
+  })
 
-  const [lastAddress, setLastAddress] = useState({});
-  const [lastBilling, setLastBilling] = useState({});
+  const [lastAddress, setLastAddress] = useState({})
+  const [lastBilling, setLastBilling] = useState({})
 
-  const [addressEmpty, setAddressEmpty] = useState(true);
-  const [billingEmpty, setBillingEmpty] = useState(true);
+  const [addressEmpty, setAddressEmpty] = useState(true)
+  const [billingEmpty, setBillingEmpty] = useState(true)
 
-  const [modalOpenAddress, setModalOpenAddress] = useState(false);
-  const [modalOpenBilling, setModalOpenBilling] = useState(false);
+  const [modalOpenAddress, setModalOpenAddress] = useState(false)
+  const [modalOpenBilling, setModalOpenBilling] = useState(false)
 
   const finishOrder = () => {
     // dataPayment.billing = lastBilling._id
-    dataPayment.billing = lastBilling._id;
-    dataPayment.delivery_address = lastAddress._id;
+    dataPayment.billing = lastBilling._id
+    dataPayment.delivery_address = lastAddress._id
 
     if (
       dataPayment.billing === undefined ||
@@ -48,7 +48,7 @@ export default function Payment() {
         "Datos incorrectos",
         "Rellene todos los datos necesario",
         "error",
-      );
+      )
     }
 
     finishShoppingCart(dataPayment).then((data) => {
@@ -57,13 +57,13 @@ export default function Payment() {
           "Lo sentimos",
           "Hubo un error al intentar finalizarlo",
           "error",
-        );
+        )
       }
-      Swal.fire("@/compra", "Compra finalizada con éxito", "success");
-      setOrderProcess(false);
-      setLocation("/");
-    });
-  };
+      Swal.fire("@/compra", "Compra finalizada con éxito", "success")
+      setOrderProcess(false)
+      setLocation("/")
+    })
+  }
 
   return (
     <>
@@ -134,5 +134,5 @@ export default function Payment() {
       <BtnUp />
       <Footer />
     </>
-  );
+  )
 }

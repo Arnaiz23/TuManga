@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import { forgetPassword } from "@/services/RecoverPassword.js";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
+import React, { useState } from "react"
+import { forgetPassword } from "@/services/RecoverPassword.js"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState({
     email: "",
-  });
+  })
 
-  const setLocation = useLocation()[1];
+  const setLocation = useLocation()[1]
 
   const handleChangeEmail = (e) => {
     setEmail({
       ...email,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSendEmail = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/;
+    const regexpEmail = /^[a-zA-Z0-9]+@[a-z]+.[a-z]+$/
 
     if (email.email === "") {
-      return Swal.fire("Datos", "Debes rellenar el email", "warning");
+      return Swal.fire("Datos", "Debes rellenar el email", "warning")
     }
 
     if (!regexpEmail.test(email.email)) {
-      return Swal.fire("Datos", "Debes introducir un email válido", "error");
+      return Swal.fire("Datos", "Debes introducir un email válido", "error")
     }
 
     forgetPassword(email).then((data) => {
-      Swal.fire("Correo enviado", "Revise su correo", "success");
-      setLocation("/");
-    });
-  };
+      Swal.fire("Correo enviado", "Revise su correo", "success")
+      setLocation("/")
+    })
+  }
 
   return (
     <div className="containerBodyForget">
@@ -76,5 +76,5 @@ export default function ForgetPassword() {
         </section>
       </div>
     </div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { getAllRoles, getOnerUser } from "@/services/Admin";
-import Swal from "sweetalert2";
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useEffect, useState } from "react"
+import { getAllRoles, getOnerUser } from "@/services/Admin"
+import Swal from "sweetalert2"
 
 export default function PlatformSectionUser({
   data,
@@ -13,38 +13,38 @@ export default function PlatformSectionUser({
 }) {
   // const [user, setUser] = useState({})
   // const [role, setRole] = useState('')
-  const [loading, setLoading] = useState(false);
-  const [roles, setRoles] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [roles, setRoles] = useState([])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getOnerUser(data).then((user) => {
       if (user.message) {
-        setLoading(false);
+        setLoading(false)
         return Swal.fire(
           "Lo sentimos",
           "Hubo un error al intentar recuperar al usuario",
           "error",
-        );
+        )
       }
-      setRole(user.roleName);
-      setUser(user.userFind);
-      setLoading(false);
-    });
-  }, [data, setUser, setRole]);
+      setRole(user.roleName)
+      setUser(user.userFind)
+      setLoading(false)
+    })
+  }, [data, setUser, setRole])
 
   useEffect(() => {
     getAllRoles().then((data) => {
-      setRoles(data.roles);
-    });
-  }, [setRoles]);
+      setRoles(data.roles)
+    })
+  }, [setRoles])
 
   const handleChangeData = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <section>
@@ -143,5 +143,5 @@ export default function PlatformSectionUser({
         </>
       )}
     </section>
-  );
+  )
 }

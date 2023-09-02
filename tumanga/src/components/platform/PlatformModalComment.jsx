@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function PlatformModalComment({ data, arrayEmails }) {
   return (
@@ -17,9 +17,11 @@ export default function PlatformModalComment({ data, arrayEmails }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="date">Fecha pedido</label>
-        // <p>
-        //   <Moment format="DD/MM/YYYY">{data.date}</Moment>
-        // </p>
+        //{" "}
+        <p>
+          // <Moment format="DD/MM/YYYY">{data.date}</Moment>
+          //{" "}
+        </p>
       </div>
       <div className="modalInfo">
         <label htmlFor="product_name">PRODUCTO</label>
@@ -34,5 +36,5 @@ export default function PlatformModalComment({ data, arrayEmails }) {
         <p>{arrayEmails}</p>
       </div>
     </section>
-  );
+  )
 }

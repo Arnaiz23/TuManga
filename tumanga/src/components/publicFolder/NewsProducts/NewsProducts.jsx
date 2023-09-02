@@ -1,23 +1,23 @@
-import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts.jsx";
-import React, { useContext, useEffect, useState } from "react";
-import getNewsProducts from "@/services/getNewsProducts.js";
-import Spinner from "@components/publicFolder/Spinner/Spinner.jsx";
-import OrderContext from "@/context/OrderContext.jsx";
+import ListOfProducts from "@components/publicFolder/ListOfProducts/ListOfProducts.jsx"
+import React, { useContext, useEffect, useState } from "react"
+import getNewsProducts from "@/services/getNewsProducts.js"
+import Spinner from "@components/publicFolder/Spinner/Spinner.jsx"
+import OrderContext from "@/context/OrderContext.jsx"
 
 export default function NewsProducts() {
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [products, setProducts] = useState([])
   // const { orderProcess } = useOrderData()
-  const { orderProcess } = useContext(OrderContext);
+  const { orderProcess } = useContext(OrderContext)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getNewsProducts().then((res) => {
-      setLoading(false);
-      setProducts(res.products);
+      setLoading(false)
+      setProducts(res.products)
       // console.log(res.products);
-    });
-  }, [orderProcess]);
+    })
+  }, [orderProcess])
 
   return (
     <main className="center">
@@ -25,5 +25,5 @@ export default function NewsProducts() {
 
       {loading ? <Spinner /> : <ListOfProducts products={products} />}
     </main>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { apiURL } from "@/services/config.js";
+import { apiURL } from "@/services/config.js"
 
 export function forgetPassword(body) {
   return fetch(`${apiURL}/email`, {
@@ -10,8 +10,8 @@ export function forgetPassword(body) {
   })
     .then((res) => res.json())
     .then(({ message }) => {
-      return { message };
-    });
+      return { message }
+    })
 }
 
 export function recoverPassword(token, body) {
@@ -24,6 +24,6 @@ export function recoverPassword(token, body) {
   })
     .then((res) => res.json())
     .then(({ message }) => {
-      return { message };
-    });
+      return { message }
+    })
 }

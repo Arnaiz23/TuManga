@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import Swal from "sweetalert2"
 
-import { deleteUserCard } from "@/services/Cards";
-import { apiURL } from "@/services/config";
+import { deleteUserCard } from "@/services/Cards"
+import { apiURL } from "@/services/config"
 
 export default function CardItem({ data, empty, change }) {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState("")
 
   useEffect(() => {
-    let date = data.expiration_date.split("-");
-    let month = date[1];
-    let year = date[0];
+    let date = data.expiration_date.split("-")
+    let month = date[1]
+    let year = date[0]
 
-    year = month + "/" + year[2] + year[3];
-    setDate(year);
-  }, []);
+    year = month + "/" + year[2] + year[3]
+    setDate(year)
+  }, [])
 
   const deleteCard = () => {
     deleteUserCard(data._id).then((data) => {
@@ -25,14 +25,14 @@ export default function CardItem({ data, empty, change }) {
           "Lo sentimos",
           "Hubo un error al intentar eliminarla",
           "error",
-        );
+        )
       }
 
-      change(data.cards);
-      Swal.fire("Tarjeta", "Tarjeta eliminada correctamente", "success");
-      if (data.cards.length === 0) empty(true);
-    });
-  };
+      change(data.cards)
+      Swal.fire("Tarjeta", "Tarjeta eliminada correctamente", "success")
+      if (data.cards.length === 0) empty(true)
+    })
+  }
 
   return (
     <>
@@ -56,5 +56,5 @@ export default function CardItem({ data, empty, change }) {
         </i>
       </div>
     </>
-  );
+  )
 }

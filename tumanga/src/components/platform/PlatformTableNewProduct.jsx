@@ -1,5 +1,5 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useState } from "react";
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useState } from "react"
 
 export default function PlatformTableNewProduct({
   setNewProduct,
@@ -8,35 +8,35 @@ export default function PlatformTableNewProduct({
   categories,
   setCategories,
 }) {
-  const loading = useState(false)[0];
-  const [newCategorie, setNewCategorie] = useState("");
+  const loading = useState(false)[0]
+  const [newCategorie, setNewCategorie] = useState("")
 
   const handleChange = (e) => {
     setNewProduct({
       ...newProduct,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleImage = (e) => {
-    setImage(e.target.files[0]);
-  };
+    setImage(e.target.files[0])
+  }
 
   const handleAddCategorie = (e) => {
-    e.preventDefault();
-    if (newCategorie === "") return;
-    setCategories([...categories, newCategorie.toLocaleLowerCase()]);
-    e.target.reset();
-    setNewCategorie("");
-  };
+    e.preventDefault()
+    if (newCategorie === "") return
+    setCategories([...categories, newCategorie.toLocaleLowerCase()])
+    e.target.reset()
+    setNewCategorie("")
+  }
 
   const handleChangeCategorie = (e) => {
-    setNewCategorie(e.target.value);
-  };
+    setNewCategorie(e.target.value)
+  }
 
   const deleteCategorie = (e) => {
-    setCategories(categories.filter((cat) => cat !== e.target.innerHTML));
-  };
+    setCategories(categories.filter((cat) => cat !== e.target.innerHTML))
+  }
 
   return (
     <section>
@@ -214,5 +214,5 @@ export default function PlatformTableNewProduct({
         </>
       )}
     </section>
-  );
+  )
 }

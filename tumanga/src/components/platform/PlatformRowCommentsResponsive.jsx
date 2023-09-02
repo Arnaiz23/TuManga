@@ -1,9 +1,9 @@
-import { faEye, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
-import React, { useState } from "react";
-import { deleteCommentAdmin } from "@/services/Admin";
-import Swal from "sweetalert2";
+import { faEye, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
+import React, { useState } from "react"
+import { deleteCommentAdmin } from "@/services/Admin"
+import Swal from "sweetalert2"
 
 export default function PlatformRowCommentsResponsive({
   comment,
@@ -11,11 +11,11 @@ export default function PlatformRowCommentsResponsive({
   setComments,
   arrayEmails,
 }) {
-  const [modalShowData, setModalShowData] = useState(false);
+  const [modalShowData, setModalShowData] = useState(false)
 
   const handleShowDetail = () => {
-    setModalShowData(true);
-  };
+    setModalShowData(true)
+  }
 
   const deleteComment = () => {
     Swal.fire({
@@ -35,24 +35,24 @@ export default function PlatformRowCommentsResponsive({
               "Lo sentimos",
               "Hubo un error al intentar eliminarlo",
               "error",
-            );
+            )
           }
 
           Swal.fire(
             "Comentario",
             "Comentario eliminado correctamente",
             "success",
-          );
+          )
 
-          if (data.allComments.length <= 0) return setCommentsEmpty(true);
+          if (data.allComments.length <= 0) return setCommentsEmpty(true)
 
-          setComments(data.allComments);
-        });
+          setComments(data.allComments)
+        })
       } else {
-        Swal.fire("Comentario", "El comentario está a salvo", "success");
+        Swal.fire("Comentario", "El comentario está a salvo", "success")
       }
-    });
-  };
+    })
+  }
 
   return (
     <>
@@ -83,5 +83,5 @@ export default function PlatformRowCommentsResponsive({
         />
       )}
     </>
-  );
+  )
 }

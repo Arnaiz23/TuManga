@@ -1,31 +1,31 @@
-import { faBox, faMoneyBill, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useState } from "react";
-import { getStatistics } from "@/services/Admin";
-import AdminContext from "@/context/AdminContext";
-import Statistics from "@components/platform/Statistics/Statictics";
+import { faBox, faMoneyBill, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useContext, useEffect, useState } from "react"
+import { getStatistics } from "@/services/Admin"
+import AdminContext from "@/context/AdminContext"
+import Statistics from "@components/platform/Statistics/Statictics"
 
 export default function PlatformMain() {
-  const { userData } = useContext(AdminContext);
+  const { userData } = useContext(AdminContext)
 
-  const [totalOrders, setTotalOrders] = useState(0);
-  const [totalUsers, setTotalUsers] = useState(0);
-  const [totalEarnings, setTotalEarnings] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [totalOrders, setTotalOrders] = useState(0)
+  const [totalUsers, setTotalUsers] = useState(0)
+  const [totalEarnings, setTotalEarnings] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const fetchData = () => {
-    setLoading(true);
+    setLoading(true)
     getStatistics().then((data) => {
-      setTotalEarnings(data.totalEarnings);
-      setTotalUsers(data.totalUsers);
-      setTotalOrders(data.totalOrders);
-      setLoading(false);
-    });
-  };
+      setTotalEarnings(data.totalEarnings)
+      setTotalUsers(data.totalUsers)
+      setTotalOrders(data.totalOrders)
+      setLoading(false)
+    })
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <main className="adminMain">
@@ -83,5 +83,5 @@ export default function PlatformMain() {
         </section>
       </div>
     </main>
-  );
+  )
 }

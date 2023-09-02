@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faAngleDown,
   faSliders,
   faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"
 
-import getFilters from "@/services/getFilters";
-import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox";
+import getFilters from "@/services/getFilters"
+import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox"
 
 export default function ModalProductFilter({ type }) {
-  const [modalShow, setModalShow] = useState("");
-  const [optionsShow, setOptionsShow] = useState("");
-  const setLoading = useState(false)[1];
-  const [filters, setFilters] = useState([]);
+  const [modalShow, setModalShow] = useState("")
+  const [optionsShow, setOptionsShow] = useState("")
+  const setLoading = useState(false)[1]
+  const [filters, setFilters] = useState([])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getFilters().then((res) => {
-      setLoading(false);
-      setFilters(res.categories);
+      setLoading(false)
+      setFilters(res.categories)
       // console.log(res.products);
-    });
-  }, [setLoading]);
+    })
+  }, [setLoading])
 
   const showModal = () => {
     modalShow === "modalFilterActive"
       ? setModalShow("")
-      : setModalShow("modalFilterActive");
-  };
+      : setModalShow("modalFilterActive")
+  }
 
   const showOptions = () => {
     optionsShow === "selectActive"
       ? setOptionsShow("")
-      : setOptionsShow("selectActive");
-  };
+      : setOptionsShow("selectActive")
+  }
 
   const changeFilters = () => {
-    setModalShow("");
-  };
+    setModalShow("")
+  }
 
   return (
     <div className="selectOrder">
@@ -101,5 +101,5 @@ export default function ModalProductFilter({ type }) {
         </ul>
       </div>
     </div>
-  );
+  )
 }

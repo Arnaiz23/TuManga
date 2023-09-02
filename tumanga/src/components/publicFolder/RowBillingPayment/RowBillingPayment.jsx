@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import { apiURL } from "@/services/config";
+import { apiURL } from "@/services/config"
 
 export default function RowBillingPayment({
   card,
@@ -9,8 +9,8 @@ export default function RowBillingPayment({
   cards,
 }) {
   const handleChangeRadio = () => {
-    changeBilling(card);
-  };
+    changeBilling(card)
+  }
 
   return (
     <div>
@@ -33,5 +33,5 @@ export default function RowBillingPayment({
       </div>
       {cards.length === 2 && index < 1 && <div className="linePayment"></div>}
     </div>
-  );
+  )
 }

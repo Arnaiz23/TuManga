@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react"
+import Swal from "sweetalert2"
 
-import { deleteUserAddress } from "@/services/Address";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
+import { deleteUserAddress } from "@/services/Address"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
 
 export default function AddressCard({ data, change, empty }) {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const deleteAddress = () => {
     deleteUserAddress(data._id).then((data) => {
@@ -14,22 +14,22 @@ export default function AddressCard({ data, change, empty }) {
           "Lo sentimos",
           "Hubo un error al intentar eliminarla",
           "error",
-        );
+        )
       }
 
       Swal.fire(
         "Eliminado",
         "La dirección se ha eliminado con éxito",
         "success",
-      );
-      change(data.newAddress);
-      if (data.newAddress.length === 0) empty(true);
-    });
-  };
+      )
+      change(data.newAddress)
+      if (data.newAddress.length === 0) empty(true)
+    })
+  }
 
   const editAddress = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   return (
     <div className="cardMac">
@@ -63,5 +63,5 @@ export default function AddressCard({ data, change, empty }) {
         />
       )}
     </div>
-  );
+  )
 }

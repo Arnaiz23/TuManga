@@ -1,7 +1,7 @@
-import { apiURL, getToken } from "./config";
+import { apiURL, getToken } from "./config"
 
 export function getUserComments() {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/comments/user`, {
     headers: new Headers({
@@ -10,12 +10,12 @@ export function getUserComments() {
   })
     .then((res) => res.json())
     .then(({ status, message, comments }) => {
-      return status === "success" ? { comments } : { message };
-    });
+      return status === "success" ? { comments } : { message }
+    })
 }
 
 export function deleteUserComment(id) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/comment/${id}`, {
     method: "DELETE",
@@ -25,12 +25,12 @@ export function deleteUserComment(id) {
   })
     .then((res) => res.json())
     .then(({ status, message, comments, productComments }) => {
-      return status === "success" ? { comments, productComments } : { message };
-    });
+      return status === "success" ? { comments, productComments } : { message }
+    })
 }
 
 export function createComment(body) {
-  const token = getToken();
+  const token = getToken()
 
   return fetch(`${apiURL}/comment`, {
     method: "POST",
@@ -42,6 +42,6 @@ export function createComment(body) {
   })
     .then((res) => res.json())
     .then(({ status, message, allComments }) => {
-      return status === "success" ? { allComments } : { message };
-    });
+      return status === "success" ? { allComments } : { message }
+    })
 }

@@ -1,7 +1,7 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import RowAddressPayment from "../RowAddressPayment/RowAddressPayment";
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React from "react"
+import RowAddressPayment from "../RowAddressPayment/RowAddressPayment"
 
 export default function ModalPaymentAddress({
   modal,
@@ -12,12 +12,12 @@ export default function ModalPaymentAddress({
   changeAddress,
 }) {
   const closeModal = () => {
-    change(false);
-  };
+    change(false)
+  }
 
   const addAddress = () => {
-    changeModal(true);
-  };
+    changeModal(true)
+  }
 
   return (
     <div className={modal ? "dataDown  dataDownShow" : "dataDown"}>
@@ -49,5 +49,5 @@ export default function ModalPaymentAddress({
         </button>
       </div>
     </div>
-  );
+  )
 }

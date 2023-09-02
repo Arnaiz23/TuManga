@@ -1,9 +1,9 @@
-import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import Moment from "react-moment";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 
-import { deleteUserComment } from "@/services/Comments";
+import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentAccountRow({ data, change, empty }) {
   const deleteComment = () => {
@@ -13,16 +13,16 @@ export default function CommentAccountRow({ data, change, empty }) {
           "Lo sentimos",
           "Hubo un error al intentar eliminarlo",
           "error",
-        );
+        )
       }
 
-      change(data.comments);
-      Swal.fire("Comentario", "Comentario eliminado correctamente", "success");
-      if (data.comments.length === 0) empty(true);
-    });
-  };
+      change(data.comments)
+      Swal.fire("Comentario", "Comentario eliminado correctamente", "success")
+      if (data.comments.length === 0) empty(true)
+    })
+  }
 
-  const stars = [1, 2, 3, 4, 5];
+  const stars = [1, 2, 3, 4, 5]
 
   return (
     <div className="comment">
@@ -57,5 +57,5 @@ export default function CommentAccountRow({ data, change, empty }) {
         </p>
       </main>
     </div>
-  );
+  )
 }

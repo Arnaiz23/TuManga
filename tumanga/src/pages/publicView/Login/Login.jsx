@@ -1,31 +1,31 @@
-import React, { useContext, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "wouter";
-import Swal from "sweetalert2";
+import React, { useContext, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { Link, useLocation } from "wouter"
+import Swal from "sweetalert2"
 
-import { login, userChangeState } from "@/services/Users";
-import useToken from "@/hooks/useToken";
-import OrderContext from "@/context/OrderContext";
+import { login, userChangeState } from "@/services/Users"
+import useToken from "@/hooks/useToken"
+import OrderContext from "@/context/OrderContext"
 
 export default function Login() {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
     remember: false,
-  });
+  })
 
-  const { setTokenInfo } = useToken();
-  const setLocation = useLocation()[1];
+  const { setTokenInfo } = useToken()
+  const setLocation = useLocation()[1]
 
-  const { setUser } = useContext(OrderContext);
+  const { setUser } = useContext(OrderContext)
 
-  const inputPasswordRef = React.createRef();
-  const hidePasswordRef = React.createRef();
-  const showPasswordRef = React.createRef();
+  const inputPasswordRef = React.createRef()
+  const hidePasswordRef = React.createRef()
+  const showPasswordRef = React.createRef()
 
   const handleForm = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (userData.email !== "" && userData.password !== "") {
       login(userData).then((res) => {
@@ -41,82 +41,82 @@ export default function Login() {
               confirmButtonText: "Activar",
             }).then((result) => {
               if (result.isConfirmed) {
-                localStorage.setItem("token", JSON.stringify(res.token));
+                localStorage.setItem("token", JSON.stringify(res.token))
                 userChangeState().then((data) => {
                   if (data.userUpdate) {
                     Swal.fire(
                       "Activada",
                       "Tu cuenta ha sido activada",
                       "success",
-                    );
-                    setTokenInfo(res.token);
-                    setUser(true);
-                    setLocation("/");
+                    )
+                    setTokenInfo(res.token)
+                    setUser(true)
+                    setLocation("/")
                   } else {
                     return Swal.fire(
                       "Lo sentimos",
                       "Hubo un error al intentar cambiar el estado",
                       "error",
-                    );
+                    )
                     // localStorage.removeItem("token")
                   }
-                });
+                })
               } else {
                 Swal.fire(
                   "Deshabilitada",
                   "Tu cuenta seguirá deshabilitada",
                   "success",
-                );
-                e.target.reset();
+                )
+                e.target.reset()
               }
-            });
+            })
           } else {
-            localStorage.setItem("token", JSON.stringify(res.token));
-            setTokenInfo(res.token);
-            setUser(true);
-            setLocation("/");
+            localStorage.setItem("token", JSON.stringify(res.token))
+            setTokenInfo(res.token)
+            setUser(true)
+            setLocation("/")
           }
         } else {
           Swal.fire(
             "Datos incorrectos",
             "El email y/o contraseña no coinciden",
             "error",
-          );
+          )
         }
-      });
+      })
     } else {
-      Swal.fire("Datos incorrectos", "Rellene todos los datos", "warning");
+      Swal.fire("Datos incorrectos", "Rellene todos los datos", "warning")
     }
-  };
+  }
 
   const changeData = (event) => {
-    let valor = event.target.value;
+    let valor = event.target.value
 
     if (event.target.name === "remember") {
-      valor = event.target.checked;
+      valor = event.target.checked
     }
 
     setUserData({
       ...userData,
       [event.target.name]: valor,
-    });
-  };
+    })
+  }
 
   const togglePassword = () => {
-    let input = inputPasswordRef.current;
-    let hide = hidePasswordRef.current;
-    let show = showPasswordRef.current;
+    let input = inputPasswordRef.current
+    let hide = hidePasswordRef.current
+    let show = showPasswordRef.current
 
     if (input.type === "text") {
-      input.type = "password";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "password"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     } else {
-      input.type = "text";
-      show.classList.toggle("passwordShow");
-      hide.classList.toggle("passwordShow");
+      input.type = "text"
+      show.classList.toggle("passwordShow")
+      hide.classList.toggle("passwordShow")
     }
-  };
+  }
 
   return (
     <div className="centerLog">
@@ -183,5 +183,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  );
+  )
 }

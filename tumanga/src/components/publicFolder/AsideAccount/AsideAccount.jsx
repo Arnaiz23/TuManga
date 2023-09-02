@@ -1,16 +1,16 @@
-import React from "react";
-import { useRoute } from "wouter";
-import { Link } from "wouter";
+import React from "react"
+import { useRoute } from "wouter"
+import { Link } from "wouter"
 
 export default function AsideAccount() {
   const ActiveLink = (props) => {
-    const [isActive] = useRoute(props.href);
+    const [isActive] = useRoute(props.href)
     return (
       <Link {...props}>
         <p className={isActive ? "activeUnderline" : ""}>{props.children}</p>
       </Link>
-    );
-  };
+    )
+  }
 
   return (
     <aside className="containerAside">
@@ -36,5 +36,5 @@ export default function AsideAccount() {
         </li>
       </ul>
     </aside>
-  );
+  )
 }

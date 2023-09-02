@@ -1,16 +1,16 @@
-import React from "react";
+import React from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faAngleRight,
   faPhone,
   faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { Link } from "wouter";
-import useToken from "@/hooks/useToken.js";
+} from "@fortawesome/free-solid-svg-icons"
+import { Link } from "wouter"
+import useToken from "@/hooks/useToken.js"
 
 export default function Footer() {
-  const { tokenInfo } = useToken();
+  const { tokenInfo } = useToken()
 
   return (
     <footer id="footer">
@@ -128,5 +128,5 @@ export default function Footer() {
         <h3>&copy;Todos los derechos reservados</h3>
       </div>
     </footer>
-  );
+  )
 }

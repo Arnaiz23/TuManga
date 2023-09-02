@@ -1,7 +1,7 @@
-import Spinner from "@components/publicFolder/Spinner/Spinner";
-import React, { useEffect, useState } from "react";
-import { apiURL } from "@/services/config";
-import getOneProduct from "@/services/getOneProduct";
+import Spinner from "@components/publicFolder/Spinner/Spinner"
+import React, { useEffect, useState } from "react"
+import { apiURL } from "@/services/config"
+import getOneProduct from "@/services/getOneProduct"
 
 export default function PlatformTableUpdateProduct({
   data,
@@ -11,46 +11,46 @@ export default function PlatformTableUpdateProduct({
   setCategories,
   categories,
 }) {
-  const [loading, setLoading] = useState(false);
-  const [newCategorie, setNewCategorie] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [newCategorie, setNewCategorie] = useState("")
 
-  const inputCategorieRef = React.createRef();
+  const inputCategorieRef = React.createRef()
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getOneProduct(data).then((data) => {
-      setProduct(data.product);
-      setLoading(false);
-      setCategories(data.product.categories);
-    });
-  }, [data, setProduct, setCategories]);
+      setProduct(data.product)
+      setLoading(false)
+      setCategories(data.product.categories)
+    })
+  }, [data, setProduct, setCategories])
 
   const handleChange = (e) => {
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleImage = (e) => {
-    setImage(e.target.files[0]);
-  };
+    setImage(e.target.files[0])
+  }
 
   const handleAddCategorie = (e) => {
-    e.preventDefault();
-    if (newCategorie === "") return;
-    setCategories([...categories, newCategorie.toLocaleLowerCase()]);
-    e.target.reset();
-    setNewCategorie("");
-  };
+    e.preventDefault()
+    if (newCategorie === "") return
+    setCategories([...categories, newCategorie.toLocaleLowerCase()])
+    e.target.reset()
+    setNewCategorie("")
+  }
 
   const deleteCategorie = (e) => {
-    setCategories(categories.filter((cat) => cat !== e.target.innerHTML));
-  };
+    setCategories(categories.filter((cat) => cat !== e.target.innerHTML))
+  }
 
   const handleChangeCategorie = (e) => {
-    setNewCategorie(e.target.value);
-  };
+    setNewCategorie(e.target.value)
+  }
 
   return (
     <section>
@@ -141,7 +141,7 @@ export default function PlatformTableUpdateProduct({
                     <b onClick={deleteCategorie}>{cat}</b>
                     {index < categories.length - 1 && <p> - </p>}
                   </React.Fragment>
-                );
+                )
               })}
             </span>
           </div>
@@ -214,5 +214,5 @@ export default function PlatformTableUpdateProduct({
         </>
       )}
     </section>
-  );
+  )
 }

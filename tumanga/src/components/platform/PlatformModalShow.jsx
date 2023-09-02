@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import { faBan, faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
-import { Link } from "wouter";
-import AdminContext from "@/context/AdminContext";
+import React, { useContext, useState } from "react"
+import { faBan, faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
+import { Link } from "wouter"
+import AdminContext from "@/context/AdminContext"
 
 export default function PlatformModalShow({ user, roleName }) {
-  const { userData } = useContext(AdminContext);
+  const { userData } = useContext(AdminContext)
 
-  const [modalShowData, setModalShowData] = useState(false);
+  const [modalShowData, setModalShowData] = useState(false)
 
   const handleShowModal = (e) => {
-    setModalShowData(true);
-  };
+    setModalShowData(true)
+  }
 
   return (
     <>
@@ -53,5 +53,5 @@ export default function PlatformModalShow({ user, roleName }) {
         />
       )}
     </>
-  );
+  )
 }

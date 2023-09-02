@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import Swal from "sweetalert2";
-import { useLocation } from "wouter";
+import React, { useContext } from "react"
+import Swal from "sweetalert2"
+import { useLocation } from "wouter"
 
-import { deleteUser, userChangeState } from "@/services/Users";
-import OrderContext from "@/context/OrderContext";
+import { deleteUser, userChangeState } from "@/services/Users"
+import OrderContext from "@/context/OrderContext"
 
 export default function DeleteAccount() {
-  const setLocation = useLocation()[1];
-  const { setOrderProcess } = useContext(OrderContext);
+  const setLocation = useLocation()[1]
+  const { setOrderProcess } = useContext(OrderContext)
 
   const deleteAccount = () => {
     Swal.fire({
@@ -26,14 +26,14 @@ export default function DeleteAccount() {
               "Deshabilitada",
               "La cuenta ha sido deshabilitada satisfactoriamente",
               "success",
-            );
-            localStorage.removeItem("token");
-            setOrderProcess(false);
-            setLocation("/");
+            )
+            localStorage.removeItem("token")
+            setOrderProcess(false)
+            setLocation("/")
           } else {
-            console.log(data);
+            console.log(data)
           }
-        });
+        })
       } else if (result.isDenied) {
         // Delete
         Swal.fire({
@@ -52,19 +52,19 @@ export default function DeleteAccount() {
                   "Eliminada",
                   "La cuenta ha sido eliminada satisfactoriamente",
                   "success",
-                );
-                localStorage.removeItem("token");
-                setOrderProcess(false);
-                setLocation("/");
+                )
+                localStorage.removeItem("token")
+                setOrderProcess(false)
+                setLocation("/")
               } else {
-                console.log(res);
+                console.log(res)
               }
-            });
+            })
           }
-        });
+        })
       }
-    });
-  };
+    })
+  }
 
   return (
     <div className="colCenter">
@@ -73,5 +73,5 @@ export default function DeleteAccount() {
         Eliminar
       </button>
     </div>
-  );
+  )
 }

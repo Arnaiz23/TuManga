@@ -1,33 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
-import getFilters from "@/services/getFilters";
-import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox";
+import React, { useContext, useEffect, useState } from "react"
+import getFilters from "@/services/getFilters"
+import FilterCheckbox from "@components/publicFolder/FilterCheckbox/FilterCheckbox"
 
-import ProductContext from "@/context/ProductsContext";
-import getFilterProducts from "@/services/getFilterProducts";
-import useProducts from "@/hooks/useProducts";
+import ProductContext from "@/context/ProductsContext"
+import getFilterProducts from "@/services/getFilterProducts"
+import useProducts from "@/hooks/useProducts"
 
 export default function FilterProducts({ type }) {
-  const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState([]);
-  const [actualFilters, setActualFilters] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [filters, setFilters] = useState([])
+  const [actualFilters, setActualFilters] = useState([])
 
-  const mangaRef = React.createRef();
-  const novelaRef = React.createRef();
+  const mangaRef = React.createRef()
+  const novelaRef = React.createRef()
 
-  const { page } = useProducts();
+  const { page } = useProducts()
 
   const { setActualType, actualType, setProducts, filter, setCount } =
-    useContext(ProductContext);
+    useContext(ProductContext)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getFilters().then((res) => {
-      setLoading(false);
-      setFilters(res.categories);
+      setLoading(false)
+      setFilters(res.categories)
       // console.log(res.products);
-    });
-    setActualType("comics");
-  }, [setActualType]);
+    })
+    setActualType("comics")
+  }, [setActualType])
 
   const handleChange = (e) => {
     // setActualType(e.target.name)
@@ -35,22 +35,22 @@ export default function FilterProducts({ type }) {
     // ! Uncheck el otro
 
     if (!mangaRef.current.checked && !novelaRef.current.checked) {
-      setActualType("comics");
+      setActualType("comics")
     } else if (
       mangaRef.current.checked &&
       !novelaRef.current.checked &&
       e.target.name === "manga"
     ) {
-      setActualType("manga");
+      setActualType("manga")
     } else {
-      setActualType("novela");
+      setActualType("novela")
     }
 
     getFilterProducts(8 * page, filter, actualType).then((data) => {
-      setProducts(data.products);
-      setCount(Math.ceil(data.count / 8));
-    });
-  };
+      setProducts(data.products)
+      setCount(Math.ceil(data.count / 8))
+    })
+  }
 
   return (
     <div className="containersFilters">
@@ -99,5 +99,5 @@ export default function FilterProducts({ type }) {
         )}
       </div>
     </div>
-  );
+  )
 }

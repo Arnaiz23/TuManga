@@ -1,15 +1,15 @@
-import Swal from "sweetalert2";
-import PlatformMain from "@components/platform/PlatformMain";
-import PlatformHeader from "@components/platform/PlatformHeader";
-import PlatformNav from "@components/platform/PlatformNav";
-import PlatformNavResponsive from "@components/platform/PlatformNavResponsive";
-import React, { useContext, useEffect } from "react";
-import { getUser } from "@/services/Users";
-import AdminContext from "@/context/AdminContext";
-import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP";
+import Swal from "sweetalert2"
+import PlatformMain from "@components/platform/PlatformMain"
+import PlatformHeader from "@components/platform/PlatformHeader"
+import PlatformNav from "@components/platform/PlatformNav"
+import PlatformNavResponsive from "@components/platform/PlatformNavResponsive"
+import React, { useContext, useEffect } from "react"
+import { getUser } from "@/services/Users"
+import AdminContext from "@/context/AdminContext"
+import BtnUp from "@components/publicFolder/BTN-UP/BTN-UP"
 
 export default function PlatformHome() {
-  const { setUserData } = useContext(AdminContext);
+  const { setUserData } = useContext(AdminContext)
 
   let fetchDataUser = () => {
     getUser().then((data) => {
@@ -18,15 +18,15 @@ export default function PlatformHome() {
           "Lo sentimos",
           "Hubo un error al intentar recuperarlo",
           "error",
-        );
+        )
       }
-      setUserData(data.userInfo);
-    });
-  };
+      setUserData(data.userInfo)
+    })
+  }
 
   useEffect(() => {
-    fetchDataUser();
-  }, []);
+    fetchDataUser()
+  }, [])
 
   return (
     <div className="gridAdmin">
@@ -36,5 +36,5 @@ export default function PlatformHome() {
       <PlatformMain />
       <BtnUp />
     </div>
-  );
+  )
 }

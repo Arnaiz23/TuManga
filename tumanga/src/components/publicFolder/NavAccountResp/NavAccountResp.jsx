@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useRoute } from "wouter";
-import { Link } from "wouter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEllipsisVertical, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { useRoute } from "wouter"
+import { Link } from "wouter"
 
 export default function NavAccountResp() {
-  const [stateNav, setStateNav] = useState("");
+  const [stateNav, setStateNav] = useState("")
 
   const ActiveLink = (props) => {
-    const [isActive] = useRoute(props.href);
+    const [isActive] = useRoute(props.href)
     return (
       <Link {...props}>
         <p className={isActive ? "submenuOptionActive" : ""}>
           {props.children}
         </p>
       </Link>
-    );
-  };
+    )
+  }
 
   const openNav = () => {
-    setStateNav("submenuActive");
-  };
+    setStateNav("submenuActive")
+  }
 
   const closeNav = () => {
-    setStateNav("");
-  };
+    setStateNav("")
+  }
 
   return (
     <>
@@ -64,5 +64,5 @@ export default function NavAccountResp() {
         </section>
       </nav>
     </>
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo";
-import React, { useState } from "react";
+import { faEye } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalInfo from "@components/publicFolder/ModalInfo/ModalInfo"
+import React, { useState } from "react"
 
 export default function PlatformModalOrders({ data, emails }) {
-  const [modalShowData, setModalShowData] = useState(false);
+  const [modalShowData, setModalShowData] = useState(false)
 
   const handleShowModal = (e) => {
-    setModalShowData(true);
-  };
+    setModalShowData(true)
+  }
 
   return (
     <>
@@ -32,5 +32,5 @@ export default function PlatformModalOrders({ data, emails }) {
         />
       )}
     </>
-  );
+  )
 }

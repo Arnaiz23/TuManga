@@ -1,5 +1,5 @@
-import React from "react";
-import PlatformModalShowProducts from "./PlatformModalShowProducts";
+import React from "react"
+import PlatformModalShowProducts from "./PlatformModalShowProducts"
 
 export default function PlatformTableResponsiveProducts({
   titles,
@@ -25,12 +25,12 @@ export default function PlatformTableResponsiveProducts({
                     product={product}
                     key={product._id}
                   />
-                );
+                )
               })}
             </section>
           </>
         )}
       </div>
     </>
-  );
+  )
 }

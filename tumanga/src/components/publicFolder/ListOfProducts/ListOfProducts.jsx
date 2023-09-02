@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import CardProduct from "@components/publicFolder/CardProduct/CardProduct";
+import CardProduct from "@components/publicFolder/CardProduct/CardProduct"
 
 export default function ListOfProducts({ products }) {
   return (
@@ -9,5 +9,5 @@ export default function ListOfProducts({ products }) {
         <CardProduct product={product} key={product._id} />
       ))}
     </div>
-  );
+  )
 }
