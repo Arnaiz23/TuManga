@@ -3,11 +3,11 @@
   --passion-red: #f50700;
   --grey: #949393;
   --soft-grey: #c4c4c4;
-  --dark-red: #aa3333;
+  --dark-red: #a33;
   --medium-green: #67a675;
   --medium-red: #bc1717;
   --soft-white: #fbfbfb;
-  --footer-grey: #777777;
+  --footer-grey: #777;
   --button-red: #b10005;
   --soft-green: #47dd00;
   --soft-blue: #81c9fa;
@@ -15,13 +15,13 @@
   --medium-blue: #3a95b1;
   --green: #3e9734;
   --strong-blue: #50aeec;
-  --grey-background: #eeeeee;
+  --grey-background: #eee;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -35,21 +35,27 @@ a {
 /* * ----------- ----------- HEADER ----------- ----------- */
 
 #header {
-  width: 100%;
-  border-top: 4px solid var(--dark-blue);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   /* ! STICKY */
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  border-top: 4px solid var(--dark-blue);
 }
 
 .brand a {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
   margin-left: 1rem;
+
   color: #000;
 }
 
@@ -63,10 +69,11 @@ a {
 
 .headerOptions {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  margin-right: 2rem;
+  justify-content: space-evenly;
+
   height: 60px;
+  margin-right: 2rem;
 }
 
 .headerOptions span {
@@ -78,8 +85,8 @@ a {
 }
 
 .headerOptions span i {
-  font-size: 25px;
   cursor: pointer;
+  font-size: 25px;
 }
 
 #spanBadge {
@@ -94,15 +101,19 @@ a {
   position: absolute;
   top: -5px;
   right: -10px;
-  background-color: var(--passion-red);
-  color: #fff;
-  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 1.1rem;
   height: 1.1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   font-size: 0.8rem;
+  color: #fff;
+
+  background-color: var(--passion-red);
+  border-radius: 50%;
 }
 
 .iconShoppingHide {
@@ -110,25 +121,27 @@ a {
 }
 
 .headerSearch {
-  border: 1px solid var(--grey);
-  width: 450px;
-  padding: 0.2rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 450px;
+  padding: 0.2rem 1rem;
+
+  border: 1px solid var(--grey);
 }
 
 .headerSearch i {
   width: 30%;
-  text-align: right;
   padding-right: 0.6rem;
+  text-align: right;
 }
 
 #headerSearch {
-  border: none;
-  font-size: 0.9rem;
   width: 100%;
+  font-size: 0.9rem;
   color: var(--footer-grey);
+  border: none;
 }
 
 #headerSearch:focus {
@@ -140,28 +153,32 @@ a {
 }
 
 .modalSearchBackground {
-  z-index: 20;
-  display: none;
   position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
+
+  display: none;
+
   width: 100%;
   height: 100vh;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(1, 1, 22, 1) 10%,
-    rgba(3, 44, 52, 0.4121848568528974) 94%
-  );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(2 0 36 / 100%) 0%,
+      rgb(1 1 22 / 100%) 10%,
+      rgb(3 44 52 / 41.2%) 94%
+    );
 }
 
 .modalSearchBackground section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
   width: 100%;
   height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   padding-top: 20px;
 }
 
@@ -173,30 +190,37 @@ a {
   position: absolute;
   top: 20px;
   left: 20px;
-  height: 40px;
+
   display: flex;
   align-items: center;
+
+  height: 40px;
 }
 
 .inputSearchContainer {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   width: 350px;
+  height: 40px;
   padding: 5px 0;
+
   background-color: #fff;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  height: 40px;
 }
 
 .inputSearchContainer input {
-  height: inherit;
   width: 100%;
-  border: none;
+  height: inherit;
   padding-left: 10px;
+
   font-size: 0.9rem;
+
+  border: none;
 }
 
 .inputSearchContainer input:focus {
@@ -204,12 +228,15 @@ a {
 }
 
 .inputSearchContainer button {
-  background-color: var(--dark-blue);
-  width: 20%;
-  color: #fff;
-  border: none;
-  height: inherit;
   cursor: pointer;
+
+  width: 20%;
+  height: inherit;
+
+  color: #fff;
+
+  background-color: var(--dark-blue);
+  border: none;
 }
 
 .inputSearchContainer button:hover {
@@ -222,22 +249,25 @@ a {
 
 .containerCart {
   position: absolute;
+  z-index: 10;
   top: 70px;
   right: 10px;
+
   width: 300px;
+  padding: 40px 20px;
+
+  visibility: hidden;
+
   /* min-height: 300px; */
   background-color: #fff;
-  z-index: 10;
-  padding: 40px 20px;
   box-shadow: 5px 5px 5px #000;
-  visibility: hidden;
 }
 
 .cardCart {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .cardCart h4 {
@@ -254,7 +284,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
+
   margin-top: 10px;
+
   color: var(--grey);
 }
 
@@ -266,12 +298,14 @@ a {
 
 .totalCart {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  text-transform: uppercase;
+  justify-content: space-around;
+
+  margin-top: 20px;
+
   font-size: 20px;
   font-weight: bold;
-  margin-top: 20px;
+  text-transform: uppercase;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -279,34 +313,42 @@ a {
 /* * ----------- ----------- NAV HOME ----------- ----------- */
 
 #navHome {
-  width: 20%;
-  min-width: 350px;
   position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
-  height: 100vh;
-  background: linear-gradient(
-    180deg,
-    rgba(3, 88, 140, 1) 0%,
-    rgba(101, 177, 186, 1) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+
   /* ! Hidden */
   transform: translateX(150%);
-  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 20%;
+  min-width: 350px;
+  height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(3 88 140 / 100%) 0%,
+      rgb(101 177 186 / 100%) 100%
+    );
+
   transition: transform 1s;
 }
 
 .closeNav {
-  position: absolute;
-  right: 20px;
-  top: 10px;
   cursor: pointer;
-  color: #fff;
+
+  position: absolute;
+  top: 10px;
+  right: 20px;
+
   font-size: 30px;
+  color: #fff;
 }
 
 .navActive {
@@ -320,20 +362,21 @@ a {
 .navOptions ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+
   height: 100%;
 }
 
 .navOptions ul li {
-  list-style: none;
   text-align: center;
+  list-style: none;
 }
 
 .navOptions ul li a {
-  color: #fff;
   font-size: 25px;
   font-weight: bolder;
+  color: #fff;
   text-transform: uppercase;
 }
 
@@ -342,8 +385,8 @@ a {
 }
 
 #navHome .btn {
-  text-transform: uppercase;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 #navHome .btn-danger,
@@ -357,15 +400,19 @@ a {
 /* * ----------- ----------- BUTTONS ----------- ----------- */
 
 .btn {
+  cursor: pointer;
+
   width: 250px;
   height: 50px;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   font-size: 20px;
   color: #fff;
+
   background-color: #000;
-  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+
   transition:
     transform 0.4s,
     background-color 0.3s;
@@ -376,17 +423,17 @@ a {
 }
 
 .btn-warning {
-  background-color: #ffc107;
   color: #000;
+  background-color: #ffc107;
 }
 
 .btn-light {
-  background-color: #fff;
   color: #000;
+  background-color: #fff;
 }
 
 .btn-light:hover {
-  background-color: rgb(241, 240, 240);
+  background-color: rgb(241 240 240);
 }
 
 .btn-danger {
@@ -394,7 +441,7 @@ a {
 }
 
 .btn-danger:hover {
-  background-color: rgb(206, 4, 4);
+  background-color: rgb(206 4 4);
 }
 
 .btn-primary {
@@ -414,8 +461,8 @@ a {
 }
 
 .btn-info {
-  background-color: #81c9fa;
   color: #000;
+  background-color: #81c9fa;
 }
 
 .btn-info:hover {
@@ -427,36 +474,41 @@ a {
 /* * ----------- ----------- LOGIN LOGOUT ----------- ----------- */
 
 .centerLog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   background-color: #f2f2f2;
 }
 
 .containerCenter {
-  background-color: #fff;
-  width: 50%;
-  min-width: 940px;
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
+
+  width: 50%;
+  min-width: 940px;
   min-height: 600px;
+
+  background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .containerLogLeft {
-  background-color: var(--dark-blue);
-  width: 50%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  height: 600px;
   gap: 40px;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  height: 600px;
+
+  background-color: var(--dark-blue);
 }
 
 .containerLogLeft h2 {
@@ -468,28 +520,31 @@ a {
 }
 
 .containerLogRight {
-  width: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  width: 50%;
   height: 600px;
 }
 
 .contentLog {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
   flex-direction: column;
   gap: 40px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
   width: 70%;
 }
 
 .inputsLog {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  gap: 20px;
   flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
   width: 100%;
 }
 
@@ -500,15 +555,16 @@ a {
 }
 
 .inputsLog input:focus {
-  outline: none;
   border: 2px solid #000;
+  outline: none;
 }
 
 .containerRemember {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+
   padding-left: 20px;
 }
 
@@ -521,9 +577,9 @@ a {
 }
 
 .forgetPassword {
-  color: #000;
-  font-weight: bold;
   width: 100%;
+  font-weight: bold;
+  color: #000;
   text-align: center;
 }
 
@@ -545,26 +601,29 @@ a {
 }
 
 .contentLog > form {
-  width: 100%;
-  flex: 2;
-  gap: 25px;
   display: flex;
+  flex: 2;
   flex-direction: column;
+  gap: 25px;
   align-items: flex-start;
+
+  width: 100%;
 }
 
 .inputPassword {
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .inputPassword i {
+  cursor: pointer;
+
   position: absolute;
   z-index: 10;
-  right: calc(100% - 78%);
   top: 25%;
+  right: calc(100% - 78%);
+
   display: none;
-  cursor: pointer;
 }
 
 .passwordShow {
@@ -576,12 +635,14 @@ a {
 /* * ----------- ----------- SPINNER ----------- ----------- */
 
 .containerSpinnerCenter {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
   user-select: none;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
   height: 200px;
 }
 
@@ -592,10 +653,12 @@ a {
 .spinnerBlue {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+
   border: 7px solid var(--dark-blue);
   border-right-color: #ddd;
   border-left-color: #ddd;
+  border-radius: 50%;
+
   animation: rotateSpinner 3s infinite;
 }
 
@@ -603,9 +666,11 @@ a {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(360deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
@@ -616,35 +681,41 @@ a {
 /* * ----------- ----------- FORGET PASSWORD ----------- ----------- */
 
 .containerBodyForget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .containerMacForget {
-  border: 1px solid #000;
-  border-radius: 10px;
   overflow: hidden;
   max-width: 70%;
+  border: 1px solid #000;
+  border-radius: 10px;
 }
 
 .containerMacForget header {
-  background-color: #000;
-  width: 100%;
-  /* height: 20px; */
-  padding: 10px 10px;
   display: flex;
   gap: 5px;
+
+  width: 100%;
+
+  /* height: 20px; */
+  padding: 10px;
+
+  background-color: #000;
 }
 
 .containerMacForget header .circleMac {
-  background-color: #fff;
-  border-radius: 50%;
   display: block;
+
   width: 10px;
   height: 10px;
+
+  background-color: #fff;
+  border-radius: 50%;
 }
 
 .containerMacForget header .circleMac:first-child {
@@ -660,41 +731,45 @@ a {
 }
 
 .mainForget {
-  width: 100%;
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+
+  width: 100%;
+  padding: 20px;
 }
 
 .mainForget section {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 20px;
+
   width: 100%;
 }
 
 .mainForget section h2 {
-  text-align: center;
   width: 100%;
+  text-align: center;
 }
 
 .formForget {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+
   width: 100%;
 }
 
 .inputFieldForget {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   gap: 10px;
+  justify-content: space-evenly;
+
   width: 60%;
 }
 
@@ -711,8 +786,8 @@ a {
 }
 
 .inputFieldForget input:focus {
-  outline: none;
   border-color: #000;
+  outline: none;
 }
 
 .informationForget {
@@ -721,9 +796,9 @@ a {
 }
 
 .informationForget p {
-  font-weight: 500;
-  font-size: 1.1rem;
   margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .informationForget ul {
@@ -735,11 +810,12 @@ a {
 /* * ----------- ----------- RECOVER PASSWORD ----------- ----------- */
 
 .containerRecover {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
   height: 600px;
 }
 
@@ -749,13 +825,16 @@ a {
 }
 
 .containerRecover > main {
-  background-color: #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
   width: 100%;
   height: calc(600px - 30px);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
+
+  background-color: #c4c4c4;
+
   /* gap: 40px; */
 }
 
@@ -770,11 +849,12 @@ a {
 .containerRecover main form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-height: 300px;
-  width: 50%;
   gap: 30px;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 50%;
+  min-height: 300px;
 }
 
 .containerRecover main form > button {
@@ -784,10 +864,11 @@ a {
 .inputRecover {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  width: 100%;
   gap: 15px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 100%;
 }
 
 .inputRecover label {
@@ -796,17 +877,19 @@ a {
 }
 
 .inputRecover input {
-  padding: 5px;
-  font-size: 1rem;
   width: 100%;
-  border-radius: 5px;
+  padding: 5px;
+
+  font-size: 1rem;
+
   border: 2px solid transparent;
+  border-radius: 5px;
   outline: 1px solid #000;
 }
 
 .inputRecover input:focus {
-  outline: none;
   border: 2px solid #000;
+  outline: none;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -815,47 +898,53 @@ a {
 
 #redes {
   position: fixed;
-  top: 45%;
   z-index: 10;
+  top: 45%;
 }
 
 #redes a {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-decoration: none;
+  justify-content: center;
+
   width: 40px;
   height: 40px;
+
+  text-decoration: none;
+
   transition: width 0.5s;
 }
 
 #instagram {
+  background: linear-gradient(145deg, #ba057e, #dd0696);
+
   /* background-color: #cf068c; */
   border-radius: 10px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: linear-gradient(145deg, #ba057e, #dd0696);
 }
 
 #facebook {
+  background: linear-gradient(145deg, #071bcf, #0920f6);
+
   /* background-color: #081ee6; */
   border-radius: 10px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: linear-gradient(145deg, #071bcf, #0920f6);
 }
 
 #twitter {
+  background: linear-gradient(145deg, #1980c4, #1e98e9);
+
   /* background-color: #1c8eda; */
   border-radius: 10px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: linear-gradient(145deg, #1980c4, #1e98e9);
 }
 
 #redes i {
-  color: #fff;
   font-size: 20px;
+  color: #fff;
 }
 
 #instagram:hover {
@@ -875,28 +964,34 @@ a {
 /* * ----------- ----------- SLIDER ----------- ----------- */
 
 .slider {
+  position: relative;
+
+  overflow: hidden;
+
   width: 100%;
   height: 300px;
+
   background-color: var(--footer-grey);
-  position: relative;
-  overflow: hidden;
 }
 
 .slider img {
-  object-fit: cover;
   min-width: 100%;
+  object-fit: cover;
 }
 
 .iconSlider,
 .splide__arrow {
+  cursor: pointer !important;
+
+  position: absolute !important;
+
   width: 50px !important;
   height: 50% !important;
+
+  opacity: 100% !important;
+  background-color: rgb(0 0 0 / 30%) !important;
   border: none !important;
-  background-color: rgba(0, 0, 0, 0.3) !important;
-  position: absolute !important;
-  cursor: pointer !important;
   border-radius: 0 !important;
-  opacity: 1 !important;
 }
 
 .iconSlider i,
@@ -909,7 +1004,7 @@ a {
 
 .iconSlider:hover,
 .splide__arrow:hover {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: rgb(0 0 0 / 70%) !important;
 }
 
 .iconSliderLeft {
@@ -921,20 +1016,23 @@ a {
 }
 
 .sliderSmall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 150px;
+
   background-color: var(--dark-blue);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .sliderTitle {
-  color: #fff;
   user-select: none;
+
   font-size: 30px;
-  text-transform: uppercase;
   font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -947,12 +1045,14 @@ a {
 }
 
 .searchEmpty {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 23px;
+
+  width: 100%;
   min-height: 380px;
+
+  font-size: 23px;
 }
 
 .emptyDataPayment {
@@ -960,10 +1060,10 @@ a {
 }
 
 .subtitle {
-  text-align: center;
   font-size: 28px;
-  text-decoration: underline;
   font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .containerProducts {
@@ -977,33 +1077,37 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+
   height: 200px;
+
+  font-size: 30px;
 }
 
 .card {
-  /* width: 250px; */
-  padding: 1rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  /* width: 250px; */
+  padding: 1rem;
 }
 
 .card img {
-  width: 170px;
-  object-fit: cover;
-  margin-bottom: 1rem;
   cursor: pointer;
+  width: 170px;
+  margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .cardFooter {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
 }
 
 .cardFooter h3 {
@@ -1012,9 +1116,10 @@ a {
 
 .cardFooter .priceContainer {
   display: flex;
-  width: 200px;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+
+  width: 200px;
   margin: 10px 0;
   padding: 0 1rem;
 }
@@ -1043,12 +1148,14 @@ a {
 }
 
 .addCart {
+  cursor: pointer;
+
   width: 90px;
   height: 30px;
-  border-radius: 10px;
-  border: 1px solid #000;
+
   background-color: #fff;
-  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 10px;
 }
 
 .addCart:active {
@@ -1064,25 +1171,25 @@ a {
 }
 
 .containersFilters {
-  width: 16%;
-  min-width: 220px;
   position: sticky;
   top: 1em;
+  width: 16%;
+  min-width: 220px;
 }
 
 .containerFilter {
   /* width: 15%; */
   width: 100%;
-  padding: 20px;
   margin: 30px 0;
+  padding: 20px;
   background-color: var(--soft-blue);
 }
 
 .containerFilter header {
-  color: #000;
-  text-align: center;
   font-size: 23px;
   font-weight: bold;
+  color: #000;
+  text-align: center;
 }
 
 .lineFilter {
@@ -1093,18 +1200,20 @@ a {
 
 .optionFilter {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+
   /* margin: 10px 0; */
   padding: 7px 0;
   padding-left: 15px;
-  width: 100%;
 }
 
 .optionFilter p {
+  margin-left: 20px;
   font-size: 17px;
   font-weight: 500;
-  margin-left: 20px;
   text-transform: capitalize;
 }
 
@@ -1114,50 +1223,62 @@ a {
 }
 
 .containerGlobalProducts {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-left: 3%;
   position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding-left: 3%;
 }
 
 .selectOrder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   width: 100%;
   margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .selectOrderOptions {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   width: 200px;
   height: 30px;
-  border-radius: 0;
-  border: 1px solid #000;
-  background-color: transparent;
+  padding: 0 10px;
+
   font-size: 0.9rem;
   color: var(--footer-grey);
-  padding: 0 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
+
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 0;
 }
 
 .optionsSelectOrder {
-  list-style: none;
-  box-shadow: 3px 3px 5px #000;
-  display: none;
   position: absolute;
   z-index: 10;
+
+  display: none;
+
   width: 200px;
+
+  list-style: none;
+
   background-color: #fff;
+  box-shadow: 3px 3px 5px #000;
 }
 
 .optionsSelectOrder li {
+  cursor: pointer;
+
   /* margin: 10px; */
   padding: 10px;
-  cursor: pointer;
   font-size: 0.9rem;
 }
 
@@ -1176,13 +1297,16 @@ a {
 }
 
 .btnFilter {
+  cursor: pointer;
+
   width: 100%;
   height: 100%;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+
   font-size: 20px;
   color: var(--footer-grey);
+
+  background-color: transparent;
+  border: none;
 }
 
 .btnFilter i {
@@ -1190,15 +1314,19 @@ a {
 }
 
 .optionsFilterResponsive {
-  width: 100%;
-  height: 100vh;
   position: fixed;
-  background-color: rgb(231, 231, 231);
+  z-index: 10;
   top: 0;
   left: 0;
-  z-index: 10;
+
   /* display: none; */
   transform: translateX(100%);
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgb(231 231 231);
+
   transition: transform 0.5s;
 }
 
@@ -1210,8 +1338,8 @@ a {
 .modalInfo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
+  align-items: flex-start;
 }
 
 .modalInfo p {
@@ -1230,31 +1358,37 @@ a {
 
 .optionsFilterResponsive header,
 .submenuFloat header {
-  width: 100%;
-  padding: 10px 30px;
-  border-bottom: 1px solid #000;
   display: flex;
   align-items: center;
+
+  width: 100%;
+  padding: 10px 30px;
+
+  border-bottom: 1px solid #000;
 }
 
 .optionsFilterResponsive header button,
 .submenuFloat header button {
-  border: none;
+  cursor: pointer;
+
   width: 100px;
   height: 30px;
   margin: 0;
-  background-color: transparent;
+
   font-size: 17px;
-  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+
   transition:
     transform 0.3s,
     background-color 0.3s;
-  border-radius: 10px;
 }
 
 .optionsFilterResponsive header button:active {
   transform: scale(0.9);
-  background-color: rgb(192, 190, 190);
+  background-color: rgb(192 190 190);
 }
 
 .optionsFilterResponsive header button i {
@@ -1262,11 +1396,12 @@ a {
 }
 
 .optionsFilterResponsive section {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: flex-start;
+  justify-content: space-around;
+
+  width: 100%;
   padding: 20px 30px;
 }
 
@@ -1287,13 +1422,13 @@ a {
 }
 
 .containerCategories {
-  height: 28rem;
   overflow: hidden auto;
+  height: 28rem;
 }
 
 #closeModalAccount:active {
   transform: scale(0.9);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgb(0 0 0 / 20%);
 }
 
 #closeModalAccount i {
@@ -1301,23 +1436,24 @@ a {
 }
 
 .containerFilterResponsive h3 {
+  margin: 0 auto 10px;
   font-size: 20px;
   text-align: center;
-  margin: 0 auto 10px;
 }
 
 .containerFilterResponsive div {
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
   margin: 20px 10px;
 }
 
 .containerFilterResponsive div input[type="checkbox"] {
+  cursor: pointer;
   transform: scale(1.2);
   accent-color: var(--button-red);
-  cursor: pointer;
 }
 
 .containerFilterResponsive div p {
@@ -1329,40 +1465,47 @@ a {
   /*  position: absolute;
   bottom: 15%; */
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-top: 1px solid #000;
-  padding: 15px 0 10px;
+  justify-content: center;
+
   width: 100%;
+  padding: 15px 0 10px;
+
+  border-top: 1px solid #000;
 }
 
 .containerPaginator {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-top: 40px;
 }
 
 .paginator {
-  border: 1px solid #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
   width: 340px;
   height: 40px;
-  border-radius: 10px;
-  background-color: var(--greenish-blue);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+
   font-size: 20px;
-  overflow: hidden;
+
+  background-color: var(--greenish-blue);
+  border: 1px solid #000;
+  border-radius: 10px;
 }
 
 .paginator p {
   cursor: pointer;
-  height: 100%;
-  width: 100%;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 }
 
 .paginator p:hover,
@@ -1371,29 +1514,32 @@ a {
 }
 
 .optionsRight {
-  width: 100%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .totalPriceShopping {
-  background-color: var(--strong-blue);
-  border-radius: 10px;
   width: 200px;
   padding: 5px;
+
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
+
+  background-color: var(--strong-blue);
+  border-radius: 10px;
 }
 
 .containerCenterRadius {
   width: 90%;
   margin: 0 auto;
+  padding: 40px;
+
+  background-color: var(--grey-background);
   border: 1px solid #000;
   border-radius: 10px;
-  background-color: var(--grey-background);
-  padding: 40px;
 }
 
 .containerProductCenter {
@@ -1402,10 +1548,11 @@ a {
 }
 
 .row {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
   margin: 30px 0;
 }
 
@@ -1414,31 +1561,34 @@ a {
 }
 
 .row span {
-  font-size: 30px;
   cursor: pointer;
+  font-size: 30px;
 }
 
 .contentShopping {
-  width: 70%;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 70%;
+  margin: 0 auto;
 }
 
 .titleBlue {
-  font-size: 28px;
-  color: var(--strong-blue);
-  font-weight: bold;
   margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--strong-blue);
 }
 
 .contentShopping div {
-  width: 60%;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+
+  width: 60%;
+
   font-size: 20px;
 }
 
@@ -1448,30 +1598,32 @@ a {
 
 .containerProduct {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  justify-content: space-between;
+
   width: 90%;
   margin: 0 auto;
+  padding: 30px;
 }
 
 .containerProduct img {
-  min-width: 250px;
   width: 100%;
+  min-width: 250px;
 }
 
 .informationProduct {
-  margin: 0 auto;
   width: 100%;
-  padding-left: 144px;
   min-width: 800px;
+  margin: 0 auto;
+  padding-left: 144px;
 }
 
 .informationProduct header {
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-evenly;
+
   width: 70%;
   margin: 20px auto;
 }
@@ -1484,14 +1636,14 @@ a {
 
 .rowStars {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   margin: 5px 0;
 }
 
 .rowStars span {
   margin-right: 10px;
-  color: rgb(214, 214, 214);
+  color: rgb(214 214 214);
 }
 
 .rowStars span i {
@@ -1499,7 +1651,7 @@ a {
 }
 
 .starsActive {
-  color: rgb(240, 208, 26);
+  color: rgb(240 208 26);
 }
 
 .informationProduct header button {
@@ -1509,12 +1661,14 @@ a {
 
 .rowPriceStock {
   display: flex;
-  width: 80%;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
-  font-size: 1.1rem;
+  justify-content: space-between;
+
+  width: 80%;
   margin-top: 10px;
+  padding: 0 10px;
+
+  font-size: 1.1rem;
 }
 
 .rowPriceStock .price {
@@ -1522,10 +1676,10 @@ a {
 }
 
 .productCategories {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .productCategories > header {
@@ -1533,11 +1687,13 @@ a {
 }
 
 .productCategories > footer {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
   margin: 0;
+  padding: 1rem;
+
   text-align: center;
+
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .informationProduct > section {
@@ -1550,10 +1706,10 @@ a {
 }
 
 .informationProduct > section ul li {
-  margin: 10px 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0;
 }
 
 .informationProduct > section ul li b {
@@ -1580,14 +1736,17 @@ a {
 .containerComments textarea,
 .containerComments input[type="text"] {
   resize: none;
+
   width: 100%;
-  margin: 20px 0;
   height: 100px;
+  margin: 20px 0;
+  padding: 10px;
+
+  font-size: 1rem;
+
+  background-color: #eaeaea;
   border: 1px solid #000;
   border-radius: 10px;
-  background-color: #eaeaea;
-  font-size: 1rem;
-  padding: 10px;
 }
 
 .containerComments textarea:focus,
@@ -1601,10 +1760,10 @@ a {
 }
 
 .containerComments div:not(.row, .rowStars) {
-  width: 100%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .containerComments div .btn {
@@ -1612,11 +1771,12 @@ a {
 }
 
 .containerCommentData {
-  width: 100%;
   display: flex;
-  justify-content: space-between !important;
-  align-items: center;
   gap: 0 20px;
+  align-items: center;
+  justify-content: space-between !important;
+
+  width: 100%;
 }
 
 .rowStarsSelect {
@@ -1632,12 +1792,12 @@ a {
 }
 
 .rowStars input[type="radio"]:checked ~ .starsSelect {
-  color: rgb(240, 208, 26);
+  color: rgb(240 208 26);
 }
 
 .starsSelect:hover,
 .starsSelect:hover ~ .starsSelect {
-  color: rgb(240, 208, 26);
+  color: rgb(240 208 26);
 }
 
 .containerCommentData input[type="text"] {
@@ -1646,8 +1806,8 @@ a {
 
 .lineComments {
   width: 100%;
-  border-top: 1px solid var(--footer-grey);
   margin: 30px 0;
+  border-top: 1px solid var(--footer-grey);
 }
 
 .containerComments .row {
@@ -1655,17 +1815,18 @@ a {
 }
 
 .containerComments .row header {
-  width: 20%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  width: 20%;
 }
 
 .containerComments .row header h4 {
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -1678,12 +1839,16 @@ a {
 }
 
 .containerComments .row footer {
-  width: 10%;
-  display: flex;
-  font-size: 25px;
   cursor: pointer;
-  justify-content: center;
+
+  display: flex;
   align-items: center;
+  justify-content: center;
+
+  width: 10%;
+
+  font-size: 25px;
+
   transition: transform 0.2s;
 }
 
@@ -1694,23 +1859,28 @@ a {
 .containerAside {
   position: sticky;
   top: 20px;
-  width: 17%;
-  background-color: #c2e6ff;
+
   display: flex;
   justify-content: center;
+
+  width: 17%;
   padding: 40px 0;
+
+  background-color: #c2e6ff;
 }
 
 .containerAside ul {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 20px;
   flex-direction: column;
-  list-style: none;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
+
   font-size: 1.3rem;
   font-weight: 500;
-  width: 100%;
+  list-style: none;
 }
 
 .containerAside ul li {
@@ -1722,9 +1892,9 @@ a {
 }
 
 .lineAside {
-  border-top: 1px solid rgba(0, 0, 0, 0.288);
   width: 90%;
   margin: 0 auto;
+  border-top: 1px solid rgb(0 0 0 / 28.8%);
 }
 
 .activeUnderline {
@@ -1734,20 +1904,21 @@ a {
 .containerInformation {
   width: 75%;
   margin: 0 auto;
+  padding: 3rem;
+
   /* height: 200px; */
   background-color: #f9f9f9;
-  padding: 3rem;
 }
 
 .lineAccount {
-  border-top: 1px solid #000;
   width: 100%;
   margin: 40px 0;
+  border-top: 1px solid #000;
 }
 
 .rowAccount {
-  margin: 30px auto;
   width: 95%;
+  margin: 30px auto;
 }
 
 .rowAccount h3 {
@@ -1755,17 +1926,18 @@ a {
 }
 
 .rowAccount .row {
-  justify-content: space-evenly;
   gap: 20px;
+  justify-content: space-evenly;
 }
 
 .col {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  width: 100%;
   gap: 10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 100%;
 }
 
 .col label {
@@ -1787,8 +1959,8 @@ a {
 
 .rowEnd {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .rowBetween {
@@ -1804,10 +1976,10 @@ a {
 
 .colCenter {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .colCenter h3 {
@@ -1815,37 +1987,43 @@ a {
 }
 
 .containerOrder {
+  overflow: hidden;
+
   width: 100%;
   margin: 40px 0;
+
   background-color: #f1f1f1;
   border-radius: 5px;
-  overflow: hidden;
 }
 
 .containerOrder header {
-  background-color: #e0e0e0;
-  width: 100%;
+  position: relative;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
   flex-wrap: wrap;
   gap: 10px;
-  position: relative;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 10px 20px;
+
+  background-color: #e0e0e0;
 }
 
 .containerOrderInformation {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px 40px;
+
   /* width: 50%; */
   flex-wrap: wrap;
+  gap: 10px 40px;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .containerOrder a {
-  color: #3a95b1;
   font-size: 14px;
+  color: #3a95b1;
 }
 
 .containerOrderInformation h4 {
@@ -1854,8 +2032,8 @@ a {
 }
 
 .greySmall {
-  color: #999999;
   font-size: 14px;
+  color: #999;
   text-align: center;
 }
 
@@ -1874,10 +2052,10 @@ a {
 }
 
 .containerOrder section .row {
-  justify-content: flex-start;
-  gap: 30px;
-  padding-left: 50px;
   flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  padding-left: 50px;
 }
 
 .containerOrder section .row:last-child {
@@ -1885,8 +2063,8 @@ a {
 }
 
 .containerOrder section .row h3 {
-  color: #3a95b1;
   font-size: 25px;
+  color: #3a95b1;
 }
 
 #orderClient {
@@ -1895,24 +2073,28 @@ a {
 
 .modalInformationOrder {
   position: absolute;
-  background-color: #fff;
   z-index: 10;
-  padding: 10px 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: max-content;
-  gap: 5px;
   top: calc(100% + 10px);
+  transform: scale(0);
+
   /* display: none; */
   display: flex;
-  transform: scale(0);
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: max-content;
+  padding: 10px 20px;
+
+  background-color: #fff;
+
   transition: transform 0.5s;
 }
 
 .modalInformationOrder h4 {
-  text-align: start;
   width: 100%;
+  text-align: start;
 }
 
 #orderClient:hover .modalInformationOrder {
@@ -1925,30 +2107,37 @@ a {
 }
 
 .btnSubmenu {
+  cursor: pointer;
+
   position: absolute;
   top: 10px;
   right: 0;
+
   min-width: 50px;
   min-height: 50px;
+
   font-size: 20px;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 3px 3px 10px #000;
-  cursor: pointer;
-  background-color: var(--dark-blue);
   color: #fff;
+
+  background-color: var(--dark-blue);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 3px 3px 10px #000;
 }
 
 .submenuFloat {
-  height: 100vh;
-  background-color: #e7e7e7;
-  width: 80%;
   position: fixed;
+  z-index: 11;
   top: 0;
   right: 0;
   transform: translateX(100%);
+
+  width: 80%;
+  height: 100vh;
+
+  background-color: #e7e7e7;
+
   transition: transform 1s;
-  z-index: 11;
 }
 
 .submenuFloat section {
@@ -1956,20 +2145,22 @@ a {
 }
 
 .submenuFloat section ul {
-  list-style: none;
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 30px;
   flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
   height: 60vh;
+
+  list-style: none;
 }
 
 .submenuFloat section ul li p {
-  color: #000;
   cursor: pointer;
   font-size: 20px;
+  color: #000;
 }
 
 .submenuFloat section ul li:hover {
@@ -1985,27 +2176,36 @@ a {
 }
 
 .btnShowOrderInfo {
-  display: none;
-  border: none;
   cursor: pointer;
-  font-size: 18px;
-  background-color: transparent;
-  padding: 10px;
+
   z-index: 10;
+
+  display: none;
+
+  padding: 10px;
+
+  font-size: 18px;
+
+  background-color: transparent;
+  border: none;
 }
 
 .modalOrderInfo {
-  display: flex;
   position: absolute;
-  background-color: #e7e7e7;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  top: calc(100% + 10px);
+  transform: scale(0);
+
+  display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
   padding: 20px;
-  top: calc(100% + 10px);
+
+  background-color: #e7e7e7;
+
   transition: transform 1s;
-  transform: scale(0);
 }
 
 .modalOrderActive {
@@ -2013,18 +2213,21 @@ a {
 }
 
 .cardNewAddress {
-  width: 300px;
+  cursor: pointer;
   user-select: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  padding: 40px 0;
+
   border: 3px solid #000;
   border-style: dashed;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  padding: 40px 0;
-  cursor: pointer;
 }
 
 .cardNewAddress i {
@@ -2032,21 +2235,24 @@ a {
 }
 
 .cardMac {
+  overflow: hidden;
   width: 300px;
   border: 2px solid #000;
+
   /* height: 200px; */
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .cardMac header,
 .containerRecover > header {
-  background-color: #000;
-  padding: 10px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 10px;
+
+  background-color: #000;
 }
 
 .cardMac header span,
@@ -2074,42 +2280,48 @@ a {
 .cardMac section {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   align-items: flex-start;
   justify-content: space-evenly;
+
   padding: 10px;
-  gap: 20px;
 }
 
 .cardMac section h4 {
-  color: #777;
   padding-left: 20px;
+  color: #777;
 }
 
 .containerAddressInfo {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   width: 60%;
   margin: 0 auto;
+
   color: #777;
 }
 
 .containerAddressData {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
   gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
 }
 
 .containerAddressActions {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 5px;
-  color: #3a95b1;
-  font-weight: bold;
   cursor: pointer;
+
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-weight: bold;
+  color: #3a95b1;
 }
 
 .lineHorizontal {
@@ -2118,25 +2330,30 @@ a {
 }
 
 .containerGrid {
-  padding-top: 40px;
   display: grid;
-  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 40px 20px;
+
+  width: 100%;
+  padding-top: 40px;
 }
 
 .cardTarget {
-  width: 300px;
-  border-radius: 10px;
-  background-color: var(--green);
-  color: #fff;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 20px;
-  gap: 20px;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 300px;
+  padding: 20px;
+
+  color: #fff;
+
+  background-color: var(--green);
+  border-radius: 10px;
 }
 
 .cardTarget header {
@@ -2150,8 +2367,8 @@ a {
 
 .imgBrandCard {
   width: 40px !important;
-  background-color: #fff;
   height: 35px;
+  background-color: #fff;
 }
 
 .cardTarget section h4 {
@@ -2159,32 +2376,35 @@ a {
 }
 
 .cardTarget section p {
-  opacity: 0.8;
-  font-size: 18px;
   padding-left: 10px;
+  font-size: 18px;
+  opacity: 80%;
 }
 
 .cardTarget footer {
-  font-size: 25px;
   width: 90%;
   margin: 0 auto;
+  font-size: 25px;
 }
 
 .cardTarget i {
+  cursor: pointer;
   position: absolute;
   right: 15px;
   bottom: 10px;
-  cursor: pointer;
 }
 
 .comment {
   position: relative;
+
   width: 100%;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  margin-top: 30px;
+
   /* height: 100px; */
   padding: 0 20px 40px;
-  margin-top: 30px;
+
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 .deleteComment {
@@ -2215,20 +2435,22 @@ a {
 }
 
 .containerOrderDetails > p {
-  color: #777;
   margin: 10px 0 20px;
+  color: #777;
 }
 
 .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
   width: 100%;
-  border: 1px solid #000;
-  border-radius: 10px;
+  margin-bottom: 20px;
   padding: 2rem 2.5rem;
   padding-right: 6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
+
+  border: 1px solid #000;
+  border-radius: 10px;
 }
 
 .container .col {
@@ -2241,18 +2463,18 @@ a {
 }
 
 .container .col .row {
-  justify-content: flex-start;
   gap: 20px;
+  justify-content: flex-start;
 }
 
 .container .col .row p {
-  color: #444;
   font-size: 18px;
+  color: #444;
 }
 
 .container .col div:not(.row) p {
-  color: #777;
   font-size: 1rem;
+  color: #777;
   text-align: center;
 }
 
@@ -2265,15 +2487,15 @@ a {
 }
 
 .containerColumn .row {
-  justify-content: flex-start;
-  gap: 40px;
-  padding-left: 20px;
   flex-wrap: wrap;
+  gap: 40px;
+  justify-content: flex-start;
+  padding-left: 20px;
 }
 
 .containerColumn .row h3 {
-  color: #1980c4;
   font-size: 25px;
+  color: #1980c4;
 }
 
 .lineCommentsSeparator {
@@ -2284,21 +2506,25 @@ a {
 
 .containerPayment {
   display: flex;
-  justify-content: space-evenly;
+  gap: 100px;
   align-items: flex-start;
+  justify-content: space-evenly;
+
   width: 90%;
   margin: 0 auto;
-  gap: 100px;
 }
 
 .paymentRight {
-  border: 1px solid #000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  border: 1px solid #000;
   border-radius: 10px;
+
   /* padding: 20px 40px; */
+
   /* gap: 20px; */
 }
 
@@ -2313,10 +2539,10 @@ a {
 
 .paymentRightPrice {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .paymentRightPrice h3 {
@@ -2328,13 +2554,13 @@ a {
 }
 
 .paymentLeft {
-  background-color: #f0f0f0;
   width: 100%;
+  background-color: #f0f0f0;
 }
 
 .paymentLeft > .row,
 .lastPayment {
-  padding: 0px 40px;
+  padding: 0 40px;
 }
 
 .paymentLeft > .row > .col {
@@ -2347,9 +2573,9 @@ a {
 }
 
 .paymentLeft > .row > p {
-  color: #3a95b1;
   cursor: pointer;
   font-weight: bold;
+  color: #3a95b1;
 }
 
 .lastPayment {
@@ -2358,9 +2584,10 @@ a {
 
 .rowStart {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   gap: 18%;
+  align-items: center;
+  justify-content: flex-start;
+
   width: 100%;
 }
 
@@ -2369,14 +2596,14 @@ a {
 }
 
 .lastPayment > .row {
+  padding: 20px 40px;
   background-color: #fff;
   border-radius: 10px;
-  padding: 20px 40px;
 }
 
 .lastPayment > .row > .col > .row {
-  align-items: flex-start;
   gap: 30px;
+  align-items: flex-start;
 }
 
 .lastPayment > .row > .col {
@@ -2388,12 +2615,14 @@ a {
 }
 
 .lastPayment > .row > .col span {
-  font-size: 16px;
   display: flex;
   gap: 10px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   margin-left: 10px;
+
+  font-size: 16px;
 }
 
 .rowInformation {
@@ -2401,8 +2630,8 @@ a {
 }
 
 .rowInformation p {
-  margin-left: 10px;
   margin-top: 10px;
+  margin-left: 10px;
   font-size: 0.9em;
 }
 
@@ -2411,48 +2640,61 @@ a {
 }
 
 .dataDown {
-  background-color: #fff;
-  width: 99%;
-  margin: 10px auto;
+  transform-origin: left top;
+
   /* transform: translateY(-100%); */
+  transform: scaleY(0);
+
+  overflow: hidden;
+
+  width: 99%;
+  max-height: 0;
+  margin: 10px auto;
+
+  background-color: #fff;
+
+  /* transform: translateY(-100%); */
+
   /* display: none; */
+
   /* transition: transform .3s, display .5s; */
 
   transition:
     transform 1s,
     height 1s;
-  transform-origin: left top;
-  /* transform: translateY(-100%); */
-  transform: scaleY(0);
-  max-height: 0;
-  overflow: hidden;
 }
 
 .dataDown .row,
 .dataDown .rowEnd {
-  padding: 30px 20px;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 30px 20px;
 }
 
 .dataDownShow {
   /* transform: translateY(0); */
+
   /* display: block; */
+
   /* display: block; */
   transform: scaleY(1);
   max-height: 800px;
 }
 
 .dataDownClose {
-  padding: 10px;
-  border: none;
-  background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+
+  font-size: 16px;
+
+  background-color: transparent;
+  border: none;
 }
 
 .dataDown > .row:first-of-type {
@@ -2460,22 +2702,25 @@ a {
 }
 
 .editAddress {
-  font-size: 0.9rem;
-  color: #166799;
   cursor: pointer;
+  font-size: 0.9rem;
   font-weight: bold;
+  color: #166799;
 }
 
 .modalBackground {
   position: fixed;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
+
   display: none;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgb(0 0 0 / 60%);
 }
 
 .modalBackgroundShow {
@@ -2483,25 +2728,30 @@ a {
 }
 
 .modalCenter {
-  /* width: 50%; */
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
   /* border: 1px solid #000; */
   overflow: hidden;
+
+  /* width: 50%; */
+  width: 100%;
   min-width: 393px;
   max-width: 50%;
+
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .modalCenter header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   /* height: 50px; */
   width: 100%;
-  background-color: var(--dark-blue);
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px 30px;
+
+  color: #fff;
+
+  background-color: var(--dark-blue);
 }
 
 .modalCenter header i {
@@ -2513,22 +2763,25 @@ a {
 }
 
 .modalCenter section form {
-  width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+
   /* flex-wrap: wrap; */
   flex-direction: column;
   gap: 30px 20px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 100%;
 }
 
 .modalCenter section form section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
   gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
 }
 
 .formField {
@@ -2545,19 +2798,18 @@ a {
 
 .formField input {
   width: 300px;
-  font-size: 1rem;
   padding: 5px;
+  font-size: 1rem;
 }
 
 .formField input:focus {
-  outline: none;
   border: 2px solid #000;
+  outline: none;
 }
 
 .formField input[type="number"] {
-  -webkit-appearance: textfield !important;
   margin: 0;
-  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -2565,23 +2817,28 @@ a {
 /* * ----------- ----------- BTN-UP ----------- ----------- */
 
 #btn-up {
-  background-color: var(--dark-blue);
-  width: 50px;
-  height: 50px;
+  cursor: pointer;
+
+  position: fixed;
+
   /* position: absolute; */
   right: 20px;
   bottom: 20px;
-  cursor: pointer;
-  border: none;
-  position: fixed;
-  transition: transform 0.5s;
   transform: scale(0);
+
+  width: 50px;
+  height: 50px;
+
+  background-color: var(--dark-blue);
+  border: none;
   border-radius: 50%;
+
+  transition: transform 0.5s;
 }
 
 #btn-up i {
-  color: #fff;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 /* * ----------------------------------------------------------------------------- */
@@ -2589,12 +2846,14 @@ a {
 /* * ----------- ----------- FOOTER ----------- ----------- */
 
 #footer {
-  border-top: 4px solid var(--dark-blue);
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  width: 100%;
+
+  border-top: 4px solid var(--dark-blue);
 }
 
 /* .footerTop{
@@ -2606,9 +2865,9 @@ a {
 .footerTop {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+  gap: 2rem;
   justify-content: space-around;
 
-  gap: 2rem;
   width: 80%;
   margin: 2rem auto 1rem;
 }
@@ -2619,19 +2878,19 @@ a {
 }
 
 .footerSubtitle {
-  font-size: 18px;
   margin-left: 10px;
+  font-size: 18px;
 }
 
 .footerContainerOptions {
-  list-style: none;
   margin-left: 10px;
+  list-style: none;
 }
 
 .footerContainerOptions li {
-  margin: 3px 0;
   display: inline-block;
   width: 100%;
+  margin: 3px 0;
 }
 
 .footerContainerOptions li i {
@@ -2641,8 +2900,8 @@ a {
 
 .footerContainerOptions li a,
 .footerContainerOptions li {
-  color: var(--footer-grey);
   font-weight: 600;
+  color: var(--footer-grey);
   transition: color 0.3s;
 }
 
@@ -2660,8 +2919,8 @@ a {
 }
 
 .footerLine {
-  border-top: 1px solid var(--soft-grey);
   margin: 5px 0;
+  border-top: 1px solid var(--soft-grey);
 }
 
 .footerBottom {
@@ -2674,33 +2933,36 @@ a {
 
 .gridAdmin {
   display: grid;
-  grid-template-rows: 10vh repeat(2, 1fr);
-  grid-template-columns: minmax(190px, 10%) repeat(2, 1fr);
-  grid-template-areas:
-    "nav header header"
-    "nav main main"
-    "nav main main";
+  grid-template:
+    "nav header header" 10vh "nav main   main  " repeat(2, "nav main   main  " 1fr) / minmax(190px, 10%) repeat(2, 1fr);
   align-items: flex-start;
 }
 
 .adminNav {
   grid-area: nav;
-  height: 100%;
-  min-height: 100vh;
+
   width: 10%;
-  background-color: #03588c;
+
   /* position: fixed; */
   min-width: 190px;
+  height: 100%;
+  min-height: 100vh;
+
+  background-color: #03588c;
+
   transition: transform 1s;
 }
 
 .adminNav header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 10vh;
-  background-color: #2fc0b8;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  height: 10vh;
+
+  background-color: #2fc0b8;
 }
 
 .adminNav header img {
@@ -2714,17 +2976,20 @@ a {
 
 .adminNav ul,
 .smallNav ul {
-  height: 60vh;
+  position: sticky;
+  top: 0;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  color: #fff;
-  padding: 0 20px;
+
   width: 100%;
+  height: 60vh;
+  padding: 0 20px;
+
+  color: #fff;
   list-style: none;
-  position: sticky;
-  top: 0;
 }
 
 .smallNav ul {
@@ -2734,32 +2999,39 @@ a {
 .adminNav ul li a,
 .smallNav ul li i {
   cursor: pointer;
+
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   gap: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+
   font-size: 17px;
   color: #fff;
 }
 
 .smallNav {
+  display: none;
   grid-area: nav;
-  height: 100%;
+
   /* position: fixed; */
   min-width: 50px;
-  background-color: #03588c;
-  display: none;
+  height: 100%;
   min-height: 100vh;
+
+  background-color: #03588c;
 }
 
 .smallNav header {
+  cursor: pointer;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #2fc0b8;
+  justify-content: center;
+
   width: 100%;
   height: 10vh;
-  cursor: pointer;
+
+  background-color: #2fc0b8;
 }
 
 .smallNav header img {
@@ -2768,66 +3040,72 @@ a {
 }
 
 .adminHeader {
-  grid-area: header;
-  height: 100%;
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 0 40px;
+  grid-area: header;
   align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+
   background-color: #efefef;
   border-bottom: 2px solid #000;
 }
 
 .adminBrand {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .adminBrand > a {
   display: inherit;
-  color: inherit;
   align-items: inherit;
+  color: inherit;
 }
 
 .adminMain {
-  grid-area: main;
   display: flex;
+  grid-area: main;
   flex-direction: column;
+  gap: 20px;
   align-items: center;
   justify-content: space-around;
-  gap: 20px;
+
   padding-top: 20px;
 }
 
 .containerStatistics,
 .containerStatisticsProducts {
-  background-color: #ececec;
-  width: 95%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 95%;
+
+  background-color: #ececec;
 }
 
 .containerStatistics h2,
 .containerStatisticsProducts h2 {
-  font-weight: bold;
-  border-bottom: 1px solid #000;
   width: 100%;
   padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
 }
 
 .containerOptions {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
   flex-wrap: wrap;
+  gap: 20px 30px;
+  align-items: center;
+  justify-content: space-around;
+
   width: 100%;
   padding: 40px 10px;
-  gap: 20px 30px;
 }
 
 .containerOptions h4 {
@@ -2836,23 +3114,28 @@ a {
 
 .rowOptionAdmin {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 30px;
-  font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+
   min-width: 200px;
+
+  font-size: 18px;
 }
 
 .rowOptionAdmin span {
-  background-color: #0cc5de;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 50px;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
+
   font-size: 20px;
+  color: #fff;
+
+  background-color: #0cc5de;
+  border-radius: 50%;
 }
 
 .spanGreen {
@@ -2860,64 +3143,69 @@ a {
 }
 
 .earnings {
-  color: #26cd23;
   font-weight: bold;
+  color: #26cd23;
 }
 
 .rowOptionAdmin div {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   align-items: center;
   justify-content: center;
-  gap: 5px;
 }
 
 .containerStatisticsProducts section {
-  height: 500px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
+  height: 500px;
 }
 
 .containerDataAdmin {
-  width: 90%;
-  grid-area: main;
-  min-height: 80vh;
-  background-color: #efefef;
   display: flex;
+  grid-area: main;
   flex-direction: column;
-  align-items: flex-start;
   align-items: center;
+
+  width: 90%;
+  min-height: 80vh;
   padding-bottom: 20px;
+
+  background-color: #efefef;
 }
 
 .rowAdminTitle {
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
   display: flex;
-  padding: 20px 40px;
   gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 20px 40px;
 }
 
 .rowAdminTitle h2 {
-  text-transform: uppercase;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .containerAdminOptions {
   display: flex;
-  justify-content: space-evenly;
   gap: 30px;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .inputSearchAdmin {
   width: 200px;
   height: 30px;
   padding: 2px 5px;
+
   font-size: 0.9rem;
+
   border: 1px solid #000;
   border-radius: 5px;
 }
@@ -2927,27 +3215,28 @@ a {
 }
 
 .iconSearch {
+  cursor: pointer;
   display: none;
   font-size: 20px;
-  cursor: pointer;
 }
 
 .containerTable {
+  overflow-x: auto;
   width: 95%;
   margin-top: 40px 0;
-  overflow-x: auto;
 }
 
 .containerTable table {
+  border-collapse: collapse;
   width: 100%;
+
   /* border: 2px solid #000; */
   text-align: center;
-  border-collapse: collapse;
 }
 
 .containerTable table thead {
-  border-bottom: 1px solid #000;
   border-collapse: collapse;
+  border-bottom: 1px solid #000;
 }
 
 .containerTable table thead th {
@@ -2965,10 +3254,10 @@ a {
 } */
 
 .tableTrId {
-  max-width: 150px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 150px;
   padding-left: 5px !important;
+  text-overflow: ellipsis;
 }
 
 .containerTable td > i {
@@ -2981,10 +3270,12 @@ a {
 
 .containerTableResponsive {
   display: none;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 90%;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 90%;
+
   /* gap: 20px; */
 }
 
@@ -3002,29 +3293,31 @@ a {
 
 .containerTableResponsive header,
 .containerTableResponsive section {
-  width: 100%;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .containerTableResponsive section {
   flex-direction: column;
+
   /* gap: 10px; */
 }
 
 .rowTable {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+
   width: 100%;
   padding: 5px 0;
 }
 
 .rowTable p,
 .containerTableResponsive header b {
-  padding: 5px 0;
   width: 100px;
+  padding: 5px 0;
   text-align: center;
 }
 
@@ -3037,16 +3330,19 @@ a {
 }
 
 .modalInformation {
-  width: 100vw;
   position: fixed;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
   top: 0;
   left: 0;
+
   display: none;
-  justify-content: center;
   align-items: center;
-  z-index: 20;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgb(0 0 0 / 70%);
 }
 
 .showModal {
@@ -3054,10 +3350,10 @@ a {
 }
 
 .modalInformation .modalCenter {
-  min-height: 500px;
-  width: 80%;
-  max-height: 80vh;
   overflow-y: auto;
+  width: 80%;
+  min-height: 500px;
+  max-height: 80vh;
 }
 
 .modalInformation .modalCenter header {
@@ -3070,8 +3366,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: space-evenly;
   align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .modalInformation .modalCenter section .modalInfo label {
@@ -3090,20 +3386,21 @@ a {
 
 .newAddressForm {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
   padding-bottom: 20px;
 }
 
 .obligatoryFields {
-  color: #f44;
   font-weight: bold;
+  color: #f44;
 }
 
 .formAddress {
-  width: 100%;
   align-items: center !important;
+  width: 100%;
 }
 
 .formAddress > section {
@@ -3112,21 +3409,22 @@ a {
 
 .newAddressData {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-flow: row wrap !important;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   margin: 30px auto;
-  flex-direction: row !important;
 }
 
 .newAddressGroup {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+
   font-size: 1rem;
 }
 
@@ -3141,21 +3439,23 @@ a {
 }
 
 .containerAdminCenter {
-  width: 90%;
-  background-color: #efefef;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  margin-top: 40px;
   gap: 50px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 90%;
+  margin-top: 40px;
+
+  background-color: #efefef;
+  border-radius: 10px;
 }
 
 .containerAdminCenter header {
   width: 100%;
-  border-bottom: 1px solid #000;
   text-transform: uppercase;
+  border-bottom: 1px solid #000;
 }
 
 .containerAdminCenter header h2 {
@@ -3163,12 +3463,13 @@ a {
 }
 
 .containerAdminCenter footer {
-  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
+
+  width: 100%;
   padding: 20px 40px;
 }
 
@@ -3176,6 +3477,7 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+
   width: 90%;
   margin: 0 auto;
 }
@@ -3183,36 +3485,43 @@ a {
 .inputAdmin {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
   gap: 10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .addCategorie {
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .addCategorie .btnCategorieAdd {
-  position: absolute;
-  right: 20%;
-  top: 0;
-  width: 20%;
-  background-color: var(--green);
-  height: 100%;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
   cursor: pointer;
+
+  position: absolute;
+  top: 0;
+  right: 20%;
+
+  width: 20%;
+  height: 100%;
+
+  font-size: 1rem;
+  color: #fff;
+
+  background-color: var(--green);
+  border: none;
   border-radius: 0 5px 5px 0;
 }
 
 .spanCategoriesAdmin {
-  width: 80%;
+  cursor: pointer;
+
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  cursor: pointer;
+
+  width: 80%;
+
   text-transform: capitalize;
 }
 
@@ -3230,22 +3539,25 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .inputAdmin input,
 .inputAdmin select,
 .inputAdmin textarea {
   width: 80%;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  outline: 1px solid #000;
-  background-color: #e9e9e9;
-  font-size: 16px;
   padding: 3px 5px;
+
+  font-size: 16px;
+
+  background-color: #e9e9e9;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  outline: 1px solid #000;
 }
 
 .inputAdmin textarea {
+  resize: none;
   width: 80%;
   height: 150px;
-  resize: none;
 }
 
 .inputAdmin input[type="file"] {
@@ -3253,10 +3565,10 @@ a {
 }
 
 .inputAdmin > .btn-primary {
-  width: 120px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 120px;
 }
 
 .imageSmall {
@@ -3264,8 +3576,8 @@ a {
 }
 
 .inputAdmin input:focus {
-  outline: none;
   border: 2px solid #000;
+  outline: none;
 }
 
 .inputAdmin .inputPassword i {
@@ -3273,18 +3585,21 @@ a {
 }
 
 .modalSearchAdmin {
-  display: none;
-  height: 100vh;
-  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #aaa;
-  justify-content: flex-start;
-  align-items: center;
+
+  display: none;
   flex-direction: column;
-  padding-top: 30px;
   gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 100vh;
+  padding-top: 30px;
+
+  background-color: #aaa;
 }
 
 .modalSearchAdmin h3 {
@@ -3297,21 +3612,24 @@ a {
 
 .modalSearchAdmin form {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   flex-direction: column;
   gap: 30px;
+  align-items: center;
+  justify-content: space-evenly;
+
   width: 100%;
 }
 
 .inputSearchAdminModal {
   width: 400px;
   height: 30px;
+  padding: 3px 5px;
+
+  font-size: 0.9rem;
+  text-align: center;
+
   border: 1px solid #000;
   border-radius: 10px;
-  font-size: 0.9rem;
-  padding: 3px 5px;
-  text-align: center;
 }
 
 .inputSearchAdminModal:focus {
@@ -3319,10 +3637,12 @@ a {
 }
 
 .iconCloseModal {
+  cursor: pointer;
+
   position: absolute;
   top: 20px;
   left: 20px;
-  cursor: pointer;
+
   font-size: 25px;
 }
 
@@ -3332,27 +3652,29 @@ a {
 
 .containerTestSpinner {
   display: grid;
-  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width: 100%;
 }
 
 .spinner {
-  border: 7px solid rgba(0, 0, 0, 0.1);
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+
+  border: 7px solid rgb(0 0 0 / 10%);
   border-left-color: #09f;
+  border-radius: 50%;
 
   animation: spin 1s linear infinite;
 }
 
 .containerSpinner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   min-height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
 }
 
 .containerSpinner h2 {
@@ -3363,18 +3685,21 @@ a {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 .containerSpinnerCenter {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
   user-select: none;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
   height: 200px;
 }
 
@@ -3390,10 +3715,12 @@ a {
 .loader {
   width: 100%;
   height: 100%;
+
   border: 7px solid #162534;
   border-top-color: #4bc8eb;
   border-bottom-color: #f13a8f;
   border-radius: 50%;
+
   animation: rotate 8s linear infinite;
 }
 
@@ -3407,9 +3734,11 @@ a {
   0% {
     transform: scale(1) rotate(360deg);
   }
+
   50% {
     transform: scale(0.8) rotate(-360deg);
   }
+
   100% {
     transform: scale(1) rotate(360deg);
   }
@@ -3418,9 +3747,10 @@ a {
 .spinner2 {
   width: 70px;
   height: 70px;
+
   border: 8px solid #ddd;
-  border-radius: 50%;
   border-left-color: var(--medium-green);
+  border-radius: 50%;
 
   animation: spin 1s linear infinite;
 }
@@ -3433,18 +3763,18 @@ a {
 .spinner3-1 {
   width: 100%;
   height: 100%;
+
   border: 7px solid #ddd;
-  border-radius: 50%;
-  border-left-color: #03588c;
   border-right-color: #09f;
+  border-left-color: #03588c;
+  border-radius: 50%;
 
   animation: rotate 7s linear infinite;
 }
 
 .spinner3-2 {
+  border-right-color: rgb(68 218 68);
   border-left-color: var(--green);
-  border-right-color: rgb(68, 218, 68);
-
   animation-duration: 4s;
 }
 
@@ -3453,15 +3783,15 @@ a {
 }
 
 .userDataEmpty {
-  text-align: center;
   margin-top: 30px;
+  text-align: center;
 }
 
 /* * ----------------------------------------------------------------------------- */
 
 /* * ----------- ----------- RESPONSIVE ----------- ----------- */
 
-@media screen and (max-width: 1758px) {
+@media screen and (width <= 1758px) {
   .rowAccount .row {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -3471,6 +3801,7 @@ a {
     width: 40%;
     min-width: 280px;
   }
+
   .rowAccount .row .col input[type="text"] {
     width: 100%;
   }
@@ -3481,13 +3812,13 @@ a {
   }
 }
 
-@media screen and (max-width: 1700px) {
+@media screen and (width <= 1700px) {
   .informationProduct {
     padding-left: 50px;
   }
 }
 
-@media screen and (max-width: 1468px) {
+@media screen and (width <= 1468px) {
   .informationProduct {
     padding-left: 0;
   }
@@ -3497,38 +3828,39 @@ a {
   }
 }
 
-@media screen and (max-width: 1415px) {
+@media screen and (width <= 1415px) {
   .containerPayment {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 1352px) {
+@media screen and (width <= 1352px) {
   .containerTable {
     display: block;
+
     /* overflow: scroll; */
   }
 }
 
-@media screen and (max-width: 1338px) {
+@media screen and (width <= 1338px) {
   .contentShopping div {
     width: 70%;
   }
 }
 
-@media screen and (max-width: 1285px) {
+@media screen and (width <= 1285px) {
   .containerPayment {
     gap: 50px;
   }
 }
 
-@media screen and (max-width: 1229px) {
+@media screen and (width <= 1229px) {
   .containerPayment {
     gap: 30px;
   }
 }
 
-@media screen and (max-width: 1214px) {
+@media screen and (width <= 1214px) {
   #navHome .btn-danger,
   #navHome .btn-success {
     bottom: 15vh;
@@ -3543,7 +3875,7 @@ a {
   }
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (width <= 1160px) {
   .containerProduct {
     flex-direction: column;
   }
@@ -3574,19 +3906,19 @@ a {
   }
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (width <= 1199px) {
   .containerPayment {
     flex-wrap: wrap;
   }
 }
 
-@media screen and (max-width: 1026px) {
+@media screen and (width <= 1026px) {
   .contentShopping div {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (width <= 990px) {
   .containerCenter {
     min-width: 645px;
   }
@@ -3599,7 +3931,8 @@ a {
     right: 5px;
   }
 }
-@media screen and (max-width: 974px) {
+
+@media screen and (width <= 974px) {
   .inputSearchAdmin {
     display: none;
   }
@@ -3609,7 +3942,7 @@ a {
   }
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (width <= 970px) {
   .containersFilters {
     display: none;
   }
@@ -3619,7 +3952,7 @@ a {
   }
 }
 
-@media screen and (max-width: 952px) {
+@media screen and (width <= 952px) {
   .informationProduct,
   .informationProduct header,
   .informationProduct section,
@@ -3633,7 +3966,7 @@ a {
   }
 }
 
-@media screen and (max-width: 922px) {
+@media screen and (width <= 922px) {
   .contentShopping div {
     width: 100%;
   }
@@ -3660,7 +3993,7 @@ a {
   }
 }
 
-@media screen and (max-width: 882px) {
+@media screen and (width <= 882px) {
   .headerSearch {
     display: none;
   }
@@ -3686,14 +4019,14 @@ a {
   }
 }
 
-@media screen and (max-width: 864px) {
+@media screen and (width <= 864px) {
   .rowTable p {
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
 
-@media screen and (max-width: 807px) {
+@media screen and (width <= 807px) {
   .paymentLeft > .row,
   .lastPayment > .row,
   .lastPayment > .row > .col > .row {
@@ -3706,7 +4039,7 @@ a {
   }
 }
 
-@media screen and (max-width: 778px) {
+@media screen and (width <= 778px) {
   .rowAdminTitle .btn {
     width: 150px;
     height: 40px;
@@ -3714,7 +4047,7 @@ a {
   }
 }
 
-@media screen and (max-width: 738px) {
+@media screen and (width <= 738px) {
   .container {
     flex-direction: column;
     gap: 20px;
@@ -3730,20 +4063,20 @@ a {
   }
 }
 
-@media screen and (max-width: 726px) {
+@media screen and (width <= 726px) {
   .containerInformation {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 714px) {
+@media screen and (width <= 714px) {
   .containerProductCenter .row {
     flex-direction: column;
     gap: 10px;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (width <= 700px) {
   .containerProduct {
     width: 100%;
   }
@@ -3782,7 +4115,7 @@ a {
   }
 }
 
-@media screen and (max-width: 652px) {
+@media screen and (width <= 652px) {
   .containerOrderInformation {
     display: none;
   }
@@ -3796,14 +4129,14 @@ a {
   }
 }
 
-@media screen and (max-width: 608px) {
+@media screen and (width <= 608px) {
   .containerOptions {
     /* gap: 20px; */
     flex-wrap: wrap;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (width <= 600px) {
   .rowPriceStock {
     width: 100%;
   }
@@ -3813,7 +4146,7 @@ a {
   }
 }
 
-@media screen and (max-width: 578px) {
+@media screen and (width <= 578px) {
   .comment header.row {
     /* flex-direction: column;
     gap: 10px; */
@@ -3830,7 +4163,7 @@ a {
   } */
 }
 
-@media screen and (max-width: 559px) {
+@media screen and (width <= 559px) {
   .contentShopping {
     width: 100%;
   }
@@ -3840,21 +4173,21 @@ a {
   }
 }
 
-@media screen and (max-width: 534px) {
+@media screen and (width <= 534px) {
   .inputSearchContainer {
     width: 250px;
   }
 }
 
-@media screen and (max-width: 518px) {
+@media screen and (width <= 518px) {
   .containerProduct {
     padding: 30px 0;
   }
 
   .rowAdminTitle {
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    flex-wrap: wrap;
   }
 
   .informationProduct header button {
@@ -3870,16 +4203,16 @@ a {
   }
 
   .containerRecover > main h2 {
-    text-align: center;
     padding: 0 10px;
+    text-align: center;
   }
 
   .rowAdminTitle {
-    padding: 20px 20px;
+    padding: 20px;
   }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (width <= 470px) {
   .rowAdminTitle .btn-success {
     font-size: 16px;
   }
@@ -3889,7 +4222,7 @@ a {
   }
 }
 
-@media screen and (max-width: 458px) {
+@media screen and (width <= 458px) {
   .footerBottom h3 {
     font-size: 1rem;
   }
@@ -3909,7 +4242,7 @@ a {
   }
 }
 
-@media screen and (max-width: 436px) {
+@media screen and (width <= 436px) {
   .containerCenterRadius {
     padding: 40px 20px;
   }
@@ -3927,13 +4260,13 @@ a {
   }
 }
 
-@media screen and (max-width: 422px) {
+@media screen and (width <= 422px) {
   .modalCenter section {
     padding-left: 40px;
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (width <= 414px) {
   .containerInformation {
     padding-left: 2rem;
   }
@@ -3943,19 +4276,19 @@ a {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (width <= 420px) {
   .closeModalSearch {
     left: 0.5rem;
   }
 }
 
-@media screen and (max-width: 386px) {
+@media screen and (width <= 386px) {
   .containerCommentData {
     flex-wrap: wrap;
   }
 }
 
-@media screen and (max-width: 336px) {
+@media screen and (width <= 336px) {
   .navOptions ul li a {
     font-size: 20px;
   }

@@ -5,15 +5,18 @@
 }
 
 .statisticsBorder {
-  margin: 1rem auto 2rem;
-  border-left: 3px solid #000;
-  border-bottom: 3px solid #000;
+  position: relative;
+
+  display: flex;
+  gap: 5vw;
+  align-items: flex-end;
+  justify-content: flex-start;
+
   width: 80%;
   min-height: inherit;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  gap: 5vw;
+  margin: 1rem auto 2rem;
   padding-left: 40px;
+
+  border-bottom: 3px solid #000;
+  border-left: 3px solid #000;
 }
