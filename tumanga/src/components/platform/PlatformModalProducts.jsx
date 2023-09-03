@@ -1,6 +1,10 @@
 import React from "react"
 
+import { formatDateCal } from "@/libs/libDate"
+
 export default function PlatformModalProducts({ data }) {
+  const dateFormat = formatDateCal({ date: data.upload_date })
+
   return (
     <section>
       <div className="modalInfo">
@@ -17,10 +21,8 @@ export default function PlatformModalProducts({ data }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="upload_date">FECHA SUBIDA</label>
-        //{" "}
         <p>
-          // <Moment format="DD/MM/YYYY">{data.upload_date}</Moment>
-          //{" "}
+          {dateFormat}
         </p>
       </div>
       <div className="modalInfo">

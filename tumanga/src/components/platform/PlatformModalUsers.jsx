@@ -1,6 +1,9 @@
 import React from "react"
 
+import { formatDateCal } from "@/libs/libDate"
+
 export default function PlatformModalUsers({ data, roleName }) {
+  const dateFormat = formatDateCal({ date: data.register_date })
   return (
     <section>
       <div className="modalInfo">
@@ -25,11 +28,7 @@ export default function PlatformModalUsers({ data, roleName }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="id">FECHA REGISTRO</label>
-        //{" "}
-        <p>
-          // <Moment format="DD/MM/YYYY">{data.register_date}</Moment>
-          //{" "}
-        </p>
+        <p>{dateFormat}</p>
       </div>
       <div className="modalInfo">
         <label htmlFor="role">ROL</label>

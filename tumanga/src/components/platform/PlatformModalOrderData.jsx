@@ -1,6 +1,11 @@
 import React from "react"
 
+import { formatDateCal } from "@/libs/libDate"
+
 export default function PlatformModalOrderData({ data, emails }) {
+  const dateFormatOrder = formatDateCal({ date: data.order_date })
+  const dateFormatSend = formatDateCal({ date: data.send_date })
+
   return (
     <section>
       <div className="modalInfo">
@@ -13,19 +18,11 @@ export default function PlatformModalOrderData({ data, emails }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="order_date">Fecha pedido</label>
-        //{" "}
-        <p>
-          // <Moment format="DD/MM/YYYY">{data.order_date}</Moment>
-          //{" "}
-        </p>
+        <p>{dateFormatOrder}</p>
       </div>
       <div className="modalInfo">
         <label htmlFor="send_date">FECHA Envio</label>
-        //{" "}
-        <p>
-          // <Moment format="DD/MM/YYYY">{data.send_date}</Moment>
-          //{" "}
-        </p>
+        <p>{dateFormatSend}</p>
       </div>
       <div className="modalInfo">
         <label htmlFor="products">Nº Productos</label>
