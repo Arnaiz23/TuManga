@@ -11,6 +11,9 @@ export default function PlatformRowComment({
   setComments,
   arrayEmails,
 }) {
+  const date = new Date(comment.date)
+  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+
   const deleteComment = () => {
     Swal.fire({
       title: "¿Estás seguro?",
@@ -53,10 +56,8 @@ export default function PlatformRowComment({
       <td className="tableTrId" title={comment._id}>
         {comment._id}
       </td>
-      //{" "}
       <td>
-        // <Moment format="DD/MM/YYYY">{comment.date}</Moment>
-        //{" "}
+        {dateFormat}
       </td>
       <td>{comment.name}</td>
       <td>{comment.message}</td>

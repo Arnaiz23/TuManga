@@ -1,6 +1,11 @@
 import React from "react"
 
 export default function PlatformModalComment({ data, arrayEmails }) {
+  const date = new Date(data.date)
+  const dateFormat = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`
+
   return (
     <section>
       <div className="modalInfo">
@@ -17,11 +22,7 @@ export default function PlatformModalComment({ data, arrayEmails }) {
       </div>
       <div className="modalInfo">
         <label htmlFor="date">Fecha pedido</label>
-        //{" "}
-        <p>
-          // <Moment format="DD/MM/YYYY">{data.date}</Moment>
-          //{" "}
-        </p>
+        <p>{dateFormat}</p>
       </div>
       <div className="modalInfo">
         <label htmlFor="product_name">PRODUCTO</label>
