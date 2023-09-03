@@ -51,9 +51,9 @@ export default function OrdersAccount() {
               <h3 className="userDataEmpty">Este usuario no tiene pedidos</h3>
             ) : (
               <>
-                {orders.map((order) => (
-                  <OrderWindow key={order._id} data={order} />
-                ))}
+                {orders.map((order) => {
+                  return <OrderWindow key={order._id} data={order} />
+                })}
               </>
             )}
           </section>

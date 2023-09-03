@@ -5,11 +5,10 @@ import {
   faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import Moment from "react-moment";
-// import "moment/locale/es";
 import Swal from "sweetalert2"
 import { Link } from "wouter"
 
+import { getFormatDate } from "@/libs/libDate"
 import { apiURL } from "@/services/config"
 import { getOrderId } from "@/services/Orders"
 
@@ -21,7 +20,7 @@ export default function OrderWindow({ data }) {
 
   useEffect(() => {
     setLoadingOrder(true)
-    getOrderId(data.id).then((info) => {
+    getOrderId(data._id).then((info) => {
       if (info.message) {
         return Swal.fire(
           "Lo sentimos",
@@ -29,6 +28,13 @@ export default function OrderWindow({ data }) {
           "error",
         )
       }
+
+      const deliveredDate = getFormatDate({timestamp: info.data.delivered_date})
+      const realizedDate = getFormatDate({timestamp: info.data.realized_date})
+
+      info.data.delivered_date = deliveredDate
+      info.data.realized_date = realizedDate
+
       setOrder(info.data)
       setLoadingOrder(false)
     })
@@ -40,9 +46,11 @@ export default function OrderWindow({ data }) {
 
   const today = new Date()
 
-  return loadingOrder || order === null ? (
-    <Spinner />
-  ) : (
+  if (loadingOrder || order === null) {
+    return <Spinner />
+  }
+
+  return (
     <div className="containerOrder">
       <header>
         <button className="btnShowOrderInfo" onClick={showInfo}>
@@ -53,12 +61,7 @@ export default function OrderWindow({ data }) {
         <div className="modalOrderInfo" ref={modalRef}>
           <div>
             <h4>Pedido realizado</h4>
-            <p>12/12/12</p>
-            //{" "}
-            <p>
-              // <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
-              //{" "}
-            </p>
+            <p>{order.delivered_date}</p>
           </div>
           <div>
             <h4>Total</h4>
@@ -80,9 +83,7 @@ export default function OrderWindow({ data }) {
         <div className="containerOrderInformation">
           <div>
             <h4>Pedido realizado</h4>
-            <p className="greySmall">
-              <Moment format="D MMM YYYY">{order.realizeddate}</Moment>
-            </p>
+            <p className="greySmall">{order.realized_date}</p>
           </div>
           <div>
             <h4>Total</h4>
@@ -99,7 +100,7 @@ export default function OrderWindow({ data }) {
                   </i>
                 </p>
                 <div className="modalInformationOrder">
-                  <h4>{order.address.nameperson}</h4>
+                  <h4>{order.address.name_person}</h4>
                   <p className="greySmall">{order.address.name}</p>
                   <p className="greySmall">
                     Teléfono: {order.address.telephone}
@@ -112,30 +113,19 @@ export default function OrderWindow({ data }) {
           </div>
         </div>
         <div>
-          <Link to={`/order/${data.id}`}>Ver detalles del pedido</Link>
+          <Link to={`/order/${data._id}`}>Ver detalles del pedido</Link>
         </div>
       </header>
       <section>
-        {order.delivereddate.split("-")[1] >= today.getMonth() &&
-        order.delivereddate.split("-")[2].substring(0, 2) > today.getDate() ? (
-          <h4>
-            Entrega 12/12/12
-            {/*
-            Entrega <Moment fromNow>{order.delivereddate}</Moment>
-                */}
-          </h4>
+        {order.delivered_date.includes("dentro") ? (
+          <h4>Entrega {order.delivered_date}</h4>
         ) : (
-          <h4>
-            Entregado 12/12/12
-            {/*
-            Entregado <Moment fromNow>{order.delivereddate}</Moment>
-                */}
-          </h4>
+          <h4>Entregado {order.delivered_date}</h4>
         )}
 
         {data.products.map((product) => {
           return (
-            <div className="row" key={product.id}>
+            <div className="row" key={product._id}>
               {product.image === null ? (
                 <img
                   loading="lazy"
