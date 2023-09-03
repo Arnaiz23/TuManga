@@ -27,6 +27,8 @@ export default function OrderDetail({ params }) {
       }
       const realizedDate = getFormatDate({ timestamp: data.data.realized_date })
       data.data.realized_date = realizedDate
+      const deliveredDate = getFormatDate({ timestamp: data.data.delivered_date })
+      data.data.delivered_date = deliveredDate
 
       setOrder(data.data)
       setLoading(false)
@@ -84,10 +86,7 @@ export default function OrderDetail({ params }) {
             </div>
             <div className="container containerColumn">
               <h3>
-                Entregado: 12/12/12
-                {/*
-                // Entregado <Moment fromNow>{order.delivered_date}</Moment>
-                  */}
+                Entregado: {order.delivered_date}
               </h3>
               {order.products &&
                 order.products.length > 0 &&
