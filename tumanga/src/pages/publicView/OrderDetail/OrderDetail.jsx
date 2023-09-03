@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react"
-// import Moment from "react-moment";
-// import "moment/locale/es";
 import Swal from "sweetalert2"
 
 import BtnUp from "@/components/publicFolder/BTN-UP/BTN-UP"
@@ -9,9 +7,9 @@ import Header from "@/components/publicFolder/Header/Header"
 import SliderName from "@/components/publicFolder/SliderName/SliderName"
 import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetworks"
 import Spinner from "@/components/publicFolder/Spinner/Spinner"
+import { getFormatDate } from "@/libs/libDate"
 import { apiURL } from "@/services/config"
 import { getOrderId } from "@/services/Orders"
-import { getFormatDate } from "@/libs/libDate"
 
 export default function OrderDetail({ params }) {
   const [order, setOrder] = useState({})
@@ -27,7 +25,7 @@ export default function OrderDetail({ params }) {
           "error",
         )
       }
-      const realizedDate = getFormatDate({timestamp: data.data.realized_date})
+      const realizedDate = getFormatDate({ timestamp: data.data.realized_date })
       data.data.realized_date = realizedDate
 
       setOrder(data.data)

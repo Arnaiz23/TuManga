@@ -1,7 +1,5 @@
 import React, { useContext } from "react"
-import { faBan, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "wouter"
+import PlatformUserTable from "@components/platform/PlatformUserTable"
 
 import AdminContext from "@/context/AdminContext"
 
@@ -27,45 +25,15 @@ export default function PlatformTable({
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
-              return (
-                <tr key={user._id}>
-                  <td className="tableTrId" title={user._id}>
-                    {user._id}
-                  </td>
-                  <td className="tableTrId" title={user.email}>
-                    {user.email}
-                  </td>
-                  {user.state === "Active" ? (
-                    <td>Activo</td>
-                  ) : (
-                    <td>Deshabilitado</td>
-                  )}
-                  //{" "}
-                  <td>
-                    // <Moment format="DD/MM/YYYY">{user.register_date}</Moment>
-                    //{" "}
-                  </td>
-                  <td>{roleArray[index]}</td>
-                  <td>{user.cart.length}</td>
-                  {userData.roleName === "admin" ? (
-                    <Link to={`/platform/user/${user._id}`}>
-                      <td className="btnEditData">
-                        <i>
-                          <FontAwesomeIcon icon={faPenToSquare} />
-                        </i>
-                      </td>
-                    </Link>
-                  ) : (
-                    <td className="btnEditData">
-                      <i className="banEditUser">
-                        <FontAwesomeIcon icon={faBan} />
-                      </i>
-                    </td>
-                  )}
-                </tr>
-              )
-            })}
+            {users.map((user, index) => (
+              <PlatformUserTable
+                user={user}
+                key={user._id}
+                roleArray={roleArray}
+                index={index}
+                userData={userData}
+              />
+            ))}
           </tbody>
         </table>
       )}
