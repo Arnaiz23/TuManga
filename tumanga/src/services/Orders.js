@@ -10,7 +10,7 @@ export function getOrderId(id) {
   })
     .then((res) => res.json())
     .then(({ status, message, data }) => {
-      return status === "success" ? { data } : { message }
+      return status === "success" ? { data, id } : { message }
     })
 }
 

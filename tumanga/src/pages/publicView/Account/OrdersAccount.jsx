@@ -10,6 +10,7 @@ import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetwork
 import Spinner from "@components/publicFolder/Spinner/Spinner"
 
 import useUser from "@/hooks/useUser"
+import { getOrderId } from "@/services/Orders"
 import { getUserOrders } from "@/services/Users"
 
 export default function OrdersAccount() {
@@ -29,8 +30,9 @@ export default function OrdersAccount() {
         return
       }
 
-      setOrders(data.orders)
-      setLoadingOrders(false)
+      Promise.all(data.orders.map((order) => getOrderId(order._id)))
+        .then(setOrders)
+        .finally(setLoadingOrders(false))
     })
   }, [loading, setError])
 
@@ -51,8 +53,8 @@ export default function OrdersAccount() {
               <h3 className="userDataEmpty">Este usuario no tiene pedidos</h3>
             ) : (
               <>
-                {orders.map((order) => {
-                  return <OrderWindow key={order._id} data={order} />
+                {orders.map(({ data: order, id }) => {
+                  return <OrderWindow key={id} data={order} id={id} />
                 })}
               </>
             )}
