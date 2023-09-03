@@ -6,6 +6,9 @@ import Swal from "sweetalert2"
 import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentAccountRow({ data, change, empty }) {
+  const date = new Date(data.date)
+  const formatDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+
   const deleteComment = () => {
     deleteUserComment(data._id).then((data) => {
       if (data.message) {
@@ -49,12 +52,7 @@ export default function CommentAccountRow({ data, change, empty }) {
       </header>
       <main className="row">
         <p>{data.message}</p>
-        <p>
-          12/12/12
-          {/*
-          // <Moment format="DD/MM/YYYY">{data.date}</Moment>
-          */}
-        </p>
+        <p>{formatDate}</p>
       </main>
     </div>
   )
