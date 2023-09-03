@@ -1,5 +1,4 @@
-export const apiURL = "http://localhost:3900/api/v1"
-// export const apiURL = "https://tumanga-arnaizdev-backend.onrender.com/api/v1";
+export const apiURL = import.meta.env.VITE_API_URL
 
 export function getToken() {
   let token

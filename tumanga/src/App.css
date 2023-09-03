@@ -2933,8 +2933,7 @@ a {
 
 .gridAdmin {
   display: grid;
-  grid-template:
-    "nav header header" 10vh "nav main   main  " repeat(2, "nav main   main  " 1fr) / minmax(190px, 10%) repeat(2, 1fr);
+  grid-template: "nav header header" 10vh "nav main main" 1fr "nav main main" 1fr / minmax(190px, 10%) 1fr 1fr;
   align-items: flex-start;
 }
 
