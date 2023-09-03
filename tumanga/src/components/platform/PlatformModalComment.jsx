@@ -1,10 +1,9 @@
 import React from "react"
 
+import { formatDateCal } from "@/libs/libDate"
+
 export default function PlatformModalComment({ data, arrayEmails }) {
-  const date = new Date(data.date)
-  const dateFormat = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`
+  const dateFormat = formatDateCal({ date: data.date })
 
   return (
     <section>

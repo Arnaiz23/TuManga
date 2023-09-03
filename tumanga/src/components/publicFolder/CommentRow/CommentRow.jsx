@@ -3,6 +3,7 @@ import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
 
+import { formatDateCal } from "@/libs/libDate"
 import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentRow({
@@ -14,8 +15,7 @@ export default function CommentRow({
 }) {
   const [stars, setStars] = useState([])
 
-  const date = new Date(comment.date)
-  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  const dateFormat = formatDateCal({date: comment.date})
 
   useEffect(() => {
     const stars2 = []

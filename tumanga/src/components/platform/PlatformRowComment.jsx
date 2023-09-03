@@ -3,6 +3,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
 
+import { formatDateCal } from "@/libs/libDate"
 import { deleteCommentAdmin } from "@/services/Admin"
 
 export default function PlatformRowComment({
@@ -11,8 +12,7 @@ export default function PlatformRowComment({
   setComments,
   arrayEmails,
 }) {
-  const date = new Date(comment.date)
-  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  const dateFormat = formatDateCal({ date: comment.date })
 
   const deleteComment = () => {
     Swal.fire({
@@ -56,9 +56,7 @@ export default function PlatformRowComment({
       <td className="tableTrId" title={comment._id}>
         {comment._id}
       </td>
-      <td>
-        {dateFormat}
-      </td>
+      <td>{dateFormat}</td>
       <td>{comment.name}</td>
       <td>{comment.message}</td>
       <td>{comment.product_name}</td>

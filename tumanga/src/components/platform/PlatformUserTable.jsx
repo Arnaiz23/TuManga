@@ -2,14 +2,15 @@ import { faBan, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "wouter"
 
+import { formatDateCal } from "@/libs/libDate"
+
 export default function PlatformUserTable({
   user,
   roleArray,
   index,
   userData,
 }) {
-  const date = new Date(user.register_date)
-  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  const dateFormat = formatDateCal({date: user.register_date})
 
   return (
     <tr key={user._id}>
