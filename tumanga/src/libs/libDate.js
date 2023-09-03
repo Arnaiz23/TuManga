@@ -27,3 +27,10 @@ export function getFormatDate({ timestamp }) {
 
   return rtf.format(value, unit)
 }
+
+export function formatDateCal({ date }) {
+  const dateFormat = new Date(date)
+  return `${dateFormat.getDate()}/${
+    dateFormat.getMonth() + 1
+  }/${dateFormat.getFullYear()}`
+}

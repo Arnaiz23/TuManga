@@ -1,4 +1,5 @@
 import React from "react"
+import PlatformTableOrdersRow from "@components/platform/PlatformTableOrdersRow"
 
 export default function PlatformTableOrders({
   dataEmpty,
@@ -20,29 +21,14 @@ export default function PlatformTableOrders({
             </tr>
           </thead>
           <tbody>
-            {data.map((info, index) => {
-              return (
-                <tr key={info._id}>
-                  <td title={info._id} className="tableTrId">
-                    {info._id}
-                  </td>
-                  //{" "}
-                  <td>
-                    // <Moment format="DD/MM/YYYY">{info.order_date}</Moment>
-                    //{" "}
-                  </td>
-                  {/* <td title={info.id_client} className="tableTrId">{info.id_client}</td> */}
-                  <td title={emails[index]}>{emails[index]}</td>
-                  //{" "}
-                  <td>
-                    // <Moment format="DD/MM/YYYY">{info.send_date}</Moment>
-                    //{" "}
-                  </td>
-                  <td>{info.products.length}</td>
-                  <td>{info.total} €</td>
-                </tr>
-              )
-            })}
+            {data.map((info, index) => (
+              <PlatformTableOrdersRow
+                info={info}
+                index={index}
+                emails={emails}
+                key={info._id}
+              />
+            ))}
           </tbody>
         </table>
       )}
