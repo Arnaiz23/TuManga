@@ -15,7 +15,7 @@ export default function CommentRow({
   const [stars, setStars] = useState([])
 
   const date = new Date(comment.date)
-  const dateFormat = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 
   useEffect(() => {
     const stars2 = []

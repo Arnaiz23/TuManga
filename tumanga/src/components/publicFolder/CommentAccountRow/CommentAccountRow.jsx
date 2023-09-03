@@ -7,7 +7,7 @@ import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentAccountRow({ data, change, empty }) {
   const date = new Date(data.date)
-  const formatDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+  const formatDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 
   const deleteComment = () => {
     deleteUserComment(data._id).then((data) => {

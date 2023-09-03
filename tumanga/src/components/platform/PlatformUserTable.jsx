@@ -9,7 +9,7 @@ export default function PlatformUserTable({
   userData,
 }) {
   const date = new Date(user.register_date)
-  const dateFormat = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+  const dateFormat = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 
   return (
     <tr key={user._id}>
