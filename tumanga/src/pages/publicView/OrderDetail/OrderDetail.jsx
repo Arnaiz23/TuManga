@@ -11,6 +11,7 @@ import SocialNetwork from "@/components/publicFolder/SocialNetworks/SocialNetwor
 import Spinner from "@/components/publicFolder/Spinner/Spinner"
 import { apiURL } from "@/services/config"
 import { getOrderId } from "@/services/Orders"
+import { getFormatDate } from "@/libs/libDate"
 
 export default function OrderDetail({ params }) {
   const [order, setOrder] = useState({})
@@ -26,6 +27,9 @@ export default function OrderDetail({ params }) {
           "error",
         )
       }
+      const realizedDate = getFormatDate({timestamp: data.data.realized_date})
+      data.data.realized_date = realizedDate
+
       setOrder(data.data)
       setLoading(false)
     })
@@ -42,12 +46,7 @@ export default function OrderDetail({ params }) {
         ) : (
           <div className="containerOrderDetails">
             <h2>Detalles del pedido</h2>
-            <p>
-              Comprado 12/12/12
-              {/*
-// <Moment format="D MMM YYYY">{order.realized_date}</Moment>
-              */}
-            </p>
+            <p>Comprado {order.realized_date}</p>
             <div className="container">
               {order.address ? (
                 <div className="col">
