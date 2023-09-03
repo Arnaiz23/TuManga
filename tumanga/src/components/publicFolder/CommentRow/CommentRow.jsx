@@ -3,8 +3,6 @@ import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Swal from "sweetalert2"
 
-// import Moment from "react-moment";
-// import "moment/locale/es";
 import { deleteUserComment } from "@/services/Comments"
 
 export default function CommentRow({
@@ -15,6 +13,9 @@ export default function CommentRow({
   changeEmpty,
 }) {
   const [stars, setStars] = useState([])
+
+  const date = new Date(comment.date)
+  const dateFormat = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
   useEffect(() => {
     const stars2 = []
@@ -39,10 +40,7 @@ export default function CommentRow({
       <div className="row">
         <header>
           <h4>{comment.name || "No tiene nombre"}</h4>
-          <p>
-            // <Moment format="D/MM/YYYY">{comment.date}</Moment>
-            02/09/23
-          </p>
+          <p>{dateFormat}</p>
         </header>
         <section>
           <div className="rowStars">
