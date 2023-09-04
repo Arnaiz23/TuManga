@@ -29,7 +29,8 @@
     "prettier": "prettier --write .",
     "eslint": "eslint --fix .",
     "format:code": "prettier --write . && eslint --fix .",
-    "stylelint": "npx stylelint '**/*.css' --fix"
+    "stylelint": "npx stylelint '**/*.css' --fix",
+    "analyze": "source-map-explorer 'dist/assets/*.js'"
   },
   "devDependencies": {
     "eslint-config-prettier": "^9.0.0",
@@ -40,6 +41,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^3.0.3",
+    "source-map-explorer": "^2.5.3",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-manzdev": "^0.0.10"

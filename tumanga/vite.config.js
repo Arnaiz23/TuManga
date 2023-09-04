@@ -5,4 +5,7 @@ import jsconfigPaths from "vite-jsconfig-paths"
 export default defineConfig({
   base: "/",
   plugins: [react(), jsconfigPaths()],
+  build: {
+    sourcemap: true
+  }
 })
