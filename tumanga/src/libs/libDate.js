@@ -30,7 +30,9 @@ export function getFormatDate({ timestamp }) {
 
 export function formatDateCal({ date }) {
   const dateFormat = new Date(date)
-  return `${dateFormat.getDate()}/${
-    dateFormat.getMonth() + 1
-  }/${dateFormat.getFullYear()}`
+  return new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  }).format(dateFormat)
 }
