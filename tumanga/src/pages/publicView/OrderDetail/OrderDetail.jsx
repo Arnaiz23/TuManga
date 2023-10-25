@@ -25,10 +25,17 @@ export default function OrderDetail({ params }) {
           "error",
         )
       }
-      const realizedDate = getFormatDate({ timestamp: data.data.realized_date })
-      data.data.realized_date = realizedDate
-      const deliveredDate = getFormatDate({ timestamp: data.data.delivered_date })
-      data.data.delivered_date = deliveredDate
+      const date = new Date(data.data.realized_date)
+      const realizedDate = new Intl.DateTimeFormat("es-ES", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }).format(date)
+      data.data.realizedDate = realizedDate
+      const deliveredDate = getFormatDate({
+        timestamp: data.data.delivered_date,
+      })
+      data.data.deliveredDate = deliveredDate
 
       setOrder(data.data)
       setLoading(false)
@@ -46,7 +53,7 @@ export default function OrderDetail({ params }) {
         ) : (
           <div className="containerOrderDetails">
             <h2>Detalles del pedido</h2>
-            <p>Comprado {order.realized_date}</p>
+            <p>Comprado {order.realizedDate}</p>
             <div className="container">
               {order.address ? (
                 <div className="col">
@@ -85,9 +92,7 @@ export default function OrderDetail({ params }) {
               </div>
             </div>
             <div className="container containerColumn">
-              <h3>
-                Entregado: {order.delivered_date}
-              </h3>
+              <h3>Entregado: {order.deliveredDate}</h3>
               {order.products &&
                 order.products.length > 0 &&
                 order.products.map((product) => (
