@@ -62,11 +62,11 @@ export default function OrderWindow({ data, id }) {
             <p className="greySmall">{data.total} €</p>
           </div>
           <div id="orderClient" onClick={showInfo}>
-            <h4>Enviar a</h4>
+            <h4>Enviar a </h4>
             {data.address ? (
               <>
                 <p className="greySmall" id="orderUserName">
-                  {data.address.nameperson}{" "}
+                  {data.address.name_person}{" "}
                   <i>
                     <FontAwesomeIcon icon={faAngleDown} />
                   </i>
