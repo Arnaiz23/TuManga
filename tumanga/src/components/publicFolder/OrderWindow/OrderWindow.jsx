@@ -13,14 +13,14 @@ import { apiURL } from "@/services/config"
 export default function OrderWindow({ data, id }) {
   const modalRef = createRef()
 
-    const deliveredDate = getFormatDate({ timestamp: data.delivered_date })
-    const realizedDate = getFormatDate({ timestamp: data.realized_date })
+  const deliveredDate = getFormatDate({ timestamp: data.delivered_date })
+  const realizedDate = new Intl.DateTimeFormat("es-ES", {
+    dateStyle: "medium",
+  }).format(new Date(data.realized_date))
 
   const showInfo = () => {
     modalRef.current.classList.toggle("modalOrderActive")
   }
-
-  const today = new Date()
 
   return (
     <div className="containerOrder">
