@@ -418,11 +418,12 @@ a {
     background-color 0.3s;
 }
 
-.btn:active {
+.btn:not(.btn-warning):active {
   transform: scale(0.9);
 }
 
 .btn-warning {
+  cursor: not-allowed;
   color: #000;
   background-color: #ffc107;
 }
