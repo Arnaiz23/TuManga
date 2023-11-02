@@ -9,12 +9,10 @@ import SliderName from "@components/publicFolder/SliderName/SliderName"
 import SocialNetwork from "@components/publicFolder/SocialNetworks/SocialNetworks"
 import Spinner from "@components/publicFolder/Spinner/Spinner"
 
-import useUser from "@/hooks/useUser"
 import { getOrderId } from "@/services/Orders"
 import { getUserOrders } from "@/services/Users"
 
 export default function OrdersAccount() {
-  const { loading } = useUser()
   const [loadingOrders, setLoadingOrders] = useState(false)
   const setError = useState("false")[1]
   const [orderEmpty, setOrderEmpty] = useState(false)
@@ -34,7 +32,7 @@ export default function OrdersAccount() {
         .then(setOrders)
         .finally(setLoadingOrders(false))
     })
-  }, [loading, setError])
+  }, [setError])
 
   return (
     <>
