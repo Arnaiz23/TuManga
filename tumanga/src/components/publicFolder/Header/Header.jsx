@@ -17,6 +17,7 @@ import useToken from "@/hooks/useToken.js"
 import useUser from "@/hooks/useUser.js"
 
 import Brand from "/BrandTransparent.png"
+import ThemeButton from "../ThemeButton/ThemeButton"
 
 export default function Header() {
   const [navActive, setNavActive] = useState("")
@@ -78,6 +79,9 @@ export default function Header() {
           />
         </form>
         <div className="headerOptions">
+          <span>
+            <ThemeButton />
+          </span>
           <span id="iconSearch" onClick={openModalSearch}>
             <i className="fa-solid fa-search">
               <FontAwesomeIcon icon={faSearch} />
