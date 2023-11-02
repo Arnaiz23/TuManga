@@ -92,7 +92,7 @@ export default function PlatformTableUpdateProduct({
           <div className="inputAdmin">
             <label htmlFor="shortdescription">Descripción Corta</label>
             <textarea
-              value={product.shortdescription}
+              value={product.short_description}
               name="shortdescription"
               id="shortdescription"
               onChange={handleChange}
