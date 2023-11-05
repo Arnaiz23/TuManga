@@ -16,6 +16,15 @@
   --green: #3e9734;
   --strong-blue: #50aeec;
   --grey-background: #eee;
+  --primary-text-color: #000;
+  --primary-background: #fff;
+}
+
+:root.dark {
+  --primary-text-color: #fff;
+  --primary-background: #27272A;
+  --medium-green: #48bb61;
+  --dark-red: #f73d3d;
 }
 
 * {
@@ -26,6 +35,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background);
 }
 
 a {
@@ -61,6 +72,7 @@ a {
 
 .brand h1 {
   font-size: 28px;
+  color: var(--primary-text-color);
 }
 
 #imgBrand {
@@ -81,7 +93,7 @@ a {
 }
 
 .headerOptions span a {
-  color: #000;
+  color: var(--primary-text-color);
 }
 
 .headerOptions span i {
@@ -140,7 +152,8 @@ a {
 #headerSearch {
   width: 100%;
   font-size: 0.9rem;
-  color: var(--footer-grey);
+  color: var(--primary-text-color);
+  background-color: transparent;
   border: none;
 }
 
@@ -173,8 +186,8 @@ a {
 }
 
 :root.dark .themeButton {
-  background-color: #fbd38d;
   color: #000;
+  background-color: #fbd38d;
 }
 
 .modalSearchBackground {

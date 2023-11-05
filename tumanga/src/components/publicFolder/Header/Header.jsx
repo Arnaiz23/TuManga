@@ -9,15 +9,16 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link , useLocation } from "wouter"
+import { Link, useLocation } from "wouter"
 
 import OrderContext from "@/context/OrderContext.jsx"
 import useOrderData from "@/hooks/useOrderData.js"
 import useToken from "@/hooks/useToken.js"
 import useUser from "@/hooks/useUser.js"
 
-import Brand from "/BrandTransparent.png"
 import ThemeButton from "../ThemeButton/ThemeButton"
+
+import Brand from "/BrandTransparent.png"
 
 export default function Header() {
   const [navActive, setNavActive] = useState("")
@@ -146,25 +147,28 @@ export default function Header() {
           <span>
             {tokenInfo ? (
               <Link to="/account">
-                {/* <i className="fa-regular fa-user"></i> */}
-                <i>
-                  <FontAwesomeIcon icon={faUser} />
-                </i>
+                <a>
+                  <i>
+                    <FontAwesomeIcon icon={faUser} />
+                  </i>
+                </a>
               </Link>
             ) : (
               <Link to="/login">
-                {/* <i className="fa-regular fa-user"></i> */}
-                <i>
-                  <FontAwesomeIcon icon={faUser} />
-                </i>
+                <a>
+                  <i>
+                    <FontAwesomeIcon icon={faUser} />
+                  </i>
+                </a>
               </Link>
             )}
           </span>
           <span onClick={changeNavState}>
-            {/* <i id="buttonMenu">&#9776;</i> */}
-            <i>
-              <FontAwesomeIcon icon={faBars} />
-            </i>
+            <a>
+              <i>
+                <FontAwesomeIcon icon={faBars} />
+              </i>
+            </a>
           </span>
         </div>
       </header>
